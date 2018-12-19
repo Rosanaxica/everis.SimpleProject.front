@@ -2,12 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { AppTitleComponent } from './shared/app-title/app-title.component';
+import { TitleComponent } from './shared/title/title.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AppTitleComponent
+    TitleComponent
   ],
   imports: [
     BrowserModule
