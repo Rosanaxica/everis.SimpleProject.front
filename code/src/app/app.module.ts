@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TitleComponent } from './shared/title/title.component';
+import { SaveButtonComponent } from './shared/title/save-button/save-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TitleComponent
+    TitleComponent,
+    SaveButtonComponent
   ],
   imports: [
     BrowserModule
