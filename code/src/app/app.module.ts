@@ -1,9 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { MatButtonModule } from '@angular/material';
+
 import { AppComponent } from './app.component';
 import { TitleComponent } from './shared/title/title.component';
-import { SaveButtonComponent } from './shared/title/save-button/save-button.component';
+import { SaveButtonComponent } from './shared/save-button/save-button.component';
 
 @NgModule({
   declarations: [
@@ -12,7 +14,8 @@ import { SaveButtonComponent } from './shared/title/save-button/save-button.comp
     SaveButtonComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
