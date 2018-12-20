@@ -16,6 +16,7 @@ import { AtribuicaoEquipeComponent } from './Home/Projetos/atribuicao-equipe/atr
 import { NovaChangeComponent } from './Home/Projetos/nova-change/nova-change.component';
 import { CadastroColaboradoresComponent } from './Home/Pessoas/cadastro-colaboradores/cadastro-colaboradores.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/cadastro-pessoas/cadastro-pessoas.component';
+import { InputComponent } from './input/input.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CadastroPessoasComponent } from './Home/Pessoas/cadastro-pessoas/cadast
     AtribuicaoEquipeComponent,
     NovaChangeComponent,
     CadastroColaboradoresComponent,
-    CadastroPessoasComponent
+    CadastroPessoasComponent,
+    InputComponent
   ],
   imports: [
     BrowserModule
