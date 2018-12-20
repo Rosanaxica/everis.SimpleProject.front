@@ -1,8 +1,10 @@
-<div class="row">
-  <h1 class="col">{{title}}</h1> 
-  <i class="fa fa-close"></i>
-  <div class="nav_action col"> 
-    <app-save-button class="right"></app-save-button>
+<div class="row align-items-center">
+  <div class="col pl-0">
+    <h1 class="float-left mr-5">{{title}}</h1>
+    <div *ngIf="showSearch">input</div> 
   </div>
-  <hr/>
+  <div class="col justify-content-end" *ngIf="showAction"> 
+    <app-save-button class="nav justify-content-end"></app-save-button>
+  </div>
+  <hr />
 </div>

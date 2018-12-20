@@ -7,7 +7,8 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TitleComponent implements OnInit {
 
-  @Input() show = true;
+  @Input() showAction = true;
+  @Input() showSearch = true;
   @Input() title: string;
 
   constructor() { }
