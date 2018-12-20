@@ -1,9 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
-import { TitleComponent } from './shared/title/title.component';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
-import { SaveButtonComponent } from './shared/save-button/save-button.component';
 import { LoginComponent } from './Home/Login/login/login.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
@@ -18,21 +16,16 @@ import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
-import { TextareaComponent } from './shared/textarea/textarea.component';
 import { SearchComponent } from './shared/search/search.component';
 import { CardPeopleComponent } from './shared/card-people/card-people.component';
-import { BadgeStatusComponent } from './shared/badge-status/badge-status.component';
-import { UploadComponent } from './shared/upload/upload.component';
-import { ComboComponent } from './shared/combo/combo.component';
-import { HourComponent } from './shared/hour/hour.component';
 import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ModelosComponent } from './shared/modelos/modelos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TitleComponent,
     PessoasComponent,
-    SaveButtonComponent,
     LoginComponent,
     PrimeiroAcessoComponent,
     EsqueceuSenhaComponent,
@@ -47,18 +40,14 @@ import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.comp
     CadastroPessoasComponent,
     ProjetosComponent,
     DadosPrincipaisComponent,
-    TextareaComponent,
     SearchComponent,
     CardPeopleComponent,
-    BadgeStatusComponent,
-    UploadComponent,
-    ComboComponent,
-    HourComponent,
-    AddTelephoneComponent
-
+    AddTelephoneComponent,
+    ModelosComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
