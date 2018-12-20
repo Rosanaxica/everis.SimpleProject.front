@@ -1,0 +1,17 @@
+#divSpanValid {
+    margin-top: 5px;
+    color: green;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#divSpanInvalid {
+    margin-top: 5px;
+    color: red;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+i {
+    margin-right: 5px;
+}
