@@ -1,3 +1,119 @@
-<p>
-  modelos works!
-</p>
+<!--
+  IMPORTANTE: O MODELO CONSISTE NO TRECHO DE CÓDIGO DENTRO DOS COMENTÁRIOS
+  A ESTRUTURA DA GRID DEVE SER FEITO DE ACORDO COM O CONTEXTO
+-->
+
+
+<p class="titulos">ELEMENTOS: Título</p>
+
+<!--titulo-->
+<div class="row">
+  <div class="col">
+    <h1>Título de Páginas</h1>
+  </div> 
+  <hr class="mt-0" />
+</div>
+<!--.titulo-->
+
+<p class="titulos">ELEMENTO: Título com botões</p>
+
+<!--titulo com botões-->
+<div class="row align-items-center">
+    <div class="col">
+      <h1>Título com botões</h1>
+    </div> 
+    <nav class="col d-flex justify-content-end">
+      <button type="button" class="btn btn-primary mr-2">Primary</button>
+      <button type="button" class="btn btn-secondary">Secondary</button>
+    </nav> 
+    <hr class="mt-0" />
+</div>
+<!--.titulo com botões-->
+
+<p class="titulos">ELEMENTO: Título com pesquisa e botões</p>
+
+<!--titulo com pesquisa e botões-->
+<div class="row align-items-center">
+    <div class="col-8">
+      <div class="row align-items-center">
+        <h1 class="col">Título com pesquisa e botões</h1>
+        <div class="input-group col">
+            <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+      </div> 
+    </div>
+    <nav class="col-4 d-flex justify-content-end">
+      <button type="button" class="btn btn-primary mr-2">Primary</button>
+      <button type="button" class="btn btn-secondary">Secondary</button>
+    </nav> 
+    <hr class="mt-0" />
+</div>
+<!--.titulo com pesquisa e botões-->
+
+<p class="titulos">ELEMENTO: Input</p>
+
+<div class="row">
+  <div class="col">
+
+    <!--input-->
+    <div class="form-group">
+      <label for="label">Input</label>
+      <input type="text" class="form-control" id="input" placeholder="text">
+    </div>
+    <!--.input-->
+  
+  </div>
+</div>
+
+<p class="titulos">ELEMENTO: Combo</p>
+
+<div class="row">
+  <div class="col">
+
+    <!--combo-->
+    <div class="form-group">
+      <label for="label">Combo</label>
+      <select id="select" class="custom-select">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+    <!--.combo-->
+  
+  </div>
+</div>
+
+<p class="titulos">ELEMENTO: Checkbox</p>
+
+<div class="row">
+  <div class="col">
+
+    <!--checkbox-->
+    <div class="custom-control custom-checkbox">
+      <input id="meucheckbox" name="meucheckbox" type="checkbox" class="custom-control-input">
+      <label class="custom-control-label" for="meucheckbox">Meu checkbox</label>
+    </div>
+    <!--.checkbox-->    
+  
+  </div>
+</div>
+
+<p class="titulos">ELEMENTO: Radio</p>
+
+<div class="row">
+  <div class="col">
+
+    <!--radio-->
+    <div class="custom-control custom-radio">
+      <input id="meuradio" name="meuradio" type="radio" class="custom-control-input">
+      <label class="custom-control-label" for="meuradio">Meu radiobutton</label>
+    </div>
+    <!--.radio-->
+
+  </div>
+</div>
