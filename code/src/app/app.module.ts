@@ -19,6 +19,8 @@ import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/a
 import { SearchComponent } from './shared/search/search.component';
 import { CardPeopleComponent } from './shared/card-people/card-people.component';
 import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ModelosComponent } from './shared/modelos/modelos.component';
 
 @NgModule({
   declarations: [
@@ -40,10 +42,12 @@ import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.comp
     DadosPrincipaisComponent,
     SearchComponent,
     CardPeopleComponent,
-    AddTelephoneComponent
+    AddTelephoneComponent,
+    ModelosComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
