@@ -18,6 +18,14 @@ import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
+import { TextareaComponent } from './shared/textarea/textarea.component';
+import { SearchComponent } from './shared/search/search.component';
+import { CardPeopleComponent } from './shared/card-people/card-people.component';
+import { BadgeStatusComponent } from './shared/badge-status/badge-status.component';
+import { UploadComponent } from './shared/upload/upload.component';
+import { ComboComponent } from './shared/combo/combo.component';
+import { HourComponent } from './shared/hour/hour.component';
+import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +46,15 @@ import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/a
     CadastroColaboradoresComponent,
     CadastroPessoasComponent,
     ProjetosComponent,
-    DadosPrincipaisComponent
+    DadosPrincipaisComponent,
+    TextareaComponent,
+    SearchComponent,
+    CardPeopleComponent,
+    BadgeStatusComponent,
+    UploadComponent,
+    ComboComponent,
+    HourComponent,
+    AddTelephoneComponent
 
   ],
   imports: [
