@@ -37,11 +37,9 @@ import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/a
     NovaChangeComponent,
     CadastroColaboradoresComponent,
     CadastroPessoasComponent,
-    InputComponent
-=======
     ProjetosComponent,
     DadosPrincipaisComponent
->>>>>>> 601042c209de7420c225c1b706aa8d137b2fb43a
+
   ],
   imports: [
     BrowserModule
