@@ -1,3 +1,4 @@
+import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModelosComponent } from './shared/modelos/modelos.component';
@@ -16,7 +17,11 @@ const appRoutes: Routes = [
    {
     path: 'cadastro-colaborador',
     component: CadastroColaboradorComponent
-  }
+  },
+  {
+     path: 'pessoas',
+     component: PessoasComponent
+   }
 ];
 
 @NgModule({
