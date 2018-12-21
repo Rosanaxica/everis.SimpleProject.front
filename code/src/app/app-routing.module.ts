@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { AppComponent } from './app.component';
 import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-colaborador.component';
+import { TemplateComponent } from './template/template.component';
 
 const appRoutes: Routes = [
    {
@@ -21,7 +22,11 @@ const appRoutes: Routes = [
   {
      path: 'pessoas',
      component: PessoasComponent
-   }
+   },
+   {
+    path: 'template',
+    component: TemplateComponent
+  }
 ];
 
 @NgModule({

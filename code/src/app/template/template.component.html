@@ -1,0 +1,114 @@
+
+  <nav class="navbar navbar-expand navbar-dark bg-gray static-top">
+
+    <a class="navbar-brand mr-1" href="index.html"><img src="../assets/log.png" width="32"> </a>
+
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <i class="fa fa-bars"></i>
+    </button>
+   <span class="text-white ">Simple Process</span>
+
+    <!-- Navbar Search -->
+    <form class="d-none d-md-inline-block form-inline ml-auto col-lg-5">
+      <div class="input-group">
+        <input type="text" class="form-control " placeholder="Buscar por" aria-label="Busca no site ">
+        <div class="input-group-append">
+          <button class="btn btn-secondary" type="button">
+            <i class="fa fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <!-- Navbar -->
+    <ul class="navbar-nav ml-auto ml-md-0">
+      
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <div class="nav-item  text-white text-right"><i class="fa fa-user-circle fa-fw"></i>
+           <small>Bem vindo Fulano</small><br></div>
+        
+        </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="#">Meus Dados</a>
+           <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
+        </div>
+      </li>
+    </ul>
+      </nav>
+
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="sidebar navbar-nav bg-gray-light">
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+                         <button class="btn everis">Adicionar projeto</button>
+           </a>
+          </li>
+              <li class="nav-item active">
+          <a class="nav-link" href="index.html">
+            <i class="fa fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+        </li>
+     
+      <li class="nav-item">
+        <a class="nav-link" href="charts.html">
+          <i class="fa fa-chart-pie"></i>
+          <span>Projetos</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fa fa-user "></i>
+          <span>Pessoas</span></a>
+      </li>
+      <li class="nav-item">
+          <a class="nav-link" href="#">
+            <i class="fa fa-sitemap"></i>
+            <span>Mapa do Site</span></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">
+              <i class="fa fa-question-circle"></i>
+              <span>Central de Ajuda</span></a>
+          </li>
+    </ul>
+
+    <div id="content-wrapper">
+
+      <div class="container-fluid">
+<div class="card"><div class="card-body"></div></div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+      
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+ 
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deseja Sair?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Clique em "Sair"abaixo se deseja encerrar a sessão atual.</div>
+        <div class="modal-footer">
+          <button class="btn cancelar" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn everis" href="login.html">Sair</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
