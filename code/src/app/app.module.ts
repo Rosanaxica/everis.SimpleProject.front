@@ -22,6 +22,7 @@ import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.comp
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-colaborador.component';
+import { TemplateComponent } from './template/template.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 
 @NgModule({
@@ -46,7 +47,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     CardPeopleComponent,
     AddTelephoneComponent,
     ModelosComponent,
-    CadastroColaboradorComponent
+    CadastroColaboradorComponent,
+    TemplateComponent
   ],
   imports: [
     BrowserModule,
