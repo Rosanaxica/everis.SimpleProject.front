@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { AppComponent } from './app.component';
+import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-colaborador.component';
 
 const appRoutes: Routes = [
    {
@@ -11,7 +12,11 @@ const appRoutes: Routes = [
    {
      path: '*',
      component: AppComponent
-   }
+   },
+   {
+    path: 'cadastro-colaborador',
+    component: CadastroColaboradorComponent
+  }
 ];
 
 @NgModule({
