@@ -1,5 +1,8 @@
 hr { border: 1px solid #eee; width: 100%; }
-select {width: 100%}
+select, textarea {width: 100%}
+.execucao {background: #f5e51b }
+.badge-light {background: #f0f0d6}
 
-/*TODO: Excluir a class ".titulos"*/
+/*TODO: Excluir a class estas classes*/
 .titulos {color: coral;font-weight: bold;margin: 30px 0;border-bottom: 2px dotted coral}
+.badge {margin: 5px}

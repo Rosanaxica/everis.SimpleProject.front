@@ -1,6 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { LoginComponent } from './Home/Login/login/login.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
@@ -22,6 +25,7 @@ import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.comp
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-colaborador.component';
+
 
 @NgModule({
   declarations: [
@@ -45,11 +49,14 @@ import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-co
     CardPeopleComponent,
     AddTelephoneComponent,
     ModelosComponent,
-    CadastroColaboradorComponent
+    CadastroColaboradorComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatSlideToggleModule,
+    BsDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
