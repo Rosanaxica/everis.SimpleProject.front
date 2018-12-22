@@ -55,5 +55,5 @@ import { TemplateComponent } from './template/template.component';
   ],
   providers: [],
   bootstrap: [AppComponent]
-})
+ })
 export class AppModule { }

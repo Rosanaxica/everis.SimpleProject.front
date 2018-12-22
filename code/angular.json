@@ -23,15 +23,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/font-awesome/css/font-awesome.css"
+            "node_modules/bootstrap/dist/css/bootstrap.css",
+             "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "src/styles.css"
             ],
-            "scripts": [
-              "src/simple.js",
-              "../node_modules/jquery/dist/jquery.js"
-
-            ]
+            "scripts":[
+            "node_modules/jquery/dist/jquery.js",
+            "node_modules/jquery/dist/jquery.min.js",
+            "node_modules/bootstrap/dist/js/bootstrap.js",      
+            "src/simple.js"  
+               
+                         ]
           },
           "configurations": {
             "production": {
@@ -87,7 +89,10 @@
             "styles": [
               "src/styles.css"              
             ],
-            "scripts": [],
+            "scripts": 
+            ["node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.js"
+            ],
             "assets": [
               "src/favicon.ico",
               "src/assets"
