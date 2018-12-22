@@ -23,9 +23,12 @@
               "src/assets"
             ],
             "styles": [
+
+            "node_modules/bootstrap/dist/css/bootstrap.min.css",
+            "node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
             "node_modules/bootstrap/dist/css/bootstrap.css",
-             "node_modules/@fortawesome/fontawesome-free/css/all.css",
-              "src/styles.css"
+            "node_modules/@fortawesome/fontawesome-free/css/all.css",
+            "src/styles.css"
             ],
             "scripts":[
             "node_modules/jquery/dist/jquery.js",
@@ -34,6 +37,7 @@
             "src/simple.js"  
                
                          ]
+
           },
           "configurations": {
             "production": {
@@ -87,7 +91,9 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.css"              
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
+              "src/styles.css"
             ],
             "scripts": 
             ["node_modules/jquery/dist/jquery.min.js",
