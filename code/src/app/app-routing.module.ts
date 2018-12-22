@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-colaborador.component';
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
+import { LoginComponent } from './Home/Login/login/login.component';
 
 const appRoutes: Routes = [
   {
@@ -28,6 +29,10 @@ const appRoutes: Routes = [
     path: 'template',
     component: TemplateComponent
 
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: 'esforco-projeto',

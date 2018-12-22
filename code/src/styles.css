@@ -20,6 +20,8 @@ hr{background-color:rgb(112,115,114);border: 1px solid #eee; width: 100%;}
 .everis-laranja{background-color: rgb(215,103,52)}
 .everis-roxo{background-color: rgb(100,50,105)}
 .everis-azul{background-color: rgb(103,133,193) }
+.links:hover,.links:focus{color: #d9d9d9;text-decoration: none; }
+
 /*!
  parte padrão
  */
