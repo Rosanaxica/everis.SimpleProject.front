@@ -1,10 +1,8 @@
-@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {background-color: #9AAE04}
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {background-color: rgba(154,174,4, .6)}
 /*!
- * Start Bootstrap - SB Admin v5.0.2 (https://startbootstrap.com/template-overviews/sb-admin)
- * Copyright 2013-2018 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-sb-admin/blob/master/LICENSE)
+ parte personalizada
  */
  .everis{background-color:#9AAE04;color: #ffffff;}
  .btn-everis-sem.-sombra{background-color:#9AAE04;color: #ffffff;}
@@ -16,12 +14,14 @@
  .bg-gray{background-color: rgb(112,115,114)}
  .titulo{color:black;font-family: Arial, Helvetica, sans-serif;font-size: 26px; font-weight: bold;}
 .links{color:rgb(112,115,114);text-decoration: none; }
-.card-colaborador{}
+.card-colaborador{box-shadow: 3px 3px #d9d9d9;font-weight: bold;}
 hr{background-color: #E4E4E4;}
 .everis-laranja{background-color: rgb(215,103,52)}
 .everis-roxo{background-color: rgb(100,50,105)}
 .everis-azul{background-color: rgb(103,133,193) }
-
+/*!
+ parte padrão
+ */
 html {
   position: relative;
   min-height: 100%;
