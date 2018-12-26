@@ -97,9 +97,8 @@
             "scripts": 
             ["node_modules/jquery/dist/jquery.min.js",
             "node_modules/bootstrap/dist/js/bootstrap.js",
-            "./src/simple.js",
-            "./src/simple.min.js"
-            ],
+            "./src/simple.js"
+                       ],
             "assets": [
               "src/favicon.ico",
               "src/assets"

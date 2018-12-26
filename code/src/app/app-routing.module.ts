@@ -7,6 +7,8 @@ import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadast
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
+import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
+import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 
 const appRoutes: Routes = [
   {
@@ -37,7 +39,15 @@ const appRoutes: Routes = [
   {
     path: 'esforco-projeto',
     component: EsforcoProjetoComponent
-  }
+  },
+  {
+    path: 'esqueci-senha',
+    component: EsqueceuSenhaComponent
+  },
+  {
+    path: 'primeiro-acesso',
+    component: PrimeiroAcessoComponent
+  },
 ];
 
 @NgModule({
