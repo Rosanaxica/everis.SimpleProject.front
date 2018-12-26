@@ -21,7 +21,6 @@ import { CardPeopleComponent } from './shared/card-people/card-people.component'
 import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
-import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadastro-colaborador.component';
 import { TemplateComponent } from './template/template.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
@@ -29,6 +28,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -53,7 +53,6 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
     CardPeopleComponent,
     AddTelephoneComponent,
     ModelosComponent,
-    CadastroColaboradorComponent,
     EmpresaComponent,
     TemplateComponent
   ],
@@ -65,6 +64,7 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    FormsModule,
     BsDatepickerModule.forRoot()
   ],
   providers: [],
