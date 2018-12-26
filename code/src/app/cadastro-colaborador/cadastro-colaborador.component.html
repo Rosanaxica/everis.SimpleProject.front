@@ -1,11 +1,16 @@
-<div class="row">
-  <div class="col-md-10">Nova Pessoa</div> 
-  <div class="col-md-1"><button name="botao-salvar" class="btn everis">Salvar</button></div>
-  <div class="col-md-1"><button name="botao-cancelar" class="btn botao-cancelar">Cancelar</button></div>
-  <hr>
+
+<div class="row align-items-center">
+  <div class="col">
+    <h1 class="titulo mb-0">Novo Colaborador</h1>
+  </div> 
+  <nav class="col d-flex justify-content-end">
+    <button type="button" class="btn everis mr-2">Salvar</button>
+    <button type="button" class="btn cancelar">Cancelar</button>
+  </nav> 
+  <hr class="mt-2" />
 </div>
 
-    <div>
+    <div class="row ">
       <p><input type="radio" id="tipoPessoa" name="tipoPessoa" value="Terceiros">Terceiros
          <input type="radio" id="tipoPessoa" name="tipoPessoa" value="Colaborador">Colaborador</p>
     </div>
@@ -53,13 +58,13 @@
           </div>
         </div>
           
-        <div class="row mb-2">
+        <div class="row mb-3">
           <div class="col-md-12">
               <input type="text" class="form-control" id="vdi" name="vdi" placeholder="Nome da Maquina VDI">
           </div>
         </div>
 
-        <div class="row mb-2">
+        <div class="row mb-4">
           <div class="col-md-2">
             <label for="nivelFuncional">Nivel Funcional</label>
               <select id="nivelFuncional" name="nivelFuncional" class="form-control">
@@ -82,15 +87,20 @@
 
         <div class="row mb-2">
           <div class="col-md-7">
-            <input type="file" id="arquivo" name="arquivo" class="custom-file-input" />
+              <input type="file" id="arquivo" name="arquivo" class="everis" />
           </div>
         </div>
 
-        <div class="row">
-            <div class="col-md-10"></div> 
-            <div class="col-md-1"><button name="botao-salvar" class="btn everis">Salvar</button></div>
-            <div class="col-md-1"><button name="botao-cancelar" class="btn botao-cancelar">Cancelar</button></div>
-        </div>
+        <div class="row align-items-center">
+          <div class="col">
+            
+          </div> 
+          <nav class="col d-flex justify-content-end">
+            <button type="button" class="btn everis mr-2">Salvar</button>
+            <button type="button" class="btn cancelar">Cancelar</button>
+          </nav> 
+         
+      </div>
 
   </div>
 </div>
