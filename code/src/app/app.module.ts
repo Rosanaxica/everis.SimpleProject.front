@@ -30,6 +30,7 @@ import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { ProjetoService } from './services/projeto.service';
 
 
 @NgModule({
@@ -69,7 +70,9 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
     MatCheckboxModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    ProjetoService,
+  ],
   bootstrap: [AppComponent]
  })
 export class AppModule { }
