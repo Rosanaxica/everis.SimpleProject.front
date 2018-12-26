@@ -22,6 +22,7 @@ import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.comp
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-colaborador.component';
+import { EmpresaComponent } from './Home/empresa/empresa.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-co
     CardPeopleComponent,
     AddTelephoneComponent,
     ModelosComponent,
-    CadastroColaboradorComponent
+    CadastroColaboradorComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule,
