@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { LoginComponent } from './Home/Login/login/login.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
@@ -25,8 +26,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadastro-colaborador.component';
 import { TemplateComponent } from './template/template.component';
-import { BsDatepickerModule } from 'ngx-bootstrap';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
+
+import { BsDatepickerModule } from 'ngx-bootstrap';
+import { ModalComponent } from './shared/modal/modal.component';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 
 @NgModule({
@@ -52,16 +56,22 @@ import { EmpresaComponent } from './Home/Empresa/empresa.component';
     AddTelephoneComponent,
     ModelosComponent,
     CadastroColaboradorComponent,
-    EmpresaComponent,
-    TemplateComponent
+    TemplateComponent,
+    ModalComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     BsDatepickerModule.forRoot()
   ],
+  entryComponents: [ModalComponent],
   providers: [],
   bootstrap: [AppComponent]
  })
