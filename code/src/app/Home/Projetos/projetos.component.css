@@ -5,6 +5,9 @@
     font-size: 18px;
     border-top: 0;
  }
+ tbody tr {
+     padding: 5px 0;
+ }
 
 .barraProgresso {
     background-color: #9AAE04 !important;
@@ -12,7 +15,9 @@
 }
 .progress {
     height: 10px;
+    width: 300px;
     border-radius: 0;
+    margin: auto;
 }
 
 .caption {
@@ -31,11 +36,17 @@
     border-radius: 50%;
     position: relative;
 }
+.chip i {
+    padding: 5px 0;
+    width: 50px;
+    color: #aaa;
+}
 .chip:hover > .nomePessoa {
     visibility: visible;
     z-index: 10;
 }
 .nomePessoa {
+    padding: 0 5px;
     color: #333;
     background-color: #fff;
     border: 1px solid #333;
@@ -47,7 +58,7 @@
     position: absolute; 
 }
 .nomePessoa:hover {
-    color: #000;
+    color: #333;
 }
 
 .bagde {
@@ -60,9 +71,18 @@
     color: white;
     text-align: center;
     vertical-align: middle;
+    padding: 5px;
     background-color: purple;
     width: 25px;
     height: 25px;
     border: 1px solid darkslategrey;
+    border-radius: 0;
+}
+.badge-status-ativo {
+    background-color: #9AAE04;
+    width: 100px;
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
     border-radius: 0;
 }
