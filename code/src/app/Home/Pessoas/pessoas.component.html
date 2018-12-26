@@ -1,37 +1,111 @@
+<<<<<<< HEAD
 <div class="row mb-4">
-  <div class="col-md-2"> <label>Pessoas</label></div>
-  <div class="col-md-8">
-    <div class="input-group ">
-      <input type="text" class="form-control" placeholder="Pesquise aqui o colaborador">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" id="button-addon2"> <span class="fa fa-search"></span></button>
+    <div class="col-md-2"> <label>Pessoas</label></div>
+    <div class="col-md-8">
+      <div class="input-group ">
+        <input type="text" class="form-control" placeholder="Pesquise aqui o colaborador">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button" id="button-addon2"> <span class="fa fa-search"></span></button>
+        </div>
       </div>
     </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn salvar">
+        + Nova Pessoa
+      </button>
+    </div>
   </div>
-  <div class="col-md-2">
-    <button type="submit" class="btn salvar">
-      + Nova Pessoa
-    </button>
-  </div>
+  <hr>
+  <div class="row">
+  
+    <!-- Card -->
+    <div class="col-md-3">
+      <div class="card border-salvar">
+        <div class="row">
+          <div class="card-body">
+            <div class="col-md-12 m-0 p-0">
+              <div class="col-md-12 text-right">
+                <span class="badge salvar text-right">Disponível</span>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <img class="card-img-top" src="../assets/u87.png" alt="Card image cap">
+                </div>
+                <div class="col-md-8 m-0 p-0">
+                  Ricardo Yamamura
+                  <small>Desenvolvedor</small>
+                </div>
+              </div>
+              <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Card -->
+    <div class="col-md-3">
+      <div class="card">
+        <div class="row">
+          <div class="card-body">
+            <div class="col-md-12 m-0 p-0">
+              <div class="col-md-12 text-right">
+                <span class="badge salvar text-right">Disponível</span>
+              </div>
+              <div class="row">
+                <div class="col-md-3">
+                  <img class="card-img-top" src="../assets/u87.png" alt="Card image cap">
+                </div>
+                <div class="col-md-8 m-0 p-0">
+                  Ricardo Yamamura 
+                  <small>Desenvolvedor</small>
+                </div>
+              </div>
+              <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <!-- Card -->
+  <div class="col-md-3"> 
+    <div class="card" *ngFor="let pessoa of pessoas">
+=======
+
+  <div class="row align-items-center">
+    <div class="col-3">
+        <h1 class="titulo mb-0">Pessoas</h1>
+    </div> 
+    <div class="input-group col">
+      <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+      </div>
+    </div>
+    <nav class="col-3 d-flex justify-content-end">
+      <button type="button" class="btn everis mr-2">Nova Pessoa +</button>
+     
+    </nav> 
+    <hr class="mt-2" />
 </div>
-<hr>
 <div class="row">
 
-  <div class="col-md-3">
-    <div class="card">
+  <div class="col-md-4">
+    <div class="card card-colaborador border-everis">
       <div class="row">
         <div class="card-body">
           <div class="col-md-12 m-0 p-0">
             <div class="col-md-12 text-right">
-              <span class="badge salvar text-right">Disponível</span>
+              <span class="badge everis text-right">Disponível</span>
             </div>
             <div class="row">
               <div class="col-md-3">
                 <img class="card-img-top" src="../assets/u87.png" alt="Card image cap">
               </div>
               <div class="col-md-8 m-0 p-0">
-                Ricardo Yamamura
-                <small>Desenvolvedor</small>
+                <p class="m-0">Ricardo Yamamura</p>
+                <p class="m-0"><small>Desenvolvedor</small></p>
               </div>
 
 
@@ -47,3 +121,65 @@
 
     </div>
   </div>
+  <div class="col-md-4">
+    <div class="card card-colaborador border-everis">
+      <div class="row">
+        <div class="card-body">
+          <div class="col-md-12 m-0 p-0">
+            <div class="col-md-12 text-right">
+              <span class="badge everis text-right">Disponível</span>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <img class="card-img-top" src="../assets/u87.png" alt="Card image cap">
+              </div>
+              <div class="col-md-8 m-0 p-0">
+                <p class="m-0">Ricardo Yamamura</p>
+                <p class="m-0"><small>Desenvolvedor</small></p>
+              </div>
+
+
+            </div>
+
+            <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
+
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card card-colaborador border-everis">
+>>>>>>> 377a547562a77af61779519b3942934763519fc1
+      <div class="row">
+        <div class="card-body">
+          <div class="col-md-12 m-0 p-0">
+            <div class="col-md-12 text-right">
+              <span class="badge everis text-right">Disponível</span>
+            </div>
+            <div class="row">
+              <div class="col-md-3">
+                <img class="card-img-top" src="../assets/u87.png" alt="Card image cap">
+              </div>
+              <div class="col-md-8 m-0 p-0">
+<<<<<<< HEAD
+                {{pessoa}}
+                <small>Desenvolvedor</small>
+=======
+                <p class="m-0">Ricardo Yamamura</p>
+                <p class="m-0"><small>Desenvolvedor</small></p>
+>>>>>>> 377a547562a77af61779519b3942934763519fc1
+              </div>
+            </div>
+            <div class="col-md-12 text-right"><sub> Projeto Itau PJ - Team Leader</sub></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  </div>
+  
