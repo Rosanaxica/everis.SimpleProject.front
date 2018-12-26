@@ -15,7 +15,7 @@ import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoa
 
 const appRoutes: Routes = [
   {
-    path: 'modelos',
+    path: 'modelo',
     component: ModelosComponent
   },
   {
