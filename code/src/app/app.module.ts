@@ -26,6 +26,7 @@ import { ModelosComponent } from './shared/modelos/modelos.component';
 import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-colaborador.component';
 import { TemplateComponent } from './template/template.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 
 @NgModule({
@@ -51,11 +52,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     AddTelephoneComponent,
     ModelosComponent,
     CadastroColaboradorComponent,
-<<<<<<< HEAD
-    EmpresaComponent
-=======
+    EmpresaComponent,
     TemplateComponent
->>>>>>> 377a547562a77af61779519b3942934763519fc1
   ],
   imports: [
     BrowserModule,
