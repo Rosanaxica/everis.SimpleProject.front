@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { LoginComponent } from './Home/Login/login/login.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
@@ -29,8 +30,8 @@ import { TemplateComponent } from './template/template.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap';
-import { ModalComponent } from './shared/modal/modal.component';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { ProjetoService } from './services/projeto.service';
 
 
 @NgModule({
@@ -57,7 +58,6 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
     ModelosComponent,
     CadastroColaboradorComponent,
     TemplateComponent,
-    ModalComponent,
     EmpresaComponent
   ],
   imports: [
@@ -69,10 +69,12 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatExpansionModule,
     BsDatepickerModule.forRoot()
   ],
-  entryComponents: [ModalComponent],
-  providers: [],
+  providers: [
+    ProjetoService,
+  ],
   bootstrap: [AppComponent]
  })
 export class AppModule { }

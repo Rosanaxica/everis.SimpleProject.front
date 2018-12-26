@@ -1,7 +1,5 @@
 
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material';
-import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-modelos',
@@ -10,12 +8,5 @@ import { ModalComponent } from '../modal/modal.component';
 })
 
 export class ModelosComponent {
-
-  modal: MatDialogRef<ModalComponent>;
-
-  constructor(private dialog: MatDialog) {}
-
-  openDialog() {
-    this.modal = this.dialog.open(ModalComponent);
-  }
+  panelOpenState = false;
 }

@@ -7,18 +7,22 @@
 
   <p class="titulos">ELEMENTO: Logo</p>
 
-  <div class="row mb-5 align-items-center">
-    <div class="col-3">
+  <div class="row mb-5">
+    <div class="col">
       <!--logo tamanho original-->
       <img src="../../../assets/logo.png" alt="Simple Process">
       <!--logo tamanho original-->
     </div>
-    <div class="col-2">
+  </div>
+  <div class="row mb-5">
+    <div class="col">
       <!--logo 90px-->
       <img src="../../../assets/logo_90.png" alt="Simple Process">
       <!--logo-->
     </div>
-    <div class="col-1">
+  </div>
+  <div class="row mb-5">
+    <div class="col">
       <!--logo 32px-->
       <img src="../../../assets/logo_32.png" alt="Simple Process">
       <!--logo-->
@@ -341,7 +345,26 @@
     <div class="col">
   
       <!--.modal-->
-      <button class="btn everis mr-2" (click)="openDialog()">Abrir modal</button>
+      <button class="btn everis mr-2" data-toggle="modal" data-target="#logoutModal">Abrir modal</button>
+
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Título da modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Clique em "Sair"abaixo se deseja encerrar a sessão atual.</div>
+            <div class="modal-footer">
+              <button class="btn cancelar" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn everis" href="login.html">Sair</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <!--.modal-->
   
     </div>
@@ -406,6 +429,47 @@
           <i class="fa fa-exclamation-triangle mr-1"></i> Esta é minha mensagem de alerta ao usuário com um <a href="#" class="alert-link">link</a>.
         </div>
       <!--.Alertas-->
+  
+    </div>
+  </div>
+
+  <p class="titulos">ELEMENTO: Foto listagem</p>
+  
+  <div class="row mb-5">
+    <div class="col">
+  
+      <!--.Foto-->
+      <img src="../../../assets/exemplo-foto.jpg" class="rounded-circle"  title="" alt="" width="64" height="64" />
+      <!--.Foto-->
+  
+    </div>
+  </div>
+
+  <p class="titulos">ELEMENTO: Accordion</p>
+  
+  <div class="row mb-5">
+    <div class="col">
+  
+      <!--.Accordion-->
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Collapse 1
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Conteúdo 1</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Collapse 2
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Conteúdo 2</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+      <!--.Accordion-->
   
     </div>
   </div>
