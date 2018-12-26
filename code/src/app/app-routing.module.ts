@@ -1,3 +1,4 @@
+import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -7,7 +8,12 @@ import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadast
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
+<<<<<<< HEAD
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
+=======
+import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
+import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
+>>>>>>> a717605f457f405e1435a166ef77fe76ff9c8946
 
 const appRoutes: Routes = [
   {
@@ -40,9 +46,21 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'nova-change',
+    component: NovaChangeComponent
+  },
+  {
     path: 'esforco-projeto',
     component: EsforcoProjetoComponent
-  }
+  },
+  {
+    path: 'esqueci-senha',
+    component: EsqueceuSenhaComponent
+  },
+  {
+    path: 'primeiro-acesso',
+    component: PrimeiroAcessoComponent
+  },
 ];
 
 @NgModule({
