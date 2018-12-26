@@ -1,10 +1,9 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
-
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {background-color: #9AAE04}
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {background-color: rgba(154,174,4, .6)}
 
 /*!
- parte personalizada
+ parte personalizad
  */
  .everis{background-color:#9AAE04;color: #ffffff;}
  .btn-everis-sem.-sombra{background-color:#9AAE04;color: #ffffff;}
@@ -23,6 +22,7 @@ hr{background-color:rgb(112,115,114);border: 1px solid #eee; width: 100%;}
 .everis-roxo{background-color: rgb(100,50,105)}
 .everis-azul{background-color: rgb(103,133,193) }
 .links:hover,.links:focus{color: #d9d9d9;text-decoration: none; }
+.form-control:focus { border-color: rgba(204, 204, 204, 0.8); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(112,115,114, 0.6);cd  outline: 0 none;}
 
 /*!
  parte padrão
