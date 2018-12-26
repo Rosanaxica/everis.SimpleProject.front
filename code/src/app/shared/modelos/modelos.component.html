@@ -3,476 +3,518 @@
   A ESTRUTURA DA GRID DEVE SER FEITO DE ACORDO COM O CONTEXTO
 -->
 
+<nav class="navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">
+    <img src="../../../assets/logo_32.png" width="30" height="30" class="d-inline-block align-top" alt="" class="mr-2">
+     Modelo de Elementos HTML
+  </a>
+</nav>
 <div class="container-fluid">
-
-  <p class="titulos">ELEMENTO: Logo</p>
-
-  <div class="row mb-5">
-    <div class="col">
-      <!--logo tamanho original-->
-      <img src="../../../assets/logo.png" alt="Simple Process">
-      <!--logo tamanho original-->
-    </div>
-  </div>
-  <div class="row mb-5">
-    <div class="col">
-      <!--logo 90px-->
-      <img src="../../../assets/logo_90.png" alt="Simple Process">
-      <!--logo-->
-    </div>
-  </div>
-  <div class="row mb-5">
-    <div class="col">
-      <!--logo 32px-->
-      <img src="../../../assets/logo_32.png" alt="Simple Process">
-      <!--logo-->
-    </div>
-  </div>
-  
-  <p class="titulos">ELEMENTOS: Título</p>
-  
-  <!--titulo-->
   <div class="row">
-    <div class="col">
-      <h1 class="titulo"> Título de Páginas</h1>
-    </div> 
-    <hr class="mt-0" />
-  </div>
-  <!--.titulo-->
-  
-  <p class="titulos">ELEMENTO: Título com botões</p>
-  
-  <!--titulo com botões-->
-  <div class="row align-items-center">
+    
       <div class="col">
-        <h1 class="titulo mb-0">Título com botões</h1>
-      </div> 
-      <nav class="col d-flex justify-content-end">
-        <button type="button" class="btn everis mr-2">Salvar</button>
-        <button type="button" class="btn cancelar">Cancelar</button>
-      </nav> 
-      <hr class="mt-2" />
-  </div>
-  <!--.titulo com botões-->
-  
-  <p class="titulos">ELEMENTO: Título com pesquisa e botões</p>
-  
-  <!--titulo com pesquisa e botões-->
-  <div class="row align-items-center">
-      <div class="col-3">
-          <h1 class="titulo mb-0">Título com pesquisa e botões</h1>
-      </div> 
-      <div class="input-group col">
-        <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
-        <div class="input-group-append">
-          <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
-        </div>
-      </div>
-      <nav class="col-3 d-flex justify-content-end">
-        <button type="button" class="btn everis mr-2">Salvar</button>
-        <button type="button" class="btn cancelar">Cancelar</button>
-      </nav> 
-      <hr class="mt-2" />
-  </div>
-  <!--.titulo com pesquisa e botões-->
-  
-  <p class="titulos">ELEMENTO: Input</p>
-  
-  <div class="row">
-    <div class="col">
-  
-      <p>Status: habilitado</p>
-  
-      <!--input-->
-      <div class="form-group">
-        <label for="label">Input</label>
-        <input type="text" class="form-control" id="input1" placeholder="text">
-      </div>
-      <!--.input-->
-  
-      <p class="mt-5">Status: desabilitado</p>
-  
-      <!--input desabilitado-->
-      <div class="form-group">
-        <label for="label">Input desabilitado</label>
-        <input type="text" class="form-control" id="input2" placeholder="text" disabled>
-      </div>
-      <!--.input desabilitado-->
-    
-    </div>
-  </div>
-  
-  <p class="titulos">ELEMENTO: Textarea</p>
-  
-  <div class="row">
-    <div class="col">
-  
-      <p>Status: habilitado</p>
-  
-      <!--Textarea-->
-      <div class="form-group">
-        <label for="label">Textarea</label>
-        <textarea name="text" id="text" cols="30" rows="10" class="form-control"></textarea>
-      </div>
-      <!--.Textarea-->
-  
-      <p class="mt-5">Status: desabilitado</p>
-  
-      <!--Textarea desabilitado-->
-      <div class="form-group">
-        <label for="label">Textarea desabilitado</label>
-        <textarea name="text" id="text" cols="30" rows="10" class="form-control" disabled></textarea>
-      </div>
-      <!--.Textarea desabilitado-->
-    
-    </div>
-  </div>
-  
-  
-  <p class="titulos">ELEMENTO: Combo</p>
-  
-  <div class="row">
-    <div class="col">
-  
-      <p>Status: habilitado</p>
-  
-      <!--combo-->
-      <div class="form-group">
-        <label for="label">Combo</label>
-        <select id="select1" class="custom-select">
-          <option selected>Open this select menu</option>
-          <option value="1">One</option>
-          <option value="2">Two</option>
-          <option value="3">Three</option>
-        </select>
-      </div>
-      <!--.combo-->
-  
-      <p class="mt-5">Status: desabilitado</p>
-  
-      <!--combo desabilitado-->
-      <div class="form-group">
-          <label for="label">Combo</label>
-          <select id="select2" class="custom-select" disabled>
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-          </select>
-        </div>
-        <!--.combo desabilitado-->
-    
-    </div>
-  </div>
-  
-  <p class="titulos">ELEMENTO: Checkbox</p>
-  
-  <div class="row">
-    <div class="col">
-  
-      <p>Direção: vertical</p>
-  
-      <!--checkbox vertical-->
-      <div class="custom-control custom-checkbox">
-        <input id="meucheckbox1" name="meucheckbox" type="checkbox" class="custom-control-input">
-        <label class="custom-control-label" for="meucheckbox1">Meu checkbox 1</label>
-      </div>
-      <div class="custom-control custom-checkbox">
-        <input id="meucheckbox2" name="meucheckbox" type="checkbox" class="custom-control-input">
-        <label class="custom-control-label" for="meucheckbox2">Meu checkbox 2</label>
-      </div>
-      <!--.checkbox vertical-->  
-  
-      <p class="mt-5">Direção: horizontal</p>
-  
-      <!--checkbox horizontal-->
-      <div class="custom-control custom-checkbox custom-control-inline">
-        <input id="meucheckbox3" name="meucheckbox" type="checkbox" class="custom-control-input">
-        <label class="custom-control-label" for="meucheckbox3">Meu checkbox 3</label>
-      </div>
-      <div class="custom-control custom-checkbox custom-control-inline">
-        <input id="meucheckbox4" name="meucheckbox" type="checkbox" class="custom-control-input">
-        <label class="custom-control-label" for="meucheckbox4">Meu checkbox 4</label>
-      </div>
-      <!--.checkbox horizontal--> 
-    
-    </div>
-  </div>
-  
-  <p class="titulos">ELEMENTO: Radio</p>
-  
-  <div class="row">
-    <div class="col">
-  
-      <p>Direção: vertical</p>
-  
-      <!--radio vertical-->
-      <div class="custom-control custom-radio">
-        <input id="meuradio1" name="meuradio" type="radio" class="custom-control-input">
-        <label class="custom-control-label" for="meuradio1">Meu radiobutton 1</label>
-      </div>
-      <div class="custom-control custom-radio">
-        <input id="meuradio2" name="meuradio" type="radio" class="custom-control-input">
-        <label class="custom-control-label" for="meuradio2">Meu radiobutton 2</label>
-      </div>
-      <!--.radio vertical-->  
-  
-      <p class="mt-5">Direção: horizontal</p>
-  
-      <!--radio vertical-->
-      <div class="custom-control custom-radio custom-control-inline">
-        <input id="meuradio3" name="meuradio" type="radio" class="custom-control-input">
-        <label class="custom-control-label" for="meuradio3">Meu radiobutton 3</label>
-      </div>
-      <div class="custom-control custom-radio custom-control-inline">
-        <input id="meuradio4" name="meuradio" type="radio" class="custom-control-input">
-        <label class="custom-control-label" for="meuradio4">Meu radiobutton 4</label>
-      </div>
-      <!--.radio vertical--> 
-  
-    </div>
-  </div>
-  
-  <p class="titulos">ELEMENTO: Tabs</p>
-  
-  <div class="row">
-    <div class="col">
-  
-      <!--tabs-->
-      <ul class="nav nav-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Dados Principais</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Atribuição da Equipe</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Inclusão de Anexos</a>
-        </li>
-      </ul>
-      <div class="row">
-        <div class="col mr-3 ml-3 mt-5 mb-5">
-            Conteúdo por aqui
-        </div>
-      </div>
-      <!--.tabs-->
-  
-    </div>
-  </div>
-  
-  <p class="titulos">ELEMENTO: Badge</p>
-  
-  <div class="row mb-5">
-    <div class="col">
-  
-      <!--badge-->
-      <span class="badge execucao p-1">Em execução</span>
-      <span class="badge everis p-1">Concluído</span>
-      <span class="badge badge-danger p-1">Cancelado</span>
-      <span class="badge badge-light p-1">Congelado</span>
-      <span class="badge everis-laranja text-white p-1">Pendente</span>
-      <span class="badge everis-azul text-white p-1">Controle de Qualidade</span>
-      <!--.badge-->
-  
-    </div>
-  </div>
-  
-  <p class="titulos">ELEMENTO: Data e Hora</p>
-  
-  <div class="row mb-5">
-  
-      <!--data e Hora-->
-      <div class="form-group col-2">
-        <label for="data">Data</label>
-        <input type="text" class="form-control" id="data" bsDatepicker>
-      </div>
-      <div class="form-group col-1">
-        <label for="hora">Hora</label>
-        <input type="time" class="form-control" id="hora">
-      </div>
-      <!--.data e Hora-->
-  
-  </div>
-  <p class="titulos">ELEMENTO:Data</p>
-  
-  <div class="row mb-5">
-    <div class="col-2">
-  
-      <!--data-->
-      <div class="form-group">
-        <label for="data">Data</label>
-        <input type="text" class="form-control" id="data" bsDatepicker>
-      </div>
-      <!--.data-->
-  
-    </div>
-  </div>
-  
-  <p class="titulos">ELEMENTO: Card Pessoa</p>
-  
-  <div class="row mb-5">
-    <div class="col-md-3">
-  
-      <!--Card pessoa-->
-      <div class="card card-colaborador border-everis">
-          <div class="row">
-            <div class="card-body">
-              <div class="col-md-12 m-0 p-0">
-                <div class="col-md-12 text-right">
-                  <span class="badge everis text-right">Disponível</span>
-                </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <img class="card-img-top" src="../assets/u87.png" alt="Card image cap">
-                  </div>
-                  <div class="col-md-8 m-0 p-0">
-                    Ricardo Yamamura
-                    <small>Desenvolvedor</small>
-                  </div>
-                </div>
-                <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
-              </div>
-            </div>
-          </div>  
-        </div>
-      <!--.Card pessoa-->
-  
-    </div>
-  </div>
-  <p class="titulos">ELEMENTO: Modal</p>
-  
-  <div class="row mb-5">
-    <div class="col">
-  
-      <!--.modal-->
-      <button class="btn everis mr-2" data-toggle="modal" data-target="#logoutModal">Abrir modal</button>
 
-      <!-- Logout Modal-->
-      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Título da modal</h5>
-              <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
-                <span aria-hidden="true">×</span>
-              </button>
-            </div>
-            <div class="modal-body">Clique em "Sair"abaixo se deseja encerrar a sessão atual.</div>
-            <div class="modal-footer">
-              <button class="btn cancelar" type="button" data-dismiss="modal">Cancel</button>
-              <a class="btn everis" href="login.html">Sair</a>
+          <p class="titulos" id="link-logo">Logo</p>
+          <p>Logo do projeto com opções de 3 tamanhos diferentes.</p>
+
+          <p class="mb-5">Exemplo:</p>
+
+          <div class="row mb-5">
+            <div class="col">
+              <!--logo tamanho original-->
+              <img src="../../../assets/logo.png" alt="Simple Process">
+              <!--logo tamanho original-->
             </div>
           </div>
-        </div>
+
+          <div class="row mb-5">
+            <div class="col">
+              <!--logo 90px-->
+              <img src="../../../assets/logo_90.png" alt="Simple Process">
+              <!--logo-->
+            </div>
+          </div>
+          <div class="row mb-5">
+            <div class="col">
+              <!--logo 32px-->
+              <img src="../../../assets/logo_32.png" alt="Simple Process">
+              <!--logo-->
+            </div>
+          </div>
+          
+          <p class="titulos">Título</p>
+          <p>Títulos das páginas com opção: título sozinho, título com botões e título com botões e campo de busca.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <!--titulo-->
+          <div class="row">
+            <div class="col">
+              <h1 class="titulo"> Título de Páginas</h1>
+            </div> 
+            <hr class="mt-0" />
+          </div>
+          <!--.titulo-->
+          
+          <!--titulo com botões-->
+          <div class="row align-items-center">
+              <div class="col">
+                <h1 class="titulo mb-0">Título com botões</h1>
+              </div> 
+              <nav class="col d-flex justify-content-end">
+                <button type="button" class="btn everis mr-2">Salvar</button>
+                <button type="button" class="btn cancelar">Cancelar</button>
+              </nav> 
+              <hr class="mt-2" />
+          </div>
+          <!--.titulo com botões-->
+          
+          <!--titulo com pesquisa e botões-->
+          <div class="row align-items-center">
+              <div class="col-3">
+                  <h1 class="titulo mb-0">Título com pesquisa e botões</h1>
+              </div> 
+              <div class="input-group col">
+                <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+                </div>
+              </div>
+              <nav class="col-3 d-flex justify-content-end">
+                <button type="button" class="btn everis mr-2">Salvar</button>
+                <button type="button" class="btn cancelar">Cancelar</button>
+              </nav> 
+              <hr class="mt-2" />
+          </div>
+          <!--.titulo com pesquisa e botões-->
+          
+          <p class="titulos">Input</p>
+          <p>Input nas opções habilitado e desabilitado.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row">
+            <div class="col">
+
+              <!--input-->
+              <div class="form-group">
+                <label for="label">Input</label>
+                <input type="text" class="form-control" id="input1" placeholder="text">
+              </div>
+              <!--.input-->
+          
+              <!--input desabilitado-->
+              <div class="form-group">
+                <label for="label">Input</label>
+                <input type="text" class="form-control" id="input2" placeholder="text" disabled>
+              </div>
+              <!--.input desabilitado-->
+            
+            </div>
+          </div>
+          
+          <p class="titulos">Textarea</p>
+          <p>Textarea nas opções habilitado e desabilitado.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row">
+            <div class="col">
+          
+              <!--Textarea-->
+              <div class="form-group">
+                <label for="label">Textarea</label>
+                <textarea name="text" id="text" cols="30" rows="10" class="form-control"></textarea>
+              </div>
+              <!--.Textarea-->  
+          
+              <!--Textarea desabilitado-->
+              <div class="form-group">
+                <label for="label">Textarea</label>
+                <textarea name="text" id="text" cols="30" rows="10" class="form-control" disabled></textarea>
+              </div>
+              <!--.Textarea desabilitado-->
+            
+            </div>
+          </div>
+          
+          
+          <p class="titulos">Combo</p>
+          <p>Combo nas opções habilitado e desabilitado.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row">
+            <div class="col">
+          
+              <!--combo-->
+              <div class="form-group">
+                <label for="label">Combo</label>
+                <select id="select1" class="custom-select">
+                  <option selected>Open this select menu</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </select>
+              </div>
+              <!--.combo-->
+          
+              <!--combo desabilitado-->
+              <div class="form-group">
+                  <label for="label">Combo</label>
+                  <select id="select2" class="custom-select" disabled>
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+                <!--.combo desabilitado-->
+            
+            </div>
+          </div>
+          
+          <p class="titulos">Checkbox</p>
+          <p>Checkbox nas opções habilitado / desabilitado e horizontal / vertical.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row">
+            <div class="col">
+          
+              <p>Direção: vertical</p>
+          
+              <!--checkbox vertical-->
+              <div class="custom-control custom-checkbox">
+                <input id="meucheckbox1" name="meucheckbox" type="checkbox" class="custom-control-input">
+                <label class="custom-control-label" for="meucheckbox1">Meu checkbox 1</label>
+              </div>
+              <div class="custom-control custom-checkbox">
+                <input id="meucheckbox2" name="meucheckbox" type="checkbox" class="custom-control-input" disabled>
+                <label class="custom-control-label" for="meucheckbox2">Meu checkbox 2</label>
+              </div>
+              <!--.checkbox vertical-->  
+          
+              <p class="mt-5">Direção: horizontal</p>
+          
+              <!--checkbox horizontal-->
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input id="meucheckbox3" name="meucheckbox" type="checkbox" class="custom-control-input">
+                <label class="custom-control-label" for="meucheckbox3">Meu checkbox 3</label>
+              </div>
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input id="meucheckbox4" name="meucheckbox" type="checkbox" class="custom-control-input" disabled>
+                <label class="custom-control-label" for="meucheckbox4">Meu checkbox 4</label>
+              </div>
+              <!--.checkbox horizontal--> 
+            
+            </div>
+          </div>
+          
+          <p class="titulos">RadioButton</p>
+          <p>RadioButton nas opções habilitado / desabilitado e horizontal / vertical.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row">
+            <div class="col">
+          
+              <p>Direção: vertical</p>
+          
+              <!--radio vertical-->
+              <div class="custom-control custom-radio">
+                <input id="meuradio1" name="meuradio" type="radio" class="custom-control-input">
+                <label class="custom-control-label" for="meuradio1">Meu radiobutton 1</label>
+              </div>
+              <div class="custom-control custom-radio">
+                <input id="meuradio2" name="meuradio" type="radio" class="custom-control-input" disabled>
+                <label class="custom-control-label" for="meuradio2">Meu radiobutton 2</label>
+              </div>
+              <!--.radio vertical-->  
+          
+              <p class="mt-5">Direção: horizontal</p>
+          
+              <!--radio vertical-->
+              <div class="custom-control custom-radio custom-control-inline">
+                <input id="meuradio3" name="meuradio" type="radio" class="custom-control-input">
+                <label class="custom-control-label" for="meuradio3">Meu radiobutton 3</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input id="meuradio4" name="meuradio" type="radio" class="custom-control-input" disabled>
+                <label class="custom-control-label" for="meuradio4">Meu radiobutton 4</label>
+              </div>
+              <!--.radio vertical--> 
+          
+            </div>
+          </div>
+          
+          <p class="titulos">Tabs</p>
+          <p>Tabs para organização de conteúdo em contexto.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row">
+            <div class="col">
+          
+              <!--tabs-->
+              <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Dados Principais</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Atribuição da Equipe</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">Inclusão de Anexos</a>
+                </li>
+              </ul>
+              <div class="row">
+                <div class="col mr-3 ml-3 mt-5 mb-5">
+                    Conteúdo por aqui
+                </div>
+              </div>
+              <!--.tabs-->
+          
+            </div>
+          </div>
+          
+          <p class="titulos">Badge</p>
+          <p>Badge utilizado para indicar status de processos ou notificadores.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row mb-5">
+            <div class="col">
+          
+              <!--badge-->
+              <span class="badge execucao p-1">Em execução</span>
+              <span class="badge everis p-1">Concluído</span>
+              <span class="badge badge-danger p-1">Cancelado</span>
+              <span class="badge badge-light p-1">Congelado</span>
+              <span class="badge everis-laranja text-white p-1">Pendente</span>
+              <span class="badge everis-azul text-white p-1">Controle de Qualidade</span>
+              <!--.badge-->
+          
+            </div>
+          </div>
+          
+          <p class="titulos">Data e Hora</p>
+          <p>Datapicker e input de hora</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row">
+          
+              <!--data e Hora-->
+              <div class="form-group col-3">
+                <label for="data">Data</label>
+                <input type="text" class="form-control" id="data" bsDatepicker>
+              </div>
+              <div class="form-group col-2">
+                <label for="hora">Hora</label>
+                <input type="time" class="form-control" id="hora">
+              </div>
+              <!--.data e Hora-->
+          
+          </div>
+
+          <div class="row">
+            <div class="col-3">
+          
+              <!--data-->
+              <div class="form-group">
+                <label for="data">Data</label>
+                <input type="text" class="form-control" id="data" bsDatepicker>
+              </div>
+              <!--.data-->
+          
+            </div>
+          </div>
+          
+          <p class="titulos">Card Pessoa</p>
+          <p>CardPessoa que será utilizado em listagem de pessoas.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row">
+            <div class="col-5">
+          
+              <!--Card pessoa-->
+              <div class="card card-colaborador border-everis">
+                  <div class="row">
+                    <div class="card-body">
+                      <div class="col-md-12 m-0 p-0">
+                        <div class="col-md-12 text-right">
+                          <span class="badge everis text-right">Disponível</span>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3">
+                            <img class="card-img-top" src="../assets/u87.png" alt="Card image cap">
+                          </div>
+                          <div class="col-md-8 m-0 p-0">
+                            Ricardo Yamamura
+                            <small>Desenvolvedor</small>
+                          </div>
+                        </div>
+                        <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
+                      </div>
+                    </div>
+                  </div>  
+                </div>
+              <!--.Card pessoa-->
+          
+            </div>
+          </div>
+          <p class="titulos">Dialog</p>
+          <p>Dialog para utilização em confirmações e pequenas apresentações de dados / cadastros.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row mb-5">
+            <div class="col">
+          
+              <!--.modal-->
+              <button class="btn everis mr-2" data-toggle="modal" data-target="#logoutModal">Abrir modal</button>
+        
+              <!-- Logout Modal-->
+              <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Título da modal</h5>
+                      <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">Clique em "Sair"abaixo se deseja encerrar a sessão atual.</div>
+                    <div class="modal-footer">
+                      <button class="btn cancelar" type="button" data-dismiss="modal">Cancel</button>
+                      <a class="btn everis" href="login.html">Sair</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--.modal-->
+          
+            </div>
+          </div>
+          <p class="titulos">Slide Toggle</p>
+          <p>Slide Toggle para utilização em estados ativo e inativo.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row mb-5">
+            <div class="col">
+          
+              <!--.toggle-->
+              <mat-slide-toggle></mat-slide-toggle>
+              <!--.toggle-->
+          
+            </div>
+          </div>
+        
+          <p class="titulos">Barra de Progresso (Processo)</p>
+          <p>Barra de progresso para definição de porcentagem dos processos.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row mb-5">
+            <div class="col">
+          
+              <!--.Barra de progresso-->
+              <div class="progress mb-2">
+                <div class="progress-bar w-75 everis" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress mb-2">
+                <div class="progress-bar w-75 everis-azul" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="progress">
+                <div class="progress-bar w-75 everis-laranja" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+
+              <!--.barra de progresso-->
+          
+            </div>
+          </div>
+          <p class="titulos">Alertas</p>
+          <p>Alertas para mensagem de retorno ao usuário.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row mb-5">
+            <div class="col">
+          
+              <!--.Alertas-->
+                <div class="alert alert-primary" role="alert">
+                  <i class="fa fa-info-circle mr-1"></i> Esta é minha mensagem informativa primária de retorno ao usuário com um <a href="#" class="alert-link">link</a>.
+                </div>
+                <div class="alert alert-secondary" role="alert">
+                  <i class="fa fa-info mr-2"></i>Esta é minha mensagem informativa secundária de retorno ao usuário com um <a href="#" class="alert-link">link</a>.
+                </div>
+                <div class="alert alert-success" role="alert">
+                  <i class="fa fa-check mr-1"></i> Esta é minha mensagem de sucesso ao usuário com um <a href="#" class="alert-link">link</a>.
+                </div>
+                <div class="alert alert-danger" role="alert">
+                  <i class="fa fa-times mr-2"></i>Esta é minha mensagem de erro impeditivo com um <a href="#" class="alert-link">link</a>.
+                </div>
+                <div class="alert alert-warning" role="alert">
+                  <i class="fa fa-exclamation-triangle mr-1"></i> Esta é minha mensagem de alerta ao usuário com um <a href="#" class="alert-link">link</a>.
+                </div>
+              <!--.Alertas-->
+          
+            </div>
+          </div>
+        
+          <p class="titulos">Foto</p>
+          <p>Foto de pessoa, deve ser utilizada com o tamanho fixo de 64x64.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row mb-5">
+            <div class="col">
+          
+              <!--.Foto-->
+              <img src="../../../assets/exemplo-foto.jpg" class="rounded-circle"  title="" alt="" width="64" height="64" />
+              <!--.Foto-->
+          
+            </div>
+          </div>
+        
+          <p class="titulos">Accordion</p>
+          <p>Collapse painel para conteúdos extensos.</p>
+
+          <p class="mb-5">Exemplo:</p>
+          
+          <div class="row mb-5">
+            <div class="col">
+          
+              <!--.Accordion-->
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Collapse 1
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <p>Conteúdo 1</p>
+                </mat-expansion-panel>
+                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      Collapse 2
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <p>Conteúdo 2</p>
+                </mat-expansion-panel>
+              </mat-accordion>
+              <!--.Accordion-->
+          
+            </div>
+          </div>
+          
       </div>
-      <!--.modal-->
-  
-    </div>
-  </div>
-  <p class="titulos">ELEMENTO: Toggle</p>
-  
-  <div class="row mb-5">
-    <div class="col">
-  
-      <!--.toggle-->
-      <mat-slide-toggle></mat-slide-toggle>
-      <!--.toggle-->
-  
-    </div>
-  </div>
-  <p class="titulos">ELEMENTO: Upload de Arquivo</p>
-  
-  <div class="row mb-5">
-    <div class="col">
-  
-      <!--.upload de arquivo-->
-      <div class="form-group">
-        <label for="exampleFormControlFile1">Escolha o arquivo</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-      </div>
-      <!--.uploado de arquivo-->
-  
-    </div>
-  </div>
-  <p class="titulos">ELEMENTO: Barra de Progresso (Processo)</p>
-  
-  <div class="row mb-5">
-    <div class="col">
-  
-      <!--.Barra de progresso-->
-      <div class="progress">
-        <div class="progress-bar w-75" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-      </div>
-      <!--.barra de progresso-->
-  
-    </div>
-  </div>
-  <p class="titulos">ELEMENTO: Alertas</p>
-  
-  <div class="row mb-5">
-    <div class="col">
-  
-      <!--.Alertas-->
-        <div class="alert alert-primary" role="alert">
-          <i class="fa fa-info-circle mr-1"></i> Esta é minha mensagem informativa primária de retorno ao usuário com um <a href="#" class="alert-link">link</a>.
-        </div>
-        <div class="alert alert-secondary" role="alert">
-          <i class="fa fa-info mr-2"></i>Esta é minha mensagem informativa secundária de retorno ao usuário com um <a href="#" class="alert-link">link</a>.
-        </div>
-        <div class="alert alert-success" role="alert">
-          <i class="fa fa-check mr-1"></i> Esta é minha mensagem de sucesso ao usuário com um <a href="#" class="alert-link">link</a>.
-        </div>
-        <div class="alert alert-danger" role="alert">
-          <i class="fa fa-times mr-2"></i>Esta é minha mensagem de erro impeditivo com um <a href="#" class="alert-link">link</a>.
-        </div>
-        <div class="alert alert-warning" role="alert">
-          <i class="fa fa-exclamation-triangle mr-1"></i> Esta é minha mensagem de alerta ao usuário com um <a href="#" class="alert-link">link</a>.
-        </div>
-      <!--.Alertas-->
-  
-    </div>
   </div>
 
-  <p class="titulos">ELEMENTO: Foto listagem</p>
-  
-  <div class="row mb-5">
-    <div class="col">
-  
-      <!--.Foto-->
-      <img src="../../../assets/exemplo-foto.jpg" class="rounded-circle"  title="" alt="" width="64" height="64" />
-      <!--.Foto-->
-  
-    </div>
-  </div>
-
-  <p class="titulos">ELEMENTO: Accordion</p>
-  
-  <div class="row mb-5">
-    <div class="col">
-  
-      <!--.Accordion-->
-      <mat-accordion>
-        <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Collapse 1
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>Conteúdo 1</p>
-        </mat-expansion-panel>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              Collapse 2
-            </mat-panel-title>
-          </mat-expansion-panel-header>
-          <p>Conteúdo 2</p>
-        </mat-expansion-panel>
-      </mat-accordion>
-      <!--.Accordion-->
-  
-    </div>
-  </div>
   
 
 </div>
