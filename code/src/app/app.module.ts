@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { LoginComponent } from './Home/Login/login/login.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
@@ -26,6 +27,7 @@ import { ModelosComponent } from './shared/modelos/modelos.component';
 import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-colaborador.component';
 import { TemplateComponent } from './template/template.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { ModalComponent } from './shared/modal/modal.component';
 
 
 @NgModule({
@@ -51,15 +53,18 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
     AddTelephoneComponent,
     ModelosComponent,
     CadastroColaboradorComponent,
-    TemplateComponent
+    TemplateComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    MatDialogModule,
     BsDatepickerModule.forRoot()
   ],
+  entryComponents: [ModalComponent],
   providers: [],
   bootstrap: [AppComponent]
  })
