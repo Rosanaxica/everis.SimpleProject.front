@@ -20,8 +20,6 @@ import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
-import { SearchComponent } from './shared/search/search.component';
-import { CardPeopleComponent } from './shared/card-people/card-people.component';
 import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
@@ -52,8 +50,6 @@ import { ProjetoService } from './services/projeto.service';
     CadastroPessoasComponent,
     ProjetosComponent,
     DadosPrincipaisComponent,
-    SearchComponent,
-    CardPeopleComponent,
     AddTelephoneComponent,
     ModelosComponent,
     CadastroColaboradorComponent,

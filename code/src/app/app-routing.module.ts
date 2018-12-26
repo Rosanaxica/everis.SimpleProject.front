@@ -8,6 +8,7 @@ import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadast
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
+import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
@@ -28,6 +29,10 @@ const appRoutes: Routes = [
   {
     path: 'pessoas',
     component: PessoasComponent
+  },
+  {
+    path: 'projetos',
+    component: ProjetosComponent
   },
   {
     path: 'template',
