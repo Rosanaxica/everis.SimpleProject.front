@@ -8,12 +8,9 @@ import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadast
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
-<<<<<<< HEAD
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
-=======
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
->>>>>>> a717605f457f405e1435a166ef77fe76ff9c8946
 
 const appRoutes: Routes = [
   {
