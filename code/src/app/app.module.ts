@@ -24,10 +24,13 @@ import { CardPeopleComponent } from './shared/card-people/card-people.component'
 import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
-import { CadastroColaboradorComponent } from './cadastro-colaborador/cadastro-colaborador.component';
+import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadastro-colaborador.component';
 import { TemplateComponent } from './template/template.component';
+import { EmpresaComponent } from './Home/Empresa/empresa.component';
+
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { ModalComponent } from './shared/modal/modal.component';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 
 @NgModule({
@@ -54,7 +57,8 @@ import { ModalComponent } from './shared/modal/modal.component';
     ModelosComponent,
     CadastroColaboradorComponent,
     TemplateComponent,
-    ModalComponent
+    ModalComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +66,9 @@ import { ModalComponent } from './shared/modal/modal.component';
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatDialogModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatCheckboxModule,
     BsDatepickerModule.forRoot()
   ],
   entryComponents: [ModalComponent],
