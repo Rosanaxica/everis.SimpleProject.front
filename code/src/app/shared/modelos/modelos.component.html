@@ -341,7 +341,26 @@
     <div class="col">
   
       <!--.modal-->
-      <button class="btn everis mr-2" (click)="openDialog()">Abrir modal</button>
+      <button class="btn everis mr-2" data-toggle="modal" data-target="#logoutModal">Abrir modal</button>
+
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Título da modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Clique em "Sair"abaixo se deseja encerrar a sessão atual.</div>
+            <div class="modal-footer">
+              <button class="btn cancelar" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn everis" href="login.html">Sair</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <!--.modal-->
   
     </div>

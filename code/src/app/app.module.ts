@@ -29,7 +29,6 @@ import { TemplateComponent } from './template/template.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap';
-import { ModalComponent } from './shared/modal/modal.component';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 
@@ -57,7 +56,6 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
     ModelosComponent,
     CadastroColaboradorComponent,
     TemplateComponent,
-    ModalComponent,
     EmpresaComponent
   ],
   imports: [
@@ -71,7 +69,6 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
     MatCheckboxModule,
     BsDatepickerModule.forRoot()
   ],
-  entryComponents: [ModalComponent],
   providers: [],
   bootstrap: [AppComponent]
  })
