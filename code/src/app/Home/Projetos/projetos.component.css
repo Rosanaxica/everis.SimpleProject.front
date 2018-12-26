@@ -1,0 +1,68 @@
+.table {
+    text-align: center;   
+ }
+ table thead tr th {
+    font-size: 18px;
+    border-top: 0;
+ }
+
+.barraProgresso {
+    background-color: #9AAE04 !important;
+    height: 10px;
+}
+.progress {
+    height: 10px;
+    border-radius: 0;
+}
+
+.caption {
+    font-size: 14px;
+    padding-top: 5px;
+}
+
+.chip {
+    display: inline;
+}
+.chip img {
+    float: left;
+    margin: 0 5px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    position: relative;
+}
+.chip:hover > .nomePessoa {
+    visibility: visible;
+    z-index: 10;
+}
+.nomePessoa {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #333;
+    font-weight: bold;
+    float: right;
+    font-size: 12px;
+    cursor: pointer;
+    visibility: hidden;
+    position: absolute; 
+}
+.nomePessoa:hover {
+    color: #000;
+}
+
+.bagde {
+    margin: 5px;
+}
+.badge-light {
+    background: #f0f0d6;
+}
+.badge-notificacao {
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    background-color: purple;
+    width: 25px;
+    height: 25px;
+    border: 1px solid darkslategrey;
+    border-radius: 0;
+}

@@ -7,6 +7,7 @@ import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadast
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
+import { ProjetosComponent } from './Home/Projetos/projetos.component';
 
 const appRoutes: Routes = [
   {
@@ -24,6 +25,10 @@ const appRoutes: Routes = [
   {
     path: 'pessoas',
     component: PessoasComponent
+  },
+  {
+    path: 'projetos',
+    component: ProjetosComponent
   },
   {
     path: 'template',
