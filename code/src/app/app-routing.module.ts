@@ -10,6 +10,7 @@ import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto
 import { LoginComponent } from './Home/Login/login/login.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
+import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 
 const appRoutes: Routes = [
   {
@@ -52,6 +53,10 @@ const appRoutes: Routes = [
   {
     path: 'primeiro-acesso',
     component: PrimeiroAcessoComponent
+  },
+  {
+    path: 'cadastro-pessoa',
+    component: CadastroPessoasComponent
   },
 ];
 
