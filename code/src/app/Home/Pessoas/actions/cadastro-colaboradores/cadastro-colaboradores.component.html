@@ -1,4 +1,4 @@
-<div class="row align-items-center">
+<!-- <div class="row align-items-center">
   <div class="col">
     <h1 class="titulo mb-0">Novo Colaborador</h1>
   </div>
@@ -9,19 +9,20 @@
   <hr class="mt-2" />
 </div>
 
-<hr class="mt-2" />
+<hr class="mt-2" /> -->
 
+<p>{{ recebePessoa | json }}</p>
 <p>{{colaborador | json}}</p>
 
-<div class="container-fluid card">
+<!-- <div class="container-fluid card">
   <div class="card-body">
 
     <div class="row mb-2">
       <div class="col-md-12">
 
         <div class="custom-control custom-radio custom-control-inline">
-          <input id="radCliente" value="2" name="meuradio" [(ngModel)]="colaborador.Tipo" type="radio" class="custom-control-input">
-          <label class="custom-control-label" for="radCliente">Cliente</label>
+          <input id="radColaborador" value="1" name="meuradio" [(ngModel)]="colaborador.Tipo" type="radio" class="custom-control-input">
+          <label class="custom-control-label" for="radColaborador">Colaborador</label>
         </div>
         <div class="custom-control custom-radio custom-control-inline">
           <input id="radTerceiro" value="3" name="meuradio" [(ngModel)]="colaborador.Tipo" type="radio" class="custom-control-input">
@@ -78,7 +79,7 @@
       <div class="col-md-12">
         <input type="text" class="form-control" [(ngModel)]="colaborador.Email" name="email" placeholder="E-mail">
       </div>
-    </div>
+    </div> -->
 
     <div class="row mb-2">
       <div class="col-md-12">
@@ -139,7 +140,7 @@
         </div>
 
       </div>
-    </div>
+    <!-- </div>
 
     <div class="row mb-2">
       <div class="col-md-7">
@@ -159,4 +160,4 @@
     </div>
 
   </div>
-</div>
+</div> -->

@@ -9,7 +9,6 @@ export class Colaborador extends Pessoa {
     Funcao: FuncaoColaborador;
     Perfil: PerfilColaborador;
     Disponivel: boolean;
-    Ativo: boolean;
 }
 
 export enum FuncaoColaborador {

@@ -1,82 +1,171 @@
-
 <div class="row align-items-center">
-    <div class="col">
-      <h1 class="titulo mb-0">Nova Pessoa</h1>
-    </div> 
-    <nav class="col d-flex justify-content-end">
-      <button type="button" class="btn everis mr-2">Salvar</button>
-      <button type="button" class="btn cancelar">Cancelar</button>
-    </nav> 
-    <hr class="mt-2" />
+  <div class="col">
+    <h1 class="titulo mb-0">Nova Pessoa</h1>
   </div>
-  
-      <div class="row ">
-        <p><input type="radio" id="tipoPessoa" name="tipoPessoa" value="Terceiros" >Terceiros
-           <input type="radio" id="tipoPessoa" name="tipoPessoa" value="Colaborador">Colaborador</p>
-      </div>
-  
-      <div class="card">
-        <div class="card-body">
-  
-          <div class="row mb-2">
-              <div class="col-md-12">
-                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
-              </div>
-          </div>
-          <div class="row mb-2">
-              <div class="col-md-2">
-                  <select class="form-control" id="tipoDocumento" name="tipoDocumento">
-                      <option value="residencial">0</option>
-                      <option value="particular">1</option>
-                      <option value="empresarial">2</option>
-                  </select>
-                </div>
-            <div class="col-m">
-              <input type="text" class="form-control" id="nome" name="nome" placeholder="Documento">
-            </div>
-        </div>
-  
-          <div class="row mb-2">
-            <div class="col-md-2">
-              <select class="form-control" id="tipoTelefone" name="tipoTelefone">
-                  <option value="residencial">Residencial</option>
-                  <option value="particular">Particular</option>
-                  <option value="empresarial">Empresarial</option>
-              </select>
-            </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
-              </div>
-          </div>
-  
-          <div class="row mb-2">
-            <div class="col-md-12">
-                <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
-            </div>
-          </div>
-  
-          <div class="row mb-2">
-              <div class="col-md-2">
-                <select class="form-control" id="tipoCliente" name="tipoCliente">
-                    <option value="residencial">0</option>
-                    <option value="particular">1</option>
-                    <option value="empresarial">2</option>
-                </select>
-              </div> 
-
-            </div> 
-           
-        <div class="row mb-2">
-            <div class="col-md-7">
-                <input type="file" id="arquivo" name="arquivo" class="everis" />
-            </div>
-          </div>
-           
-        </div>
-        <div class="row align-items-center mb-3">
-            <nav class="col d-flex justify-content-end" >
+  <nav class="col d-flex justify-content-end">
     <button type="button" class="btn everis mr-2">Salvar</button>
     <button type="button" class="btn cancelar">Cancelar</button>
-  </nav> 
+  </nav>
+  <hr class="mt-2" />
+</div>
+
+<p>{{pessoa | json}}</p>
+
+<div class="card">
+  <div class="card-body">
+
+    <div class="custom-control custom-radio custom-control-inline form-group">
+      <input id="radColaborador" value="1" name="meuradio" [(ngModel)]="pessoa.Tipo" type="radio" class="custom-control-input">
+      <label class="custom-control-label" for="radColaborador">Colaborador</label>
+    </div>
+    <div class="custom-control custom-radio custom-control-inline">
+      <input id="radTerceiro" value="3" name="meuradio" [(ngModel)]="pessoa.Tipo" type="radio" class="custom-control-input">
+      <label class="custom-control-label" for="radTerceiro">Terceiro</label>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-12">
+        <input type="text" class="form-control" nome="nome" [(ngModel)]="pessoa.Nome" placeholder="Nome">
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-2">
+        <select class="form-control" id="tipoDocumento" name="tipoDocumento">
+          <option value="residencial">0</option>
+          <option value="particular">1</option>
+          <option value="empresarial">2</option>
+        </select>
+      </div>
+
+      <div class="col-m">
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Documento">
+      </div>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-2">
+        <select class="form-control" id="tipoTelefone" [(ngModel)]="telefone.Tipo" name="tipoTelefone">
+          <option value="1">Residencial</option>
+          <option value="2">Particular</option>
+          <option value="3">Empresarial</option>
+        </select>
+      </div>
+      <div class="input-group col-md-4">
+        <input type="text" class="form-control" [(ngModel)]="telefone.Telefone" id="telefone" name="telefone"
+          placeholder="Telefone">
+        <div class="input-group-append">
+          <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <table class="table table-striped">
+        <tbody>
+          <tr *ngFor="let telefone of telefones" style="text-align: center">
+            <td>
+              <p>{{telefone.Tipo}}</p>
+            </td>
+            <td>
+              <p>{{telefone.Telefone}}</p>
+            </td>
+            <td>
+              <button class="btn btn-danger"> Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="row mb-2">
+      <div class="col-md-12">
+        <input type="text" class="form-control" [(ngModel)]="pessoa.Email" name="email" placeholder="E-mail">
+      </div>
+    </div>
+
+    {{empresa | json}}
+    <div class="row mb-2" *ngIf="pessoa.Tipo == 3">
+      <div class="col-md-2">
+        <select class="form-control" #selectEmpresa (change)="SelecionarEmpresa(selectEmpresa.value)" name="tipoCliente">
+          <option *ngFor="let empresa of empresas" [ngValue]="empresa">{{empresa.Nome}}</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="pessoa.Tipo == 1">
+      <div class="row mb-2">
+        <div class="col-md-12">
+          <input type="text" class="form-control" [(ngModel)]="pessoa.EmailCorp" name="emailCorp" placeholder="E-mail Corporativo">
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-md-4">
+          <input type="text" class="form-control" [(ngModel)]="pessoa.Funcional" name="funcional" placeholder="Funcional">
+        </div>
+        <div class="col-md-4">
+          <input type="text" class="form-control" [(ngModel)]="pessoa.Racf" name="racf" placeholder="RACF">
+        </div>
+      </div>
+
+      <div class="row mb-3">
+        <div class="col-md-12">
+          <input type="text" class="form-control" [(ngModel)]="pessoa.NomeMaquina" name="vdi" placeholder="Nome da Maquina VDI">
+        </div>
+      </div>
+
+      <div class="row mb-4">
+        <div class="col-md-2">
+          <label for="nivelFuncional">Nivel Funcional</label>
+          <select id="nivelFuncional" name="nivelFuncional" [(ngModel)]="pessoa.Funcao" class="form-control">
+            <option value="1">SA</option>
+            <option value="2">SN</option>
+            <option value="3">STL</option>
+            <option value="4">SPL</option>
+            <option value="5">SK</option>
+            <option value="6">SKL</option>
+            <option value="7">Manager</option>
+          </select>
+        </div>
+        <div class="col-md-4">
+
+          <div class="row">
+            <label for="perfilAcesso">Perfil de Acesso</label>
+          </div>
+
+          <div class="row">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input id="radMaster" value="1" name="perfilMaster" [(ngModel)]="pessoa.PerfilColaborador" type="radio"
+                class="custom-control-input">
+              <label class="custom-control-label" for="radMaster">Master</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input id="radLider" value="2" name="perfilLeader" [(ngModel)]="pessoa.PerfilColaborador" type="radio"
+                class="custom-control-input">
+              <label class="custom-control-label" for="radLider">Leader</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input id="radColaboradorPerfil" value="3" name="perfilColaborador" [(ngModel)]="pessoa.PerfilColaborador"
+                type="radio" class="custom-control-input">
+              <label class="custom-control-label" for="radColaboradorPerfil">Colaborador</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mb-2">
+        <div class="col-md-7">
+          <input type="file" id="arquivo" name="arquivo" class="everis" />
+        </div>
+      </div>
+
+    </div>
+    <div class="row align-items-center mb-3">
+      <nav class="col d-flex justify-content-end">
+        <button type="button" class="btn everis mr-2">Salvar</button>
+        <button type="button" class="btn cancelar">Cancelar</button>
+      </nav>
     </div>
   </div>
