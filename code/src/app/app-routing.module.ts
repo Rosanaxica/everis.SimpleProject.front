@@ -1,6 +1,7 @@
+import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { AppComponent } from './app.component';
@@ -62,6 +63,10 @@ const appRoutes: Routes = [
   {
     path: 'cadastro-pessoas',
     component: CadastroPessoasComponent
+  },
+  {
+    path: 'fechamento-projeto',
+    component: FechamentoProjetoComponent
   },
 ];
 
