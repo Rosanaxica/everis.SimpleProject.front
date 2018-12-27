@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { AppComponent } from './app.component';
-import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadastro-colaborador.component';
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
@@ -12,6 +11,7 @@ import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
+import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-colaboradores/cadastro-colaboradores.component';
 
 const appRoutes: Routes = [
   {
@@ -24,7 +24,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'cadastro-colaborador',
-    component: CadastroColaboradorComponent
+    component: CadastroColaboradoresComponent
   },
   {
     path: 'pessoas',

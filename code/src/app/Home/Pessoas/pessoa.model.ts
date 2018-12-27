@@ -1,4 +1,5 @@
 import { Empresa } from '../Empresa/empresa.model';
+import { Telefone } from './telefone.model';
 
 
 export class Pessoa {
@@ -6,10 +7,11 @@ export class Pessoa {
     Tipo: TipoPessoa;
     Email: string;
     Documento: String;
-    Cpf: number;
+    Cpf: string;
     FotoPath: string;
     IdEmpresa: number;
-    Empresa: Empresa;
+    Empresa?: Empresa;
+    Telefones?: Telefone[];
 }
 
 export enum TipoPessoa {

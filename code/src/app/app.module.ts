@@ -25,13 +25,13 @@ import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/a
 import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
-import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadastro-colaborador.component';
 import { TemplateComponent } from './template/template.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { ProjetoService } from './services/projeto.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -54,7 +54,6 @@ import { ProjetoService } from './services/projeto.service';
     DadosPrincipaisComponent,
     AddTelephoneComponent,
     ModelosComponent,
-    CadastroColaboradorComponent,
     TemplateComponent,
     EmpresaComponent
   ],
@@ -70,6 +69,7 @@ import { ProjetoService } from './services/projeto.service';
     MatExpansionModule,
     TabsModule.forRoot(),
     ProgressbarModule.forRoot(),
+    FormsModule,
     BsDatepickerModule.forRoot()
   ],
   providers: [
