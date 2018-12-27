@@ -10,12 +10,10 @@ export class ProjetoService {
   constructor(private http: HttpClient) { }
 
   private headers = new HttpHeaders({
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
   });
 
   Adicionar(obj: any){
-    return this.http.post(`${urlDataDomain}${urlProjetosAdicionar}`,
-     JSON.stringify(obj),
-    { headers: this.headers})
+    return this.http.post<any>(`${urlDataDomain}${urlProjetosAdicionar}`, obj)
   }
 }

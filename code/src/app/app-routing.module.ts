@@ -8,6 +8,7 @@ import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadast
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
+import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
 
 const appRoutes: Routes = [
   {
@@ -42,6 +43,10 @@ const appRoutes: Routes = [
   {
     path: 'esforco-projeto',
     component: EsforcoProjetoComponent
+  },
+  {
+    path: 'dados-principais',
+    component: DadosPrincipaisComponent
   }
 ];
 
