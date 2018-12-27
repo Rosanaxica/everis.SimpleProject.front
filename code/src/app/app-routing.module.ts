@@ -7,6 +7,7 @@ import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadast
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
+import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
 
 const appRoutes: Routes = [
   {
@@ -37,6 +38,10 @@ const appRoutes: Routes = [
   {
     path: 'esforco-projeto',
     component: EsforcoProjetoComponent
+  },
+  {
+    path: 'anexos',
+    component: AnexosComponent
   }
 ];
 
