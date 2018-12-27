@@ -1,6 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { LoginComponent } from './Home/Login/login/login.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
@@ -16,19 +22,17 @@ import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
-import { SearchComponent } from './shared/search/search.component';
-import { CardPeopleComponent } from './shared/card-people/card-people.component';
 import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
-import { CadastroColaboradorComponent } from './Home/cadastro-colaborador/cadastro-colaborador.component';
 import { TemplateComponent } from './template/template.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { ProjetoService } from './services/projeto.service';
+import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
 
 
 @NgModule({
@@ -49,25 +53,32 @@ import {MatButtonModule, MatCheckboxModule} from '@angular/material';
     CadastroPessoasComponent,
     ProjetosComponent,
     DadosPrincipaisComponent,
-    SearchComponent,
-    CardPeopleComponent,
     AddTelephoneComponent,
     ModelosComponent,
-    CadastroColaboradorComponent,
-    EmpresaComponent,
-    TemplateComponent
+    TemplateComponent,
+    EmpresaComponent
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatExpansionModule,
+    TabsModule.forRoot(),
+    ProgressbarModule.forRoot(),
+    FormsModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    ProjetoService,
+  ],
   bootstrap: [AppComponent]
- })
+})
 export class AppModule { }

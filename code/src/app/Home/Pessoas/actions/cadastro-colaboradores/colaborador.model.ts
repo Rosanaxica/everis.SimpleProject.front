@@ -1,8 +1,7 @@
-import { Pessoa } from '../Pessoas/pessoa.model';
+import { Pessoa } from '../../pessoa.model';
 
 export class Colaborador extends Pessoa {
     IdColaborador: number;
-    IdPessoa: number;
     Racf: string;
     EmailCorp: string;
     Funcional: number;
@@ -10,10 +9,9 @@ export class Colaborador extends Pessoa {
     Funcao: FuncaoColaborador;
     Perfil: PerfilColaborador;
     Disponivel: boolean;
-    Ativo: boolean;
 }
 
-export enum FuncaoColaborador{
+export enum FuncaoColaborador {
     SA = 1,
     SN = 2,
     STL = 3,
@@ -23,7 +21,7 @@ export enum FuncaoColaborador{
     Manager = 7
 }
 
-export enum PerfilColaborador{
+export enum PerfilColaborador {
     Master = 1,
     Lider = 2,
     Colaborador = 3

@@ -1,7 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
-import * as  js from 'jquery';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-modelos',
@@ -9,10 +7,6 @@ import * as  js from 'jquery';
   styleUrls: ['./modelos.component.css']
 })
 
-export class ModelosComponent implements OnInit {
-
-  constructor() {}
-
-  ngOnInit() {
-  }
+export class ModelosComponent {
+  panelOpenState = false;
 }
