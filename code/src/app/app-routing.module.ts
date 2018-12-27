@@ -1,12 +1,14 @@
+import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { AppComponent } from './app.component';
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
+import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
@@ -52,6 +54,9 @@ const appRoutes: Routes = [
     component: EsforcoProjetoComponent
   },
   {
+    path: 'dados-principais',
+    component: DadosPrincipaisComponent
+  },{
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },
@@ -62,6 +67,10 @@ const appRoutes: Routes = [
   {
     path: 'cadastro-pessoas',
     component: CadastroPessoasComponent
+  },
+  {
+    path: 'fechamento-projeto',
+    component: FechamentoProjetoComponent
   },
 ];
 

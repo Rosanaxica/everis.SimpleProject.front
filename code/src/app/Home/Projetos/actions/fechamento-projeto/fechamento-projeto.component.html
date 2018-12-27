@@ -1,7 +1,7 @@
 <div class="container-fluid" style="margin: 15px">
   <div class="row align-items-center">
     <div class="col">
-      <h1 class="titulo">Encerramento do Projeto</h1>
+      <h1 class="titulo">Fechamento do Projeto</h1>
     </div>
     <nav class="col d-flex justify-content-end">
       <button type="button" class="btn everis mr-2">Salvar</button>
@@ -20,68 +20,148 @@
   </li>
 </ul>
 
-<div class="border col-12">
-  <div class="container-fluid">
-    <div class="row" style="margin-top: 15px">
-      <div class="col">
-        <div class="form-group">
-          <input type="text" class="form-control" id="input" placeholder="Nome Projeto">
-        </div>
-        <div class="border mt-4 mb-4">
-          <div class="container-fluid ">
-            <b>performance de planejados vs Tolerância</b>
-          </div>
-          <label for="label"></label>
-          <div class="row align-items-center">
-            <div class="input-group col">
-              <input type="text" class="form-control" placeholder="Horas de impacto__:__" aria-label="Digite o que você deseja buscar">
-              <div class="input-group-append">
-              </div>
-            </div>
 
-            <label for="label"></label>
-            <div class="input-group col ">
-              <input type="text" class="form-control" placeholder="Horas Planejadas__:__" aria-label="Digite o que você deseja buscar">
-              <div class="input-group-append">
-              </div>
-            </div>
 
-            <label for="label "></label>
-            <div class="input-group col">
-              <input type="text" class="form-control" placeholder="Horas Pagas__:__" aria-label="Digite o que você deseja buscar">
-              <div class="input-group-append">
-              </div>
-            </div>
-
-            <label for="label "></label>
-            <div class="input-group col">
-              <input type="text" class="form-control" placeholder="Horas gastas__:__" aria-label="Digite o que você deseja buscar">
-              <div class="input-group-append">
-              </div>
-            </div>
-          </div>
-          
-          
-          
-        </div>
-      </div>
+<div class="row mt-4">
+  <div class="col">
+    <div class="form-group">
+      <input type="text" class="form-control" id="input" placeholder="Nome Projeto">
     </div>
-
+    <fieldset class="col-12 border pb-4">
+      <legend class="col-form-legend col-4"><small>Performance de Planejados vs Tolerância</small></legend>
     <div class="row">
-      <div class="col-12">
-        <div class="form-group">
-          <label for="nova-change_text_area">Descrição</label>
-          <textarea class="form-control mb-4" id="nova-change_text_area" rows="3"></textarea>
-          <label for="nova-change_enviar_arquivo">Enviar Arquivo</label>
-          <input type="file" class="form-control-file" id="nova-change_enviar_arquivo">
+        
+        <!-- <b></b> -->
+        <div class="col-3">
+
+          <div class="row">
+            <div class="col-12 m-0">
+              <label for="Horas de Tolerância">Horas de Tolerância</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 m-0">
+              <input type="text" class="form-control" placeholder="hh:mm" aria-label="Digite o que você deseja buscar">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+
+          <div class="row">
+            <div class="col-12 m-0">
+              <label for="Horas planejadas">Horas Planejadas</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 m-0">
+              <input type="text" class="form-control" placeholder="hh:mm" aria-label="Digite o que você deseja buscar">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+
+          <div class="row">
+            <div class="col-12 m-0">
+              <label for="Horas pagas">Horas Pagas</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 m-0">
+              <input type="text" class="form-control" placeholder="hh:mm" aria-label="Digite o que você deseja buscar">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-3">
+
+          <div class="row">
+            <div class="col-12 m-0">
+              <label for="Horas gastas">Horas Gastas</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 m-0">
+              <input type="text" class="form-control" placeholder="hh:mm" aria-label="Digite o que você deseja buscar">
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="row align-items-center mb-4">
-      <nav class="col d-flex justify-content-end">
-        <button type="button" class="btn everis mr-2">Salvar</button>
-        <button type="button" class="btn cancelar">Cancelar</button>
-      </nav>
-    </div>
+    </fieldset>
+
+    <mat-accordion>
+      <mat-expansion-panel> 
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Detalhes
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>
+          Aqui tem um texto aleatório para fingir que existe um conteúdo aqui. Logo mais haverá algo dentro do
+          contexto para ser apresentado
+        </p>
+      </mat-expansion-panel>
+    </mat-accordion>
+
   </div>
+</div>
+
+
+<mat-accordion>
+  <mat-expansion-panel class="mt-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Entregas
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Conteúdo 1</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel class="mt-2" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Benefícios entregues
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Conteúdo 2</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel class="mt-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Benefícios residuais
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Conteúdo 3</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel class="mt-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Problemas
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Conteúdo 4</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel class="mt-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Riscos
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Conteúdo 5</p>
+  </mat-expansion-panel>
+  <mat-expansion-panel class="mt-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Lições Aprendidas
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>Conteúdo 6</p>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<div class="row align-items-center mt-2 mb-4">
+  <nav class="col d-flex justify-content-end">
+    <button type="button" class="btn everis mr-2">Salvar</button>
+    <button type="button" class="btn cancelar">Cancelar</button>
+  </nav>
 </div>

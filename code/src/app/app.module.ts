@@ -31,7 +31,8 @@ import { EmpresaComponent } from './Home/Empresa/empresa.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { ProjetoService } from './services/projeto.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
 
 
 @NgModule({
@@ -58,6 +59,9 @@ import { FormsModule } from '@angular/forms';
     EmpresaComponent
   ],
   imports: [
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -76,5 +80,5 @@ import { FormsModule } from '@angular/forms';
     ProjetoService,
   ],
   bootstrap: [AppComponent]
- })
+})
 export class AppModule { }
