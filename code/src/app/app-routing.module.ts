@@ -73,7 +73,6 @@ const appRoutes: Routes = [
     path: 'fechamento-projeto',
     component: FechamentoProjetoComponent
   },
-  },
   {
     path: 'anexos',
     component: AnexosComponent
