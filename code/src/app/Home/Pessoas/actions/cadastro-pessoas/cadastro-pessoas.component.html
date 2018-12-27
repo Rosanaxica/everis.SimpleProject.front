@@ -38,7 +38,7 @@
         </select>
       </div>
 
-      <div class="col-m">
+      <div class="col-md-2">
         <input type="text" class="form-control" id="nome" name="nome" placeholder="Documento">
       </div>
     </div>
@@ -61,18 +61,18 @@
       </div>
     </div>
 
-    <div class="col-md-6">
+    <div class="row col-md-4">
       <table class="table table-striped">
         <tbody>
-          <tr *ngFor="let telefone of telefones" style="text-align: center">
-            <td>
+          <tr *ngFor="let telefone of telefones">
+            <td class="text-center">
               <p>{{telefone.Tipo}}</p>
             </td>
-            <td>
+            <td class="text-center">
               <p>{{telefone.Telefone}}</p>
             </td>
-            <td>
-              <button class="btn btn-danger"> Excluir</button>
+            <td class="colBtnDeletar">
+              <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
             </td>
           </tr>
         </tbody>
