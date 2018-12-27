@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
+import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
@@ -53,6 +54,9 @@ const appRoutes: Routes = [
     component: EsforcoProjetoComponent
   },
   {
+    path: 'dados-principais',
+    component: DadosPrincipaisComponent
+  },{
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },

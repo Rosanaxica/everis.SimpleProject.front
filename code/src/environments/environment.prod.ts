@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
 
-  api: "http://localhost:61045/",
+  api: "http://localhost:61450/",
 
   //Projetos
   apiProjetosAdicionar: "api/Projeto/Adicionar"
