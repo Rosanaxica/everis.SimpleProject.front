@@ -13,7 +13,6 @@ import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
-import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-colaboradores/cadastro-colaboradores.component';
 
 const appRoutes: Routes = [
   {
@@ -23,10 +22,6 @@ const appRoutes: Routes = [
   {
     path: '*',
     component: AppComponent
-  },
-  {
-    path: 'cadastro-colaborador',
-    component: CadastroColaboradoresComponent
   },
   {
     path: 'pessoas',
@@ -56,7 +51,8 @@ const appRoutes: Routes = [
   {
     path: 'dados-principais',
     component: DadosPrincipaisComponent
-  },{
+  },
+  {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },

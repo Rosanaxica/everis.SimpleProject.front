@@ -18,7 +18,6 @@ import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/an
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
-import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-colaboradores/cadastro-colaboradores.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
@@ -49,7 +48,6 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     EsforcoProjetoComponent,
     AtribuicaoEquipeComponent,
     NovaChangeComponent,
-    CadastroColaboradoresComponent,
     CadastroPessoasComponent,
     ProjetosComponent,
     DadosPrincipaisComponent,

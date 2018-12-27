@@ -85,11 +85,11 @@
       </div>
     </div>
 
-    {{empresa | json}}
+    {{pessoa.Empresa | json}}
     <div class="row mb-2" *ngIf="pessoa.Tipo == 3">
       <div class="col-md-2">
         <select class="form-control" #selectEmpresa (change)="SelecionarEmpresa(selectEmpresa.value)" name="tipoCliente">
-          <option *ngFor="let empresa of empresas" [ngValue]="empresa">{{empresa.Nome}}</option>
+          <option *ngFor="let empresa of empresas" [ngValue]="empresa.IdEmpresa">{{empresa.Nome}}</option>
         </select>
       </div>
     </div>
@@ -154,15 +154,15 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="row mb-2">
+    <div class="row mb-2">
         <div class="col-md-7">
-          <input type="file" id="arquivo" name="arquivo" class="everis" />
+          <input type="file" id="arquivo" name="arquivo" class="everis" [(ngModel)]="pessoa.FotoPath" />
         </div>
       </div>
 
-    </div>
-    <div class="row align-items-center mb-3">
+    <div class="row align-items-center mb-3" *ngIf="pessoa.Tipo > 0">
       <nav class="col d-flex justify-content-end">
         <button type="button" class="btn everis mr-2">Salvar</button>
         <button type="button" class="btn cancelar">Cancelar</button>
