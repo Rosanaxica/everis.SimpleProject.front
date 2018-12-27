@@ -31,9 +31,6 @@ import { EmpresaComponent } from './Home/Empresa/empresa.component';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { ProjetoService } from './services/projeto.service';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { FormsModule } from '@angular/forms';
 
 
@@ -57,7 +54,6 @@ import { FormsModule } from '@angular/forms';
     DadosPrincipaisComponent,
     AddTelephoneComponent,
     ModelosComponent,
-    CadastroColaboradorComponent,
     TemplateComponent,
     EmpresaComponent
   ],
