@@ -9,11 +9,9 @@
      Modelo de Elementos HTML
   </a>
 </nav>
-<div class="container-fluid">
+<div class="container-fluid" id="cont">
   <div class="row">
-    
       <div class="col">
-
           <p class="titulos" id="link-logo">Logo</p>
           <p>Logo do projeto com opções de 3 tamanhos diferentes.</p>
 
@@ -61,6 +59,16 @@
               <div class="col">
                 <h1 class="titulo mb-0">Título com botões</h1>
               </div> 
+              <nav class="col d-flex justify-content-end">
+                <button type="button" class="btn everis mr-2">Salvar</button>
+                <button type="button" class="btn cancelar">Cancelar</button>
+              </nav> 
+              <hr class="mt-2" />
+          </div>
+          <!--.titulo com botões-->
+
+          <!--titulo com botões-->
+          <div class="row align-items-center">
               <nav class="col d-flex justify-content-end">
                 <button type="button" class="btn everis mr-2">Salvar</button>
                 <button type="button" class="btn cancelar">Cancelar</button>
@@ -257,22 +265,11 @@
             <div class="col">
           
               <!--tabs-->
-              <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">Dados Principais</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Atribuição da Equipe</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link disabled" href="#">Inclusão de Anexos</a>
-                </li>
-              </ul>
-              <div class="row">
-                <div class="col mr-3 ml-3 mt-5 mb-5">
-                    Conteúdo por aqui
-                </div>
-              </div>
+              <tabset>
+                <tab heading="Basic title" class="p-4">Basic content</tab>
+                <tab heading="Basic Title 1" class="p-4">Basic content 1</tab>
+                <tab heading="Basic Title 2" class="p-4">Basic content 2</tab>
+              </tabset>
               <!--.tabs-->
           
             </div>
@@ -331,7 +328,7 @@
             </div>
           </div>
           
-          <p class="titulos">Card Pessoa</p>
+          <p class="titulos">CardPessoa</p>
           <p>CardPessoa que será utilizado em listagem de pessoas.</p>
 
           <p class="mb-5">Exemplo:</p>
@@ -413,7 +410,7 @@
             </div>
           </div>
         
-          <p class="titulos">Barra de Progresso (Processo)</p>
+          <p class="titulos">ProgressBar</p>
           <p>Barra de progresso para definição de porcentagem dos processos.</p>
 
           <p class="mb-5">Exemplo:</p>
@@ -422,16 +419,9 @@
             <div class="col">
           
               <!--.Barra de progresso-->
-              <div class="progress mb-2">
-                <div class="progress-bar w-75 everis" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+              <div class="mb-2">
+                <progressbar [animate]="true" [value]="40" type="success"><b>40%</b></progressbar>
               </div>
-              <div class="progress mb-2">
-                <div class="progress-bar w-75 everis-azul" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="progress">
-                <div class="progress-bar w-75 everis-laranja" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-
               <!--.barra de progresso-->
           
             </div>
