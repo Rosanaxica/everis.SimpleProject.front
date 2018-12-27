@@ -60,7 +60,7 @@ const appRoutes: Routes = [
     component: PrimeiroAcessoComponent
   },
   {
-    path: 'cadastro-pessoa',
+    path: 'cadastro-pessoas',
     component: CadastroPessoasComponent
   },
 ];
