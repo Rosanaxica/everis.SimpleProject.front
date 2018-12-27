@@ -14,7 +14,6 @@ export class CadastroPessoasComponent implements OnInit {
 
   pessoa = new PessoaColaboradorViewModel();
   telefone = new Telefone();
-  empresa = new Empresa();
   telefones: Telefone[] = [];
 
   empresas: Empresa[] = [
@@ -33,7 +32,7 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
   SelecionarEmpresa (empresa: Empresa): void {
-    this.empresa = empresa;
+    this.pessoa.Empresa = empresa;
   }
 
 }

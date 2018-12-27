@@ -26,10 +26,6 @@ const appRoutes: Routes = [
     component: AppComponent
   },
   {
-    path: 'cadastro-colaborador',
-    component: CadastroColaboradoresComponent
-  },
-  {
     path: 'pessoas',
     component: PessoasComponent
   },
@@ -57,7 +53,8 @@ const appRoutes: Routes = [
   {
     path: 'dados-principais',
     component: DadosPrincipaisComponent
-  },{
+  },
+  {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },
