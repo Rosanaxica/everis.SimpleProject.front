@@ -1,3 +1,4 @@
+import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -6,6 +7,10 @@ import { AppComponent } from './app.component';
 import { TemplateComponent } from './template/template.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
+import { ProjetosComponent } from './Home/Projetos/projetos.component';
+import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
+import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
+import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-colaboradores/cadastro-colaboradores.component';
 
 const appRoutes: Routes = [
@@ -26,6 +31,10 @@ const appRoutes: Routes = [
     component: PessoasComponent
   },
   {
+    path: 'projetos',
+    component: ProjetosComponent
+  },
+  {
     path: 'template',
     component: TemplateComponent
 
@@ -35,9 +44,25 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'nova-change',
+    component: NovaChangeComponent
+  },
+  {
     path: 'esforco-projeto',
     component: EsforcoProjetoComponent
-  }
+  },
+  {
+    path: 'esqueci-senha',
+    component: EsqueceuSenhaComponent
+  },
+  {
+    path: 'primeiro-acesso',
+    component: PrimeiroAcessoComponent
+  },
+  {
+    path: 'cadastro-pessoa',
+    component: CadastroPessoasComponent
+  },
 ];
 
 @NgModule({

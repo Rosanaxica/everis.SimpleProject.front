@@ -1,3 +1,68 @@
-<p>
-  cadastro-pessoas works!
-</p>
+
+<div class="row align-items-center">
+    <div class="col">
+      <h1 class="titulo mb-0">Nova Pessoa</h1>
+    </div> 
+    <nav class="col d-flex justify-content-end">
+      <button type="button" class="btn everis mr-2">Salvar</button>
+      <button type="button" class="btn cancelar">Cancelar</button>
+    </nav> 
+    <hr class="mt-2" />
+  </div>
+  
+      <div class="row ">
+        <p><input type="radio" id="tipoPessoa" name="tipoPessoa" value="Terceiros">Terceiros
+           <input type="radio" id="tipoPessoa" name="tipoPessoa" value="Colaborador">Colaborador</p>
+      </div>
+  
+      <div class="card">
+        <div class="card-body">
+  
+          <div class="row mb-2">
+              <div class="col-md-12">
+                <input type="text" class="form-control" id="nome" name="nome" placeholder="Nome">
+              </div>
+          </div>
+  
+          <div class="row mb-2">
+            <div class="col-md-2">
+              <select class="form-control" id="tipoTelefone" name="tipoTelefone">
+                  <option value="residencial">Residencial</option>
+                  <option value="particular">Particular</option>
+                  <option value="empresarial">Empresarial</option>
+              </select>
+            </div>
+              <div class="col-md-6">
+                <input type="text" class="form-control" id="telefone" name="telefone" placeholder="Telefone">
+              </div>
+          </div>
+  
+          <div class="row mb-2">
+            <div class="col-md-12">
+                <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
+            </div>
+          </div>
+  
+          <div class="row mb-2">
+              <div class="col-md-2">
+                <select class="form-control" id="tipoCliente" name="tipoCliente">
+                    <option value="residencial">0</option>
+                    <option value="particular">1</option>
+                    <option value="empresarial">2</option>
+                </select>
+              </div> 
+
+
+
+          
+            </div> 
+           
+           
+        </div>
+        <div class="row align-items-center mb-3">
+            <nav class="col d-flex justify-content-end" >
+    <button type="button" class="btn everis mr-2">Salvar</button>
+    <button type="button" class="btn cancelar">Cancelar</button>
+  </nav> 
+    </div>
+  </div>

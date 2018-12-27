@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { LoginComponent } from './Home/Login/login/login.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
@@ -16,8 +20,6 @@ import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
-import { SearchComponent } from './shared/search/search.component';
-import { CardPeopleComponent } from './shared/card-people/card-people.component';
 import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
@@ -25,6 +27,8 @@ import { TemplateComponent } from './template/template.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { BsDatepickerModule } from 'ngx-bootstrap';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { ProjetoService } from './services/projeto.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
@@ -49,25 +53,28 @@ import { FormsModule } from '@angular/forms';
     CadastroPessoasComponent,
     ProjetosComponent,
     DadosPrincipaisComponent,
-    SearchComponent,
-    CardPeopleComponent,
     AddTelephoneComponent,
     ModelosComponent,
-    EmpresaComponent,
-    TemplateComponent
+    CadastroColaboradorComponent,
+    TemplateComponent,
+    EmpresaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatExpansionModule,
     FormsModule,
     BsDatepickerModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    ProjetoService,
+  ],
   bootstrap: [AppComponent]
  })
 export class AppModule { }

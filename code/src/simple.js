@@ -38,3 +38,4 @@
   });
 
 })(jQuery); // End of use strict
+export class AppComponent { simplepro }
