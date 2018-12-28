@@ -25,14 +25,11 @@
  .everis-azul{background-color: rgb(103,133,193) }
  .everis-amarelo{background-color:rgb(221,179,34)}
  .links:hover,.links:focus{color: #d9d9d9;text-decoration: none; }
-<<<<<<< HEAD
  .form-control:focus { border-color: rgba(204, 204, 204, 0.8); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(112,115,114, 0.6); outline: 0 none;}
  fieldset>legend {font-size: 16px;}
  fieldset label {font-size: 16px;}
-=======
  .form-control:focus { border-color: rgba(204, 204, 204, 0.8); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(112,115,114, 0.6);}
 
->>>>>>> 1d81db64f65338c47106bdc58db39f9162a0529b
 /*!
  parte padrão
  */
