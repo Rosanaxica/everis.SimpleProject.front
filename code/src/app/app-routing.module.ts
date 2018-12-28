@@ -14,6 +14,7 @@ import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-sen
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
+import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 const appRoutes: Routes = [
   {
@@ -35,7 +36,6 @@ const appRoutes: Routes = [
   {
     path: 'template',
     component: TemplateComponent
-
   },
   {
     path: 'login',
@@ -72,7 +72,12 @@ const appRoutes: Routes = [
   {
     path: 'anexos',
     component: AnexosComponent
+  },
+  {
+    path: 'empresa',
+    component: EmpresaComponent
   }
+  
 ];
 
 @NgModule({

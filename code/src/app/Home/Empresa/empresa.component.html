@@ -1,41 +1,47 @@
-<p>
-
-
   <body>
-    
-    <h3>
-        <b>Nova Empresa</b>
-    </h3>
-    
-  
-  <div>
-   <div class="row row-form">
-     <div class="col-md-8">
-   <input class="form-control" type="text" name="empresa" placeholder="Empresa">
-    </div> 
-   </div> 
-   
-  
-   <div class="row row-form">
-     <div class="col-md-2">
-        <select class="form-control">
-            <option value="seguimento">Seguimento</option>
-            <option value="residencial">Banking</option>
-            <option value="particular">Telefonia</option>
-            <option value="empresarial">Saude</option>
-            <option value="empresarial">Outros</option>
-           </select>
-     </div>
-   </div>
+    <div class="container-fluid" id="cont">
+      <div class="row">
+        <div class="col">
+          <h1 class="titulo"> Nova Empresa</h1>
+        </div>
+        <hr class="mt-0" />
+      </div>
 
-    <div class="row row-form"> 
-    <nav class="col d-flex justify-content-end">
-      <button type="button" class="btn everis mr-2">Salvar</button>
-      <button type="button" class="btn cancelar">Cancelar</button>
-    </nav> 
-    <hr class="mt-2" />
-     </div>
+      <div class="row">
+        <div class="col">
+
+          <!--Nome empresa-->
+          <div class="form-group">
+            <div class="col-md-8">
+              <input type="text" class="form-control" id="empresa" placeholder="Nome da Empresa">
+            </div>
+          </div>
+          <!---->
+
+          <!--Segmento Empresa-->
+          <div class="form-group">
+            <div class="col-md-2">
+              <select class="form-control">
+                <option disabled="active" value="segmento" [hidden]="true">Segmento</option>
+                <option value="residencial">Banking</option>
+                <option value="particular">Telefonia</option>
+                <option value="empresarial">Saude</option>
+                <option value="empresarial">Outros</option>
+              </select>
+            </div>
+          </div>
+          <!---->
+
+          <div class="row">
+            <nav class="col d-flex justify-content-end">
+              <button type="button" class="btn everis mr-2">Salvar</button>
+              <button type="button" class="btn cancelar">Cancelar</button>
+            </nav>
+            <hr class="mt-2" />
+          </div>
+
+
+        </div>
+      </div>
     </div>
   </body>
-  </p>
-  
