@@ -57,7 +57,7 @@
           <input type="text" class="form-control" id="nome" name="cpf" placeholder="CPF">
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-5">
           <input type="text" class="form-control" id="nome" name="documento" placeholder="Outro Documento">
         </div>
       </div>
@@ -74,7 +74,7 @@
 
 
 
-        <div class="input-group col-md-2">
+        <div class="input-group col-md-5">
           <input type="text" class="form-control" [(ngModel)]="telefone.Telefone" id="telefone" name="telefone"
             placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15" #ctrlTelefone="ngModel"
             [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
@@ -99,7 +99,7 @@
         telefone. Informe apenas numeros
       </div>
 
-      <div class="row col-md-4">
+      <div class="row col-md-5">
         <table class="table table-striped">
           <tbody>
             <tr *ngFor="let telefone of telefones">
