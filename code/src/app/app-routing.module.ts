@@ -19,6 +19,8 @@ import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/an
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
 import { ChangesComponent } from './Home/Projetos/actions/changes/changes.component';
+import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
+import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 
 const appRoutes: Routes = [
   {
@@ -60,6 +62,9 @@ const appRoutes: Routes = [
     {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
     {path: 'projetos/novo-projeto/changes', component: ChangesComponent  },
     {path: 'projetos/novo-projeto/changes/nova-change', component: NovaChangeComponent  },
+    {path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
+    {path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
+    {path: 'mapa-site', component: MapaSiteComponent },
     {path: 'modelos', component: ModelosComponent},
       ],
 
@@ -69,8 +74,16 @@ const appRoutes: Routes = [
     component: LoginComponent
   },
   {
+    path: 'mapa-site',
+    component: MapaSiteComponent
+  },
+  {
     path: 'nova-change',
     component: NovaChangeComponent
+  },
+  {
+    path: 'novo-esforco-projeto',
+    component: NovoEsforcoProjetoComponent
   },
   {
     path: 'esforco-projeto',

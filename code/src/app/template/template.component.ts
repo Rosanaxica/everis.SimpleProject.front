@@ -11,7 +11,7 @@ export class TemplateComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.menuFechado = false;
+    this.menuFechado = true;
   }
 
   ToggleMenu() {

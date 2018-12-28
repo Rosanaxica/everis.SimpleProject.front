@@ -35,6 +35,8 @@ import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/fo
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { UploadComponent } from './shared/upload/upload.component';
 import { ChangesComponent } from './Home/Projetos/actions/changes/changes.component';
+import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
+import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 
 
 
@@ -63,7 +65,9 @@ import { ChangesComponent } from './Home/Projetos/actions/changes/changes.compon
     EmpresaComponent,
     AnexosComponent,
     UploadComponent,
-    ChangesComponent
+    ChangesComponent,
+    NovoEsforcoProjetoComponent,
+    MapaSiteComponent
   ],
   imports: [
     HttpClientModule,
