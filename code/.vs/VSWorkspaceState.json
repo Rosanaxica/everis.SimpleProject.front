@@ -4,14 +4,8 @@
     "\\src",
     "\\src\\app",
     "\\src\\app\\Home",
-    "\\src\\app\\Home\\Pessoas\\actions",
-    "\\src\\app\\Home\\Pessoas\\actions\\cadastro-pessoas",
-    "\\src\\app\\Home\\Projetos\\actions",
-    "\\src\\app\\Home\\Projetos\\actions\\fechamento-projeto",
-    "\\src\\app\\Home\\Projetos\\actions\\fechamento-projeto\\actions",
-    "\\src\\app\\shared",
-    "\\src\\app\\shared\\modelos"
+    "\\src\\app\\shared"
   ],
-  "SelectedNode": "\\src\\app\\app-routing.module.ts",
+  "SelectedNode": "\\src\\app\\models",
   "PreviewInSolutionExplorer": false
 }
