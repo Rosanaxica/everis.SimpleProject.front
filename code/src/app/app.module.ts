@@ -33,6 +33,8 @@ import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { ProjetoService } from './services/projeto.service';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { UploadComponent } from './shared/upload/upload.component';
+import { InputComponent } from './shared/input/input.component';
 
 
 @NgModule({
@@ -55,7 +57,10 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     AddTelephoneComponent,
     ModelosComponent,
     TemplateComponent,
-    EmpresaComponent
+    EmpresaComponent,
+    AnexosComponent,
+    UploadComponent,
+    InputComponent
   ],
   imports: [
     HttpClientModule,
