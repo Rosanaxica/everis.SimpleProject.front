@@ -1,3 +1,4 @@
+import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
@@ -13,8 +14,13 @@ import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
+import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
+<<<<<<< HEAD
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
+=======
+import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
+>>>>>>> a5515f7ab455e7687a4fe24d54dc1660571bbd84
 
 const appRoutes: Routes = [
   {
@@ -22,20 +28,44 @@ const appRoutes: Routes = [
     component: ModelosComponent
   },
   {
+    path: 'novo-projeto',
+    component: NovoProjetoComponent
+  },
+  {
     path: '*',
     component: AppComponent
   },
   {
     path: 'pessoas',
-    component: PessoasComponent
+    component: PessoasComponent,
+       children: [
+       {path: 'cadastro-pessoas', component: CadastroPessoasComponent}
+    ],
   },
   {
     path: 'projetos',
-    component: ProjetosComponent
+    component: ProjetosComponent,
+    children: [
+      {path: 'novo-projeto', component: NovoProjetoComponent},
+   ],
   },
   {
     path: 'template',
+<<<<<<< HEAD
     component: TemplateComponent
+=======
+    component: TemplateComponent,
+    children: [
+    {path: 'pessoas', component: PessoasComponent},
+    {path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent},
+    {path: 'projetos', component: ProjetosComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'novo-projeto', component: NovoProjetoComponent },
+    {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
+     {path: 'modelos', component: ModelosComponent},
+    ],
+>>>>>>> a5515f7ab455e7687a4fe24d54dc1660571bbd84
   },
   {
     path: 'login',
@@ -65,6 +95,15 @@ const appRoutes: Routes = [
     path: 'cadastro-pessoas',
     component: CadastroPessoasComponent
   },
+  {
+    path: 'novo-projeto', component: NovoProjetoComponent,
+    children: [
+      { path: '', redirectTo: 'dados-principais', pathMatch: 'full' },
+      { path: 'dados-principais', component: DadosPrincipaisComponent },
+      { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent },
+    ]
+  },
+  { path: '',   redirectTo: '/template', pathMatch: 'full' },
   {
     path: 'fechamento-projeto',
     component: FechamentoProjetoComponent

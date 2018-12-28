@@ -10,7 +10,8 @@ import { PessoaColaboradorViewModel } from '../../pessoacolaborador.viewmodel';
 })
 export class CadastroPessoasComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   pessoa = new PessoaColaboradorViewModel();
   telefone = new Telefone();
@@ -33,6 +34,20 @@ export class CadastroPessoasComponent implements OnInit {
 
   SelecionarEmpresa (empresa: Empresa): void {
     this.pessoa.Empresa = empresa;
+  }
+
+  isTelRequired(): boolean {
+    if (this.telefones.length === 0) {
+      return true;
+    }
+    return false;
+  }
+
+  isTipoPessoaRequired(): boolean {
+    if (this.pessoa.Tipo === undefined) {
+      return true;
+    }
+    return false;
   }
 
 }
