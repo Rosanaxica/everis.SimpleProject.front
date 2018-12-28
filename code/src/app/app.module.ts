@@ -18,7 +18,6 @@ import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/an
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
-import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-colaboradores/cadastro-colaboradores.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
@@ -28,11 +27,14 @@ import { ModelosComponent } from './shared/modelos/modelos.component';
 import { TemplateComponent } from './template/template.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
+
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { ProjetoService } from './services/projeto.service';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { UploadComponent } from './shared/upload/upload.component';
+import { InputComponent } from './shared/input/input.component';
 
 
 @NgModule({
@@ -49,7 +51,6 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     EsforcoProjetoComponent,
     AtribuicaoEquipeComponent,
     NovaChangeComponent,
-    CadastroColaboradoresComponent,
     CadastroPessoasComponent,
     ProjetosComponent,
     DadosPrincipaisComponent,
@@ -57,7 +58,12 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     ModelosComponent,
     TemplateComponent,
     EmpresaComponent,
+<<<<<<< HEAD
     AnexosComponent
+=======
+    UploadComponent,
+    InputComponent
+>>>>>>> 9e51fb77a465f22c541538b89d756400ad3afc39
   ],
   imports: [
     HttpClientModule,

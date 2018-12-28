@@ -1,6 +1,7 @@
+import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { AppComponent } from './app.component';
@@ -12,7 +13,7 @@ import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
-import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-colaboradores/cadastro-colaboradores.component';
+import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
 
 const appRoutes: Routes = [
   {
@@ -22,10 +23,6 @@ const appRoutes: Routes = [
   {
     path: '*',
     component: AppComponent
-  },
-  {
-    path: 'cadastro-colaborador',
-    component: CadastroColaboradoresComponent
   },
   {
     path: 'pessoas',
@@ -69,6 +66,14 @@ const appRoutes: Routes = [
     component: CadastroPessoasComponent
   },
   { path: '',   redirectTo: '/template', pathMatch: 'full' },
+  {
+    path: 'fechamento-projeto',
+    component: FechamentoProjetoComponent
+  },
+  {
+    path: 'anexos',
+    component: AnexosComponent
+  }
 ];
 
 @NgModule({
