@@ -37,8 +37,8 @@ const appRoutes: Routes = [
   },
   {
     path: 'template',
-    component: TemplateComponent
-
+    component: TemplateComponent,
+    children: [{path: 'pessoas', component: PessoasComponent}]
   },
   {
     path: 'login',
@@ -55,7 +55,8 @@ const appRoutes: Routes = [
   {
     path: 'dados-principais',
     component: DadosPrincipaisComponent
-  },{
+  },
+  {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },
@@ -67,6 +68,7 @@ const appRoutes: Routes = [
     path: 'cadastro-pessoas',
     component: CadastroPessoasComponent
   },
+  { path: '',   redirectTo: '/template', pathMatch: 'full' },
 ];
 
 @NgModule({

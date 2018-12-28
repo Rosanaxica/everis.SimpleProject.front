@@ -56,7 +56,8 @@ import { HttpClientModule } from '../../node_modules/@angular/common/http';
     AddTelephoneComponent,
     ModelosComponent,
     TemplateComponent,
-    EmpresaComponent
+    EmpresaComponent,
+    AnexosComponent
   ],
   imports: [
     HttpClientModule,
