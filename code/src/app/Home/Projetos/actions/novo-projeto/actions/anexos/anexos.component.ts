@@ -21,7 +21,7 @@ export class AnexosComponent implements OnInit {
   }
 
   Adicionar() {
-    this.anexo.IdProjeto = 1
+    this.anexo.ProjetoId = 1
 
     this.anexoService.Adicionar(this.anexo)
       .subscribe((data: any) => {
