@@ -7,10 +7,22 @@ import {AppComponent} from 'src/simple.js';
   styleUrls: ['./template.component.css']
 })
 export class TemplateComponent implements OnInit {
-
+  menuFechado: boolean;
   constructor() { }
 
   ngOnInit() {
+    this.menuFechado = false;
   }
 
+  ToggleMenu() {
+
+    if (this.menuFechado == true)
+    {
+      this.menuFechado = false;
+    }
+    else
+    {
+      this.menuFechado = true;
+    }
+  }
 }
