@@ -33,23 +33,31 @@ const appRoutes: Routes = [
   },
   {
     path: 'pessoas',
-    component: PessoasComponent
+    component: PessoasComponent,
+       children: [
+       {path: 'cadastro-pessoas', component: CadastroPessoasComponent}
+    ],
   },
   {
     path: 'projetos',
-    component: ProjetosComponent
+    component: ProjetosComponent,
+    children: [
+      {path: 'novo-projeto', component: NovoProjetoComponent},
+   ],
   },
   {
     path: 'template',
     component: TemplateComponent,
     children: [
     {path: 'pessoas', component: PessoasComponent},
+    {path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent},
     {path: 'projetos', component: ProjetosComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'novo-projeto', component: NovoProjetoComponent },
-    { path: 'modelos', component: ModelosComponent}
-  ],
+    {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
+     {path: 'modelos', component: ModelosComponent},
+    ],
   },
   {
     path: 'login',
@@ -66,7 +74,7 @@ const appRoutes: Routes = [
   {
     path: 'dados-principais',
     component: DadosPrincipaisComponent
-  }, 
+  },
   {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent

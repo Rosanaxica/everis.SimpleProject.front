@@ -17,6 +17,27 @@ table {
     
 }
 
+.spanValid {
+    
+    color: green;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.spanInvalid {
+    color: red;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.spanAtention {
+    color: orange;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
 
 table { border-collapse: separate; }
 tr:first-child td:first-child { border-top-left-radius: 10px; }
