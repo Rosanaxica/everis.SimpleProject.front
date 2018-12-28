@@ -4,5 +4,6 @@ export const environment = {
   api: "http://localhost:61450/",
 
   //Projetos
-  apiProjetosAdicionar: "api/Projeto/Adicionar"
+  apiProjetosAdicionar: "api/Projeto/Adicionar",
+  apiProjetosObterTodos: "api/Projeto/ObterTodos"
 };

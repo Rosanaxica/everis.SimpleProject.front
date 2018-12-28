@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { urlDataDomain, urlProjetosAdicionar } from '../app.api';
+import { urlDataDomain, urlProjetosAdicionar, urlProjetosObterTodos } from '../app.api';
 
 @Injectable({
   providedIn: 'root'
@@ -15,5 +15,9 @@ export class ProjetoService {
 
   Adicionar(obj: any){
     return this.http.post<any>(`${urlDataDomain}${urlProjetosAdicionar}`, obj)
+  }
+
+  ObterTodos(obj: any){
+    return this.http.get(`${urlDataDomain}${urlProjetosObterTodos}`, obj)
   }
 }
