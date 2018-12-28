@@ -18,6 +18,7 @@ import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
+import { ChangesComponent } from './Home/Projetos/actions/changes/changes.component';
 
 const appRoutes: Routes = [
   {
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
     component: ProjetosComponent,
     children: [
       {path: 'novo-projeto', component: NovoProjetoComponent},
+      {path: 'novo-projeto/changes', component: ChangesComponent },
    ],
   },
   {
@@ -54,11 +56,13 @@ const appRoutes: Routes = [
     {path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent},
     {path: 'projetos', component: ProjetosComponent},
     {path: 'dashboard', component: DashboardComponent},
-    {path: 'dashboard', component: DashboardComponent},
     {path: 'novo-projeto', component: NovoProjetoComponent },
     {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
-     {path: 'modelos', component: ModelosComponent},
-    ],
+    {path: 'projetos/novo-projeto/changes', component: ChangesComponent  },
+    {path: 'projetos/novo-projeto/changes/nova-change', component: NovaChangeComponent  },
+    {path: 'modelos', component: ModelosComponent},
+      ],
+
   },
   {
     path: 'login',
@@ -72,6 +76,10 @@ const appRoutes: Routes = [
     path: 'esforco-projeto',
     component: EsforcoProjetoComponent
   },
+  {
+    path: 'changes',
+    component: ChangesComponent
+    },
   {
     path: 'dados-principais',
     component: DadosPrincipaisComponent
@@ -94,7 +102,7 @@ const appRoutes: Routes = [
       { path: '', redirectTo: 'dados-principais', pathMatch: 'full' },
       { path: 'dados-principais', component: DadosPrincipaisComponent },
       { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent },
-    ]
+       ],
   },
   { path: '',   redirectTo: '/template', pathMatch: 'full' },
   {
@@ -109,7 +117,7 @@ const appRoutes: Routes = [
     path: 'empresa',
     component: EmpresaComponent
   }
-];
+ ];
 
 @NgModule({
   declarations: [],
