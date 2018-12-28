@@ -34,6 +34,9 @@ import { ProjetoService } from './services/projeto.service';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { UploadComponent } from './shared/upload/upload.component';
+import { ChangesComponent } from './Home/Projetos/actions/changes/changes.component';
+
+
 
 
 
@@ -59,7 +62,8 @@ import { UploadComponent } from './shared/upload/upload.component';
     TemplateComponent,
     EmpresaComponent,
     AnexosComponent,
-    UploadComponent
+    UploadComponent,
+    ChangesComponent
   ],
   imports: [
     HttpClientModule,
@@ -78,6 +82,7 @@ import { UploadComponent } from './shared/upload/upload.component';
     ProgressbarModule.forRoot(),
     FormsModule,
     BsDatepickerModule.forRoot()
+
   ],
   providers: [
     ProjetoService,

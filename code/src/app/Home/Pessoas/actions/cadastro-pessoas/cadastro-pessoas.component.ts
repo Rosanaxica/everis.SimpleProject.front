@@ -18,9 +18,9 @@ export class CadastroPessoasComponent implements OnInit {
   telefones: Telefone[] = [];
 
   empresas: Empresa[] = [
-    {IdEmpresa: 1, Nome: 'Itau', Tipo: TipoSeguimento.Banking},
-    {IdEmpresa: 2, Nome: 'Santander', Tipo: TipoSeguimento.Banking},
-    {IdEmpresa: 3, Nome: 'Vivo', Tipo: TipoSeguimento.Telecomunicacao}
+    { IdEmpresa: 1, Nome: 'Itau', Tipo: TipoSeguimento.Banking },
+    { IdEmpresa: 2, Nome: 'Santander', Tipo: TipoSeguimento.Banking },
+    { IdEmpresa: 3, Nome: 'Vivo', Tipo: TipoSeguimento.Telecomunicacao }
   ];
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefone = new Telefone();
   }
 
-  SelecionarEmpresa (empresa: Empresa): void {
+  SelecionarEmpresa(empresa: Empresa): void {
     this.pessoa.Empresa = empresa;
   }
 
@@ -48,6 +48,17 @@ export class CadastroPessoasComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  isPerfilRequired(): boolean {
+    if (this.pessoa.Perfil === undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  RemoverTelefone(telefone: Telefone) {
+    this.telefones.splice(this.telefones.indexOf(telefone, 1));
   }
 
 }
