@@ -43,14 +43,14 @@ export class UploadComponent implements OnInit {
             window.alert('Upload executado com sucesso!');
           }
           else {
-            window.alert(`Não pudemos concluir o upload: ${event.headers['statusText']}`)
+            window.alert(`Não pudemos concluir o upload: ${event.headers['statusText']}`);
           }
 
-          delete this.httpEmitter
+          delete this.httpEmitter;
         }
       },
         error => console.log('Error Uploading', error)
-      )
+      );
   }
 
   cancela() {
@@ -67,17 +67,20 @@ export class UploadComponent implements OnInit {
 
     Array.from(files).forEach(d => {
       if (!Array.from(this.formatos).includes(d.type.substring(d.type.lastIndexOf('/') + 1))) {
-        window.alert('Arquivo em formato inválido!')
+        window.alert('Arquivo em formato inválido!');
         formData = undefined;
       }
 
       if (this.tamanho && this.tamanho < d.size) {
-        window.alert('Arquivo maior que o permitido!')
+        window.alert('Arquivo maior que o permitido!');
         formData = undefined;
       }
 
-      formData.append('file', d),
+      if (formData) {
+        formData.append('file', d);
         this.fileName = d.name;
+      }
+
     });
 
     return formData;
