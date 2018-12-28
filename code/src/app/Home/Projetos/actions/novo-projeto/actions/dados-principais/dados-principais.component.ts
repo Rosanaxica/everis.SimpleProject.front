@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Projeto } from 'src/app/models/projeto.model';
 import { FormGroup, FormBuilder, Validators } from '../../../../../../../../node_modules/@angular/forms';
 import { ProjetoService } from '../../../../../../services/projeto.service';
+import { Projeto } from '../../../../../../models/projeto.model';
 
 @Component({
   selector: 'app-dados-principais',

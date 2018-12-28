@@ -1,0 +1,46 @@
+.btn-danger {
+    background-color: rgb(215,103,52);
+}
+
+.colBtnDeletar {
+    width: 60px !important;
+    padding-top: 10px;
+    padding-left: 9px;
+}
+
+.text-center {
+    padding-top: 15px;
+} 
+
+table {
+    border-radius: 5px;
+    
+}
+
+.spanValid {
+    
+    color: green;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.spanInvalid {
+    color: red;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.spanAtention {
+    color: orange;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+
+
+table { border-collapse: separate; }
+tr:first-child td:first-child { border-top-left-radius: 10px; }
+tr:first-child td:last-child { border-top-right-radius: 10px; }
+tr:last-child td:first-child { border-bottom-left-radius: 10px; }
+tr:last-child td:last-child { border-bottom-right-radius: 10px; }
