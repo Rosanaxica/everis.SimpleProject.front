@@ -34,7 +34,7 @@ import { ProjetoService } from './services/projeto.service';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { UploadComponent } from './shared/upload/upload.component';
-import { InputComponent } from './shared/input/input.component';
+
 
 
 @NgModule({
@@ -58,8 +58,7 @@ import { InputComponent } from './shared/input/input.component';
     ModelosComponent,
     TemplateComponent,
     EmpresaComponent,
-    UploadComponent,
-    InputComponent
+    UploadComponent
   ],
   imports: [
     HttpClientModule,

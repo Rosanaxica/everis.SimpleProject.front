@@ -3,7 +3,7 @@
     <h1 class="titulo mb-0">Nova Pessoa</h1>
   </div>
   <nav class="col d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2">Salvar</button>
+    <button type="button" class="btn everis mr-2" [disabled]="!form.valid">Salvar</button>
     <button type="button" class="btn cancelar">Cancelar</button>
   </nav>
   <hr class="mt-2" />
@@ -17,36 +17,48 @@
   <div class="card">
     <div class="card-body">
 
-      <div class="custom-control custom-radio custom-control-inline form-group">
-        <input id="radColaborador" value="1" name="meuradio" [(ngModel)]="pessoa.Tipo" ngModel type="radio" class="custom-control-input">
-        <label class="custom-control-label" for="radColaborador">Colaborador</label>
+      <div class="row">
+        <div class="custom-control custom-radio custom-control-inline form-group">
+          <input id="radColaborador" value="1" name="meuradio" [(ngModel)]="pessoa.Tipo" #ctrlTipoPessoa="ngModel" type="radio"
+            class="custom-control-input" [required]="isTipoPessoaRequired()">
+          <label class="custom-control-label" for="radColaborador">Colaborador</label>
+        </div>
+
+        <div class="custom-control custom-radio custom-control-inline">
+          <input id="radTerceiro" value="3" name="meuradio" [(ngModel)]="pessoa.Tipo" #ctrlTipoPessoa="ngModel" type="radio"
+            class="custom-control-input" [required]="isTipoPessoaRequired()">
+          <label class="custom-control-label" for="radTerceiro">Terceiro</label>
+        </div>
+
+          <span class="spanAtention" *ngIf="ctrlTipoPessoa.invalid"><i class="fas fa-exclamation-triangle"></i>
+            Informe um tipo de pessoa</span>
+     
       </div>
 
-      <div class="custom-control custom-radio custom-control-inline">
-        <input id="radTerceiro" value="3" name="meuradio" [(ngModel)]="pessoa.Tipo" type="radio" class="custom-control-input">
-        <label class="custom-control-label" for="radTerceiro">Terceiro</label>
-      </div>
+
+
 
       <div class="row mb-2">
         <div class="col-md-12">
-          <app-input-container myGenericErrorMessage="Campo obrigatório e com no mínimo 5 caracteres" myGenericLabel="Nome">
-            <input type="text" class="form-control" name="nome" [(ngModel)]="pessoa.Nome" #ctrlNome="ngModel" required
-              minlength="5" autocomplete="off" placeholder="Nome">
-          </app-input-container>
+          <input type="text" class="form-control" name="nome" [(ngModel)]="pessoa.Nome" #ctrlNome="ngModel" required
+            minlength="5" autocomplete="off" placeholder="*Nome" [class.is-valid]="ctrlNome.valid" [class.is-invalid]="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
         </div>
+      </div>
+
+      <div class="alert alert-success" role="alert" *ngIf="ctrlNome.valid && (ctrlNome.dirty || ctrlNome.touched)">
+        <i class="fa fa-check mr-1"></i> OK
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
+        <i class="fa fa-times mr-2"> </i> Nome obrigatório. Mínimo de 5 letras
       </div>
 
       <div class="row mb-2">
         <div class="col-md-2">
-          <select class="form-control" id="tipoDocumento" name="tipoDocumento">
-            <option value="residencial">0</option>
-            <option value="particular">1</option>
-            <option value="empresarial">2</option>
-          </select>
+          <input type="text" class="form-control" id="nome" name="cpf" placeholder="CPF">
         </div>
 
         <div class="col-md-2">
-          <input type="text" class="form-control" id="nome" name="documento" placeholder="Documento">
+          <input type="text" class="form-control" id="nome" name="documento" placeholder="Outro Documento">
         </div>
       </div>
 
@@ -58,16 +70,26 @@
             <option value="3">Empresarial</option>
           </select>
         </div>
-        <div class="input-group col-md-4">
-          <app-input-container myGenericErrorMessage="Apenas números, até 12 digitos" myGenericLabel="Telefone">
-            <input type="text" class="form-control" [(ngModel)]="telefone.Telefone" id="telefone" name="telefone"
-              placeholder="Telefone" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12" #ctrlTelefone="ngModel" required autocomplete="off" >
-          </app-input-container>
+        <div class="input-group col-md-2">
+          <input type="text" class="form-control" [(ngModel)]="telefone.Telefone" id="telefone" name="telefone"
+            placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15" #ctrlTelefone="ngModel"
+            [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
+            autocomplete="off" [required]="isTelRequired()">
           <div class="input-group-append">
-            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"></i>
+            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.Telefone == undefined || telefone.Tipo == undefined || ctrlTelefone.invalid"><i
+                class="fas fa-plus"></i>
             </button>
           </div>
         </div>
+      </div>
+
+      <div class="alert alert-success" role="alert" *ngIf="ctrlTelefone.valid && (ctrlTelefone.dirty || ctrlTelefone.touched) && telefone.Tipo != undefined">
+        <i class="fa fa-check mr-1"></i> OK
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="ctrlTelefone.invalid && (ctrlTelefone.dirty ||
+        ctrlTelefone.touched) && telefones.length < 1">
+        <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um
+        telefone. Informe apenas numeros
       </div>
 
       <div class="row col-md-4">
@@ -90,7 +112,7 @@
 
       <div class="row mb-2">
         <div class="col-md-12">
-          <input type="text" class="form-control" [(ngModel)]="pessoa.Email" name="email" placeholder="E-mail">
+          <input type="email" class="form-control" [(ngModel)]="pessoa.Email" name="email" placeholder="E-mail">
         </div>
       </div>
 
@@ -106,8 +128,17 @@
       <div *ngIf="pessoa.Tipo == 1">
         <div class="row mb-2">
           <div class="col-md-12">
-            <input type="text" class="form-control" [(ngModel)]="pessoa.EmailCorp" name="emailCorp" placeholder="E-mail Corporativo">
+            <input type="email" class="form-control" [(ngModel)]="pessoa.EmailCorp" name="emailCorp" pattern=".+@everis.com"
+              #crtlEmailCorp="ngModel" placeholder="E-mail Corporativo" [required]="pessoa.Tipo > 0">
           </div>
+        </div>
+
+        <div class="alert alert-success" role="alert" *ngIf="crtlEmailCorp.valid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)">
+          <i class="fa fa-check mr-1"></i> Ok
+        </div>
+
+        <div class="alert alert-danger" role="alert" *ngIf="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)">
+          <i class="fa fa-times mr-2"></i> E-mail não preenchido ou no formato inválido. Ex.: corp@everis.com
         </div>
 
         <div class="row mb-2">
@@ -170,16 +201,10 @@
           <input type="file" id="arquivo" name="arquivo" class="everis" [(ngModel)]="pessoa.FotoPath" />
         </div>
       </div>
-    </div>
-
-    <div *ngIf="pessoa.Tipo > 0">
       <nav class="col d-flex justify-content-end">
         <button type="button" class="btn everis mr-2" [disabled]="!form.valid">Salvar</button>
         <button type="button" class="btn cancelar">Cancelar</button>
       </nav>
     </div>
-
   </div>
-
-
 </form>
