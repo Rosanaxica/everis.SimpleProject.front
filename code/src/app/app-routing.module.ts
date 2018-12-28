@@ -15,7 +15,6 @@ import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-sen
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
-import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
 import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
 
@@ -102,13 +101,8 @@ const appRoutes: Routes = [
     component: FechamentoProjetoComponent
   },
   {
-<<<<<<< HEAD
-    path: 'atribuicao-equipe',
-    component: AtribuicaoEquipeComponent
-=======
     path: 'anexos',
     component: AnexosComponent
->>>>>>> 1d81db64f65338c47106bdc58db39f9162a0529b
   }
 ];
 
