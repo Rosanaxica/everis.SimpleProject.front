@@ -17,7 +17,6 @@ import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
 import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
-import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
 
 const appRoutes: Routes = [
   {
