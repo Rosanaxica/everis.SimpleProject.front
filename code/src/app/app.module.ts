@@ -59,8 +59,7 @@ import { UploadComponent } from './shared/upload/upload.component';
     TemplateComponent,
     EmpresaComponent,
     AnexosComponent,
-    UploadComponent,
-    InputComponent
+    UploadComponent
   ],
   imports: [
     HttpClientModule,
