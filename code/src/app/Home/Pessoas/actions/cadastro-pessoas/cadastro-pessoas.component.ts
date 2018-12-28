@@ -10,16 +10,17 @@ import { PessoaColaboradorViewModel } from '../../pessoacolaborador.viewmodel';
 })
 export class CadastroPessoasComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   pessoa = new PessoaColaboradorViewModel();
   telefone = new Telefone();
   telefones: Telefone[] = [];
 
   empresas: Empresa[] = [
-    {IdEmpresa: 1, Nome: 'Itau', Tipo: TipoSeguimento.Banking},
-    {IdEmpresa: 2, Nome: 'Santander', Tipo: TipoSeguimento.Banking},
-    {IdEmpresa: 3, Nome: 'Vivo', Tipo: TipoSeguimento.Telecomunicacao}
+    { IdEmpresa: 1, Nome: 'Itau', Tipo: TipoSeguimento.Banking },
+    { IdEmpresa: 2, Nome: 'Santander', Tipo: TipoSeguimento.Banking },
+    { IdEmpresa: 3, Nome: 'Vivo', Tipo: TipoSeguimento.Telecomunicacao }
   ];
 
   ngOnInit() {
@@ -31,8 +32,33 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefone = new Telefone();
   }
 
-  SelecionarEmpresa (empresa: Empresa): void {
+  SelecionarEmpresa(empresa: Empresa): void {
     this.pessoa.Empresa = empresa;
+  }
+
+  isTelRequired(): boolean {
+    if (this.telefones.length === 0) {
+      return true;
+    }
+    return false;
+  }
+
+  isTipoPessoaRequired(): boolean {
+    if (this.pessoa.Tipo === undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  isPerfilRequired(): boolean {
+    if (this.pessoa.Perfil === undefined) {
+      return true;
+    }
+    return false;
+  }
+
+  RemoverTelefone(telefone: Telefone) {
+    this.telefones.splice(this.telefones.indexOf(telefone, 1));
   }
 
 }

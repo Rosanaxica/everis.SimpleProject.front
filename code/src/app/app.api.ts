@@ -8,3 +8,6 @@ export const urlProjetosObterTodos = environment.apiProjetosObterTodos
 
 //Pessoas
 export const urlPessoasObterTodos = environment.apiPessoasObterTodos
+
+//Anexos
+export const urlAnexosAdicionar = environment.apiAnexosAdicionar    

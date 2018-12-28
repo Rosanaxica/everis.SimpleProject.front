@@ -8,5 +8,8 @@ export const environment = {
   apiProjetosObterTodos: "api/Projeto/ObterTodos",
 
   //Pessoas
-  apiPessoasObterTodos: "api/Pessoa/ObterTodos"
+  apiPessoasObterTodos: "api/Pessoa/ObterTodos",
+
+  //Anexos
+  apiAnexosAdicionar: "api/Anexo/Adicionar"
 };
