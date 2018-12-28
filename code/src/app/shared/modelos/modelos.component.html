@@ -1,513 +1,491 @@
-<!--
-  IMPORTANTE: O MODELO CONSISTE NO TRECHO DE CÓDIGO DENTRO DOS COMENTÁRIOS
-  A ESTRUTURA DA GRID DEVE SER FEITO DE ACORDO COM O CONTEXTO
--->
-<ul>
-  <li> <a >Titulo com botoes</a></li>
-</ul>
-<div class="row align-items-center">
+
+<div class="row">
   <div class="col">
     <h1 class="titulo mb-0">Modelo de desenvolvimento</h1>
   </div> 
-    <hr class="mt-2" />
+    <hr class="mt-2 mb-5" />
 </div>
-<div class="container-fluid" id="cont">
-  <div class="row">
+
+<mat-accordion>
+
+  <!--Logo-->
+  <mat-expansion-panel class="mb-1">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Logo
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col"><img src="../../../assets/logo.png" alt="Simple Process" class="img-fluid"></div>
+      <div class="col text-center"><img src="../../../assets/logo_90.png" alt="Simple Process" class="img-fluid"></div>
+      <div class="col text-center"><img src="../../../assets/logo_32.png" alt="Simple Process" class="img-fluid"></div>
+    </div>    
+  </mat-expansion-panel>
+
+  <!--Título simples-->
+  <mat-expansion-panel class="mb-1">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Título simples
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row no-gutters">
       <div class="col">
-          <p class="titulos" id="link-logo">Logo</p>
-          <p>Logo do projeto com opções de 3 tamanhos diferentes.</p>
+        <h1 class="titulo">Lorem ipsum dolor sit amet</h1>
+      </div> 
+      <hr class="mt-0" />
+    </div>
+  </mat-expansion-panel>
 
-          <p class="mb-5">Exemplo:</p>
+  <!--Título com ações de página-->
+  <mat-expansion-panel class="mb-1">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Título com ações de página
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row align-items-center flex-wrap no-gutters">
+      <div class="col">
+        <h1 class="titulo">Lorem ipsum dolor sit amet</h1>
+      </div> 
+      <div class="col d-flex justify-content-end no-gutters">
+        <button type="button" class="btn everis mr-2">Salvar</button>
+        <button type="button" class="btn cancelar">Cancelar</button>
+      </div> 
+      <hr class="mt-2" />
+    </div>
+  </mat-expansion-panel>
 
-          <div class="row mb-5">
-            <div class="col">
-              <!--logo tamanho original-->
-              <img src="../../../assets/logo.png" alt="Simple Process">
-              <!--logo tamanho original-->
+  <!--Ações no final da página-->
+  <mat-expansion-panel class="mb-1">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Ações no final da página
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row align-items-center no-gutters">
+      <hr class="mb-2" />
+      <div class="col d-flex justify-content-end">
+        <button type="button" class="btn everis mr-2">Salvar</button>
+        <button type="button" class="btn cancelar">Cancelar</button>
+      </div> 
+    </div>
+  </mat-expansion-panel>
+
+  <!--Ação de voltar no fim da página-->
+  <mat-expansion-panel class="mb-1">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Ação de voltar no fim da página
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row align-items-center no-gutters">
+        <hr class="mb-2" />
+        <div class="col d-flex justify-content-center">
+          <button type="button" class="btn cancelar">Voltar</button>
+        </div> 
+      </div>
+    </mat-expansion-panel>
+
+  <!--Título com pesquisa e ações-->
+  <mat-expansion-panel class="mb-1">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Título com pesquisa e ações
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row align-items-center no-gutters">
+      <div class="col-md-12 col-lg-6 col-xl-4">
+        <h1 class="titulo pl-0 mb-0">Lorem ipsum dolor</h1>
+      </div> 
+      <div class="input-group col-md-12 col-lg-6 col-xl-5 mb-2">
+        <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+        </div>
+      </div>   
+      <div class="col-md-12 col-lg-12 col-xl-3 d-flex justify-content-end mb-2">
+        <button type="button" class="btn everis mr-2">Salvar</button>
+        <button type="button" class="btn cancelar">Cancelar</button>
+      </div> 
+      <hr class="mt-0" />
+    </div>
+  </mat-expansion-panel>
+
+  <!--Input-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Input
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+      <label for="label">Label</label>
+      <input type="text" class="form-control" id="input1" placeholder="text">
+    </div>
+  </mat-expansion-panel>
+
+  <!--Input desabilitado-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Input desabilitado
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+      <label for="label">Label</label>
+      <input type="text" class="form-control" id="input1" placeholder="text" disabled>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Textarea-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Textarea
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+      <label for="label">Label</label>
+      <textarea name="text" id="text" cols="30" rows="10" class="form-control"></textarea>
+    </div>
+  </mat-expansion-panel>
+  
+  <!--Textarea desabilitado-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Textarea desabilitado
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+      <label for="label">Label</label>
+      <textarea name="text" id="text" cols="30" rows="10" class="form-control" disabled></textarea>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Combo-->
+  <mat-expansion-panel class="mb-1">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Combo
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+      <label for="label">Label</label>
+      <select id="select1" class="custom-select">
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Combo desabilitado-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Combo desabilitado
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+      <label for="label">Label</label>
+      <select id="select1" class="custom-select" disabled>
+        <option selected>Open this select menu</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </select>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Checkbox-->
+  <mat-expansion-panel class="mb-2">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Checkbox
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="form-group">
+        <label for="label">Vertical</label>
+        <div class="custom-control custom-checkbox">
+          <input id="meucheckbox1" name="meucheckbox" type="checkbox" class="custom-control-input">
+          <label class="custom-control-label" for="meucheckbox1">Meu checkbox 1</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input id="meucheckbox2" name="meucheckbox" type="checkbox" class="custom-control-input" disabled>
+          <label class="custom-control-label" for="meucheckbox2">Meu checkbox 2</label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="label" class="mr-1">Horizontal: </label>
+        <div class="custom-control custom-checkbox custom-control-inline">
+          <input id="meucheckbox3" name="meucheckbox" type="checkbox" class="custom-control-input">
+          <label class="custom-control-label" for="meucheckbox3">Meu checkbox 3</label>
+        </div>
+        <div class="custom-control custom-checkbox custom-control-inline">
+          <input id="meucheckbox4" name="meucheckbox" type="checkbox" class="custom-control-input" disabled>
+          <label class="custom-control-label" for="meucheckbox4">Meu checkbox 4</label>
+        </div>
+      </div>
+  </mat-expansion-panel>
+
+  <!--Radiobutton-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Radiobutton
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="form-group">
+      <label for="label">Vertical</label>
+      <div class="custom-control custom-radio">
+        <input id="meuradio1" name="meuradio" type="radio" class="custom-control-input">
+        <label class="custom-control-label" for="meuradio1">Meu radiobutton 1</label>
+      </div>
+      <div class="custom-control custom-radio">
+        <input id="meuradio2" name="meuradio" type="radio" class="custom-control-input" disabled>
+        <label class="custom-control-label" for="meuradio2">Meu radiobutton 2</label>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="label" class="mr-1">Horizontal: </label>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input id="meuradio3" name="meuradio" type="radio" class="custom-control-input">
+        <label class="custom-control-label" for="meuradio3">Meu radiobutton 3</label>
+      </div>
+      <div class="custom-control custom-radio custom-control-inline">
+        <input id="meuradio4" name="meuradio" type="radio" class="custom-control-input" disabled>
+        <label class="custom-control-label" for="meuradio4">Meu radiobutton 4</label>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Tabs-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Tabs
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <tabset>
+      <tab heading="Basic title" class="p-4">Basic content</tab>
+      <tab heading="Basic Title 1" class="p-4">Basic content 1</tab>
+      <tab heading="Basic Title 2" class="p-4">Basic content 2</tab>
+    </tabset>
+  </mat-expansion-panel>
+
+  <!--Badge-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Badge
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row no-gutters">
+      <div class="col">
+        <span class="badge execucao p-1">Em execução</span>
+        <span class="badge everis p-1">Concluído</span>
+        <span class="badge badge-danger p-1">Cancelado</span>
+        <span class="badge badge-light p-1">Congelado</span>
+        <span class="badge everis-laranja text-white p-1">Pendente</span>
+        <span class="badge everis-azul text-white p-1">Controle de Qualidade</span>
+      </div>
+    </div>    
+  </mat-expansion-panel>
+
+  <!--Data e Hora-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Data e Hora
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="form-group col-md-4 col-lg-3">
+        <label for="data">Data</label>
+        <input type="text" class="form-control" id="data" bsDatepicker>
+      </div>
+      <div class="form-group col-md-3 col-lg-2">
+        <label for="hora">Hora</label>
+        <input type="time" class="form-control" id="hora">
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Data-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Data
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="form-group col-md-4 col-lg-3">
+        <label for="data">Data</label>
+        <input type="text" class="form-control" id="data" bsDatepicker>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Slide Toggle-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Slide Toogle
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="form-group col-3">
+        <mat-slide-toggle>Label</mat-slide-toggle>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Progressbar-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Progressbar
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col mb-2">
+        <progressbar [animate]="true" [value]="40" type="success"></progressbar>
+        <small>Lorem ipsum dolor sit amet, lorem ipsum dolor sit amet</small>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Alertas-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Alertas
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col">
+        <div class="alert alert-primary" role="alert">
+          <i class="fa fa-info-circle mr-1"></i> Esta é minha mensagem informativa primária de retorno ao usuário com um <a href="#" class="alert-link">link</a>.
+        </div>
+        <div class="alert alert-secondary" role="alert">
+          <i class="fa fa-info mr-2"></i>Esta é minha mensagem informativa secundária de retorno ao usuário com um <a href="#" class="alert-link">link</a>.
+        </div>
+        <div class="alert alert-success" role="alert">
+          <i class="fa fa-check mr-1"></i> Esta é minha mensagem de sucesso ao usuário com um <a href="#" class="alert-link">link</a>.
+        </div>
+        <div class="alert alert-danger" role="alert">
+          <i class="fa fa-times mr-2"></i>Esta é minha mensagem de erro impeditivo com um <a href="#" class="alert-link">link</a>.
+        </div>
+        <div class="alert alert-warning" role="alert">
+          <i class="fa fa-exclamation-triangle mr-1"></i> Esta é minha mensagem de alerta ao usuário com um <a href="#" class="alert-link">link</a>.
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Foto-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Foto
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="row">
+      <div class="col">
+        <img src="../../../assets/exemplo-foto.jpg" class="rounded-circle"  title="" alt="" width="64" height="64" />
+      </div>
+    </div>
+  </mat-expansion-panel>
+
+  <!--Expasion painel-->
+  <mat-expansion-panel class="mb-2">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            Expasion painel
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-accordion>
+        <mat-expansion-panel class="mb-2">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Collapse 1
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Conteúdo 1</p>
+        </mat-expansion-panel>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              Collapse 2
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <p>Conteúdo 2</p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-expansion-panel>
+
+  <!--Dialog-->
+  <mat-expansion-panel class="mb-2">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Dialog
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <button class="btn everis mr-2" data-toggle="modal" data-target="#logoutModal">Abrir modal</button>
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Título da modal</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Clique em "Sair"abaixo se deseja encerrar a sessão atual.</div>
+            <div class="modal-footer">
+              <button class="btn cancelar" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn everis" href="login.html">Sair</a>
             </div>
           </div>
+        </div>
+      </div>
+  </mat-expansion-panel>
 
-          <div class="row mb-5">
-            <div class="col">
-              <!--logo 90px-->
-              <img src="../../../assets/logo_90.png" alt="Simple Process">
-              <!--logo-->
-            </div>
-          </div>
-          <div class="row mb-5">
-            <div class="col">
-              <!--logo 32px-->
-              <img src="../../../assets/logo_32.png" alt="Simple Process">
-              <!--logo-->
-            </div>
-          </div>
-          <div id="teste" name="teste"></div>
-          <p class="titulos">Título</p>
-          <p>Títulos das páginas com opção: título sozinho, título com botões e título com botões e campo de busca.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <!--titulo-->
+  <!--CardPessoa-->
+  <mat-expansion-panel class="mb-2">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+            CardPessoa
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+        <div class="card card-colaborador border-everis">
           <div class="row">
-            <div class="col">
-              <h1 class="titulo"> Título de Páginas</h1>
-            </div> 
-            <hr class="mt-0" />
-          </div>
-          <!--.titulo-->
-          
-          <!--titulo com botões-->
-          <div class="row align-items-center">
-              <div class="col">
-                <h1 class="titulo mb-0">Título com botões</h1>
-              </div> 
-              <nav class="col d-flex justify-content-end">
-                <button type="button" class="btn everis mr-2">Salvar</button>
-                <button type="button" class="btn cancelar">Cancelar</button>
-              </nav> 
-              <hr class="mt-2" />
-          </div>
-          <!--.titulo com botões-->
-
-          <!--titulo com botões-->
-          <div class="row align-items-center">
-              <nav class="col d-flex justify-content-end">
-                <button type="button" class="btn everis mr-2">Salvar</button>
-                <button type="button" class="btn cancelar">Cancelar</button>
-              </nav> 
-              <hr class="mt-2" />
-          </div>
-          <!--.titulo com botões-->
-          
-          <!--titulo com pesquisa e botões-->
-          <div class="row align-items-center">
-              <div class="col-3">
-                  <h1 class="titulo mb-0">Título com pesquisa e botões</h1>
-              </div> 
-              <div class="input-group col">
-                <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+            <div class="card-body">
+              <div class="col-md-12 m-0 p-0">
+                <div class="col-md-12 text-right">
+                  <span class="badge everis text-right">Disponível</span>
                 </div>
-              </div>
-              <nav class="col-3 d-flex justify-content-end">
-                <button type="button" class="btn everis mr-2">Salvar</button>
-                <button type="button" class="btn cancelar">Cancelar</button>
-              </nav> 
-              <hr class="mt-2" />
-          </div>
-          <!--.titulo com pesquisa e botões-->
-          
-          <p class="titulos">Input</p>
-          <p>Input nas opções habilitado e desabilitado.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row">
-            <div class="col">
-
-              <!--input-->
-              <div class="form-group">
-                <label for="label">Input</label>
-                <input type="text" class="form-control" id="input1" placeholder="text">
-              </div>
-              <!--.input-->
-          
-              <!--input desabilitado-->
-              <div class="form-group">
-                <label for="label">Input</label>
-                <input type="text" class="form-control" id="input2" placeholder="text" disabled>
-              </div>
-              <!--.input desabilitado-->
-            
-            </div>
-          </div>
-          
-          <p class="titulos">Textarea</p>
-          <p>Textarea nas opções habilitado e desabilitado.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row">
-            <div class="col">
-          
-              <!--Textarea-->
-              <div class="form-group">
-                <label for="label">Textarea</label>
-                <textarea name="text" id="text" cols="30" rows="10" class="form-control"></textarea>
-              </div>
-              <!--.Textarea-->  
-          
-              <!--Textarea desabilitado-->
-              <div class="form-group">
-                <label for="label">Textarea</label>
-                <textarea name="text" id="text" cols="30" rows="10" class="form-control" disabled></textarea>
-              </div>
-              <!--.Textarea desabilitado-->
-            
-            </div>
-          </div>
-          
-          
-          <p class="titulos">Combo</p>
-          <p>Combo nas opções habilitado e desabilitado.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row">
-            <div class="col">
-          
-              <!--combo-->
-              <div class="form-group">
-                <label for="label">Combo</label>
-                <select id="select1" class="custom-select">
-                  <option selected>Open this select menu</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </select>
-              </div>
-              <!--.combo-->
-          
-              <!--combo desabilitado-->
-              <div class="form-group">
-                  <label for="label">Combo</label>
-                  <select id="select2" class="custom-select" disabled>
-                    <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                <!--.combo desabilitado-->
-            
-            </div>
-          </div>
-          
-          <p class="titulos">Checkbox</p>
-          <p>Checkbox nas opções habilitado / desabilitado e horizontal / vertical.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row">
-            <div class="col">
-          
-              <p>Direção: vertical</p>
-          
-              <!--checkbox vertical-->
-              <div class="custom-control custom-checkbox">
-                <input id="meucheckbox1" name="meucheckbox" type="checkbox" class="custom-control-input">
-                <label class="custom-control-label" for="meucheckbox1">Meu checkbox 1</label>
-              </div>
-              <div class="custom-control custom-checkbox">
-                <input id="meucheckbox2" name="meucheckbox" type="checkbox" class="custom-control-input" disabled>
-                <label class="custom-control-label" for="meucheckbox2">Meu checkbox 2</label>
-              </div>
-              <!--.checkbox vertical-->  
-          
-              <p class="mt-5">Direção: horizontal</p>
-          
-              <!--checkbox horizontal-->
-              <div class="custom-control custom-checkbox custom-control-inline">
-                <input id="meucheckbox3" name="meucheckbox" type="checkbox" class="custom-control-input">
-                <label class="custom-control-label" for="meucheckbox3">Meu checkbox 3</label>
-              </div>
-              <div class="custom-control custom-checkbox custom-control-inline">
-                <input id="meucheckbox4" name="meucheckbox" type="checkbox" class="custom-control-input" disabled>
-                <label class="custom-control-label" for="meucheckbox4">Meu checkbox 4</label>
-              </div>
-              <!--.checkbox horizontal--> 
-            
-            </div>
-          </div>
-          
-          <p class="titulos">RadioButton</p>
-          <p>RadioButton nas opções habilitado / desabilitado e horizontal / vertical.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row">
-            <div class="col">
-          
-              <p>Direção: vertical</p>
-          
-              <!--radio vertical-->
-              <div class="custom-control custom-radio">
-                <input id="meuradio1" name="meuradio" type="radio" class="custom-control-input">
-                <label class="custom-control-label" for="meuradio1">Meu radiobutton 1</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="meuradio2" name="meuradio" type="radio" class="custom-control-input" disabled>
-                <label class="custom-control-label" for="meuradio2">Meu radiobutton 2</label>
-              </div>
-              <!--.radio vertical-->  
-          
-              <p class="mt-5">Direção: horizontal</p>
-          
-              <!--radio vertical-->
-              <div class="custom-control custom-radio custom-control-inline">
-                <input id="meuradio3" name="meuradio" type="radio" class="custom-control-input">
-                <label class="custom-control-label" for="meuradio3">Meu radiobutton 3</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input id="meuradio4" name="meuradio" type="radio" class="custom-control-input" disabled>
-                <label class="custom-control-label" for="meuradio4">Meu radiobutton 4</label>
-              </div>
-              <!--.radio vertical--> 
-          
-            </div>
-          </div>
-          
-          <p class="titulos">Tabs</p>
-          <p>Tabs para organização de conteúdo em contexto.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row">
-            <div class="col">
-          
-              <!--tabs-->
-              <tabset>
-                <tab heading="Basic title" class="p-4">Basic content</tab>
-                <tab heading="Basic Title 1" class="p-4">Basic content 1</tab>
-                <tab heading="Basic Title 2" class="p-4">Basic content 2</tab>
-              </tabset>
-              <!--.tabs-->
-          
-            </div>
-          </div>
-          
-          <p class="titulos">Badge</p>
-          <p>Badge utilizado para indicar status de processos ou notificadores.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row mb-5">
-            <div class="col">
-          
-              <!--badge-->
-              <span class="badge execucao p-1">Em execução</span>
-              <span class="badge everis p-1">Concluído</span>
-              <span class="badge badge-danger p-1">Cancelado</span>
-              <span class="badge badge-light p-1">Congelado</span>
-              <span class="badge everis-laranja text-white p-1">Pendente</span>
-              <span class="badge everis-azul text-white p-1">Controle de Qualidade</span>
-              <!--.badge-->
-          
-            </div>
-          </div>
-          
-          <p class="titulos">Data e Hora</p>
-          <p>Datapicker e input de hora</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row">
-          
-              <!--data e Hora-->
-              <div class="form-group col-3">
-                <label for="data">Data</label>
-                <input type="text" class="form-control" id="data" bsDatepicker>
-              </div>
-              <div class="form-group col-2">
-                <label for="hora">Hora</label>
-                <input type="time" class="form-control" id="hora">
-              </div>
-              <!--.data e Hora-->
-          
-          </div>
-
-          <div class="row">
-            <div class="col-3">
-          
-              <!--data-->
-              <div class="form-group">
-                <label for="data">Data</label>
-                <input type="text" class="form-control" id="data" bsDatepicker>
-              </div>
-              <!--.data-->
-          
-            </div>
-          </div>
-          
-          <p class="titulos">CardPessoa</p>
-          <p>CardPessoa que será utilizado em listagem de pessoas.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row">
-            <div class="col-5">
-          
-              <!--Card pessoa-->
-              <div class="card card-colaborador border-everis">
-                  <div class="row">
-                    <div class="card-body">
-                      <div class="col-md-12 m-0 p-0">
-                        <div class="col-md-12 text-right">
-                          <span class="badge everis text-right">Disponível</span>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-3">
-                            <img class="card-img-top" src="../assets/u87.png" alt="Card image cap">
-                          </div>
-                          <div class="col-md-8 m-0 p-0">
-                            Ricardo Yamamura
-                            <small>Desenvolvedor</small>
-                          </div>
-                        </div>
-                        <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
-                      </div>
-                    </div>
-                  </div>  
-                </div>
-              <!--.Card pessoa-->
-          
-            </div>
-          </div>
-          <p class="titulos">Dialog</p>
-          <p>Dialog para utilização em confirmações e pequenas apresentações de dados / cadastros.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row mb-5">
-            <div class="col">
-          
-              <!--.modal-->
-              <button class="btn everis mr-2" data-toggle="modal" data-target="#logoutModal">Abrir modal</button>
-        
-              <!-- Logout Modal-->
-              <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Título da modal</h5>
-                      <button class="close" type="button" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">×</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">Clique em "Sair"abaixo se deseja encerrar a sessão atual.</div>
-                    <div class="modal-footer">
-                      <button class="btn cancelar" type="button" data-dismiss="modal">Cancel</button>
-                      <a class="btn everis" href="login.html">Sair</a>
-                    </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <img class="card-img-top rounded-circle" src="../../../assets/exemplo-foto.jpg" alt="Card image cap">
+                  </div>
+                  <div class="col-md-8 m-0 p-0">
+                    Ricardo Yamamura
+                    <small>Desenvolvedor</small>
                   </div>
                 </div>
+                <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
               </div>
-              <!--.modal-->
-          
             </div>
-          </div>
-          <p class="titulos">Slide Toggle</p>
-          <p>Slide Toggle para utilização em estados ativo e inativo.</p>
+          </div>  
+        </div>
+    </mat-expansion-panel>
 
-          <p class="mb-5">Exemplo:</p>
+</mat-accordion>
           
-          <div class="row mb-5">
-            <div class="col">
-          
-              <!--.toggle-->
-              <mat-slide-toggle></mat-slide-toggle>
-              <!--.toggle-->
-          
-            </div>
-          </div>
-        
-          <p class="titulos">ProgressBar</p>
-          <p>Barra de progresso para definição de porcentagem dos processos.</p>
 
-          <p class="mb-5">Exemplo:</p>
           
-          <div class="row mb-5">
-            <div class="col">
-          
-              <!--.Barra de progresso-->
-              <div class="mb-2">
-                <progressbar [animate]="true" [value]="40" type="success"><b>40%</b></progressbar>
-              </div>
-              <!--.barra de progresso-->
-          
-            </div>
-          </div>
-          <p class="titulos">Alertas</p>
-          <p>Alertas para mensagem de retorno ao usuário.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row mb-5">
-            <div class="col">
-          
-              <!--.Alertas-->
-                <div class="alert alert-primary" role="alert">
-                  <i class="fa fa-info-circle mr-1"></i> Esta é minha mensagem informativa primária de retorno ao usuário com um <a href="#" class="alert-link">link</a>.
-                </div>
-                <div class="alert alert-secondary" role="alert">
-                  <i class="fa fa-info mr-2"></i>Esta é minha mensagem informativa secundária de retorno ao usuário com um <a href="#" class="alert-link">link</a>.
-                </div>
-                <div class="alert alert-success" role="alert">
-                  <i class="fa fa-check mr-1"></i> Esta é minha mensagem de sucesso ao usuário com um <a href="#" class="alert-link">link</a>.
-                </div>
-                <div class="alert alert-danger" role="alert">
-                  <i class="fa fa-times mr-2"></i>Esta é minha mensagem de erro impeditivo com um <a href="#" class="alert-link">link</a>.
-                </div>
-                <div class="alert alert-warning" role="alert">
-                  <i class="fa fa-exclamation-triangle mr-1"></i> Esta é minha mensagem de alerta ao usuário com um <a href="#" class="alert-link">link</a>.
-                </div>
-              <!--.Alertas-->
-          
-            </div>
-          </div>
-        
-          <p class="titulos">Foto</p>
-          <p>Foto de pessoa, deve ser utilizada com o tamanho fixo de 64x64.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row mb-5">
-            <div class="col">
-          
-              <!--.Foto-->
-              <img src="../../../assets/exemplo-foto.jpg" class="rounded-circle"  title="" alt="" width="64" height="64" />
-              <!--.Foto-->
-          
-            </div>
-          </div>
-        
-          <p class="titulos">Accordion</p>
-          <p>Collapse painel para conteúdos extensos.</p>
-
-          <p class="mb-5">Exemplo:</p>
-          
-          <div class="row mb-5">
-            <div class="col">
-          
-              <!--.Accordion-->
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Collapse 1
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <p>Conteúdo 1</p>
-                </mat-expansion-panel>
-                <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      Collapse 2
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <p>Conteúdo 2</p>
-                </mat-expansion-panel>
-              </mat-accordion>
-              <!--.Accordion-->
-          
-            </div>
-          </div>
-          
-      </div>
-  </div>
-
-  
-
-</div>
 

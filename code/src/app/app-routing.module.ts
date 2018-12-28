@@ -50,7 +50,6 @@ const appRoutes: Routes = [
   },
   {
     path: 'template',
-
     component: TemplateComponent,
     children: [
     {path: 'pessoas', component: PessoasComponent},

@@ -10,7 +10,7 @@ export class PessoaColaboradorViewModel {
     Tipo: TipoPessoa;
     Email: string;
     Cpf?: number;
-    Documento: String;
+    Documento?: String;
     FotoPath: string;
     Empresa?: Empresa;
     Telefones: Telefone[];
@@ -24,6 +24,7 @@ export class PessoaColaboradorViewModel {
 
     constructor() {
         this.Ativo = true;
+        this.Disponivel = true;
     }
 }
 
