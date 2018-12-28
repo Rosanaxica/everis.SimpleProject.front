@@ -35,6 +35,8 @@ import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/fo
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { UploadComponent } from './shared/upload/upload.component';
 import { InputComponent } from './shared/input/input.component';
+import { DateFormatPipe } from './shared/util/date-format-pipe';
+import { DateTimeFormatPipe } from './shared/util/datetime-format-pipe';
 
 
 @NgModule({
@@ -60,7 +62,9 @@ import { InputComponent } from './shared/input/input.component';
     EmpresaComponent,
     AnexosComponent,
     UploadComponent,
-    InputComponent
+    InputComponent,
+    DateFormatPipe,
+    DateTimeFormatPipe
   ],
   imports: [
     HttpClientModule,
@@ -81,7 +85,7 @@ import { InputComponent } from './shared/input/input.component';
     BsDatepickerModule.forRoot()
   ],
   providers: [
-    ProjetoService,
+    ProjetoService
   ],
   bootstrap: [AppComponent]
 })

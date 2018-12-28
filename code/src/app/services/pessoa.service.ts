@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { urlDataDomain, urlProjetosAdicionar, urlProjetosObterTodos } from '../app.api';
+import { urlDataDomain, urlPessoasObterTodos } from '../app.api';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProjetoService {
+export class PessoaService {
 
   constructor(private http: HttpClient) { }
 
@@ -14,11 +14,7 @@ export class ProjetoService {
     'Content-Type': 'application/json',
   });
 
-  Adicionar(obj: any){
-    return this.http.post<any>(`${urlDataDomain}${urlProjetosAdicionar}`, obj)
-  }
-
   public ObterTodos() : Observable<any>{
-    return this.http.get(`${urlDataDomain}${urlProjetosObterTodos}`)
+    return this.http.get(`${urlDataDomain}${urlPessoasObterTodos}`)
   }
 }
