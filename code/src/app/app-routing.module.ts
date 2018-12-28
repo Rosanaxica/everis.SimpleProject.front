@@ -48,7 +48,7 @@ const appRoutes: Routes = [
     {path: 'projetos', component: ProjetosComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'dashboard', component: DashboardComponent},
-    {path: 'novo-projeto', component: NovoProjetoComponent},
+    {path: 'novo-projeto', component: NovoProjetoComponent },
   ],
   },
   {
