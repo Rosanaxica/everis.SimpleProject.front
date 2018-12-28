@@ -1,3 +1,4 @@
+import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
@@ -56,7 +57,8 @@ const appRoutes: Routes = [
   {
     path: 'dados-principais',
     component: DadosPrincipaisComponent
-  },{
+  },
+  {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },
@@ -72,6 +74,10 @@ const appRoutes: Routes = [
     path: 'fechamento-projeto',
     component: FechamentoProjetoComponent
   },
+  {
+    path: 'atribuicao-equipe',
+    component: AtribuicaoEquipeComponent
+  }
 ];
 
 @NgModule({
