@@ -13,6 +13,8 @@ import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-sen
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-colaboradores/cadastro-colaboradores.component';
+import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
+import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 
 const appRoutes: Routes = [
   {
@@ -55,7 +57,7 @@ const appRoutes: Routes = [
   {
     path: 'dados-principais',
     component: DadosPrincipaisComponent
-  },{
+  }, {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },
@@ -66,6 +68,14 @@ const appRoutes: Routes = [
   {
     path: 'cadastro-pessoas',
     component: CadastroPessoasComponent
+  },
+  {
+    path: 'novo-projeto', component: NovoProjetoComponent,
+    children: [
+      { path: '', redirectTo: 'dados-principais', pathMatch: 'full' },
+      { path: 'dados-principais', component: DadosPrincipaisComponent },
+      { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent }
+    ]
   },
 ];
 
