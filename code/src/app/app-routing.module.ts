@@ -49,6 +49,7 @@ const appRoutes: Routes = [
     {path: 'dashboard', component: DashboardComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'novo-projeto', component: NovoProjetoComponent },
+    { path: 'modelos', component: ModelosComponent}
   ],
   },
   {
@@ -84,7 +85,7 @@ const appRoutes: Routes = [
     children: [
       { path: '', redirectTo: 'dados-principais', pathMatch: 'full' },
       { path: 'dados-principais', component: DadosPrincipaisComponent },
-      { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent }
+      { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent },
     ]
   },
   { path: '',   redirectTo: '/template', pathMatch: 'full' },
