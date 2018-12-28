@@ -1,3 +1,4 @@
+import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
@@ -14,10 +15,12 @@ import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-sen
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
-import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
+<<<<<<< HEAD
+import { EmpresaComponent } from './Home/Empresa/empresa.component';
+=======
 import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
-
+>>>>>>> a5515f7ab455e7687a4fe24d54dc1660571bbd84
 
 const appRoutes: Routes = [
   {
@@ -48,6 +51,9 @@ const appRoutes: Routes = [
   },
   {
     path: 'template',
+<<<<<<< HEAD
+    component: TemplateComponent
+=======
     component: TemplateComponent,
     children: [
     {path: 'pessoas', component: PessoasComponent},
@@ -59,6 +65,7 @@ const appRoutes: Routes = [
     {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
      {path: 'modelos', component: ModelosComponent},
     ],
+>>>>>>> a5515f7ab455e7687a4fe24d54dc1660571bbd84
   },
   {
     path: 'login',
@@ -104,7 +111,12 @@ const appRoutes: Routes = [
   {
     path: 'anexos',
     component: AnexosComponent
+  },
+  {
+    path: 'empresa',
+    component: EmpresaComponent
   }
+  
 ];
 
 @NgModule({
