@@ -13,7 +13,11 @@ import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
-import { CadastroColaboradoresComponent } from './Home/Pessoas/actions/cadastro-colaboradores/cadastro-colaboradores.component';
+import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
+import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
+import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
+import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
+import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
 
 const appRoutes: Routes = [
   {
@@ -21,12 +25,12 @@ const appRoutes: Routes = [
     component: ModelosComponent
   },
   {
-    path: '*',
-    component: AppComponent
+    path: 'novo-projeto',
+    component: NovoProjetoComponent
   },
   {
-    path: 'cadastro-colaborador',
-    component: CadastroColaboradoresComponent
+    path: '*',
+    component: AppComponent
   },
   {
     path: 'pessoas',
@@ -38,8 +42,15 @@ const appRoutes: Routes = [
   },
   {
     path: 'template',
-    component: TemplateComponent
-
+    component: TemplateComponent,
+    children: [
+    {path: 'pessoas', component: PessoasComponent},
+    {path: 'projetos', component: ProjetosComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'novo-projeto', component: NovoProjetoComponent },
+    { path: 'modelos', component: ModelosComponent}
+  ],
   },
   {
     path: 'login',
@@ -56,7 +67,8 @@ const appRoutes: Routes = [
   {
     path: 'dados-principais',
     component: DadosPrincipaisComponent
-  },{
+  }, 
+  {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },
@@ -69,9 +81,22 @@ const appRoutes: Routes = [
     component: CadastroPessoasComponent
   },
   {
+    path: 'novo-projeto', component: NovoProjetoComponent,
+    children: [
+      { path: '', redirectTo: 'dados-principais', pathMatch: 'full' },
+      { path: 'dados-principais', component: DadosPrincipaisComponent },
+      { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent },
+    ]
+  },
+  { path: '',   redirectTo: '/template', pathMatch: 'full' },
+  {
     path: 'fechamento-projeto',
     component: FechamentoProjetoComponent
   },
+  {
+    path: 'anexos',
+    component: AnexosComponent
+  }
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 export class Empresa {
+    IdEmpresa: number;
     Nome: string;
     Tipo: TipoSeguimento;
 }
