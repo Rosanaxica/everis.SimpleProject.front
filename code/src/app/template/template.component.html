@@ -43,18 +43,18 @@
   <!-- Sidebar -->
   <ul class="sidebar navbar-nav bg-gray-light">
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" [routerLink]="['novo-projeto']" routerLinkActive="active">
         <button class="btn everis">Adicionar projeto</button>
       </a>
     </li>
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" [routerLink]="['dashboard']" routerLinkActive="active">
         <i class="fas fa-tachometer-alt"></i>
         <span> Dashboard</span></a>
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" routerLink="/projeto" routerLinkActive="active">
+      <a class="nav-link" [routerLink]="['projetos']" routerLinkActive="active">
         <i class="fas fa-chart-bar"></i>
         <span> Projetos</span></a>
     </li>

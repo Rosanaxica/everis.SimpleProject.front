@@ -14,11 +14,17 @@ import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-sen
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
+import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
+import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
 
 const appRoutes: Routes = [
   {
     path: 'modelos',
     component: ModelosComponent
+  },
+  {
+    path: 'novo-projeto',
+    component: NovoProjetoComponent
   },
   {
     path: '*',
@@ -35,7 +41,13 @@ const appRoutes: Routes = [
   {
     path: 'template',
     component: TemplateComponent,
-    children: [{path: 'pessoas', component: PessoasComponent}]
+    children: [
+    {path: 'pessoas', component: PessoasComponent},
+    {path: 'projetos', component: ProjetosComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'dashboard', component: DashboardComponent},
+    {path: 'novo-projeto', component: NovoProjetoComponent},
+  ],
   },
   {
     path: 'login',

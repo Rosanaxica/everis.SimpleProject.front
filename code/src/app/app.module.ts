@@ -58,12 +58,9 @@ import { InputComponent } from './shared/input/input.component';
     ModelosComponent,
     TemplateComponent,
     EmpresaComponent,
-<<<<<<< HEAD
-    AnexosComponent
-=======
+    AnexosComponent,
     UploadComponent,
     InputComponent
->>>>>>> 9e51fb77a465f22c541538b89d756400ad3afc39
   ],
   imports: [
     HttpClientModule,
