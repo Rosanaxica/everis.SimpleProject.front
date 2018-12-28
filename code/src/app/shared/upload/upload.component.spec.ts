@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DadosPrincipaisComponent } from './dados-principais.component';
+import { UploadComponent } from './upload.component';
 
-describe('DadosPrincipaisComponent', () => {
-  let component: DadosPrincipaisComponent;
-  let fixture: ComponentFixture<DadosPrincipaisComponent>;
+describe('UploadComponent', () => {
+  let component: UploadComponent;
+  let fixture: ComponentFixture<UploadComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DadosPrincipaisComponent ]
+      declarations: [ UploadComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DadosPrincipaisComponent);
+    fixture = TestBed.createComponent(UploadComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
