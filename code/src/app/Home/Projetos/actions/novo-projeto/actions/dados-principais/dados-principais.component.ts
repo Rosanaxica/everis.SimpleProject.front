@@ -9,31 +9,21 @@ import { Projeto } from '../../../../../../models/projeto.model';
   styleUrls: ['./dados-principais.component.css']
 })
 export class DadosPrincipaisComponent implements OnInit {
-
-  projeto= new Projeto();
-
+  projeto : Projeto
+  
   constructor(private formBuilder: FormBuilder, private projetoService: ProjetoService) { }
   dadosPrincipaisForm: FormGroup;
-
+  
   ngOnInit() {
+    this.projeto = new Projeto();
+
     this.dadosPrincipaisForm = this.formBuilder.group(
       {
-        login: ['', Validators.required],
       }
     );
   }
 
   Adicionar() {
-    this.projeto = new Projeto();
-
-    this.projeto.Nome = "Projeto1"
-    this.projeto.QtdHorasServico1 = 5
-    this.projeto.DataInicio = new Date("22/12/2018")
-    this.projeto.EscopoProjeto = "descricao"
-    this.projeto.IdEmpresa = 1
-    this.projeto.Status = "1"
-    this.projeto.DataPrevista = new Date("31/02/2019")
-    this.projeto.CentroCusto = "1"
 
     this.projetoService.Adicionar(this.projeto)
       .subscribe((data: any) => {
