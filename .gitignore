@@ -342,3 +342,5 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database 
 healthchecksdb
+/code/.vs/slnx.sqlite
+/code/.vs/slnx.sqlite-journal
