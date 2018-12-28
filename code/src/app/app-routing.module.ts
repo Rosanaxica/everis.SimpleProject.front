@@ -17,8 +17,6 @@ import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
 import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
-import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
-
 const appRoutes: Routes = [
   {
     path: 'modelos',
@@ -34,23 +32,31 @@ const appRoutes: Routes = [
   },
   {
     path: 'pessoas',
-    component: PessoasComponent
+    component: PessoasComponent,
+       children: [
+       {path: 'cadastro-pessoas', component: CadastroPessoasComponent}
+    ],
   },
   {
     path: 'projetos',
-    component: ProjetosComponent
+    component: ProjetosComponent,
+    children: [
+      {path: 'novo-projeto', component: NovoProjetoComponent},
+   ],
   },
   {
     path: 'template',
     component: TemplateComponent,
     children: [
     {path: 'pessoas', component: PessoasComponent},
+    {path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent},
     {path: 'projetos', component: ProjetosComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'novo-projeto', component: NovoProjetoComponent },
-    { path: 'modelos', component: ModelosComponent}
-  ],
+    {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
+     {path: 'modelos', component: ModelosComponent},
+    ],
   },
   {
     path: 'login',
@@ -67,7 +73,7 @@ const appRoutes: Routes = [
   {
     path: 'dados-principais',
     component: DadosPrincipaisComponent
-  }, 
+  },
   {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent

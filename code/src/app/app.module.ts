@@ -37,6 +37,8 @@ import { UploadComponent } from './shared/upload/upload.component';
 import { InputComponent } from './shared/input/input.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +81,7 @@ import { InputComponent } from './shared/input/input.component';
     ProgressbarModule.forRoot(),
     FormsModule,
     BsDatepickerModule.forRoot()
+
   ],
   providers: [
     ProjetoService,

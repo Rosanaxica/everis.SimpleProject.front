@@ -61,33 +61,38 @@
         <div class="input-group col-md-4">
           <app-input-container myGenericErrorMessage="Apenas números, até 12 digitos" myGenericLabel="Telefone">
             <input type="text" class="form-control" [(ngModel)]="telefone.Telefone" id="telefone" name="telefone"
-              placeholder="Telefone" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12" #ctrlTelefone="ngModel" required autocomplete="off" >
+              placeholder="Telefone" pattern="[0-9]{3} [0-9]{3} [0-9]{4}" maxlength="12" #ctrlTelefone="ngModel"
+              required autocomplete="off">
           </app-input-container>
+
+
+
           <div class="input-group-append">
             <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button"><i class="fas fa-plus"></i>
             </button>
           </div>
+
         </div>
       </div>
-
-      <div class="row col-md-4">
-        <table class="table table-striped">
-          <tbody>
-            <tr *ngFor="let telefone of telefones">
-              <td class="text-center">
-                <p>{{telefone.Tipo}}</p>
-              </td>
-              <td class="text-center">
-                <p>{{telefone.Telefone}}</p>
-              </td>
-              <td class="colBtnDeletar">
-                <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="row">
+        <div class="border  col-md-12">
+          <table class="table table-striped col-md-4">
+            <tbody>
+              <tr *ngFor="let telefone of telefones">
+                <td class="text-center">
+                  <p>{{telefone.Tipo}}</p>
+                </td>
+                <td class="text-center">
+                  <p>{{telefone.Telefone}}</p>
+                </td>
+                <td class="colBtnDeletar">
+                  <button class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-
       <div class="row mb-2">
         <div class="col-md-12">
           <input type="text" class="form-control" [(ngModel)]="pessoa.Email" name="email" placeholder="E-mail">
@@ -183,3 +188,7 @@
 
 
 </form>
+<hr>
+<div class="col-12 text-center">
+  <button type="button" class="btn cancelar">Voltar</button>
+</div>
