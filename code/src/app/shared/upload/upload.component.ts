@@ -43,7 +43,7 @@ export class UploadComponent implements OnInit {
             window.alert('Upload executado com sucesso!');
           }
           else {
-            window.alert(`Não pudemos concluir o upload: ${event.headers['statusText']}`);
+            window.alert(`Não pudemos concluir o upload: ${event.headers['message']}`);
           }
 
           delete this.httpEmitter;
