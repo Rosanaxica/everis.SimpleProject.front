@@ -106,7 +106,7 @@ const appRoutes: Routes = [
     component: AnexosComponent
   },
   {
-    path: 'empresa',
+    path: 'cadastro-empresa',
     component: EmpresaComponent
   }
 ];

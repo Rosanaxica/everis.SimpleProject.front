@@ -1,3 +1,5 @@
+
+
 <div class="row align-items-center">
   <div class="col">
     <h1 class="titulo mb-0">Nova Pessoa</h1>
@@ -12,11 +14,29 @@
 {{pessoa | json}}
 {{form.valid}}
 {{ form.value | json }}
+{{ empresas | json }}
+
 
 <form #form="ngForm" novalidate>
   <div class="card">
     <div class="card-body">
 
+        <table *ngIf="empresas.length > 0" class="table table-striped">
+            <thead class="thead-dark">
+              <tr>
+                  <th>Titulo</th>
+                  <th>Ano de Lançamento</th>
+              </tr> 
+            </thead>
+            <tbody>
+              <tr *ngFor="let emp of empresas">
+                <td>{{emp.Nome}}</td>
+                <td>{{emp.Segmento}}</td>
+              </tr>
+            </tbody>
+          </table>
+
+      <!-- Inicio Tipo Pessoa -->
       <div class="row">
         <div class="col mb-2">
           <div class="custom-control custom-radio custom-control-inline">
@@ -35,10 +55,9 @@
             Informe um tipo de pessoa</span>
         </div>
       </div>
+      <!-- Fim Tipo Pessoa -->
 
-
-
-
+      <!-- Inicio Nome -->
       <div class="row mb-2">
         <div class="col-md-12">
           <input type="text" class="form-control" name="nome" [(ngModel)]="pessoa.Nome" #ctrlNome="ngModel" required
@@ -52,28 +71,32 @@
       <div class="alert alert-danger" role="alert" *ngIf="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
         <i class="fa fa-times mr-2"> </i> Nome obrigatório. Mínimo de 5 letras
       </div>
+      <!-- Fim Nome -->
 
+      <!-- Inicio CPF e  Documento-->
       <div class="row mb-2">
         <div class="col-md-2">
           <input type="text" class="form-control" id="nome" name="cpf" placeholder="CPF" minlength="11" maxlength="11"
             pattern="^[0-9]*$" [(ngModel)]="pessoa.Cpf" #ctrlCpf="ngModel" [class.is-valid]="ctrlCpf.valid && pessoa.Cpf != undefined && pessoa.Cpf > 0 "
             [class.is-invalid]="ctrlCpf.invalid">
-
         </div>
 
         <div class="col-md-5">
           <input type="text" class="form-control" id="nome" name="documento" placeholder="Outro Documento">
         </div>
       </div>
+      <!-- Fim CPF e Documento -->
 
+      <!-- Inicio Telefone -->
       <div class="row mb-2">
         <div class="col-md-2">
           <select class="form-control" id="tipoTelefone" [(ngModel)]="telefone.Tipo" name="tipoTelefone">
-            <option value="1">Residencial</option>
-            <option value="2">Particular</option>
-            <option value="3">Empresarial</option>
+            <option value="1">Celular</option>
+            <option value="2">Fixo</option>
+            <option value="3">Ramal</option>
           </select>
         </div>
+
         <div class="input-group col-md-4">
           <input type="text" class="form-control" [(ngModel)]="telefone.Telefone" id="telefone" name="telefone"
             placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15" #ctrlTelefone="ngModel"
@@ -88,7 +111,6 @@
 
         </div>
       </div>
-
 
       <div class="alert alert-success" role="alert" *ngIf="ctrlTelefone.valid && (ctrlTelefone.dirty || ctrlTelefone.touched) && telefone.Tipo != undefined">
         <i class="fa fa-check mr-1"></i> OK
@@ -115,8 +137,10 @@
             </tr>
           </tbody>
         </table>
-
       </div>
+      <!-- Fim Telefone -->
+
+      <!-- Inicio E-mail -->
       <div class="row mb-2">
         <div class="col-md-12">
           <input type="email" class="form-control" [(ngModel)]="pessoa.Email" #ctrlEmail="ngModel" name="email"
@@ -132,18 +156,22 @@
       <div class="alert alert-danger" role="alert" *ngIf="ctrlEmail.invalid && (ctrlEmail.dirty || ctrlEmail.touched)">
         <i class="fa fa-times mr-2"></i> E-mail não preenchido ou no formato inválido. Ex.: email@exemplo.com
       </div>
+      <!-- Fim E-mail -->
 
-      {{pessoa.Empresa | json}}
+      <!-- Inicio Empresa -->
       <div class="row mb-2" *ngIf="pessoa.Tipo == 3">
         <div class="col-md-2">
           <select class="form-control" #selectEmpresa (change)="SelecionarEmpresa(selectEmpresa.value)" name="tipoCliente"
             [required]="pessoa.Tipo == 3">
-            <option *ngFor="let empresa of empresas" [ngValue]="empresa.IdEmpresa">{{empresa.Nome}}</option>
+            <option *ngFor="let emp of empresas" [value]="emp.Id">{{emp.Nome}}</option>
           </select>
         </div>
       </div>
+      <!-- Fim Empresa -->
+
 
       <div *ngIf="pessoa.Tipo == 1">
+        <!-- Inicio E-mail Corp -->
         <div class="row mb-2">
           <div class="col-md-12">
             <input type="email" class="form-control" [(ngModel)]="pessoa.EmailCorp" name="emailCorp" pattern=".+@everis.com"
@@ -159,17 +187,21 @@
         <div class="alert alert-danger" role="alert" *ngIf="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)">
           <i class="fa fa-times mr-2"></i> E-mail não preenchido ou no formato inválido. Ex.: corp@everis.com
         </div>
+        <!-- Fim E-mail Corp -->
 
+        <!-- Inicio Funcional -->
         <div class="row mb-2">
           <div class="col-md-4">
             <input type="text" class="form-control" [(ngModel)]="pessoa.Funcional" name="funcional" placeholder="Funcional"
               #ctrlFuncional="ngModel" [class.is-valid]="ctrlFuncional.valid" [class.is-invalid]="ctrlFuncional.invalid && (ctrlFuncional.dirty || ctrlFuncional.touched)"
               pattern="^[0-9]*$" minlength="9" maxlength="9" [required]="pessoa.Tipo == 1">
           </div>
+
+          <!-- Inicio RACF -->
           <div class="col-md-4">
             <input type="text" class="form-control" [(ngModel)]="pessoa.Racf" name="racf" placeholder="RACF">
           </div>
-
+          <!-- Fim RACF -->
         </div>
 
         <div class="alert alert-success" role="alert" *ngIf="ctrlFuncional.valid && (ctrlFuncional.dirty || ctrlFuncional.touched)">
@@ -179,15 +211,17 @@
         <div class="alert alert-danger" role="alert" *ngIf="ctrlFuncional.invalid && (ctrlFuncional.dirty || ctrlFuncional.touched)">
           <i class="fa fa-times mr-2"></i> Informe a funcional com 9 digitos
         </div>
+        <!-- Fim Funcional -->
 
-
-
+        <!-- Inicio Nome da Máquina -->
         <div class="row mb-3">
           <div class="col-md-12">
             <input type="text" class="form-control" [(ngModel)]="pessoa.NomeMaquina" name="vdi" placeholder="Nome da Maquina VDI">
           </div>
         </div>
+        <!-- Fim Nome da Máquina -->
 
+        <!-- Inicio Nivel Função -->
         <div class="row mb-4">
           <div class="col-md-2">
             <label for="nivelFuncional">Nivel Funcional</label>
@@ -203,8 +237,10 @@
               <option value="7">Manager</option>
             </select>
           </div>
-          <div class="col-md-6">
+          <!-- Fim Nivel Função -->
 
+          <!-- Inicio Perfil Acesso -->
+          <div class="col-md-6">
             <div class="row">
               <label for="perfilAcesso">Perfil de Acesso</label>
             </div>
@@ -231,7 +267,9 @@
           </div>
         </div>
       </div>
+      <!-- Fim Perfil Acesso -->
 
+      <!-- Inicio Foto -->
       <div class="row mb-2">
         <div class="col-md-7">
           <input type="file" id="arquivo" name="arquivo" class="everis" [(ngModel)]="pessoa.FotoPath" />
@@ -242,6 +280,7 @@
         <button type="button" class="btn cancelar">Cancelar</button>
       </nav>
     </div>
+    <!-- Fim Foto -->
   </div>
 
 </form>
@@ -249,6 +288,3 @@
 <div class="col-12 text-center">
   <button type="button" class="btn cancelar">Voltar</button>
 </div>
-
-
-

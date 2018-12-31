@@ -1,6 +1,6 @@
 export class Anexo {
-  Descricao : string
-  Path : string
-  Tipo : string
-  IdProjeto : number
+  Descricao: string;
+  Path: string;
+  Tipo: string;
+  IdProjeto: number;
 }

@@ -21,16 +21,16 @@ export class AnexosComponent implements OnInit {
   }
 
   Adicionar() {
-    this.anexo.IdProjeto = 1
+    this.anexo.IdProjeto = 1;
 
     this.anexoService.Adicionar(this.anexo)
       .subscribe((data: any) => {
         switch (data.codigo) {
           case 200:
-            window.alert("ok")
+            window.alert('ok');
             break;
           default:
-            window.alert("erro")
+            window.alert('erro');
             break;
         }
       },

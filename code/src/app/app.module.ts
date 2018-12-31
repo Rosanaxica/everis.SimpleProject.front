@@ -27,13 +27,14 @@ import { ModelosComponent } from './shared/modelos/modelos.component';
 import { TemplateComponent } from './template/template.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
-
+import { HttpModule } from '@angular/http';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { ProjetoService } from './services/projeto.service';
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { UploadComponent } from './shared/upload/upload.component';
+import { EmpresaService } from './Home/Empresa/empresa-service.service';
 
 
 
@@ -65,6 +66,7 @@ import { UploadComponent } from './shared/upload/upload.component';
   ],
   imports: [
     HttpClientModule,
+    HttpModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -84,6 +86,7 @@ import { UploadComponent } from './shared/upload/upload.component';
   ],
   providers: [
     ProjetoService,
+    EmpresaService
   ],
   bootstrap: [AppComponent]
 })

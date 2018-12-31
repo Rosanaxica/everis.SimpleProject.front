@@ -1,7 +1,8 @@
 export class Empresa {
-    IdEmpresa: number;
+    Id: number;
     Nome: string;
-    Tipo: TipoSeguimento;
+    Segmento: TipoSeguimento;
+    Ativo: boolean;
 }
 
 

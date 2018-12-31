@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment.prod';
 
-export const urlDataDomain = environment.api    
+export const urlDataDomain = environment.api;
 
-//Projetos
-export const urlProjetosAdicionar = environment.apiProjetosAdicionar
-export const urlAnexosAdicionar = environment.apiAnexosAdicionar    
+// Projetos
+export const urlProjetosAdicionar = environment.apiProjetosAdicionar;
+export const urlAnexosAdicionar = environment.apiAnexosAdicionar;

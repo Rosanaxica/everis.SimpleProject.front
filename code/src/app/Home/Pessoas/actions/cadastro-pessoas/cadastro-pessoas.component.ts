@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Empresa, TipoSeguimento } from 'src/app/Home/Empresa/empresa.model';
 import { Telefone } from '../../telefone.model';
 import { PessoaColaboradorViewModel } from '../../pessoacolaborador.viewmodel';
+import { EmpresaService } from 'src/app/Home/Empresa/empresa-service.service';
 
 @Component({
   selector: 'app-cadastro-pessoas',
@@ -10,20 +11,20 @@ import { PessoaColaboradorViewModel } from '../../pessoacolaborador.viewmodel';
 })
 export class CadastroPessoasComponent implements OnInit {
 
-  constructor() {
+  constructor(private empresaService: EmpresaService) {
   }
 
   pessoa = new PessoaColaboradorViewModel();
   telefone = new Telefone();
   telefones: Telefone[] = [];
+  empresas: Empresa[] = [];
 
-  empresas: Empresa[] = [
-    { IdEmpresa: 1, Nome: 'Itau', Tipo: TipoSeguimento.Banking },
-    { IdEmpresa: 2, Nome: 'Santander', Tipo: TipoSeguimento.Banking },
-    { IdEmpresa: 3, Nome: 'Vivo', Tipo: TipoSeguimento.Telecomunicacao }
-  ];
 
   ngOnInit() {
+    this.empresaService.ObterLista().subscribe(
+      data => { this.empresas = data; },
+      error => console.log('Erro ao obter lista')
+    );
   }
 
   AddTelefone() {
@@ -60,5 +61,4 @@ export class CadastroPessoasComponent implements OnInit {
   RemoverTelefone(telefone: Telefone) {
     this.telefones.splice(this.telefones.indexOf(telefone, 1));
   }
-
 }

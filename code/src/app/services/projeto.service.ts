@@ -13,7 +13,7 @@ export class ProjetoService {
     'Content-Type': 'application/json',
   });
 
-  Adicionar(obj: any){
-    return this.http.post<any>(`${urlDataDomain}${urlProjetosAdicionar}`, obj)
+  Adicionar(obj: any) {
+    return this.http.post<any>(`${urlDataDomain}${urlProjetosAdicionar}`, obj);
   }
 }
