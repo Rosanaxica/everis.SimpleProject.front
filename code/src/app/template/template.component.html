@@ -2,7 +2,7 @@
 
   <a class="navbar-brand mr-1" href="index.html"><img src="../assets/logo_32.png" width="32"> </a>
 
-  <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+  <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#" (click)=" ToggleMenu()">
     <i class="fa fa-bars"></i>
   </button>
   <span class="text-white ">Simple Process</span>
@@ -18,15 +18,17 @@
       </div>
     </div>
   </form>
-
+  
   <!-- Navbar -->
   <ul class="navbar-nav ml-auto ml-md-0">
 
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        <div class="nav-item  text-white text-right"><i class="fa fa-user-circle fa-fw"></i>
-          <small>Bem vindo Fulano</small><br></div>
+         aria-expanded="false">
+        <div class="nav-item  text-white text-right">
+          <i class="fa fa-user-circle fa-fw"></i>
+          <small>Bem vindo Fulano</small><br>
+        </div>
 
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
@@ -41,7 +43,7 @@
 <div id="wrapper">
 
   <!-- Sidebar -->
-  <ul class="sidebar navbar-nav bg-gray-light">
+  <ul class="sidebar navbar-nav bg-gray-light" [ngClass]="{ 'toggled': menuFechado, '': !menuFechado}">
     <li class="nav-item active">
       <a class="nav-link" [routerLink]="['novo-projeto']" routerLinkActive="active" >
         <button class="btn everis">Adicionar projeto</button>
@@ -64,7 +66,7 @@
         <span> Pessoas</span></a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">
+      <a class="nav-link"  [routerLink]="['mapa-site']" routerLinkActive="active">
         <i class="fa fa-sitemap"></i>
         <span> Mapa do Site</span></a>
     </li>
@@ -77,7 +79,7 @@
 
     <li class="nav-item">
       <a class="nav-link" [routerLink]="['modelos']" routerLinkActive="active">
-        <i class="fa fa-user "></i>
+        <i class="fa fa-clone"></i>
         <span> Modelos</span></a>
     </li>
   </ul>

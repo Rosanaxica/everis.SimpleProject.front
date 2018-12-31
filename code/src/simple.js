@@ -38,4 +38,6 @@
   });
 
 })(jQuery); // End of use strict
-export class AppComponent { simplepro }
+
+//TODO: FOI COMENTADO PARA RESOLVER UM BUG COM AS MODAIS
+//export class AppComponent { simplepro }

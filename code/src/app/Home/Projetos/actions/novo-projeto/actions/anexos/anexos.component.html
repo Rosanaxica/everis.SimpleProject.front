@@ -37,6 +37,33 @@
   </div>
 
   <div class="form-group">
-    <button type="button" (click)="Adicionar()">OK</button>
+    <button type="button" class="btn everis mr-2" (click)="Adicionar()">Adicionar</button>
   </div>
 </form>
+<div class="row">
+  <div class="col-md-12">
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Tipo</th>
+          <th class="text-center" scope="col">Nome Arquivo</th>
+          <th class="text-center" scope="col">Editar</th>
+          <th class="text-center" scope="col">Excluir</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td class="text-center">
+            <button class="btn btn-outline-secondary far fa-edit" type="button"></button>
+          </td>
+          <td class="text-center">
+            <button class="btn btn-outline-secondary far fa-trash-alt" type="button"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>

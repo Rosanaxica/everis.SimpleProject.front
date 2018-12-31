@@ -26,15 +26,15 @@
     </thead>
 
     <tbody>
-      <tr>
+      <tr *ngFor="let projeto of projetos">
         <th scope="row">
           <span class="badge badge-notificacao">
             2
           </span>
         </th>
         <td>
-          <p class="font-weight-bold">
-            Projeto PJ - Itau
+          <p style="font-weight: bold">
+            {{ projeto.nome }}
           </p>
         </td>
         <td>
@@ -46,91 +46,31 @@
                   aria-valuemax="100"></div>
               </div>
               <p class="caption">
-                Estimativa de conclusão: 20 de Maio de 2019
+                Estimativa de conclusão: {{ projeto.dataEntrega | dateFormat }}
               </p>
             </div>
           </div>
         </td>
-        <td>
-          <div class="row">
-            <div class="chip">
-              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Foto do colaborador" class="rounded-circle">
-              <span class="nomePessoa">Nome pessoa</span>
+        <td *ngFor="let projetoPessoa of projeto.projetosPessoas">
+          <div class="row" *ngFor="let pessoa of pessoas" [ngStyle]="{'display': 'inline'}">
+            <div class="chip" *ngIf="pessoa.id === projetoPessoa.pessoaId">
+              <img [src]="pessoa.fotoPath" alt="Foto do colaborador">
+              <span class="nomePessoa">{{ pessoa.nome }}</span>
             </div>
-            <div class="chip">
-              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="Foto do colaborador">
-              <span class="nomePessoa">Nome pessoa</span>
-            </div>
-            <div class="chip">
-              <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Foto do colaborador">
-              <span class="nomePessoa">Nome pessoa</span>
-            </div>
-            <div class="chip">
+            <div class="chip" *ngIf="pessoas.lenght > 3">
               <i class="fas fa-plus-circle fa-lg"></i>
+              <!-- Implementar acao para mostrar lista de pessoas no projeto, qdo clicar no botao + -->
             </div>
           </div>
         </td>
         <td>
           <div>
-            <span class="badge badge-status-ativo">Ativo</span>
+            <span class="badge badge-status-ativo">{{ statusProjeto === 0 ? 'Inativo' : 'Ativo'}}</span>
           </div>
           <p class="caption">
-            Inicio: 20 de Maio de 2018
+            Inicio: {{ projeto.dataEntrega | dateFormat }}
           </p>
         </td>
       </tr>
-      <tr>
-          <th scope="row">
-            <span class="badge badge-notificacao">
-              2
-            </span>
-          </th>
-          <td>
-            <p style="font-weight: bold">
-              Projeto PJ - Itau
-            </p>
-          </td>
-          <td>
-            <div>
-              <div class="col-md-12">
-                <!--.Barra de progresso-->
-                <div class="progress">
-                  <div class="progress-bar w-75 barraProgresso" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                    aria-valuemax="100"></div>
-                </div>
-                <p class="caption">
-                  Estimativa de conclusão: 20 de Maio de 2019
-                </p>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div class="row">
-              <div class="chip">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Foto do colaborador">
-                <span class="nomePessoa">Nome pessoa</span>
-              </div>
-              <div class="chip">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-5.jpg" alt="Foto do colaborador">
-                <span class="nomePessoa">Nome pessoa</span>
-              </div>
-              <div class="chip">
-                <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-6.jpg" alt="Foto do colaborador">
-                <span class="nomePessoa">Nome pessoa</span>
-              </div>
-              <div class="chip">
-                <i class="fas fa-plus-circle fa-lg"></i>
-              </div>
-            </div>
-          </td>
-          <td>
-            <div>
-              <span class="badge badge-status-ativo">Ativo</span>
-            </div>
-            <p class="caption">
-              Inicio: 20 de Maio de 2018
-            </p>
-          </td>
-        </tr>
     </tbody>
   </table>

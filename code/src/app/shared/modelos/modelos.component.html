@@ -46,7 +46,7 @@
     </mat-expansion-panel-header>
     <div class="row align-items-center flex-wrap no-gutters">
       <div class="col">
-        <h1 class="titulo">Lorem ipsum dolor sit amet</h1>
+        <h1 class="titulo mb-0">Lorem ipsum dolor sit amet</h1>
       </div> 
       <div class="col d-flex justify-content-end no-gutters">
         <button type="button" class="btn everis mr-2">Salvar</button>
@@ -434,8 +434,8 @@
           Dialog
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <button class="btn everis mr-2" data-toggle="modal" data-target="#logoutModal">Abrir modal</button>
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <button class="btn everis mr-2" data-toggle="modal" data-target="#modeloModal">Abrir modal</button>
+    <div class="modal fade" id="modeloModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -444,10 +444,10 @@
                 <span aria-hidden="true">×</span>
               </button>
             </div>
-            <div class="modal-body">Clique em "Sair"abaixo se deseja encerrar a sessão atual.</div>
+            <div class="modal-body">Clique em "Sair" abaixo se deseja encerrar a sessão atual.</div>
             <div class="modal-footer">
               <button class="btn cancelar" type="button" data-dismiss="modal">Cancel</button>
-              <a class="btn everis" href="login.html">Sair</a>
+              <button class="btn everis" type="button" data-dismiss="modal">Sair</button>
             </div>
           </div>
         </div>
@@ -461,26 +461,28 @@
             CardPessoa
         </mat-panel-title>
       </mat-expansion-panel-header>
-        <div class="card card-colaborador border-everis">
-          <div class="row">
-            <div class="card-body">
-              <div class="col-md-12 m-0 p-0">
-                <div class="col-md-12 text-right">
-                  <span class="badge everis text-right">Disponível</span>
-                </div>
-                <div class="row">
-                  <div class="col-md-3">
-                    <img class="card-img-top rounded-circle" src="../../../assets/exemplo-foto.jpg" alt="Card image cap">
+      <div class="col-md-4 p-0">
+          <div class="card card-colaborador border-everis">
+            <div class="row">
+              <div class="card-body">
+                <div class="col-md-12 m-0 p-1">
+                  <div class="col-md-12 text-right m-0 p-0">
+                    <span class="badge everis text-right">Disponível</span>
                   </div>
-                  <div class="col-md-8 m-0 p-0">
-                    Ricardo Yamamura
-                    <small>Desenvolvedor</small>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <img class="card-img-top rounded-circle" src="../../../assets/exemplo-foto.jpg" alt="Card image cap">
+                    </div>
+                    <div class="col-md-8">
+                      <p class="m-0">Ricardo Yamamura</p>
+                      <p class="m-0"><small>Desenvolvedor</small></p>
+                    </div>
                   </div>
+                  <div class="col-md-12 text-right"><sub> Projeto Itau PJ - Team Leader</sub></div>
                 </div>
-                <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
               </div>
             </div>
-          </div>  
+          </div>
         </div>
     </mat-expansion-panel>
 

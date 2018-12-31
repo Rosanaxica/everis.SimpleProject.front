@@ -5,25 +5,48 @@
     </div>
     <nav class="col d-flex justify-content-end">
       <button type="button" class="btn everis mr-2">Salvar</button>
-      <button type="button" class="btn cancelar">Cancelar</button>
+      <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
     </nav>
     <hr class="mt-2" />
   </div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="card card-colaborador">
+<div class="row mt-2">
+  <div class="col-md-4">
+    
+    <div class="card card-colaborador" [routerLink]="['changes']" routerLinkActive="active">
         <div class="card-body">
-          Changes
+          Changes <span class="badge everis">3</span>
         </div>
       </div>
     </div>
+
+
+    <div class="col-md-4">
+        <div class="card card-colaborador" [routerLink]="['esforco-projeto']" routerLinkActive="active">
+            <div class="card-body">
+           Esforço  X Projeto <span class="badge everis">456</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card card-colaborador">
+                <div class="card-body">
+                  Changes
+                </div>
+              </div>
+            </div>
+
+
 </div>
 
 
-<div>
-  <tabset>
-    <tab heading="Dados Principais" id="tab1"><app-dados-principais></app-dados-principais></tab>
-    <tab heading="Atribuição Equipe"><app-atribuicao-equipe></app-atribuicao-equipe></tab>
-    <tab heading="Anexos"><app-anexos></app-anexos></tab>
-  </tabset>
-</div> 
+<div class="row mt-2">
+  <div class="col-12">
+
+    <tabset>
+      <tab heading="Dados Principais" id="tab1"><app-dados-principais></app-dados-principais></tab>
+      <tab heading="Atribuição Equipe"><app-atribuicao-equipe></app-atribuicao-equipe></tab>
+      <tab heading="Anexos"><app-anexos></app-anexos></tab>
+    </tabset>
+  </div> 
+</div>
