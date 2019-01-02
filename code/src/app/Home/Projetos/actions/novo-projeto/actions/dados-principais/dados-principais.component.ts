@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '../../../../../../../../node_modules/@angular/forms';
 import { Projeto } from 'src/app/_models/projeto.model';
 import { ProjetoService } from 'src/app/_services/projeto.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,7 +13,8 @@ import { ProjetoService } from 'src/app/_services/projeto.service';
 export class DadosPrincipaisComponent implements OnInit {
   projeto: Projeto;
 
-  constructor(private formBuilder: FormBuilder, private projetoService: ProjetoService) { }
+  constructor(private formBuilder: FormBuilder, private projetoService: ProjetoService,
+    private router: Router) { }
   dadosPrincipaisForm: FormGroup;
 
   ngOnInit() {
@@ -40,5 +42,9 @@ export class DadosPrincipaisComponent implements OnInit {
         error => {
           alert('Erro ao tentar adicionar.');
         });
+  }
+
+  cancelar() {
+    this.router.navigate(['/template/projetos/']);
   }
 }

@@ -1,4 +1,13 @@
-
+<div *ngIf="msgSucesso">
+    <div class="alert alert-success" role="alert">
+      <i class="fa fa-check mr-1"></i> {{msgSucesso}}
+    </div>
+  </div>
+  <div *ngIf="msgErro">
+    <div class="alert alert-danger" role="alert">
+      <i class="fa fa-times mr-2"> </i> {{msgErro}}
+    </div>
+  </div>
 
 <div class="row align-items-center">
   <div class="col">
@@ -6,14 +15,14 @@
   </div>
   <nav class="col d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" [disabled]="!form.valid">Salvar</button>
-    <button type="button" class="btn cancelar">Cancelar</button>
+    <button type="button" class="btn cancelar" (click)="Cancelar()">Cancelar</button>
   </nav>
   <hr class="mt-2" />
 </div>
 
 {{pessoa | json}}
+{{colaborador | json}}
 {{form.valid}}
-{{ form.value | json }}
 
 
 <form #form="ngForm" novalidate>
@@ -66,7 +75,7 @@
         </div>
 
         <div class="col-md-5">
-          <input type="text" class="form-control" id="nome" name="documento" placeholder="Outro Documento">
+          <input type="text" class="form-control" id="nome" name="documento" placeholder="Outro Documento" [(ngModel)]="pessoa.Documento">
         </div>
       </div>
       <!-- Fim CPF e Documento -->
@@ -142,6 +151,7 @@
       </div>
       <!-- Fim E-mail -->
 
+      {{empresa | json}}
       <!-- Inicio Empresa -->
       <div class="row mb-2" *ngIf="pessoa.Tipo == 3">
         <div class="col-md-2">
@@ -158,7 +168,7 @@
         <!-- Inicio E-mail Corp -->
         <div class="row mb-2">
           <div class="col-md-12">
-            <input type="email" class="form-control" [(ngModel)]="pessoa.EmailCorp" name="emailCorp" pattern=".+@everis.com"
+            <input type="email" class="form-control" [(ngModel)]="colaborador.EmailCorp" name="emailCorp" pattern=".+@everis.com"
               #crtlEmailCorp="ngModel" placeholder="E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
               [class.is-invalid]="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)" [required]="pessoa.Tipo == 1">
           </div>
@@ -169,21 +179,21 @@
         </div>
 
         <div class="alert alert-danger" role="alert" *ngIf="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)">
-          <i class="fa fa-times mr-2"></i> E-mail não preenchido ou no formato inválido. Ex.: corp@everis.com
+          <i class="fa fa-times mr-2"></i> E-mail "everis" não preenchido ou no formato inválido. Ex.: corp@everis.com
         </div>
         <!-- Fim E-mail Corp -->
 
         <!-- Inicio Funcional -->
         <div class="row mb-2">
           <div class="col-md-4">
-            <input type="text" class="form-control" [(ngModel)]="pessoa.Funcional" name="funcional" placeholder="Funcional"
+            <input type="text" class="form-control" [(ngModel)]="colaborador.Funcional" name="funcional" placeholder="Funcional"
               #ctrlFuncional="ngModel" [class.is-valid]="ctrlFuncional.valid" [class.is-invalid]="ctrlFuncional.invalid && (ctrlFuncional.dirty || ctrlFuncional.touched)"
               pattern="^[0-9]*$" minlength="9" maxlength="9" [required]="pessoa.Tipo == 1">
           </div>
 
           <!-- Inicio RACF -->
           <div class="col-md-4">
-            <input type="text" class="form-control" [(ngModel)]="pessoa.Racf" name="racf" placeholder="RACF">
+            <input type="text" class="form-control" [(ngModel)]="colaborador.Racf" name="racf" placeholder="RACF">
           </div>
           <!-- Fim RACF -->
         </div>
@@ -200,7 +210,7 @@
         <!-- Inicio Nome da Máquina -->
         <div class="row mb-3">
           <div class="col-md-12">
-            <input type="text" class="form-control" [(ngModel)]="pessoa.NomeMaquina" name="vdi" placeholder="Nome da Maquina VDI">
+            <input type="text" class="form-control" [(ngModel)]="colaborador.NomeMaquina" name="vdi" placeholder="Nome da Maquina VDI">
           </div>
         </div>
         <!-- Fim Nome da Máquina -->
@@ -209,7 +219,7 @@
         <div class="row mb-4">
           <div class="col-md-2">
             <label for="nivelFuncional">Nivel Funcional</label>
-            <select id="nivelFuncional" name="nivelFuncional" [(ngModel)]="pessoa.Funcao" class="form-control"
+            <select id="nivelFuncional" name="nivelFuncional" [(ngModel)]="colaborador.Funcao" class="form-control"
               #ctrlNivel="ngModel" [class.is-valid]="ctrlNivel.valid" [class.is-invalid]="ctrlNivel.invalid && (ctrlNivel.dirty || ctrlNivel.touched)"
               required>
               <option value="1">SA</option>
@@ -231,17 +241,17 @@
 
             <div class="row">
               <div class="custom-control custom-radio custom-control-inline">
-                <input id="radMaster" value="1" #ctrlPerfil="ngModel" name="perfilMaster" [(ngModel)]="pessoa.PerfilColaborador"
+                <input id="radMaster" value="1" #ctrlPerfil="ngModel" name="perfilMaster" [(ngModel)]="colaborador.PerfilColaborador"
                   type="radio" class="custom-control-input" [required]="isPerfilRequired()">
                 <label class="custom-control-label" for="radMaster">Master</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input id="radLider" value="2" #ctrlPerfil="ngModel" name="perfilLeader" [(ngModel)]="pessoa.PerfilColaborador"
+                <input id="radLider" value="2" #ctrlPerfil="ngModel" name="perfilLeader" [(ngModel)]="colaborador.PerfilColaborador"
                   type="radio" class="custom-control-input" [required]="isPerfilRequired()">
                 <label class="custom-control-label" for="radLider">Leader</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
-                <input id="radColaboradorPerfil" value="3" #ctrlPerfil="ngModel" name="perfilColaborador" [(ngModel)]="pessoa.PerfilColaborador"
+                <input id="radColaboradorPerfil" value="3" #ctrlPerfil="ngModel" name="perfilColaborador" [(ngModel)]="colaborador.PerfilColaborador"
                   type="radio" class="custom-control-input" [required]="isPerfilRequired()">
                 <label class="custom-control-label" for="radColaboradorPerfil">Colaborador</label>
               </div>
@@ -256,12 +266,12 @@
       <!-- Inicio Foto -->
       <div class="row mb-2">
         <div class="col-md-7">
-          <input type="file" id="arquivo" name="arquivo" class="everis" [(ngModel)]="pessoa.FotoPath" />
+          <input type="file" id="arquivo" name="arquivo" class="everis" [(ngModel)]="pessoa.FotoPath" required/>
         </div>
       </div>
       <nav class="col d-flex justify-content-end">
-        <button type="button" class="btn everis mr-2" [disabled]="!form.valid">Salvar</button>
-        <button type="button" class="btn cancelar">Cancelar</button>
+        <button type="button" class="btn everis mr-2" [disabled]="!form.valid" (click)="Salvar()">Salvar</button>
+        <button type="button" class="btn cancelar" (click)="Cancelar()">Cancelar</button>
       </nav>
     </div>
     <!-- Fim Foto -->

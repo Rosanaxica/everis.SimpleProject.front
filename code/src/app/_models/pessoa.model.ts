@@ -3,6 +3,7 @@ import { Telefone } from './telefone.model';
 
 
 export class Pessoa {
+    IdPessoa: number;
     Ativo: boolean;
     Nome: string;
     Tipo: TipoPessoa;
@@ -11,7 +12,6 @@ export class Pessoa {
     Documento: String;
     FotoPath: string;
     IdEmpresa: number;
-    Empresa?: Empresa;
     Telefones?: Telefone[];
 
     constructor() {

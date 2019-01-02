@@ -18,7 +18,7 @@ export class ProjetoService {
     return this.http.post<any>(`${urlDataDomain}${urlProjetosAdicionar}`, obj);
   }
 
-  public ObterTodos() : Observable<any>{
-    return this.http.get(`${urlDataDomain}${urlProjetosObterTodos}`)
+  public ObterTodos(): Observable<any> {
+    return this.http.get(`${urlDataDomain}${urlProjetosObterTodos}`);
   }
 }

@@ -27,11 +27,11 @@ export class ProjetosComponent implements OnInit {
 
       }
     );
-    this.pessoaService.ObterTodos()
+    this.pessoaService.ObterTodasPessoas()
     .subscribe(
       (result) => {
         console.log(result);
-        this.pessoas = result.data;
+        this.pessoas = result['data'];
       },
       (error) => {
 

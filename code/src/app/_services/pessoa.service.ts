@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
-import { urlDataDomain, urlPessoasObterTodos } from '../app.api';
+import { urlDataDomain } from '../app.api';
+import { Pessoa } from '../_models/pessoa.model';
+import { PessoaColaboradorViewModel } from '../_models/pessoacolaborador.viewmodel';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -10,11 +12,30 @@ export class PessoaService {
 
   constructor(private http: HttpClient) { }
 
-  private headers = new HttpHeaders({
-    'Content-Type': 'application/json',
-  });
 
-  public ObterTodos(): Observable<any> {
-    return this.http.get(`${urlDataDomain}${urlPessoasObterTodos}`);
+  ObterTodosColaboradores() {
+    return this.http.get(`${urlDataDomain}api/Colaborador/ObterTodos`);
+  }
+
+  ObterTodasPessoas() {
+    return this.http.get(`${urlDataDomain}api/Pessoa/ObterTodos`);
+  }
+
+  AdicionarColaborador(obj: PessoaColaboradorViewModel) {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    };
+    return this.http.post<PessoaColaboradorViewModel>(`${urlDataDomain}api/Pessoa/CriarPessoaColaborador`, obj, options);
+  }
+
+  AdicionarTerceiro(obj: Pessoa): Observable<Pessoa> {
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      })
+    };
+    return this.http.post<Pessoa>(`${urlDataDomain}api/Pessoa/Adicionar`, obj, options);
   }
 }
