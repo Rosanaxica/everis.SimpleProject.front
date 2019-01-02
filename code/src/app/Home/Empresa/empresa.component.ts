@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Empresa } from './empresa.model';
-import { EmpresaService } from './empresa-service.service';
+import { Component, OnInit, ErrorHandler } from '@angular/core';
+
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { Empresa } from 'src/app/_models/empresa.model';
+import { EmpresaService } from 'src/app/_services/empresa-service.service';
+// import 'rxjs/operator/map';
 
 @Component({
   selector: 'app-empresa',
@@ -21,7 +23,10 @@ export class EmpresaComponent implements OnInit {
 
   ngOnInit() {
     this.svc.ObterLista().subscribe(
-      data => this.empresas = data
+      data => {
+        this.empresas = data['data'];
+      },
+      error => console.log('Erro ao obter lista')
     );
   }
 

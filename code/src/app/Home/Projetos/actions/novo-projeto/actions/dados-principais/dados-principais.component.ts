@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '../../../../../../../../node_modules/@angular/forms';
-import { ProjetoService } from '../../../../../../services/projeto.service';
-import { Projeto } from '../../../../../../models/projeto.model';
+import { Projeto } from 'src/app/_models/projeto.model';
+import { ProjetoService } from 'src/app/_services/projeto.service';
+
 
 @Component({
   selector: 'app-dados-principais',
@@ -9,11 +10,11 @@ import { Projeto } from '../../../../../../models/projeto.model';
   styleUrls: ['./dados-principais.component.css']
 })
 export class DadosPrincipaisComponent implements OnInit {
-  projeto : Projeto
-  
+  projeto: Projeto;
+
   constructor(private formBuilder: FormBuilder, private projetoService: ProjetoService) { }
   dadosPrincipaisForm: FormGroup;
-  
+
   ngOnInit() {
     this.projeto = new Projeto();
 

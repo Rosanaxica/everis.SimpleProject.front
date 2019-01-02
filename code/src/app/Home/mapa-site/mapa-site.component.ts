@@ -12,4 +12,6 @@ export class MapaSiteComponent implements OnInit {
   ngOnInit() {
   }
 
+  cancelar() {
+  }
 }

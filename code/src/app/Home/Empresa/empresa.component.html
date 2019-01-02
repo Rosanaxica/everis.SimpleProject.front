@@ -18,12 +18,6 @@
   </div>
 
 
-  {{ empresas | json}}
-  <!-- <div *ngFor="let emp of empresas">
-    <p>{{emp.Nome}}</p>
-  </div> -->
-
-
   {{ empresa | json}}
   {{form.valid}}
   <form #form="ngForm" novalidate>
@@ -38,7 +32,7 @@
         <i class="fa fa-check mr-1"></i> OK
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="ctrlNomeEmpresa.invalid && (ctrlNomeEmpresa.dirty || ctrlNomeEmpresa.touched)">
-        <i class="fa fa-times mr-2"> </i> Nome da Empresa obrigatório. Mínimo de 5 letras
+        <i class="fa fa-times mr-2"> </i> Nome da Empresa obrigatório. Mínimo de 3 letras
       </div>
     </div>
 

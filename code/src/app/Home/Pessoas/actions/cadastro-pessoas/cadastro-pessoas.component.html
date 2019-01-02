@@ -14,27 +14,11 @@
 {{pessoa | json}}
 {{form.valid}}
 {{ form.value | json }}
-{{ empresas | json }}
 
 
 <form #form="ngForm" novalidate>
   <div class="card">
     <div class="card-body">
-
-        <table *ngIf="empresas.length > 0" class="table table-striped">
-            <thead class="thead-dark">
-              <tr>
-                  <th>Titulo</th>
-                  <th>Ano de Lançamento</th>
-              </tr> 
-            </thead>
-            <tbody>
-              <tr *ngFor="let emp of empresas">
-                <td>{{emp.Nome}}</td>
-                <td>{{emp.Segmento}}</td>
-              </tr>
-            </tbody>
-          </table>
 
       <!-- Inicio Tipo Pessoa -->
       <div class="row">
@@ -163,7 +147,7 @@
         <div class="col-md-2">
           <select class="form-control" #selectEmpresa (change)="SelecionarEmpresa(selectEmpresa.value)" name="tipoCliente"
             [required]="pessoa.Tipo == 3">
-            <option *ngFor="let emp of empresas" [value]="emp.Id">{{emp.Nome}}</option>
+            <option *ngFor="let emp of empresas" [value]="emp.id">{{emp.nome}}</option>
           </select>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AnexoService } from '../../../../../../services/anexo.service';
-import { Anexo } from '../../../../../../models/anexo.model';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { AnexoService } from 'src/app/_services/anexo.service';
+import { Anexo } from 'src/app/_models/anexo.model';
 
 @Component({
   selector: 'app-anexos',
