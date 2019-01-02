@@ -6,6 +6,8 @@
  parte personalizada
  */
  .everis{background-color:#9AAE04;color: #ffffff;}
+ .fonte-everis{color:#9AAE04;}
+ .fonte-cancelar{color:rgb(112,115,114);}
  .btn-everis-sem.-sombra{background-color:#9AAE04;color: #ffffff;}
  .btn.everis{box-shadow: 3px 3px #d9d9d9;font-weight: bold;}
  .btn.everis:hover,.btn.everis:focus{background-color: #808000;color: white;}

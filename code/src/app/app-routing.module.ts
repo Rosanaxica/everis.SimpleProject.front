@@ -78,18 +78,6 @@ const appRoutes: Routes = [
     component: MapaSiteComponent
   },
   {
-    path: 'nova-change',
-    component: NovaChangeComponent
-  },
-  {
-    path: 'novo-esforco-projeto',
-    component: NovoEsforcoProjetoComponent
-  },
-  {
-    path: 'esforco-projeto',
-    component: EsforcoProjetoComponent
-  },
-  {
     path: 'changes',
     component: ChangesComponent
     },
@@ -104,10 +92,6 @@ const appRoutes: Routes = [
   {
     path: 'primeiro-acesso',
     component: PrimeiroAcessoComponent
-  },
-  {
-    path: 'cadastro-pessoas',
-    component: CadastroPessoasComponent
   },
   {
     path: 'novo-projeto', component: NovoProjetoComponent,

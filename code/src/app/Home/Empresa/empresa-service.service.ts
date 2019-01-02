@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { urlDataDomain } from 'src/app/app.api';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/catch';
+import { catchError } from 'rxjs/operators';
 import { ErrorHandler } from 'src/app/app.error.handler';
 import { Observable } from 'rxjs';
 import { Empresa } from './empresa.model';
