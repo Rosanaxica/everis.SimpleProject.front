@@ -9,10 +9,6 @@
   <hr class="mt-2" />
 </div>
 
-{{pessoa | json}}
-{{form.valid}}
-{{ form.value | json }}
-
 
 <form #form="ngForm" novalidate>
   <div class="card">
@@ -23,27 +19,28 @@
         <div class="col mb-2">
           <div class="custom-control custom-radio custom-control-inline">
             <input id="radColaborador" value="1" name="meuradio" [(ngModel)]="pessoa.Tipo" #ctrlTipoPessoa="ngModel"
-              type="radio" class="custom-control-input" [required]="isTipoPessoaRequired()">
+                   type="radio" class="custom-control-input" [required]="isTipoPessoaRequired()">
             <label class="custom-control-label" for="radColaborador">Colaborador</label>
           </div>
 
           <div class="custom-control custom-radio custom-control-inline">
             <input id="radTerceiro" value="3" name="meuradio" [(ngModel)]="pessoa.Tipo" #ctrlTipoPessoa="ngModel" type="radio"
-              class="custom-control-input" [required]="isTipoPessoaRequired()">
+                   class="custom-control-input" [required]="isTipoPessoaRequired()">
             <label class="custom-control-label" for="radTerceiro">Terceiro</label>
           </div>
 
-          <span class="spanAtention" *ngIf="ctrlTipoPessoa.invalid"><i class="fas fa-exclamation-triangle"></i>
-            Informe um tipo de pessoa</span>
+          <span class="spanAtention" *ngIf="ctrlTipoPessoa.invalid">
+            <i class="fas fa-exclamation-triangle"></i>
+            Informe um tipo de pessoa
+          </span>
         </div>
       </div>
       <!-- Fim Tipo Pessoa -->
-
       <!-- Inicio Nome -->
       <div class="row mb-2">
         <div class="col-md-12">
           <input type="text" class="form-control" name="nome" [(ngModel)]="pessoa.Nome" #ctrlNome="ngModel" required
-            minlength="5" autocomplete="off" placeholder="*Nome" [class.is-valid]="ctrlNome.valid" [class.is-invalid]="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
+                 minlength="5" autocomplete="off" placeholder="*Nome" [class.is-valid]="ctrlNome.valid" [class.is-invalid]="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
         </div>
       </div>
 
@@ -54,13 +51,12 @@
         <i class="fa fa-times mr-2"> </i> Nome obrigatório. Mínimo de 5 letras
       </div>
       <!-- Fim Nome -->
-
       <!-- Inicio CPF e  Documento-->
       <div class="row mb-2">
         <div class="col-md-2">
           <input type="text" class="form-control" id="nome" name="cpf" placeholder="CPF" minlength="11" maxlength="11"
-            pattern="^[0-9]*$" [(ngModel)]="pessoa.Cpf" #ctrlCpf="ngModel" [class.is-valid]="ctrlCpf.valid && pessoa.Cpf != undefined && pessoa.Cpf > 0 "
-            [class.is-invalid]="ctrlCpf.invalid">
+                 pattern="^[0-9]*$" [(ngModel)]="pessoa.Cpf" #ctrlCpf="ngModel" [class.is-valid]="ctrlCpf.valid && pessoa.Cpf != undefined && pessoa.Cpf > 0 "
+                 [class.is-invalid]="ctrlCpf.invalid">
         </div>
 
         <div class="col-md-5">
@@ -68,7 +64,6 @@
         </div>
       </div>
       <!-- Fim CPF e Documento -->
-
       <!-- Inicio Telefone -->
       <div class="row mb-2">
         <div class="col-md-2">
@@ -81,13 +76,13 @@
 
         <div class="input-group col-md-4">
           <input type="text" class="form-control" [(ngModel)]="telefone.Telefone" id="telefone" name="telefone"
-            placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15" #ctrlTelefone="ngModel"
-            [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
-            autocomplete="off" [required]="isTelRequired()">
+                 placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15" #ctrlTelefone="ngModel"
+                 [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
+                 autocomplete="off" [required]="isTelRequired()">
 
           <div class="input-group-append">
-            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.Telefone == undefined || telefone.Tipo == undefined || ctrlTelefone.invalid"><i
-                class="fas fa-plus"></i>
+            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.Telefone == undefined || telefone.Tipo == undefined || ctrlTelefone.invalid">
+              <i class="fas fa-plus"></i>
             </button>
           </div>
 
@@ -98,7 +93,7 @@
         <i class="fa fa-check mr-1"></i> OK
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="ctrlTelefone.invalid && (ctrlTelefone.dirty ||
-        ctrlTelefone.touched) && telefones.length < 1">
+           ctrlTelefone.touched) && telefones.length < 1">
         <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um
         telefone. Informe apenas numeros
       </div>
@@ -121,13 +116,12 @@
         </table>
       </div>
       <!-- Fim Telefone -->
-
       <!-- Inicio E-mail -->
       <div class="row mb-2">
         <div class="col-md-12">
           <input type="email" class="form-control" [(ngModel)]="pessoa.Email" #ctrlEmail="ngModel" name="email"
-            placeholder="E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" [class.is-valid]="ctrlEmail.valid"
-            [class.is-invalid]="ctrlEmail.invalid && (ctrlEmail.dirty || ctrlEmail.touched)" required>
+                 placeholder="E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" [class.is-valid]="ctrlEmail.valid"
+                 [class.is-invalid]="ctrlEmail.invalid && (ctrlEmail.dirty || ctrlEmail.touched)" required>
         </div>
       </div>
 
@@ -139,12 +133,11 @@
         <i class="fa fa-times mr-2"></i> E-mail não preenchido ou no formato inválido. Ex.: email@exemplo.com
       </div>
       <!-- Fim E-mail -->
-
       <!-- Inicio Empresa -->
       <div class="row mb-2" *ngIf="pessoa.Tipo == 3">
         <div class="col-md-2">
           <select class="form-control" #selectEmpresa (change)="SelecionarEmpresa(selectEmpresa.value)" name="tipoCliente"
-            [required]="pessoa.Tipo == 3">
+                  [required]="pessoa.Tipo == 3">
             <option *ngFor="let emp of empresas" [value]="emp.id">{{emp.nome}}</option>
           </select>
         </div>
@@ -157,8 +150,8 @@
         <div class="row mb-2">
           <div class="col-md-12">
             <input type="email" class="form-control" [(ngModel)]="pessoa.EmailCorp" name="emailCorp" pattern=".+@everis.com"
-              #crtlEmailCorp="ngModel" placeholder="E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
-              [class.is-invalid]="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)" [required]="pessoa.Tipo == 1">
+                   #crtlEmailCorp="ngModel" placeholder="E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
+                   [class.is-invalid]="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)" [required]="pessoa.Tipo == 1">
           </div>
         </div>
 
@@ -170,13 +163,12 @@
           <i class="fa fa-times mr-2"></i> E-mail não preenchido ou no formato inválido. Ex.: corp@everis.com
         </div>
         <!-- Fim E-mail Corp -->
-
         <!-- Inicio Funcional -->
         <div class="row mb-2">
           <div class="col-md-4">
             <input type="text" class="form-control" [(ngModel)]="pessoa.Funcional" name="funcional" placeholder="Funcional"
-              #ctrlFuncional="ngModel" [class.is-valid]="ctrlFuncional.valid" [class.is-invalid]="ctrlFuncional.invalid && (ctrlFuncional.dirty || ctrlFuncional.touched)"
-              pattern="^[0-9]*$" minlength="9" maxlength="9" [required]="pessoa.Tipo == 1">
+                   #ctrlFuncional="ngModel" [class.is-valid]="ctrlFuncional.valid" [class.is-invalid]="ctrlFuncional.invalid && (ctrlFuncional.dirty || ctrlFuncional.touched)"
+                   pattern="^[0-9]*$" minlength="9" maxlength="9" [required]="pessoa.Tipo == 1">
           </div>
 
           <!-- Inicio RACF -->
@@ -194,7 +186,6 @@
           <i class="fa fa-times mr-2"></i> Informe a funcional com 9 digitos
         </div>
         <!-- Fim Funcional -->
-
         <!-- Inicio Nome da Máquina -->
         <div class="row mb-3">
           <div class="col-md-12">
@@ -202,14 +193,13 @@
           </div>
         </div>
         <!-- Fim Nome da Máquina -->
-
         <!-- Inicio Nivel Função -->
         <div class="row mb-4">
           <div class="col-md-2">
             <label for="nivelFuncional">Nivel Funcional</label>
             <select id="nivelFuncional" name="nivelFuncional" [(ngModel)]="pessoa.Funcao" class="form-control"
-              #ctrlNivel="ngModel" [class.is-valid]="ctrlNivel.valid" [class.is-invalid]="ctrlNivel.invalid && (ctrlNivel.dirty || ctrlNivel.touched)"
-              required>
+                    #ctrlNivel="ngModel" [class.is-valid]="ctrlNivel.valid" [class.is-invalid]="ctrlNivel.invalid && (ctrlNivel.dirty || ctrlNivel.touched)"
+                    required>
               <option value="1">SA</option>
               <option value="2">SN</option>
               <option value="3">STL</option>
@@ -220,7 +210,6 @@
             </select>
           </div>
           <!-- Fim Nivel Função -->
-
           <!-- Inicio Perfil Acesso -->
           <div class="col-md-6">
             <div class="row">
@@ -230,27 +219,28 @@
             <div class="row">
               <div class="custom-control custom-radio custom-control-inline">
                 <input id="radMaster" value="1" #ctrlPerfil="ngModel" name="perfilMaster" [(ngModel)]="pessoa.PerfilColaborador"
-                  type="radio" class="custom-control-input" [required]="isPerfilRequired()">
+                       type="radio" class="custom-control-input" [required]="isPerfilRequired()">
                 <label class="custom-control-label" for="radMaster">Master</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
                 <input id="radLider" value="2" #ctrlPerfil="ngModel" name="perfilLeader" [(ngModel)]="pessoa.PerfilColaborador"
-                  type="radio" class="custom-control-input" [required]="isPerfilRequired()">
+                       type="radio" class="custom-control-input" [required]="isPerfilRequired()">
                 <label class="custom-control-label" for="radLider">Leader</label>
               </div>
               <div class="custom-control custom-radio custom-control-inline">
                 <input id="radColaboradorPerfil" value="3" #ctrlPerfil="ngModel" name="perfilColaborador" [(ngModel)]="pessoa.PerfilColaborador"
-                  type="radio" class="custom-control-input" [required]="isPerfilRequired()">
+                       type="radio" class="custom-control-input" [required]="isPerfilRequired()">
                 <label class="custom-control-label" for="radColaboradorPerfil">Colaborador</label>
               </div>
-              <span class="spanAtention" *ngIf="ctrlPerfil.invalid"><i class="fas fa-exclamation-triangle"></i>
-                Selecione um perfil</span>
+              <span class="spanAtention" *ngIf="ctrlPerfil.invalid">
+                <i class="fas fa-exclamation-triangle"></i>
+                Selecione um perfil
+              </span>
             </div>
           </div>
         </div>
       </div>
       <!-- Fim Perfil Acesso -->
-
       <!-- Inicio Foto -->
       <fieldset class="border pb-4 mt-4">
         <legend class="col-form-legend col-3">Coloque a foto da pessoa</legend>
