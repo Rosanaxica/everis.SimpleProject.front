@@ -17,7 +17,7 @@
 </div>
 <div class="row">
 
-  <div class="col-md-4">
+  <div *ngFor="let pessoa of pessoas" class="col-md-4">
     <div class="card card-colaborador border-everis">
       <div class="row">
         <div class="card-body">
@@ -30,7 +30,7 @@
                 <img class="card-img-top" src="../assets/u87.png" alt="Card image cap">
               </div>
               <div class="col-md-8 m-0 p-0">
-                <p class="m-0">Ricardo Yamamura</p>
+                <p class="m-0">{{pessoa.Nome}}</p>
                 <p class="m-0"><small>Desenvolvedor</small></p>
               </div>
 
