@@ -14,6 +14,6 @@ export class NovoProjetoComponent implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate(['template']);
+    this.router.navigate(['/template/projetos']);
   }
 }

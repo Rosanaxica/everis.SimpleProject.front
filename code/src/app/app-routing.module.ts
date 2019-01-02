@@ -40,7 +40,8 @@ const appRoutes: Routes = [
     path: 'pessoas',
     component: PessoasComponent,
        children: [
-       {path: 'cadastro-pessoas', component: CadastroPessoasComponent}
+       {
+         path: 'cadastro-pessoas', component: CadastroPessoasComponent}
     ],
   },
   {

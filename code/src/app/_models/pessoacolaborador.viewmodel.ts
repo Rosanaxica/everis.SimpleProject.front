@@ -1,31 +1,9 @@
-import { Empresa } from './empresa.model';
-import { Telefone } from './telefone.model';
+import { Colaborador } from './colaborador.model';
+import { Pessoa } from './pessoa.model';
 
 export class PessoaColaboradorViewModel {
-    IdColaborador: number;
-    IdEmpresa: number;
-    IdPessoa: number;
-    Ativo: boolean;
-    Nome: string;
-    Tipo: TipoPessoa;
-    Email: string;
-    Cpf?: number;
-    Documento?: String;
-    FotoPath: string;
-    Empresa?: Empresa;
-    Telefones: Telefone[];
-    Racf: string;
-    EmailCorp: string;
-    Funcional: number;
-    NomeMaquina: string;
-    Funcao: FuncaoColaborador;
-    Perfil: PerfilColaborador;
-    Disponivel: boolean;
-
-    constructor() {
-        this.Ativo = true;
-        this.Disponivel = true;
-    }
+    Colaborador: Colaborador;
+    Pessoa: Pessoa;
 }
 
 export enum TipoPessoa {

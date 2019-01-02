@@ -46,5 +46,7 @@ export class EmpresaComponent implements OnInit {
   // LimparForm(form: NgForm) {
   //   form.resetForm();
   // }
-
+  Cancelar() {
+    this.router.navigate(['/template']);
+  }
 }

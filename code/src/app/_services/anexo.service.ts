@@ -16,6 +16,6 @@ export class AnexoService {
   });
 
   Adicionar(obj: any) {
-    return this.http.post<any>(`${urlDataDomain}${urlAnexosAdicionar}`, obj)
+    return this.http.post<any>(`${urlDataDomain}${urlAnexosAdicionar}`, obj);
   }
 }
