@@ -42,6 +42,7 @@ import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforc
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { EmpresaService } from './_services/empresa-service.service';
 import { ProjetoService } from './_services/projeto.service';
+import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 
 
 
@@ -76,7 +77,8 @@ import { ProjetoService } from './_services/projeto.service';
     DateTimeFormatPipe,
     ChangesComponent,
     NovoEsforcoProjetoComponent,
-    MapaSiteComponent
+    MapaSiteComponent,
+    NovaEmpresaComponent
   ],
   imports: [
     HttpClientModule,

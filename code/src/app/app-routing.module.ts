@@ -21,6 +21,7 @@ import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.compone
 import { ChangesComponent } from './Home/Projetos/actions/changes/changes.component';
 import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
+import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 
 const appRoutes: Routes = [
   {
@@ -67,6 +68,8 @@ const appRoutes: Routes = [
     {path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
     {path: 'mapa-site', component: MapaSiteComponent },
     {path: 'modelos', component: ModelosComponent},
+    {path: 'nova-empresa/cadastro-empresa', component: EmpresaComponent},
+    {path: 'nova-empresa', component: NovaEmpresaComponent},
       ],
 
   },
@@ -117,6 +120,10 @@ const appRoutes: Routes = [
   {
     path: 'cadastro-empresa',
     component: EmpresaComponent
+  },
+  {
+    path: 'nova-empresa',
+    component: NovaEmpresaComponent
   }
  ];
 
