@@ -72,7 +72,10 @@ const appRoutes: Routes = [
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    children: [
+      {path: 'template', component: TemplateComponent},
+    ],
   },
   {
     path: 'mapa-site',
@@ -102,7 +105,7 @@ const appRoutes: Routes = [
       { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent },
        ],
   },
-  { path: '',   redirectTo: '/template', pathMatch: 'full' },
+  { path: '',   redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'fechamento-projeto',
     component: FechamentoProjetoComponent

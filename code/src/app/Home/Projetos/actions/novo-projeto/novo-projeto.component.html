@@ -29,7 +29,7 @@
         </div>
 
         <div class="col-md-4">
-            <div class="card card-colaborador">
+            <div class="card card-colaborador" [routerLink]="['esforco-projeto']" routerLinkActive="active" >
                 <div class="card-body">
                   Status : <div class="badge everis"> Em Andamento</div>
                 </div>
@@ -64,10 +64,10 @@
     </tabset>
   </div> 
 </div>
-
-<div class="row align-items-center no-gutters">
-    <hr class="mb-2" />
-    <div class="col d-flex justify-content-center">
-      <button type="button" class="btn cancelar" (click)="cancelar()">Voltar</button>
+<div class="row align-items-center no-gutters mt-3">
+    
+    <div class="col d-flex justify-content-end">
+      <button type="button" class="btn everis mr-2">Salvar</button>
+      <button type="button" class="btn cancelar">Cancelar</button>
     </div> 
   </div>

@@ -264,21 +264,25 @@
       <!-- Fim Perfil Acesso -->
 
       <!-- Inicio Foto -->
-      <div class="row mb-2">
-        <div class="col-md-7">
-          <input type="file" id="arquivo" name="arquivo" class="everis" [(ngModel)]="pessoa.FotoPath" required/>
+      <fieldset class="border pb-4 mt-4">
+        <legend class="col-form-legend col-3">Coloque a foto da pessoa</legend>
+        <div class="row">
+
+          <div class="col-2">
+            <img src="../assets/semPerfil.png" alt="Imagem da pessoa cadastrada" class="img-thumbnail ml-3">
+          </div>
+          <div class="col-8">
+            <input type="file" id="arquivo" name="arquivo" class="everis" [(ngModel)]="pessoa.FotoPath" />
+          </div>
         </div>
-      </div>
-      <nav class="col d-flex justify-content-end">
-        <button type="button" class="btn everis mr-2" [disabled]="!form.valid" (click)="Salvar()">Salvar</button>
-        <button type="button" class="btn cancelar" (click)="Cancelar()">Cancelar</button>
+      </fieldset>
+      <nav class="col d-flex justify-content-end mt-4">
+        <button type="button" class="btn everis mr-2" [disabled]="!form.valid">Salvar</button>
+        <button type="button" class="btn cancelar">Cancelar</button>
       </nav>
+      <!-- Fim Foto -->
     </div>
-    <!-- Fim Foto -->
   </div>
 
 </form>
 <hr>
-<div class="col-12 text-center">
-  <button type="button" class="btn cancelar">Voltar</button>
-</div>
