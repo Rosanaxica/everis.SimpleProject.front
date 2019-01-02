@@ -15,7 +15,7 @@ export class PessoasComponent implements OnInit {
   pessoas: Pessoa[] = [];
 
   ngOnInit() {
-    this.pessoaService.ObterTodos().subscribe(data => {
+    this.pessoaService.ObterTodasPessoas().subscribe(data => {
       this.pessoas = data['data'];
       console.log(this.pessoas);
     }
