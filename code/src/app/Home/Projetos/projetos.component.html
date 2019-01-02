@@ -1,57 +1,54 @@
 <div class="row align-items-center">
-    <div class="col-3">
-        <h1 class="titulo mb-0">Projeto</h1>
-    </div> 
-    <div class="input-group col">
-      <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+  <div class="col-3">
+    <h1 class="titulo mb-0">Projeto</h1>
+  </div>
+  <div class="input-group col">
+    <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+  <nav class="col-3 d-flex justify-content-end">
+    <button type="button" class="btn everis mr-2" [routerLink]="['novo-projeto']">Novo Projeto +</button>
+
+  </nav>
+  <hr class="mt-2" />
+</div>
+<div class="row">
+  <div class="col-md-1 col-xs-1">&nbsp;</div>
+  <div class="col-md-3 col-xs-3 "><strong>Projeto</strong></div>
+  <div class="col-md-3 col-xs-3"><strong>Andamento</strong></div>
+  <div class="col-md-3 col-xs-3 "><strong>Equipes</strong></div>
+  <div class="col-md-2 col-xs-2 "><strong>Status</strong></div>
+  <hr class="mt-2">
+</div>
+    <div class="row" *ngFor="let projeto of projetos">
+   <!--Badge de notificações-->
+      <div class="col-md-1 col-xs-12 ">
+        <span class="badge everis-roxo everis-branco">
+          2</span>
+      </div>
+
+         <!--.Nome do Projeto-->
+      <div class="col-md-3 col-xs-12">
+          <p>{{ projeto.nome}}<p>
+        </div>
+
+
+      <!--.Barra de progresso-->
+      <div class="col-md-3 col-xs-12">
+        <div class="row">
+        <div class="progress">
+          <div class="progress-bar everis" style="width:20%"></div>
+        </div>
+        <small>Estimativa de conclusão: {{ projeto.dataEntrega | dateFormat }}</small>
       </div>
     </div>
-    <nav class="col-3 d-flex justify-content-end">
-      <button type="button" class="btn everis mr-2" [routerLink]="['novo-projeto']" >Novo Projeto +</button>
-     
-    </nav> 
-    <hr class="mt-2" />
-</div>
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col"></th>
-        <th scope="col">Projeto</th>
-        <th scope="col">Andamento</th>
-        <th scope="col">Equipes</th>
-        <th scope="col">Status</th>
-      </tr>
-    </thead>
 
-    <tbody>
-      <tr *ngFor="let projeto of projetos">
-        <th scope="row">
-          <span class="badge badge-notificacao">
-            2
-          </span>
-        </th>
-        <td>
-          <p style="font-weight: bold">
-            {{ projeto.nome }}
-          </p>
-        </td>
-        <td>
-          <div>
-            <div class="col-md-12">
-              <!--.Barra de progresso-->
-              <div class="progress">
-                <div class="progress-bar w-75 barraProgresso" role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                  aria-valuemax="100"></div>
-              </div>
-              <p class="caption">
-                Estimativa de conclusão: {{ projeto.dataEntrega | dateFormat }}
-              </p>
-            </div>
-          </div>
-        </td>
-        <td *ngFor="let projetoPessoa of projeto.projetosPessoas">
+
+    <!--.Pessoas da equipe-->
+      <div class="col-md-3 col-xs-12">
+        <div *ngFor="let projetoPessoa of projeto.projetosPessoas">
           <div class="row" *ngFor="let pessoa of pessoas" [ngStyle]="{'display': 'inline'}">
             <div class="chip" *ngIf="pessoa.id === projetoPessoa.pessoaId">
               <img [src]="pessoa.fotoPath" alt="Foto do colaborador">
@@ -62,15 +59,19 @@
               <!-- Implementar acao para mostrar lista de pessoas no projeto, qdo clicar no botao + -->
             </div>
           </div>
-        </td>
-        <td>
-          <div>
-            <span class="badge badge-status-ativo">{{ statusProjeto === 0 ? 'Inativo' : 'Ativo'}}</span>
-          </div>
-          <p class="caption">
-            Inicio: {{ projeto.dataEntrega | dateFormat }}
-          </p>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+        </div>
+
+      </div>
+    
+
+    <!--.Status-->
+      <div class="col-md-2 col-xs-12">
+        <span class="badge everis p-2">{{ statusProjeto === 0 ? 'Inativo' : 'Ativo'}}</span>
+        <small>
+            <p>Inicio: {{ projeto.dataEntrega | dateFormat }}</p>
+        </small>
+      </div>
+          
+  </div>
+
