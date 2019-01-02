@@ -1,19 +1,18 @@
 <form>
   <div class="form-group">
-    <div class="form-group mt-4">
+    <div class="form-group mt-4 ">
       <div class="col-md-12">
-        <input type="text" [(ngModel)]="projeto.Nome" class="form-control" id="nome" name="nome" placeholder="Nome do Projeto"
-        />
+        <input type="text" [(ngModel)]="projeto.Nome" class="form-control" id="nome" name="nome" placeholder="Nome do Projeto" />
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-md-3">
-        <div class="col-md-6">
+      <div class="col-md-3 ">
+        <div class="col-md-6 m-0">
           <label for="label">Centro Custo</label>
         </div>
-        <div class="col-md-6">
-          <input type="text" [(ngModel)]="projeto.CentroCusto" class="form-control" id="centrocusto" name="centrocusto" placeholder="EXT-0000000000"
-          />
+        <div class="col-md-12">
+          <input type="text" [(ngModel)]="projeto.CentroCusto" class="form-control" id="centrocusto" name="centrocusto"
+            placeholder="EXT-0000000000" />
         </div>
       </div>
       <div class="col-md-3">
@@ -21,7 +20,8 @@
           <label for="data">Data Início</label>
         </div>
         <div class="col-md-6">
-          <input type="text" [(ngModel)]="projeto.DataInicio" class="form-control" id="dataInicio" name="dataInicio" bsDatepicker/>
+          <input type="text" [(ngModel)]="projeto.DataInicio" class="form-control" id="dataInicio" name="dataInicio"
+            bsDatepicker />
         </div>
       </div>
       <div class="col-md-3">
@@ -29,57 +29,75 @@
           <label for="data">Data Prevista</label>
         </div>
         <div class="col-md-6">
-          <input type="text" [(ngModel)]="projeto.DataPrevista" class="form-control" id="dataPrevista" name="dataprevista" bsDatepicker/>
+          <input type="text" [(ngModel)]="projeto.DataPrevista" class="form-control" id="dataPrevista" name="dataprevista"
+            bsDatepicker />
         </div>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-md-12">
-        <label for="label">Quantidade de Horas</label>
+        <label>Quantidade de Horas</label>
       </div>
-      <div class="col-md-3">
-        <div class="col-md-6">
-          <label for="label">Serviço 1</label>
-        </div>
-        <div class="col-md-6">
+      <div class="col-md-3 m-0">
+                  <label>Serviço 1</label>
+               <div class="col-md-6">
           <input type="time" [(ngModel)]="projeto.QtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 m-0">
         <div class="col-md-6">
           <label for="data">Serviço 2</label>
         </div>
         <div class="col-md-6">
-          <input type="time" [(ngModel)]="projeto.QtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2"/>
+          <input type="time" [(ngModel)]="projeto.QtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" />
         </div>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-3 m-0">
         <div class="col-md-6">
           <label for="data">Serviço 3</label>
         </div>
         <div class="col-md-6">
-          <input type="time" [(ngModel)]="projeto.QtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3"/>
+          <input type="time" [(ngModel)]="projeto.QtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" />
         </div>
       </div>
     </div>
-    <div class="form-group mt-4">
-      <div class="col-md-12">
-        <input type="text" [(ngModel)]="projeto.EscopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto" placeholder="Escopo do Projeto"
-        />
+
+
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Escopo do Projeto
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="form-group ">
+        <textarea [(ngModel)]="projeto.EscopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto"></textarea>
       </div>
-    </div>
-    <div class="form-group mt-4">
-      <div class="col-md-12">
-        <input type="text" [(ngModel)]="projeto.ForaEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"
-          placeholder="Fora do Escopo do Projeto" />
-      </div>
-    </div>
-    <div class="form-group mt-4">
-      <div class="col-md-12">
-        <input type="text" [(ngModel)]="projeto.Premissas" class="form-control" id="premissas" name="premissas" placeholder="Premissas"
-        />
-      </div>
-    </div>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Fora do Escopo do Projeto
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+
+      <textarea [(ngModel)]="projeto.ForaEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"></textarea>
+
+    </mat-expansion-panel>
+
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Premissas
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <textarea [(ngModel)]="projeto.Premissas" class="form-control" id="premissas" name="premissas"></textarea>
+
+    </mat-expansion-panel>
+
     <nav class="col d-flex justify-content-end">
       <button type="button" class="btn everis mr-2" (click)="Adicionar()">Salvar</button>
       <button type="button" class="btn cancelar">Cancelar</button>

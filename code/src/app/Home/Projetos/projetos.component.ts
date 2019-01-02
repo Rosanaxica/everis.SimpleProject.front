@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ProjetoService } from 'src/app/services/projeto.service';
-import { PessoaService } from 'src/app/services/pessoa.service';
+import { ProjetoService } from 'src/app/_services/projeto.service';
+import { PessoaService } from 'src/app/_services/pessoa.service';
+
 
 @Component({
   selector: 'app-projetos',

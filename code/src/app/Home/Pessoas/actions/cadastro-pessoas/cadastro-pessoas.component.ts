@@ -1,8 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Empresa, TipoSeguimento } from 'src/app/Home/Empresa/empresa.model';
-import { Telefone } from '../../telefone.model';
-import { PessoaColaboradorViewModel } from '../../pessoacolaborador.viewmodel';
-import { EmpresaService } from 'src/app/Home/Empresa/empresa-service.service';
+import { EmpresaService } from 'src/app/_services/empresa-service.service';
+import { PessoaColaboradorViewModel } from 'src/app/_models/pessoacolaborador.viewmodel';
+import { Telefone } from 'src/app/_models/telefone.model';
+import { Empresa } from 'src/app/_models/empresa.model';
+
+
 
 @Component({
   selector: 'app-cadastro-pessoas',
@@ -21,9 +23,10 @@ export class CadastroPessoasComponent implements OnInit {
 
 
   ngOnInit() {
-    this.empresaService.ObterLista().subscribe(
-      data => { this.empresas = data; },
-      error => console.log('Erro ao obter lista')
+    this.empresaService.ObterLista().subscribe(data => {
+      this.empresas = data['data'];
+      console.log(this.empresas);
+    }
     );
   }
 

@@ -30,7 +30,7 @@ import { EmpresaComponent } from './Home/Empresa/empresa.component';
 import { HttpModule } from '@angular/http';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
-import { ProjetoService } from './services/projeto.service';
+
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { UploadComponent } from './shared/upload/upload.component';
@@ -40,7 +40,9 @@ import { DateTimeFormatPipe } from './shared/util/datetime-format-pipe';
 import { ChangesComponent } from './Home/Projetos/actions/changes/changes.component';
 import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
-import { EmpresaService } from './Home/Empresa/empresa-service.service';
+import { EmpresaService } from './_services/empresa-service.service';
+import { ProjetoService } from './_services/projeto.service';
+
 
 
 
