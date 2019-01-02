@@ -3,6 +3,7 @@ import { Telefone } from './telefone.model';
 
 
 export class Pessoa {
+    Id: number;
     Ativo: boolean;
     Nome: string;
     Tipo: TipoPessoa;
