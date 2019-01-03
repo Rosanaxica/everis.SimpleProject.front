@@ -1,8 +1,8 @@
 
 export class Telefone {
-    IdTelefone: number;
-    Telefone: string;
-    Tipo: TipoTelefone;
+    Id: number;
+    NumeroTelefone: string;
+    TipoTelefone: TipoTelefone;
 }
 
 export enum TipoTelefone {

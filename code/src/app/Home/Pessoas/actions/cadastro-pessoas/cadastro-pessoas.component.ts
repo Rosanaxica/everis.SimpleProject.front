@@ -24,7 +24,7 @@ export class CadastroPessoasComponent implements OnInit {
   pessoa = new Pessoa();
   colaborador = new Colaborador();
   telefone = new Telefone();
-  empresa = new Empresa();
+  empresaId: number;
   telefones: Telefone[] = [];
   empresas: Empresa[] = [];
   msgSucesso: String;
@@ -44,8 +44,8 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefone = new Telefone();
   }
 
-  SelecionarEmpresa(empresa: Empresa): void {
-    this.empresa = empresa;
+  SelecionarEmpresa(empresaId: number) {
+    this.empresaId = empresaId;
   }
 
   isTelRequired(): boolean {
@@ -90,7 +90,7 @@ export class CadastroPessoasComponent implements OnInit {
           }
         );
     } else {
-      this.pessoa.IdEmpresa = this.empresa.Id;
+      this.pessoa.EmpresaId = this.empresaId;
       this.pessoaService.AdicionarTerceiro(this.pessoa)
         .subscribe(
           data => {

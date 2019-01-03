@@ -83,7 +83,7 @@
       <!-- Inicio Telefone -->
       <div class="row mb-2">
         <div class="col-md-2">
-          <select class="form-control" id="tipoTelefone" [(ngModel)]="telefone.Tipo" name="tipoTelefone">
+          <select class="form-control" id="tipoTelefone" [(ngModel)]="telefone.TipoTelefone" name="tipoTelefone">
             <option value="1">Celular</option>
             <option value="2">Fixo</option>
             <option value="3">Ramal</option>
@@ -91,13 +91,13 @@
         </div>
 
         <div class="input-group col-md-4">
-          <input type="text" class="form-control" [(ngModel)]="telefone.Telefone" id="telefone" name="telefone"
+          <input type="text" class="form-control" [(ngModel)]="telefone.NumeroTelefone" id="telefone" name="telefone"
             placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15" #ctrlTelefone="ngModel"
             [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
             autocomplete="off" [required]="isTelRequired()">
 
           <div class="input-group-append">
-            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.Telefone == undefined || telefone.Tipo == undefined || ctrlTelefone.invalid"><i
+            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.NumeroTelefone == undefined || telefone.TipoTelefone == undefined || ctrlTelefone.invalid"><i
                 class="fas fa-plus"></i>
             </button>
           </div>
@@ -119,10 +119,10 @@
           <tbody>
             <tr *ngFor="let telefone of telefones">
               <td class="text-center">
-                <p>{{telefone.Tipo}}</p>
+                <p>{{telefone.TipoTelefone}}</p>
               </td>
               <td class="text-center">
-                <p>{{telefone.Telefone}}</p>
+                <p>{{telefone.NumeroTelefone}}</p>
               </td>
               <td class="colBtnDeletar">
                 <button (click)="RemoverTelefone(telefone)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
@@ -151,13 +151,13 @@
       </div>
       <!-- Fim E-mail -->
 
-      {{empresa | json}}
+      {{ empresa | json}}
       <!-- Inicio Empresa -->
       <div class="row mb-2" *ngIf="pessoa.Tipo == 3">
         <div class="col-md-2">
-          <select class="form-control" #selectEmpresa (change)="SelecionarEmpresa(selectEmpresa.value)" name="tipoCliente"
+          <select class="form-control" (ngModel)="empresas" (ngModelChange)="SelecionarEmpresa($event)" name="tipoCliente"
             [required]="pessoa.Tipo == 3">
-            <option *ngFor="let emp of empresas" [value]="emp.id">{{emp.nome}}</option>
+            <option *ngFor="let emp of empresas" [ngValue]="emp.id">{{emp.nome}}</option>
           </select>
         </div>
       </div>
@@ -168,7 +168,7 @@
         <!-- Inicio E-mail Corp -->
         <div class="row mb-2">
           <div class="col-md-12">
-            <input type="email" class="form-control" [(ngModel)]="colaborador.EmailCorp" name="emailCorp" pattern=".+@everis.com"
+            <input type="email" class="form-control" [(ngModel)]="colaborador.EmailCorporativo" name="emailCorp" pattern=".+@everis.com"
               #crtlEmailCorp="ngModel" placeholder="E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
               [class.is-invalid]="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)" [required]="pessoa.Tipo == 1">
           </div>
@@ -234,7 +234,7 @@
           <!-- Fim Nivel Função -->
 
           <!-- Inicio Perfil Acesso -->
-          <div class="col-md-6">
+          <!-- <div class="col-md-6">
             <div class="row">
               <label for="perfilAcesso">Perfil de Acesso</label>
             </div>
@@ -258,13 +258,13 @@
               <span class="spanAtention" *ngIf="ctrlPerfil.invalid"><i class="fas fa-exclamation-triangle"></i>
                 Selecione um perfil</span>
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- Fim Perfil Acesso -->
 
       <!-- Inicio Foto -->
-      <fieldset class="border pb-4 mt-4">
+      <!-- <fieldset class="border pb-4 mt-4">
         <legend class="col-form-legend col-3">Coloque a foto da pessoa</legend>
         <div class="row">
 
@@ -275,12 +275,13 @@
             <input type="file" id="arquivo" name="arquivo" class="everis" [(ngModel)]="pessoa.FotoPath" />
           </div>
         </div>
-      </fieldset>
+      </fieldset> -->
+      <!-- Fim Foto -->
+
       <nav class="col d-flex justify-content-end mt-4">
-        <button type="button" class="btn everis mr-2" [disabled]="!form.valid">Salvar</button>
+        <button type="button" class="btn everis mr-2" [disabled]="!form.valid" (click)="Salvar()">Salvar</button>
         <button type="button" class="btn cancelar">Cancelar</button>
       </nav>
-      <!-- Fim Foto -->
     </div>
   </div>
 
