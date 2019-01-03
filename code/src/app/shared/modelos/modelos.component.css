@@ -1,0 +1,10 @@
+hr { border: 1px solid #eee; width: 100%; }
+select, textarea {width: 100%}
+.execucao {background: #f5e51b }
+.badge-light {background: #f0f0d6}
+code { background: #333; width: 100%; display: block; padding: 7px; margin: 10px 0 0 0; color: #f5e51b; border-left: 7px solid #555 }
+
+/*TODO: Excluir a class estas classes*/
+.titulos {color: #333;font-weight: 300; margin: 30px 0 0 0; font-size: 40px;}
+.badge {margin: 5px}
+.mat-expansion-panel-header-title {font-weight: bold}

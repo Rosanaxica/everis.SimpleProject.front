@@ -1,0 +1,22 @@
+<div class="container upDistance" *ngIf="formatos">
+  <div class="row">
+    <div class="col-md-6 middle">
+      <label class="btn everis mr-2"> Escolher Arquivo
+        <input type="file" id="fileinput" (change)="upload($event.target.files)" style="display: none" />
+      </label>
+      <label class="fileName">{{fileName}}</label>
+    </div>
+    <div class="col-md-4 middle" *ngIf="progress">
+      <div class="progress barHeight">
+        <div class="progress-bar progress-bar-striped progress-bar-animated everis" role="progressbar" [style.width]="progress"
+          aria-valuemin="0" aria-valuemax="100">{{progress}}</div>
+      </div>
+    </div>
+    <div class="col-md-2" *ngIf="progress">
+      <button class="btn cancelar" (click)="cancela()">Cancelar</button>
+    </div>
+  </div>
+  <div class="row" *ngIf="link">
+    <label class="spaced">Acesse: <a href="link" >{{link}}</a></label>
+  </div>
+</div>

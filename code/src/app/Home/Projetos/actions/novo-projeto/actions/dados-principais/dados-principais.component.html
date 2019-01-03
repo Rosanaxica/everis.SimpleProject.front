@@ -1,0 +1,95 @@
+<form>
+
+    <div class="form-group mt-4 row">
+      <div class="col-md-12">
+        <input type="text" [(ngModel)]="projeto.Nome" class="form-control" id="nome" name="nome" placeholder="Nome do Projeto" />
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-3">
+         <label for="label">Centro de Custo</label>
+       
+          <select [(ngModel)]="projeto.CentroCusto" class="form-control" id="centrocusto" name="centrocusto">
+          <option value="EXT-0000000000">EXT-0000000000</option>
+          <option value="EXT-0000000000">EXT-0000000000</option>
+          <option value="EXT-0000000000">EXT-0000000000</option>
+          </select>
+       
+      </div>
+      
+        <div class="col-md-3">
+          <label for="data">Data Início</label>
+         <input type="text" [(ngModel)]="projeto.DataInicio" class="form-control" id="dataInicio" name="dataInicio"
+            bsDatepicker />
+        
+      </div>
+        <div class="col-md-3">
+          <label for="data">Data Prevista</label>
+           <input type="text" [(ngModel)]="projeto.DataPrevista" class="form-control" id="dataPrevista" name="dataprevista"
+            bsDatepicker />
+        
+      </div>
+    </div>
+    
+    <fieldset class="border mb-3">
+      
+        <legend class="col-md-3">Quantidade de Horas</legend>
+        <div class="form-group row">
+           <div class="col-md-3 ml-3">
+           <label>Serviço 1</label>
+           <input type="time" [(ngModel)]="projeto.QtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
+             </div>
+      <div class="col-md-3 m-0">
+        <div class="col-md-6">
+          <label for="data">Serviço 2</label>
+        </div>
+        <div class="col-md-6">
+          <input type="time" [(ngModel)]="projeto.QtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" />
+        </div>
+      </div>
+      <div class="col-md-3 m-0">
+        <div class="col-md-6">
+          <label for="data">Serviço 3</label>
+        </div>
+        <div class="col-md-6">
+          <input type="time" [(ngModel)]="projeto.QtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" />
+        </div>
+      </div>
+    </div>
+  </fieldset>
+
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Escopo do Projeto
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="form-group ">
+        <textarea [(ngModel)]="projeto.EscopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto"></textarea>
+      </div>
+    </mat-expansion-panel>
+
+
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Fora do Escopo do Projeto
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+     <textarea [(ngModel)]="projeto.ForaEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"></textarea>
+    </mat-expansion-panel>
+    
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Premissas
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <textarea [(ngModel)]="projeto.Premissas" class="form-control" id="premissas" name="premissas"></textarea>
+
+    </mat-expansion-panel>
+
+   
+</form>
