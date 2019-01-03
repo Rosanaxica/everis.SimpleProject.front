@@ -59,7 +59,6 @@ const appRoutes: Routes = [
 
     {path: '', component: DashboardComponent},
     {path: 'dashboard', component: DashboardComponent},
-    
 
     {path: 'pessoas', component: PessoasComponent},
     {path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent},
