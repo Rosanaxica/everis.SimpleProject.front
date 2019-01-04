@@ -1,9 +1,9 @@
-<div *ngIf="msgSucesso">
+<div *ngIf="msgSucesso != null && msgSucesso != undefined">
   <div class="alert alert-success" role="alert">
     <i class="fa fa-check mr-1"></i> {{msgSucesso}}
   </div>
 </div>
-<div *ngIf="msgErro">
+<div *ngIf="msgErro != null && msgErro != undefined">
   <div class="alert alert-danger" role="alert">
     <i class="fa fa-times mr-2"> </i> {{msgErro}}
   </div>
@@ -17,9 +17,6 @@
     <hr class="mt-0" />
   </div>
 
-
-  {{ empresa | json}}
-  {{form.valid}}
   <form #form="ngForm" novalidate>
     <!--Nome empresa-->
     <div class="form-group">
@@ -55,7 +52,7 @@
 
     <div class="row">
       <nav class="col d-flex justify-content-end">
-        <button class="btn everis mr-2" [disabled]="!form.valid" (click)="Salvar()">Salvar</button>
+        <button class="btn everis mr-2" [disabled]="!form.valid" (click)="Salvar(form)">Salvar</button>
         <button type="button" class="btn cancelar" (click)="Cancelar()">Cancelar</button>
       </nav>
       <hr class="mt-2" />
