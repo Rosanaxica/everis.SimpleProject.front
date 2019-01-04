@@ -14,7 +14,7 @@ export class PessoaService {
 
 
   ObterTodosColaboradores() {
-    return this.http.get(`${urlDataDomain}api/Colaborador/ObterTodos`);
+    return this.http.get(`${urlDataDomain}api/Pessoa/ObterPessoasColaboradores`);
   }
 
   ObterTodasPessoas() {

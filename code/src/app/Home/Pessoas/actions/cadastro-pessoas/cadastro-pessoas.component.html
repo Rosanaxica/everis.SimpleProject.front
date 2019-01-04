@@ -1,9 +1,9 @@
-<div *ngIf="msgSucesso">
+<div *ngIf="msgSucesso != null && msgSucesso != undefined">
     <div class="alert alert-success" role="alert">
       <i class="fa fa-check mr-1"></i> {{msgSucesso}}
     </div>
   </div>
-  <div *ngIf="msgErro">
+  <div *ngIf="msgErro != null && msgErro != undefined">
     <div class="alert alert-danger" role="alert">
       <i class="fa fa-times mr-2"> </i> {{msgErro}}
     </div>
@@ -75,6 +75,8 @@
         </div>
       </div>
       <!-- Fim CPF e Documento -->
+
+      {{telefones | json}}
       <!-- Inicio Telefone -->
       <div class="row mb-2">
         <div class="col-md-2">
@@ -268,7 +270,7 @@
       <!-- Fim Foto -->
 
       <nav class="col d-flex justify-content-end mt-4">
-        <button type="button" class="btn everis mr-2" [disabled]="!form.valid" (click)="Salvar()">Salvar</button>
+        <button type="button" class="btn everis mr-2" [disabled]="!form.valid || telefones.length === 0" (click)="Salvar()">Salvar</button>
         <button type="button" class="btn cancelar">Cancelar</button>
       </nav>
     </div>

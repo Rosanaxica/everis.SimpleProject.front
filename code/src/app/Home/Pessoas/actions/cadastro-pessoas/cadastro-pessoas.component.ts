@@ -30,6 +30,7 @@ export class CadastroPessoasComponent implements OnInit {
   msgSucesso: String;
   msgErro: String;
 
+
   ngOnInit() {
     this.empresaService.ObterLista().subscribe(data => {
       this.empresas = data['data'];
@@ -74,6 +75,8 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
   Salvar() {
+    this.msgErro = null;
+    this.msgSucesso = null;
     // tslint:disable-next-line:triple-equals
     if (this.pessoa.Tipo == 1) {
       const pessoaColaborador = new PessoaColaboradorViewModel();
