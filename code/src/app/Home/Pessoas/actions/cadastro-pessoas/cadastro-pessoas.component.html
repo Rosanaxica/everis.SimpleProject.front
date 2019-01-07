@@ -100,7 +100,7 @@
         </div>
       </div>
 
-      <div class="alert alert-success" role="alert" *ngIf="ctrlTelefone.valid && (ctrlTelefone.dirty || ctrlTelefone.touched) && telefone.Tipo != undefined">
+      <div class="alert alert-success" role="alert" *ngIf="ctrlTelefone.valid && (ctrlTelefone.dirty || ctrlTelefone.touched) && telefone.TipoTelefone != undefined">
         <i class="fa fa-check mr-1"></i> OK
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="ctrlTelefone.invalid && (ctrlTelefone.dirty ||
@@ -268,7 +268,7 @@
       <!-- Fim Foto -->
 
       <nav class="col d-flex justify-content-end mt-4">
-        <button type="button" class="btn everis mr-2" [disabled]="!form.valid || telefones.length === 0" (click)="Salvar()">Salvar</button>
+        <button type="button" class="btn everis mr-2" [disabled]="!form.valid || telefones.length === 0" (click)="Salvar(form)">Salvar</button>
         <button type="button" class="btn cancelar">Cancelar</button>
       </nav>
     </div>
