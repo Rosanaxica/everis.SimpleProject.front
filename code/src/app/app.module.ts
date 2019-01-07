@@ -43,17 +43,15 @@ import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { EmpresaService } from './_services/empresa-service.service';
 import { ProjetoService } from './_services/projeto.service';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
-<<<<<<< HEAD
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
-=======
-import { ChartModule } from 'angular-highcharts';
+import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+
+import * as more from 'highcharts/highcharts-more.src';
+import * as exporting from 'highcharts/modules/exporting.src';
+import * as exportData from 'highcharts/modules/export-data.src';
+import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
+
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
->>>>>>> 2efb9aba830dda0eb1e9d62eeae013e1d9fc9db0
-
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -110,7 +108,8 @@ import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizz
   ],
   providers: [
     ProjetoService,
-    EmpresaService
+    EmpresaService,
+    // {provide: HIGHCHARTS_MODULES,useFactory: () => [more, exportData, exporting, offlineExporting]}
   ],
   bootstrap: [AppComponent]
 })

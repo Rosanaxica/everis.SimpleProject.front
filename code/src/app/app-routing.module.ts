@@ -130,8 +130,8 @@ const appRoutes: Routes = [
   declarations: [],
   imports: [
     RouterModule.forRoot(
-      appRoutes,
-      { enableTracing: true }
+      appRoutes
+      // ,{ enableTracing: true }
     )
   ],
   exports: [

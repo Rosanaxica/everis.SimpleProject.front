@@ -22,7 +22,7 @@ export class GraficopizzaComponent implements OnInit {
     },
     series: [
       {
-        colorByPoint: true,
+        // colorbypoint: true,
         type: 'pie',
         data:
           [{
@@ -50,7 +50,7 @@ export class GraficopizzaComponent implements OnInit {
     },
     series: [
       {
-        colorByPoint: true,
+        // colorByPoint: true,
         type: 'pie',
         data:
           [{
@@ -102,7 +102,7 @@ export class GraficopizzaComponent implements OnInit {
     },
     series: [
       {
-        colorByPoint: true,
+        // colorByPoint: true,
         type: 'pie',
         data:
           [{
