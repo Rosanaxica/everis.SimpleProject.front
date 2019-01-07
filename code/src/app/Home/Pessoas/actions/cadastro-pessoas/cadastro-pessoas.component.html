@@ -131,7 +131,7 @@
       <div class="row mb-2">
         <div class="col-md-12">
           <input type="email" class="form-control" [(ngModel)]="pessoa.email" #ctrlEmail="ngModel" name="email"
-                 placeholder="E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" [class.is-valid]="ctrlEmail.valid"
+                 placeholder="*E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" [class.is-valid]="ctrlEmail.valid"
                  [class.is-invalid]="ctrlEmail.invalid && (ctrlEmail.dirty || ctrlEmail.touched)" required>
         </div>
       </div>
@@ -161,7 +161,7 @@
         <div class="row mb-2">
           <div class="col-md-12">
             <input type="email" class="form-control" [(ngModel)]="colaborador.emailCorporativo" name="emailCorp" pattern=".+@everis.com"
-              #crtlEmailCorp="ngModel" placeholder="E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
+              #crtlEmailCorp="ngModel" placeholder="*E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
               [class.is-invalid]="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)" [required]="pessoa.tipo == 1">
           </div>
         </div>
@@ -177,7 +177,7 @@
         <!-- Inicio Funcional -->
         <div class="row mb-2">
           <div class="col-md-4">
-            <input type="text" class="form-control" [(ngModel)]="colaborador.Funcional" name="funcional" placeholder="Funcional"
+            <input type="text" class="form-control" [(ngModel)]="colaborador.Funcional" name="funcional" placeholder="*Funcional"
               #ctrlFuncional="ngModel" [class.is-valid]="ctrlFuncional.valid" [class.is-invalid]="ctrlFuncional.invalid && (ctrlFuncional.dirty || ctrlFuncional.touched)"
               pattern="^[0-9]*$" minlength="9" maxlength="9" [required]="pessoa.tipo == 1">
           </div>
@@ -207,7 +207,7 @@
         <!-- Inicio Nivel Função -->
         <div class="row mb-4">
           <div class="col-md-2">
-            <label for="nivelFuncional">Nivel Funcional</label>
+            <label for="nivelFuncional">*Nivel Funcional</label>
             <select id="nivelFuncional" name="nivelFuncional" [(ngModel)]="colaborador.funcao" class="form-control"
               #ctrlNivel="ngModel" [class.is-valid]="ctrlNivel.valid" [class.is-invalid]="ctrlNivel.invalid && (ctrlNivel.dirty || ctrlNivel.touched)"
               required>
