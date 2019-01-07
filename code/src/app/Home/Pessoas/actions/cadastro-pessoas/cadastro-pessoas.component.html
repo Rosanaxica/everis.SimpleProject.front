@@ -29,13 +29,13 @@
       <div class="row">
         <div class="col mb-2">
           <div class="custom-control custom-radio custom-control-inline">
-            <input id="radColaborador" value="1" name="meuradio" [(ngModel)]="pessoa.Tipo" #ctrlTipoPessoa="ngModel"
+            <input id="radColaborador" value="1" name="meuradio" [(ngModel)]="pessoa.tipo" #ctrlTipoPessoa="ngModel"
                    type="radio" class="custom-control-input" [required]="isTipoPessoaRequired()">
             <label class="custom-control-label" for="radColaborador">Colaborador</label>
           </div>
 
           <div class="custom-control custom-radio custom-control-inline">
-            <input id="radTerceiro" value="3" name="meuradio" [(ngModel)]="pessoa.Tipo" #ctrlTipoPessoa="ngModel" type="radio"
+            <input id="radTerceiro" value="3" name="meuradio" [(ngModel)]="pessoa.tipo" #ctrlTipoPessoa="ngModel" type="radio"
                    class="custom-control-input" [required]="isTipoPessoaRequired()">
             <label class="custom-control-label" for="radTerceiro">Terceiro</label>
           </div>
@@ -50,7 +50,7 @@
       <!-- Inicio Nome -->
       <div class="row mb-2">
         <div class="col-md-12">
-          <input type="text" class="form-control" name="nome" [(ngModel)]="pessoa.Nome" #ctrlNome="ngModel" required
+          <input type="text" class="form-control" name="nome" [(ngModel)]="pessoa.nome" #ctrlNome="ngModel" required
                  minlength="5" autocomplete="off" placeholder="*Nome" [class.is-valid]="ctrlNome.valid" [class.is-invalid]="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
         </div>
       </div>
@@ -66,19 +66,19 @@
       <div class="row mb-2">
         <div class="col-md-2">
           <input type="text" class="form-control" id="nome" name="cpf" placeholder="CPF" minlength="11" maxlength="11"
-                 pattern="^[0-9]*$" [(ngModel)]="pessoa.Cpf" #ctrlCpf="ngModel" [class.is-valid]="ctrlCpf.valid && pessoa.Cpf != undefined && pessoa.Cpf > 0 "
+                 pattern="^[0-9]*$" [(ngModel)]="pessoa.cpf" #ctrlCpf="ngModel" [class.is-valid]="ctrlCpf.valid && pessoa.cpf != undefined && pessoa.cpf > 0 "
                  [class.is-invalid]="ctrlCpf.invalid">
         </div>
 
         <div class="col-md-5">
-          <input type="text" class="form-control" id="nome" name="documento" placeholder="Outro Documento" [(ngModel)]="pessoa.Documento">
+          <input type="text" class="form-control" id="nome" name="documento" placeholder="Outro Documento" [(ngModel)]="pessoa.documento">
         </div>
       </div>
       <!-- Fim CPF e Documento -->
       <!-- Inicio Telefone -->
       <div class="row mb-2">
         <div class="col-md-2">
-          <select class="form-control" id="tipoTelefone" [(ngModel)]="telefone.TipoTelefone" name="tipoTelefone">
+          <select class="form-control" id="tipoTelefone" [(ngModel)]="telefone.tipoTelefone" name="tipoTelefone">
             <option value="1">Celular</option>
             <option value="2">Fixo</option>
             <option value="3">Ramal</option>
@@ -86,13 +86,13 @@
         </div>
 
         <div class="input-group col-md-4">
-          <input type="text" class="form-control" [(ngModel)]="telefone.NumeroTelefone" id="telefone" name="telefone"
+          <input type="text" class="form-control"  [(ngModel)]="telefone.numeroTelefone" id="telefone" name="telefone"
             placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15" #ctrlTelefone="ngModel"
             [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
             autocomplete="off" [required]="isTelRequired()">
 
           <div class="input-group-append">
-            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.NumeroTelefone == undefined || telefone.TipoTelefone == undefined || ctrlTelefone.invalid"><i
+            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || telefone.tipoTelefone == undefined || ctrlTelefone.invalid"><i
                 class="fas fa-plus"></i>
             </button>
           </div>
@@ -100,7 +100,7 @@
         </div>
       </div>
 
-      <div class="alert alert-success" role="alert" *ngIf="ctrlTelefone.valid && (ctrlTelefone.dirty || ctrlTelefone.touched) && telefone.TipoTelefone != undefined">
+      <div class="alert alert-success" role="alert" *ngIf="ctrlTelefone.valid && (ctrlTelefone.dirty || ctrlTelefone.touched) && telefone.tipoTelefone != undefined">
         <i class="fa fa-check mr-1"></i> OK
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="ctrlTelefone.invalid && (ctrlTelefone.dirty ||
@@ -114,10 +114,10 @@
           <tbody>
             <tr *ngFor="let telefone of telefones">
               <td class="text-center">
-                <p>{{telefone.TipoTelefone}}</p>
+                <p>{{telefone.tipoTelefone}}</p>
               </td>
               <td class="text-center">
-                <p>{{telefone.NumeroTelefone}}</p>
+                <p>{{telefone.numeroTelefone}}</p>
               </td>
               <td class="colBtnDeletar">
                 <button (click)="RemoverTelefone(telefone)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
@@ -130,7 +130,7 @@
       <!-- Inicio E-mail -->
       <div class="row mb-2">
         <div class="col-md-12">
-          <input type="email" class="form-control" [(ngModel)]="pessoa.Email" #ctrlEmail="ngModel" name="email"
+          <input type="email" class="form-control" [(ngModel)]="pessoa.email" #ctrlEmail="ngModel" name="email"
                  placeholder="E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" [class.is-valid]="ctrlEmail.valid"
                  [class.is-invalid]="ctrlEmail.invalid && (ctrlEmail.dirty || ctrlEmail.touched)" required>
         </div>
@@ -145,10 +145,10 @@
       </div>
       <!-- Fim E-mail -->
       <!-- Inicio Empresa -->
-      <div class="row mb-2" *ngIf="pessoa.Tipo == 3">
+      <div class="row mb-2" *ngIf="pessoa.tipo == 3">
         <div class="col-md-2">
           <select class="form-control" (ngModel)="empresas" (ngModelChange)="SelecionarEmpresa($event)" name="tipoCliente"
-            [required]="pessoa.Tipo == 3">
+            [required]="pessoa.tipo == 3">
             <option *ngFor="let emp of empresas" [ngValue]="emp.id">{{emp.nome}}</option>
           </select>
         </div>
@@ -156,13 +156,13 @@
       <!-- Fim Empresa -->
 
 
-      <div *ngIf="pessoa.Tipo == 1">
+      <div *ngIf="pessoa.tipo == 1">
         <!-- Inicio E-mail Corp -->
         <div class="row mb-2">
           <div class="col-md-12">
-            <input type="email" class="form-control" [(ngModel)]="colaborador.EmailCorporativo" name="emailCorp" pattern=".+@everis.com"
+            <input type="email" class="form-control" [(ngModel)]="colaborador.emailCorporativo" name="emailCorp" pattern=".+@everis.com"
               #crtlEmailCorp="ngModel" placeholder="E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
-              [class.is-invalid]="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)" [required]="pessoa.Tipo == 1">
+              [class.is-invalid]="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)" [required]="pessoa.tipo == 1">
           </div>
         </div>
 
@@ -179,12 +179,12 @@
           <div class="col-md-4">
             <input type="text" class="form-control" [(ngModel)]="colaborador.Funcional" name="funcional" placeholder="Funcional"
               #ctrlFuncional="ngModel" [class.is-valid]="ctrlFuncional.valid" [class.is-invalid]="ctrlFuncional.invalid && (ctrlFuncional.dirty || ctrlFuncional.touched)"
-              pattern="^[0-9]*$" minlength="9" maxlength="9" [required]="pessoa.Tipo == 1">
+              pattern="^[0-9]*$" minlength="9" maxlength="9" [required]="pessoa.tipo == 1">
           </div>
 
           <!-- Inicio RACF -->
           <div class="col-md-4">
-            <input type="text" class="form-control" [(ngModel)]="colaborador.Racf" name="racf" placeholder="RACF">
+            <input type="text" class="form-control" [(ngModel)]="colaborador.racf" name="racf" placeholder="RACF">
           </div>
           <!-- Fim RACF -->
         </div>
@@ -200,7 +200,7 @@
         <!-- Inicio Nome da Máquina -->
         <div class="row mb-3">
           <div class="col-md-12">
-            <input type="text" class="form-control" [(ngModel)]="colaborador.NomeMaquina" name="vdi" placeholder="Nome da Maquina VDI">
+            <input type="text" class="form-control" [(ngModel)]="colaborador.nomeMaquina" name="vdi" placeholder="Nome da Maquina VDI">
           </div>
         </div>
         <!-- Fim Nome da Máquina -->
@@ -208,7 +208,7 @@
         <div class="row mb-4">
           <div class="col-md-2">
             <label for="nivelFuncional">Nivel Funcional</label>
-            <select id="nivelFuncional" name="nivelFuncional" [(ngModel)]="colaborador.Funcao" class="form-control"
+            <select id="nivelFuncional" name="nivelFuncional" [(ngModel)]="colaborador.funcao" class="form-control"
               #ctrlNivel="ngModel" [class.is-valid]="ctrlNivel.valid" [class.is-invalid]="ctrlNivel.invalid && (ctrlNivel.dirty || ctrlNivel.touched)"
               required>
               <option value="1">SA</option>
