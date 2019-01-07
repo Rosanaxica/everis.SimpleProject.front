@@ -4,7 +4,6 @@ import { FuncaoColaborador, PerfilColaborador } from './pessoacolaborador.viewmo
 export class Colaborador {
 
     Id: number;
-    Pessoa: Pessoa;
     Racf: string;
     EmailCorporativo: string;
     Funcional: number;

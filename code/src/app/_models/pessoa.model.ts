@@ -1,3 +1,4 @@
+import { Colaborador } from './colaborador.model';
 import { Empresa } from './empresa.model';
 import { Telefone } from './telefone.model';
 
@@ -13,6 +14,7 @@ export class Pessoa {
     Documento: String;
     FotoPath: string;
     Telefones?: Telefone[];
+    Colaborador?: Colaborador;
 
     constructor() {
         this.Ativo = true;

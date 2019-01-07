@@ -1,6 +1,7 @@
+import { Colaborador } from './../../_models/colaborador.model';
 import { PessoaService } from 'src/app/_services/pessoa.service';
 import { Component, OnInit } from '@angular/core';
-import { PessoaColaboradorViewModel } from 'src/app/_models/pessoacolaborador.viewmodel';
+
 import { Pessoa } from 'src/app/_models/pessoa.model';
 
 @Component({
@@ -12,14 +13,14 @@ export class PessoasComponent implements OnInit {
 
   constructor(private pessoaService: PessoaService) { }
 
+  colaboradores: Colaborador[] = [];
   pessoas: Pessoa[] = [];
 
   ngOnInit() {
     this.pessoaService.ObterTodasPessoas().subscribe(data => {
       this.pessoas = data['data'];
       console.log(this.pessoas);
-    }
-    );
+    });
   }
 
 }

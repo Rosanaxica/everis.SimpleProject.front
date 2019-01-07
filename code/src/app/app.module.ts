@@ -7,7 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { PessoasComponent } from './Home/Pessoas/pessoas.component';
+
 import { LoginComponent } from './Home/Login/login/login.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
@@ -43,6 +43,7 @@ import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { EmpresaService } from './_services/empresa-service.service';
 import { ProjetoService } from './_services/projeto.service';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
+import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 
 
 
