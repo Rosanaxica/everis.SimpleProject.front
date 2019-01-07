@@ -82,8 +82,8 @@ export class CadastroPessoasComponent implements OnInit {
       pessoaColaborador.colaborador = this.colaborador;
       pessoaColaborador.pessoa = this.pessoa;
 
-      this.svc.salvar(pessoaColaborador, PessoaColaboradorViewModel)
-      .toPromise().then(
+      this.svc.postViewModel(pessoaColaborador, 'pessoa/CriarPessoaColaborador')
+        .toPromise().then(
           data => {
             this.msgSucesso = 'Colaborador cadastrado com sucesso!';
           },
@@ -94,7 +94,7 @@ export class CadastroPessoasComponent implements OnInit {
     } else {
       this.pessoa.empresaId = this.empresaId;
       this.svc.salvar(this.pessoa, Pessoa)
-      .toPromise().then(
+        .toPromise().then(
           data => {
             this.msgSucesso = 'Terceiro cadastrado com sucesso!';
           },
