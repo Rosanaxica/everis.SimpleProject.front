@@ -30,8 +30,7 @@ export class NovaEmpresaComponent implements OnInit {
       );
     }
 
-    Salvar() {
-      console.log('clicado');
+    Salvar(form: NgForm) {
       this.svc.Adicionar(this.empresa).subscribe(
         data => {
           this.msgSucesso = 'Cadastro realizado com sucesso!';
@@ -40,12 +39,10 @@ export class NovaEmpresaComponent implements OnInit {
           this.msgErro = 'Erro ao salvar';
         }
       );
-      this.empresa = new Empresa();
+      form.reset();
     }
 
-    // LimparForm(form: NgForm) {
-    //   form.resetForm();
-    // }
+
     Cancelar() {
       this.router.navigate(['/template']);
     }

@@ -7,6 +7,7 @@ import { PessoaService } from 'src/app/_services/pessoa.service';
 import { Colaborador } from 'src/app/_models/colaborador.model';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -24,11 +25,12 @@ export class CadastroPessoasComponent implements OnInit {
   pessoa = new Pessoa();
   colaborador = new Colaborador();
   telefone = new Telefone();
-  empresa = new Empresa();
+  empresaId: number;
   telefones: Telefone[] = [];
   empresas: Empresa[] = [];
   msgSucesso: String;
   msgErro: String;
+
 
   ngOnInit() {
     this.empresaService.ObterLista().subscribe(data => {
@@ -44,8 +46,8 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefone = new Telefone();
   }
 
-  SelecionarEmpresa(empresa: Empresa): void {
-    this.empresa = empresa;
+  SelecionarEmpresa(empresaId: number) {
+    this.empresaId = empresaId;
   }
 
   isTelRequired(): boolean {
@@ -73,7 +75,9 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefones.splice(this.telefones.indexOf(telefone, 1));
   }
 
-  Salvar() {
+  Salvar(form: NgForm) {
+    this.msgErro = null;
+    this.msgSucesso = null;
     // tslint:disable-next-line:triple-equals
     if (this.pessoa.Tipo == 1) {
       const pessoaColaborador = new PessoaColaboradorViewModel();
@@ -90,7 +94,7 @@ export class CadastroPessoasComponent implements OnInit {
           }
         );
     } else {
-      this.pessoa.IdEmpresa = this.empresa.Id;
+      this.pessoa.EmpresaId = this.empresaId;
       this.pessoaService.AdicionarTerceiro(this.pessoa)
         .subscribe(
           data => {
@@ -101,10 +105,15 @@ export class CadastroPessoasComponent implements OnInit {
           }
         );
     }
+
+    form.reset();
+    this.telefones = [];
+
   }
 
   Cancelar() {
     this.router.navigate(['/template/pessoas']);
   }
+
 
 }

@@ -1,9 +1,11 @@
+import { Colaborador } from './colaborador.model';
 import { Empresa } from './empresa.model';
 import { Telefone } from './telefone.model';
 
 
 export class Pessoa {
-    IdPessoa: number;
+    Id: number;
+    EmpresaId: number;
     Ativo: boolean;
     Nome: string;
     Tipo: TipoPessoa;
@@ -11,8 +13,8 @@ export class Pessoa {
     Cpf?: number;
     Documento: String;
     FotoPath: string;
-    IdEmpresa: number;
     Telefones?: Telefone[];
+    Colaborador?: Colaborador;
 
     constructor() {
         this.Ativo = true;
