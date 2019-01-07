@@ -86,13 +86,13 @@
         </div>
 
         <div class="input-group col-md-4">
-          <input type="text" class="form-control"  [(ngModel)]="telefone.numeroTelefone" id="telefone" name="telefone"
+          <input input type="text" (keydown.enter)="onKeydown(AddTelefone())" class="form-control"  [(ngModel)]="telefone.numeroTelefone" id="telefone" name="telefone"
             placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15" #ctrlTelefone="ngModel"
             [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
             autocomplete="off" [required]="isTelRequired()">
 
           <div class="input-group-append">
-            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || telefone.tipoTelefone == undefined || ctrlTelefone.invalid"><i
+            <button (click)="AddTelefone()"  class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || telefone.tipoTelefone == undefined || ctrlTelefone.invalid"><i
                 class="fas fa-plus"></i>
             </button>
           </div>

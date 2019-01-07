@@ -43,6 +43,11 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
   }
+  onKeydown() {
+    this.pessoa.telefones = this.telefones;
+    this.telefones.push(this.telefone);
+    // this.telefone = new Telefone();
+  }
 
   SelecionarEmpresa(empresaId: number) {
     this.empresaId = empresaId;
