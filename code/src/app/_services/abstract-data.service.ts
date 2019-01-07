@@ -9,32 +9,32 @@ import { ModeloRetorno } from '../_models/interfaces/modelo.retorno';
 
 export class AbstractDataService {
   url: string;
-  private headers: Headers
+  private headers: Headers;
 
   constructor(private httpSvc: HttpService) {
     this.headers = new Headers();
-    this.headers.append('Content-Type', 'application/json')
+    this.headers.append('Content-Type', 'application/json');
   }
 
   private executaAcaoHttp(metodo: string, modelo?: any) {
     switch (metodo) {
-      case "get":
+      case 'get':
         return this.httpSvc.get(this.url, { headers: this.headers }).map(res => {
           return res.json();
         });
-      case "gexportet":
+      case 'gexportet':
         return this.httpSvc.get(this.url, { headers: this.headers }).map(res => {
           return res;
         });
-      case "post":
+      case 'post':
         return this.httpSvc.post(this.url, modelo, { headers: this.headers }).map(res => {
           return res.json();
         });
-      case "put":
+      case 'put':
         return this.httpSvc.put(this.url, modelo, { headers: this.headers }).map(res => {
           return res.json();
         });
-      case "delete":
+      case 'delete':
         return this.httpSvc.delete(this.url, { headers: this.headers }).map(res => {
           return res.json();
         });
@@ -43,44 +43,45 @@ export class AbstractDataService {
 
   excluir<T extends ModeloGenerico>(modeloTipo: TipoModelo<T>, id: number): Observable<ModeloRetorno> {
     this.url = `${this.montarUrlPorTipo(modeloTipo)}/${id}`;
-    return this.executaAcaoHttp("delete");
+    return this.executaAcaoHttp('delete');
   }
 
-  salvar<T extends ModeloGenerico>(modelo: T, modeloTipo: TipoModelo<T>, urlAlternativa: string): Observable<ModeloRetorno> {
-    const acao = modelo.Id && modelo.Id > 0 ? "put" : "post";
+  salvar<T extends ModeloGenerico>(modelo: T, modeloTipo?: TipoModelo<T>, urlAlternativa?: string): Observable<ModeloRetorno> {
+    const acao = modelo.Id && modelo.Id > 0 ? 'put' : 'post';
     this.url = `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}`;
     return this.executaAcaoHttp(acao, modelo);
   }
 
   postViewModel(modelo: any, urlApi: string) {
     this.url = this.montarUrlGenerica(urlApi);
-    return this.executaAcaoHttp("post", modelo)
+    return this.executaAcaoHttp('post', modelo);
   }
 
   putViewModel(modelo: any, urlApi: string) {
     this.url = this.montarUrlGenerica(urlApi);
-    return this.executaAcaoHttp("put", modelo)
+    return this.executaAcaoHttp('put', modelo);
   }
 
   postLista<T extends ModeloGenerico>(modelo: Array<T>, modeloTipo: TipoModelo<T>, urlAlternativa?: string): Observable<ModeloRetorno> {
     this.url = this.montarUrlPorTipo(modeloTipo, urlAlternativa);
-    return this.executaAcaoHttp("post", modelo)
+    return this.executaAcaoHttp('post', modelo);
   }
 
   obter<T extends ModeloGenerico>(modelo: T, urlAlternativa?: string): Observable<ModeloRetorno> {
     this.url = this.montarUrl(modelo, urlAlternativa);
-    if (!urlAlternativa)
+    if (!urlAlternativa) {
       this.url += `/obter/${modelo.Id}`;
-    return this.executaAcaoHttp("get", modelo)
+    }
+    return this.executaAcaoHttp('get', modelo);
   }
 
   listar<T extends ModeloGenerico>(modelo: TipoModelo<T>, filtro?: any, urlAlternativa?: string): Observable<ModeloRetorno> {
     this.url = this.montarUrlPorTipo(modelo, urlAlternativa);
-    this.url = urlAlternativa != null && urlAlternativa != undefined ? this.url : `${this.url}/ObterTodos`;
+    this.url = urlAlternativa != null && urlAlternativa !== undefined ? this.url : `${this.url}/ObterTodos`;
     if (filtro && filtro !== undefined && filtro != null && Object.keys(filtro).length > 0) {
       this.incluirFiltros(filtro);
     }
-    return this.executaAcaoHttp("get")
+    return this.executaAcaoHttp('get');
   }
 
   exportar<T extends ModeloGenerico>(modelo: TipoModelo<T>, tipoExportar: string, filtro?: any, urlAlternativa?: string): Observable<ModeloRetorno> {
@@ -88,11 +89,10 @@ export class AbstractDataService {
     if (filtro && filtro !== undefined && filtro != null && Object.keys(filtro).length > 0) {
       this.incluirFiltros(filtro);
       this.url += `&tipoArquivo=${tipoExportar}`;
-    }
-    else {
+    } else {
       this.url += `?tipoArquivo=${tipoExportar}`;
     }
-    return this.executaAcaoHttp("export")
+    return this.executaAcaoHttp('export');
   }
 
   criarLista<T extends ModeloGenerico>(modeloTipo: TipoModelo<T>, lista: Array<T>) {
@@ -111,16 +111,16 @@ export class AbstractDataService {
 
   private montarUrl<T extends ModeloGenerico>(modelo: T, urlAlternativa?: string): string {
     let url = `${environment.api}/api/${modelo.getKey()}`;
-    url = urlAlternativa != null && urlAlternativa != undefined ?
+    url = urlAlternativa != null && urlAlternativa !== undefined ?
       `${url}/${urlAlternativa}` :
       url;
     return url;
   }
 
   private montarUrlPorTipo<T extends ModeloGenerico>(tipoModelo: TipoModelo<T>, urlAlternativa?: string): string {
-    var key = tipoModelo.prototype.getKey();
+    const key = tipoModelo.prototype.getKey();
     let url = `${environment.api}/api/${key}`;
-    url = urlAlternativa != null && urlAlternativa != undefined ?
+    url = urlAlternativa != null && urlAlternativa !== undefined ?
       `${url}/${urlAlternativa}` :
       url;
     return url;
@@ -131,10 +131,10 @@ export class AbstractDataService {
   }
 
   private incluirFiltros(filtro?: any) {
-    var chaves = Object.keys(filtro);
-    for (var i = 0; i < chaves.length; i++) {
+    const chaves = Object.keys(filtro);
+    for (let i = 0; i < chaves.length; i++) {
       const chave = chaves[i];
-      const valor = filtro[chave]
+      const valor = filtro[chave];
       this.url += (valor !== null && valor !== undefined) ? `${(i === 0 ? '?' : '&')}${chave}=${valor}` : '';
     }
   }

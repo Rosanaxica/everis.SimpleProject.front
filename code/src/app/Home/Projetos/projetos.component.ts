@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ProjetoService } from 'src/app/_services/projeto.service';
-import { PessoaService } from 'src/app/_services/pessoa.service';
-
+import { GenericService } from 'src/app/_services/generic.service';
+import { Pessoa } from 'src/app/_models/pessoa.model';
+import { Projeto } from 'src/app/_models/projeto.model';
 
 @Component({
   selector: 'app-projetos',
@@ -14,29 +14,28 @@ export class ProjetosComponent implements OnInit {
   projetos: any;
   pessoas: any;
 
-  constructor(private http: HttpClient, private projetoService: ProjetoService, private pessoaService: PessoaService) { }
+  constructor(private svc: GenericService) { }
 
   ngOnInit() {
-    this.projetoService.ObterTodos()
-    .subscribe(
-      (result) => {
-        console.log(result);
-        this.projetos = result.data;
-      },
-      (error) => {
+    this.svc.listar(Projeto)
+      .toPromise().then(
+        (result) => {
+          console.log(result);
+          this.projetos = result.data;
+        },
+        (error) => {
 
-      }
-    );
-    this.pessoaService.ObterTodasPessoas()
-    .subscribe(
-      (result) => {
-        console.log(result);
-        this.pessoas = result['data'];
-      },
-      (error) => {
-
-      }
-    );
+        }
+      );
+    this.svc.listar(Pessoa)
+      .toPromise().then(
+        (result) => {
+          console.log(result);
+          this.pessoas = result['data'];
+        },
+        (error) => {
+        }
+      );
   }
 
 }

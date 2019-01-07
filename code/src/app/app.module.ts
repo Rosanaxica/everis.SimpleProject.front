@@ -7,7 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TabsModule } from 'ngx-bootstrap/tabs';
-import { PessoasComponent } from './Home/Pessoas/pessoas.component';
+
 import { LoginComponent } from './Home/Login/login/login.component';
 import { PrimeiroAcessoComponent } from './Home/Login/primeiro-acesso/primeiro-acesso.component';
 import { EsqueceuSenhaComponent } from './Home/Login/esqueceu-senha/esqueceu-senha.component';
@@ -40,8 +40,6 @@ import { DateTimeFormatPipe } from './shared/util/datetime-format-pipe';
 import { ChangesComponent } from './Home/Projetos/actions/changes/changes.component';
 import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
-import { EmpresaService } from './_services/empresa-service.service';
-import { ProjetoService } from './_services/projeto.service';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
 
@@ -51,6 +49,15 @@ import { LoaderService } from './_services/loader.service';
 
 
 
+import { PessoasComponent } from './Home/Pessoas/pessoas.component';
+import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+
+import * as more from 'highcharts/highcharts-more.src';
+import * as exporting from 'highcharts/modules/exporting.src';
+import * as exportData from 'highcharts/modules/export-data.src';
+import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
+
+import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +89,8 @@ import { LoaderService } from './_services/loader.service';
     NovoEsforcoProjetoComponent,
     MapaSiteComponent,
     NovaEmpresaComponent,
-    LoaderComponent
+    LoaderComponent,
+    GraficopizzaComponent
   ],
   imports: [
     HttpClientModule,
@@ -101,14 +109,15 @@ import { LoaderService } from './_services/loader.service';
     TabsModule.forRoot(),
     ProgressbarModule.forRoot(),
     FormsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    ChartModule
 
   ],
   providers: [
-    ProjetoService,
     GenericService,
     HttpService,
     LoaderService
+    // {provide: HIGHCHARTS_MODULES,useFactory: () => [more, exportData, exporting, offlineExporting]}
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { AnexoService } from 'src/app/_services/anexo.service';
 import { Anexo } from 'src/app/_models/anexo.model';
+import { GenericService } from 'src/app/_services/generic.service';
 
 @Component({
   selector: 'app-anexos',
@@ -13,7 +13,7 @@ export class AnexosComponent implements OnInit {
 
   anexo = new Anexo();
 
-  constructor(private formBuilder: FormBuilder, private anexoService: AnexoService) { }
+  constructor(private formBuilder: FormBuilder, private svc: GenericService) { }
   anexoForm: FormGroup;
 
   ngOnInit() {
@@ -21,10 +21,10 @@ export class AnexosComponent implements OnInit {
   }
 
   Adicionar() {
-    this.anexo.IdProjeto = 1;
+    this.anexo.idProjeto = 1;
 
-    this.anexoService.Adicionar(this.anexo)
-      .subscribe((data: any) => {
+    this.svc.salvar(this.anexo, Anexo)
+      .toPromise().then((data: any) => {
         switch (data.codigo) {
           case 200:
             window.alert('ok');

@@ -62,18 +62,25 @@ const appRoutes: Routes = [
     path: 'template',
     component: TemplateComponent,
     children: [
+
+    {path: '', component: DashboardComponent},
+    {path: 'dashboard', component: DashboardComponent},
+
     {path: 'pessoas', component: PessoasComponent},
     {path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent},
+
     {path: 'projetos', component: ProjetosComponent},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'novo-projeto', component: NovoProjetoComponent },
     {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
     {path: 'projetos/novo-projeto/changes', component: ChangesComponent  },
     {path: 'projetos/novo-projeto/changes/nova-change', component: NovaChangeComponent  },
     {path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
     {path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
+
+
+    {path: 'novo-projeto', component: NovoProjetoComponent },
     {path: 'mapa-site', component: MapaSiteComponent },
     {path: 'modelos', component: ModelosComponent},
+
     {path: 'empresa/nova-empresa', component: NovaEmpresaComponent},
     {path: 'empresa', component: EmpresaComponent},
       ],
@@ -90,15 +97,7 @@ const appRoutes: Routes = [
     path: 'mapa-site',
     component: MapaSiteComponent
   },
-  {
-    path: 'changes',
-    component: ChangesComponent
-    },
-  {
-    path: 'dados-principais',
-    component: DadosPrincipaisComponent
-  },
-  {
+    {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },

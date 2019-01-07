@@ -1,21 +1,28 @@
-export class Projeto {
-    Nome: string;
-    QtdHorasServico1: number;
-    QtdHorasServico2: number;
-    QtdHorasServico3: number;
-    DataInicio: Date;
-    DataEntrega: Date;
-    EscopoProjeto: string;
-    ForaEscopoProjeto: string;
-    Premissas: string;
-    IdEmpresa: number;
-    Empresa: string;
-    Status: string;
-    DataPrevista: Date;
-    BeneficioEntregue: string;
-    ProblemasExecucao: string;
-    BeneficioResidual: string;
-    Riscos: string;
-    LicoesAprendidas: string;
-    CentroCusto: string;
+import { ModeloGenerico } from './modelo_generico';
+
+export class Projeto extends ModeloGenerico {
+    nome: string;
+    qtdHorasServico1: number;
+    qtdHorasServico2: number;
+    qtdHorasServico3: number;
+    dataInicio: Date;
+    dataEntrega: Date;
+    escopoProjeto: string;
+    foraEscopoProjeto: string;
+    premissas: string;
+    idEmpresa: number;
+    empresa: string;
+    status: string;
+    dataPrevista: Date;
+    beneficioEntregue: string;
+    problemasExecucao: string;
+    beneficioResidual: string;
+    riscos: string;
+    licoesAprendidas: string;
+    centroCusto: string;
+
+    getKey(): string {
+        return 'projeto'
+    }
+
 }
