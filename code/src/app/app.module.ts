@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Inject, Injector } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -43,8 +43,11 @@ import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { EmpresaService } from './_services/empresa-service.service';
 import { ProjetoService } from './_services/projeto.service';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
+import { LoaderComponent } from './core/loader/loader.component';
 
-
+import { GenericService } from './_services/generic.service';
+import { HttpService } from './_services/http.service';
+import { LoaderService } from './_services/loader.service';
 
 
 
@@ -78,7 +81,8 @@ import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.c
     ChangesComponent,
     NovoEsforcoProjetoComponent,
     MapaSiteComponent,
-    NovaEmpresaComponent
+    NovaEmpresaComponent,
+    LoaderComponent
   ],
   imports: [
     HttpClientModule,
@@ -102,8 +106,13 @@ import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.c
   ],
   providers: [
     ProjetoService,
-    EmpresaService
+    GenericService,
+    HttpService,
+    LoaderService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  static injector: Injector;
+  constructor(public injector: Injector) { }
+}

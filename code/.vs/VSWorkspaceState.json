@@ -1,6 +1,16 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\Home",
+    "\\src\\app\\Home\\Empresa",
+    "\\src\\app\\Home\\Empresa\\nova-empresa",
+    "\\src\\app\\Home\\Pessoas",
+    "\\src\\app\\Home\\Projetos",
+    "\\src\\app\\Home\\Projetos\\actions",
+    "\\src\\app\\_services"
   ],
+  "SelectedNode": "\\src\\app\\_services\\http.service.ts",
   "PreviewInSolutionExplorer": false
 }

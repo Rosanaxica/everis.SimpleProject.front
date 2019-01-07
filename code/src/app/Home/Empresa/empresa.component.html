@@ -1,16 +1,31 @@
 <div class="row align-items-center">
   <div class="col-3">
-      <h1 class="titulo mb-0">Empresas</h1>
-  </div> 
+    <h1 class="titulo mb-0">Empresas</h1>
+  </div>
   <div class="input-group col">
-    <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
+    <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
+      [(ngModel)]="filtroEmpresa.nome">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+      <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>
   </div>
   <nav class="col-3 d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" [routerLink]="['nova-empresa']" >Nova Empresa+</button>
-   
-  </nav> 
-  <hr class="mt-2" />
+    <button type="button" class="btn everis mr-2" [routerLink]="['nova-empresa']">Nova Empresa+</button>
+
+  </nav>
+  <table class="table">
+    <colgroup>
+      <col width="50%">
+      <col width="50%">
+    </colgroup>
+    <tr>
+        <th>Nome</th>
+        <th>Segmento</th>
+    </tr>
+    <tr *ngFor="let empresa of empresas">
+        <td>{{ empresa.nome}}</td>
+        <td>{{ empresa.segmento}}</td>
+    </tr>
+  </table>
+
 </div>
