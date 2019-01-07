@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Inject, Injector } from '@angular/core';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -40,9 +40,15 @@ import { DateTimeFormatPipe } from './shared/util/datetime-format-pipe';
 import { ChangesComponent } from './Home/Projetos/actions/changes/changes.component';
 import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
-import { EmpresaService } from './_services/empresa-service.service';
-import { ProjetoService } from './_services/projeto.service';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
+import { LoaderComponent } from './core/loader/loader.component';
+
+import { GenericService } from './_services/generic.service';
+import { HttpService } from './_services/http.service';
+import { LoaderService } from './_services/loader.service';
+
+
+
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
 
@@ -83,6 +89,7 @@ import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizz
     NovoEsforcoProjetoComponent,
     MapaSiteComponent,
     NovaEmpresaComponent,
+    LoaderComponent,
     GraficopizzaComponent
   ],
   imports: [
@@ -107,10 +114,14 @@ import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizz
 
   ],
   providers: [
-    ProjetoService,
-    EmpresaService,
+    GenericService,
+    HttpService,
+    LoaderService
     // {provide: HIGHCHARTS_MODULES,useFactory: () => [more, exportData, exporting, offlineExporting]}
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  static injector: Injector;
+  constructor(public injector: Injector) { }
+}

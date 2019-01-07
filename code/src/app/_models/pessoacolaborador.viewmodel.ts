@@ -1,9 +1,14 @@
 import { Colaborador } from './colaborador.model';
 import { Pessoa } from './pessoa.model';
+import { ModeloGenerico } from './modelo_generico';
 
-export class PessoaColaboradorViewModel {
-    Colaborador: Colaborador;
-    Pessoa: Pessoa;
+export class PessoaColaboradorViewModel extends ModeloGenerico {
+    colaborador: Colaborador;
+    pessoa: Pessoa;
+
+    getKey() {
+        return 'pessoacolaborador';
+    }
 }
 
 export enum TipoPessoa {

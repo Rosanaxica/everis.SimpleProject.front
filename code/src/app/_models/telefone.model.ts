@@ -1,8 +1,14 @@
+import { ModeloGenerico } from './modelo_generico';
 
-export class Telefone {
-    Id: number;
-    NumeroTelefone: string;
-    TipoTelefone: TipoTelefone;
+export class Telefone extends ModeloGenerico {
+
+    id: number;
+    numeroTelefone: string;
+    tipoTelefone: TipoTelefone;
+
+    getKey(): string {
+        return 'telefone';
+    }
 }
 
 export enum TipoTelefone {

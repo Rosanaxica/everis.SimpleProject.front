@@ -1,7 +1,6 @@
 import { Colaborador } from './../../_models/colaborador.model';
-import { PessoaService } from 'src/app/_services/pessoa.service';
 import { Component, OnInit } from '@angular/core';
-
+import { GenericService } from 'src/app/_services/generic.service';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 
 @Component({
@@ -11,13 +10,13 @@ import { Pessoa } from 'src/app/_models/pessoa.model';
 })
 export class PessoasComponent implements OnInit {
 
-  constructor(private pessoaService: PessoaService) { }
+  constructor(private svc: GenericService) { }
 
   colaboradores: Colaborador[] = [];
   pessoas: Pessoa[] = [];
 
   ngOnInit() {
-    this.pessoaService.ObterTodasPessoas().subscribe(data => {
+    this.svc.listar(Pessoa).toPromise().then(data => {
       this.pessoas = data['data'];
       console.log(this.pessoas);
     });

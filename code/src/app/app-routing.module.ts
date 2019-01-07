@@ -22,8 +22,14 @@ import { ChangesComponent } from './Home/Projetos/actions/changes/changes.compon
 import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
+import { LoaderComponent } from './core/loader/loader.component';
+
 
 const appRoutes: Routes = [
+  {
+    path: 'loader',
+    component: LoaderComponent
+  },
   {
     path: 'modelos',
     component: ModelosComponent

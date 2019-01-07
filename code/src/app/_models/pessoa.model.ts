@@ -1,23 +1,23 @@
 import { Colaborador } from './colaborador.model';
 import { Empresa } from './empresa.model';
 import { Telefone } from './telefone.model';
+import { ModeloGenerico } from './modelo_generico';
 
 
-export class Pessoa {
-    Id: number;
-    EmpresaId: number;
-    Ativo: boolean;
-    Nome: string;
-    Tipo: TipoPessoa;
-    Email: string;
-    Cpf?: number;
-    Documento: String;
-    FotoPath: string;
-    Telefones?: Telefone[];
-    Colaborador?: Colaborador;
+export class Pessoa extends ModeloGenerico {
 
-    constructor() {
-        this.Ativo = true;
+    empresaId: number;
+    nome: string;
+    tipo: TipoPessoa;
+    email: string;
+    cpf?: number;
+    documento: String;
+    fotoPath: string;
+    telefones?: Telefone[];
+    colaborador?: Colaborador;
+
+    getKey(): string {
+        return 'pessoa';
     }
 }
 

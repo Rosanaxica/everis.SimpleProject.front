@@ -1,13 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { EmpresaService } from 'src/app/_services/empresa-service.service';
 import { PessoaColaboradorViewModel } from 'src/app/_models/pessoacolaborador.viewmodel';
 import { Telefone } from 'src/app/_models/telefone.model';
 import { Empresa } from 'src/app/_models/empresa.model';
-import { PessoaService } from 'src/app/_services/pessoa.service';
 import { Colaborador } from 'src/app/_models/colaborador.model';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { GenericService } from 'src/app/_services/generic.service';
 
 
 
@@ -18,8 +17,7 @@ import { NgForm } from '@angular/forms';
 })
 export class CadastroPessoasComponent implements OnInit {
 
-  constructor(private empresaService: EmpresaService,
-    private pessoaService: PessoaService, private router: Router) {
+  constructor(private svc: GenericService, private router: Router) {
   }
 
   pessoa = new Pessoa();
@@ -33,7 +31,7 @@ export class CadastroPessoasComponent implements OnInit {
 
 
   ngOnInit() {
-    this.empresaService.ObterLista().subscribe(data => {
+    this.svc.listar(Empresa).toPromise().then(data => {
       this.empresas = data['data'];
       console.log(this.empresas);
     }
@@ -41,7 +39,7 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
   AddTelefone() {
-    this.pessoa.Telefones = this.telefones;
+    this.pessoa.telefones = this.telefones;
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
   }
@@ -58,14 +56,14 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
   isTipoPessoaRequired(): boolean {
-    if (this.pessoa.Tipo === undefined) {
+    if (this.pessoa.tipo === undefined) {
       return true;
     }
     return false;
   }
 
   isPerfilRequired(): boolean {
-    if (this.colaborador.Perfil === undefined) {
+    if (this.colaborador.perfil === undefined) {
       return true;
     }
     return false;
@@ -79,13 +77,13 @@ export class CadastroPessoasComponent implements OnInit {
     this.msgErro = null;
     this.msgSucesso = null;
     // tslint:disable-next-line:triple-equals
-    if (this.pessoa.Tipo == 1) {
+    if (this.pessoa.tipo == 1) {
       const pessoaColaborador = new PessoaColaboradorViewModel();
-      pessoaColaborador.Colaborador = this.colaborador;
-      pessoaColaborador.Pessoa = this.pessoa;
+      pessoaColaborador.colaborador = this.colaborador;
+      pessoaColaborador.pessoa = this.pessoa;
 
-      this.pessoaService.AdicionarColaborador(pessoaColaborador)
-        .subscribe(
+      this.svc.salvar(pessoaColaborador, PessoaColaboradorViewModel)
+      .toPromise().then(
           data => {
             this.msgSucesso = 'Colaborador cadastrado com sucesso!';
           },
@@ -94,9 +92,9 @@ export class CadastroPessoasComponent implements OnInit {
           }
         );
     } else {
-      this.pessoa.EmpresaId = this.empresaId;
-      this.pessoaService.AdicionarTerceiro(this.pessoa)
-        .subscribe(
+      this.pessoa.empresaId = this.empresaId;
+      this.svc.salvar(this.pessoa, Pessoa)
+      .toPromise().then(
           data => {
             this.msgSucesso = 'Terceiro cadastrado com sucesso!';
           },

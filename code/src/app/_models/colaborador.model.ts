@@ -1,19 +1,19 @@
-import { Pessoa } from './pessoa.model';
 import { FuncaoColaborador, PerfilColaborador } from './pessoacolaborador.viewmodel';
+import { ModeloGenerico } from './modelo_generico';
 
-export class Colaborador {
 
-    Id: number;
-    Racf: string;
-    EmailCorporativo: string;
-    Funcional: number;
-    NomeMaquina: string;
-    Funcao: FuncaoColaborador;
-    Perfil: PerfilColaborador;
-    Disponivel: boolean;
-    Senha: string;
+export class Colaborador extends ModeloGenerico {
+    racf: string;
+    emailCorporativo: string;
+    funcional: number;
+    nomeMaquina: string;
+    funcao: FuncaoColaborador;
+    perfil: PerfilColaborador;
+    disponivel: boolean;
+    senha: string;
 
-    constructor() {
-        this.Disponivel = true;
+    getKey(): string {
+        return 'colaborador';
     }
+
 }

@@ -1,0 +1,20 @@
+.loader-hidden{
+  visibility:hidden;
+}
+.loader-overlay{
+  position: absolute!important;
+  width: 100%!important;
+  height:100%!important;
+  top:0;
+  left:0;
+  opacity: 0.90;
+  z-index: 500000;
+  background-color: #c4c4c4;
+}
+.dvImgLoad{
+  z-index:500001;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%)
+}

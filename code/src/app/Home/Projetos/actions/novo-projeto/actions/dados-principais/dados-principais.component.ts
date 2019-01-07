@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '../../../../../../../../node_modules/@angular/forms';
 import { Projeto } from 'src/app/_models/projeto.model';
-import { ProjetoService } from 'src/app/_services/projeto.service';
 import { Router } from '@angular/router';
+import { GenericService } from 'src/app/_services/generic.service';
 
 
 @Component({
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class DadosPrincipaisComponent implements OnInit {
   projeto: Projeto;
 
-  constructor(private formBuilder: FormBuilder, private projetoService: ProjetoService,
+  constructor(private formBuilder: FormBuilder, private svc: GenericService,
     private router: Router) { }
   dadosPrincipaisForm: FormGroup;
 
@@ -28,8 +28,8 @@ export class DadosPrincipaisComponent implements OnInit {
 
   Adicionar() {
 
-    this.projetoService.Adicionar(this.projeto)
-      .subscribe((data: any) => {
+    this.svc.salvar(this.projeto, Projeto)
+      .toPromise().then((data: any) => {
         switch (data.codigo) {
           case 200:
             window.alert('ok');
