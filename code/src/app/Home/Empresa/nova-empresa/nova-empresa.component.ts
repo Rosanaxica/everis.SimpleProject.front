@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { Empresa } from 'src/app/_models/empresa.model';
-import { GenericService } from 'src/app/_services/generic.service';
+import { Empresa } from '../../../_models/empresa.model';
+import { GenericService } from '../../../_services/generic.service';
 
 @Component({
   selector: 'app-nova-empresa',
@@ -22,7 +21,7 @@ export class NovaEmpresaComponent implements OnInit {
   empresas: Empresa[] = [];
 
   ngOnInit() {
-    this.svc.listar(Empresa).toPromise().then(
+    this.svc.listar(Empresa, this.empresa).toPromise().then(
       data => {
         this.empresas = data['data'];
       },

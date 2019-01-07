@@ -21,7 +21,7 @@
     <!--Nome empresa-->
     <div class="form-group">
       <div class="row col-md-8 mb-2">
-        <input type="text" class="form-control" id="empresa" placeholder="*Nome da Empresa" [(ngModel)]="empresa.Nome"
+        <input type="text" class="form-control" id="empresa" placeholder="*Nome da Empresa" [(ngModel)]="empresa.nome"
           name="nome" minlength="3" autocomplete="off" #ctrlNomeEmpresa="ngModel" [class.is-valid]="ctrlNomeEmpresa.valid"
           [class.is-invalid]="ctrlNomeEmpresa.invalid && (ctrlNomeEmpresa.dirty || ctrlNomeEmpresa.touched)" required>
       </div>

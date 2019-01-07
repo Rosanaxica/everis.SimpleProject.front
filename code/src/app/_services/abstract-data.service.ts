@@ -77,7 +77,7 @@ export class AbstractDataService {
 
   listar<T extends ModeloGenerico>(modelo: TipoModelo<T>, filtro?: any, urlAlternativa?: string): Observable<ModeloRetorno> {
     this.url = this.montarUrlPorTipo(modelo, urlAlternativa);
-    this.url = urlAlternativa != null && urlAlternativa !== undefined ? this.url : `${this.url}/ObterTodos`;
+    this.url = urlAlternativa != null && urlAlternativa !== undefined ? this.url : `${this.url}/BuscarPor`;
     if (filtro && filtro !== undefined && filtro != null && Object.keys(filtro).length > 0) {
       this.incluirFiltros(filtro);
     }
