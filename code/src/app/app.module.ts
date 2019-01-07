@@ -43,7 +43,12 @@ import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { EmpresaService } from './_services/empresa-service.service';
 import { ProjetoService } from './_services/projeto.service';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
+<<<<<<< HEAD
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
+=======
+import { ChartModule } from 'angular-highcharts';
+import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
+>>>>>>> 2efb9aba830dda0eb1e9d62eeae013e1d9fc9db0
 
 
 
@@ -79,7 +84,8 @@ import { PessoasComponent } from './Home/Pessoas/pessoas.component';
     ChangesComponent,
     NovoEsforcoProjetoComponent,
     MapaSiteComponent,
-    NovaEmpresaComponent
+    NovaEmpresaComponent,
+    GraficopizzaComponent
   ],
   imports: [
     HttpClientModule,
@@ -98,7 +104,8 @@ import { PessoasComponent } from './Home/Pessoas/pessoas.component';
     TabsModule.forRoot(),
     ProgressbarModule.forRoot(),
     FormsModule,
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    ChartModule
 
   ],
   providers: [

@@ -7,6 +7,7 @@ import { PessoaService } from 'src/app/_services/pessoa.service';
 import { Colaborador } from 'src/app/_models/colaborador.model';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 
 
@@ -74,7 +75,7 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefones.splice(this.telefones.indexOf(telefone, 1));
   }
 
-  Salvar() {
+  Salvar(form: NgForm) {
     this.msgErro = null;
     this.msgSucesso = null;
     // tslint:disable-next-line:triple-equals
@@ -104,10 +105,15 @@ export class CadastroPessoasComponent implements OnInit {
           }
         );
     }
+
+    form.reset();
+    this.telefones = [];
+
   }
 
   Cancelar() {
     this.router.navigate(['/template/pessoas']);
   }
+
 
 }
