@@ -19,6 +19,7 @@ export class TemplateComponent implements OnInit {
     if (this.menuFechado == true)
     {
       this.menuFechado = false;
+      
     }
     else
     {
