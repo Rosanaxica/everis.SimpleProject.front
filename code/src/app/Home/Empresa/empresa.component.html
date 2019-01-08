@@ -1,3 +1,10 @@
+<div class="row">
+  <div *ngIf="msgSucesso != null && msgSucesso != undefined">
+    <div class="alert alert-success" role="alert">
+      <i class="fa fa-check mr-1"></i> {{msgSucesso}}
+    </div>
+  </div>
+</div>
 <div class="row align-items-center">
   <div class="col-3">
     <h1 class="titulo mb-0">Empresas</h1>
@@ -19,12 +26,12 @@
       <col width="50%">
     </colgroup>
     <tr>
-        <th>Nome</th>
-        <th>Segmento</th>
+      <th>Nome</th>
+      <th>Segmento</th>
     </tr>
     <tr *ngFor="let empresa of empresas" (click)="editar(empresa.id)">
-        <td>{{ empresa.nome }}</td>
-        <td>{{ empresa.segmento }}</td>
+      <td>{{ empresa.nome }}</td>
+      <td>{{tipoSegmentoType[empresa.segmento]}}</td>
     </tr>
   </table>
 

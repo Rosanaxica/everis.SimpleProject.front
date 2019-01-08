@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Empresa } from 'src/app/_models/empresa.model';
+import { Empresa, TipoSegmento } from 'src/app/_models/empresa.model';
 import { GenericService } from 'src/app/_services/generic.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 // import 'rxjs/operator/map';
 
@@ -11,13 +11,22 @@ import { Router } from '@angular/router';
   styleUrls: ['./empresa.component.css']
 })
 export class EmpresaComponent implements OnInit {
-  constructor(private svc: GenericService, private router: Router) { }
+  constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
 
   empresas: Empresa[] = [];
   filtroEmpresa = new Empresa();
+  msgSucesso: String;
+  tipoSegmentoType: typeof TipoSegmento = TipoSegmento;
+
 
   ngOnInit() {
     this.filtrar();
+    this.arouter.paramMap.subscribe(res => {
+      var sucesso = res.get("sucesso");
+      if (sucesso !== null && sucesso !== undefined && sucesso) {
+        alert('Cadastro realizado com sucesso!');
+      }
+    });
   }
 
   editar(id: number) {

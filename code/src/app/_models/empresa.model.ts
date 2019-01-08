@@ -11,7 +11,6 @@ export class Empresa extends ModeloGenerico {
   }
 }
 
-
 export enum TipoSegmento {
   Banking = 0,
   Telecomunicacao = 1

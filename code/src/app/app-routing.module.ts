@@ -84,7 +84,9 @@ const appRoutes: Routes = [
     {path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent},
     {path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent},
     {path: 'empresa', component: EmpresaComponent},
-      ],
+    {path: 'empresa:sucesso', component: EmpresaComponent},
+     
+  ],
 
   },
   {
