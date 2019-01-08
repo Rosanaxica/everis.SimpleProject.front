@@ -49,42 +49,41 @@
         <button class="btn everis">Adicionar projeto</button>
       </a>
     </li>
-  <li class="nav-item active" matTooltip="Dashboard" [matTooltipPosition]="'right'">
+  <li class="nav-item active" [matTooltip]="menuFechado ? 'Dashboard': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['dashboard']" routerLinkActive="active">
 
-        <i class="fas fa-tachometer-alt"></i>
-        <span> Dashboard</span></a>
-    </li>
+        <i class="fas fa-tachometer-alt"></i> 
+        <span> Dashboard</span></a>  
 
-    <li class="nav-item" matTooltip="Projetos" [matTooltipPosition]="'right'">
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Projetos': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['projetos']" routerLinkActive="active">
         <i class="fas fa-chart-bar"></i>
         <span> Projetos</span></a>
     </li>
     
-    <li class="nav-item" matTooltip="Empresas" [matTooltipPosition]="'right'">
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Empresas': null" [matTooltipPosition]="'right'">
         <a class="nav-link" [routerLink]="['empresa']" routerLinkActive="active">
           <i class="fas fa-building"></i>
           <span> Empresas</span></a>
       </li>
-    <li class="nav-item" matTooltip="Pessoas" [matTooltipPosition]="'right'">
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Pessoas': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['pessoas']" routerLinkActive="active">
         <i class="fa fa-user"></i>
         <span> Pessoas</span></a>
     </li>
-    <li class="nav-item" matTooltip="Mapa do Site" [matTooltipPosition]="'right'">
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Mapa Site': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['mapa-site']" routerLinkActive="active">
         <i class="fa fa-sitemap"></i>
         <span> Mapa do Site</span></a>
     </li>
-    <li class="nav-item" matTooltip="Central de Ajuda" [matTooltipPosition]="'right'">
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Central de Ajuda': null" [matTooltipPosition]="'right'">
       <a class="nav-link" href="#">
         <i class="fa fa-question-circle"></i>
         <span> Central de Ajuda</span></a>
     </li>
     <hr>
 
-    <li class="nav-item" matTooltip="Modelos" [matTooltipPosition]="'right'">
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Modelos': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['modelos']" routerLinkActive="active">
         <i class="fa fa-clone"></i>
         <span> Modelos</span></a>
