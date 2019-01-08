@@ -1,53 +1,85 @@
 
-  <div class="row align-items-center">
-    <div class="col">
-      <h1 class="titulo">Nova Change</h1>
-    </div>
-    <nav class="col d-flex justify-content-end">
-      <button type="button" class="btn everis mr-2">Salvar</button>
-      <button type="button" class="btn cancelar">Cancelar</button>
-    </nav>
+{{change|json}}
+
+<div class="row align-items-center">
+  <div class="col">
+    <h1 class="titulo">Nova Change</h1>
   </div>
+  <nav class="col d-flex justify-content-end">
+    <button type="button" class="btn everis mr-2">Salvar</button>
+    <button type="button" class="btn cancelar">Cancelar</button>
+  </nav>
+</div>
 
-<hr class="mt-2">
-<div class="border">
-  <div class="container-fluid">
-    <div class="row" style="margin-top: 15px">
-      <div class="col">
-        <div class="form-group">
-          <input type="text" class="form-control" id="input" placeholder="Nome Projeto">
+<form [formGroup]="formularioChange">
+    <div *ngIf="msgSucesso != null && msgSucesso != undefined">
+        <div class="alert alert-success" role="alert">
+          <i class="fa fa-check mr-1"></i> {{msgSucesso}}
         </div>
-        <div class="row align-items-center">
-          <div class="col-4">
-            <label for="label">Horas de impacto</label>
-            <div class="row align-items-center">
-              <div class="input-group col">
-                <input type="text" class="form-control" placeholder="--:--" aria-label="Digite o que você deseja buscar">
-                <div class="input-group-append">
+      </div>
+      <div *ngIf="msgErro != null && msgErro != undefined">
+        <div class="alert alert-danger" role="alert">
+          <i class="fa fa-times mr-2"> </i> {{msgErro}}
+        </div>
+      </div>
+  <hr class="mt-2">
+  <div class="border">
+    <div class="container-fluid">
+      <div class="row" style="margin-top: 15px">
+        <div class="col">
+          <div class="form-group">
+            <input type="text" class="form-control" id="input" placeholder="Nome Projeto" name="nomeProjeto" formControlName="nomeProjeto">
+          </div>
 
+
+          <fieldset class="border mb-3">
+
+            <legend class="col-md-3">Quantidade de Horas</legend>
+            <div class="form-group row">
+              <div class="col-md-3 ml-3">
+                <label>Serviço 1</label>
+                <input type="time" name="qtdhorasservico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" formControlName="qtdhorasservico1"/>
+              </div>
+              <div class="col-md-3 m-0">
+                <div class="col-md-6">
+                  <label for="data">Serviço 2</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="time" name="qtdhorasservico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" formControlName="qtdhorasservico2" />
+                </div>
+              </div>
+              <div class="col-md-3 m-0">
+                <div class="col-md-6">
+                  <label for="data">Serviço 3</label>
+                </div>
+                <div class="col-md-6">
+                  <input type="time" name="qtdhorasservico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" formControlName="qtdhorasservico3" />
                 </div>
               </div>
             </div>
+          </fieldset>
+
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-12">
+          <div class="form-group">
+            <label for="nova-change_text_area">Descrição</label>
+            <textarea class="form-control mb-4" name="descricao" id="nova-change_text_area" rows="3" formControlName="descricao"></textarea>
+            <label for="nova-change_enviar_arquivo">Enviar Arquivo</label>
+            <input type="file" class="form-control-file" id="nova-change_enviar_arquivo">
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-12">
-        <div class="form-group">
-          <label for="nova-change_text_area">Descrição</label>
-          <textarea class="form-control mb-4" id="nova-change_text_area" rows="3"></textarea>
-          <label for="nova-change_enviar_arquivo">Enviar Arquivo</label>
-          <input type="file" class="form-control-file" id="nova-change_enviar_arquivo">
-        </div>
+      <div class="row align-items-center mb-4">
+        <nav class="col d-flex justify-content-end">
+          <button type="button" [disabled]="!formularioChange.valid" class="btn everis mr-2">Salvar</button>
+          <button type="button" class="btn cancelar">Cancelar</button>
+        </nav>
       </div>
-    </div>
-    <div class="row align-items-center mb-4">
-      <nav class="col d-flex justify-content-end">
-        <button type="button" class="btn everis mr-2">Salvar</button>
-        <button type="button" class="btn cancelar">Cancelar</button>
-      </nav>
+
     </div>
   </div>
-</div>
+</form>

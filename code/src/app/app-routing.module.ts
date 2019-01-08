@@ -73,6 +73,7 @@ const appRoutes: Routes = [
     {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
     {path: 'projetos/novo-projeto/changes', component: ChangesComponent  },
     {path: 'projetos/novo-projeto/changes/nova-change', component: NovaChangeComponent  },
+    {path: 'projetos/novo-projeto/changes/nova-change/:id', component: NovaChangeComponent  },
     {path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
     {path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
 
