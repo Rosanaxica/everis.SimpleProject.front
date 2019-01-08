@@ -46,7 +46,7 @@ export class GraficolinhaComponent implements OnInit {
       data: [49, 23, 17, 83, 26, 59, 93, 33, 73, 39, 46, 300]
     }, {
       name: 'London',
-      data: [25, 52, 58, 20, 62, 14,400, 59, 93, 31, 57, 96]
+      data: [25, 52, 58, 20, 62, 14, 400, 59, 93, 31, 57, 96]
     }, {
       name: 'London',
       data: [96, 26, 36, 25, 20, 42, 85, 39, 12, 92, 76, 79]
