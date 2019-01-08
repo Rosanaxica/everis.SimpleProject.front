@@ -29,7 +29,7 @@ import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { HttpModule } from '@angular/http';
 import { BsDatepickerModule } from 'ngx-bootstrap';
-import { MatButtonModule, MatCheckboxModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatTooltipModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
@@ -112,7 +112,8 @@ import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinh
     ProgressbarModule.forRoot(),
     FormsModule,
     BsDatepickerModule.forRoot(),
-    ChartModule
+    ChartModule,
+    MatTooltipModule
 
   ],
   providers: [
