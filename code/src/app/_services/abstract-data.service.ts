@@ -49,7 +49,8 @@ export class AbstractDataService {
 
   salvar<T extends ModeloGenerico>(modelo: T, modeloTipo?: TipoModelo<T>, urlAlternativa?: string): Observable<ModeloRetorno> {
     const acao = modelo.Id && modelo.Id > 0 ? 'put' : 'post';
-    this.url = `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}`;
+    // tslint:disable-next-line:max-line-length
+    this.url = acao === 'post' ? `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}/Adicionar` : `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}/${modelo.id}`;
     return this.executaAcaoHttp(acao, modelo);
   }
 
