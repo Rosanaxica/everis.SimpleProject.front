@@ -6,6 +6,7 @@ export class Empresa extends ModeloGenerico {
   getKey(): string {
     return 'empresa';
   }
+  
   getSegmentoString(): string {
     return this.segmento.toString();
   }
