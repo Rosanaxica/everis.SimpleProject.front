@@ -43,6 +43,11 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
   }
+  onKeydown() {
+    this.pessoa.telefones = this.telefones;
+    this.telefones.push(this.telefone);
+    // this.telefone = new Telefone();
+  }
 
   SelecionarEmpresa(empresaId: number) {
     this.empresaId = empresaId;
@@ -82,8 +87,8 @@ export class CadastroPessoasComponent implements OnInit {
       pessoaColaborador.colaborador = this.colaborador;
       pessoaColaborador.pessoa = this.pessoa;
 
-      this.svc.salvar(pessoaColaborador, PessoaColaboradorViewModel)
-      .toPromise().then(
+      this.svc.postViewModel(pessoaColaborador, 'pessoa/CriarPessoaColaborador')
+        .toPromise().then(
           data => {
             this.msgSucesso = 'Colaborador cadastrado com sucesso!';
           },
@@ -94,7 +99,7 @@ export class CadastroPessoasComponent implements OnInit {
     } else {
       this.pessoa.empresaId = this.empresaId;
       this.svc.salvar(this.pessoa, Pessoa)
-      .toPromise().then(
+        .toPromise().then(
           data => {
             this.msgSucesso = 'Terceiro cadastrado com sucesso!';
           },

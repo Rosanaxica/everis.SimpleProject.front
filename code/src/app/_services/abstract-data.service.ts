@@ -85,7 +85,6 @@ export class AbstractDataService {
     return this.executaAcaoHttp('get');
   }
 
-  // tslint:disable-next-line:max-line-length
   exportar<T extends ModeloGenerico>(modelo: TipoModelo<T>, tipoExportar: string, filtro?: any, urlAlternativa?: string): Observable<ModeloRetorno> {
     this.url = `${this.montarUrlPorTipo(modelo, urlAlternativa)}/exportar`;
     if (filtro && filtro !== undefined && filtro != null && Object.keys(filtro).length > 0) {

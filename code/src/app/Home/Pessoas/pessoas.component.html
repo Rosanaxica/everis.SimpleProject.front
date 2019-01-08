@@ -21,8 +21,8 @@
       <div class="row">
         <div class="card-body">
           <div class="col-md-12 m-0 p-0">
-            <div *ngIf="pessoa.colaborador!=null;else naoColaborador" class="col-md-12 text-right">
-              <span *ngIf="pessoa.colaborador.disponivel;else naoDisponivel" class="badge everis text-right">Disponível</span>
+            <div *ngIf="pessoa.colaboradorId != null;else naoColaborador" class="col-md-12 text-right">
+              <span *ngIf="pessoa.colaborador != undefined && pessoa.colaborador.disponivel;else naoDisponivel" class="badge everis text-right">Disponível</span>
               <ng-template #naoDisponivel>
                 <span class="badge everis text-right">Indisponível</span>
               </ng-template>
