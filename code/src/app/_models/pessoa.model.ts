@@ -14,6 +14,7 @@ export class Pessoa extends ModeloGenerico {
     documento: String;
     fotoPath: string;
     telefones?: Telefone[];
+    colaboradorId: number;
     colaborador?: Colaborador;
 
     getKey(): string {

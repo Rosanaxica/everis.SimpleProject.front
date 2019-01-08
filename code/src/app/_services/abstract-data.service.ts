@@ -4,6 +4,7 @@ import { TipoModelo } from '../_models/interfaces/tipo.model';
 import { HttpService } from './http.service';
 
 import { Headers } from '@angular/http';
+// tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
 import { ModeloRetorno } from '../_models/interfaces/modelo.retorno';
 
@@ -47,8 +48,8 @@ export class AbstractDataService {
   }
 
   salvar<T extends ModeloGenerico>(modelo: T, modeloTipo?: TipoModelo<T>, urlAlternativa?: string): Observable<ModeloRetorno> {
-    const acao = modelo.Id && modelo.Id > 0 ? 'put' : 'post';
-    this.url = `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}`;
+    const acao = modelo.id && modelo.id > 0 ? 'put' : 'post';
+    this.url = `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}${acao=='put'?`/${modelo.id}`:''}`;
     return this.executaAcaoHttp(acao, modelo);
   }
 
@@ -70,7 +71,7 @@ export class AbstractDataService {
   obter<T extends ModeloGenerico>(modelo: T, urlAlternativa?: string): Observable<ModeloRetorno> {
     this.url = this.montarUrl(modelo, urlAlternativa);
     if (!urlAlternativa) {
-      this.url += `/obter/${modelo.Id}`;
+      this.url += `/${modelo.id}`;
     }
     return this.executaAcaoHttp('get', modelo);
   }

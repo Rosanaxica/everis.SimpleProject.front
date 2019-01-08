@@ -81,7 +81,8 @@ const appRoutes: Routes = [
     {path: 'mapa-site', component: MapaSiteComponent },
     {path: 'modelos', component: ModelosComponent},
 
-    {path: 'empresa/nova-empresa', component: NovaEmpresaComponent},
+    {path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent},
+    {path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent},
     {path: 'empresa', component: EmpresaComponent},
       ],
 
