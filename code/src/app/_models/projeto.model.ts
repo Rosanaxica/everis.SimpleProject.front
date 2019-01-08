@@ -10,7 +10,7 @@ export class Projeto extends ModeloGenerico {
     escopoProjeto: string;
     foraEscopoProjeto: string;
     premissas: string;
-    idEmpresa: number;
+    empresaId: number;
     empresa: string;
     status: string;
     dataPrevista: Date;
@@ -22,7 +22,7 @@ export class Projeto extends ModeloGenerico {
     centroCusto: string;
 
     getKey(): string {
-        return 'projeto'
+        return 'Projeto'
     }
 
 }
