@@ -10,10 +10,10 @@
     </div>
   </div>
   <nav class="col-3 d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" [routerLink]="['nova-empresa']">Nova Empresa+</button>
+    <button type="button" class="btn everis mr-2" [routerLink]="['cadastro-empresa']">Nova Empresa+</button>
 
   </nav>
-  <table class="table">
+  <table class="mt-3 table">
     <colgroup>
       <col width="50%">
       <col width="50%">
@@ -22,9 +22,9 @@
         <th>Nome</th>
         <th>Segmento</th>
     </tr>
-    <tr *ngFor="let empresa of empresas">
-        <td>{{ empresa.nome}}</td>
-        <td>{{ empresa.segmento}}</td>
+    <tr *ngFor="let empresa of empresas" (click)="editar(empresa.id)">
+        <td>{{ empresa.nome }}</td>
+        <td>{{ empresa.segmento }}</td>
     </tr>
   </table>
 

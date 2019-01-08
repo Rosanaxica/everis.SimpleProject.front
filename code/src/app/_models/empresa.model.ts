@@ -2,14 +2,17 @@ import { ModeloGenerico } from './modelo_generico';
 
 export class Empresa extends ModeloGenerico {
   nome: string;
-  segmento: TipoSeguimento;
+  segmento: TipoSegmento;
   getKey(): string {
-    return 'Empresa';
+    return 'empresa';
+  }
+  getSegmentoString(): string {
+    return this.segmento.toString();
   }
 }
 
 
-export enum TipoSeguimento {
+export enum TipoSegmento {
   Banking = 0,
   Telecomunicacao = 1
 }

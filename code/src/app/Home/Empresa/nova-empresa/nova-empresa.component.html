@@ -1,67 +1,45 @@
-<div *ngIf="msgSucesso != null && msgSucesso != undefined">
-  <div class="alert alert-success" role="alert">
-    <i class="fa fa-check mr-1"></i> {{msgSucesso}}
-  </div>
-</div>
-<div *ngIf="msgErro != null && msgErro != undefined">
-  <div class="alert alert-danger" role="alert">
-    <i class="fa fa-times mr-2"> </i> {{msgErro}}
-  </div>
-</div>
-
-<div class="container-fluid" id="cont">
-  <div class="row">
-    <div class="col">
-      <h1 class="titulo"> Nova Empresa</h1>
+<form [formGroup]="formularioEmpresa">
+  <div *ngIf="msgSucesso != null && msgSucesso != undefined">
+    <div class="alert alert-success" role="alert">
+      <i class="fa fa-check mr-1"></i> {{msgSucesso}}
     </div>
-    <hr class="mt-0" />
   </div>
-
-  <form #form="ngForm" novalidate>
+  <div *ngIf="msgErro != null && msgErro != undefined">
+    <div class="alert alert-danger" role="alert">
+      <i class="fa fa-times mr-2"> </i> {{msgErro}}
+    </div>
+  </div>
+  <div class="container-fluid" id="cont">
+    <div class="row">
+      <div class="col">
+        <h1 class="titulo"> Nova Empresa</h1>
+      </div>
+      <hr class="mt-0" />
+    </div>
     <!--Nome empresa-->
     <div class="form-group">
       <div class="row col-md-8 mb-2">
-        <input type="text" class="form-control" id="empresa" placeholder="*Nome da Empresa" [(ngModel)]="empresa.nome"
-          name="nome" minlength="3" autocomplete="off" #ctrlNomeEmpresa="ngModel" [class.is-valid]="ctrlNomeEmpresa.valid"
-          [class.is-invalid]="ctrlNomeEmpresa.invalid && (ctrlNomeEmpresa.dirty || ctrlNomeEmpresa.touched)" required>
-      </div>
-      <div class="alert alert-success" role="alert" *ngIf="ctrlNomeEmpresa.valid && (ctrlNomeEmpresa.dirty || ctrlNomeEmpresa.touched)">
-        <i class="fa fa-check mr-1"></i> OK
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf="ctrlNomeEmpresa.invalid && (ctrlNomeEmpresa.dirty || ctrlNomeEmpresa.touched)">
-        <i class="fa fa-times mr-2"> </i> Nome da Empresa obrigatório. Mínimo de 3 letras
+        <input type="text" class="form-control" placeholder="*Nome da Empresa" name="nome" minlength="3" autocomplete="off"
+          formControlName="nome">
       </div>
     </div>
-
-
-    <!---->
-
     <!--Segmento Empresa-->
     <div class="form-group">
       <div class="row col-md-2">
-        <select class="form-control" [(ngModel)]="empresa.Segmento" #ctrlTipoEmpresa="ngModel" name="tipoEmpresa"
-          [class.is-valid]="ctrlTipoEmpresa.valid" [class.is-invalid]="ctrlTipoEmpresa.invalid && (ctrlTipoEmpresa.dirty || ctrlTipoEmpresa.touched)"
-          required>
-          <option disabled="active" value="segmento" [hidden]="true" name="segmento">Segmento</option>
+        <select formControlName="segmento" class="form-control" name="tipoEmpresa">
+          <option disabled="active" value="segmento" name="segmento">Segmento</option>
           <option value="0">Banking</option>
           <option value="1">Telecom</option>
         </select>
       </div>
     </div>
-    <!---->
 
     <div class="row">
       <nav class="col d-flex justify-content-end">
-        <button class="btn everis mr-2" [disabled]="!form.valid" (click)="Salvar(form)">Salvar</button>
-        <button type="button" class="btn cancelar" (click)="Cancelar()">Cancelar</button>
+        <button class="btn everis mr-2" [disabled]="!formularioEmpresa.valid" (click)="salvar()">Salvar</button>
+        <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
       </nav>
       <hr class="mt-2" />
     </div>
-
-  </form>
-
-
-</div>
-
-
-
+  </div>
+</form>

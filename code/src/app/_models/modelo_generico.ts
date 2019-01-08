@@ -1,5 +1,5 @@
-export abstract class ModeloGenerico{
-  Id: number;
-  Ativo: boolean;
+export abstract class ModeloGenerico {
+  id: number;
+  ativo: boolean;
   abstract getKey(): string;
 }
