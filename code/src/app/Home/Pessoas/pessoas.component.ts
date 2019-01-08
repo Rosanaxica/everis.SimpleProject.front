@@ -14,11 +14,17 @@ export class PessoasComponent implements OnInit {
 
   colaboradores: Colaborador[] = [];
   pessoas: Pessoa[] = [];
+  colaborador = new Colaborador();
 
   ngOnInit() {
-    this.svc.listar(Pessoa).toPromise().then(data => {
-      this.pessoas = data['data'];
-      console.log(this.pessoas);
+    this.svc.listar(Pessoa).toPromise().then(pessoas => {
+      this.pessoas = pessoas['data'];
+      this.pessoas.forEach(element => {
+        this.svc.obter(this.colaborador, `${element.colaboradorId}`).toPromise().then(colaborador => {
+          this.colaborador = colaborador['data'];
+          element.colaborador = this.colaborador;
+        });
+      });
     });
   }
 

@@ -4,6 +4,7 @@ import { TipoModelo } from '../_models/interfaces/tipo.model';
 import { HttpService } from './http.service';
 
 import { Headers } from '@angular/http';
+// tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
 import { ModeloRetorno } from '../_models/interfaces/modelo.retorno';
 
@@ -84,6 +85,8 @@ export class AbstractDataService {
     return this.executaAcaoHttp('get');
   }
 
+
+  // tslint:disable-next-line:max-line-length
   exportar<T extends ModeloGenerico>(modelo: TipoModelo<T>, tipoExportar: string, filtro?: any, urlAlternativa?: string): Observable<ModeloRetorno> {
     this.url = `${this.montarUrlPorTipo(modelo, urlAlternativa)}/exportar`;
     if (filtro && filtro !== undefined && filtro != null && Object.keys(filtro).length > 0) {
