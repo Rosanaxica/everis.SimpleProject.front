@@ -12,7 +12,7 @@ export class Projeto extends ModeloGenerico {
     premissas: string;
     empresaId: number;
     empresa: string;
-    status: string;
+    status: Status;
     dataPrevista: Date;
     beneficioEntregue: string;
     problemasExecucao: string;
@@ -20,9 +20,23 @@ export class Projeto extends ModeloGenerico {
     riscos: string;
     licoesAprendidas: string;
     centroCusto: string;
+    projetosPessoas: any;
 
     getKey(): string {
         return 'Projeto'
     }
 
+    getStatusString(): string {
+        return this.status.toString();
+    }
+
+}
+
+export enum Status {
+    EmExecucao = 1,
+    Concluido = 2,
+    Cancelado = 3,
+    Congelado = 4,
+    PendenteCliente = 5,
+    ControleQualidade = 6
 }
