@@ -1,3 +1,4 @@
+import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
@@ -43,6 +44,10 @@ const appRoutes: Routes = [
     component: AppComponent
   },
   {
+    path: 'meus-dados',
+    component: MeusDadosComponent
+  },
+  {
     path: 'pessoas',
     component: PessoasComponent,
        children: [
@@ -81,6 +86,7 @@ const appRoutes: Routes = [
     {path: 'novo-projeto', component: NovoProjetoComponent },
     {path: 'mapa-site', component: MapaSiteComponent },
     {path: 'modelos', component: ModelosComponent},
+    {path: 'meus-dados', component: MeusDadosComponent},
 
     {path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent},
     {path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent},

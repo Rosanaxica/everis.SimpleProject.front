@@ -59,6 +59,7 @@ import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
 
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
+import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinh
     NovaEmpresaComponent,
     LoaderComponent,
     GraficopizzaComponent,
-    GraficolinhaComponent
+    GraficolinhaComponent,
+    MeusDadosComponent
   ],
   imports: [
     HttpClientModule,
