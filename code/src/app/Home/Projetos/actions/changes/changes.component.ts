@@ -24,7 +24,7 @@ export class ChangesComponent implements OnInit {
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/change/nova-change/${id}`]);
+    this.router.navigate([`/template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}/${id}`]);
   }
 
   novaChange() {
