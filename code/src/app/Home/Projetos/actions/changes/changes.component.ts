@@ -17,21 +17,22 @@ export class ChangesComponent implements OnInit {
   id: number;
 
   ngOnInit() {
-    this.filtrar();
     this.arouter.paramMap.subscribe(res => {
       this.id = +res.get('id');
     });
+    this.filtrar();
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/change/cadastro-change/${id}`]);
+    this.router.navigate([`/template/change/nova-change/${id}`]);
   }
 
-  NovaChange() {
+  novaChange() {
     this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}`]);
   }
 
   filtrar() {
+    this.filtroChange.projetoId = this.id;
     this.svc.listar(Change, this.filtroChange).toPromise().then(
       s => {
         if (s.sucesso) {
@@ -42,4 +43,17 @@ export class ChangesComponent implements OnInit {
       }
     );
   }
+
+  // filtrarPorId() {
+  //   this.filtroChange.projetoId = this.id;
+  //   this.svc.listar(Change, this.filtroChange).toPromise().then(
+  //     s => {
+  //       if (s.sucesso) {
+  //         if (s.data != null && s.data !== undefined) {
+  //           this.changes = s.data;
+  //         }
+  //       }
+  //     }
+  //   );
+  // }
 }
