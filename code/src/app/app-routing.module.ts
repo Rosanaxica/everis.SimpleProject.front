@@ -85,16 +85,10 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
 
 
-<<<<<<< HEAD
     {path: 'novo-projeto', component: NovoProjetoComponent },
     {path: 'mapa-site', component: MapaSiteComponent },
     {path: 'modelos', component: ModelosComponent},
     {path: 'meus-dados', component: MeusDadosComponent},
-=======
-      { path: 'novo-projeto', component: NovoProjetoComponent },
-      { path: 'mapa-site', component: MapaSiteComponent },
-      { path: 'modelos', component: ModelosComponent },
->>>>>>> dfb662686cde9911e3e13c578046cd0a5e17b6ac
 
       { path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent },
       { path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent },
