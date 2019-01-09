@@ -21,7 +21,7 @@ export class PessoasComponent implements OnInit {
       this.pessoas = pessoas['data'];
       this.pessoas.forEach(element => {
         this.svc.obter(this.colaborador, `${element.colaboradorId}`).toPromise().then(colaborador => {
-          this.colaborador = colaborador['data']; 
+          this.colaborador = colaborador['data'];
           element.colaborador = this.colaborador;
         });
       });
