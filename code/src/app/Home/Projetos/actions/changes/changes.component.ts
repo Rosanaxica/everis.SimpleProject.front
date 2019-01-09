@@ -27,12 +27,29 @@ export class ChangesComponent implements OnInit {
     this.router.navigate([`/template/change/nova-change/${id}`]);
   }
 
+  desativar(id: number) {
+    this.svc.desativar(Change, id).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          alert('Cadastro excluído com sucesso!');
+          this.filtrar();
+        } else {
+          alert(s.mensagem);
+        }
+      }, e => {
+        const err = e.json();
+        alert(err.mensagem);
+      }
+    );
+  }
+
   novaChange() {
     this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}`]);
   }
 
   filtrar() {
     this.filtroChange.projetoId = this.id;
+    this.filtroChange.ativo = true;
     this.svc.listar(Change, this.filtroChange).toPromise().then(
       s => {
         if (s.sucesso) {
@@ -43,17 +60,4 @@ export class ChangesComponent implements OnInit {
       }
     );
   }
-
-  // filtrarPorId() {
-  //   this.filtroChange.projetoId = this.id;
-  //   this.svc.listar(Change, this.filtroChange).toPromise().then(
-  //     s => {
-  //       if (s.sucesso) {
-  //         if (s.data != null && s.data !== undefined) {
-  //           this.changes = s.data;
-  //         }
-  //       }
-  //     }
-  //   );
-  // }
 }

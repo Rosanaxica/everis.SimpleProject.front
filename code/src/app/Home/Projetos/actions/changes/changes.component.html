@@ -1,39 +1,39 @@
 <div class="row align-items-center no-gutters">
-    <div class="col-md-12 col-lg-6 col-xl-4">
-      <h1 class="titulo pl-0 mb-0">Changes</h1>
-    </div> 
-    <div class="input-group col-md-12 col-lg-6 col-xl-5 mb-2">
-      <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
-      [(ngModel)]="filtroChange.descricao">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
-      </div>
-    </div>   
-    <div class="col-md-12 col-lg-12 col-xl-3 d-flex justify-content-end mb-2">
-      <button type="button" class="btn everis" (click)="novaChange()">Nova Change +</button>
-    </div> 
-    <hr class="mt-0" />
+  <div class="col-md-12 col-lg-6 col-xl-4">
+    <h1 class="titulo pl-0 mb-0">Changes</h1>
+  </div>
+  <div class="input-group col-md-12 col-lg-6 col-xl-5 mb-2">
+    <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
+      [(ngModel)]="filtroChange.descricao" (keydown.enter)="onKeydown(filtrar())">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-12 col-xl-3 d-flex justify-content-end mb-2">
+    <button type="button" class="btn everis" (click)="novaChange()">Nova Change +</button>
+  </div>
+  <hr class="mt-0" />
 </div>
 <table class="table table-striped mt-4">
-    <thead>
-      <tr>
-        <th>Descrição</th>
-        <th>Qtd. de Horas</th>
-        <th class="text-center">Ações</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let change of changes">
-        <td class="align-middle">{{ change.descricao }}</td>
-        <td class="align-middle">
-            <p class="m-0" *ngIf="change.qtdHorasServico1 !== 0">Serviço 1: {{ change.qtdHorasServico1 }}h</p>
-            <p class="m-0" *ngIf="change.qtdHorasServico2 !== 0">Serviço 2: {{ change.qtdHorasServico2 }}h</p>
-            <p class="m-0" *ngIf="change.qtdHorasServico3 !== 0">Serviço 3: {{ change.qtdHorasServico3 }}h</p>
-        </td>
-        <td class="text-center align-middle">
-            <button class="btn everis" (click)="editar(change.projetoId)"><i class="fas fa-pencil-alt"></i></button>
-            <button class="btn everis-laranja text-white ml-1"><i class="fas fa-trash-alt"></i></button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Qtd. de Horas</th>
+      <th class="text-center">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let change of changes">
+      <td class="align-middle">{{ change.descricao }} {{ change.ativo }}</td>
+      <td class="align-middle">
+        <p class="m-0" *ngIf="change.qtdHorasServico1 !== 0">Serviço 1: {{ change.qtdHorasServico1 }}h</p>
+        <p class="m-0" *ngIf="change.qtdHorasServico2 !== 0">Serviço 2: {{ change.qtdHorasServico2 }}h</p>
+        <p class="m-0" *ngIf="change.qtdHorasServico3 !== 0">Serviço 3: {{ change.qtdHorasServico3 }}h</p>
+      </td>
+      <td class="text-center align-middle">
+        <button class="btn everis" (click)="editar(change.projetoId)"><i class="fas fa-pencil-alt"></i></button>
+        <button class="btn everis-laranja text-white ml-1" (click)="desativar(change.projetoId)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
