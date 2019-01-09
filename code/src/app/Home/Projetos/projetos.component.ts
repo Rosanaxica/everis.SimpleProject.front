@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Projeto } from 'src/app/_models/projeto.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projetos',
@@ -14,7 +15,7 @@ export class ProjetosComponent implements OnInit {
   projetos: any;
   pessoas: any;
 
-  constructor(private svc: GenericService) { }
+  constructor(private router: Router, private svc: GenericService) { }
 
   ngOnInit() {
     this.svc.listar(Projeto)
@@ -36,6 +37,10 @@ export class ProjetosComponent implements OnInit {
         (error) => {
         }
       );
+  }
+
+  detalheProjeto(id: number): void {
+    this.router.navigate([`/template/projetos/novo-projeto/${id}`]);
   }
 
 }
