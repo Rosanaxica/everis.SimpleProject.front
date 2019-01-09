@@ -7,7 +7,7 @@ export class PessoaColaboradorViewModel extends ModeloGenerico {
     pessoa: Pessoa;
 
     getKey() {
-        return 'pessoacolaborador';
+        return 'pessoa/criarpessoacolaborador';
     }
 }
 

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Empresa } from 'src/app/_models/empresa.model';
 import { GenericService } from 'src/app/_services/generic.service';
+import { Router } from '@angular/router';
 
 // import 'rxjs/operator/map';
 
@@ -10,7 +11,7 @@ import { GenericService } from 'src/app/_services/generic.service';
   styleUrls: ['./empresa.component.css']
 })
 export class EmpresaComponent implements OnInit {
-  constructor(private svc: GenericService) { }
+  constructor(private svc: GenericService, private router: Router) { }
 
   empresas: Empresa[] = [];
   filtroEmpresa = new Empresa();
@@ -19,6 +20,9 @@ export class EmpresaComponent implements OnInit {
     this.filtrar();
   }
 
+  editar(id: number) {
+    this.router.navigate([`/template/empresa/cadastro-empresa/${id}`]);
+  }
 
   filtrar() {
     this.svc.listar(Empresa, this.filtroEmpresa).toPromise().then(
@@ -31,8 +35,4 @@ export class EmpresaComponent implements OnInit {
       }
     );
   }
-
-
-
-
 }

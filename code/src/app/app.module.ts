@@ -58,6 +58,7 @@ import * as exportData from 'highcharts/modules/export-data.src';
 import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
 
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
+import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizz
     MapaSiteComponent,
     NovaEmpresaComponent,
     LoaderComponent,
-    GraficopizzaComponent
+    GraficopizzaComponent,
+    GraficolinhaComponent
   ],
   imports: [
     HttpClientModule,
@@ -113,7 +115,8 @@ import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizz
     ProgressbarModule.forRoot(),
     FormsModule,
     BsDatepickerModule.forRoot(),
-    ChartModule
+    ChartModule,
+    MatTooltipModule
 
   ],
   providers: [

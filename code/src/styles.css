@@ -9,8 +9,9 @@
  .fonte-everis{color:#9AAE04;}
  .fonte-cancelar{color:rgb(112,115,114);}
  .btn-everis-sem.-sombra{background-color:#9AAE04;color: #ffffff;}
- .btn.everis{box-shadow: 3px 3px #d9d9d9;font-weight: bold;}
+ .btn.everis, .btn.everis-laranja{box-shadow: 3px 3px #d9d9d9;font-weight: bold;}
  .btn.everis:hover,.btn.everis:focus{background-color: #808000;color: white;}
+ .btn.everis-laranja:hover,.btn.everis-laranja:focus{background-color: rgb(186,67,13);color: white;}
  .btn.cancelar{background-color:rgb(112,115,114);font-weight: bold;color:#ffffff;box-shadow: 3px 3px #d9d9d9;}
  .btn.cancelar:hover,.btn.cancelar:focus{background-color:rgb(90,90,90);}
  .bg-gray-light{background-color: #E4E4E4}
