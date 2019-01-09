@@ -33,8 +33,8 @@ export class NovaChangeComponent implements OnInit {
     this.arouter.paramMap.subscribe(res => {
       this.idProjeto = +res.get('id2');
       this.idChange = +res.get('id3');
-      if (this.idProjeto !== null && this.idProjeto !== undefined && this.idProjeto > 0 &&
-        (this.idChange == null || this.idChange == undefined)) {
+      console
+      if (this.idProjeto !== null && this.idProjeto !== undefined && this.idProjeto > 0) {
         this.modeloProjeto.id = this.idProjeto;
         this.obterModeloNovaChange();
       }
