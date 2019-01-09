@@ -41,25 +41,23 @@
 <div class="row mt-2">
   <div class="col-12">
 
-    <tabset>
-      <tab id="tab1">
+    <tabset #alterarTabs>
+      <tab>
         <ng-template tabHeading>
           <span class="fonte-everis">Dados Principais</span>
         </ng-template>
-        <app-dados-principais></app-dados-principais>
+        <app-dados-principais (getProjeto)="selectTab($event)"></app-dados-principais>
       </tab>
       <tab>
         <ng-template tabHeading>
           <span class="fonte-cancelar">Atribuição de Equipe</span>
         </ng-template>
-
-        <app-atribuicao-equipe></app-atribuicao-equipe>
+        <app-atribuicao-equipe (getProjeto)="selectTab($event)"></app-atribuicao-equipe>
       </tab>
       <tab>
         <ng-template tabHeading>
           <span class="fonte-cancelar">Anexos</span>
         </ng-template>
-
         <app-anexos></app-anexos>
       </tab>
     </tabset>
