@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { DadosPrincipaisComponent } from './actions/dados-principais/dados-principais.component';
 import { TabsetComponent } from 'ngx-bootstrap';
 import { AtribuicaoEquipeComponent } from './actions/atribuicao-equipe/atribuicao-equipe.component';
@@ -17,9 +17,14 @@ export class NovoProjetoComponent implements OnInit {
   @ViewChild(AnexosComponent) formAnexo: AnexosComponent;
   @ViewChild('alterarTabs') alterarTabs: TabsetComponent;
   
-  constructor(private router: Router) { }
+  constructor(private router: Router, private arouter: ActivatedRoute) { }
+
+  id: number;
 
   ngOnInit() {
+    this.arouter.paramMap.subscribe(res => {
+      this.id = +res.get('id');
+    });
   }
 
   cancelar() {
@@ -37,4 +42,10 @@ export class NovoProjetoComponent implements OnInit {
     }
     this.alterarTabs.tabs[tabId].active = true;
   }
+
+  novaChange() {
+    this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}`]);
+  }
+
+
 }

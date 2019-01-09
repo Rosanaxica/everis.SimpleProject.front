@@ -3,13 +3,14 @@
       <h1 class="titulo pl-0 mb-0">Changes</h1>
     </div> 
     <div class="input-group col-md-12 col-lg-6 col-xl-5 mb-2">
-      <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
+      <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
+      [(ngModel)]="filtroChange.descricao">
       <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+        <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
       </div>
     </div>   
     <div class="col-md-12 col-lg-12 col-xl-3 d-flex justify-content-end mb-2">
-      <button type="button" class="btn everis">Nova Change +</button>
+      <button type="button" class="btn everis" (click)="novaChange()">Nova Change +</button>
     </div> 
     <hr class="mt-0" />
 </div>
@@ -22,27 +23,17 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td class="align-middle">Result 1</td>
+      <tr *ngFor="let change of changes">
+        <td class="align-middle">{{ change.descricao }}</td>
         <td class="align-middle">
-          <ul>
-            <li>Serviço 1: 32h</li>
-            <li>Serviço 2: 2h</li>
-            <li>Serviço 3: 24h</li>
-          </ul>
+            <p class="m-0" *ngIf="change.qtdHorasServico1 !== 0">Serviço 1: {{ change.qtdHorasServico1 }}h</p>
+            <p class="m-0" *ngIf="change.qtdHorasServico2 !== 0">Serviço 2: {{ change.qtdHorasServico2 }}h</p>
+            <p class="m-0" *ngIf="change.qtdHorasServico3 !== 0">Serviço 3: {{ change.qtdHorasServico3 }}h</p>
         </td>
         <td class="text-center align-middle">
-            <button class="btn everis"><i class="fas fa-pencil-alt"></i></button>
+            <button class="btn everis" (click)="editar(change.projetoId)"><i class="fas fa-pencil-alt"></i></button>
             <button class="btn everis-laranja text-white ml-1"><i class="fas fa-trash-alt"></i></button>
         </td>
       </tr>
-      <tr>
-          <td class="align-middle">Result 1</td>
-          <td class="align-middle">Result 2</td>
-          <td class="text-center align-middle">
-              <button class="btn everis"><i class="fas fa-pencil-alt"></i></button>
-              <button class="btn everis-laranja text-white ml-1"><i class="fas fa-trash-alt"></i></button>
-          </td>
-        </tr>
     </tbody>
   </table>

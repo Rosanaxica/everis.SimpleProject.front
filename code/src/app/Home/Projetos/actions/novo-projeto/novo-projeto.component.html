@@ -1,4 +1,5 @@
 <!-- para alteração de projetos-->
+
 <div class="row align-items-center">
   <div class="col">
     <h1 class="titulo mb-0">Novo Projeto</h1>
@@ -9,28 +10,28 @@
   </nav>
   <hr class="mt-2" />
 </div>
-<div class="row mt-2">
+<div class="row mt-2" *ngIf="id > 0">
   <div class="col-md-4">
-    <div class="card card-colaborador" [routerLink]="['changes']" routerLinkActive="active" role="button">
+
+    <div class="card card-colaborador" (click)="novaChange()" routerLinkActive="active" role="button">
       <div class="card-body">
-        Changes
-        <span class="badge everis">3</span>
+        Changes <span class="badge everis">3</span>
       </div>
     </div>
   </div>
+
   <div class="col-md-4">
     <div class="card card-colaborador" [routerLink]="['esforco-projeto']" routerLinkActive="active" role="button">
       <div class="card-body">
-        Esforço X Projeto
-        <span class="badge everis">456</span>
+        Esforço X Projeto <span class="badge everis">456</span>
       </div>
     </div>
   </div>
+
   <div class="col-md-4">
     <div class="card card-colaborador" [routerLink]="['esforco-projeto']" routerLinkActive="active">
       <div class="card-body">
-        Status :
-        <div class="badge everis"> Em Andamento</div>
+        Status : <div class="badge everis"> Em Andamento</div>
       </div>
     </div>
   </div>
