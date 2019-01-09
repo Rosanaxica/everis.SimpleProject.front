@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GenericService } from 'src/app/_services/generic.service';
+import { EsforcoProjetoModel } from 'src/app/_models/esforcoprojeto.model';
 
 @Component({
   selector: 'app-novo-projeto',
