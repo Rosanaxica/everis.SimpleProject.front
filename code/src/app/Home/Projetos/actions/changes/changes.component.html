@@ -26,7 +26,9 @@
       <tr *ngFor="let change of changes">
         <td class="align-middle">{{ change.descricao }}</td>
         <td class="align-middle">
-            <p class="m-0" *ngIf="change.qtdHorasServico1 !== 0">{{ change.qtdHorasServico1 }}</p>
+            <p class="m-0" *ngIf="change.qtdHorasServico1 !== 0">Serviço 1: {{ change.qtdHorasServico1 }}h</p>
+            <p class="m-0" *ngIf="change.qtdHorasServico2 !== 0">Serviço 2: {{ change.qtdHorasServico2 }}h</p>
+            <p class="m-0" *ngIf="change.qtdHorasServico3 !== 0">Serviço 3: {{ change.qtdHorasServico3 }}h</p>
         </td>
         <td class="text-center align-middle">
             <button class="btn everis" (click)="editar(change.projetoId)"><i class="fas fa-pencil-alt"></i></button>
