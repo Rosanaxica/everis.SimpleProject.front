@@ -1,5 +1,5 @@
 import {Component, OnInit } from '@angular/core';
-import {AppComponent} from 'src/simple.js';
+
 
 @Component({
   selector: 'app-template',

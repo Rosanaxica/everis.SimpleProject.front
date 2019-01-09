@@ -1,13 +1,13 @@
 <div *ngIf="msgSucesso != null && msgSucesso != undefined">
-    <div class="alert alert-success" role="alert">
-      <i class="fa fa-check mr-1"></i> {{msgSucesso}}
-    </div>
+  <div class="alert alert-success" role="alert">
+    <i class="fa fa-check mr-1"></i> {{msgSucesso}}
   </div>
-  <div *ngIf="msgErro != null && msgErro != undefined">
-    <div class="alert alert-danger" role="alert">
-      <i class="fa fa-times mr-2"> </i> {{msgErro}}
-    </div>
+</div>
+<div *ngIf="msgErro != null && msgErro != undefined">
+  <div class="alert alert-danger" role="alert">
+    <i class="fa fa-times mr-2"> </i> {{msgErro}}
   </div>
+</div>
 
 <div class="row align-items-center">
   <div class="col">
@@ -30,13 +30,13 @@
         <div class="col mb-2">
           <div class="custom-control custom-radio custom-control-inline">
             <input id="radColaborador" value="1" name="meuradio" [(ngModel)]="pessoa.tipo" #ctrlTipoPessoa="ngModel"
-                   type="radio" class="custom-control-input" [required]="isTipoPessoaRequired()">
+              type="radio" class="custom-control-input" [required]="isTipoPessoaRequired()">
             <label class="custom-control-label" for="radColaborador">Colaborador</label>
           </div>
 
           <div class="custom-control custom-radio custom-control-inline">
             <input id="radTerceiro" value="3" name="meuradio" [(ngModel)]="pessoa.tipo" #ctrlTipoPessoa="ngModel" type="radio"
-                   class="custom-control-input" [required]="isTipoPessoaRequired()">
+              class="custom-control-input" [required]="isTipoPessoaRequired()">
             <label class="custom-control-label" for="radTerceiro">Terceiro</label>
           </div>
 
@@ -51,7 +51,7 @@
       <div class="row mb-2">
         <div class="col-md-12">
           <input type="text" class="form-control" name="nome" [(ngModel)]="pessoa.nome" #ctrlNome="ngModel" required
-                 minlength="5" autocomplete="off" placeholder="*Nome" [class.is-valid]="ctrlNome.valid" [class.is-invalid]="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
+            minlength="5" autocomplete="off" placeholder="*Nome" [class.is-valid]="ctrlNome.valid" [class.is-invalid]="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
         </div>
       </div>
 
@@ -66,8 +66,8 @@
       <div class="row mb-2">
         <div class="col-md-2">
           <input type="text" class="form-control" id="nome" name="cpf" placeholder="CPF" minlength="11" maxlength="11"
-                 pattern="^[0-9]*$" [(ngModel)]="pessoa.cpf" #ctrlCpf="ngModel" [class.is-valid]="ctrlCpf.valid && pessoa.cpf != undefined && pessoa.cpf > 0 "
-                 [class.is-invalid]="ctrlCpf.invalid">
+            pattern="^[0-9]*$" [(ngModel)]="pessoa.cpf" #ctrlCpf="ngModel" [class.is-valid]="ctrlCpf.valid && pessoa.cpf != undefined && pessoa.cpf > 0 "
+            [class.is-invalid]="ctrlCpf.invalid">
         </div>
 
         <div class="col-md-5">
@@ -86,13 +86,13 @@
         </div>
 
         <div class="input-group col-md-4">
-          <input input type="text" (keydown.enter)="onKeydown(AddTelefone())" class="form-control"  [(ngModel)]="telefone.numeroTelefone" id="telefone" name="telefone"
-            placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15" #ctrlTelefone="ngModel"
-            [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
+          <input input type="text" (keydown.enter)="onKeydown(AddTelefone())" class="form-control" [(ngModel)]="telefone.numeroTelefone"
+            id="telefone" name="telefone" placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15"
+            #ctrlTelefone="ngModel" [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
             autocomplete="off" [required]="isTelRequired()">
 
           <div class="input-group-append">
-            <button (click)="AddTelefone()"  class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || telefone.tipoTelefone == undefined || ctrlTelefone.invalid"><i
+            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || telefone.tipoTelefone == undefined || ctrlTelefone.invalid"><i
                 class="fas fa-plus"></i>
             </button>
           </div>
@@ -131,8 +131,8 @@
       <div class="row mb-2">
         <div class="col-md-12">
           <input type="email" class="form-control" [(ngModel)]="pessoa.email" #ctrlEmail="ngModel" name="email"
-                 placeholder="*E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" [class.is-valid]="ctrlEmail.valid"
-                 [class.is-invalid]="ctrlEmail.invalid && (ctrlEmail.dirty || ctrlEmail.touched)" required>
+            placeholder="*E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" [class.is-valid]="ctrlEmail.valid"
+            [class.is-invalid]="ctrlEmail.invalid && (ctrlEmail.dirty || ctrlEmail.touched)" required>
         </div>
       </div>
 
@@ -160,8 +160,8 @@
         <!-- Inicio E-mail Corp -->
         <div class="row mb-2">
           <div class="col-md-12">
-            <input type="email" class="form-control" [(ngModel)]="colaborador.emailCorporativo" name="emailCorp" pattern=".+@everis.com"
-              #crtlEmailCorp="ngModel" placeholder="*E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
+            <input type="email" class="form-control" [(ngModel)]="colaborador.emailCorporativo" name="emailCorp"
+              pattern=".+@everis.com" #crtlEmailCorp="ngModel" placeholder="*E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
               [class.is-invalid]="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)" [required]="pessoa.tipo == 1">
           </div>
         </div>
@@ -250,6 +250,26 @@
             </div>
           </div> -->
         </div>
+
+        <div class="row">
+          <div class="col-5">
+            <label>Associados</label>
+            <select multiple [(ngModel)]="paraRemover">
+              <option *ngFor="let i of associados" value="{{i.id}}">{{i.nome}}</option>
+            </select>
+          </div>
+          <div class="col-2">
+            <button (click)="adicionarFerramenta()">+</button>
+            <button (click)="removerFerramenta()">-</button>
+          </div>
+          <div class="col-5">
+            <label>Disponiveis</label>
+            <select multiple [(ngModel)]="paraAdicionar">
+              <option *ngFor="let i of disponiveis" value="{{i.id}}">{{i.nome}}</option>
+            </select>
+          </div>
+        </div>
+
       </div>
       <!-- Fim Perfil Acesso -->
       <!-- Inicio Foto -->

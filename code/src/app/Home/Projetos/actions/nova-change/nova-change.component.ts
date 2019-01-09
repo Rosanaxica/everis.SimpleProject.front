@@ -23,28 +23,61 @@ export class NovaChangeComponent implements OnInit {
 
   modeloProjeto = new Projeto();
   change = new Change();
-  id: number;
+  idProjeto: number;
+  idChange: number;
   formularioChange: FormGroup;
 
 
   ngOnInit() {
     this.criarForm();
     this.arouter.paramMap.subscribe(res => {
-      this.id = +res.get('id');
-      if (this.id !== null && this.id !== undefined && this.id > 0) {
-        this.modeloProjeto.id = this.id;
-        this.obterModelo();
+      this.idProjeto = +res.get('id2');
+      this.idChange = +res.get('id3');
+      console
+      if (this.idProjeto !== null && this.idProjeto !== undefined && this.idProjeto > 0) {
+        this.modeloProjeto.id = this.idProjeto;
+        this.obterModeloNovaChange();
+      }
+
+      if (this.idChange !== null && this.idChange !== undefined && this.idChange > 0) {
+        this.modeloProjeto.id = this.idProjeto;
+        this.change.id = this.idChange;
       }
     });
   }
 
-  obterModelo() {
+  obterModeloNovaChange() {
     this.svc.obter(this.modeloProjeto).toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             let modeloProjeto = s.data as Projeto;
             this.change.projeto = modeloProjeto;
+            this.criarForm(this.change);
+          }
+        }
+      }
+    );
+  }
+
+  obterModeloEditarChange() {
+    this.svc.obter(this.change).toPromise().then(
+      c => {
+        if (c.sucesso) {
+          if (c.data != null && c.data !== undefined) {
+            let modeloChange = c.data as Change;
+            this.change = modeloChange;
+
+            this.svc.obter(this.modeloProjeto).toPromise().then(
+              p => {
+                if (p.sucesso) {
+                  if (p.data != null && p.data !== undefined) {
+                    let modeloChange = p.data as Projeto;
+                    this.change.projeto = modeloChange;
+                  }
+                }
+              }
+            );
             this.criarForm(this.change);
           }
         }

@@ -1,3 +1,4 @@
+import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
@@ -23,6 +24,7 @@ import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforc
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
+import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 
 
 const appRoutes: Routes = [
@@ -41,6 +43,10 @@ const appRoutes: Routes = [
   {
     path: '*',
     component: AppComponent
+  },
+  {
+    path: 'meus-dados',
+    component: MeusDadosComponent
   },
   {
     path: 'pessoas',
@@ -75,13 +81,17 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/changes/:id', component: ChangesComponent },
       { path: 'projetos/novo-projeto/changes/:id/nova-change/:id2', component: NovaChangeComponent },
+      { path: 'projetos/novo-projeto/changes/:id/nova-change/:id2/:id3', component: NovaChangeComponent },
       { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
       { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
 
+      { path: 'comunidades', component: ComunidadesComponent },
 
-      { path: 'novo-projeto', component: NovoProjetoComponent },
-      { path: 'mapa-site', component: MapaSiteComponent },
-      { path: 'modelos', component: ModelosComponent },
+
+    {path: 'novo-projeto', component: NovoProjetoComponent },
+    {path: 'mapa-site', component: MapaSiteComponent },
+    {path: 'modelos', component: ModelosComponent},
+    {path: 'meus-dados', component: MeusDadosComponent},
 
       { path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent },
       { path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent },
