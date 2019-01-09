@@ -60,12 +60,9 @@ import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
 
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
-<<<<<<< HEAD
 import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
-=======
-import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
->>>>>>> 3c271808c8c34cfebb714fac5d11b06b96c37161
+
 
 @NgModule({
   declarations: [
