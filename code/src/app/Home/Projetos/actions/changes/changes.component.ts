@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
-import { Router } from '@angular/router';
 import { Change } from 'src/app/_models/change.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-changes',
@@ -10,17 +10,25 @@ import { Change } from 'src/app/_models/change.model';
 })
 export class ChangesComponent implements OnInit {
 
-  constructor(private svc: GenericService, private router: Router) { }
+  constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
 
   changes: Change[] = [];
   filtroChange = new Change();
+  id: number;
 
   ngOnInit() {
     this.filtrar();
+    this.arouter.paramMap.subscribe(res => {
+      this.id = +res.get('id');
+    });
   }
 
   editar(id: number) {
     this.router.navigate([`/template/change/cadastro-change/${id}`]);
+  }
+
+  NovaChange() {
+    this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}`]);
   }
 
   filtrar() {
