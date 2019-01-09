@@ -29,6 +29,7 @@ import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { HttpModule } from '@angular/http';
 import { BsDatepickerModule } from 'ngx-bootstrap';
+// tslint:disable-next-line:max-line-length
 import { MatButtonModule, MatCheckboxModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatTooltipModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
@@ -59,6 +60,7 @@ import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
 
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
+import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +94,8 @@ import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinh
     NovaEmpresaComponent,
     LoaderComponent,
     GraficopizzaComponent,
-    GraficolinhaComponent
+    GraficolinhaComponent,
+    ComunidadesComponent
   ],
   imports: [
     HttpClientModule,

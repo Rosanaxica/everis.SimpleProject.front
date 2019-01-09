@@ -23,6 +23,7 @@ import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforc
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
+import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 
 
 const appRoutes: Routes = [
@@ -77,6 +78,8 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto/changes/:id/nova-change/:id2', component: NovaChangeComponent },
       { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
       { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
+
+      { path: 'comunidades', component: ComunidadesComponent },
 
 
       { path: 'novo-projeto', component: NovoProjetoComponent },

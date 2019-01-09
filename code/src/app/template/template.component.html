@@ -71,11 +71,17 @@
         <i class="fa fa-user"></i>
         <span> Pessoas</span></a>
     </li>
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Comunidades': null" [matTooltipPosition]="'right'">
+        <a class="nav-link" [routerLink]="['comunidades']" routerLinkActive="active">
+          <i class="fa fa-users"></i>
+          <span>Comunidades</span></a>
+      </li>
     <li class="nav-item" [matTooltip]="menuFechado ? 'Mapa Site': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['mapa-site']" routerLinkActive="active">
         <i class="fa fa-sitemap"></i>
         <span> Mapa do Site</span></a>
     </li>
+
     <li class="nav-item" [matTooltip]="menuFechado ? 'Central de Ajuda': null" [matTooltipPosition]="'right'">
       <a class="nav-link" href="#">
         <i class="fa fa-question-circle"></i>
