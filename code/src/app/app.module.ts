@@ -29,7 +29,7 @@ import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { HttpModule } from '@angular/http';
 import { BsDatepickerModule } from 'ngx-bootstrap';
-import { MatButtonModule, MatCheckboxModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatTooltipModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
@@ -110,6 +110,9 @@ import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatAutocompleteModule,
+    MatFormFieldModule,
+    MatInputModule,
     TabsModule.forRoot(),
     ProgressbarModule.forRoot(),
     FormsModule,
