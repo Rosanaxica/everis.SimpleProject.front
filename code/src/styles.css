@@ -36,6 +36,7 @@
  .everis-branco {color:rgb(255,255,255)}
  .cursor-pointer {cursor: pointer}
  .click:hover, .click:focus {background: rgba(154, 174, 4, .3)}
+ input[type='text'].no-shadow {box-shadow: none}
 /*!
  parte padrão
  */
