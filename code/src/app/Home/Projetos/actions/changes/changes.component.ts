@@ -15,10 +15,15 @@ export class ChangesComponent implements OnInit {
   changes: Change[] = [];
   filtroChange = new Change();
   id: number;
+  msgSucesso: string;
 
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
       this.id = +res.get('id');
+      var sucesso = res.get("sucesso");
+      if (sucesso !== null && sucesso !== undefined && sucesso) {
+        this.msgSucesso = 'Cadastro realizado com sucesso!';
+      }
     });
     this.filtrar();
   }

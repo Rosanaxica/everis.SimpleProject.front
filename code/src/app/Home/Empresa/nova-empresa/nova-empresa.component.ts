@@ -55,7 +55,6 @@ export class NovaEmpresaComponent implements OnInit {
     this.svc.salvar(this.modeloEmpresa, Empresa).toPromise().then(
       data => {
         this.router.navigate([`/template/empresa`, { sucesso: true }]);
-
       },
       error => {
         this.msgErro = 'Erro ao salvar';

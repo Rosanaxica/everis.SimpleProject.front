@@ -100,8 +100,7 @@ export class NovaChangeComponent implements OnInit {
     this.obterDadosForm();
     this.svc.salvar(this.change, Change).toPromise().then(
       data => {
-        alert('Processo efetuado com sucesso!');
-        this.router.navigate([`template/projetos/novo-projeto/changes/${this.idProjeto}`]);
+        this.router.navigate([`template/projetos/novo-projeto/changes/${this.idProjeto}`, { sucesso: true }]);
       },
       error => {
         this.msgErro = 'Erro ao salvar';

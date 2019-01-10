@@ -24,7 +24,6 @@ export class EmpresaComponent implements OnInit {
       var sucesso = res.get("sucesso");
       if (sucesso !== null && sucesso !== undefined && sucesso) {
         this.msgSucesso = 'Cadastro realizado com sucesso!';
-        // alert('Cadastro realizado com sucesso!');
       }
     });
   }
