@@ -93,9 +93,10 @@ const appRoutes: Routes = [
     {path: 'modelos', component: ModelosComponent},
     {path: 'meus-dados', component: MeusDadosComponent},
 
-      { path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent },
-      { path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent },
-      { path: 'empresa', component: EmpresaComponent },
+    {path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent},
+    {path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent},
+    {path: 'empresa', component: EmpresaComponent},
+    {path: 'empresa:sucesso', component: EmpresaComponent},
     ],
 
   },
