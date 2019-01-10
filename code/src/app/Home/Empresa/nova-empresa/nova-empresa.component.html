@@ -1,9 +1,5 @@
 <form [formGroup]="formularioEmpresa">
-  <div *ngIf="msgSucesso != null && msgSucesso != undefined">
-    <div class="alert alert-success" role="alert">
-      <i class="fa fa-check mr-1"></i> {{msgSucesso}}
-    </div>
-  </div>
+ 
   <div *ngIf="msgErro != null && msgErro != undefined">
     <div class="alert alert-danger" role="alert">
       <i class="fa fa-times mr-2"> </i> {{msgErro}}
@@ -26,7 +22,7 @@
     <!--Segmento Empresa-->
     <div class="form-group">
       <div class="row col-md-2">
-        <select formControlName="segmento" class="form-control" name="tipoEmpresa">
+       <select formControlName="segmento" class="form-control" name="tipoEmpresa" > <!-- [disabled]="modeloEmpresa.id > 0" -->
           <option disabled="active" value="segmento" name="segmento">Segmento</option>
           <option value="0">Banking</option>
           <option value="1">Telecom</option>
