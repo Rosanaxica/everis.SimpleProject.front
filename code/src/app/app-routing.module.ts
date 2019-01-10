@@ -80,8 +80,8 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/changes/:id', component: ChangesComponent },
-      { path: 'projetos/novo-projeto/changes/:id/nova-change/:id2', component: NovaChangeComponent },
-      { path: 'projetos/novo-projeto/changes/:id/nova-change/:id2/:id3', component: NovaChangeComponent },
+      { path: 'projetos/novo-projeto/changes/nova-change/:id', component: NovaChangeComponent },
+      { path: 'projetos/novo-projeto/changes/nova-change/:id/:id2', component: NovaChangeComponent },
       { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
       { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
 

@@ -24,7 +24,7 @@ export class ChangesComponent implements OnInit {
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}/${id}`]);
+    this.router.navigate([`/template/projetos/novo-projeto/changes/nova-change/${this.id}/${id}`]);
   }
 
   desativar(id: number) {
@@ -44,7 +44,7 @@ export class ChangesComponent implements OnInit {
   }
 
   novaChange() {
-    this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}`]);
+    this.router.navigate([`template/projetos/novo-projeto/changes/nova-change/${this.id}`]);
   }
 
   filtrar() {

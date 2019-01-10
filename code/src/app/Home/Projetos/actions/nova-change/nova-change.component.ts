@@ -32,8 +32,8 @@ export class NovaChangeComponent implements OnInit {
     this.criarForm();
     this.arouter.paramMap.subscribe(res => {
 
-      this.idProjeto = +res.get('id2');
-      this.idChange = +res.get('id3');
+      this.idProjeto = +res.get('id');
+      this.idChange = +res.get('id2');
 
       if (this.idProjeto !== null && this.idProjeto !== undefined && this.idProjeto > 0) {
         this.modeloProjeto.id = this.idProjeto;
@@ -80,7 +80,7 @@ export class NovaChangeComponent implements OnInit {
                 }
               }
             );
-            console.log(this.change)
+            console.log(this.change);
             this.criarForm(this.change);
           }
         }
