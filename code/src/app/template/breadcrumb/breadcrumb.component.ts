@@ -60,7 +60,7 @@ export class BreadcrumbComponent implements OnInit {
    * @param {string} url
    * @param {IBreadcrumb[]} breadcrumbs
    */
-  private getBreadcrumbs(route: ActivatedRoute, url: string="", breadcrumbs: IBreadcrumb[]= [ ]): IBreadcrumb[] {
+  private getBreadcrumbs(route: ActivatedRoute, url: string = "", breadcrumbs: IBreadcrumb[] = []): IBreadcrumb[] {
     const ROUTE_DATA_BREADCRUMB: string = "breadcrumb";
 
     //get the child routes
