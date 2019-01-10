@@ -9,9 +9,8 @@
  .fonte-everis{color:#9AAE04;}
  .fonte-cancelar{color:rgb(112,115,114);}
  .btn-everis-sem.-sombra{background-color:#9AAE04;color: #ffffff;}
- .btn.everis, .btn.everis-laranja{box-shadow: 3px 3px #d9d9d9;font-weight: bold;}
+ .btn.everis{box-shadow: 3px 3px #d9d9d9;font-weight: bold;}
  .btn.everis:hover,.btn.everis:focus{background-color: #808000;color: white;}
- .btn.everis-laranja:hover,.btn.everis-laranja:focus{background-color: rgb(186,67,13);color: white;}
  .btn.cancelar{background-color:rgb(112,115,114);font-weight: bold;color:#ffffff;box-shadow: 3px 3px #d9d9d9;}
  .btn.cancelar:hover,.btn.cancelar:focus{background-color:rgb(90,90,90);}
  .bg-gray-light{background-color: #E4E4E4}
@@ -19,7 +18,7 @@
  .titulo{color:black;font-family: Arial, Helvetica, sans-serif;font-size: 26px; font-weight: bold;}
  .links{color:rgb(112,115,114);text-decoration: none; }
  .card-colaborador{box-shadow: 3px 3px #d9d9d9;font-weight: bold;}
- input[type=text], input[type=number],select,textarea,input[type=time]{box-shadow: 2px 2px #d9d9d9;}
+ input[type=text],select,textarea,input[type=time]{box-shadow: 2px 2px #d9d9d9;}
  .card.card-colaborador.center{vertical-align:middle;}
  .border-everis{border:1px  #9AAE04 solid ;}
   hr{background-color:rgb(112,115,114);border: 1px solid #eee; width: 100%;}

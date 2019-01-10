@@ -29,8 +29,7 @@ import { EmpresaComponent } from './Home/Empresa/empresa.component';
 
 import { HttpModule } from '@angular/http';
 import { BsDatepickerModule } from 'ngx-bootstrap';
-// tslint:disable-next-line:max-line-length
-import { MatButtonModule, MatCheckboxModule, MatAutocompleteModule, MatFormFieldModule, MatInputModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
@@ -60,9 +59,6 @@ import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
 
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
-import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
-import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
-
 
 @NgModule({
   declarations: [
@@ -96,9 +92,7 @@ import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
     NovaEmpresaComponent,
     LoaderComponent,
     GraficopizzaComponent,
-    GraficolinhaComponent,
-    ComunidadesComponent,
-    MeusDadosComponent
+    GraficolinhaComponent
   ],
   imports: [
     HttpClientModule,
@@ -114,15 +108,11 @@ import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
     MatButtonModule,
     MatCheckboxModule,
     MatExpansionModule,
-    MatAutocompleteModule,
-    MatFormFieldModule,
-    MatInputModule,
     TabsModule.forRoot(),
     ProgressbarModule.forRoot(),
     FormsModule,
     BsDatepickerModule.forRoot(),
-    ChartModule,
-    MatTooltipModule
+    ChartModule
 
   ],
   providers: [

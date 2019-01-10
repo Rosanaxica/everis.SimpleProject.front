@@ -1,9 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { DadosPrincipaisComponent } from './actions/dados-principais/dados-principais.component';
-import { TabsetComponent } from 'ngx-bootstrap';
-import { AtribuicaoEquipeComponent } from './actions/atribuicao-equipe/atribuicao-equipe.component';
-import { AnexosComponent } from './actions/anexos/anexos.component';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-novo-projeto',
@@ -12,40 +8,12 @@ import { AnexosComponent } from './actions/anexos/anexos.component';
 })
 export class NovoProjetoComponent implements OnInit {
 
-  @ViewChild(DadosPrincipaisComponent) formDados: DadosPrincipaisComponent;
-  @ViewChild(AtribuicaoEquipeComponent) formAtribuicaoEquipe: AtribuicaoEquipeComponent;
-  @ViewChild(AnexosComponent) formAnexo: AnexosComponent;
-  @ViewChild('alterarTabs') alterarTabs: TabsetComponent;
-  
-  constructor(private router: Router, private arouter: ActivatedRoute) { }
-
-  id: number;
+  constructor(private router: Router) { }
 
   ngOnInit() {
-    this.arouter.paramMap.subscribe(res => {
-      this.id = +res.get('id');
-    });
   }
 
   cancelar() {
     this.router.navigate(['/template/projetos']);
   }
-  Adicionar(){
-    this.formDados.Adicionar();
-    this.selectTab(1);
-  }
-  selectTab(tabId: number) {
-    if(tabId == 1){
-      this.formAtribuicaoEquipe.OpenView("teste")
-    }else if(tabId == 2){
-      this.formAnexo.OpenView("teste")
-    }
-    this.alterarTabs.tabs[tabId].active = true;
-  }
-
-  novaChange() {
-    this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}`]);
-  }
-
-
 }

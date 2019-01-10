@@ -5,7 +5,6 @@ export class Telefone extends ModeloGenerico {
     id: number;
     numeroTelefone: string;
     tipoTelefone: TipoTelefone;
-    pessoaId: number;
 
     getKey(): string {
         return 'telefone';

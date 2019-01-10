@@ -508,6 +508,11 @@
         </mat-panel-title>
       </mat-expansion-panel-header>
       <table class="table table-striped">
+        <colgroup>
+          <col width="50%">
+          <col width="40%">
+          <col width="10%">
+        </colgroup>
         <thead>
           <tr>
             <th>Coluna 1</th>
@@ -519,7 +524,7 @@
           <tr>
             <td class="align-middle">Result 1</td>
             <td class="align-middle">Result 2</td>
-            <td class="text-center align-middle">
+            <td>
                 <button class="btn everis"><i class="fas fa-pencil-alt"></i></button>
                 <button class="btn everis-laranja text-white ml-1"><i class="fas fa-trash-alt"></i></button>
             </td>
@@ -527,7 +532,7 @@
           <tr>
               <td class="align-middle">Result 1</td>
               <td class="align-middle">Result 2</td>
-              <td class="text-center align-middle">
+              <td>
                   <button class="btn everis"><i class="fas fa-pencil-alt"></i></button>
                   <button class="btn everis-laranja text-white ml-1"><i class="fas fa-trash-alt"></i></button>
               </td>
@@ -542,44 +547,8 @@
       </table>
     </mat-expansion-panel>
 
-    <!--Tooltip-->
-    <mat-expansion-panel class="mb-2">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-            Tooltip
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div class="row mb-2">
-        <div class="col">
-          <button class="btn everis" matTooltip="Position: right" [matTooltipPosition]="'right'">Right</button>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col">
-          <button class="btn everis" matTooltip="Position: left" [matTooltipPosition]="'left'">Left</button>
-        </div>
-      </div>
-      <div class="row mb-2">
-        <div class="col">
-          <button class="btn everis" matTooltip="Position: above" [matTooltipPosition]="'above'">Above</button>
-        </div>
-      </div>  
-      <div class="row mb-2">
-        <div class="col">
-          <button class="btn everis" matTooltip="Position: below" [matTooltipPosition]="'below'">Below</button>
-        </div>
-      </div>  
-      <div class="row mb-2">
-        <div class="col">
-          <button class="btn everis" matTooltip="Position: before" [matTooltipPosition]="'before'">Before</button>
-        </div>
-      </div>  
-      <div class="row mb-2">
-        <div class="col">
-          <button class="btn everis" matTooltip="Position: after" [matTooltipPosition]="'after'">After</button>
-        </div>
-      </div>  
-    </mat-expansion-panel>
-
-
 </mat-accordion>
+          
+
+          
+
