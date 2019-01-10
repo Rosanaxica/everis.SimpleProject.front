@@ -47,9 +47,19 @@ export class AbstractDataService {
     return this.executaAcaoHttp('delete');
   }
 
+  ativar<T extends ModeloGenerico>(modeloTipo: TipoModelo<T>, id: number): Observable<ModeloRetorno> {
+    this.url = `${this.montarUrlPorTipo(modeloTipo)}/Ativar/${id}`;
+    return this.executaAcaoHttp('put');
+  }
+
+  desativar<T extends ModeloGenerico>(modeloTipo: TipoModelo<T>, id: number): Observable<ModeloRetorno> {
+    this.url = `${this.montarUrlPorTipo(modeloTipo)}/Desativar/${id}`;
+    return this.executaAcaoHttp('put');
+  }
+
   salvar<T extends ModeloGenerico>(modelo: T, modeloTipo?: TipoModelo<T>, urlAlternativa?: string): Observable<ModeloRetorno> {
     const acao = modelo.id && modelo.id > 0 ? 'put' : 'post';
-    this.url = `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}${acao=='put'?`/${modelo.id}`:''}`;
+    this.url = `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}${acao == 'put' ? `/${modelo.id}` : ''}`;
     return this.executaAcaoHttp(acao, modelo);
   }
 

@@ -29,8 +29,16 @@ export class CadastroPessoasComponent implements OnInit {
   msgSucesso: String;
   msgErro: String;
 
+  disponiveis = new Array<any>();
+  associados = new Array<any>();
+  paraRemover = new Array<number>();
+  paraAdicionar = new Array<number>();
 
   ngOnInit() {
+    this.obterFerramentasDisponiveis();
+    // executar a chamada abaixo no momento que finalizar o preenchimento do retorno da pessoa em edição
+    // this.obterFerramentasAssociadas();
+
     this.svc.listar(Empresa).toPromise().then(data => {
       this.empresas = data['data'];
       console.log(this.empresas);
@@ -118,5 +126,41 @@ export class CadastroPessoasComponent implements OnInit {
     this.router.navigate(['/template/pessoas']);
   }
 
+  adicionarFerramenta() {
+    if (this.paraAdicionar.length == 0) {
+      alert('Selecione uma ferramenta para adicionar');
+      return;
+    } else {
+      this.paraAdicionar.forEach(a => {
+        let item = this.disponiveis.find(f => f.id == +a);
+        let itemIndex = this.disponiveis.indexOf(item);
+        this.associados.push(item);
+        this.disponiveis.splice(itemIndex, 1);
+      });
+      this.paraAdicionar = [];
+    }
+  }
+  removerFerramenta() {
+    if (this.paraAdicionar.length == 0) {
+      alert('Selecione uma ferramenta para remover');
+      return;
+    } else {
+      this.paraRemover.forEach(a => {
+        let item = this.associados.find(f => f.id == +a);
+        let itemIndex = this.associados.indexOf(item);
+        this.disponiveis.push(item);
+        this.associados.splice(itemIndex, 1);
+      });
+      this.paraRemover = [];
+    }
+  }
+
+  obterFerramentasDisponiveis() {
+
+  }
+
+  obterFerramentasAssociadas() {
+
+  }
 
 }

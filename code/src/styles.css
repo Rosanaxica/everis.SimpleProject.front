@@ -37,6 +37,9 @@
 #mat-form-field-label-1{color:rgb(112,115,114);}
 .mat-form-field.mat-focused .mat-form-field-ripple{background-color:rgb(112,115,114);}
  
+ .cursor-pointer {cursor: pointer}
+ .click:hover, .click:focus {background: rgba(154, 174, 4, .3)}
+ input[type='text'].no-shadow {box-shadow: none}
 /*!
  parte padrão
  */

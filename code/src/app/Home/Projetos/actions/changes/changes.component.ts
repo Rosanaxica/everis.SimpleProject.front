@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Change } from 'src/app/_models/change.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,23 +15,46 @@ export class ChangesComponent implements OnInit {
   changes: Change[] = [];
   filtroChange = new Change();
   id: number;
+  msgSucesso: string;
 
   ngOnInit() {
-    this.filtrar();
     this.arouter.paramMap.subscribe(res => {
       this.id = +res.get('id');
+      var sucesso = res.get("sucesso");
+      if (sucesso !== null && sucesso !== undefined && sucesso) {
+        this.msgSucesso = 'Cadastro realizado com sucesso!';
+      }
     });
+    this.filtrar();
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/change/cadastro-change/${id}`]);
+    this.router.navigate([`/template/projetos/novo-projeto/changes/nova-change/${this.id}/${id}`]);
   }
 
-  NovaChange() {
-    this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}`]);
+  desativar(id: number) {
+    this.svc.desativar(Change, id).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          alert('Cadastro excluído com sucesso!');
+          this.filtrar();
+        } else {
+          alert(s.mensagem);
+        }
+      }, e => {
+        const err = e.json();
+        alert(err.mensagem);
+      }
+    );
+  }
+
+  novaChange() {
+    this.router.navigate([`template/projetos/novo-projeto/changes/nova-change/${this.id}`]);
   }
 
   filtrar() {
+    this.filtroChange.projetoId = this.id;
+    this.filtroChange.ativo = true;
     this.svc.listar(Change, this.filtroChange).toPromise().then(
       s => {
         if (s.sucesso) {

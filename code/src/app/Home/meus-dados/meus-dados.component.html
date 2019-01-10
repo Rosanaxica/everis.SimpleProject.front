@@ -1,21 +1,13 @@
 <div class="row align-items-center">
   <div class="col-3">
-    <h1 class="titulo mb-0">Pessoas</h1>
+    <h1 class="titulo mb-0">Meus Dados</h1>
   </div>
-  <div class="input-group col">
-    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
-    </div>
-  </div>
-  <nav class="col-3 d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" [routerLink]="['cadastro-pessoas']">Nova Pessoa +</button>
-
-  </nav>
   <hr class="mt-2" />
 </div>
 <div class="row">
 
+  <!-- esse NgFor deve deixar de existir para mostrar somente a pessoa que está logada
+   -->
   <div *ngFor="let pessoa of pessoas" class="col-md-4 mb-2">
     <div class="card card-colaborador border-everis">
       <div class="row">
@@ -39,30 +31,43 @@
               <div class="col-md-8 m-0 p-0">
                 <p class="m-0">{{pessoa.nome}}</p>
                 <p class="m-0">
-                  <small *ngIf="pessoa.colaborador!=null;else emailPessoal">
-                    {{pessoa.colaborador.emailCorporativo}}
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b> E-mail Corporativo:</b> {{pessoa.colaborador.emailCorporativo}}
                   </small>
-                  <ng-template #emailPessoal>
-                    <small>
-                      {{pessoa.email}}
-                    </small>
-                  </ng-template>
                 </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>E-mail Pessoal:</b> {{pessoa.email}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>Funcional:</b> {{pessoa.colaborador.funcional}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>Cpf:</b> {{pessoa.cpf}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>Função:</b> {{pessoa.colaborador.funcao}}
+                  </small>
+                </p>
+                <div>
+                  <p class="m-0">{{pessoas.telefones|json}}
+                    <small *ngFor="let telefone of pessoa.telefones">
+                      <b>Telefone:</b> {{telefone.numeroTelefone}}
+                    </small>
+                  </p>
+                </div>
               </div>
-
-
             </div>
-
             <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
-
-
           </div>
         </div>
-
       </div>
-
     </div>
   </div>
-
-
 </div>

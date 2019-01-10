@@ -12,6 +12,7 @@ import { GenericService } from 'src/app/_services/generic.service';
 export class AnexosComponent implements OnInit {
 
   anexo = new Anexo();
+  nomeProjeto: string;
 
   constructor(private formBuilder: FormBuilder, private svc: GenericService) { }
   anexoForm: FormGroup;
@@ -19,7 +20,9 @@ export class AnexosComponent implements OnInit {
   ngOnInit() {
 
   }
-
+  OpenView(nomeProjeto: string){
+    this.nomeProjeto = nomeProjeto;
+  }
   Adicionar() {
     this.anexo.idProjeto = 1;
 

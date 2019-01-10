@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '../../../../../../../../node_modules/@angular/forms';
 import { Router } from '@angular/router';
 import { Projeto } from '../../../../../../_models/projeto.model';
@@ -13,7 +13,8 @@ import { Empresa } from '../../../../../../_models/empresa.model';
 })
 export class DadosPrincipaisComponent implements OnInit {
   projeto: Projeto;
-
+  @Output() getProjeto = new EventEmitter<string>();
+  
   constructor(private formBuilder: FormBuilder, private svc: GenericService,
     private router: Router) { }
   dadosPrincipaisForm: FormGroup;
@@ -70,6 +71,7 @@ export class DadosPrincipaisComponent implements OnInit {
         switch (data.codigo) {
           case 200:
             window.alert('Projeto adicionado com sucesso!');
+            this.getProjeto.emit("1");
             break;
           default:
             window.alert('erro: ' + data.mensagem);
