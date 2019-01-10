@@ -1,3 +1,4 @@
+import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
@@ -23,6 +24,7 @@ import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforc
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
+import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 
 
 const appRoutes: Routes = [
@@ -43,65 +45,72 @@ const appRoutes: Routes = [
     component: AppComponent
   },
   {
+    path: 'meus-dados',
+    component: MeusDadosComponent
+  },
+  {
     path: 'pessoas',
     component: PessoasComponent,
-       children: [
-       {
-         path: 'cadastro-pessoas', component: CadastroPessoasComponent}
+    children: [
+      {
+        path: 'cadastro-pessoas', component: CadastroPessoasComponent
+      }
     ],
   },
   {
     path: 'projetos',
     component: ProjetosComponent,
     children: [
-      {path: 'novo-projeto', component: NovoProjetoComponent},
-      {path: 'novo-projeto/changes', component: ChangesComponent },
-   ],
+      { path: 'novo-projeto', component: NovoProjetoComponent },
+      { path: 'novo-projeto/changes', component: ChangesComponent },
+    ],
   },
   {
     path: 'template',
     component: TemplateComponent,
     children: [
 
-    {path: '', component: DashboardComponent},
-    {path: 'dashboard', component: DashboardComponent},
+      { path: '', component: DashboardComponent },
+      { path: 'dashboard', component: DashboardComponent },
 
-    {path: 'pessoas', component: PessoasComponent},
-    {path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent},
+      { path: 'pessoas', component: PessoasComponent },
+      { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent },
 
-    {path: 'projetos', component: ProjetosComponent},
-    {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
-    {path: 'projetos/novo-projeto/changes', component: ChangesComponent  },
-    {path: 'projetos/novo-projeto/changes/nova-change', component: NovaChangeComponent  },
-    {path: 'projetos/novo-projeto/changes/nova-change/:id', component: NovaChangeComponent  },
-    {path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
-    {path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
+      { path: 'projetos', component: ProjetosComponent },
+      { path: 'projetos/novo-projeto', component: NovoProjetoComponent },
+      { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
+      { path: 'projetos/novo-projeto/changes/:id', component: ChangesComponent },
+      { path: 'projetos/novo-projeto/changes/:id/nova-change/:id2', component: NovaChangeComponent },
+      { path: 'projetos/novo-projeto/changes/:id/nova-change/:id2/:id3', component: NovaChangeComponent },
+      { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
+      { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
+
+      { path: 'comunidades', component: ComunidadesComponent },
 
 
     {path: 'novo-projeto', component: NovoProjetoComponent },
     {path: 'mapa-site', component: MapaSiteComponent },
     {path: 'modelos', component: ModelosComponent},
+    {path: 'meus-dados', component: MeusDadosComponent},
 
-    {path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent},
-    {path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent},
-    {path: 'empresa', component: EmpresaComponent},
-    {path: 'empresa:sucesso', component: EmpresaComponent},
-     
-  ],
+      { path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent },
+      { path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent },
+      { path: 'empresa', component: EmpresaComponent },
+    ],
 
   },
   {
     path: 'login',
     component: LoginComponent,
     children: [
-      {path: 'template', component: TemplateComponent},
+      { path: 'template', component: TemplateComponent },
     ],
   },
   {
     path: 'mapa-site',
     component: MapaSiteComponent
   },
-    {
+  {
     path: 'esqueci-senha',
     component: EsqueceuSenhaComponent
   },
@@ -115,9 +124,9 @@ const appRoutes: Routes = [
       { path: '', redirectTo: 'dados-principais', pathMatch: 'full' },
       { path: 'dados-principais', component: DadosPrincipaisComponent },
       { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent },
-       ],
+    ],
   },
-  { path: '',   redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'fechamento-projeto',
     component: FechamentoProjetoComponent
@@ -134,7 +143,7 @@ const appRoutes: Routes = [
     path: 'nova-empresa',
     component: NovaEmpresaComponent
   }
- ];
+];
 
 @NgModule({
   declarations: [],
