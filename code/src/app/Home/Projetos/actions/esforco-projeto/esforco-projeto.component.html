@@ -1,16 +1,80 @@
 <div class="row align-items-center">
-        <div class="col-3">
-            <h1 class="titulo mb-0">Esforço do Projeto</h1>
-        </div> 
-        <div class="input-group col">
-          <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
-          </div>
-        </div>
-        <nav class="col-3 d-flex justify-content-end">
-          <button type="button" class="btn everis mr-2" [routerLink]="['novo-esforco-projeto']" >Novo Esforco Projeto+</button>
-         
-        </nav> 
-        <hr class="mt-2" />
+  <div class="col-3">
+    <h1 class="titulo mb-0">Esforço do Projeto</h1>
+  </div>
+  <div class="input-group col">
+    <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o Projeto ou Funcionario que você deseja buscar">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
     </div>
+  </div>
+  <nav class="col-3 d-flex justify-content-end">
+    <button type="button" class="btn everis mr-2" [routerLink]="['novo-esforco-projeto']">Novo Esforco Projeto+</button>
+
+  </nav>
+  <hr class="mt-2" />
+  <mat-expansion-panel class="mb-2 col">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+          Listagem dos dados
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome Projeto</th>
+          <th>Cod. Projeto</th>
+          <th>Nome Func.</th>
+          <th>Data Inicio</th>
+          <th>Data Fim</th>
+          <th>Qtd. Horas</th>
+          <th class="text-center">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="align-middle">12345</td>
+          <td class="align-middle">Joao</td>
+          <td class="align-middle"></td>
+          <td class="align-middle"></td>
+          <td class="align-middle"></td>
+          <td class="align-middle"></td>
+          <td class="text-center align-middle">
+              <button class="btn everis"><i class="fas fa-pencil-alt"></i></button>
+              <button class="btn everis-laranja text-white ml-1"><i class="fas fa-trash-alt"></i></button>
+          </td>
+        </tr>
+        <tr>
+            <td class="align-middle">12345</td>
+            <td class="align-middle">Pedro</td>
+            <td class="align-middle"></td>
+            <td class="align-middle"></td>
+            <td class="align-middle"></td>
+            <td class="align-middle"></td>
+            <td class="text-center align-middle">
+                <button class="btn everis"><i class="fas fa-pencil-alt"></i></button>
+                <button class="btn everis-laranja text-white ml-1"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+          <tr>
+            <td class="align-middle">12345</td>
+            <td class="align-middle">Fernanda</td>
+            <td class="align-middle"></td>
+            <td class="align-middle"></td>
+            <td class="align-middle"></td>
+            <td class="align-middle"></td>
+            <td class="text-center align-middle">
+                <button class="btn everis"><i class="fas fa-pencil-alt"></i></button>
+                <button class="btn everis-laranja text-white ml-1"><i class="fas fa-trash-alt"></i></button>
+            </td>
+          </tr>
+      </tbody>
+      <tfoot>
+          <!-- <tr>
+            <td colspan="2" class="font-weight-bold text-right">TOTAL</td>
+            <td class="font-weight-bold">2.344</td>
+          </tr> -->
+      </tfoot>
+    </table>
+  </mat-expansion-panel>
+</div>
