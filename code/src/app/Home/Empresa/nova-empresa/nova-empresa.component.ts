@@ -14,7 +14,6 @@ export class NovaEmpresaComponent implements OnInit {
 
   constructor(private svc: GenericService, private arouter: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
 
-  msgSucesso: String;
   msgErro: String;
 
   id: number;
@@ -55,7 +54,8 @@ export class NovaEmpresaComponent implements OnInit {
     this.obterDadosForm();
     this.svc.salvar(this.modeloEmpresa, Empresa).toPromise().then(
       data => {
-        this.msgSucesso = 'Cadastro realizado com sucesso!';
+        this.router.navigate([`/template/empresa`, { sucesso: true }]);
+
       },
       error => {
         this.msgErro = 'Erro ao salvar';
@@ -63,7 +63,6 @@ export class NovaEmpresaComponent implements OnInit {
     );
     this.formularioEmpresa.reset();
   }
-
   cancelar() {
     this.router.navigate(['/template/empresa']);
   }
@@ -76,5 +75,4 @@ export class NovaEmpresaComponent implements OnInit {
     });
   }
 }
-
 
