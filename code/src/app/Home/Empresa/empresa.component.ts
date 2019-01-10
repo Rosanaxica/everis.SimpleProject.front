@@ -16,13 +16,15 @@ export class EmpresaComponent implements OnInit {
   empresas: Empresa[] = [];
   filtroEmpresa = new Empresa();
   tipoSegmentoType: typeof TipoSegmento = TipoSegmento;
+  msgSucesso: string;
 
   ngOnInit() {
     this.filtrar();
     this.arouter.paramMap.subscribe(res => {
       var sucesso = res.get("sucesso");
       if (sucesso !== null && sucesso !== undefined && sucesso) {
-        alert('Cadastro realizado com sucesso!');
+        this.msgSucesso = 'Cadastro realizado com sucesso!';
+        // alert('Cadastro realizado com sucesso!');
       }
     });
   }
