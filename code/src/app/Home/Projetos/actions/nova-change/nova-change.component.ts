@@ -33,8 +33,11 @@ export class NovaChangeComponent implements OnInit {
 
       this.idProjeto = +res.get('id');
       this.idChange = +res.get('id2');
+      this.change.projetoId = this.idProjeto;
+      console.log(this.change);
 
-      if (this.idProjeto !== null && this.idProjeto !== undefined && this.idProjeto > 0) {
+
+      if (this.idProjeto !== null && this.idProjeto !== undefined && this.idProjeto > 0 ) {
         this.modeloProjeto.id = this.idProjeto;
         this.obterModeloNovaChange();
       }
@@ -59,6 +62,7 @@ export class NovaChangeComponent implements OnInit {
         }
       }
     );
+    console.log(this.change);
   }
 
   obterModeloEditarChange() {
@@ -79,7 +83,6 @@ export class NovaChangeComponent implements OnInit {
                 }
               }
             );
-            console.log(this.change);
             this.criarForm(this.change);
           }
         }
@@ -106,7 +109,6 @@ export class NovaChangeComponent implements OnInit {
         this.msgErro = 'Erro ao salvar';
       }
     );
-    this.formularioChange.reset();
   }
 
   criarForm(itemChange?: Change) {
