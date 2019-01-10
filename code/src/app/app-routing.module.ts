@@ -71,12 +71,14 @@ const appRoutes: Routes = [
     children: [
 
       { path: '', component: DashboardComponent },
-      { path: 'dashboard', component: DashboardComponent },
+      { path: 'dashboard', component: DashboardComponent, data: {
+        breadcrumb: 'Home'}, },
 
       { path: 'pessoas', component: PessoasComponent },
       { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent },
 
-      { path: 'projetos', component: ProjetosComponent },
+      { path: 'projetos', component: ProjetosComponent, data: {
+        breadcrumb: 'Projetos'}, },
       { path: 'projetos/novo-projeto', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/changes/:id', component: ChangesComponent },
