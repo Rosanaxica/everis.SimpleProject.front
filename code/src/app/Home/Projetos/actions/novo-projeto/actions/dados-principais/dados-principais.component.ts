@@ -63,6 +63,20 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.premissas = values.premissas;
   }
 
+  private carregarDadosForm() {
+    let values = this.dadosPrincipaisForm.value;
+    values.nomeProjeto = this.projeto.nome;
+    values.centroCusto = this.projeto.centroCusto;
+    values.empresaId = this.projeto.empresaId;
+    values.dataInicio = this.projeto.dataInicio;
+    values.dataPrevista = this.projeto.dataPrevista;
+    values.qtdHorasServico1 = this.projeto.qtdHorasServico1 + ":00";
+    values.qtdHorasServico2 = this.projeto.qtdHorasServico2 + ":00";
+    values.qtdHorasServico3 = this.projeto.qtdHorasServico3 + ":00";
+    values.escopoProjeto = this.projeto.escopoProjeto;
+    values.foraEscopoProjeto = this.projeto.foraEscopoProjeto;
+    values.premissas = this.projeto.premissas;
+  }
 
   Adicionar() {
     this.obterDadosForm();
