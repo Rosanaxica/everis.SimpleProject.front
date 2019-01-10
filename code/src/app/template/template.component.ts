@@ -1,5 +1,5 @@
 import {Component, OnInit } from '@angular/core';
-import {AppComponent} from 'src/simple.js';
+
 
 @Component({
   selector: 'app-template',
@@ -19,6 +19,7 @@ export class TemplateComponent implements OnInit {
     if (this.menuFechado == true)
     {
       this.menuFechado = false;
+      
     }
     else
     {
