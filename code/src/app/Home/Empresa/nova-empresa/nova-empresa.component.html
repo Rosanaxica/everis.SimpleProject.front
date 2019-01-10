@@ -1,10 +1,10 @@
 <form [formGroup]="formularioEmpresa">
-  <div *ngIf="msgSucesso != null && msgSucesso != undefined">
+  <div *ngIf="msgSucesso != null && msgSucesso != undefined" class="mt-2">
     <div class="alert alert-success" role="alert">
       <i class="fa fa-check mr-1"></i> {{msgSucesso}}
     </div>
   </div>
-  <div *ngIf="msgErro != null && msgErro != undefined">
+  <div *ngIf="msgErro != null && msgErro != undefined" class="mt-2">
     <div class="alert alert-danger" role="alert">
       <i class="fa fa-times mr-2"> </i> {{msgErro}}
     </div>

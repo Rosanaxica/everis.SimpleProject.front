@@ -40,7 +40,6 @@ export class EmpresaComponent implements OnInit {
     );
   }
 
-
   filtrar() {
     this.filtroEmpresa.ativo = true;
     this.svc.listar(Empresa, this.filtroEmpresa).toPromise().then(

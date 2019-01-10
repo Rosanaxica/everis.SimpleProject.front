@@ -45,7 +45,6 @@ export class NovaEmpresaComponent implements OnInit {
     );
   }
 
-
   private obterDadosForm() {
     let objForm = this.formularioEmpresa.value;
     this.modeloEmpresa.nome = objForm.nome;
@@ -65,9 +64,8 @@ export class NovaEmpresaComponent implements OnInit {
     this.formularioEmpresa.reset();
   }
 
-
   cancelar() {
-    this.router.navigate(['/template']);
+    this.router.navigate(['/template/empresa']);
   }
 
   criarForm(itemEmpresa?: Empresa) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Change } from 'src/app/_models/change.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -43,8 +43,8 @@ export class ChangesComponent implements OnInit {
     );
   }
 
-  novaChange() {
-    this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}`]);
+  novaChange(id: number) {
+    this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}/`]);
   }
 
   filtrar() {
