@@ -24,15 +24,15 @@
   </thead>
   <tbody>
     <tr *ngFor="let change of changes">
-      <td class="align-middle">{{ change.descricao }} {{ change.ativo }}</td>
+      <td class="align-middle">{{ change.descricao }}</td>
       <td class="align-middle">
         <p class="m-0" *ngIf="change.qtdHorasServico1 !== 0">Serviço 1: {{ change.qtdHorasServico1 }}h</p>
         <p class="m-0" *ngIf="change.qtdHorasServico2 !== 0">Serviço 2: {{ change.qtdHorasServico2 }}h</p>
         <p class="m-0" *ngIf="change.qtdHorasServico3 !== 0">Serviço 3: {{ change.qtdHorasServico3 }}h</p>
       </td>
       <td class="text-center align-middle">
-        <button class="btn everis" (click)="editar(change.projetoId)"><i class="fas fa-pencil-alt"></i></button>
-        <button class="btn everis-laranja text-white ml-1" (click)="desativar(change.projetoId)"><i class="fas fa-trash-alt"></i></button>
+        <button class="btn everis" (click)="editar(change.id)"><i class="fas fa-pencil-alt"></i></button>
+        <button class="btn everis-laranja text-white ml-1" (click)="desativar(change.id)"><i class="fas fa-trash-alt"></i></button>
       </td>
     </tr>
   </tbody>

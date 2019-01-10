@@ -24,7 +24,25 @@ export class EmpresaComponent implements OnInit {
     this.router.navigate([`/template/empresa/cadastro-empresa/${id}`]);
   }
 
+  desativar(id: number) {
+    this.svc.desativar(Empresa, id).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          alert('Cadastro excluído com sucesso!');
+          this.filtrar(); //Filtrar ou AtualizarLista? TODO:Apagar comentário
+        } else {
+          alert(s.mensagem);
+        }
+      }, e => {
+        const err = e.json();
+        alert(err.mensagem);
+      }
+    );
+  }
+
+
   filtrar() {
+    this.filtroEmpresa.ativo = true;
     this.svc.listar(Empresa, this.filtroEmpresa).toPromise().then(
       s => {
         if (s.sucesso) {
