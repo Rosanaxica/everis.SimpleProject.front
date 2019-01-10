@@ -44,7 +44,6 @@ export class NovaEmpresaComponent implements OnInit {
     );
   }
 
-
   private obterDadosForm() {
     let objForm = this.formularioEmpresa.value;
     this.modeloEmpresa.nome = objForm.nome;
@@ -55,8 +54,8 @@ export class NovaEmpresaComponent implements OnInit {
     this.obterDadosForm();
     this.svc.salvar(this.modeloEmpresa, Empresa).toPromise().then(
       data => {
-    this.router.navigate([`/template/empresa`, {sucesso: true}]);
-        
+        this.router.navigate([`/template/empresa`, { sucesso: true }]);
+
       },
       error => {
         this.msgErro = 'Erro ao salvar';
@@ -64,7 +63,6 @@ export class NovaEmpresaComponent implements OnInit {
     );
     this.formularioEmpresa.reset();
   }
- 
   cancelar() {
     this.router.navigate(['/template/empresa']);
   }

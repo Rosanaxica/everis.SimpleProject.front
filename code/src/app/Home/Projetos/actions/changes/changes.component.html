@@ -3,7 +3,7 @@
     <h1 class="titulo pl-0 mb-0">Changes</h1>
   </div>
   <div class="input-group col-md-12 col-lg-6 col-xl-5 mb-2">
-    <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
+    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
       [(ngModel)]="filtroChange.descricao" (keydown.enter)="onKeydown(filtrar())">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
