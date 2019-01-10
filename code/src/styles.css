@@ -34,6 +34,8 @@
  .form-control:focus { border-color: rgba(204, 204, 204, 0.8); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(112,115,114, 0.6);}
  .custom-checkbox, .custom-radio {line-height: 25px;}
  .everis-branco {color:rgb(255,255,255)}
+ .cursor-pointer {cursor: pointer}
+ .click:hover, .click:focus {background: rgba(154, 174, 4, .3)}
 /*!
  parte padrão
  */
