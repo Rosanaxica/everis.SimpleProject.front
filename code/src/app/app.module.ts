@@ -57,7 +57,7 @@ import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as exportData from 'highcharts/modules/export-data.src';
 import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
-
+  
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
 import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';

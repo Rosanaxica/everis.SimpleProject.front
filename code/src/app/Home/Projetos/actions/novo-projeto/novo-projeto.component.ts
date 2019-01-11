@@ -59,7 +59,11 @@ export class NovoProjetoComponent implements OnInit {
     this.alterarTabs.tabs[tabId].active = true;
   }
 
-  novaChange() {
+  vaiParaNovaChange() {
     this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}`]);
+  }
+
+  vaiParaEsforcoProjeto() {
+    this.router.navigate([`template/projetos/novo-projeto/esforco-projeto/${this.id}`]);
   }
 }

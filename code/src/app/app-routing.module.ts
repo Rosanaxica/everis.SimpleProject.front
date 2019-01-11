@@ -85,7 +85,9 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto/changes/nova-change/:id', component: NovaChangeComponent },
       { path: 'projetos/novo-projeto/changes/nova-change/:id/:id2', component: NovaChangeComponent },
       { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
+      { path: 'projetos/novo-projeto/esforco-projeto/:id', component: EsforcoProjetoComponent },
       { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
+      
 
       { path: 'comunidades', component: ComunidadesComponent },
 
