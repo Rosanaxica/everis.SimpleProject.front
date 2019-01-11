@@ -10,14 +10,13 @@ interface IBreadcrumb {
 
 @Component({
   selector: 'breadcrumb',
-  template: `<nav aria-label="breadcrumb">
-    <ul class="breadcrumb" >
-      <li class="breadcrumb-item"><a routerLink="">Home</a></li>
-      <li *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb-item">
+  template: `
+    <ol class="breadcrumb">
+      <li><a routerLink="" class="">Home</a></li>
+      <li *ngFor="let breadcrumb of breadcrumbs">
         <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
       </li>
-    </ul>
-    </nav>
+    </ol>
   `
 })
 export class BreadcrumbComponent implements OnInit {
@@ -42,7 +41,7 @@ export class BreadcrumbComponent implements OnInit {
    * @method ngOnInit
    */
   ngOnInit() {
-    const ROUTE_DATA_BREADCRUMB: string = "breadcrumb";
+    const ROUTE_DATA_BREADCRUMB: string = 'breadcrumb';
 
     //subscribe to the NavigationEnd event
     this.router.events.filter(event => event instanceof NavigationEnd).subscribe(event => {
@@ -61,8 +60,8 @@ export class BreadcrumbComponent implements OnInit {
    * @param {string} url
    * @param {IBreadcrumb[]} breadcrumbs
    */
-  private getBreadcrumbs(route: ActivatedRoute, url: string="", breadcrumbs: IBreadcrumb[]=[]): IBreadcrumb[] {
-    const ROUTE_DATA_BREADCRUMB: string = 'breadcrumb';
+  private getBreadcrumbs(route: ActivatedRoute, url: string = "", breadcrumbs: IBreadcrumb[] = []): IBreadcrumb[] {
+    const ROUTE_DATA_BREADCRUMB: string = "breadcrumb";
 
     //get the child routes
     let children: ActivatedRoute[] = route.children;
@@ -85,7 +84,7 @@ export class BreadcrumbComponent implements OnInit {
       }
 
       //get the route's URL segment
-      let routeURL: string = child.snapshot.url.map(segment => segment.path).join("/");
+      const routeURL: string = child.snapshot.url.map(segment => segment.path).join('>>>');
 
       //append route URL to URL
       url += `/${routeURL}`;
