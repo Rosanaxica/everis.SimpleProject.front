@@ -71,16 +71,8 @@ const appRoutes: Routes = [
     children: [
 
       { path: '', component: DashboardComponent },
-<<<<<<< HEAD
       { path: 'dashboard', component: DashboardComponent, data: {
         breadcrumb: 'Dashboard'} },
-=======
-      {
-        path: 'dashboard', component: DashboardComponent, data: {
-          breadcrumb: 'Home'
-        },
-      },
->>>>>>> 01619749ac303d7d0935ad850a13b4a9d034e241
 
       { path: 'pessoas', component: PessoasComponent },
       { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent },
