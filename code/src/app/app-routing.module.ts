@@ -72,14 +72,15 @@ const appRoutes: Routes = [
 
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent, data: {
-        breadcrumb: 'Home'}, },
+        breadcrumb: 'Dashboard'} },
 
       { path: 'pessoas', component: PessoasComponent },
       { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent },
 
       { path: 'projetos', component: ProjetosComponent, data: {
         breadcrumb: 'Projetos'}, },
-      { path: 'projetos/novo-projeto', component: NovoProjetoComponent },
+      { path: 'projetos/novo-projeto', component: NovoProjetoComponent, data: {
+        breadcrumb: 'Novo Projeto'} },
       { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/changes/:id', component: ChangesComponent },
       { path: 'projetos/novo-projeto/changes/:id/nova-change/:id2', component: NovaChangeComponent },
