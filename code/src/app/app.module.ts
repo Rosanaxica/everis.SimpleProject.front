@@ -62,11 +62,8 @@ import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizz
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
 import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
-<<<<<<< HEAD
 import { AlterarSenhaComponent } from './Home/meus-dados/Alterar-senha/alterar-senha/alterar-senha.component';
-=======
 import { BreadcrumbComponent } from './template/breadcrumb/breadcrumb.component';
->>>>>>> e207f56f2650353ef4b2643b3dbba5fef97589e0
 
 
 @NgModule({
@@ -104,11 +101,8 @@ import { BreadcrumbComponent } from './template/breadcrumb/breadcrumb.component'
     GraficolinhaComponent,
     ComunidadesComponent,
     MeusDadosComponent,
-<<<<<<< HEAD
-    AlterarSenhaComponent
-=======
+    AlterarSenhaComponent,
     BreadcrumbComponent
->>>>>>> e207f56f2650353ef4b2643b3dbba5fef97589e0
   ],
   imports: [
     HttpClientModule,
