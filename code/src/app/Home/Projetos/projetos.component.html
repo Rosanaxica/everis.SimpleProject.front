@@ -24,7 +24,7 @@
 </div>
 
 <div *ngFor="let projeto of projetos" class="cursor-pointer">
-  <div class="row" (click)="detalheProjeto(projeto.id)">
+  <div class="row" (click)="detalheProjeto(projeto)">
     <!--Badge de notificações-->
     <div class="col-md-1 col-xs-12 ">
       <span class="badge everis-roxo everis-branco">
@@ -77,3 +77,4 @@
     <hr _ngcontent-c2="" class="mt-2">
   </div>
 </div>
+<app-novo-projeto style="display: none"></app-novo-projeto>

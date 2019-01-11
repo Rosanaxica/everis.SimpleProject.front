@@ -4,6 +4,7 @@ import { DadosPrincipaisComponent } from './actions/dados-principais/dados-princ
 import { TabsetComponent } from 'ngx-bootstrap';
 import { AtribuicaoEquipeComponent } from './actions/atribuicao-equipe/atribuicao-equipe.component';
 import { AnexosComponent } from './actions/anexos/anexos.component';
+import { Projeto } from '../../../../_models/projeto.model';
 
 @Component({
   selector: 'app-novo-projeto',
@@ -26,7 +27,9 @@ export class NovoProjetoComponent implements OnInit {
       this.id = +res.get('id');
     });
   }
-
+  OpenView(projeto: Projeto){
+    this.formDados.OpenView(projeto);
+  }
   cancelar() {
     this.router.navigate(['/template/projetos']);
   }
