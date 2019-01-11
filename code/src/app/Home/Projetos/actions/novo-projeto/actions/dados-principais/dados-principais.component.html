@@ -19,11 +19,9 @@
     </div>
     <div class="col-md-3">
       <label for="label">Empresa</label>
-
-      <select formControlName="empresaId" *ngFor="let empresa of empresas" class="form-control" id="empresaId" name="empresaId">
-        <option value="{{empresa.id}}">{{empresa.nome}}</option>
+      <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
+        <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
       </select>
-
     </div>
     <div class="col-md-3">
       <label for="data">Data Início</label>

@@ -15,7 +15,6 @@ export class ProjetosComponent implements OnInit {
   title = 'Projetos';
   projetos: any;
   pessoas: any;
-  @ViewChild(NovoProjetoComponent) formNovoProjeto: NovoProjetoComponent;
   
   constructor(private router: Router, private svc: GenericService) { }
 
@@ -43,7 +42,6 @@ export class ProjetosComponent implements OnInit {
 
   detalheProjeto(projeto: Projeto): void {
     this.router.navigate([`/template/projetos/novo-projeto/${projeto.id}`]);
-    this.formNovoProjeto.OpenView(projeto)
   }
 
 }

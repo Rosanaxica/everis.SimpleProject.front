@@ -17,7 +17,6 @@ export class NovaChangeComponent implements OnInit {
 
   constructor(private svc: GenericService, private arouter: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
 
-
   msgSucesso: String;
   msgErro: String;
 
@@ -32,8 +31,9 @@ export class NovaChangeComponent implements OnInit {
     this.criarForm();
     this.arouter.paramMap.subscribe(res => {
 
-      this.idProjeto = +res.get('id2');
-      this.idChange = +res.get('id3');
+      this.idProjeto = +res.get('id');
+      this.idChange = +res.get('id2');
+      this.change.projetoId = this.idProjeto;
 
       if (this.idProjeto !== null && this.idProjeto !== undefined && this.idProjeto > 0) {
         this.modeloProjeto.id = this.idProjeto;
@@ -60,6 +60,7 @@ export class NovaChangeComponent implements OnInit {
         }
       }
     );
+    console.log(this.change);
   }
 
   obterModeloEditarChange() {
@@ -80,7 +81,6 @@ export class NovaChangeComponent implements OnInit {
                 }
               }
             );
-            console.log(this.change)
             this.criarForm(this.change);
           }
         }
@@ -88,6 +88,26 @@ export class NovaChangeComponent implements OnInit {
     );
   }
 
+  private obterDadosForm() {
+    let objForm = this.formularioChange.value;
+    this.change.projeto = objForm.nomeProjeto;
+    this.change.qtdHorasServico1 = objForm.qtdhorasservico1;
+    this.change.qtdHorasServico2 = objForm.qtdhorasservico2;
+    this.change.qtdHorasServico3 = objForm.qtdhorasservico3;
+    this.change.descricao = objForm.descricao;
+  }
+
+  salvar() {
+    this.obterDadosForm();
+    this.svc.salvar(this.change, Change).toPromise().then(
+      data => {
+        this.router.navigate([`template/projetos/novo-projeto/changes/${this.idProjeto}`, { sucesso: true }]);
+      },
+      error => {
+        this.msgErro = 'Erro ao salvar';
+      }
+    );
+  }
 
   criarForm(itemChange?: Change) {
     itemChange = itemChange || new Change();
@@ -100,20 +120,9 @@ export class NovaChangeComponent implements OnInit {
     });
   }
 
-  Salvar() {
-    this.svc.salvar(this.change, Change).toPromise().then(
-      data => {
-        this.msgSucesso = 'Cadastro realizado com sucesso!';
-      },
-      error => {
-        this.msgErro = 'Erro ao salvar';
-      }
-    );
-    this.formularioChange.reset();
-  }
 
-  Cancelar() {
-    this.router.navigate(['/template/projetos/novo-projeto/changes']);
+  cancelar() {
+    this.router.navigate([`template/projetos/novo-projeto/changes/${this.idProjeto}`]);
   }
 
 }
