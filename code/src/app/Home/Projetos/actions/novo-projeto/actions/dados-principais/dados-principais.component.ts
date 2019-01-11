@@ -14,7 +14,7 @@ import { Empresa } from '../../../../../../_models/empresa.model';
 export class DadosPrincipaisComponent implements OnInit {
   projeto: Projeto;
   @Output() getProjeto = new EventEmitter<string>();
-  
+
   constructor(private formBuilder: FormBuilder, private svc: GenericService,
     private router: Router) { }
   dadosPrincipaisForm: FormGroup;
@@ -25,7 +25,10 @@ export class DadosPrincipaisComponent implements OnInit {
     this.filtrar();
     this.gerarFormProjeto();
   }
-
+  OpenView(projeto: Projeto) {
+    this.projeto = projeto;
+    this.carregarDadosForm();
+  }
   gerarFormProjeto(objProjeto?: Projeto) {
 
     objProjeto = objProjeto || new Projeto();
@@ -63,6 +66,19 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.premissas = values.premissas;
   }
 
+  private carregarDadosForm() {
+    this.dadosPrincipaisForm.get("nomeProjeto").setValue(this.projeto.nome);
+    this.dadosPrincipaisForm.get("centroCusto").setValue(this.projeto.centroCusto);
+    this.dadosPrincipaisForm.get("empresaId").setValue(this.projeto.empresaId);
+    this.dadosPrincipaisForm.get("dataInicio").setValue(this.projeto.dataInicio);
+    this.dadosPrincipaisForm.get("dataPrevista").setValue(this.projeto.dataPrevista);
+    this.dadosPrincipaisForm.get("qtdHorasServico1").setValue(this.projeto.qtdHorasServico1);
+    this.dadosPrincipaisForm.get("qtdHorasServico2").setValue(this.projeto.qtdHorasServico2);
+    this.dadosPrincipaisForm.get("qtdHorasServico3").setValue(this.projeto.qtdHorasServico3);
+    this.dadosPrincipaisForm.get("escopoProjeto").setValue(this.projeto.escopoProjeto);
+    this.dadosPrincipaisForm.get("foraEscopoProjeto").setValue(this.projeto.foraEscopoProjeto);
+    this.dadosPrincipaisForm.get("premissas").setValue(this.projeto.premissas);
+  }
 
   Adicionar() {
     this.obterDadosForm();

@@ -24,7 +24,7 @@
 </div>
 
 <div *ngFor="let projeto of projetos" class="cursor-pointer">
-  <div class="row" (click)="detalheProjeto(projeto.id)">
+  <div class="row" (click)="detalheProjeto(projeto)">
     <!--Badge de notificações-->
     <div class="col-md-1 col-xs-12 ">
       <span class="badge everis-roxo everis-branco">
@@ -43,7 +43,7 @@
         <div class="progress">
           <div class="progress-bar everis" style="width:20%"></div>
         </div>
-        <small>Estimativa de conclusão: {{ projeto.dataEntrega | dateFormat }}</small>
+        <small>Estimativa de conclusão: {{ projeto.dataPrevista | dateFormat }}</small>
       </div>
     </div>
 

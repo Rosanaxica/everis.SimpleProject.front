@@ -12,8 +12,8 @@ interface IBreadcrumb {
   selector: 'breadcrumb',
   template: `
     <ol class="breadcrumb">
-      <li><a routerLink="" class="">Home</a></li>
-      <li *ngFor="let breadcrumb of breadcrumbs">
+      <li><a routerLink="" class="breadcrumb">Home</a></li>
+      <li *ngFor="let breadcrumb of breadcrumbs" class="breadcrumb-list-item">
         <a [routerLink]="[breadcrumb.url, breadcrumb.params]">{{ breadcrumb.label }}</a>
       </li>
     </ol>
@@ -84,7 +84,7 @@ export class BreadcrumbComponent implements OnInit {
       }
 
       //get the route's URL segment
-      const routeURL: string = child.snapshot.url.map(segment => segment.path).join('>>>');
+      let routeURL: string = child.snapshot.url.map(segment => segment.path).join(' ');
 
       //append route URL to URL
       url += `/${routeURL}`;

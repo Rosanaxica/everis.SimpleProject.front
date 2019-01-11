@@ -16,11 +16,10 @@ export class TemplateComponent implements OnInit {
 
   ToggleMenu() {
 
-    if (this.menuFechado == true)
+    if (this.menuFechado === true)
     {
       this.menuFechado = false;
-      
-    }
+  }
     else
     {
       this.menuFechado = true;

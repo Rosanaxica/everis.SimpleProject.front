@@ -22,7 +22,7 @@
   </div>
 
   <div class="col-md-4">
-    <div class="card card-colaborador cursor-pointer click" [routerLink]="['esforco-projeto']" routerLinkActive="active"
+    <div class="card card-colaborador cursor-pointer click" (click)="vaiParaEsforcoProjeto()" routerLinkActive="active"
       role="button">
       <div class="card-body">
         Esforço Projeto <span class="badge everis">456</span>

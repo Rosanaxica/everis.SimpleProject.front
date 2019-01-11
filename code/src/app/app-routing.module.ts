@@ -71,11 +71,8 @@ const appRoutes: Routes = [
     children: [
 
       { path: '', component: DashboardComponent },
-      {
-        path: 'dashboard', component: DashboardComponent, data: {
-          breadcrumb: 'Home'
-        },
-      },
+      { path: 'dashboard', component: DashboardComponent, data: {
+        breadcrumb: 'Dashboard'} },
 
       { path: 'pessoas', component: PessoasComponent },
       { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent },
@@ -91,6 +88,7 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca },
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca },
       { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
+      { path: 'projetos/novo-projeto/esforco-projeto/:id', component: EsforcoProjetoComponent },
       { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
 
       { path: 'comunidades', component: ComunidadesComponent },
