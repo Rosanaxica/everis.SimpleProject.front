@@ -4,15 +4,15 @@ import { Validators } from '@angular/forms';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Projeto } from 'src/app/_models/projeto.model';
-import { Change } from 'src/app/_models/change.model';
+import { SolicitacaoMudanca } from 'src/app/_models/solicitacao_mudanca.model';
 
 
 @Component({
-  selector: 'app-nova-change',
-  templateUrl: './nova-change.component.html',
-  styleUrls: ['./nova-change.component.css']
+  selector: 'app-nova-solicitacao-mudanca',
+  templateUrl: './nova-solicitacao-mudanca.component.html',
+  styleUrls: ['./nova-solicitacao-mudanca.component.css']
 })
-export class NovaChangeComponent implements OnInit {
+export class NovaSolicitacaoMudanca implements OnInit {
   [x: string]: any;
 
   constructor(private svc: GenericService, private arouter: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
@@ -21,10 +21,10 @@ export class NovaChangeComponent implements OnInit {
   msgErro: String;
 
   modeloProjeto = new Projeto();
-  change = new Change();
+  solicitacaoMudanca = new SolicitacaoMudanca();
   idProjeto: number;
-  idChange: number;
-  formularioChange: FormGroup;
+  idSolicitacaoMudanca: number;
+  formularioSolicitacaoMudanca: FormGroup;
 
 
   ngOnInit() {
@@ -32,56 +32,56 @@ export class NovaChangeComponent implements OnInit {
     this.arouter.paramMap.subscribe(res => {
 
       this.idProjeto = +res.get('id');
-      this.idChange = +res.get('id2');
-      this.change.projetoId = this.idProjeto;
+      this.idSolicitacaoMudanca = +res.get('id2');
+      this.solicitacaoMudanca.projetoId = this.idProjeto;
 
       if (this.idProjeto !== null && this.idProjeto !== undefined && this.idProjeto > 0) {
         this.modeloProjeto.id = this.idProjeto;
-        this.obterModeloNovaChange();
+        this.obterModeloNovaSolicitacaoMudanca();
       }
 
-      if (this.idChange !== null && this.idChange !== undefined && this.idChange > 0) {
+      if (this.idSolicitacaoMudanca !== null && this.idSolicitacaoMudanca !== undefined && this.idSolicitacaoMudanca > 0) {
         this.modeloProjeto.id = this.idProjeto;
-        this.change.id = this.idChange;
-        this.obterModeloEditarChange();
+        this.solicitacaoMudanca.id = this.idSolicitacaoMudanca;
+        this.obterModeloEditarSolicitacaoMudanca();
       }
     });
   }
 
-  obterModeloNovaChange() {
+  obterModeloNovaSolicitacaoMudanca() {
     this.svc.obter(this.modeloProjeto).toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             let modeloProjeto = s.data as Projeto;
-            this.change.projeto = modeloProjeto;
-            this.criarForm(this.change);
+            this.solicitacaoMudanca.projeto = modeloProjeto;
+            this.criarForm(this.solicitacaoMudanca);
           }
         }
       }
     );
-    console.log(this.change);
+    console.log(this.solicitacaoMudanca);
   }
 
-  obterModeloEditarChange() {
-    this.svc.obter(this.change).toPromise().then(
+  obterModeloEditarSolicitacaoMudanca() {
+    this.svc.obter(this.solicitacaoMudanca).toPromise().then(
       c => {
         if (c.sucesso) {
           if (c.data != null && c.data !== undefined) {
-            let modeloChange = c.data as Change;
-            this.change = modeloChange;
+            let modeloSolicitacaoMudanca = c.data as SolicitacaoMudanca;
+            this.solicitacaoMudanca = modeloSolicitacaoMudanca;
 
             this.svc.obter(this.modeloProjeto).toPromise().then(
               p => {
                 if (p.sucesso) {
                   if (p.data != null && p.data !== undefined) {
-                    let modeloChange = p.data as Projeto;
-                    this.change.projeto = modeloChange;
+                    let modeloSolicitacaoMudanca = p.data as Projeto;
+                    this.solicitacaoMudanca.projeto = modeloSolicitacaoMudanca;
                   }
                 }
               }
             );
-            this.criarForm(this.change);
+            this.criarForm(this.solicitacaoMudanca);
           }
         }
       }
@@ -90,18 +90,18 @@ export class NovaChangeComponent implements OnInit {
 
   private obterDadosForm() {
     let objForm = this.formularioChange.value;
-    this.change.projeto = objForm.nomeProjeto;
-    this.change.qtdHorasServico1 = objForm.qtdhorasservico1;
-    this.change.qtdHorasServico2 = objForm.qtdhorasservico2;
-    this.change.qtdHorasServico3 = objForm.qtdhorasservico3;
-    this.change.descricao = objForm.descricao;
+    this.solicitacaoMudanca.projeto = objForm.nomeProjeto;
+    this.solicitacaoMudanca.qtdHorasServico1 = objForm.qtdhorasservico1;
+    this.solicitacaoMudanca.qtdHorasServico2 = objForm.qtdhorasservico2;
+    this.solicitacaoMudanca.qtdHorasServico3 = objForm.qtdhorasservico3;
+    this.solicitacaoMudanca.descricao = objForm.descricao;
   }
 
   salvar() {
     this.obterDadosForm();
-    this.svc.salvar(this.change, Change).toPromise().then(
+    this.svc.salvar(this.solicitacaoMudanca, SolicitacaoMudanca).toPromise().then(
       data => {
-        this.router.navigate([`template/projetos/novo-projeto/changes/${this.idProjeto}`, { sucesso: true }]);
+        this.router.navigate([`template/projetos/novo-projeto/solicitacao-mudanca/${this.idProjeto}`, { sucesso: true }]);
       },
       error => {
         this.msgErro = 'Erro ao salvar';
@@ -109,8 +109,8 @@ export class NovaChangeComponent implements OnInit {
     );
   }
 
-  criarForm(itemChange?: Change) {
-    itemChange = itemChange || new Change();
+  criarForm(itemChange?: SolicitacaoMudanca) {
+    itemChange = itemChange || new SolicitacaoMudanca();
     this.formularioChange = this.fb.group({
       'nomeProjeto': [{ value: itemChange.projeto ? itemChange.projeto.nome : '', disabled: true }, Validators.required],
       'qtdhorasservico1': [itemChange.qtdHorasServico1, Validators.required],
@@ -122,7 +122,7 @@ export class NovaChangeComponent implements OnInit {
 
 
   cancelar() {
-    this.router.navigate([`template/projetos/novo-projeto/changes/${this.idProjeto}`]);
+    this.router.navigate([`template/projetos/novo-projeto/solicitacao-mudanca/${this.idProjeto}`]);
   }
 
 }

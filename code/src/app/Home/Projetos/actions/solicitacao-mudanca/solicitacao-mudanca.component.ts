@@ -1,19 +1,19 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
-import { Change } from 'src/app/_models/change.model';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SolicitacaoMudanca } from 'src/app/_models/solicitacao_mudanca.model';
 
 @Component({
-  selector: 'app-changes',
-  templateUrl: './changes.component.html',
-  styleUrls: ['./changes.component.css']
+  selector: 'app-solicitacao-mudanca',
+  templateUrl: './solicitacao-mudanca.component.html',
+  styleUrls: ['./solicitacao-mudanca.component.css']
 })
-export class ChangesComponent implements OnInit {
+export class SolicitacaoMudancaComponent implements OnInit {
 
   constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
 
-  changes: Change[] = [];
-  filtroChange = new Change();
+  solicitacaoMudancas: SolicitacaoMudanca[] = [];
+  filtroSolicitacaoMudanca = new SolicitacaoMudanca();
   id: number;
   msgSucesso: string;
 
@@ -29,11 +29,11 @@ export class ChangesComponent implements OnInit {
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/projetos/novo-projeto/changes/nova-change/${this.id}/${id}`]);
+    this.router.navigate([`/template/projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/${this.id}/${id}`]);
   }
 
   desativar(id: number) {
-    this.svc.desativar(Change, id).toPromise().then(
+    this.svc.desativar(SolicitacaoMudanca, id).toPromise().then(
       s => {
         if (s.sucesso) {
           alert('Cadastro excluído com sucesso!');
@@ -48,18 +48,18 @@ export class ChangesComponent implements OnInit {
     );
   }
 
-  novaChange() {
-    this.router.navigate([`template/projetos/novo-projeto/changes/nova-change/${this.id}`]);
+  novaSolicitacaoMudanca() {
+    this.router.navigate([`template/projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/${this.id}`]);
   }
 
   filtrar() {
-    this.filtroChange.projetoId = this.id;
-    this.filtroChange.ativo = true;
-    this.svc.listar(Change, this.filtroChange).toPromise().then(
+    this.filtroSolicitacaoMudanca.projetoId = this.id;
+    this.filtroSolicitacaoMudanca.ativo = true;
+    this.svc.listar(SolicitacaoMudanca, this.filtroSolicitacaoMudanca).toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
-            this.changes = s.data;
+            this.solicitacaoMudancas = s.data;
           }
         }
       }

@@ -1,7 +1,7 @@
 import { ModeloGenerico } from './modelo_generico';
 import { Projeto } from './projeto.model';
 
-export class Change extends ModeloGenerico {
+export class SolicitacaoMudanca extends ModeloGenerico {
   descricao: string;
   dataHoraCadastro: Date = new Date();
   projetoId: number;
@@ -11,7 +11,7 @@ export class Change extends ModeloGenerico {
   qtdHorasServico3: number;
 
   getKey(): string {
-    return 'Change';
+    return 'SolicitacaoMudanca';
   }
 
 }
