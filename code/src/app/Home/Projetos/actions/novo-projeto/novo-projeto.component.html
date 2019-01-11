@@ -13,15 +13,16 @@
 <div class="row mt-2" *ngIf="id > 0">
   <div class="col-md-4">
 
-    <div class="card card-colaborador cursor-pointer click" (click)="novaChange()" routerLinkActive="active" role="button">
+    <div class="card card-colaborador cursor-pointer click" (click)="novaSolicitacaoMudanca()" routerLinkActive="active"
+      role="button">
       <div class="card-body">
-        SM <span class="badge everis">{{ totalChanges }}</span>
+        SM <span class="badge everis">{{ totalSolicitacaoMudancas }}</span>
       </div>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="card card-colaborador cursor-pointer click" [routerLink]="['esforco-projeto']" routerLinkActive="active"
+    <div class="card card-colaborador cursor-pointer click" (click)="vaiParaEsforcoProjeto()" routerLinkActive="active"
       role="button">
       <div class="card-body">
         Esforço Projeto <span class="badge everis">456</span>
