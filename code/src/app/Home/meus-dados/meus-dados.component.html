@@ -61,6 +61,11 @@
                       <b>Telefone:</b> {{telefone.numeroTelefone}}
                     </small>
                   </p>
+                  <p class="m-0">
+                    <small *ngIf="pessoa.colaborador!=null">
+                      <button>Alterar senha:</button>
+                    </small>
+                  </p>
                 </div>
               </div>
             </div>
