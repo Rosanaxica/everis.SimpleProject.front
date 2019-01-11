@@ -1,5 +1,5 @@
 <div class="row">
-  <div *ngIf="msgSucesso != null && msgSucesso != undefined">
+  <div *ngIf="msgSucesso != null && msgSucesso != undefined" class="col-12">
     <div class="alert alert-success" role="alert">
       <i class="fa fa-check mr-1"></i> {{msgSucesso}}
     </div>
@@ -32,7 +32,7 @@
   <tbody>
     <tr *ngFor="let empresa of empresas">
       <td class="align-middle">{{ empresa.nome }}</td>
-      <td class="align-middle" >{{tipoSegmentoType[empresa.segmento]}}</td>
+      <td class="align-middle">{{tipoSegmentoType[empresa.segmento]}}</td>
       <td class="text-center">
         <button class="btn everis" (click)="editar(empresa.id)"><i class="fas fa-pencil-alt"></i></button>
         <button class="btn everis-laranja text-white ml-1" (click)="desativar(empresa.id)"><i class="fas fa-trash-alt"></i></button>

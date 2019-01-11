@@ -1,9 +1,9 @@
 <div class="row align-items-center">
   <div class="col">
-    <h1 class="titulo">Nova Change</h1>
+    <h1 class="titulo">Nova SM</h1>
   </div>
   <div class="col d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" (click)="salvar()">Salvar</button>
+    <button type="button" class="btn everis mr-2" [disabled]="!formularioChange.valid" (click)="salvar()">Salvar</button>
     <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
   </div>
 </div>
@@ -66,7 +66,7 @@
 
       <div class="row align-items-center mb-4">
         <nav class="col d-flex justify-content-end">
-          <button type="button" class="btn everis mr-2" (click)="salvar()">Salvar</button>
+          <button type="button" class="btn everis mr-2" [disabled]="!formularioChange.valid" (click)="salvar()">Salvar</button>
           <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
         </nav>
       </div>

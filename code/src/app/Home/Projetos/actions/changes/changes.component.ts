@@ -15,16 +15,21 @@ export class ChangesComponent implements OnInit {
   changes: Change[] = [];
   filtroChange = new Change();
   id: number;
+  msgSucesso: string;
 
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
       this.id = +res.get('id');
+      var sucesso = res.get("sucesso");
+      if (sucesso !== null && sucesso !== undefined && sucesso) {
+        this.msgSucesso = 'Cadastro realizado com sucesso!';
+      }
     });
     this.filtrar();
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}/${id}`]);
+    this.router.navigate([`/template/projetos/novo-projeto/changes/nova-change/${this.id}/${id}`]);
   }
 
   desativar(id: number) {
@@ -43,8 +48,8 @@ export class ChangesComponent implements OnInit {
     );
   }
 
-  novaChange(id: number) {
-    this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}/nova-change/${this.id}/`]);
+  novaChange() {
+    this.router.navigate([`template/projetos/novo-projeto/changes/nova-change/${this.id}`]);
   }
 
   filtrar() {
