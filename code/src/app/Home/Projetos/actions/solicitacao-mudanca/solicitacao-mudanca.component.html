@@ -26,7 +26,6 @@
     <tr>
       <th>Descrição</th>
       <th>Horas por Serviço</th>
-      <th class="text-center">Total de Horas</th>
       <th class="text-center">Ações</th>
     </tr>
   </thead>
@@ -38,9 +37,6 @@
         <p class="m-0" *ngIf="item.qtdHorasServico2 !== 0">Serviço 2: {{ item.qtdHorasServico2 }}h</p>
         <p class="m-0" *ngIf="item.qtdHorasServico3 !== 0">Serviço 3: {{ item.qtdHorasServico3 }}h</p>
       </td>
-      <td class="align-middle text-center">
-        <p class="m-0">{{ item.qtdHorasServico1||0 + item.qtdHorasServico2 ||0+ item.qtdHorasServico3||0 }}h</p>
-      </td>
       <td class="text-center align-middle">
         <button class="btn everis" (click)="editar(item.id)"><i class="fas fa-pencil-alt"></i></button>
         <button class="btn everis-laranja text-white ml-1" (click)="desativar(item.id)"><i class="fas fa-trash-alt"></i></button>
@@ -48,3 +44,20 @@
     </tr>
   </tbody>
 </table>
+
+<h2 class="subtitulo">Total de Horas de Impacto por Serviço</h2>
+<div class="row">
+  <div class="col">
+    Serviço 1: {{servico1}}h
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    Serviço 2: {{servico2}}h
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    Serviço 3: {{servico3}}h
+  </div>
+</div>

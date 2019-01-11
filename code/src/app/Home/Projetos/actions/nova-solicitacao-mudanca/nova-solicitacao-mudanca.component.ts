@@ -89,7 +89,7 @@ export class NovaSolicitacaoMudanca implements OnInit {
   }
 
   private obterDadosForm() {
-    let objForm = this.formularioChange.value;
+    let objForm = this.formularioSolicitacaoMudanca.value;
     this.solicitacaoMudanca.projeto = objForm.nomeProjeto;
     this.solicitacaoMudanca.qtdHorasServico1 = objForm.qtdhorasservico1;
     this.solicitacaoMudanca.qtdHorasServico2 = objForm.qtdhorasservico2;
@@ -109,17 +109,16 @@ export class NovaSolicitacaoMudanca implements OnInit {
     );
   }
 
-  criarForm(itemChange?: SolicitacaoMudanca) {
-    itemChange = itemChange || new SolicitacaoMudanca();
-    this.formularioChange = this.fb.group({
-      'nomeProjeto': [{ value: itemChange.projeto ? itemChange.projeto.nome : '', disabled: true }, Validators.required],
-      'qtdhorasservico1': [itemChange.qtdHorasServico1, Validators.required],
-      'qtdhorasservico2': [itemChange.qtdHorasServico2, Validators.required],
-      'qtdhorasservico3': [itemChange.qtdHorasServico3, Validators.required],
-      'descricao': [itemChange.descricao, Validators.required]
+  criarForm(itemSolicitacaoMudanca?: SolicitacaoMudanca) {
+    itemSolicitacaoMudanca = itemSolicitacaoMudanca || new SolicitacaoMudanca();
+    this.formularioSolicitacaoMudanca = this.fb.group({
+      'nomeProjeto': [{ value: itemSolicitacaoMudanca.projeto ? itemSolicitacaoMudanca.projeto.nome : '', disabled: true }, Validators.required],
+      'qtdhorasservico1': [itemSolicitacaoMudanca.qtdHorasServico1, Validators.required],
+      'qtdhorasservico2': [itemSolicitacaoMudanca.qtdHorasServico2, Validators.required],
+      'qtdhorasservico3': [itemSolicitacaoMudanca.qtdHorasServico3, Validators.required],
+      'descricao': [itemSolicitacaoMudanca.descricao, Validators.required]
     });
   }
-
 
   cancelar() {
     this.router.navigate([`template/projetos/novo-projeto/solicitacao-mudanca/${this.idProjeto}`]);

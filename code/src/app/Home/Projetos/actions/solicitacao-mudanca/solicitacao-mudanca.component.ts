@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SolicitacaoMudanca } from 'src/app/_models/solicitacao_mudanca.model';
@@ -16,6 +16,15 @@ export class SolicitacaoMudancaComponent implements OnInit {
   filtroSolicitacaoMudanca = new SolicitacaoMudanca();
   id: number;
   msgSucesso: string;
+  soma: number;
+  resultado: number;
+
+  res: number = 0;
+
+  servico1: number = 0;
+  servico2: number = 0;
+  servico3: number = 0;
+
 
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
@@ -60,9 +69,18 @@ export class SolicitacaoMudancaComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.solicitacaoMudancas = s.data;
+            this.res = 0;
+
+            this.solicitacaoMudancas.forEach(element => {
+              this.servico1 += element.qtdHorasServico1;
+              this.servico2 += element.qtdHorasServico2;
+              this.servico3 += element.qtdHorasServico3;
+            });
           }
         }
       }
     );
   }
+
+
 }
