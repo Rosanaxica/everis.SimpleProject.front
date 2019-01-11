@@ -1,7 +1,7 @@
 <form [formGroup]="dadosPrincipaisForm">
   <div class="form-group mt-4 row">
     <div class="col-md-12">
-      <input type="text" formControlName="nomeProjeto" class="form-control" id="nome" name="nome" placeholder="Nome do Projeto"
+      <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto"
       />
     </div>
   </div>
@@ -19,11 +19,9 @@
     </div>
     <div class="col-md-3">
       <label for="label">Empresa</label>
-
-      <select formControlName="empresaId" *ngFor="let empresa of empresas" class="form-control" id="empresaId" name="empresaId">
-        <option value="{{empresa.id}}">{{empresa.nome}}</option>
+      <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
+        <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
       </select>
-
     </div>
     <div class="col-md-3">
       <label for="data">Data Início</label>
