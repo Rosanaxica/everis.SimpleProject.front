@@ -17,7 +17,7 @@ import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-p
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
 import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
-import { NovaChangeComponent } from './Home/Projetos/actions/nova-change/nova-change.component';
+import { NovaSolicitacaoMudanca } from './Home/Projetos/actions/nova-solicitacao-mudanca/nova-solicitacao-mudanca.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
 import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
@@ -38,7 +38,6 @@ import { UploadComponent } from './shared/upload/upload.component';
 // import { InputComponent } from './shared/input/input.component';
 import { DateFormatPipe } from './shared/util/date-format-pipe';
 import { DateTimeFormatPipe } from './shared/util/datetime-format-pipe';
-import { ChangesComponent } from './Home/Projetos/actions/changes/changes.component';
 import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
@@ -57,13 +56,14 @@ import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as exportData from 'highcharts/modules/export-data.src';
 import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
-
+  
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
 import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
 import { AlterarSenhaComponent } from './Home/meus-dados/Alterar-senha/alterar-senha/alterar-senha.component';
 import { BreadcrumbComponent } from './template/breadcrumb/breadcrumb.component';
+import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
 
 
 @NgModule({
@@ -79,7 +79,7 @@ import { BreadcrumbComponent } from './template/breadcrumb/breadcrumb.component'
     AnexosComponent,
     EsforcoProjetoComponent,
     AtribuicaoEquipeComponent,
-    NovaChangeComponent,
+    NovaSolicitacaoMudanca,
     CadastroPessoasComponent,
     ProjetosComponent,
     DadosPrincipaisComponent,
@@ -92,7 +92,7 @@ import { BreadcrumbComponent } from './template/breadcrumb/breadcrumb.component'
     // InputComponent,
     DateFormatPipe,
     DateTimeFormatPipe,
-    ChangesComponent,
+    SolicitacaoMudancaComponent,
     NovoEsforcoProjetoComponent,
     MapaSiteComponent,
     NovaEmpresaComponent,

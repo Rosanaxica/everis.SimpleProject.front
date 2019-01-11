@@ -5,7 +5,7 @@ import { TabsetComponent } from 'ngx-bootstrap';
 import { AtribuicaoEquipeComponent } from './actions/atribuicao-equipe/atribuicao-equipe.component';
 import { AnexosComponent } from './actions/anexos/anexos.component';
 import { GenericService } from 'src/app/_services/generic.service';
-import { Change } from 'src/app/_models/change.model';
+import { SolicitacaoMudanca } from 'src/app/_models/solicitacao_mudanca.model';
 
 @Component({
   selector: 'app-novo-projeto',
@@ -23,22 +23,22 @@ export class NovoProjetoComponent implements OnInit {
   constructor(private router: Router, private arouter: ActivatedRoute, private svc: GenericService) { }
 
   id: number;
-  changes: Array<Change>;
-  filtroChange = new Change();
-  totalChanges: number;
+  solicitacaoMudancas: Array<SolicitacaoMudanca>;
+  filtroSolicitacaoMudanca = new SolicitacaoMudanca();
+  totalSolicitacaoMudancas: number;
 
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
       this.id = +res.get('id');
     });
 
-    this.filtroChange.projetoId = this.id;
-    this.filtroChange.ativo = true;
-    this.svc.listar(Change, this.filtroChange)
+    this.filtroSolicitacaoMudanca.projetoId = this.id;
+    this.filtroSolicitacaoMudanca.ativo = true;
+    this.svc.listar(SolicitacaoMudanca, this.filtroSolicitacaoMudanca)
       .toPromise().then(
         (result) => {
-          this.changes = result.data;
-          this.totalChanges = this.changes.length;
+          this.solicitacaoMudancas = result.data;
+          this.totalSolicitacaoMudancas = this.solicitacaoMudancas.length;
         }
       );
   }
@@ -59,7 +59,13 @@ export class NovoProjetoComponent implements OnInit {
     this.alterarTabs.tabs[tabId].active = true;
   }
 
-  novaChange() {
+  novaSolicitacaoMudanca() {
+    this.router.navigate([`template/projetos/novo-projeto/solicitacao-mudanca/${this.id}`]);
+  vaiParaNovaChange() {
     this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}`]);
+  }
+
+  vaiParaEsforcoProjeto() {
+    this.router.navigate([`template/projetos/novo-projeto/esforco-projeto/${this.id}`]);
   }
 }
