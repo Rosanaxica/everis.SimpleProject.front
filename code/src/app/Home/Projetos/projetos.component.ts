@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Projeto } from 'src/app/_models/projeto.model';
+import { Router } from '@angular/router';
+import { NovoProjetoComponent } from './actions/novo-projeto/novo-projeto.component';
 
 @Component({
   selector: 'app-projetos',
@@ -13,8 +15,8 @@ export class ProjetosComponent implements OnInit {
   title = 'Projetos';
   projetos: any;
   pessoas: any;
-
-  constructor(private svc: GenericService) { }
+  
+  constructor(private router: Router, private svc: GenericService) { }
 
   ngOnInit() {
     this.svc.listar(Projeto)
@@ -36,6 +38,10 @@ export class ProjetosComponent implements OnInit {
         (error) => {
         }
       );
+  }
+
+  detalheProjeto(projeto: Projeto): void {
+    this.router.navigate([`/template/projetos/novo-projeto/${projeto.id}`]);
   }
 
 }

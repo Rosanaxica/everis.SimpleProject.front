@@ -10,7 +10,7 @@
   <!-- Navbar Search -->
   <form class="d-none d-md-inline-block form-inline ml-auto col-lg-5">
     <div class="input-group">
-      <input type="text" class="form-control " placeholder="Buscar por" aria-label="Busca no site ">
+      <input type="text" class="form-control no-shadow" placeholder="Buscar por" aria-label="Busca no site ">
       <div class="input-group-append">
         <button class="btn btn-secondary" type="button">
           <i class="fa fa-search"></i>
@@ -18,13 +18,13 @@
       </div>
     </div>
   </form>
-  
+
   <!-- Navbar -->
   <ul class="navbar-nav ml-auto ml-md-0">
 
     <li class="nav-item dropdown no-arrow">
       <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-         aria-expanded="false">
+        aria-expanded="false">
         <div class="nav-item  text-white text-right">
           <i class="fa fa-user-circle fa-fw"></i>
           <small>Bem vindo Fulano</small><br>
@@ -32,7 +32,7 @@
 
       </a>
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="#">Meus Dados</a>
+        <a class="dropdown-item" [routerLink]="['meus-dados']" routerLinkActive="active">Meus Dados</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Sair</a>
       </div>
@@ -45,45 +45,51 @@
   <!-- Sidebar -->
   <ul class="sidebar navbar-nav bg-gray-light" [ngClass]="{ 'toggled': menuFechado, '': !menuFechado}">
     <li class="nav-item active">
-      <a class="nav-link" [routerLink]="['novo-projeto']" routerLinkActive="active" >
+      <a class="nav-link" [routerLink]="['novo-projeto']" routerLinkActive="active">
         <button class="btn everis">Adicionar projeto</button>
       </a>
     </li>
-    <li class="nav-item active">
+    <li class="nav-item active" [matTooltip]="menuFechado ? 'Dashboard': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['dashboard']" routerLinkActive="active">
+
         <i class="fas fa-tachometer-alt"></i>
         <span> Dashboard</span></a>
-    </li>
 
-    <li class="nav-item">
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Projetos': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['projetos']" routerLinkActive="active">
         <i class="fas fa-chart-bar"></i>
         <span> Projetos</span></a>
     </li>
-    
-    <li class="nav-item">
-        <a class="nav-link" [routerLink]="['empresa']" routerLinkActive="active">
-          <i class="fas fa-building"></i>
-          <span> Empresas</span></a>
-      </li>
-    <li class="nav-item">
+
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Empresas': null" [matTooltipPosition]="'right'">
+      <a class="nav-link" [routerLink]="['empresa']" routerLinkActive="active">
+        <i class="fas fa-building"></i>
+        <span> Empresas</span></a>
+    </li>
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Pessoas': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['pessoas']" routerLinkActive="active">
-        <i class="fa fa-user "></i>
+        <i class="fa fa-user"></i>
         <span> Pessoas</span></a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link"  [routerLink]="['mapa-site']" routerLinkActive="active">
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Comunidades': null" [matTooltipPosition]="'right'">
+      <a class="nav-link" [routerLink]="['comunidades']" routerLinkActive="active">
+        <i class="fa fa-users"></i>
+        <span>Comunidades</span></a>
+    </li>
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Mapa Site': null" [matTooltipPosition]="'right'">
+      <a class="nav-link" [routerLink]="['mapa-site']" routerLinkActive="active">
         <i class="fa fa-sitemap"></i>
         <span> Mapa do Site</span></a>
     </li>
-    <li class="nav-item">
+
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Central de Ajuda': null" [matTooltipPosition]="'right'">
       <a class="nav-link" href="#">
         <i class="fa fa-question-circle"></i>
         <span> Central de Ajuda</span></a>
     </li>
     <hr>
 
-    <li class="nav-item">
+    <li class="nav-item" [matTooltip]="menuFechado ? 'Modelos': null" [matTooltipPosition]="'right'">
       <a class="nav-link" [routerLink]="['modelos']" routerLinkActive="active">
         <i class="fa fa-clone"></i>
         <span> Modelos</span></a>
@@ -93,6 +99,7 @@
   <div id="content-wrapper">
 
     <div class="container-fluid">
+        <breadcrumb></breadcrumb>
       <div class="card">
         <div class="card-body">
           <!-- alterar aqui -->
@@ -134,4 +141,3 @@
     </div>
   </div>
 </div>
-<script src="src/simple.min.js"></script>

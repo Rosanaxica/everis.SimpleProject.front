@@ -7,6 +7,7 @@ import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { GenericService } from 'src/app/_services/generic.service';
+import { Ferramenta } from 'src/app/_models/ferramenta.model';
 
 
 
@@ -22,6 +23,7 @@ export class CadastroPessoasComponent implements OnInit {
 
   pessoa = new Pessoa();
   colaborador = new Colaborador();
+  filtroFerramenta = new Ferramenta();
   telefone = new Telefone();
   empresaId: number;
   telefones: Telefone[] = [];
@@ -29,8 +31,22 @@ export class CadastroPessoasComponent implements OnInit {
   msgSucesso: String;
   msgErro: String;
 
+  disponiveis: Ferramenta[] = [];
+  associados: Ferramenta[] = [];
+  paraRemover: Ferramenta[] = [];
+  paraAdicionar: Ferramenta[] = [];
 
   ngOnInit() {
+
+
+    if (this.pessoa.id == undefined && this.pessoa.colaboradorId == undefined) {
+      this.obterFerramentas();
+    } else {
+      this.obterFerramentasDisponiveis();
+    }
+    // executar a chamada abaixo no momento que finalizar o preenchimento do retorno da pessoa em edição
+    // this.obterFerramentasAssociadas();
+
     this.svc.listar(Empresa).toPromise().then(data => {
       this.empresas = data['data'];
       console.log(this.empresas);
@@ -42,6 +58,11 @@ export class CadastroPessoasComponent implements OnInit {
     this.pessoa.telefones = this.telefones;
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
+  }
+  onKeydown() {
+    this.pessoa.telefones = this.telefones;
+    this.telefones.push(this.telefone);
+    // this.telefone = new Telefone();
   }
 
   SelecionarEmpresa(empresaId: number) {
@@ -82,8 +103,8 @@ export class CadastroPessoasComponent implements OnInit {
       pessoaColaborador.colaborador = this.colaborador;
       pessoaColaborador.pessoa = this.pessoa;
 
-      this.svc.salvar(pessoaColaborador, PessoaColaboradorViewModel)
-      .toPromise().then(
+      this.svc.postViewModel(pessoaColaborador, 'pessoa/CriarPessoaColaborador')
+        .toPromise().then(
           data => {
             this.msgSucesso = 'Colaborador cadastrado com sucesso!';
           },
@@ -94,7 +115,7 @@ export class CadastroPessoasComponent implements OnInit {
     } else {
       this.pessoa.empresaId = this.empresaId;
       this.svc.salvar(this.pessoa, Pessoa)
-      .toPromise().then(
+        .toPromise().then(
           data => {
             this.msgSucesso = 'Terceiro cadastrado com sucesso!';
           },
@@ -113,5 +134,55 @@ export class CadastroPessoasComponent implements OnInit {
     this.router.navigate(['/template/pessoas']);
   }
 
+  adicionarFerramenta() {
+    if (this.paraAdicionar.length == 0) {
+      alert('Selecione uma ferramenta para adicionar');
+      return;
+    } else {
+      this.paraAdicionar.forEach(a => {
+        let item = this.disponiveis.find(f => f.id == +a);
+        let itemIndex = this.disponiveis.indexOf(item);
+        this.associados.push(item);
+        this.disponiveis.splice(itemIndex, 1);
+      });
+      this.paraAdicionar = [];
+    }
+  }
+  removerFerramenta() {
+    if (this.paraRemover.length == 0) {
+      alert('Selecione uma ferramenta para remover');
+      return;
+    } else {
+      this.paraRemover.forEach(a => {
+        let item = this.associados.find(f => f.id == +a);
+        let itemIndex = this.associados.indexOf(item);
+        this.disponiveis.push(item);
+        this.associados.splice(itemIndex, 1);
+      });
+      this.paraRemover = [];
+    }
+  }
+
+  obterFerramentasDisponiveis() {
+
+  }
+
+  obterFerramentasAssociadas() {
+
+  }
+
+  obterFerramentas() {
+    this.svc.listar(Ferramenta, null, "ObterTodos").toPromise().then(
+      data => {
+        if (data.sucesso) {
+          if (data.data != null && data.data !== undefined) {
+            this.disponiveis = data.data;
+            console.log(data)
+            console.log(this.disponiveis);
+          }
+        }
+      }
+    );
+  }
 
 }

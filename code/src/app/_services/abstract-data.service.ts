@@ -1,11 +1,11 @@
 import { ModeloGenerico } from '../_models/modelo_generico';
-import { environment } from 'src/environments/environment.prod';
 import { TipoModelo } from '../_models/interfaces/tipo.model';
 import { HttpService } from './http.service';
 
 import { Headers } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { ModeloRetorno } from '../_models/interfaces/modelo.retorno';
+import { environment } from '../../environments/environment';
 
 export class AbstractDataService {
   url: string;
@@ -22,7 +22,7 @@ export class AbstractDataService {
         return this.httpSvc.get(this.url, { headers: this.headers }).map(res => {
           return res.json();
         });
-      case 'gexportet':
+      case 'export':
         return this.httpSvc.get(this.url, { headers: this.headers }).map(res => {
           return res;
         });
@@ -46,9 +46,19 @@ export class AbstractDataService {
     return this.executaAcaoHttp('delete');
   }
 
+  ativar<T extends ModeloGenerico>(modeloTipo: TipoModelo<T>, id: number): Observable<ModeloRetorno> {
+    this.url = `${this.montarUrlPorTipo(modeloTipo)}/Ativar/${id}`;
+    return this.executaAcaoHttp('put');
+  }
+
+  desativar<T extends ModeloGenerico>(modeloTipo: TipoModelo<T>, id: number): Observable<ModeloRetorno> {
+    this.url = `${this.montarUrlPorTipo(modeloTipo)}/Desativar/${id}`;
+    return this.executaAcaoHttp('put');
+  }
+
   salvar<T extends ModeloGenerico>(modelo: T, modeloTipo?: TipoModelo<T>, urlAlternativa?: string): Observable<ModeloRetorno> {
-    const acao = modelo.Id && modelo.Id > 0 ? 'put' : 'post';
-    this.url = `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}`;
+    const acao = modelo.id && modelo.id > 0 ? 'put' : 'post';
+    this.url = `${this.montarUrlPorTipo(modeloTipo, urlAlternativa)}${acao == 'put' ? `/${modelo.id}` : ''}`;
     return this.executaAcaoHttp(acao, modelo);
   }
 
@@ -70,29 +80,35 @@ export class AbstractDataService {
   obter<T extends ModeloGenerico>(modelo: T, urlAlternativa?: string): Observable<ModeloRetorno> {
     this.url = this.montarUrl(modelo, urlAlternativa);
     if (!urlAlternativa) {
-      this.url += `/obter/${modelo.Id}`;
+      this.url += `/${modelo.id}`;
     }
     return this.executaAcaoHttp('get', modelo);
   }
 
   listar<T extends ModeloGenerico>(modelo: TipoModelo<T>, filtro?: any, urlAlternativa?: string): Observable<ModeloRetorno> {
     this.url = this.montarUrlPorTipo(modelo, urlAlternativa);
-    this.url = urlAlternativa != null && urlAlternativa !== undefined ? this.url : `${this.url}/ObterTodos`;
+    this.url = urlAlternativa != null && urlAlternativa !== undefined ? this.url : `${this.url}/BuscarPor`;
     if (filtro && filtro !== undefined && filtro != null && Object.keys(filtro).length > 0) {
       this.incluirFiltros(filtro);
     }
     return this.executaAcaoHttp('get');
   }
 
-  exportar<T extends ModeloGenerico>(modelo: TipoModelo<T>, tipoExportar: string, filtro?: any, urlAlternativa?: string): Observable<ModeloRetorno> {
-    this.url = `${this.montarUrlPorTipo(modelo, urlAlternativa)}/exportar`;
+  exportar<T extends ModeloGenerico>(modelo: TipoModelo<T>, tipoExportar: string, filtro?: any, urlAlternativa?: string): Observable<any> {
+    this.url = `${this.montarUrlPorTipo(modelo, urlAlternativa)}/exportar?tipoArquivo=${tipoExportar || 'csv'}`;
     if (filtro && filtro !== undefined && filtro != null && Object.keys(filtro).length > 0) {
       this.incluirFiltros(filtro);
-      this.url += `&tipoArquivo=${tipoExportar}`;
-    } else {
-      this.url += `?tipoArquivo=${tipoExportar}`;
     }
     return this.executaAcaoHttp('export');
+  }
+
+  downloadFile(result) {
+    let blob = new Blob([atob(result.data.fileContents)], { type: result.data.contentType });
+    let url = window.URL.createObjectURL(blob);
+    var anchor = document.createElement("a");
+    anchor.download = result.data.fileDownloadName;
+    anchor.href = url;
+    anchor.click();
   }
 
   criarLista<T extends ModeloGenerico>(modeloTipo: TipoModelo<T>, lista: Array<T>) {

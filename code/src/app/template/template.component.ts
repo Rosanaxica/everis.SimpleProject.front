@@ -1,5 +1,8 @@
 import {Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { LoginService } from '../_services/login.service';
+=======
+>>>>>>> dev_2019_jan
 
 
 @Component({

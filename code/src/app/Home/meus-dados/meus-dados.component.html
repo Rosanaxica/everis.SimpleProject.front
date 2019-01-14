@@ -1,0 +1,95 @@
+<div class="row align-items-center">
+  <div class="col-3">
+    <h1 class="titulo mb-0">Meus Dados</h1>
+  </div>
+  <hr class="mt-2" />
+</div>
+<div class="row">
+
+  <!-- esse NgFor deve deixar de existir para mostrar somente a pessoa que está logada
+   -->
+  <div *ngFor="let pessoa of pessoas" class="col-md-4 mb-2">
+    <div class="card card-colaborador border-everis">
+      <div class="row">
+        <div class="card-body">
+          <div class="col-md-12 m-0 p-0">
+            <div *ngIf="pessoa.colaboradorId != null;else naoColaborador" class="col-md-12 text-right">
+              <span *ngIf="pessoa.colaborador != undefined && pessoa.colaborador.disponivel;else naoDisponivel" class="badge everis text-right">Disponível</span>
+              <ng-template #naoDisponivel>
+                <span class="badge everis text-right">Indisponível</span>
+              </ng-template>
+            </div>
+            <ng-template #naoColaborador>
+              <div class="col-md-12 text-right">
+                <span class="badge everis text-right">Não é colaborador</span>
+              </div>
+            </ng-template>
+            <div class="row">
+              <div class="col-md-3">
+                <img class="card-img-top" src="../assets/semPerfil.png" alt="Card image cap">
+              </div>
+              <div class="col-md-8 m-0 p-0">
+                <p class="m-0">{{pessoa.nome}}</p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b> E-mail Corporativo:</b> {{pessoa.colaborador.emailCorporativo}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>E-mail Pessoal:</b> {{pessoa.email}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>Funcional:</b> {{pessoa.colaborador.funcional}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>Cpf:</b> {{pessoa.cpf}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>Documento:</b> {{pessoa.documento}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>Função:</b> {{pessoa.colaborador.funcao}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>Racf:</b> {{pessoa.colaborador.racf}}
+                  </small>
+                </p>
+                <p class="m-0">
+                  <small *ngIf="pessoa.colaborador!=null">
+                    <b>Nome da Maquina</b> {{pessoa.colaborador.nomeMaquina}}
+                  </small>
+                </p>
+                <div>
+                  <p class="m-0">{{pessoas.telefones|json}}
+                    <small *ngFor="let telefone of pessoa.telefones">
+                      <b>Telefone:</b>{{telefone.tipoTelefone}}-  {{telefone.numeroTelefone}}
+                    </small>
+                  </p>
+                  <p class="m-0">
+                    <small *ngIf="pessoa.colaborador!=null">
+                      <a class="nav-link" [routerLink]="['alterar-senha']" routerLinkActive="active">
+                        <button>Alterar senha</button>
+                      </a>
+                    </small>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 text-right"><sub>Projeto Itau PJ - Team Leader</sub></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

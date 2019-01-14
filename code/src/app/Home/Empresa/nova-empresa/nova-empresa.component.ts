@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
-import { Empresa } from 'src/app/_models/empresa.model';
-import { GenericService } from 'src/app/_services/generic.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Validators } from '@angular/forms';
+import { Empresa } from '../../../_models/empresa.model';
+import { GenericService } from '../../../_services/generic.service';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-nova-empresa',
@@ -12,40 +12,67 @@ import { GenericService } from 'src/app/_services/generic.service';
 })
 export class NovaEmpresaComponent implements OnInit {
 
+  constructor(private svc: GenericService, private arouter: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
 
-  constructor(private svc: GenericService, private router: Router) { }
-
-
-  empresa = new Empresa();
-  msgSucesso: String;
   msgErro: String;
-  empresas: Empresa[] = [];
+
+  id: number;
+  formularioEmpresa: FormGroup;
+  modeloEmpresa: Empresa = new Empresa();
 
   ngOnInit() {
-    this.svc.listar(Empresa).toPromise().then(
-      data => {
-        this.empresas = data['data'];
-      },
-      error => console.log('Erro ao obter lista')
+    this.arouter.paramMap.subscribe(res => {
+      this.id = +res.get('id');
+      if (this.id !== null && this.id !== undefined && this.id > 0) {
+        this.modeloEmpresa.id = this.id;
+        this.obterModelo();
+      }
+      this.criarForm();
+    });
+  }
+
+  obterModelo() {
+    this.svc.obter(this.modeloEmpresa).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            let empresaModel = s.data as Empresa;
+            this.criarForm(empresaModel);
+          }
+        }
+      }
     );
   }
 
-  Salvar(form: NgForm) {
-    this.svc.salvar(this.empresa, Empresa).toPromise().then(
+  private obterDadosForm() {
+    let objForm = this.formularioEmpresa.value;
+    this.modeloEmpresa.nome = objForm.nome;
+    this.modeloEmpresa.segmento = objForm.segmento;
+  }
+
+  salvar() {
+    this.obterDadosForm();
+    this.svc.salvar(this.modeloEmpresa, Empresa).toPromise().then(
       data => {
-        this.msgSucesso = 'Cadastro realizado com sucesso!';
+        this.router.navigate([`/template/empresa`, { sucesso: true }]);
+
       },
       error => {
         this.msgErro = 'Erro ao salvar';
       }
     );
-    form.reset();
+    this.formularioEmpresa.reset();
+  }
+  cancelar() {
+    this.router.navigate(['/template/empresa']);
   }
 
-
-  Cancelar() {
-    this.router.navigate(['/template']);
+  criarForm(itemEmpresa?: Empresa) {
+    itemEmpresa = itemEmpresa || { nome: '', segmento: 0 } as Empresa;
+    this.formularioEmpresa = this.fb.group({
+      'nome': [itemEmpresa.nome, Validators.required],
+      'segmento': [itemEmpresa.segmento, Validators.required]
+    });
   }
 }
-
 

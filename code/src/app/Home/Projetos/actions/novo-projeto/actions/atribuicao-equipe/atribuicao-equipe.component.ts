@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,12 +9,21 @@ import { Router } from '@angular/router';
 export class AtribuicaoEquipeComponent implements OnInit {
 
   constructor(private router: Router) { }
-
+  @Output() getProjeto = new EventEmitter<string>();
+  nomeProjeto: string;
+  
   ngOnInit() {
   }
 
+  OpenView(nomeProjeto: string){
+    this.nomeProjeto = nomeProjeto;
+  }
   cancelar() {
     this.router.navigate(['/template/projetos']);
+  }
+
+  salvar(){
+    this.getProjeto.emit("2");
   }
 
 }
