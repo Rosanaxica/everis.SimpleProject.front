@@ -24,12 +24,9 @@ import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforc
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
-<<<<<<< HEAD
-import { AuthGuard } from './shared/guard/auth.guard';
-=======
 import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
->>>>>>> dev_2019_jan
+import { AuthGuard } from './shared/guard/auth.guard';
 
 
 const appRoutes: Routes = [
@@ -55,62 +52,26 @@ const appRoutes: Routes = [
   },
   {
     path: 'pessoas',
-<<<<<<< HEAD
-    component: PessoasComponent, canActivate: [AuthGuard] ,
-       children: [
-       {
-           path: 'cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard] }
-=======
     component: PessoasComponent,
     children: [
       {
         path: 'cadastro-pessoas', component: CadastroPessoasComponent
       }
->>>>>>> dev_2019_jan
     ],
   },
   {
     path: 'projetos',
     component: ProjetosComponent, canActivate: [AuthGuard] ,
     children: [
-<<<<<<< HEAD
-      { path: 'novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard] },
-      { path: 'novo-projeto/changes', component: ChangesComponent, canActivate: [AuthGuard]  },
-   ],
-=======
       { path: 'novo-projeto', component: NovoProjetoComponent },
       { path: 'novo-projeto/solicitacaomudanca', component: SolicitacaoMudancaComponent },
     ],
->>>>>>> dev_2019_jan
   },
   {
     path: 'template',
     component: TemplateComponent, canActivate: [AuthGuard] ,
     children: [
 
-<<<<<<< HEAD
-      { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-
-      { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard] },
-      { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard] },
-
-      { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard] },
-      { path: 'projetos/novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard]  },
-      { path: 'projetos/novo-projeto/changes', component: ChangesComponent, canActivate: [AuthGuard]   },
-      { path: 'projetos/novo-projeto/changes/nova-change', component: NovaChangeComponent, canActivate: [AuthGuard]   },
-      { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent, canActivate: [AuthGuard]  },
-      { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent, canActivate: [AuthGuard]  },
-
-
-      { path: 'novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard]  },
-      { path: 'mapa-site', component: MapaSiteComponent, canActivate: [AuthGuard]  },
-      { path: 'modelos', component: ModelosComponent, canActivate: [AuthGuard] },
-
-      { path: 'empresa/nova-empresa', component: NovaEmpresaComponent, canActivate: [AuthGuard] },
-      { path: 'empresa', component: EmpresaComponent, canActivate: [AuthGuard] },
-      ],
-=======
       { path: '', component: DashboardComponent },
       { path: 'dashboard', component: DashboardComponent, data: {
         breadcrumb: 'Dashboard'} },
@@ -146,18 +107,13 @@ const appRoutes: Routes = [
       { path: 'empresa', component: EmpresaComponent },
       { path: 'empresa:sucesso', component: EmpresaComponent },
     ],
->>>>>>> dev_2019_jan
 
   },
   {
     path: 'login',
     component: LoginComponent,
     children: [
-<<<<<<< HEAD
-      { path: 'template', component: TemplateComponent, canActivate: [AuthGuard] },
-=======
       { path: 'template', component: TemplateComponent },
->>>>>>> dev_2019_jan
     ],
   },
   {
@@ -175,17 +131,10 @@ const appRoutes: Routes = [
   {
     path: 'novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard] ,
     children: [
-<<<<<<< HEAD
-      { path: '', redirectTo: 'dados-principais', pathMatch: 'full', canActivate: [AuthGuard]  },
-      { path: 'dados-principais', component: DadosPrincipaisComponent, canActivate: [AuthGuard]  },
-      { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent, canActivate: [AuthGuard]  },
-       ],
-=======
       { path: '', redirectTo: 'dados-principais', pathMatch: 'full' },
       { path: 'dados-principais', component: DadosPrincipaisComponent },
       { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent },
     ],
->>>>>>> dev_2019_jan
   },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {

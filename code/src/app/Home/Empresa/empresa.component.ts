@@ -16,6 +16,7 @@ export class EmpresaComponent implements OnInit {
   empresas: Empresa[] = [];
   filtroEmpresa = new Empresa();
   tipoSegmentoType: typeof TipoSegmento = TipoSegmento;
+  msgSucesso: string;
 
   ngOnInit() {
     this.filtrar();
