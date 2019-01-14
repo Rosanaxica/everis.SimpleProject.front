@@ -14,7 +14,7 @@
     <h1 class="titulo mb-0">Nova Pessoa</h1>
   </div>
   <nav class="col d-flex justify-content-end">
-      <button type="button" class="btn everis mr-2" [disabled]="!form.valid || telefones.length === 0" (click)="Salvar(form)">Salvar</button>
+    <button type="button" class="btn everis mr-2" [disabled]="!form.valid || telefones.length === 0" (click)="Salvar(form)">Salvar</button>
     <button type="button" class="btn cancelar" (click)="Cancelar()">Cancelar</button>
   </nav>
   <hr class="mt-2" />
@@ -252,20 +252,25 @@
         </div>
 
         <div class="row">
-          <div class="col-5">
-            <label>Associados</label>
-            <select multiple [(ngModel)]="paraRemover">
-              <option *ngFor="let i of associados" value="{{i.id}}">{{i.nome}}</option>
+          <div class="col-5 p-2">
+            <label>Ferramentas Associadas</label>
+            <select multiple [(ngModel)]="paraRemover" class="form-control" name="associados">
+              <option *ngFor="let i of associados" value="{{i.id}}">{{i.descricao}}</option>
             </select>
           </div>
-          <div class="col-2">
-            <button (click)="adicionarFerramenta()">+</button>
-            <button (click)="removerFerramenta()">-</button>
+          <div class="col-2 mt-4 text-center">
+
+            <div class="mb-2">
+              <button class="btn btn-success" (click)="adicionarFerramenta()">
+                <<</button> </div> <div>
+                  <button class="btn btn-danger" (click)="removerFerramenta()">>></button>
+            </div>
+
           </div>
-          <div class="col-5">
-            <label>Disponiveis</label>
-            <select multiple [(ngModel)]="paraAdicionar">
-              <option *ngFor="let i of disponiveis" value="{{i.id}}">{{i.nome}}</option>
+          <div class="col-5 p-2 border-1">
+            <label>Ferramentas Disponiveis</label>
+            <select multiple [(ngModel)]="paraAdicionar" class="form-control" name="disponiveis">
+              <option *ngFor="let i of disponiveis" value="{{i.id}}">{{i.descricao}}</option>
             </select>
           </div>
         </div>

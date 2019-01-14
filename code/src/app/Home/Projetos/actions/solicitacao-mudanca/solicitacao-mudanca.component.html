@@ -1,0 +1,63 @@
+<div class="row">
+  <div *ngIf="msgSucesso != null && msgSucesso != undefined" class="col-12">
+    <div class="alert alert-success" role="alert">
+      <i class="fa fa-check mr-1"></i> {{msgSucesso}}
+    </div>
+  </div>
+</div>
+<div class="row align-items-center no-gutters">
+  <div class="col-md-12 col-lg-6 col-xl-4">
+    <h1 class="titulo pl-0 mb-0">Solicitação de Mudança</h1>
+  </div>
+  <div class="input-group col-md-12 col-lg-6 col-xl-5 mb-2">
+    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
+      [(ngModel)]="filtroSolicitacaoMudanca.descricao" (keydown.enter)="onKeydown(filtrar())">
+    <div class="input-group-append">
+      <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-12 col-xl-3 d-flex justify-content-end mb-2">
+    <button type="button" class="btn everis" (click)="novaSolicitacaoMudanca()">Nova Solicitação de Mudança +</button>
+  </div>
+  <hr class="mt-0" />
+</div>
+<table class="table table-striped mt-4">
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Horas por Serviço</th>
+      <th class="text-center">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of solicitacaoMudancas">
+      <td class="align-middle">{{ item.descricao }}</td>
+      <td class="align-middle">
+        <p class="m-0" *ngIf="item.qtdHorasServico1 !== 0">Serviço 1: {{ item.qtdHorasServico1 }}h</p>
+        <p class="m-0" *ngIf="item.qtdHorasServico2 !== 0">Serviço 2: {{ item.qtdHorasServico2 }}h</p>
+        <p class="m-0" *ngIf="item.qtdHorasServico3 !== 0">Serviço 3: {{ item.qtdHorasServico3 }}h</p>
+      </td>
+      <td class="text-center align-middle">
+        <button class="btn everis" (click)="editar(item.id)"><i class="fas fa-pencil-alt"></i></button>
+        <button class="btn everis-laranja text-white ml-1" (click)="desativar(item.id)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 class="subtitulo">Total de Horas de Impacto por Serviço</h2>
+<div class="row">
+  <div class="col">
+    Serviço 1: {{servico1}}h
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    Serviço 2: {{servico2}}h
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    Serviço 3: {{servico3}}h
+  </div>
+</div>
