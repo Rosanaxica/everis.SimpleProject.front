@@ -32,7 +32,6 @@ export class MeusDadosComponent implements OnInit {
               if (telefones.sucesso) {
                 if (telefones.data != null && telefones.data !== undefined) {
                   element.telefones = telefones.data;
-                  console.log(element.telefones);
                 }
               }
             }

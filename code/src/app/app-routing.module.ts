@@ -1,3 +1,4 @@
+import { AlterarSenhaComponent } from './Home/meus-dados/Alterar-senha/alterar-senha/alterar-senha.component';
 import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
@@ -94,6 +95,7 @@ const appRoutes: Routes = [
     {path: 'mapa-site', component: MapaSiteComponent },
     {path: 'modelos', component: ModelosComponent},
     {path: 'meus-dados', component: MeusDadosComponent},
+    {path: 'meus-dados/alterar-senha', component: AlterarSenhaComponent},
 
     {path: 'empresa/cadastro-empresa', component: NovaEmpresaComponent},
     {path: 'empresa/cadastro-empresa/:id', component: NovaEmpresaComponent},
