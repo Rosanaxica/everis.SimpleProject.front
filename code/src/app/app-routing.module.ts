@@ -23,66 +23,67 @@ import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforc
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
+import { AuthGuard } from './shared/guard/auth.guard';
 
 
 const appRoutes: Routes = [
   {
     path: 'loader',
-    component: LoaderComponent
+    component: LoaderComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'modelos',
-    component: ModelosComponent
+    component: ModelosComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'novo-projeto',
-    component: NovoProjetoComponent
+    component: NovoProjetoComponent, canActivate: [AuthGuard] 
   },
   {
     path: '*',
-    component: AppComponent
+    component: AppComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'pessoas',
-    component: PessoasComponent,
+    component: PessoasComponent, canActivate: [AuthGuard] ,
        children: [
        {
-         path: 'cadastro-pessoas', component: CadastroPessoasComponent}
+           path: 'cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard] }
     ],
   },
   {
     path: 'projetos',
-    component: ProjetosComponent,
+    component: ProjetosComponent, canActivate: [AuthGuard] ,
     children: [
-      {path: 'novo-projeto', component: NovoProjetoComponent},
-      {path: 'novo-projeto/changes', component: ChangesComponent },
+      { path: 'novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard] },
+      { path: 'novo-projeto/changes', component: ChangesComponent, canActivate: [AuthGuard]  },
    ],
   },
   {
     path: 'template',
-    component: TemplateComponent,
+    component: TemplateComponent, canActivate: [AuthGuard] ,
     children: [
 
-    {path: '', component: DashboardComponent},
-    {path: 'dashboard', component: DashboardComponent},
+      { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
 
-    {path: 'pessoas', component: PessoasComponent},
-    {path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent},
+      { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard] },
+      { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard] },
 
-    {path: 'projetos', component: ProjetosComponent},
-    {path: 'projetos/novo-projeto', component: NovoProjetoComponent },
-    {path: 'projetos/novo-projeto/changes', component: ChangesComponent  },
-    {path: 'projetos/novo-projeto/changes/nova-change', component: NovaChangeComponent  },
-    {path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
-    {path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
+      { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard] },
+      { path: 'projetos/novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard]  },
+      { path: 'projetos/novo-projeto/changes', component: ChangesComponent, canActivate: [AuthGuard]   },
+      { path: 'projetos/novo-projeto/changes/nova-change', component: NovaChangeComponent, canActivate: [AuthGuard]   },
+      { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent, canActivate: [AuthGuard]  },
+      { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent, canActivate: [AuthGuard]  },
 
 
-    {path: 'novo-projeto', component: NovoProjetoComponent },
-    {path: 'mapa-site', component: MapaSiteComponent },
-    {path: 'modelos', component: ModelosComponent},
+      { path: 'novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard]  },
+      { path: 'mapa-site', component: MapaSiteComponent, canActivate: [AuthGuard]  },
+      { path: 'modelos', component: ModelosComponent, canActivate: [AuthGuard] },
 
-    {path: 'empresa/nova-empresa', component: NovaEmpresaComponent},
-    {path: 'empresa', component: EmpresaComponent},
+      { path: 'empresa/nova-empresa', component: NovaEmpresaComponent, canActivate: [AuthGuard] },
+      { path: 'empresa', component: EmpresaComponent, canActivate: [AuthGuard] },
       ],
 
   },
@@ -90,12 +91,12 @@ const appRoutes: Routes = [
     path: 'login',
     component: LoginComponent,
     children: [
-      {path: 'template', component: TemplateComponent},
+      { path: 'template', component: TemplateComponent, canActivate: [AuthGuard] },
     ],
   },
   {
     path: 'mapa-site',
-    component: MapaSiteComponent
+    component: MapaSiteComponent, canActivate: [AuthGuard] 
   },
     {
     path: 'esqueci-senha',
@@ -106,29 +107,29 @@ const appRoutes: Routes = [
     component: PrimeiroAcessoComponent
   },
   {
-    path: 'novo-projeto', component: NovoProjetoComponent,
+    path: 'novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard] ,
     children: [
-      { path: '', redirectTo: 'dados-principais', pathMatch: 'full' },
-      { path: 'dados-principais', component: DadosPrincipaisComponent },
-      { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent },
+      { path: '', redirectTo: 'dados-principais', pathMatch: 'full', canActivate: [AuthGuard]  },
+      { path: 'dados-principais', component: DadosPrincipaisComponent, canActivate: [AuthGuard]  },
+      { path: 'atribuicao-equipe', component: AtribuicaoEquipeComponent, canActivate: [AuthGuard]  },
        ],
   },
   { path: '',   redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'fechamento-projeto',
-    component: FechamentoProjetoComponent
+    component: FechamentoProjetoComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'anexos',
-    component: AnexosComponent
+    component: AnexosComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'empresa',
-    component: EmpresaComponent
+    component: EmpresaComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'nova-empresa',
-    component: NovaEmpresaComponent
+    component: NovaEmpresaComponent, canActivate: [AuthGuard] 
   }
  ];
 

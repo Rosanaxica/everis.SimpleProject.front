@@ -4,9 +4,9 @@ import { ModeloGenerico } from './modelo_generico';
 
 export class Colaborador extends ModeloGenerico {
     racf: string;
-    emailCorporativo: string;
+    emailcorporativo: string;
     funcional: number;
-    nomeMaquina: string;
+    nomemaquina: string;
     funcao: FuncaoColaborador;
     perfil: PerfilColaborador;
     disponivel: boolean;

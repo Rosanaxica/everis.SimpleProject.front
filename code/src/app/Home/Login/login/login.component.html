@@ -1,4 +1,4 @@
-
+<form [formGroup]="loginGroup">
 <div class="col-md-12 mt-5 text-center">
   <img src="../assets/logo_empresa.png" width="140">
   </div>
@@ -8,13 +8,19 @@
         <div class="card-body ">
           <img src="../assets/logo_90.png">
         <div class="form-group mt-2">
-          <input type="text" class="form-control mb-2" name="user" id="usuario" placeholder="Usuário" required>
-          <input type="password" class="form-control mb-2" name="senha" id="senha" placeholder="Senha" required>
+          <input formControlName="user" type="text" class="form-control mb-2" name="user" id="usuario" placeholder="Usuário">
+          <input formControlName="senha" type="password" class="form-control mb-2" name="senha" id="senha" placeholder="Senha">
           
         </div>
         <nav class="col  justify-content-center">
             <!-- <input type="submit" class="btn everis mr-2 " value="Salvar"/> -->
-            <button type="button" (click)="vaiParaHome()" class="btn everis mr-2">Acessar</button>
+            <button type="button" (click)="login()" class="btn everis mr-2">Acessar</button>
+            <br>
+            <div *ngIf="msgErro != null && msgErro != undefined" class="mt-2">
+              <div class="alert alert-danger" role="alert">
+                <i class="fa fa-times mr-2"> </i> {{msgErro}}
+              </div>
+            </div>
             <!-- <button type="button" class="btn cancelar">Cancelar</button> -->
           </nav> 
         <!--.input-->
@@ -24,10 +30,8 @@
         <div class="col-md-6 "><a href="/primeiro-acesso " class="links ">Primeiro Acesso</a></div>
         </div>
       </div>
-    </div>  
-  
-
+    </div>
 
 </div>
-
+</form>
 
