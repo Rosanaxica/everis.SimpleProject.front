@@ -86,11 +86,6 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto/solicitacao-mudanca/:id', component: SolicitacaoMudancaComponent },
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca },
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca },
-<<<<<<< HEAD
-      { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
-      { path: 'projetos/novo-projeto/:id/esforco-projeto', component: EsforcoProjetoComponent },
-      { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
-=======
       
       { path: 'projetos/novo-projeto/fase', component: FaseComponent },
       { path: 'projetos/novo-projeto/fase/nova-fase', component: NovaFaseComponent },
@@ -99,7 +94,6 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
       
->>>>>>> 6d5bf453555cc4bad0e32a081606b0717072383d
 
       { path: 'comunidades', component: ComunidadesComponent },
 
