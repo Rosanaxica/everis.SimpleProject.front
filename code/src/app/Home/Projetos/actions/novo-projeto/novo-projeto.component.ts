@@ -61,11 +61,9 @@ export class NovoProjetoComponent implements OnInit {
 
   novaSolicitacaoMudanca() {
     this.router.navigate([`template/projetos/novo-projeto/solicitacao-mudanca/${this.id}`]);
-  vaiParaNovaChange() {
-    this.router.navigate([`template/projetos/novo-projeto/changes/${this.id}`]);
   }
 
-  vaiParaEsforcoProjeto() {
-    this.router.navigate([`template/projetos/novo-projeto/esforco-projeto/${this.id}`]);
+  vaiParaFase() {
+    this.router.navigate([`template/projetos/novo-projeto/fase/${this.id}`]);
   }
 }
