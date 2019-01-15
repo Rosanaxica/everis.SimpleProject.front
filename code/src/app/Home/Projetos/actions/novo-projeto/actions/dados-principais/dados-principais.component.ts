@@ -113,6 +113,7 @@ export class DadosPrincipaisComponent implements OnInit {
   filtrar() {
     this.svc.listar(Empresa).toPromise().then(
       s => {
+        debugger;
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.empresas = s.data;
