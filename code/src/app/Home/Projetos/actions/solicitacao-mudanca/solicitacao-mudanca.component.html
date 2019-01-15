@@ -21,6 +21,29 @@
   </div>
   <hr class="mt-0" />
 </div>
+<div class="banner-horas-impacto rounded p-3">
+  <h2 class="row no-gutters ">Resumo de Horas de Impacto</h2>
+  <div class="row">
+    <div class="col-sm-12 col-md-4 d-flex align-items-center justify-content-center p-3">
+      <div class="box-servico rounded-circle border d-flex flex-column align-items-center justify-content-center p-4">
+        <span class="d-block">Serviço 1</span>
+        <output class="d-block result-total-servico">{{servico1}}h</output>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 d-flex align-items-center justify-content-center p-3">
+      <div class="box-servico rounded-circle border d-flex flex-column align-items-center justify-content-center p-4">
+        <span class="d-block">Serviço 2</span>
+        <output class="d-block text-center result-total-servico">{{servico2}}h</output>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 d-flex align-items-center justify-content-center p-3">
+      <div class="box-servico rounded-circle border d-flex flex-column align-items-center justify-content-center p-4">
+        <span class="width-100">Serviço 3</span>
+        <output class="d-block result-total-servico">{{servico3}}h</output>
+      </div>
+    </div>
+  </div>
+</div>
 <table class="table table-striped mt-4">
   <thead>
     <tr>
@@ -44,20 +67,3 @@
     </tr>
   </tbody>
 </table>
-
-<h2 class="subtitulo">Total de Horas de Impacto por Serviço</h2>
-<div class="row">
-  <div class="col">
-    Serviço 1: {{servico1}}h
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    Serviço 2: {{servico2}}h
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    Serviço 3: {{servico3}}h
-  </div>
-</div>
