@@ -4,15 +4,16 @@
       <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
         placeholder="Nome do Projeto" />
     </div>
-    <div class="col-md-6"> Status do Projeto
-      <!-- <label for="label">Label</label> -->
-      <select id="select1" class="custom-select">
-        <option selected>Em andamento</option>
-        <option value="1">Concluido</option>
-        <option value="2">Cancelado</option>
-        <option value="3">Congelado</option>
-        <option value="4">Pendente Cliente</option>
-        <option value="5">Controle de qualidade</option>
+    <div class="col-md-3">
+      <label for="label">Empresa</label>
+      <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
+        <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="label">Status do Projeto</label>
+      <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
+        <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
       </select>
     </div>
   </div>
