@@ -58,9 +58,9 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.empresaId = values.empresaId;
     this.projeto.dataInicio = values.dataInicio;
     this.projeto.dataPrevista = values.dataPrevista;
-    this.projeto.qtdHorasServico1 = values.qtdHorasServico1 ? values.qtdHorasServico1.split(':')[0] : 0;
-    this.projeto.qtdHorasServico2 = values.qtdHorasServico2 ? values.qtdHorasServico2.split(':')[0] : 0;
-    this.projeto.qtdHorasServico3 = values.qtdHorasServico3 ? values.qtdHorasServico3.split(':')[0] : 0;
+    this.projeto.qtdHorasServico1 = values.qtdHorasServico1;
+    this.projeto.qtdHorasServico2 = values.qtdHorasServico2;
+    this.projeto.qtdHorasServico3 = values.qtdHorasServico3;
     this.projeto.escopoProjeto = values.escopoProjeto;
     this.projeto.foraEscopoProjeto = values.foraEscopoProjeto;
     this.projeto.premissas = values.premissas;
@@ -87,7 +87,8 @@ export class DadosPrincipaisComponent implements OnInit {
         switch (data.codigo) {
           case 200:
             window.alert('Projeto adicionado com sucesso!');
-            this.getProjeto.emit("1");
+            debugger;
+            this.getProjeto.emit(JSON.stringify(this.projeto));
             break;
           default:
             window.alert('erro: ' + data.mensagem);
@@ -112,6 +113,7 @@ export class DadosPrincipaisComponent implements OnInit {
   filtrar() {
     this.svc.listar(Empresa).toPromise().then(
       s => {
+        debugger;
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.empresas = s.data;
