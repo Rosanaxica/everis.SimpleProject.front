@@ -4,8 +4,10 @@ import { DadosPrincipaisComponent } from './actions/dados-principais/dados-princ
 import { TabsetComponent } from 'ngx-bootstrap';
 import { AtribuicaoEquipeComponent } from './actions/atribuicao-equipe/atribuicao-equipe.component';
 import { AnexosComponent } from './actions/anexos/anexos.component';
-import { GenericService } from 'src/app/_services/generic.service';
-import { SolicitacaoMudanca } from 'src/app/_models/solicitacao_mudanca.model';
+import { Projeto } from '../../../../_models/projeto.model';
+import { GenericService } from '../../../../_services/generic.service';
+import { SolicitacaoMudanca } from '../../../../_models/solicitacao_mudanca.model';
+
 
 @Component({
   selector: 'app-novo-projeto',
@@ -23,6 +25,8 @@ export class NovoProjetoComponent implements OnInit {
   constructor(private router: Router, private arouter: ActivatedRoute, private svc: GenericService) { }
 
   id: number;
+  filtroProjeto = new Projeto();
+  projeto: Projeto;
   solicitacaoMudancas: Array<SolicitacaoMudanca>;
   filtroSolicitacaoMudanca = new SolicitacaoMudanca();
   totalSolicitacaoMudancas: number;
@@ -41,8 +45,21 @@ export class NovoProjetoComponent implements OnInit {
           this.totalSolicitacaoMudancas = this.solicitacaoMudancas.length;
         }
       );
-  }
 
+    if (this.id > 0) {
+      this.filtroProjeto.id = this.id;
+
+      this.svc.obter(this.filtroProjeto)
+        .toPromise().then(
+          (result) => {
+            this.projeto = result.data;
+            this.formDados.OpenView(this.projeto);
+          },
+          (error) => {
+          }
+        );
+    }
+  }
   cancelar() {
     this.router.navigate(['/template/projetos']);
   }

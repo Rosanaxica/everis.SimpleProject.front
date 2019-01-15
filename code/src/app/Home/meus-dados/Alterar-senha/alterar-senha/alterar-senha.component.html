@@ -1,3 +1,32 @@
-<p>
-  alterar-senha works!
-</p>
+<div class="col-md-12 mt-5 text-center">
+  <img src="../assets/logo_empresa.png" width="140">
+</div>
+
+<form [formGroup]="rForm" (ngSubmit)="salvaSenhaAlterada(rForm.value)">
+
+
+  <div class="d-flex justify-content-center align-items-center">
+    <div class="col-md-4 text-center">
+      <div class="card card-colaborador center">
+        <div class="card-body ">
+          <img src="../assets/logo_90.png">
+          <div class="form-group mt-2">
+            <input type="text" formControlName="senha" [(ngModel)]="senha" placeholder="Senha" class="form-control mb-2">
+            <input type="text" formControlName="novaSenha" [(ngModel)]="novaSenha" placeholder="Nova Senha" class="form-control mb-2">
+            <input type="text" formControlName="confirmaNovaSenha" [(ngModel)]="confirmaNovaSenha" placeholder="Confirme a Senha" class="form-control mb-2">
+            
+            <span class="spanAtention" *ngIf="novaSenhaPessoa != confirmaSenhaPessoa">
+              <i class="fas fa-exclamation-triangle"></i>
+              Confirmação de nova senha inválida
+            </span>
+            <div class="col justify-content-center">
+              <button type="button" (click)="salvaSenhaAlterada()" class="btn everis mr-2">Salvar</button>
+              <button type="button" class="btn cancelar" [routerLink]="['../']" routerLinkActive="active">Cancelar</button>
+            </div>
+          </div>
+          <div class="col-md-12 mb-4 text-center"><a href="/login " class="links">Voltar a Tela de Login</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

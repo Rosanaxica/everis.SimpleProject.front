@@ -21,12 +21,34 @@
   </div>
   <hr class="mt-0" />
 </div>
+<div class="banner-horas-impacto rounded p-3">
+  <h2 class="row no-gutters ">Resumo de Horas de Impacto</h2>
+  <div class="row">
+    <div class="col-sm-12 col-md-4 d-flex align-items-center justify-content-center p-3">
+      <div class="box-servico rounded-circle border d-flex flex-column align-items-center justify-content-center p-4">
+        <span class="d-block">Serviço 1</span>
+        <output class="d-block result-total-servico">{{servico1}}h</output>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 d-flex align-items-center justify-content-center p-3">
+      <div class="box-servico rounded-circle border d-flex flex-column align-items-center justify-content-center p-4">
+        <span class="d-block">Serviço 2</span>
+        <output class="d-block text-center result-total-servico">{{servico2}}h</output>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-4 d-flex align-items-center justify-content-center p-3">
+      <div class="box-servico rounded-circle border d-flex flex-column align-items-center justify-content-center p-4">
+        <span class="width-100">Serviço 3</span>
+        <output class="d-block result-total-servico">{{servico3}}h</output>
+      </div>
+    </div>
+  </div>
+</div>
 <table class="table table-striped mt-4">
   <thead>
     <tr>
       <th>Descrição</th>
       <th>Horas por Serviço</th>
-      <th class="text-center">Total de Horas</th>
       <th class="text-center">Ações</th>
     </tr>
   </thead>
@@ -37,9 +59,6 @@
         <p class="m-0" *ngIf="item.qtdHorasServico1 !== 0">Serviço 1: {{ item.qtdHorasServico1 }}h</p>
         <p class="m-0" *ngIf="item.qtdHorasServico2 !== 0">Serviço 2: {{ item.qtdHorasServico2 }}h</p>
         <p class="m-0" *ngIf="item.qtdHorasServico3 !== 0">Serviço 3: {{ item.qtdHorasServico3 }}h</p>
-      </td>
-      <td class="align-middle text-center">
-        <p class="m-0">{{ item.qtdHorasServico1||0 + item.qtdHorasServico2 ||0+ item.qtdHorasServico3||0 }}h</p>
       </td>
       <td class="text-center align-middle">
         <button class="btn everis" (click)="editar(item.id)"><i class="fas fa-pencil-alt"></i></button>
