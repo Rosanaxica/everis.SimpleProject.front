@@ -9,15 +9,9 @@
   <div class="col-lg-6 col-md-12 col-xl-3">
     <h1 class="titulo pl-0 mb-0">Empresas</h1>
   </div>
-<<<<<<< HEAD
-  <div class="input-group col-md-12 col-lg-6 col-xl-5 mb-2">
-    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
-      [(ngModel)]="filtroEmpresa.nome" (keydown.enter)="(filtrar())">
-=======
   <div class="input-group col-lg-6  col-md-12 col-xl-5 mb-2">
     <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
       [(ngModel)]="filtroEmpresa.nome" (keydown.enter)="onKeydown(filtrar())">
->>>>>>> 814af6864cb4f8bc2ac009132e90469e54804db2
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>

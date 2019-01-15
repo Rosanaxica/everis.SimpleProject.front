@@ -1,8 +1,19 @@
 <form [formGroup]="dadosPrincipaisForm">
   <div class="form-group mt-4 row">
-    <div class="col-md-12">
-      <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto"
-      />
+    <div class="col-md-6"> Nome do Projeto
+      <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
+        placeholder="Nome do Projeto" />
+    </div>
+    <div class="col-md-6"> Status do Projeto
+      <!-- <label for="label">Label</label> -->
+      <select id="select1" class="custom-select">
+        <option selected>Em andamento</option>
+        <option value="1">Concluido</option>
+        <option value="2">Cancelado</option>
+        <option value="3">Congelado</option>
+        <option value="4">Pendente Cliente</option>
+        <option value="5">Controle de qualidade</option>
+      </select>
     </div>
   </div>
 
@@ -25,13 +36,14 @@
     </div>
     <div class="col-md-3">
       <label for="data">Data Início</label>
-      <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio" bsDatepicker />
+      <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio"
+        bsDatepicker />
 
     </div>
     <div class="col-md-3">
       <label for="data">Data Prevista</label>
-      <input type="text" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista" bsDatepicker
-      />
+      <input type="text" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista"
+        bsDatepicker />
 
     </div>
   </div>
@@ -42,16 +54,14 @@
     <div class="form-group row">
       <div class="col-md-3 ml-3">
         <label>Serviço 1</label>
-        <input type="time" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="time" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
       <div class="col-md-3 m-0">
         <div class="col-md-6">
           <label for="data">Serviço 2</label>
         </div>
         <div class="col-md-6">
-          <input type="time" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2"
-          />
+          <input type="time" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" />
         </div>
       </div>
       <div class="col-md-3 m-0">
@@ -59,8 +69,7 @@
           <label for="data">Serviço 3</label>
         </div>
         <div class="col-md-6">
-          <input type="time" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3"
-          />
+          <input type="time" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" />
         </div>
       </div>
     </div>
