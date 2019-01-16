@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Projeto } from '../../../../../../_models/projeto.model';
 
 @Component({
   selector: 'app-atribuicao-equipe',
@@ -15,8 +16,8 @@ export class AtribuicaoEquipeComponent implements OnInit {
   ngOnInit() {
   }
 
-  OpenView(nomeProjeto: string){
-    this.nomeProjeto = nomeProjeto;
+  OpenView(projeto: Projeto){
+    this.nomeProjeto = projeto.nome;
   }
   cancelar() {
     this.router.navigate(['/template/projetos']);

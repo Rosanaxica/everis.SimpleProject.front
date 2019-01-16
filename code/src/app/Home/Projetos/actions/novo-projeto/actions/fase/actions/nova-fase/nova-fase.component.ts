@@ -1,31 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { EsforcoProjetoModel } from 'src/app/_models/esforcoprojeto.model';
+import { FaseModel } from 'src/app/_models/fase.model';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Observable } from 'rxjs';
 import { startWith } from 'rxjs/internal/operators/startWith';
 import { map } from 'rxjs/internal/operators/map';
+import { TipoFaseModel } from 'src/app/_models/tipo_fase.model';
 
 @Component({
-  selector: 'app-novo-esforco-projeto',
-  templateUrl: './novo-esforco-projeto.component.html',
-  styleUrls: ['./novo-esforco-projeto.component.css']
+  selector: 'app-nova-fase',
+  templateUrl: './nova-fase.component.html',
+  styleUrls: ['./nova-fase.component.css']
 })
-export class NovoEsforcoProjetoComponent implements OnInit {
+export class NovaFaseComponent implements OnInit {
 
   constructor(private svc: GenericService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder) { }
 
   id: number;
-  modeloEsforcoProjeto: EsforcoProjetoModel = new EsforcoProjetoModel();
-  formularioEsforcoProjeto: FormGroup;
+  modeloFase: FaseModel = new FaseModel();
+  formularioFase: FormGroup;
+
+  tipoFase: Array<TipoFaseModel>;
+  tipoFaseLista = new Array<TipoFaseModel>({ id: 0, nome: 'Selecione' } as TipoFaseModel);
+  carregado = false;
 
   options: Pessoa[] = [];
   myControl = new FormControl();
   filteredOptions: Observable<Pessoa[]>;
 
   ngOnInit() {
+    this.carregaTiposFases();
     this.listaPessoas();
     this.filteredOptions = this.myControl.valueChanges
       .pipe(
@@ -37,7 +43,7 @@ export class NovoEsforcoProjetoComponent implements OnInit {
     this.route.paramMap.subscribe(res => {
       this.id = +res.get('id');
       if (this.id !== null && this.id !== undefined && this.id > 0) {
-        this.modeloEsforcoProjeto.id = this.id;
+        this.modeloFase.id = this.id;
         this.obterModelo();
       }
       this.criarFormulario();
@@ -54,11 +60,23 @@ export class NovoEsforcoProjetoComponent implements OnInit {
     return this.options.filter(option => option.nome.toLowerCase().indexOf(filterValue) === 0);
   }
 
+  carregaTiposFases() {
+    this.svc.listar(TipoFaseModel, null, 'ObterTodos').toPromise().then(
+      data => {
+        this.tipoFaseLista = data.data;
+        this.tipoFaseLista.unshift({id: 0, nome: 'Selecione' } as TipoFaseModel);
+        this.carregado = true;
+      },
+      err => {
+        alert("Deu erro");
+      });
+  }
+
   obterModelo() {
-    this.svc.obter(this.modeloEsforcoProjeto).toPromise().then(
+    this.svc.obter(this.modeloFase).toPromise().then(
       dados => {
         if (dados.sucesso) {
-          this.modeloEsforcoProjeto = dados.data as EsforcoProjetoModel;
+          this.modeloFase = dados.data as FaseModel;
           this.criarFormulario();
         }
       },
@@ -68,11 +86,11 @@ export class NovoEsforcoProjetoComponent implements OnInit {
   }
 
   salvar() {
-    this.svc.salvar(this.modeloEsforcoProjeto, EsforcoProjetoModel).toPromise().then(
+    this.svc.salvar(this.modeloFase, FaseModel).toPromise().then(
       data => {
         console.log(data);
         alert("Salvo com sucesso");
-        this.vaiParaEsforcoProjeto();
+        this.vaiParaFase();
       },
       err => {
         console.log(err);
@@ -80,26 +98,29 @@ export class NovoEsforcoProjetoComponent implements OnInit {
       });
   }
 
-  criarFormulario(itemEsforcoProjeto?: EsforcoProjetoModel) {
+  criarFormulario(itemFase?: FaseModel) {
     // let verificaLetras = "^(0|[1-9][0-9]*)$";
     let validacao = Validators.compose([Validators.required, Validators.max(24), Validators.maxLength(2)]);
 
-    itemEsforcoProjeto = itemEsforcoProjeto || null;
+    itemFase = itemFase || null;
 
-    this.formularioEsforcoProjeto = this.fb.group({
-      'qtdHorasDia': [{ value: this.modeloEsforcoProjeto.qtdHorasDia, disabled: false }, validacao],
-      'dataInicio': [{ value: this.modeloEsforcoProjeto.dataInicio, disabled: false }, Validators.required],
-      'dataFim': [{ value: this.modeloEsforcoProjeto.dataFim, disabled: false }, Validators.required],
+    this.formularioFase = this.fb.group({
+      'qtdHorasDia': [{ value: this.modeloFase.qtdHorasDia, disabled: false }, validacao],
+      'dataInicio': [{ value: this.modeloFase.dataInicio, disabled: false }, Validators.required],
+      'dataFim': [{ value: this.modeloFase.dataFim, disabled: false }, Validators.required],
+      'tipoFase': [{ value: this.modeloFase.tipoFaseId, disabled: false }, Validators.required],
+      'observacao': [{ value: this.modeloFase.observacao, disabled: false }, Validators.required],
+      'codigoFase': [{ value: this.modeloFase.codigoFase, disabled: false }, Validators.required],
     });
   }
 
   formularioValido() {
-    const resultado = this.formularioEsforcoProjeto.valid;
+    const resultado = this.formularioFase.valid;
     return resultado;
   }
 
-  vaiParaEsforcoProjeto() {
-    this.router.navigate(['template/projetos/novo-projeto/esforco-projeto']);
+  vaiParaFase() {
+    this.router.navigate(['template/projetos/novo-projeto/fase']);
   }
 
   enterKeyUp(event: any) {
@@ -118,9 +139,12 @@ export class NovoEsforcoProjetoComponent implements OnInit {
   }
 
   getDadosForm() {
-    const formObj = this.formularioEsforcoProjeto.value;
-    this.modeloEsforcoProjeto.qtdHorasDia = formObj.qtdHorasDia;
-    this.modeloEsforcoProjeto.dataInicio = formObj.dataInicio;
-    this.modeloEsforcoProjeto.dataFim = formObj.dataFim;
+    const formObj = this.formularioFase.value;
+    this.modeloFase.qtdHorasDia = formObj.qtdHorasDia;
+    this.modeloFase.dataInicio = formObj.dataInicio;
+    this.modeloFase.dataFim = formObj.dataFim;
+    this.modeloFase.tipoFaseId = formObj.tipoFase;
+    this.modeloFase.observacao = formObj.observacao;
+    this.modeloFase.codigoFase = formObj.codigoFase;
   }
 }

@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-esforco-projeto',
-  templateUrl: './esforco-projeto.component.html',
-  styleUrls: ['./esforco-projeto.component.css']
+  selector: 'app-fase',
+  templateUrl: './fase.component.html',
+  styleUrls: ['./fase.component.css']
 })
-export class EsforcoProjetoComponent implements OnInit {
+export class FaseComponent implements OnInit {
   constructor(private svc: GenericService, private router: Router) { }
 
   projetos: Projeto[] = [];
@@ -23,11 +23,17 @@ export class EsforcoProjetoComponent implements OnInit {
     this.svc.listar(Projeto, this.filtroProjeto).toPromise().then(
       s => {
         if (s.sucesso) {
-          if (s.data != null && s.data !== undefined) {
+          if (s.data !== null && s.data !== undefined) {
             this.projetos = s.data;
           }
         }
       }
     );
   }
+
+  vaiParaNovaFase() {
+    this.router.navigate(['template/projetos/fase/nova-fase']);
+  }
+
+  
 }

@@ -22,7 +22,7 @@
   </div>
 
   <div class="col-md-4">
-    <div class="card card-colaborador cursor-pointer click" (click)="vaiParaEsforcoProjeto()" routerLinkActive="active"
+    <div class="card card-colaborador cursor-pointer click" (click)="vaiParaFase()" routerLinkActive="active"
       role="button">
       <div class="card-body">
         Esforço Projeto <span class="badge everis">456</span>
@@ -31,7 +31,7 @@
   </div>
 
   <div class="col-md-4">
-    <div class="card card-colaborador cursor-pointer click" [routerLink]="['esforco-projeto']" routerLinkActive="active">
+    <div class="card card-colaborador cursor-pointer click" [routerLink]="['fase']" routerLinkActive="active">
       <div class="card-body">
         Status : <div class="badge everis"> Em Andamento</div>
       </div>
@@ -48,8 +48,9 @@
         <ng-template tabHeading>
           <span class="fonte-everis">Dados Principais</span>
         </ng-template>
-        <app-dados-principais (getProjeto)="selectTab($event)"></app-dados-principais>
+        <app-dados-principais (getProjeto)="selectTab($event)"></app-dados-principais>teste
       </tab>
+      
       <tab>
         <ng-template tabHeading>
           <span class="fonte-cancelar">Atribuição de Equipe</span>
