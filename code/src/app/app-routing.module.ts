@@ -9,7 +9,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { ModelosComponent } from './shared/modelos/modelos.component';
 import { AppComponent } from './app.component';
 import { TemplateComponent } from './template/template.component';
-import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { LoginComponent } from './Home/Login/login/login.component';
 import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/actions/dados-principais/dados-principais.component';
 import { ProjetosComponent } from './Home/Projetos/projetos.component';
@@ -20,13 +19,14 @@ import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
 import { EmpresaComponent } from './Home/Empresa/empresa.component';
 import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.component';
-import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
 import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
 import { AuthGuard } from './shared/guard/auth.guard';
+import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
+import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
 
 
 const appRoutes: Routes = [
@@ -84,14 +84,17 @@ const appRoutes: Routes = [
           breadcrumb: 'Projetos'
         },
       },
-      { path: 'projetos/novo-projeto', component: NovoProjetoComponent },
-      { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/solicitacao-mudanca/:id', component: SolicitacaoMudancaComponent },
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca },
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca },
-      { path: 'projetos/novo-projeto/esforco-projeto', component: EsforcoProjetoComponent },
-      { path: 'projetos/novo-projeto/esforco-projeto/:id', component: EsforcoProjetoComponent },
-      { path: 'projetos/novo-projeto/esforco-projeto/novo-esforco-projeto', component: NovoEsforcoProjetoComponent },
+      
+      { path: 'projetos/novo-projeto/fase', component: FaseComponent },
+      { path: 'projetos/novo-projeto/fase/nova-fase', component: NovaFaseComponent },
+      { path: 'projetos/novo-projeto/fase/nova-fase/:id', component: NovaFaseComponent },
+      
+      { path: 'projetos/novo-projeto', component: NovoProjetoComponent },
+      { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
+      
 
       { path: 'comunidades', component: ComunidadesComponent },
 

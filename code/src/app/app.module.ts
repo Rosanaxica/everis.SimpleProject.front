@@ -15,7 +15,6 @@ import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.compone
 import { NovoProjetoComponent } from './Home/Projetos/actions/novo-projeto/novo-projeto.component';
 import { FechamentoProjetoComponent } from './Home/Projetos/actions/fechamento-projeto/fechamento-projeto.component';
 import { AnexosComponent } from './Home/Projetos/actions/novo-projeto/actions/anexos/anexos.component';
-import { EsforcoProjetoComponent } from './Home/Projetos/actions/esforco-projeto/esforco-projeto.component';
 import { AtribuicaoEquipeComponent } from './Home/Projetos/actions/novo-projeto/actions/atribuicao-equipe/atribuicao-equipe.component';
 import { NovaSolicitacaoMudanca } from './Home/Projetos/actions/nova-solicitacao-mudanca/nova-solicitacao-mudanca.component';
 import { CadastroPessoasComponent } from './Home/Pessoas/actions/cadastro-pessoas/cadastro-pessoas.component';
@@ -38,7 +37,7 @@ import { UploadComponent } from './shared/upload/upload.component';
 // import { InputComponent } from './shared/input/input.component';
 import { DateFormatPipe } from './shared/util/date-format-pipe';
 import { DateTimeFormatPipe } from './shared/util/datetime-format-pipe';
-import { NovoEsforcoProjetoComponent } from './Home/Projetos/actions/novo-esforco-projeto/novo-esforco-projeto.component';
+
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
@@ -64,6 +63,9 @@ import { AlterarSenhaComponent } from './Home/meus-dados/Alterar-senha/alterar-s
 import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
 import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
+import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
+import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
+
 
 @NgModule({
   declarations: [
@@ -76,7 +78,7 @@ import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinh
     NovoProjetoComponent,
     FechamentoProjetoComponent,
     AnexosComponent,
-    EsforcoProjetoComponent,
+    FaseComponent,
     AtribuicaoEquipeComponent,
     NovaSolicitacaoMudanca,
     CadastroPessoasComponent,
@@ -92,7 +94,7 @@ import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinh
     DateFormatPipe,
     DateTimeFormatPipe,
     SolicitacaoMudancaComponent,
-    NovoEsforcoProjetoComponent,
+    NovaFaseComponent,
     MapaSiteComponent,
     NovaEmpresaComponent,
     LoaderComponent,

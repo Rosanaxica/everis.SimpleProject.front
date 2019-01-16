@@ -2,6 +2,7 @@ import { ModeloGenerico } from './modelo_generico';
 
 export class Projeto extends ModeloGenerico {
     nome: string;
+    codigoProjeto: string;
     qtdHorasServico1: number;
     qtdHorasServico2: number;
     qtdHorasServico3: number;
