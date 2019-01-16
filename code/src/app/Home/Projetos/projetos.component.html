@@ -69,7 +69,7 @@
 
     <!--.Status-->
     <div class="col-md-2 col-xs-12">
-      <span class="badge everis p-2">{{ statusProjeto === 0 ? 'Inativo' : 'Ativo'}}</span>
+      <span class="badge everis p-2">{{ projeto.status.descricao }}</span>
       <small>
         <p>Inicio: {{ projeto.dataInicio | dateFormat }}</p>
       </small>
