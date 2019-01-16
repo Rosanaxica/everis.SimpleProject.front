@@ -44,4 +44,24 @@ export class ProjetosComponent implements OnInit {
     this.router.navigate([`/template/projetos/novo-projeto/${projeto.id}`]);
   }
 
+  filtrar() {
+    this.filtroProjeto.ativo = true;
+    this.svc.listar(Projeto, this.filtroProjeto).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.projetos = s.data;
+            console.log(this.contar(s.data));
+          }
+        }
+      }
+    );
+  }
+  contar(lista: Array<any>): number {
+    let cont = 0;
+    lista.forEach(element => {
+      cont++;
+    });
+    return cont;
+  }
 }
