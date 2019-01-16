@@ -3,20 +3,20 @@
 <form #form="ngForm" novalidate>
   <div class="form-group mt-4">
     <div class="col-md-12">
-      <input id="ProjetoId"  [(ngModel)]="anexo.IdProjeto" hidden [ngModelOptions]="{standalone: true}"/>
+      <input id="ProjetoId"  [(ngModel)]="anexo.idProjeto" hidden [ngModelOptions]="{standalone: true}"/>
       <input value="{{nomeProjeto}}" type="text" class="form-control" id="nomeprojeto" name="nomeprojeto"  placeholder="Nome do Projeto" disabled />
     </div>
   </div>
   <div class="form-group">
     <div class="col-md-12"><label>Descrição</label></div>
     <div class="col-md-12">
-      <textarea class="form-control" id="descricao" name="descricao" [(ngModel)]="anexo.Descricao"[ngModelOptions]="{standalone: true}" placeholder="Descrição"></textarea>
+      <textarea class="form-control" id="descricao" name="descricao" [(ngModel)]="anexo.descricao"[ngModelOptions]="{standalone: true}" placeholder="Descrição"></textarea>
     </div>
   </div>
   <div class="row form-group">
     <div class="col-md-4">
       <div class="col-md-12">
-        <select class="form-control" id="tipo" name="tipo" [(ngModel)]="anexo.Tipo" [ngModelOptions]="{standalone: true}">
+        <select class="form-control" id="tipo" name="tipo" [(ngModel)]="anexo.tipo" [ngModelOptions]="{standalone: true}">
           
           <option value="0">Abertura</option>
           <option value="1">Fechamento</option>
@@ -27,7 +27,7 @@
     <div class="col-md-8">
       <div class="row">
         <div class="col-md-6">
-          <input type="text" class="form-control" id="fileUpload" name="fileUpload" [(ngModel)]="anexo.Path" [ngModelOptions]="{standalone: true}">
+          <input type="text" class="form-control" id="fileUpload" name="fileUpload" [(ngModel)]="anexo.path" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="col-md-6">
           <input type="file" id="arquivo" name="arquivo" class="everis" />

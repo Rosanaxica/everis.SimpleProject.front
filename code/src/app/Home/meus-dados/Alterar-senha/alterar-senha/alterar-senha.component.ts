@@ -33,7 +33,7 @@ export class AlterarSenhaComponent implements OnInit {
 
   ngOnInit() {
   }
-  salvaSenhaAlterada() {
+  salvaSenhaAlterada(senha?: string) {
     console.log("oi, eu sou o goku!");
     // this.svc.salvar()
     // this.senha = senha;

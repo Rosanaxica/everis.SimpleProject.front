@@ -15,7 +15,7 @@
             <input type="text" formControlName="novaSenha" [(ngModel)]="novaSenha" placeholder="Nova Senha" class="form-control mb-2">
             <input type="text" formControlName="confirmaNovaSenha" [(ngModel)]="confirmaNovaSenha" placeholder="Confirme a Senha" class="form-control mb-2">
             
-            <span class="spanAtention" *ngIf="novaSenhaPessoa != confirmaSenhaPessoa">
+            <span class="spanAtention" *ngIf="novaSenha != confirmaNovaSenha">
               <i class="fas fa-exclamation-triangle"></i>
               Confirmação de nova senha inválida
             </span>
