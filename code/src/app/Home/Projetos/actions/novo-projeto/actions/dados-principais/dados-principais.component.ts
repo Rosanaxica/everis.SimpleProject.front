@@ -87,7 +87,6 @@ export class DadosPrincipaisComponent implements OnInit {
         switch (data.codigo) {
           case 200:
             window.alert('Projeto adicionado com sucesso!');
-            debugger;
             this.getProjeto.emit(JSON.stringify(this.projeto));
             break;
           default:
@@ -113,7 +112,6 @@ export class DadosPrincipaisComponent implements OnInit {
   filtrar() {
     this.svc.listar(Empresa).toPromise().then(
       s => {
-        debugger;
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.empresas = s.data;

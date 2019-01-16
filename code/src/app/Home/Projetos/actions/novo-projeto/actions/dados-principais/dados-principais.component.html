@@ -1,154 +1,122 @@
 <form [formGroup]="dadosPrincipaisForm">
-  <div class="form-group mt-4 row">
-    <div class="col-md-6"> Nome do Projeto
-      <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
-        placeholder="Nome do Projeto" />
+    <div class="form-group mt-4 row">
+      <div class="col-md-6"> Nome do Projeto
+        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
+          placeholder="Nome do Projeto" />
+      </div>
+      <div class="col-md-3">
+        <label for="label">Empresa</label>
+        <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
+          <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="label">Status do Projeto</label>
+        <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
+          <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
+        </select>
+      </div>
     </div>
-    <div class="col-md-6"> Status do Projeto
-      <!-- <label for="label">Label</label> -->
-      <select id="select1" class="custom-select">
-        <option selected>Em andamento</option>
-        <option value="1">Concluido</option>
-        <option value="2">Cancelado</option>
-        <option value="3">Congelado</option>
-        <option value="4">Pendente Cliente</option>
-        <option value="5">Controle de qualidade</option>
-      </select>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <div class="col-md-3">
-      <label for="label">Centro de Custo</label>
-
-      <select formControlName="centroCusto" class="form-control" id="centrocusto" name="centrocusto">
-        <option value="EXT-0000000000">EXT-0000000000</option>
-        <option value="EXT-0000000000">EXT-0000000000</option>
-        <option value="EXT-0000000000">EXT-0000000000</option>
-      </select>
-
-    </div>
-    <div class="col-md-3">
-      <label for="label">Empresa</label>
-      <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
-        <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
-      </select>
-    </div>
-    <div class="col-md-3">
-      <label for="data">Data Início</label>
-      <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio"
-        bsDatepicker />
-
-    </div>
-    <div class="col-md-3">
-      <label for="data">Data Prevista</label>
-      <input type="text" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista"
-        bsDatepicker />
-
-    </div>
-  </div>
-
-  <fieldset class="border mb-3">
-
-    <legend class="col-md-3">Quantidade de Horas</legend>
+  
     <div class="form-group row">
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-      <div class="col-md-3 ml-3">
-        <label>Serviço 1</label>
-        <input type="time" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
-=======
->>>>>>> dev_2019_jan
-      <div class="col-md-3 m-0">
-        <div class="col-md-6">
-          <label>Serviço 1</label>
-        </div>
-        <div class="col-md-6">
-<<<<<<< HEAD
-          <input type="text" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
-        </div>
-=======
-          <input type="text" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-          />
-        </div>
->>>>>>> 6d5bf453555cc4bad0e32a081606b0717072383d
->>>>>>> dev_2019_jan
+      <div class="col-md-3">
+        <label for="label">Centro de Custo</label>
+  
+        <select formControlName="centroCusto" class="form-control" id="centrocusto" name="centrocusto">
+          <option value="EXT-0000000000">EXT-0000000000</option>
+          <option value="EXT-0000000000">EXT-0000000000</option>
+          <option value="EXT-0000000000">EXT-0000000000</option>
+        </select>
+  
       </div>
-      <div class="col-md-3 m-0">
-        <div class="col-md-6">
-          <label for="data">Serviço 2</label>
-        </div>
-        <div class="col-md-6">
-<<<<<<< HEAD
-          <input type="text" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" />
-=======
-<<<<<<< HEAD
-          <input type="time" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" />
-=======
-          <input type="text" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2"
-          />
->>>>>>> 6d5bf453555cc4bad0e32a081606b0717072383d
->>>>>>> dev_2019_jan
-        </div>
+      <div class="col-md-3">
+        <label for="label">Empresa</label>
+        <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
+          <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
+        </select>
       </div>
-      <div class="col-md-3 m-0">
-        <div class="col-md-6">
-          <label for="data">Serviço 3</label>
-        </div>
-        <div class="col-md-6">
-<<<<<<< HEAD
-          <input type="text" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" />
-=======
-<<<<<<< HEAD
-          <input type="time" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" />
-=======
-          <input type="text" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3"
-          />
->>>>>>> 6d5bf453555cc4bad0e32a081606b0717072383d
->>>>>>> dev_2019_jan
-        </div>
+      <div class="col-md-3">
+        <label for="data">Data Início</label>
+        <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio"
+          bsDatepicker />
+  
+      </div>
+      <div class="col-md-3">
+        <label for="data">Data Prevista</label>
+        <input type="text" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista"
+          bsDatepicker />
+  
       </div>
     </div>
-  </fieldset>
-
-  <mat-expansion-panel class="mb-3">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Escopo do Projeto
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <div class="form-group ">
-      <textarea formControlName="escopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto"></textarea>
+  
+    <fieldset class="border mb-3">
+  
+      <legend class="col-md-3">Quantidade de Horas</legend>
+      <div class="form-group row">
+        <div class="col-md-3 m-0">
+          <div class="col-md-6">
+            <label>Serviço 1</label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
+          </div>
+        </div>
+        <div class="col-md-3 m-0">
+          <div class="col-md-6">
+            <label for="data">Serviço 2</label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" />
+          </div>
+        </div>
+        <div class="col-md-3 m-0">
+          <div class="col-md-6">
+            <label for="data">Serviço 3</label>
+          </div>
+          <div class="col-md-6">
+            <input type="text" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" />
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Escopo do Projeto
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="form-group ">
+        <textarea formControlName="escopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto"></textarea>
+      </div>
+    </mat-expansion-panel>
+  
+  
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Fora do Escopo do Projeto
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"></textarea>
+    </mat-expansion-panel>
+  
+    <mat-expansion-panel class="mb-3">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Premissas
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+  
+      <textarea formControlName="premissas" class="form-control" id="premissas" name="premissas"></textarea>
+  
+    </mat-expansion-panel>
+  
+    <div class="row align-items-center mt-2 mb-4">
+      <nav class="col d-flex justify-content-end">
+        <button type="button" class="btn everis mr-2" (click)="Adicionar()" [disabled]="!formEstaValido()">Salvar</button>
+        <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
+      </nav>
     </div>
-  </mat-expansion-panel>
-
-
-  <mat-expansion-panel class="mb-3">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Fora do Escopo do Projeto
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"></textarea>
-  </mat-expansion-panel>
-
-  <mat-expansion-panel class="mb-3">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        Premissas
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-
-    <textarea formControlName="premissas" class="form-control" id="premissas" name="premissas"></textarea>
-
-  </mat-expansion-panel>
-
-  <div class="row align-items-center mt-2 mb-4">
-    <nav class="col d-flex justify-content-end">
-      <button type="button" class="btn everis mr-2" (click)="Adicionar()" [disabled]="!formEstaValido()">Salvar</button>
-      <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
-    </nav>
-  </div>
-
-</form>
+  
+  </form>
