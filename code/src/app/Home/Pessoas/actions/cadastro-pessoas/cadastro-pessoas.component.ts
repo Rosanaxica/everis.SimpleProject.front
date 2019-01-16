@@ -8,6 +8,9 @@ import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Ferramenta } from 'src/app/_models/ferramenta.model';
+import { AcessoFerramenta } from 'src/app/_models/acessoFerramenta';
+import { Sigla } from 'src/app/_models/sigla.model';
+import { AcessoSigla } from 'src/app/_models/acessoSigla.model';
 
 
 
@@ -21,26 +24,37 @@ export class CadastroPessoasComponent implements OnInit {
   constructor(private svc: GenericService, private router: Router) {
   }
 
+  pessoaColaborador = new PessoaColaboradorViewModel();
+  acessoFerramenta = new AcessoFerramenta();
+  acessoSigla = new AcessoSigla();
   pessoa = new Pessoa();
-  colaborador = new Colaborador();
   filtroFerramenta = new Ferramenta();
+  colaborador = new Colaborador();
   telefone = new Telefone();
-  empresaId: number;
   telefones: Telefone[] = [];
   empresas: Empresa[] = [];
+
+  empresaId: number;
   msgSucesso: String;
   msgErro: String;
 
-  disponiveis: Ferramenta[] = [];
-  associados: Ferramenta[] = [];
-  paraRemover: Ferramenta[] = [];
-  paraAdicionar: Ferramenta[] = [];
+  siglasDisponiveis: Sigla[] = []
+  siglasAssociadas: Sigla[] = []
+  btnRemoverSiglas: Sigla[] = [];
+  btnAdicionarSiglas: Sigla[] = [];
+
+  ferramentasDisponiveis: Ferramenta[] = [];
+  ferramentasAssociadas: Ferramenta[] = [];
+  btnRemoverFerramentas: Ferramenta[] = [];
+  btnAdicionarFerramentas: Ferramenta[] = [];
+
 
   ngOnInit() {
 
 
     if (this.pessoa.id == undefined && this.pessoa.colaboradorId == undefined) {
       this.obterFerramentas();
+      this.obterSiglas()
     } else {
       this.obterFerramentasDisponiveis();
     }
@@ -99,11 +113,16 @@ export class CadastroPessoasComponent implements OnInit {
     this.msgSucesso = null;
     // tslint:disable-next-line:triple-equals
     if (this.pessoa.tipo == 1) {
-      const pessoaColaborador = new PessoaColaboradorViewModel();
-      pessoaColaborador.colaborador = this.colaborador;
-      pessoaColaborador.pessoa = this.pessoa;
+      this.pessoaColaborador.colaborador = this.colaborador;
+      this.pessoaColaborador.pessoa = this.pessoa;
 
-      this.svc.postViewModel(pessoaColaborador, 'pessoa/CriarPessoaColaborador')
+      if (this.pessoaColaborador.pessoa.id == undefined && this.pessoaColaborador.colaborador.id == undefined) {
+        debugger;
+        this.atribuirAcessoFerramenta();
+        this.atribuirAcessoSigla();
+      }
+
+      this.svc.postViewModel(this.pessoaColaborador, 'pessoa/CriarPessoaColaborador')
         .toPromise().then(
           data => {
             this.msgSucesso = 'Colaborador cadastrado com sucesso!';
@@ -127,6 +146,8 @@ export class CadastroPessoasComponent implements OnInit {
 
     form.reset();
     this.telefones = [];
+    this.ferramentasAssociadas = [];
+    this.ferramentasDisponiveis = [];
 
   }
 
@@ -135,31 +156,32 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
   adicionarFerramenta() {
-    if (this.paraAdicionar.length == 0) {
+    if (this.btnAdicionarFerramentas.length == 0) {
       alert('Selecione uma ferramenta para adicionar');
       return;
     } else {
-      this.paraAdicionar.forEach(a => {
-        let item = this.disponiveis.find(f => f.id == +a);
-        let itemIndex = this.disponiveis.indexOf(item);
-        this.associados.push(item);
-        this.disponiveis.splice(itemIndex, 1);
+      this.btnAdicionarFerramentas.forEach(a => {
+        let item = this.ferramentasDisponiveis.find(f => f.id == +a);
+        let itemIndex = this.ferramentasDisponiveis.indexOf(item);
+        this.ferramentasAssociadas.push(item);
+        this.ferramentasDisponiveis.splice(itemIndex, 1);
       });
-      this.paraAdicionar = [];
+      this.btnAdicionarFerramentas = [];
     }
   }
+
   removerFerramenta() {
-    if (this.paraRemover.length == 0) {
+    if (this.btnRemoverFerramentas.length == 0) {
       alert('Selecione uma ferramenta para remover');
       return;
     } else {
-      this.paraRemover.forEach(a => {
-        let item = this.associados.find(f => f.id == +a);
-        let itemIndex = this.associados.indexOf(item);
-        this.disponiveis.push(item);
-        this.associados.splice(itemIndex, 1);
+      this.btnRemoverFerramentas.forEach(a => {
+        let item = this.ferramentasAssociadas.find(f => f.id == +a);
+        let itemIndex = this.ferramentasAssociadas.indexOf(item);
+        this.ferramentasDisponiveis.push(item);
+        this.ferramentasAssociadas.splice(itemIndex, 1);
       });
-      this.paraRemover = [];
+      this.btnRemoverFerramentas = [];
     }
   }
 
@@ -176,13 +198,78 @@ export class CadastroPessoasComponent implements OnInit {
       data => {
         if (data.sucesso) {
           if (data.data != null && data.data !== undefined) {
-            this.disponiveis = data.data;
-            console.log(data)
-            console.log(this.disponiveis);
+            this.ferramentasDisponiveis = data.data;
           }
         }
       }
     );
+  }
+
+
+  atribuirAcessoFerramenta() {
+
+    let lstAcesso: AcessoFerramenta[] = [];
+    this.ferramentasAssociadas.forEach(element => {
+      this.acessoFerramenta.ferramentaId = element.id;
+      lstAcesso.push(this.acessoFerramenta);
+      this.acessoFerramenta = new AcessoFerramenta();
+    });
+
+    this.pessoaColaborador.colaborador.acessos = lstAcesso;
+
+  }
+
+  obterSiglas() {
+    this.svc.listar(Sigla, null, "ObterTodos").toPromise().then(
+      data => {
+        if (data.sucesso) {
+          if (data.data != null && data.data !== undefined) {
+            this.siglasDisponiveis = data.data;
+          }
+        }
+      }
+    );
+  }
+
+  adicionarSigla() {
+    if (this.btnAdicionarSiglas.length == 0) {
+      alert('Selecione uma ferramenta para adicionar');
+      return;
+    } else {
+      this.btnAdicionarSiglas.forEach(a => {
+        let item = this.siglasDisponiveis.find(f => f.id == +a);
+        let itemIndex = this.siglasDisponiveis.indexOf(item);
+        this.siglasAssociadas.push(item);
+        this.siglasDisponiveis.splice(itemIndex, 1);
+      });
+      this.btnAdicionarSiglas = [];
+    }
+  }
+
+  removerSigla() {
+    if (this.btnRemoverSiglas.length == 0) {
+      alert('Selecione uma ferramenta para remover');
+      return;
+    } else {
+      this.btnRemoverSiglas.forEach(a => {
+        let item = this.siglasAssociadas.find(f => f.id == +a);
+        let itemIndex = this.siglasAssociadas.indexOf(item);
+        this.siglasDisponiveis.push(item);
+        this.siglasAssociadas.splice(itemIndex, 1);
+      });
+      this.btnRemoverSiglas = [];
+    }
+  }
+
+  atribuirAcessoSigla() {
+
+    let lstAcesso: AcessoSigla[] = [];
+    this.siglasAssociadas.forEach(element => {
+      this.acessoSigla.id = element.id;
+      lstAcesso.push(this.acessoSigla);
+      this.acessoSigla = new AcessoSigla();
+    });
+    this.pessoaColaborador.colaborador.siglas = lstAcesso;
   }
 
 }
