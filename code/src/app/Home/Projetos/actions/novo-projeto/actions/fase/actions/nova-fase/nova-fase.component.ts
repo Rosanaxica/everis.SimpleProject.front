@@ -109,6 +109,7 @@ export class NovaFaseComponent implements OnInit {
       'tipoFase': [{ value: this.modeloFase.tipoFaseId, disabled: false }, Validators.required],
       'observacao': [{ value: this.modeloFase.observacao, disabled: false }, Validators.required],
       'codigoFase': [{ value: this.modeloFase.codigoFase, disabled: false }, Validators.required],
+      // 'codigoProjeto': [{ value: this.modeloFase.projeto.codigoProjeto, disabled: false }, Validators.required],
     });
   }
 
