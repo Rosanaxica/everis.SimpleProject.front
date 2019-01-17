@@ -50,7 +50,6 @@ import { LoaderService } from './_services/loader.service';
 
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
-
 import * as more from 'highcharts/highcharts-more.src';
 import * as exporting from 'highcharts/modules/exporting.src';
 import * as exportData from 'highcharts/modules/export-data.src';

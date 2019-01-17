@@ -1,11 +1,11 @@
 import { ModeloGenerico } from './modelo_generico';
-import { ProjetoPessoaModel } from './projetopessoa.model';
+import { ProjetoPessoa } from './projetopessoa.model';
 import { TipoFaseModel } from './tipo_fase.model';
 
 export class FaseModel extends ModeloGenerico {
     
     projetoPessoaId: number;
-    projetoPessoa: ProjetoPessoaModel;
+    projetoPessoa: ProjetoPessoa;
     tipoFaseId: number;
     tipoFase: TipoFaseModel;
     qtdHorasDia: number;
