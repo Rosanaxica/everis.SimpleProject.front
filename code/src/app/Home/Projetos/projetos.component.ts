@@ -31,6 +31,15 @@ export class ProjetosComponent implements OnInit {
   }
 
 
+
+
+  listarPessoas(projetoId: number) {
+    this.svc.listar(ProjetoPessoaModel, null, `PessoasProjeto/${projetoId}`).toPromise().then(
+      s => { console.log(s.data); },
+      e => { let err = e.json(); alert(`Erro ${err.mensagem}`); }
+    )
+  }
+
   filtrar() {
     this.filtroProjeto.ativo = true;
 
@@ -39,6 +48,16 @@ export class ProjetosComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.status = s.data;
+          }
+        }
+      }
+    );
+    this.svc.listar(Projeto, this.filtroProjeto).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.projetos = s.data;
+            console.log(this.contar(s.data));
           }
         }
       }
@@ -61,12 +80,13 @@ export class ProjetosComponent implements OnInit {
         (error) => {
         }
       );
-  }
 
-  listarPessoas(projetoId: number) {
-    this.svc.listar(ProjetoPessoaModel, null, `PessoasProjeto/${projetoId}`).toPromise().then(
-      s => { console.log(s.data); },
-      e => { let err = e.json(); alert(`Erro ${err.mensagem}`); }
-    )
+  }
+  contar(lista: Array<any>): number {
+    let cont = 0;
+    lista.forEach(element => {
+      cont++;
+    });
+    return cont;
   }
 }
