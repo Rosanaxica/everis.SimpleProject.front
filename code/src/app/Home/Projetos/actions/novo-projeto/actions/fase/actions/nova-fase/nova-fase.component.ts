@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 import { startWith } from 'rxjs/internal/operators/startWith';
 import { map } from 'rxjs/internal/operators/map';
 import { TipoFaseModel } from 'src/app/_models/tipo_fase.model';
+import { Projeto } from 'src/app/_models/projeto.model';
 
 @Component({
   selector: 'app-nova-fase',
@@ -19,8 +20,10 @@ export class NovaFaseComponent implements OnInit {
   constructor(private svc: GenericService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder) { }
 
   id: number;
-  modeloFase: FaseModel = new FaseModel();
+  modeloFase = new FaseModel();
   formularioFase: FormGroup;
+  projeto = new Projeto();
+  pessoa = new Pessoa();
 
   tipoFase: Array<TipoFaseModel>;
   tipoFaseLista = new Array<TipoFaseModel>({ id: 0, nome: 'Selecione' } as TipoFaseModel);
@@ -42,7 +45,7 @@ export class NovaFaseComponent implements OnInit {
 
     this.route.paramMap.subscribe(res => {
       this.id = +res.get('id');
-      if (this.id !== null && this.id !== undefined && this.id > 0) {
+      if (this.id != null && this.id !== undefined && this.id > 0) {
         this.modeloFase.id = this.id;
         this.obterModelo();
       }
@@ -73,11 +76,28 @@ export class NovaFaseComponent implements OnInit {
   }
 
   obterModelo() {
+    
     this.svc.obter(this.modeloFase).toPromise().then(
       dados => {
         if (dados.sucesso) {
           this.modeloFase = dados.data as FaseModel;
-          this.criarFormulario();
+          
+          this.projeto.id = this.modeloFase.projetoId;
+          this.svc.obter(this.projeto).toPromise().then(
+            projeto => {
+              this.modeloFase.projeto = projeto.data as Projeto;
+               
+            }
+          );
+
+          this.pessoa.id = this.modeloFase.pessoaId;
+          this.svc.obter(this.pessoa).toPromise().then(
+            pessoa => {
+              this.pessoa = pessoa.data as Pessoa;
+            }
+          );
+          
+          this.criarFormulario(this.modeloFase);
         }
       },
       err => {
@@ -88,12 +108,10 @@ export class NovaFaseComponent implements OnInit {
   salvar() {
     this.svc.salvar(this.modeloFase, FaseModel).toPromise().then(
       data => {
-        console.log(data);
         alert("Salvo com sucesso");
         this.vaiParaFase();
       },
       err => {
-        console.log(err);
         alert("Deu erro");
       });
   }
@@ -102,7 +120,7 @@ export class NovaFaseComponent implements OnInit {
     // let verificaLetras = "^(0|[1-9][0-9]*)$";
     let validacao = Validators.compose([Validators.required, Validators.max(24), Validators.maxLength(2)]);
 
-    itemFase = itemFase || null;
+    itemFase = itemFase || new FaseModel();
 
     this.formularioFase = this.fb.group({
       'qtdHorasDia': [{ value: this.modeloFase.qtdHorasDia, disabled: false }, validacao],
@@ -111,6 +129,9 @@ export class NovaFaseComponent implements OnInit {
       'tipoFase': [{ value: this.modeloFase.tipoFaseId, disabled: false }, Validators.required],
       'observacao': [{ value: this.modeloFase.observacao, disabled: false }, Validators.required],
       'codigoFase': [{ value: this.modeloFase.codigoFase, disabled: false }, Validators.required],
+      'codigoProjeto': [{ value: this.projeto.codigoProjeto, disabled: false }, Validators.required],
+      'nomeProjeto': [{ value: this.projeto.nome, disabled: false }, Validators.required],
+      'colaborador': [{ value: this.pessoa.nome, disabled: false}, Validators.required],
     });
   }
 
@@ -120,7 +141,7 @@ export class NovaFaseComponent implements OnInit {
   }
 
   vaiParaFase() {
-    this.router.navigate(['template/projetos/novo-projeto/fase']);
+    this.router.navigate([`template/projetos/novo-projeto/fase/${this.id}`]);
   }
 
   enterKeyUp(event: any) {
@@ -146,5 +167,10 @@ export class NovaFaseComponent implements OnInit {
     this.modeloFase.tipoFaseId = formObj.tipoFase;
     this.modeloFase.observacao = formObj.observacao;
     this.modeloFase.codigoFase = formObj.codigoFase;
+
+    this.modeloFase.projeto.codigoProjeto = formObj.codigoProjeto;
+    this.modeloFase.projeto.nome = formObj.nomeProjeto;
+    this.modeloFase.pessoa.nome = formObj.colaborador;
+
   }
 }

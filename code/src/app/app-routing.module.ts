@@ -24,6 +24,7 @@ import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.c
 import { LoaderComponent } from './core/loader/loader.component';
 import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
 import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
+import { AuthGuard } from './shared/guard/auth.guard';
 import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
 import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
 
@@ -31,19 +32,19 @@ import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/
 const appRoutes: Routes = [
   {
     path: 'loader',
-    component: LoaderComponent
+    component: LoaderComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'modelos',
-    component: ModelosComponent
+    component: ModelosComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'novo-projeto',
-    component: NovoProjetoComponent
+    component: NovoProjetoComponent, canActivate: [AuthGuard] 
   },
   {
     path: '*',
-    component: AppComponent
+    component: AppComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'meus-dados',
@@ -60,7 +61,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'projetos',
-    component: ProjetosComponent,
+    component: ProjetosComponent, canActivate: [AuthGuard] ,
     children: [
       { path: 'novo-projeto', component: NovoProjetoComponent },
       { path: 'novo-projeto/solicitacaomudanca', component: SolicitacaoMudancaComponent },
@@ -68,7 +69,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'template',
-    component: TemplateComponent,
+    component: TemplateComponent, canActivate: [AuthGuard] ,
     children: [
 
       { path: '', component: DashboardComponent },
@@ -87,9 +88,9 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca },
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca },
       
-      { path: 'projetos/novo-projeto/fase', component: FaseComponent },
-      { path: 'projetos/novo-projeto/fase/nova-fase', component: NovaFaseComponent },
+      { path: 'projetos/novo-projeto/fase/:id', component: FaseComponent },
       { path: 'projetos/novo-projeto/fase/nova-fase/:id', component: NovaFaseComponent },
+      { path: 'projetos/novo-projeto/fase/nova-fase/:id/:id2', component: NovaFaseComponent },
       
       { path: 'projetos/novo-projeto', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
@@ -120,7 +121,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'mapa-site',
-    component: MapaSiteComponent
+    component: MapaSiteComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'esqueci-senha',
@@ -131,7 +132,7 @@ const appRoutes: Routes = [
     component: PrimeiroAcessoComponent
   },
   {
-    path: 'novo-projeto', component: NovoProjetoComponent,
+    path: 'novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard] ,
     children: [
       { path: '', redirectTo: 'dados-principais', pathMatch: 'full' },
       { path: 'dados-principais', component: DadosPrincipaisComponent },
@@ -141,19 +142,19 @@ const appRoutes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   {
     path: 'fechamento-projeto',
-    component: FechamentoProjetoComponent
+    component: FechamentoProjetoComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'anexos',
-    component: AnexosComponent
+    component: AnexosComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'empresa',
-    component: EmpresaComponent
+    component: EmpresaComponent, canActivate: [AuthGuard] 
   },
   {
     path: 'nova-empresa',
-    component: NovaEmpresaComponent
+    component: NovaEmpresaComponent, canActivate: [AuthGuard] 
   }
 ];
 

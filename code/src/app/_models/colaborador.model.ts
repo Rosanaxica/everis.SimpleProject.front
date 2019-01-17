@@ -7,9 +7,9 @@ import { AcessoSigla } from './acessoSigla.model';
 
 export class Colaborador extends ModeloGenerico {
     racf: string;
-    emailCorporativo: string;
+    emailcorporativo: string;
     funcional: number;
-    nomeMaquina: string;
+    nomemaquina: string;
     funcao: FuncaoColaborador;
     perfil: PerfilColaborador;
     disponivel: boolean;

@@ -13,10 +13,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class EmpresaComponent implements OnInit {
   constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
 
-  msgSucesso: any
   empresas: Empresa[] = [];
   filtroEmpresa = new Empresa();
   tipoSegmentoType: typeof TipoSegmento = TipoSegmento;
+  msgSucesso: string;
 
   ngOnInit() {
     this.filtrar();
