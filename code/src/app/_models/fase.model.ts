@@ -1,11 +1,20 @@
 import { ModeloGenerico } from './modelo_generico';
-import { ProjetoPessoaModel } from './projetopessoa.model';
 import { TipoFaseModel } from './tipo_fase.model';
+import { Projeto } from './projeto.model';
+import { Pessoa } from './pessoa.model';
 
 export class FaseModel extends ModeloGenerico {
-    
-    projetoPessoaId: number;
-    projetoPessoa: ProjetoPessoaModel;
+
+    constructor() {
+        super();
+        this.projeto = new Projeto();
+        this.pessoa = new Pessoa();
+    }
+
+    projetoId: number;
+    projeto: Projeto;
+    pessoaId: number;
+    pessoa: Pessoa;
     tipoFaseId: number;
     tipoFase: TipoFaseModel;
     qtdHorasDia: number;

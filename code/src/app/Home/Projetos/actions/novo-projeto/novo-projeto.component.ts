@@ -54,6 +54,7 @@ export class NovoProjetoComponent implements OnInit {
           (result) => {
             this.projeto = result.data;
             this.formDados.OpenView(this.projeto);
+            this.formAtribuicaoEquipe.OpenView(this.projeto);
           },
           (error) => {
           }
