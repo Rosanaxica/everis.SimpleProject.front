@@ -1,8 +1,20 @@
 <form [formGroup]="dadosPrincipaisForm">
   <div class="form-group mt-4 row">
-    <div class="col-md-12">
-      <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto"
-      />
+    <div class="col-md-6"> Nome do Projeto
+      <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
+        placeholder="Nome do Projeto" />
+    </div>
+    <div class="col-md-3">
+      <label for="label">Empresa</label>
+      <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
+        <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="label">Status do Projeto</label>
+      <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
+        <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
+      </select>
     </div>
   </div>
 
@@ -25,33 +37,36 @@
     </div>
     <div class="col-md-3">
       <label for="data">Data Início</label>
-      <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio" bsDatepicker />
+      <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio"
+        bsDatepicker />
 
     </div>
     <div class="col-md-3">
       <label for="data">Data Prevista</label>
-      <input type="text" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista" bsDatepicker
-      />
+      <input type="text" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista"
+        bsDatepicker />
 
     </div>
   </div>
 
-  <fieldset class="border mb-3">
+  <!-- <fieldset class="border mb-3">
 
     <legend class="col-md-3">Quantidade de Horas</legend>
     <div class="form-group row">
-      <div class="col-md-3 ml-3">
-        <label>Serviço 1</label>
-        <input type="time" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+      <div class="col-md-3 m-0">
+        <div class="col-md-6">
+          <label>Serviço 1</label>
+        </div>
+        <div class="col-md-6">
+          <input type="text" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
+        </div>
       </div>
       <div class="col-md-3 m-0">
         <div class="col-md-6">
           <label for="data">Serviço 2</label>
         </div>
         <div class="col-md-6">
-          <input type="time" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2"
-          />
+          <input type="text" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" />
         </div>
       </div>
       <div class="col-md-3 m-0">
@@ -59,12 +74,11 @@
           <label for="data">Serviço 3</label>
         </div>
         <div class="col-md-6">
-          <input type="time" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3"
-          />
+          <input type="text" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" />
         </div>
       </div>
     </div>
-  </fieldset>
+  </fieldset> -->
 
   <mat-expansion-panel class="mb-3">
     <mat-expansion-panel-header>

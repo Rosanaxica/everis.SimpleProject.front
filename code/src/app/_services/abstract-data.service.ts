@@ -125,6 +125,15 @@ export class AbstractDataService {
     });
   }
 
+  muitiGet(urls: Array<string>): Promise<any[]> {
+    let resuktList = new Array<any>();
+    urls.forEach(f => {
+      resuktList.push(this.httpSvc.get(this.montarUrlGenerica(f)));
+    });
+
+    return Observable.forkJoin(resuktList).toPromise();
+  }
+
   private montarUrl<T extends ModeloGenerico>(modelo: T, urlAlternativa?: string): string {
     let url = `${environment.api}/api/${modelo.getKey()}`;
     url = urlAlternativa != null && urlAlternativa !== undefined ?

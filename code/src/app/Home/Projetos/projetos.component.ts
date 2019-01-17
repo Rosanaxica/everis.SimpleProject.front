@@ -12,36 +12,60 @@ import { NovoProjetoComponent } from './actions/novo-projeto/novo-projeto.compon
   styleUrls: ['./projetos.component.css']
 })
 export class ProjetosComponent implements OnInit {
+  constructor(private router: Router, private svc: GenericService) { }
+
   title = 'Projetos';
   projetos: any;
   pessoas: any;
-  
-  constructor(private router: Router, private svc: GenericService) { }
+  filtroProjeto = new Projeto();
 
   ngOnInit() {
-    this.svc.listar(Projeto)
-      .toPromise().then(
-        (result) => {
-          console.log(result);
-          this.projetos = result.data;
-        },
-        (error) => {
+    this.filtrar();
+    console.log(this.contar(this.projetos));
 
-        }
-      );
-    this.svc.listar(Pessoa)
-      .toPromise().then(
-        (result) => {
-          console.log(result);
-          this.pessoas = result['data'];
-        },
-        (error) => {
-        }
-      );
+    // this.svc.listar(Projeto)
+    //   .toPromise().then(
+    //     (result) => {
+    //       console.log(result);
+    //       this.projetos = result.data;
+    //     },
+    //     (error) => {
+
+    //     }
+    //   );
+    // this.svc.listar(Pessoa)
+    //   .toPromise().then(
+    //     (result) => {
+    //       console.log(result);
+    //       this.pessoas = result['data'];
+    //     },
+    //     (error) => {
+    //     }
+    //   );
   }
 
   detalheProjeto(projeto: Projeto): void {
     this.router.navigate([`/template/projetos/novo-projeto/${projeto.id}`]);
   }
 
+  filtrar() {
+    this.filtroProjeto.ativo = true;
+    this.svc.listar(Projeto, this.filtroProjeto).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.projetos = s.data;
+            console.log(s.data);
+          }
+        }
+      }
+    );
+  }
+  contar(lista: Array<any>): number {
+    let cont = 0;
+    lista.forEach(element => {
+      cont++;
+    });
+    return cont;
+  }
 }
