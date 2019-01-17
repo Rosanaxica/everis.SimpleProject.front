@@ -16,31 +16,32 @@
 </div>
 <div class="border col-12 mt-3 mb-4 ">
   <div class="custom-control-inline col-2 mt-2">
-    <label class="label" for="EmAprovacao"><small><b>Status do projeto:</b></small></label>
+    <label class="label" for="StatusDoProjeto"><small><b>Status do projeto:</b></small></label>
   </div>
   <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input id="EmAprovacao" name="meucheckbox" type="checkbox" class="custom-control-input">
-    <label class="custom-control-label" for="EmAprovacao"><small> aprovação</small></label>
+    <input id="EmAprovacao" name="meucheckbox" type="checkbox" checked class="custom-control-input">
+    <label class="custom-control-label" for="EmAprovacao"><small>Em aprovação</small></label>
   </div>
   <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input id="EmExecucao" name="meucheckbox" type="checkbox" class="custom-control-input">
+    <input id="EmExecucao" name="meucheckbox" type="checkbox" checked class="custom-control-input">
     <label class="custom-control-label" for="EmExecucao"><small>Em execução</small></label>
   </div>
   <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input id="Cancelado" name="meucheckbox" type="checkbox" class="custom-control-input">
+    <input id="Cancelado" name="meucheckbox" type="checkbox" checked class="custom-control-input">
     <label class="custom-control-label" for="Cancelado"><small>Cancelado</small></label>
   </div>
   <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input id="Concluido" name="meucheckbox" type="checkbox" class="custom-control-input">
+    <input id="Concluido" name="meucheckbox" type="checkbox" checked class="custom-control-input">
     <label class="custom-control-label" for="Concluido"><small>Concluído</small></label>
   </div>
 </div>
 <div class="row">
   <hr class="mt-2 col-11" />
   <div class="col-md-1 col-xs-1">&nbsp;</div>
-  <div class="col-md-3 col-xs-3 "><strong>Projeto</strong></div>
-  <div class="col-md-3 col-xs-3"><strong>Andamento</strong></div>
-  <div class="col-md-3 col-xs-3 "><strong>Equipes</strong></div>
+  <div class="col-md-2 ml-2 col-xs-2 "><strong>Projeto</strong></div>
+  <div class="col-md-2 col-xs-2"><strong>Andamento</strong></div>
+  <div class="col-md-2 col-xs-2 "><strong>Equipes</strong></div>
+  <div class="col-md-2 col-xs-2 "><strong>Código do pojeto</strong></div>
   <div class="col-md-2 col-xs-2 "><strong>Status</strong></div>
   <hr class="mt-2 col-11">
 </div>
@@ -54,13 +55,13 @@
     </div>
 
     <!--.Nome do Projeto-->
-    <div class="col-md-3 col-xs-12">
+    <div class="col-md-2 col-xs-12">
       <p>{{ projeto.nome}}<p>
     </div>
 
 
     <!--.Barra de progresso-->
-    <div class="col-md-3 col-xs-12">
+    <div class="col-md-2 col-xs-12">
       <div class="row">
         <div class="progress">
           <div class="progress-bar everis" style="width:20%"></div>
@@ -71,7 +72,7 @@
 
 
     <!--.Pessoas da equipe-->
-    <div class="col-md-3 col-xs-12">
+    <div class="col-md-2 col-xs-12">
       <div *ngFor="let projetoPessoa of projeto.projetosPessoas">
         <div class="row" *ngFor="let pessoa of pessoas" [ngStyle]="{'display': 'inline'}">
           <div class="chip" *ngIf="pessoa.id === projetoPessoa.pessoaId">
@@ -83,11 +84,13 @@
             <!-- Implementar acao para mostrar lista de pessoas no projeto, qdo clicar no botao + -->
           </div>
         </div>
-
       </div>
-
     </div>
 
+    <!-- Código do projeto -->
+    <div class="col-md-2 col-xs-12">
+      <p class="text-center">{{ projeto.codigoProjeto}}<p>
+    </div>
 
     <!--.Status-->
     <div class="col-md-2 col-xs-12">
@@ -103,7 +106,7 @@
   <div class="col">
     <b>Total de Projetos</b>
   </div>
-  <div class="col-2">
+  <div class="col-3">
     <b>{{contar(projetos)}}</b>
   </div>
 </div>
