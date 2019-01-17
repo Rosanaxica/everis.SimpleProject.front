@@ -1,6 +1,6 @@
 <div class="row align-items-center">
   <div class="col-3">
-    <h1 class="titulo mb-0">Esforço do Projeto</h1>
+    <h1 class="titulo mb-0">Fases</h1>
   </div>
   <div class="input-group col">
     <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o Projeto ou Funcionario que você deseja buscar">
@@ -9,16 +9,16 @@
     </div>
   </div>
   <nav class="col-3 d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" [routerLink]="['novo-esforco-projeto']">Novo Esforco Projeto+</button>
+    <button type="button" class="btn everis mr-2" (click)="vaiParaNovaFase()">Nova Fase+</button>
 
   </nav>
   <hr class="mt-2" />
-  <mat-expansion-panel class="mb-2 col">
-    <mat-expansion-panel-header>
+  <!-- <mat-expansion-panel class="mb-2 col"> -->
+    <!-- <mat-expansion-panel-header>
       <mat-panel-title>
         Listagem dos dados
       </mat-panel-title>
-    </mat-expansion-panel-header>
+    </mat-expansion-panel-header> -->
     <table class="table table-striped">
       <thead>
         <tr>
@@ -76,5 +76,5 @@
           </tr> -->
       </tfoot>
     </table>
-  </mat-expansion-panel>
+  <!-- </mat-expansion-panel> -->
 </div>
