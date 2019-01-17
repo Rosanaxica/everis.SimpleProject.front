@@ -7,9 +7,12 @@
 </div>
 <div class="row">
   <div class="input-group col-4 mb-3 ml-0">
-    <input type="text" class="form-control ml-0" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar">
+    <input type="text" class="form-control ml-0" [(ngModel)]="filtroPessoa.nome" placeholder="Digite o que você deseja buscar"
+      aria-label="Digite o que você deseja buscar">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
+      <button class="btn btn-outline-secondary" type="button" (click)="filtrar()">
+        <i class="fa fa-search"></i>
+      </button>
     </div>
   </div>
 </div>
@@ -54,9 +57,25 @@
   </div>
 
 </div>
-
-
-<table class="table mt-4">
+<table class="mt-4 table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Empresa</th>
+      <th class="text-center">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pessoa of pessoas">
+      <td class="align-middle">{{ pessoa.nome }}</td>
+      <!-- <td class="align-middle">{{buscaEmpresa(pessoa.empresaId)}}</td> -->
+      <td class="text-center">
+        <button class="btn everis" (click)="Adicionar(pessoa)">Adicionar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<table class="mt-4 table table-striped">
   <thead>
     <tr>
       <th class="text-center" scope="col">Nome</th>
@@ -66,16 +85,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">Ricardo Yamamura</th>
+    <tr (change)="getAtribuicao(pp)" *ngFor="let pp of projetoPessoa">
+      <td class="align-middle">{{ pp.pessoa.nome }}</td>
       <td>
-        <select id="select1" class="custom-select">
-          <option selected>Desenvolvedor</option>
-          <option value="Tester">Tester</option>
-          <option value="Gerente">Gerente</option>
-          <option value="Líder">Líder</option>
-          <option value="Analista responsável de TI - técnico">Analista responsável de TI - técnico</option>
-          <option value="Analista responsável Outsourcing">Analista responsável Outsourcing</option>
+        <select (change)="popAtribuicao($event.target.value)" class="form-control" id="atribuicaoId" name="atribuicaoId">
+          <option *ngFor="let atribuicao of atribuicoes" value="{{atribuicao.id}}">{{atribuicao.atribuicao}}</option>
         </select>
       </td>
       <td>
@@ -90,8 +104,6 @@
     </tr>
   </tbody>
 </table>
-
-
 
 <div class="row align-items-center mt-2 mb-4">
   <nav class="col d-flex justify-content-end">

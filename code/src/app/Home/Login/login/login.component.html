@@ -9,7 +9,7 @@
           <img src="../assets/logo_90.png">
         <div class="form-group mt-2">
           <input formControlName="user" type="text" class="form-control mb-2" name="user" id="usuario" placeholder="Usuário">
-          <input formControlName="senha" type="password" class="form-control mb-2" name="senha" id="senha" placeholder="Senha">
+          <input formControlName="senha" type="password" class="form-control mb-2" name="senha" id="senha" (keydown.enter)="login()" placeholder="Senha">
           
         </div>
         <nav class="col  justify-content-center">
