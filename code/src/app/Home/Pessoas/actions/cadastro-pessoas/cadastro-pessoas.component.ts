@@ -69,12 +69,10 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
   AddTelefone() {
-    this.pessoa.telefones = this.telefones;
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
   }
   onKeydown() {
-    this.pessoa.telefones = this.telefones;
     this.telefones.push(this.telefone);
     // this.telefone = new Telefone();
   }
@@ -143,6 +141,8 @@ export class CadastroPessoasComponent implements OnInit {
           }
         );
     }
+
+    this.svc.postViewModel(this.telefones, "AdicionarTelefones")
 
     form.reset();
     this.telefones = [];

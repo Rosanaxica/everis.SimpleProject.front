@@ -27,6 +27,7 @@ export class FaseComponent implements OnInit {
 
   tipoFase = new TipoFaseModel();
   pessoa = new Pessoa();
+  projeto = new Projeto();
   filtroProjeto = new Projeto();
   filtroFases = new FaseModel();
 
@@ -69,8 +70,18 @@ export class FaseComponent implements OnInit {
               );
             });
 
+            this.fases.forEach( fase => {
+              this.projeto.id = fase.projetoId;
+              this.svc.obter(this.projeto).toPromise().then(
+                projeto => {
+                  fase.projeto = projeto.data;
+                }
+              );
+            });
+
             this.pessoa = new Pessoa();
             this.tipoFase = new TipoFaseModel();
+            this.projeto = new Projeto();
           }
         }
       }
