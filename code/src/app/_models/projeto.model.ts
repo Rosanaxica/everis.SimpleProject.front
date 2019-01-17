@@ -16,8 +16,8 @@ export class Projeto extends ModeloGenerico {
     status: string;
     dataPrevista: Date;
     beneficioEntregue: string;
-    problemasExecucao: string;
     beneficioResidual: string;
+    problemasExecucao: string;
     riscos: string;
     licoesAprendidas: string;
     centroCusto: string;
