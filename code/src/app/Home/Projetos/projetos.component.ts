@@ -6,7 +6,7 @@ import { Projeto } from 'src/app/_models/projeto.model';
 import { Status } from 'src/app/_models/status.model';
 import { Router } from '@angular/router';
 import { NovoProjetoComponent } from './actions/novo-projeto/novo-projeto.component';
-import { ProjetoPessoaModel } from 'src/app/_models/projetopessoa.model';
+import { ProjetoPessoa } from 'src/app/_models/projetopessoa.model';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 
 @Component({
@@ -19,6 +19,12 @@ export class ProjetosComponent implements OnInit {
   projetos: any;
   pessoas: any;
   status: Status[] = [];
+  statusSelecionados = [
+      {id: 1, descricao: 'Em Aprovação', checked: true},
+      {id: 2, descricao: 'Em Execução', checked: true},
+      {id: 3, descricao: 'Cancelado', checked: true},
+      {id: 4, descricao: 'Concluído', checked: true}
+  ];
   filtroProjeto = new Projeto();
   form: FormGroup;
 
@@ -30,12 +36,20 @@ export class ProjetosComponent implements OnInit {
     this.filtrar();
   }
 
+  mudarStatus(id) {
+    this.statusSelecionados.find(x => x.id == id).checked = !(this.statusSelecionados.find(x => x.id == id).checked)
+  }
+
+  mostrarStatus(id) : boolean {
+    return this.statusSelecionados.find(x => x.id == id).checked
+  }
+
   detalheProjeto(projeto: Projeto): void {
     this.router.navigate([`/template/projetos/novo-projeto/${projeto.id}`]);
   }
 
   listarPessoas(projetoId: number) {
-    this.svc.listar(ProjetoPessoaModel, null, `PessoasProjeto/${projetoId}`).toPromise().then(
+    this.svc.listar(ProjetoPessoa, null, `PessoasProjeto/${projetoId}`).toPromise().then(
       s => { console.log(s.data); },
       e => { let err = e.json(); alert(`Erro ${err.mensagem}`); }
     )
@@ -78,5 +92,5 @@ export class ProjetosComponent implements OnInit {
           }
         }
       );
-  }
+    }
 }
