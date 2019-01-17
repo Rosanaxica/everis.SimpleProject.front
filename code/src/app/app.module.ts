@@ -56,12 +56,12 @@ import * as exportData from 'highcharts/modules/export-data.src';
 import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
   
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
-import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
-import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
-import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
-import { AlterarSenhaComponent } from './Home/meus-dados/Alterar-senha/alterar-senha/alterar-senha.component';
 import { BreadcrumbComponent } from './template/breadcrumb/breadcrumb.component';
 import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
+import { AlterarSenhaComponent } from './Home/meus-dados/Alterar-senha/alterar-senha/alterar-senha.component';
+import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
+import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
+import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
 import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
 import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
 
@@ -98,11 +98,11 @@ import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/
     NovaEmpresaComponent,
     LoaderComponent,
     GraficopizzaComponent,
-    GraficolinhaComponent,
-    ComunidadesComponent,
-    MeusDadosComponent,
+    BreadcrumbComponent,
     AlterarSenhaComponent,
-    BreadcrumbComponent
+    MeusDadosComponent,
+    ComunidadesComponent,
+    GraficolinhaComponent
   ],
   imports: [
     HttpClientModule,

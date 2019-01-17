@@ -13,7 +13,7 @@ export class Projeto extends ModeloGenerico {
     premissas: string;
     empresaId: number;
     empresa: string;
-    status: Status;
+    status: string;
     dataPrevista: Date;
     beneficioEntregue: string;
     problemasExecucao: string;
@@ -33,11 +33,11 @@ export class Projeto extends ModeloGenerico {
 
 }
 
-export enum Status {
-    EmExecucao = 1,
-    Concluido = 2,
-    Cancelado = 3,
-    Congelado = 4,
-    PendenteCliente = 5,
-    ControleQualidade = 6
-}
+// export enum Status {
+//     EmExecucao = 1,
+//     Concluido = 2,
+//     Cancelado = 3,
+//     Congelado = 4,
+//     PendenteCliente = 5,
+//     ControleQualidade = 6
+// }

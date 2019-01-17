@@ -86,7 +86,7 @@
         </div>
 
         <div class="input-group col-md-4">
-          <input input type="text" (keydown.enter)="onKeydown(AddTelefone())" class="form-control" [(ngModel)]="telefone.numeroTelefone"
+          <input input type="text" (keydown.enter)="AddTelefone()" class="form-control" [(ngModel)]="telefone.numeroTelefone"
             id="telefone" name="telefone" placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15"
             #ctrlTelefone="ngModel" [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
             autocomplete="off" [required]="isTelRequired()">
@@ -147,7 +147,8 @@
       <!-- Inicio Empresa -->
       <div class="row mb-2" *ngIf="pessoa.tipo == 3">
         <div class="col-md-2">
-          <select class="form-control" (ngModel)="empresas" (ngModelChange)="SelecionarEmpresa($event)" name="tipoCliente"
+          <label for="empresa">*Empresa</label>
+          <select class="form-control" (ngModel)="empresas" (ngModelChange)="SelecionarEmpresa($event)" name="empresa"
             [required]="pessoa.tipo == 3">
             <option *ngFor="let emp of empresas" [ngValue]="emp.id">{{emp.nome}}</option>
           </select>
@@ -251,29 +252,74 @@
           </div> -->
         </div>
 
-        <div class="row">
-          <div class="col-5 p-2">
-            <label>Ferramentas Associadas</label>
-            <select multiple [(ngModel)]="paraRemover" class="form-control" name="associados">
-              <option *ngFor="let i of associados" value="{{i.id}}">{{i.descricao}}</option>
-            </select>
-          </div>
-          <div class="col-2 mt-4 text-center">
+        <fieldset class="col-12 border pb-4">
+          <legend class="col-form-legend col-4"><small>INFORMAÇÔES DE ACESSOS</small></legend>
+          <!-- Inicio Painel Ferramentas -->
+          <mat-expansion-panel class="mb-1">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Ferramentas
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-5 p-2">
+                <label>Ferramentas Associadas</label>
+                <select multiple [(ngModel)]="paraRemoverFerramentas" class="form-control" name="associados">
+                  <option *ngFor="let i of ferramentasAssociadas" value="{{i.id}}">{{i.descricao}}</option>
+                </select>
+              </div>
+              <div class="col-2 mt-4 text-center">
 
-            <div class="mb-2">
-              <button class="btn btn-success" (click)="adicionarFerramenta()">
-                <<</button> </div> <div>
-                  <button class="btn btn-danger" (click)="removerFerramenta()">>></button>
+                <div class="mb-2">
+                  <button class="btn btn-success" (click)="adicionarFerramenta()">
+                    <<</button> </div> <div>
+                      <button class="btn btn-danger" (click)="removerFerramenta()">>></button>
+                </div>
+
+              </div>
+              <div class="col-5 p-2 border-1">
+                <label>Ferramentas Disponiveis</label>
+                <select multiple [(ngModel)]="btnAdicionarFerramentas" class="form-control" name="disponiveis">
+                  <option *ngFor="let i of ferramentasDisponiveis" value="{{i.id}}">{{i.descricao}}</option>
+                </select>
+              </div>
             </div>
+          </mat-expansion-panel>
+          <!-- Fim Painel Ferramentas -->
 
-          </div>
-          <div class="col-5 p-2 border-1">
-            <label>Ferramentas Disponiveis</label>
-            <select multiple [(ngModel)]="paraAdicionar" class="form-control" name="disponiveis">
-              <option *ngFor="let i of disponiveis" value="{{i.id}}">{{i.descricao}}</option>
-            </select>
-          </div>
-        </div>
+          <!-- Inicio Painel Siglas -->
+          <mat-expansion-panel class="mb-1">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Siglas
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-5 p-2">
+                <label>Siglas Associadas</label>
+                <select multiple [(ngModel)]="btnRemoverSiglas" class="form-control" name="associados">
+                  <option *ngFor="let i of siglasAssociadas" value="{{i.id}}">{{i.descricao}}</option>
+                </select>
+              </div>
+              <div class="col-2 mt-4 text-center">
+
+                <div class="mb-2">
+                  <button class="btn btn-success" (click)="adicionarSigla()">
+                    <<</button> </div> <div>
+                      <button class="btn btn-danger" (click)="removerSigla()">>></button>
+                </div>
+
+              </div>
+              <div class="col-5 p-2 border-1">
+                <label>Siglas Disponiveis</label>
+                <select multiple [(ngModel)]="btnAdicionarSiglas" class="form-control" name="disponiveis">
+                  <option *ngFor="let i of siglasDisponiveis" value="{{i.id}}">{{i.descricao}}</option>
+                </select>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <!-- Fim Painel Siglas -->
+        </fieldset>
 
       </div>
       <!-- Fim Perfil Acesso -->

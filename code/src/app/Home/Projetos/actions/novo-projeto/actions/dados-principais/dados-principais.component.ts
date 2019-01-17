@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Projeto } from '../../../../../../_models/projeto.model';
 import { GenericService } from '../../../../../../_services/generic.service';
 import { Empresa } from '../../../../../../_models/empresa.model';
+import { Status } from '../../../../../../_models/status.model';
 
 
 @Component({
@@ -19,6 +20,7 @@ export class DadosPrincipaisComponent implements OnInit {
     private router: Router) { }
   dadosPrincipaisForm: FormGroup;
   empresas: Empresa[] = [];
+  status: Status[] = [];
 
   ngOnInit() {
     this.projeto = new Projeto();
@@ -45,7 +47,8 @@ export class DadosPrincipaisComponent implements OnInit {
         'qtdHorasServico3': [objProjeto.qtdHorasServico3],
         'escopoProjeto': [objProjeto.escopoProjeto, Validators.required],
         'foraEscopoProjeto': [objProjeto.foraEscopoProjeto, Validators.required],
-        'premissas': [objProjeto.premissas, Validators.required]
+        'premissas': [objProjeto.premissas, Validators.required],
+        'statusProjetoId': [objProjeto.status, Validators.required]
       }
     );
   }
@@ -64,6 +67,7 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.escopoProjeto = values.escopoProjeto;
     this.projeto.foraEscopoProjeto = values.foraEscopoProjeto;
     this.projeto.premissas = values.premissas;
+    this.projeto.status = values.statusProjetoId;
   }
 
   private carregarDadosForm() {
@@ -78,6 +82,7 @@ export class DadosPrincipaisComponent implements OnInit {
     this.dadosPrincipaisForm.get("escopoProjeto").setValue(this.projeto.escopoProjeto);
     this.dadosPrincipaisForm.get("foraEscopoProjeto").setValue(this.projeto.foraEscopoProjeto);
     this.dadosPrincipaisForm.get("premissas").setValue(this.projeto.premissas);
+    this.dadosPrincipaisForm.get("statusProjetoId").setValue(this.projeto.status);
   }
 
   Adicionar() {
@@ -87,7 +92,6 @@ export class DadosPrincipaisComponent implements OnInit {
         switch (data.codigo) {
           case 200:
             window.alert('Projeto adicionado com sucesso!');
-            debugger;
             this.getProjeto.emit(JSON.stringify(this.projeto));
             break;
           default:
@@ -113,10 +117,18 @@ export class DadosPrincipaisComponent implements OnInit {
   filtrar() {
     this.svc.listar(Empresa).toPromise().then(
       s => {
-        debugger;
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.empresas = s.data;
+          }
+        }
+      }
+    );
+    this.svc.listar(Status).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.status = s.data;
           }
         }
       }
