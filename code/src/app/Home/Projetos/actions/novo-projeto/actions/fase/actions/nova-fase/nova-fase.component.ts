@@ -42,7 +42,7 @@ export class NovaFaseComponent implements OnInit {
 
     this.route.paramMap.subscribe(res => {
       this.id = +res.get('id');
-      if (this.id !== null && this.id !== undefined && this.id > 0) {
+      if (this.id != null && this.id !== undefined && this.id > 0) {
         this.modeloFase.id = this.id;
         this.obterModelo();
       }
@@ -88,12 +88,10 @@ export class NovaFaseComponent implements OnInit {
   salvar() {
     this.svc.salvar(this.modeloFase, FaseModel).toPromise().then(
       data => {
-        console.log(data);
         alert("Salvo com sucesso");
         this.vaiParaFase();
       },
       err => {
-        console.log(err);
         alert("Deu erro");
       });
   }
@@ -120,7 +118,7 @@ export class NovaFaseComponent implements OnInit {
   }
 
   vaiParaFase() {
-    this.router.navigate(['template/projetos/novo-projeto/fase']);
+    this.router.navigate([`template/projetos/novo-projeto/fase/${this.id}`]);
   }
 
   enterKeyUp(event: any) {

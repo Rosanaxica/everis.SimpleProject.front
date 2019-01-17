@@ -87,9 +87,9 @@ const appRoutes: Routes = [
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca },
       { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca },
       
-      { path: 'projetos/novo-projeto/fase', component: FaseComponent },
-      { path: 'projetos/novo-projeto/fase/nova-fase', component: NovaFaseComponent },
+      { path: 'projetos/novo-projeto/fase/:id', component: FaseComponent },
       { path: 'projetos/novo-projeto/fase/nova-fase/:id', component: NovaFaseComponent },
+      { path: 'projetos/novo-projeto/fase/nova-fase/:id/:id2', component: NovaFaseComponent },
       
       { path: 'projetos/novo-projeto', component: NovoProjetoComponent },
       { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent },
