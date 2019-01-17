@@ -11,43 +11,32 @@
   </div>
   <nav class="col-3 d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" [routerLink]="['novo-projeto']">Novo Projeto +</button>
-
   </nav>
 </div>
-<div class="border col-12 mt-3 mb-4 ">
+
+<div class="border col-12 mt-3 mb-4">
   <div class="custom-control-inline col-2 mt-2">
-    <label class="label" for="StatusDoProjeto"><small><b>Status do projeto:</b></small></label>
+  <small><b>Status do projeto:</b></small>
   </div>
-  <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input id="EmAprovacao" name="meucheckbox" type="checkbox" checked class="custom-control-input">
-    <label class="custom-control-label" for="EmAprovacao"><small>Em aprovação</small></label>
-  </div>
-  <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input id="EmExecucao" name="meucheckbox" type="checkbox" checked class="custom-control-input">
-    <label class="custom-control-label" for="EmExecucao"><small>Em execução</small></label>
-  </div>
-  <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input id="Cancelado" name="meucheckbox" type="checkbox" checked class="custom-control-input">
-    <label class="custom-control-label" for="Cancelado"><small>Cancelado</small></label>
-  </div>
-  <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input id="Concluido" name="meucheckbox" type="checkbox" checked class="custom-control-input">
-    <label class="custom-control-label" for="Concluido"><small>Concluído</small></label>
+  <div *ngFor="let st of status"  class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
+    <input  value="{{st.id}}" id="statusId" type="checkbox" checked (change)="mudarStatus(st.id)">
+    <small>{{st.descricao}}</small>
   </div>
 </div>
+
 <div class="row">
   <hr class="mt-2 col-11" />
   <div class="col-md-1 col-xs-1">&nbsp;</div>
   <div class="col-md-2 ml-2 col-xs-2 "><strong>Projeto</strong></div>
   <div class="col-md-2 col-xs-2"><strong>Andamento</strong></div>
   <div class="col-md-2 col-xs-2 "><strong>Equipes</strong></div>
-  <div class="col-md-2 col-xs-2 "><strong>Código do pojeto</strong></div>
+  <div class="col-md-2 col-xs-2 "><strong>Código do projeto</strong></div>
   <div class="col-md-2 col-xs-2 "><strong>Status</strong></div>
   <hr class="mt-2 col-11">
 </div>
 
 <div *ngFor="let projeto of projetos" class="cursor-pointer">
-  <div class="row" (click)="detalheProjeto(projeto)">
+  <div class="row" (click)="detalheProjeto(projeto)" *ngIf="mostrarStatus(projeto.status.id)">
     <!--Badge de notificações-->
     <div class="col-md-1 col-xs-12">
       <span class="badge everis-roxo everis-branco">
@@ -94,7 +83,7 @@
 
     <!--.Status-->
     <div class="col-md-2 col-xs-12">
-      <span class="badge everis p-2">{{ statusProjeto === 0 ? 'Inativo' : 'Ativo'}}</span>
+      <span class="badge everis p-2">{{ projeto.status.descricao }}</span>
       <small>
         <p>Inicio: {{ projeto.dataInicio | dateFormat }}</p>
       </small>

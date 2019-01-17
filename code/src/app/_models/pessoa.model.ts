@@ -2,20 +2,30 @@ import { Colaborador } from './colaborador.model';
 import { Empresa } from './empresa.model';
 import { Telefone } from './telefone.model';
 import { ModeloGenerico } from './modelo_generico';
+import { Diretoria } from './diretoria.model';
 
 
 export class Pessoa extends ModeloGenerico {
 
-    empresaId: number;
-    nome: string;
-    tipo: TipoPessoa;
-    email: string;
-    cpf?: number;
-    documento: String;
-    fotoPath: string;
-    telefones?: Telefone[];
+    diretoriaId: number;
+    diretoria: Diretoria;
     colaboradorId: number;
-    colaborador?: Colaborador;
+    colaborador: Colaborador;
+    empresaId: number;
+    empresa: Empresa;
+    tipoId: number;
+    tipo: TipoPessoa;
+    nome: string;
+    email: string;
+    sexo: string;
+    documento: string;
+    cpf?: number;
+    rg?: string;
+    orgaoEmissor?: string;
+    uFRg?: string;
+    fotoPath: string;
+    funcional: number;
+    gestorTecnico: boolean;
 
     getKey(): string {
         return 'pessoa';
