@@ -5,6 +5,7 @@ import { ProjetoPessoa } from '../../../../../../_models/projetopessoa.model';
 import { Pessoa } from '../../../../../../_models/pessoa.model';
 import { Empresa } from '../../../../../../_models/empresa.model';
 import { GenericService } from '../../../../../../_services/generic.service';
+import { ProjetoPessoaAtribuicao } from '../../../../../../_models/projetopessoaatribuicao.model.';
 
 @Component({
   selector: 'app-atribuicao-equipe',
@@ -20,8 +21,11 @@ export class AtribuicaoEquipeComponent implements OnInit {
   projetoPessoa: ProjetoPessoa[] = [];
   pessoas: Pessoa[] = [];
   projeto = new Projeto();
+  atribuicoes: ProjetoPessoaAtribuicao[] = [];
+  idAtribuicao: number;
 
   ngOnInit() {
+    this.getAtribuicoes();
   }
 
   OpenView(projeto: Projeto) {
@@ -30,10 +34,6 @@ export class AtribuicaoEquipeComponent implements OnInit {
   }
   cancelar() {
     this.router.navigate(['/template/projetos']);
-  }
-
-  salvar() {
-    //this.getProjeto.emit("2");
   }
   buscaEmpresa(idEmpresa: number): string {
     let empresaModel: Empresa;
@@ -69,6 +69,45 @@ export class AtribuicaoEquipeComponent implements OnInit {
     projPessoa.projetoId = this.projeto.id;
     projPessoa.projeto = this.projeto;
     this.projetoPessoa.push(projPessoa);
+  }
+  getAtribuicoes() {
+    this.svc.listar(ProjetoPessoaAtribuicao, null, "ObterTodos").toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.atribuicoes = s.data;
+          }
+        }
+      }
+    );
+  }
+  getAtribuicao(pp: ProjetoPessoa) {
+    this.projetoPessoa.forEach(projPessoa => {
+      if (projPessoa.pessoaId == pp.pessoaId) {
+        projPessoa.atribuicaoId = this.idAtribuicao;
+      }
+    });
+  }
+  popAtribuicao(idAtribuicao: number) {
+    this.idAtribuicao = idAtribuicao;
+  }
+  salvar() {
+    //this.getProjeto.emit("2");
+    this.projetoPessoa.forEach(projPessoa => {
+      this.svc.salvar(projPessoa, ProjetoPessoa)
+        .toPromise().then((data: any) => {
+          switch (data.codigo) {
+            case 200:
+              break;
+            default:
+              window.alert('erro: ' + data.mensagem);
+              break;
+          }
+        },
+          error => {
+            alert('Erro ao tentar adicionar.');
+          });
+    });
   }
 
 }
