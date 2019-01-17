@@ -92,7 +92,6 @@ export class DadosPrincipaisComponent implements OnInit {
         switch (data.codigo) {
           case 200:
             window.alert('Projeto adicionado com sucesso!');
-            debugger;
             this.getProjeto.emit(JSON.stringify(this.projeto));
             break;
           default:

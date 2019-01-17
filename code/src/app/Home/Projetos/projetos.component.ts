@@ -21,6 +21,7 @@ export class ProjetosComponent implements OnInit {
 
   ngOnInit() {
     this.filtrar();
+    console.log(this.contar(this.projetos));
 
     // this.svc.listar(Projeto)
     //   .toPromise().then(
@@ -54,10 +55,17 @@ export class ProjetosComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.projetos = s.data;
+            console.log(s.data);
           }
         }
       }
     );
   }
-
+  contar(lista: Array<any>): number {
+    let cont = 0;
+    lista.forEach(element => {
+      cont++;
+    });
+    return cont;
+  }
 }

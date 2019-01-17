@@ -13,8 +13,9 @@
           <div class="form-group mt-2">
             <input type="text" formControlName="senha" [(ngModel)]="senha" placeholder="Senha" class="form-control mb-2">
             <input type="text" formControlName="novaSenha" [(ngModel)]="novaSenha" placeholder="Nova Senha" class="form-control mb-2">
-            <input type="text" formControlName="confirmaNovaSenha" [(ngModel)]="confirmaNovaSenha" placeholder="Confirme a Senha" class="form-control mb-2">
-            
+            <input type="text" formControlName="confirmaNovaSenha" [(ngModel)]="confirmaNovaSenha" placeholder="Confirme a Senha"
+              class="form-control mb-2">
+
             <span class="spanAtention" *ngIf="novaSenha != confirmaNovaSenha">
               <i class="fas fa-exclamation-triangle"></i>
               Confirmação de nova senha inválida
@@ -23,10 +24,9 @@
               <button type="button" (click)="salvaSenhaAlterada()" class="btn everis mr-2">Salvar</button>
               <button type="button" class="btn cancelar" [routerLink]="['../']" routerLinkActive="active">Cancelar</button>
             </div>
+            <div class="col-md-12 mb-4 text-center"><a href="/login " class="links">Voltar a Tela de Login</a></div>
           </div>
-          <div class="col-md-12 mb-4 text-center"><a href="/login " class="links">Voltar a Tela de Login</a></div>
         </div>
       </div>
     </div>
-  </div>
-</form>
+

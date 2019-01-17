@@ -1,4 +1,5 @@
 import {Component, OnInit } from '@angular/core';
+import { LoginService } from '../_services/login.service';
 
 
 @Component({
@@ -8,10 +9,14 @@ import {Component, OnInit } from '@angular/core';
 })
 export class TemplateComponent implements OnInit {
   menuFechado: boolean;
-  constructor() { }
+  constructor(private svc: LoginService) { }
 
   ngOnInit() {
     this.menuFechado = true;
+  }
+
+  logout(){
+    this.svc.logout();
   }
 
   ToggleMenu() {

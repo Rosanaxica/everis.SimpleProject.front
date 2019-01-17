@@ -26,7 +26,6 @@ export class AlterarSenhaComponent implements OnInit {
       'novaSenha' : [null, Validators.required],
       'confirmaNovaSenha' : [null, Validators.required, ],
 
-      // 'description': [null, Validators.compose([Validators.required, Validators.minLength(30), Validators.maxLength(500)])],
     });
   }
 
@@ -48,20 +47,4 @@ export class AlterarSenhaComponent implements OnInit {
         console.log("a nova senha agora é:", this.colaborador.senha);
       }
   }
-
-
-  // export class PasswordValidation {
-
-//     static MatchPassword(AC: AbstractControl) {
-//        let password = AC.get('password').value; // to get value in input tag
-//        let confirmPassword = AC.get('confirmPassword').value; // to get value in input tag
-//         if(password != confirmPassword) {
-//             console.log('false');
-//             AC.get('confirmPassword').setErrors( {MatchPassword: true} )
-//         } else {
-//             console.log('true');
-//             return null
-//         }
-//     }
-// }
 }

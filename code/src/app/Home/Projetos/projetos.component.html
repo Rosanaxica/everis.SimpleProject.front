@@ -3,7 +3,8 @@
     <h1 class="titulo mb-0">Projeto</h1>
   </div>
   <div class="input-group col">
-    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"  [(ngModel)]="filtroProjeto.codigoProjeto" (keydown.enter)="filtrar()">
+    <input type="text" class="form-control no-shadow" placeholder="Buscar por código de projeto" aria-label="Digite o que você deseja buscar"
+      [(ngModel)]="filtroProjeto.codigoProjeto" (keydown.enter)="filtrar()">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>
@@ -12,21 +13,42 @@
     <button type="button" class="btn everis mr-2" [routerLink]="['novo-projeto']">Novo Projeto +</button>
 
   </nav>
-  <hr class="mt-2" />
+</div>
+<div class="border col-12 mt-3 mb-4 ">
+  <div class="custom-control-inline col-2 mt-2">
+    <label class="label" for="EmAprovacao"><small><b>Status do projeto:</b></small></label>
+  </div>
+  <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
+    <input id="EmAprovacao" name="meucheckbox" type="checkbox" class="custom-control-input">
+    <label class="custom-control-label" for="EmAprovacao"><small> aprovação</small></label>
+  </div>
+  <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
+    <input id="EmExecucao" name="meucheckbox" type="checkbox" class="custom-control-input">
+    <label class="custom-control-label" for="EmExecucao"><small>Em execução</small></label>
+  </div>
+  <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
+    <input id="Cancelado" name="meucheckbox" type="checkbox" class="custom-control-input">
+    <label class="custom-control-label" for="Cancelado"><small>Cancelado</small></label>
+  </div>
+  <div class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
+    <input id="Concluido" name="meucheckbox" type="checkbox" class="custom-control-input">
+    <label class="custom-control-label" for="Concluido"><small>Concluído</small></label>
+  </div>
 </div>
 <div class="row">
+  <hr class="mt-2 col-11" />
   <div class="col-md-1 col-xs-1">&nbsp;</div>
   <div class="col-md-3 col-xs-3 "><strong>Projeto</strong></div>
   <div class="col-md-3 col-xs-3"><strong>Andamento</strong></div>
   <div class="col-md-3 col-xs-3 "><strong>Equipes</strong></div>
   <div class="col-md-2 col-xs-2 "><strong>Status</strong></div>
-  <hr class="mt-2">
+  <hr class="mt-2 col-11">
 </div>
 
 <div *ngFor="let projeto of projetos" class="cursor-pointer">
   <div class="row" (click)="detalheProjeto(projeto)">
     <!--Badge de notificações-->
-    <div class="col-md-1 col-xs-12 ">
+    <div class="col-md-1 col-xs-12">
       <span class="badge everis-roxo everis-branco">
         2</span>
     </div>
@@ -74,9 +96,14 @@
         <p>Inicio: {{ projeto.dataInicio | dateFormat }}</p>
       </small>
     </div>
-    <hr _ngcontent-c2="" class="mt-2">
+    <hr _ngcontent-c2="" class="mt-2 col-11">
   </div>
 </div>
-<div class="col-12">
-  total de projetos
+<div class="row">
+  <div class="col">
+    <b>Total de Projetos</b>
+  </div>
+  <div class="col-2">
+    <b>{{contar(projetos)}}</b>
+  </div>
 </div>
