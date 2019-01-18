@@ -19,6 +19,12 @@ export class ProjetosComponent implements OnInit {
   projetos: any;
   pessoas: any;
   status: Status[] = [];
+  statusSelecionados = [
+      {id: 1, descricao: 'Em Aprovação', checked: true},
+      {id: 2, descricao: 'Em Execução', checked: true},
+      {id: 3, descricao: 'Cancelado', checked: true},
+      {id: 4, descricao: 'Concluído', checked: true}
+  ];
   filtroProjeto = new Projeto();
   form: FormGroup;
 
@@ -28,6 +34,14 @@ export class ProjetosComponent implements OnInit {
 
   ngOnInit() {
     this.filtrar();
+  }
+
+  mudarStatus(id) {
+    this.statusSelecionados.find(x => x.id == id).checked = !(this.statusSelecionados.find(x => x.id == id).checked)
+  }
+
+  mostrarStatus(id) : boolean {
+    return this.statusSelecionados.find(x => x.id == id).checked
   }
 
   detalheProjeto(projeto: Projeto): void {
@@ -69,14 +83,14 @@ export class ProjetosComponent implements OnInit {
         (error) => {
         }
       );
-    this.svc.listar(Status).toPromise().then(
-      s => {
-        if (s.sucesso) {
-          if (s.data != null && s.data !== undefined) {
-            this.status = s.data;
+      this.svc.listar(Status).toPromise().then(
+        s => {
+          if (s.sucesso) {
+            if (s.data != null && s.data !== undefined) {
+              this.status = s.data;
+            }
           }
         }
-      }
-    );
-  }
+      );
+    }
 }

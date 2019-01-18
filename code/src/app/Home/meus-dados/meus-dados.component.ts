@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { GenericService } from 'src/app/_services/generic.service';
-import { Pessoa } from 'src/app/_models/pessoa.model';
-import { Colaborador } from 'src/app/_models/colaborador.model';
-import { Telefone } from 'src/app/_models/telefone.model';
+import { GenericService } from '../../_services/generic.service';
+import { Colaborador } from '../../_models/colaborador.model';
+import { Pessoa } from '../../_models/pessoa.model';
+import { Telefone } from '../../_models/telefone.model';
+
 
 @Component({
   selector: 'app-meus-dados',
@@ -31,7 +32,7 @@ export class MeusDadosComponent implements OnInit {
             telefones => {
               if (telefones.sucesso) {
                 if (telefones.data != null && telefones.data !== undefined) {
-                  this.telefones = telefones.data;
+                  // element.telefones = telefones.data;
                 }
               }
             }
