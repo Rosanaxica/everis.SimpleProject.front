@@ -20,10 +20,10 @@ export class ProjetosComponent implements OnInit {
   pessoas: any;
   status: Status[] = [];
   statusSelecionados = [
-      {id: 1, descricao: 'Em Aprovação', checked: true},
-      {id: 2, descricao: 'Em Execução', checked: true},
-      {id: 3, descricao: 'Cancelado', checked: true},
-      {id: 4, descricao: 'Concluído', checked: true}
+      {id: 1, descricao: 'Em Aprovação', checked: false},
+      {id: 2, descricao: 'Em Execução', checked: false},
+      {id: 3, descricao: 'Cancelado', checked: false},
+      {id: 4, descricao: 'Concluído', checked: false}
   ];
   filtroProjeto = new Projeto();
   form: FormGroup;
