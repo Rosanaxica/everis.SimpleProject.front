@@ -19,8 +19,10 @@
   <small><b>Status do projeto:</b></small>
   </div>
   <div *ngFor="let st of status"  class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input  value="{{st.id}}" id="statusId" type="checkbox" checked (change)="mudarStatus(st.id)">
-    <small>{{st.descricao}}</small>
+    <input class="custom-control-input" value="{{st.id}}" id="{{st.id}}" type="checkbox" checked (change)="mudarStatus(st.id)">
+    <label class="custom-control-label" for="{{st.id}}">
+      <small>{{ st.descricao }}</small>
+    </label>
   </div>
 </div>
 
@@ -45,7 +47,7 @@
 
     <!--.Nome do Projeto-->
     <div class="col-md-2 col-xs-12">
-      <p>{{ projeto.nome}}<p>
+      <p>{{ projeto.nome }}<p>
     </div>
 
 
@@ -96,6 +98,6 @@
     <b>Total de Projetos</b>
   </div>
   <div class="col-3">
-    <b>{{contar(projetos)}}</b>
+    <b>{{ contar(projetos) }}</b>
   </div>
 </div>
