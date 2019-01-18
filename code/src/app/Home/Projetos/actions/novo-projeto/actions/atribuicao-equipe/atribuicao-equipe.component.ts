@@ -67,7 +67,6 @@ export class AtribuicaoEquipeComponent implements OnInit {
     projPessoa.pessoaId = pessoa.id;
     projPessoa.pessoa = pessoa;
     projPessoa.projetoId = this.projeto.id;
-    projPessoa.projeto = this.projeto;
     this.projetoPessoa.push(projPessoa);
   }
   getAtribuicoes() {
@@ -94,6 +93,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
   salvar() {
     //this.getProjeto.emit("2");
     this.projetoPessoa.forEach(projPessoa => {
+      projPessoa.pessoa = null;
       this.svc.salvar(projPessoa, ProjetoPessoa)
         .toPromise().then((data: any) => {
           switch (data.codigo) {
