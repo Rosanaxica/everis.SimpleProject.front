@@ -16,14 +16,15 @@ import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 })
 export class ProjetosComponent implements OnInit {
   title = 'Projetos';
+
   projetos: any;
   pessoas: any;
   status: Status[] = [];
   statusSelecionados = [
-      {id: 1, descricao: 'Em Aprovação', checked: false},
-      {id: 2, descricao: 'Em Execução', checked: false},
-      {id: 3, descricao: 'Cancelado', checked: false},
-      {id: 4, descricao: 'Concluído', checked: false}
+      {id: 1, descricao: 'Em Aprovação', checked: true},
+      {id: 2, descricao: 'Em Execução', checked: true},
+      {id: 3, descricao: 'Cancelado', checked: true},
+      {id: 4, descricao: 'Concluído', checked: true}
   ];
   filtroProjeto = new Projeto();
   form: FormGroup;
@@ -57,8 +58,11 @@ export class ProjetosComponent implements OnInit {
   contar(lista: Array<any>): number {
     let cont = 0;
     lista.forEach(element => {
-      cont++;
+     //if(this.mostrarStatus(this.statusSelecionados.find(x => x.id == element.status.id).id))
+      if(this.mostrarStatus(element.status.id))
+        cont++;
     });
+    console.log("total elementos encontrados = " + cont);
     return cont;
   }
 
@@ -70,7 +74,6 @@ export class ProjetosComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.projetos = s.data;
-            console.log(this.contar(s.data));
           }
         }
       }

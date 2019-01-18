@@ -21,7 +21,7 @@
   <div *ngFor="let st of status"  class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
     <input class="custom-control-input" value="{{st.id}}" id="{{st.id}}" type="checkbox" checked (change)="mudarStatus(st.id)">
     <label class="custom-control-label" for="{{st.id}}">
-      <small>{{st.descricao}}</small>
+      <small>{{ st.descricao }}</small>
     </label>
   </div>
 </div>
@@ -38,7 +38,7 @@
 </div>
 
 <div *ngFor="let projeto of projetos" class="cursor-pointer">
-  <div class="row" (click)="detalheProjeto(projeto)" *ngIf="!mostrarStatus(projeto.status.id)">
+  <div class="row" (click)="detalheProjeto(projeto)" *ngIf="mostrarStatus(projeto.status.id)">
     <!--Badge de notificações-->
     <div class="col-md-1 col-xs-12">
       <span class="badge everis-roxo everis-branco">
@@ -47,7 +47,7 @@
 
     <!--.Nome do Projeto-->
     <div class="col-md-2 col-xs-12">
-      <p>{{ projeto.nome}}<p>
+      <p>{{ projeto.nome }}<p>
     </div>
 
 
@@ -98,6 +98,6 @@
     <b>Total de Projetos</b>
   </div>
   <div class="col-3">
-    <b>{{contar(projetos)}}</b>
+    <b>{{ contar(projetos) }}</b>
   </div>
 </div>
