@@ -87,21 +87,25 @@ export class DadosPrincipaisComponent implements OnInit {
 
   Adicionar() {
     this.obterDadosForm();
-    this.svc.salvar(this.projeto, Projeto)
-      .toPromise().then((data: any) => {
-        switch (data.codigo) {
-          case 200:
-            window.alert('Projeto adicionado com sucesso!');
-            this.getProjeto.emit(JSON.stringify(this.projeto));
-            break;
-          default:
-            window.alert('erro: ' + data.mensagem);
-            break;
-        }
-      },
-        error => {
-          alert('Erro ao tentar adicionar.');
-        });
+    if (this.projeto.id > 0) {
+      this.svc.salvar(this.projeto, Projeto)
+        .toPromise().then((data: any) => {
+          switch (data.codigo) {
+            case 200:
+              window.alert('Projeto adicionado com sucesso!');
+              this.getProjeto.emit(JSON.stringify(this.projeto));
+              break;
+            default:
+              window.alert('erro: ' + data.mensagem);
+              break;
+          }
+        },
+          error => {
+            alert('Erro ao tentar adicionar.');
+          });
+    } else {
+      this.getProjeto.emit(JSON.stringify(this.projeto));
+    }
   }
 
   cancelar() {
