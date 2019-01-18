@@ -76,12 +76,12 @@
       </div>
       <!-- Fim CPF e Documento -->
       <!-- Inicio Telefone -->
+      {{tipoTelefone | json}}
+      {{telefone | json}}
       <div class="row mb-2">
         <div class="col-md-2">
-          <select class="form-control" id="tipoTelefone" [(ngModel)]="telefone.tipoTelefone" name="tipoTelefone">
-            <option value="1">Celular</option>
-            <option value="2">Fixo</option>
-            <option value="3">Ramal</option>
+          <select class="form-control" id="tipoTelefone" [(ngModel)]="tipoTelefone.descricao" name="tipoTelefone">
+            <option *ngFor="let i of tiposTelefone" value="{{i.descricao}}">{{i.descricao}}</option>
           </select>
         </div>
 
@@ -92,7 +92,7 @@
             autocomplete="off" [required]="isTelRequired()">
 
           <div class="input-group-append">
-            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || telefone.tipoTelefone == undefined || ctrlTelefone.invalid"><i
+            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || tipoTelefone == undefined || ctrlTelefone.invalid"><i
                 class="fas fa-plus"></i>
             </button>
           </div>
@@ -114,7 +114,7 @@
           <tbody>
             <tr *ngFor="let telefone of telefones">
               <td class="text-center">
-                <p>{{telefone.tipoTelefone}}</p>
+                <p>{{telefone.tipoTelefone.descricao}}</p>
               </td>
               <td class="text-center">
                 <p>{{telefone.numeroTelefone}}</p>
@@ -212,13 +212,7 @@
             <select id="nivelFuncional" name="nivelFuncional" [(ngModel)]="colaborador.funcao" class="form-control"
               #ctrlNivel="ngModel" [class.is-valid]="ctrlNivel.valid" [class.is-invalid]="ctrlNivel.invalid && (ctrlNivel.dirty || ctrlNivel.touched)"
               required>
-              <option value="1">SA</option>
-              <option value="2">SN</option>
-              <option value="3">STL</option>
-              <option value="4">SPL</option>
-              <option value="5">SK</option>
-              <option value="6">SKL</option>
-              <option value="7">Manager</option>
+              <option *ngFor="let funcao of funcoes" value="funcao.id">{{funcao.descricao}}</option>
             </select>
           </div>
           <!-- Fim Nivel Função -->

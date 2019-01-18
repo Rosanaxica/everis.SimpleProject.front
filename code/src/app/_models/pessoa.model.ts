@@ -1,8 +1,8 @@
 import { Colaborador } from './colaborador.model';
 import { Empresa } from './empresa.model';
-import { Telefone } from './telefone.model';
 import { ModeloGenerico } from './modelo_generico';
 import { Diretoria } from './diretoria.model';
+import { TipoPessoa } from './tipo_pessoa.model';
 
 
 export class Pessoa extends ModeloGenerico {
@@ -30,11 +30,4 @@ export class Pessoa extends ModeloGenerico {
     getKey(): string {
         return 'pessoa';
     }
-}
-
-
-export enum TipoPessoa {
-    Colaborador = 1,
-    Cliente = 2,
-    Terceiro = 3
 }

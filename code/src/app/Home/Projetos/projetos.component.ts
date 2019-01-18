@@ -29,8 +29,8 @@ export class ProjetosComponent implements OnInit {
   form: FormGroup;
 
   constructor(private router: Router, private svc: GenericService, private fb: FormBuilder) {
-    
-   }
+
+  }
 
   ngOnInit() {
     this.filtrar();
@@ -61,10 +61,10 @@ export class ProjetosComponent implements OnInit {
     });
     return cont;
   }
-  
+
   filtrar() {
     this.filtroProjeto.ativo = true;
-    
+
     this.svc.listar(Projeto, this.filtroProjeto).toPromise().then(
       s => {
         if (s.sucesso) {
