@@ -31,7 +31,7 @@ export class MeusDadosComponent implements OnInit {
             telefones => {
               if (telefones.sucesso) {
                 if (telefones.data != null && telefones.data !== undefined) {
-                  element.telefones = telefones.data;
+                  this.telefones = telefones.data;
                 }
               }
             }

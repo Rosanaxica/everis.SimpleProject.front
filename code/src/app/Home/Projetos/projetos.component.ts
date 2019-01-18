@@ -6,7 +6,7 @@ import { Projeto } from 'src/app/_models/projeto.model';
 import { Status } from 'src/app/_models/status.model';
 import { Router } from '@angular/router';
 import { NovoProjetoComponent } from './actions/novo-projeto/novo-projeto.component';
-import { ProjetoPessoaModel } from 'src/app/_models/projetopessoa.model';
+import { ProjetoPessoa } from 'src/app/_models/projetopessoa.model';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 
 @Component({
@@ -23,8 +23,8 @@ export class ProjetosComponent implements OnInit {
   form: FormGroup;
 
   constructor(private router: Router, private svc: GenericService, private fb: FormBuilder) {
-    
-   }
+
+  }
 
   ngOnInit() {
     this.filtrar();
@@ -35,7 +35,7 @@ export class ProjetosComponent implements OnInit {
   }
 
   listarPessoas(projetoId: number) {
-    this.svc.listar(ProjetoPessoaModel, null, `PessoasProjeto/${projetoId}`).toPromise().then(
+    this.svc.listar(ProjetoPessoa, null, `PessoasProjeto/${projetoId}`).toPromise().then(
       s => { console.log(s.data); },
       e => { let err = e.json(); alert(`Erro ${err.mensagem}`); }
     )
@@ -47,10 +47,10 @@ export class ProjetosComponent implements OnInit {
     });
     return cont;
   }
-  
+
   filtrar() {
     this.filtroProjeto.ativo = true;
-    
+
     this.svc.listar(Projeto, this.filtroProjeto).toPromise().then(
       s => {
         if (s.sucesso) {
@@ -69,14 +69,14 @@ export class ProjetosComponent implements OnInit {
         (error) => {
         }
       );
-      this.svc.listar(Status).toPromise().then(
-        s => {
-          if (s.sucesso) {
-            if (s.data != null && s.data !== undefined) {
-              this.status = s.data;
-            }
+    this.svc.listar(Status).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.status = s.data;
           }
         }
-      );
+      }
+    );
   }
 }
