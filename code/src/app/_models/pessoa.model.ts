@@ -27,6 +27,11 @@ export class Pessoa extends ModeloGenerico {
     funcional: number;
     gestorTecnico: boolean;
 
+    constructor() {
+        super();
+        this.colaborador = new Colaborador();
+    }
+
     getKey(): string {
         return 'pessoa';
     }
