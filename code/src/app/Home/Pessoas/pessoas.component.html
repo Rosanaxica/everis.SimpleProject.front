@@ -24,12 +24,12 @@
             <div *ngIf="pessoa.colaboradorId != null;else naoColaborador" class="col-md-12 text-right">
               <span *ngIf="pessoa.colaborador != undefined && pessoa.colaborador.disponivel;else naoDisponivel" class="badge everis text-right">Disponível</span>
               <ng-template #naoDisponivel>
-                <span class="badge everis text-right">Indisponível</span>
+                <span class="badge everis-laranja text-right">Indisponível</span>
               </ng-template>
             </div>
             <ng-template #naoColaborador>
               <div class="col-md-12 text-right">
-                <span class="badge everis text-right">Não é colaborador</span>
+                <span class="badge bg-gray text-right">{{pessoa.empresa}}</span>
               </div>
             </ng-template>
             <div class="row">
