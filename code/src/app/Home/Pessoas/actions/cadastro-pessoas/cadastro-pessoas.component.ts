@@ -145,7 +145,12 @@ export class CadastroPessoasComponent implements OnInit {
 
   AddTelefone() {
     const formObj = this.formularioPessoa.value;
-    this.telefone.tipoTelefone = formObj.tipoTelefone.id;
+    var dadosTipo = formObj.tipoTelefone.toString().split('-');
+    this.telefone.tipoTelefone = new TipoTelefone();
+    this.telefone.tipoTelefone.id = dadosTipo[0];
+    this.telefone.tipoTelefone.descricao = dadosTipo[1];
+    this.telefone.tipoId = dadosTipo[0]
+    this.telefone.numeroTelefone = formObj.numeroTelefone;
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
     // this.tipoTelefone = new TipoTelefone();

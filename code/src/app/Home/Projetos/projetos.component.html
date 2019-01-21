@@ -10,60 +10,64 @@
     </div>
   </div>
   <div class="col-3 d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" [routerLink]="['novo-projeto']">Novo Projeto +</button>
+    <button type="button" class="btn everis" [routerLink]="['novo-projeto']">Novo Projeto +</button>
   </div>
 </div>
 
-<div class="border col-12 mt-3 mb-4">
-  <div class="custom-control-inline col-2 mt-2">
+<div class="row border no-gutters mt-4 mb-4 p-4">
+  <div class="col-md-3 col-lg-2">
     <small><b>Status do projeto:</b></small>
   </div>
-  <div *ngFor="let st of status" class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input class="custom-control-input" value="{{st.id}}" id="{{st.id}}" type="checkbox" checked (change)="mudarStatus(st.id)">
-    <label class="custom-control-label" for="{{st.id}}">
-      <small>{{ st.descricao }}</small>
-    </label>
+  <div class="col-md-9 col-lg-10">
+    <div *ngFor="let st of status" class="custom-control custom-checkbox custom-control-inline">
+      <input class="custom-control-input" value="{{st.id}}" id="{{st.id}}" type="checkbox" checked (change)="mudarStatus(st.id)">
+      <label class="custom-control-label" for="{{st.id}}">
+        <small>{{ st.descricao }}</small>
+      </label>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <hr class="mt-2 col-11" />
-  <div class="col-md-1 col-xs-1">&nbsp;</div>
-  <div class="col-md-2 ml-2 col-xs-2 "><strong>Projeto</strong></div>
-  <div class="col-md-2 col-xs-2"><strong>Andamento</strong></div>
-  <div class="col-md-2 col-xs-2 "><strong>Equipes</strong></div>
-  <div class="col-md-2 col-xs-2 "><strong>Código do projeto</strong></div>
-  <div class="col-md-2 col-xs-2 "><strong>Status</strong></div>
-  <hr class="mt-2 col-11">
+<div class="row no-gutters">
+  <hr class="mt-2 mb-2 col-12" />
+  <div class="col-lg-1">&nbsp;</div>
+  <div class="col-lg-2"><strong>Projeto</strong></div>
+  <div class="col-lg-3"><strong>Andamento</strong></div>
+  <div class="col-lg-4"><strong>Equipes</strong></div>
+  <div class="col-lg-2"><strong>Status</strong></div>
+  <hr class="mt-2 col-12">
 </div>
 
 <div *ngFor="let projeto of projetos" class="cursor-pointer">
-  <div class="row" (click)="detalheProjeto(projeto)" *ngIf="mostrarStatus(projeto.status.id)">
+  <div class="row no-gutters" (click)="detalheProjeto(projeto)" *ngIf="mostrarStatus(projeto.status.id)">
     <!--Badge de notificações-->
-    <div class="col-md-1 col-xs-12">
+    <div class="col-lg-1">
       <span class="badge everis-roxo everis-branco">
         2</span>
     </div>
 
-    <!--.Nome do Projeto-->
-    <div class="col-md-2 col-xs-12">
-      <p>{{ projeto.nome }}<p>
+    <!-- Código e nome do projeto -->
+    <div class="col-lg-2">
+      <p class="m-0"><strong>{{ projeto.codigoProjeto}}</strong></p>
+      <p class="m-0"><small>{{ projeto.nome }}</small></p>
     </div>
 
 
     <!--.Barra de progresso-->
-    <div class="col-md-2 col-xs-12">
+    <div class="col-lg-3">
       <div class="row">
-        <div class="progress">
-          <div class="progress-bar everis" style="width:20%"></div>
+        <div class="col-11">
+          <div class="progress">
+            <div class="progress-bar everis" style="width:20%"></div>
+          </div>
+          <small>Estimativa de conclusão: {{ projeto.dataPrevista | dateFormat }}</small>
         </div>
-        <small>Estimativa de conclusão: {{ projeto.dataPrevista | dateFormat }}</small>
       </div>
     </div>
 
 
     <!--.Pessoas da equipe-->
-    <div class="col-md-2 col-xs-12">
+    <div class="col-lg-4">
       <div *ngFor="let projetoPessoa of projeto.projetosPessoas">
         <div class="row" *ngFor="let pessoa of pessoas" [ngStyle]="{'display': 'inline'}">
           <div class="chip" *ngIf="pessoa.id === projetoPessoa.pessoaId">
@@ -78,33 +82,25 @@
       </div>
     </div>
 
-    <!-- Código do projeto -->
-    <div class="col-md-2 col-xs-12">
-      <p class="text-center">{{ projeto.codigoProjeto}}<p>
-    </div>
-
     <!--.Status-->
-    <div class="col-md-2 col-xs-12">
-      <span class="badge p-2" [ngClass]="{'everis-amarelo': projeto.status.descricao == 'Aguardando Aprovação', 
+    <div class="col-lg-2">
+      <span class="badge p-1" [ngClass]="{'everis-amarelo': projeto.status.descricao == 'Aguardando Aprovação', 
                                           'everis': projeto.status.descricao == 'Em Desenvolvimento',
                                           'everis-azul': projeto.status.descricao == 'Concluído',
                                           'everis-azul': projeto.status.descricao == 'Entregue',
                                           'everis-laranja': projeto.status.descricao == 'Aguardando Abertura da SS',
-                                          'danger': projeto.status.descricao == 'Cancelado',
-                                          'bg-gray': projeto.status.descricao == 'Proposta'}">{{
+                                          'bg-danger text-white': projeto.status.descricao == 'Cancelado',
+                                          'bg-secondary': projeto.status.descricao == 'Proposta'}">{{
         projeto.status.descricao }}</span>
       <small>
         <p>Inicio: {{ projeto.dataInicio | dateFormat }}</p>
       </small>
     </div>
-    <hr _ngcontent-c2="" class="mt-2 col-11">
+    <hr class="mt-2 col-12">
   </div>
 </div>
-<div class="row">
-  <div class="col">
-    <b>Total de Projetos</b>
-  </div>
-  <div class="col-3">
-    <b>{{ contar(projetos) }}</b>
+<div class="row mt-4 no-gutters">
+  <div class="col-12 text-right">
+    <b>Total de Projetos: {{ contar(projetos) }}</b>
   </div>
 </div>

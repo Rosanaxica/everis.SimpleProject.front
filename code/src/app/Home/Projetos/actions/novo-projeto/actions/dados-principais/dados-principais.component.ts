@@ -5,6 +5,10 @@ import { Projeto } from '../../../../../../_models/projeto.model';
 import { GenericService } from '../../../../../../_services/generic.service';
 import { Empresa } from '../../../../../../_models/empresa.model';
 import { Status } from '../../../../../../_models/status.model';
+import { Sigla } from 'src/app/_models/sigla.model';
+import { Diretoria } from 'src/app/_models/diretoria.model';
+import { Tecnologia } from 'src/app/_models/tecnologia.model';
+import { Superintendencia } from 'src/app/_models/superintendencia.model';
 
 
 @Component({
@@ -21,6 +25,12 @@ export class DadosPrincipaisComponent implements OnInit {
   dadosPrincipaisForm: FormGroup;
   empresas: Empresa[] = [];
   status: Status[] = [];
+  sigla: Sigla[] = [];
+  diretoria: Diretoria[] = [];
+  superintendencia: Superintendencia[] = [];
+  tecnologia: Tecnologia[] = [];
+
+  
 
   ngOnInit() {
     this.projeto = new Projeto();
@@ -124,6 +134,46 @@ export class DadosPrincipaisComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.empresas = s.data;
+          }
+        }
+      }
+    );
+
+    this.svc.listar(Tecnologia).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.tecnologia = s.data;
+          }
+        }
+      }
+    );
+
+    this.svc.listar(Sigla).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.sigla = s.data;
+          }
+        }
+      }
+    );
+
+    this.svc.listar(Diretoria).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.diretoria = s.data;
+          }
+        }
+      }
+    );
+
+    this.svc.listar(Superintendencia).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.superintendencia = s.data;
           }
         }
       }

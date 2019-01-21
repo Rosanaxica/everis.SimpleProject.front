@@ -68,15 +68,16 @@
       <!-- Fim Diretoria -->
       <!-- Inicio CPF e  Documento-->
       <fieldset class="col-12 border pb-4">
-        <legend class="col-form-legend col-4"><small>Documentos Pessoais</small></legend>
+        <legend class="col-form-legend col-4">
+          <small>Documentos Pessoais</small>
+        </legend>
         <div class="row mb-2">
           <div class="col-md-2">
             <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" formControlName="cpf">
           </div>
 
           <div class="col-md-5">
-            <input type="text" class="form-control" id="docmento" name="documento" formControlName="documento"
-              placeholder="Outro Documento">
+            <input type="text" class="form-control" id="docmento" name="documento" formControlName="documento" placeholder="Outro Documento">
           </div>
         </div>
 
@@ -86,8 +87,7 @@
             <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg">
           </div>
           <div class="col-md-2">
-            <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor"
-              formControlName="orgaoEmissor">
+            <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor" formControlName="orgaoEmissor">
           </div>
 
           <div class="col-md-2">
@@ -127,36 +127,34 @@
       <!-- Fim CPF e Documento -->
       <!-- Inicio Telefone -->
       <fieldset class="col-12 border pb-4">
-        <legend class="col-form-legend col-4"><small>Contato</small></legend>
+        <legend class="col-form-legend col-4">
+          <small>Contato</small>
+        </legend>
         <div class="row mb-2">
           <div class="col-md-2">
             <select class="form-control" id="tipoTelefone" name="tipoTelefone" formControlName="tipoTelefone">
-              <option *ngFor="let i of tiposTelefone" value="{{i}}">{{i.descricao}}</option>
+              <option *ngFor="let i of tiposTelefone" value="{{i.id}}-{{i.descricao}}">{{i.descricao}}</option>
             </select>
           </div>
+          <div class="input-group col-md-4">
+            <input input type="text" (keydown.enter)="AddTelefone()" class="form-control" formControlName="numeroTelefone" id="telefone"
+              name="numeroTelefone" placeholder="*Telefone" autocomplete="off" [required]="isTelRequired()">
 
-          <!-- <div class="input-group col-md-4">
-          <input input type="text" (keydown.enter)="AddTelefone()" class="form-control" [(ngModel)]="telefone.numeroTelefone"
-            id="telefone" name="telefone" placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15"
-            autocomplete="off" [required]="isTelRequired()">
-
-          <div class="input-group-append">
-            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || tipoTelefone == undefined || ctrlTelefone.invalid"><i
-                class="fas fa-plus"></i>
-            </button>
+            <div class="input-group-append">
+              <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="formularioPessoa.controls['numeroTelefone'] == undefined || formularioPessoa.controls['tipoTelefone'] == undefined || formularioPessoa.controls['numeroTelefone'].invalid">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
           </div>
-
-        </div> -->
         </div>
 
-        <!-- <div class="alert alert-success" role="alert" *ngIf="ctrlTelefone.valid && (ctrlTelefone.dirty || ctrlTelefone.touched) && telefone.tipoTelefone != undefined">
-        <i class="fa fa-check mr-1"></i> OK
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf="ctrlTelefone.invalid && (ctrlTelefone.dirty ||
-           ctrlTelefone.touched) && telefones.length < 1">
-        <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um
-        telefone. Informe apenas numeros
-      </div> -->
+        <div class="alert alert-success" role="alert" *ngIf="formularioPessoa.controls['numeroTelefone'].valid && (formularioPessoa.controls['numeroTelefone'].dirty || formularioPessoa.controls['numeroTelefone'].touched) && formularioPessoa.controls['tipoTelefone'] != undefined">
+          <i class="fa fa-check mr-1"></i> OK
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="formularioPessoa.controls['numeroTelefone'].invalid && (formularioPessoa.controls['numeroTelefone'].dirty ||
+        formularioPessoa.controls['numeroTelefone'].touched)">
+          <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um telefone. Informe apenas numeros
+        </div>
 
         <!-- <div class="row col-md-5">
         <table class="table table-striped">
