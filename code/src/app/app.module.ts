@@ -57,6 +57,7 @@ import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
 import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
 import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
+import { SquadComponent } from './Home/Squad/squad/squad.component';
 
 
 @NgModule({
@@ -92,7 +93,8 @@ import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/
     AlterarSenhaComponent,
     MeusDadosComponent,
     ComunidadesComponent,
-    GraficolinhaComponent
+    GraficolinhaComponent,
+    SquadComponent
   ],
   imports: [
     HttpClientModule,

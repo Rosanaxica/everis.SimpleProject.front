@@ -11,6 +11,11 @@ import { Ferramenta } from 'src/app/_models/ferramenta.model';
 import { AcessoFerramenta } from 'src/app/_models/acessoFerramenta';
 import { Sigla } from 'src/app/_models/sigla.model';
 import { AcessoSigla } from 'src/app/_models/acessoSigla.model';
+import { Funcao } from 'src/app/_models/funcao.model';
+import { AreaContratante } from 'src/app/_models/area_contratante.model';
+import { PoloAcesso } from 'src/app/_models/poloAcesso.model';
+import { TipoServico } from 'src/app/_models/tipo_servico.model';
+import { TipoTelefone } from 'src/app/_models/tipo_telefone.model';
 
 
 
@@ -33,6 +38,12 @@ export class CadastroPessoasComponent implements OnInit {
   telefone = new Telefone();
   telefones: Telefone[] = [];
   empresas: Empresa[] = [];
+  funcoes: Funcao[] = [];
+  areasContratantes: AreaContratante[] = [];
+  polosAcesso: PoloAcesso[] = [];
+  tipoServicos: TipoServico[] = [];
+  tiposTelefone: TipoTelefone[] = [];
+  tipoTelefone = new TipoTelefone();
 
   empresaId: number;
   msgSucesso: String;
@@ -61,20 +72,37 @@ export class CadastroPessoasComponent implements OnInit {
     // executar a chamada abaixo no momento que finalizar o preenchimento do retorno da pessoa em edição
     // this.obterFerramentasAssociadas();
 
-    this.svc.listar(Empresa).toPromise().then(data => {
-      this.empresas = data['data'];
-      console.log(this.empresas);
-    }
-    );
+    this.svc.muitiGet([
+      'Empresa/ObterTodos',
+      'Funcao/ObterTodos',
+      'AreaContratante/ObterTodos',
+      'PoloAcesso/ObterTodos',
+      'TipoServico/ObterTodos',
+      'TipoTelefone/ObterTodos'
+    ]).then(data => {
+      this.empresas = data[0].json().data as Empresa[];
+      this.funcoes = data[1].json().data as Funcao[];
+      this.areasContratantes = data[2].json().data as AreaContratante[];
+      this.polosAcesso = data[3].json().data as PoloAcesso[];
+      this.tipoServicos = data[4].json().data as TipoServico[];
+      this.tiposTelefone = data[5].json().data as TipoTelefone[];
+    });
+
+    // this.svc.listar(Empresa).toPromise().then(data => {
+    //   this.empresas = data['data'];
+    //   console.log(this.empresas);
+    // }
+    // );
   }
 
   AddTelefone() {
-    this.pessoa.telefones = this.telefones;
+
+    this.telefone.tipoTelefone = this.tipoTelefone;
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
+    // this.tipoTelefone = new TipoTelefone();
   }
   onKeydown() {
-    this.pessoa.telefones = this.telefones;
     this.telefones.push(this.telefone);
     // this.telefone = new Telefone();
   }
@@ -97,12 +125,12 @@ export class CadastroPessoasComponent implements OnInit {
     return false;
   }
 
-  isPerfilRequired(): boolean {
-    if (this.colaborador.perfil === undefined) {
-      return true;
-    }
-    return false;
-  }
+  // isPerfilRequired(): boolean {
+  //   if (this.colaborador.perfil === undefined) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
 
   RemoverTelefone(telefone: Telefone) {
     this.telefones.splice(this.telefones.indexOf(telefone, 1));
@@ -112,7 +140,7 @@ export class CadastroPessoasComponent implements OnInit {
     this.msgErro = null;
     this.msgSucesso = null;
     // tslint:disable-next-line:triple-equals
-    if (this.pessoa.tipo == 1) {
+    if (this.pessoa.tipoId == 1) {
       this.pessoaColaborador.colaborador = this.colaborador;
       this.pessoaColaborador.pessoa = this.pessoa;
 
@@ -143,6 +171,8 @@ export class CadastroPessoasComponent implements OnInit {
           }
         );
     }
+
+    this.svc.postViewModel(this.telefones, "AdicionarTelefones")
 
     form.reset();
     this.telefones = [];
@@ -215,7 +245,7 @@ export class CadastroPessoasComponent implements OnInit {
       this.acessoFerramenta = new AcessoFerramenta();
     });
 
-    this.pessoaColaborador.colaborador.acessos = lstAcesso;
+    // this.pessoaColaborador.colaborador.acessos = lstAcesso;
 
   }
 
@@ -269,7 +299,7 @@ export class CadastroPessoasComponent implements OnInit {
       lstAcesso.push(this.acessoSigla);
       this.acessoSigla = new AcessoSigla();
     });
-    this.pessoaColaborador.colaborador.siglas = lstAcesso;
+    // this.pessoaColaborador.colaborador.siglas = lstAcesso;
   }
 
 }

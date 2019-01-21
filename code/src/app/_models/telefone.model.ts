@@ -1,19 +1,16 @@
 import { ModeloGenerico } from './modelo_generico';
+import { Pessoa } from './pessoa.model';
+import { TipoTelefone } from './tipo_telefone.model';
 
 export class Telefone extends ModeloGenerico {
 
-    id: number;
     numeroTelefone: string;
+    tipoId: number;
     tipoTelefone: TipoTelefone;
     pessoaId: number;
+    pessoa: Pessoa;
 
     getKey(): string {
         return 'telefone';
     }
-}
-
-export enum TipoTelefone {
-    Residencial = 1,
-    Particular = 2,
-    Empresarial = 3
 }
