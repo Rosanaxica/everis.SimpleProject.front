@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
   }
 
   vaiParaHome() {
-    this.router.navigate(['template']);
+    this.router.navigate(['dashboard']);
   }
 
   criarForm(itemColaborador?: Colaborador) {

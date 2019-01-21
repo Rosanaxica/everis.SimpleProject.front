@@ -3,10 +3,10 @@
         <div class="col">
             <h1 class="titulo"> Nova Fase</h1>
         </div>
-        <nav class="col d-flex justify-content-end">
+        <div class="col d-flex justify-content-end">
             <button type="button" class="btn everis mr-2" (click)="salvar()">Salvar</button>
             <button type="button" class="btn cancelar" (click)="vaiParaFase()">Cancelar</button>
-        </nav>
+        </div>
     </div>
 </div>
 
@@ -119,10 +119,10 @@
         </form>
         <div class="row align-items-center" style="margin-bottom: 10px">
 
-            <nav class="col d-flex justify-content-end">
+            <div class="col d-flex justify-content-end">
                 <button type="button" class="btn everis mr-2" [disabled]="!formularioValido()" (click)="salvar()">Salvar</button>
                 <button type="button" class="btn cancelar" (click)="vaiParaFase()">Cancelar</button>
-            </nav>
+            </div>
         </div>
 
     </div>

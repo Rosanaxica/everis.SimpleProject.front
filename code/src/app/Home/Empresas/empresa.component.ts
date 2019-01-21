@@ -29,7 +29,7 @@ export class EmpresaComponent implements OnInit {
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/empresa/cadastro-empresa/${id}`]);
+    this.router.navigate([`/empresas/editar-empresa/${id}`]);
   }
 
   desativar(id: number) {

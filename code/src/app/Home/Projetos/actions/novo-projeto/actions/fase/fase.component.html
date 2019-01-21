@@ -9,10 +9,10 @@
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>
   </div>
-  <nav class="col-3 d-flex justify-content-end">
+  <div class="col-3 d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" (click)="vaiParaNovaFase()">Nova Fase+</button>
 
-  </nav>
+  </div>
   <hr class="mt-2" />
 
   <!-- {{fases | json}} -->
@@ -29,7 +29,7 @@
       </tr>
     </thead>
     <tbody>
-      
+
       <tr *ngFor="let item of fases">
         <td class="align-middle">{{ item.codigoFase }}</td>
         <td class="align-middle">{{ item.pessoa.nome }}</td>

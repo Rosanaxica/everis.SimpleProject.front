@@ -66,8 +66,6 @@ export class AtribuicaoEquipeComponent implements OnInit {
     let projPessoa = new ProjetoPessoa();
     projPessoa.pessoaId = pessoa.id;
     projPessoa.pessoa = pessoa;
-    projPessoa.projetoId = this.projeto.id;
-    projPessoa.projeto = this.projeto;
     this.projetoPessoa.push(projPessoa);
   }
   getAtribuicoes() {
@@ -93,7 +91,18 @@ export class AtribuicaoEquipeComponent implements OnInit {
   }
   salvar() {
     //this.getProjeto.emit("2");
+    if (this.projeto.id == 0) {
+      if (this.informadoResponsavel()) {
+        if (!this.salvarProjeto()) {
+          return;
+        }
+      } else {
+        return;
+      }
+    }
     this.projetoPessoa.forEach(projPessoa => {
+      projPessoa.pessoa = null;
+      projPessoa.projetoId = this.projeto.id;
       this.svc.salvar(projPessoa, ProjetoPessoa)
         .toPromise().then((data: any) => {
           switch (data.codigo) {
@@ -108,6 +117,33 @@ export class AtribuicaoEquipeComponent implements OnInit {
             alert('Erro ao tentar adicionar.');
           });
     });
+  }
+  salvarProjeto(): boolean {
+    this.svc.salvar(this.projeto, Projeto)
+      .toPromise().then((data: any) => {
+        switch (data.codigo) {
+          case 200:
+            this.projeto = data.Data;
+            return true;
+            break;
+          default:
+            window.alert('erro: ' + data.mensagem);
+            break;
+        }
+      },
+        error => {
+          alert('Erro ao tentar adicionar.');
+        });
+    return false;
+  }
+  informadoResponsavel(): boolean {
+    let retorno: boolean = false;
+    this.projetoPessoa.forEach(projPessoa => {
+      if (projPessoa.responsavel) {
+        retorno = true;
+      }
+    });
+    return retorno;
   }
 
 }
