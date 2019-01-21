@@ -17,9 +17,6 @@ export class FaseComponent implements OnInit {
 
   id: number;
   res: number = 0;
-  idle: number = 0;
-  overhead: number = 0;
-  trabalhas: number = 0;
   msgSucesso: string;
 
   projetos: Projeto[] = [];
@@ -45,7 +42,6 @@ export class FaseComponent implements OnInit {
   filtrar() {
     this.filtroFases.projetoId = this.id;
     this.filtroFases.ativo = true;
-    console.log(this.filtroFases);
     this.svc.listar(FaseModel, this.filtroFases).toPromise().then(
       f => {
         if (f.sucesso) {

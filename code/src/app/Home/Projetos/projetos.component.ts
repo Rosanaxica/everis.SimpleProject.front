@@ -6,7 +6,7 @@ import { Projeto } from 'src/app/_models/projeto.model';
 import { Status } from 'src/app/_models/status.model';
 import { Router } from '@angular/router';
 import { NovoProjetoComponent } from './actions/novo-projeto/novo-projeto.component';
-import { ProjetoPessoaModel } from 'src/app/_models/projetopessoa.model';
+import { ProjetoPessoa } from 'src/app/_models/projetopessoa.model';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 
 @Component({
@@ -35,7 +35,7 @@ export class ProjetosComponent implements OnInit {
   }
 
   listarPessoas(projetoId: number) {
-    this.svc.listar(ProjetoPessoaModel, null, `PessoasProjeto/${projetoId}`).toPromise().then(
+    this.svc.listar(ProjetoPessoa, null, `PessoasProjeto/${projetoId}`).toPromise().then(
       s => { console.log(s.data); },
       e => { let err = e.json(); alert(`Erro ${err.mensagem}`); }
     )

@@ -1,129 +1,113 @@
-<div class="container-fluid" style="margin: 15px">
-    <div class="row align-items-center">
-        <div class="col">
+<form [formGroup]="formularioFase">
+
+
+    <div class="row">
+        <div class="col-sm-12">
             <h1 class="titulo"> Nova Fase</h1>
         </div>
-        <nav class="col d-flex justify-content-end">
-            <button type="button" class="btn everis mr-2" (click)="salvar()">Salvar</button>
-            <button type="button" class="btn cancelar" (click)="vaiParaFase()">Cancelar</button>
-        </nav>
     </div>
-</div>
+    <hr class="mt-0" />
 
-<hr class="mt-2">
+    <div class="row">
+        <div class="col-md-2">
+            <label for="codigoProjeto">Código do Projeto</label>
+            <input type="text" class="form-control" name="codigoProjeto" formControlName="codigoProjeto" placeholder="Digite o código do projeto"></div>
+        <div class="col-md-8">
+            <label for="codigoProjeto">Nome do Projeto</label>
+            <input type="text" class="form-control" id="nomeProjeto" name="nomeProjeto" formControlName="nomeProjeto"
+                placeholder="Nome Projeto">
+        </div>
+    </div>
 
-<div class="border">
-    <div class="container-fluid">
-        <form [formGroup]="formularioFase">
-
-            <div class="row" style="margin-top: 15px">
-                <div class="col">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="input" name="nomeProjeto" formControlName="nomeProjeto" placeholder="Nome Projeto" disabled>
-                    </div>
-
-                    <div class="row align-items-center">
-                        <div class="col-12">
-                            <div class="row align-items-center">
-                                <div class="input-group col-12">
-                                    <mat-form-field class="col-12">
-                                        <input type="text" class="form-control" placeholder="Digite o colaborador"
-                                            aria-label="Digite o que você deseja buscar" matInput [formControl]="myControl"
-                                            [matAutocomplete]="auto" name="colaborador" formControlName="colaborador">
-                                        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-                                            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-                                                {{option.nome}}
-                                            </mat-option>
-                                        </mat-autocomplete>
-                                    </mat-form-field>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="row">
+        <div class="form-group col-sm-12 mt-3">
+            <label for="slColaborador">Nome do Colaborador</label>
+            <select name="slColaborador" class="form-control" name="colaborador" formControlName="colaborador">
+                <option *ngFor='let op of colaboradorLista' value="{{op.id}}">{{op.nome}}</option>
+            </select>
+            <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.colaborador.touched && (formularioFase.controls.colaborador.hasError('required') ||
+                            formularioFase.controls.colaborador.value ==0)">
+                <i class="fa fa-times mr-2"></i>
+                <small>Por favor, informe o nome do colaborador.</small>
             </div>
+        </div>
+    </div>
 
-
-            <div class="row" style="margin-top: 10px">
-                <div class="col-xs-12 col-12 col-md-4 form-group">
-                    <label for="slTipoFase">Tipo da Fase</label>
-                    <select name="slTipoFase" class="form-control" name="tipoFase" formControlName="tipoFase">
-                        <option *ngFor='let op of tipoFaseLista' value="{{op.id}}">{{op.nome}}</option>
-                    </select>
-                    <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.tipoFase.touched && (formularioFase.controls.tipoFase.hasError('required') ||
+    <div class="row">
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+            <label for="codigoFase">Código da Fase</label>
+            <input type="number" class="form-control" name="codigoFase" formControlName="codigoFase" placeholder="Digite o código da fase">
+            <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.codigoFase.touched && formularioFase.controls.codigoFase.hasError('required')">
+                <i class="fa fa-times mr-2"></i>
+                <small>Por favor, informe o código da fase.</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+            <label for="slTipoFase">Tipo da Fase</label>
+            <select name="slTipoFase" class="form-control" name="tipoFase" formControlName="tipoFase">
+                <option *ngFor='let op of tipoFaseLista' value="{{op.id}}">{{op.nome}}</option>
+            </select>
+            <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.tipoFase.touched && (formularioFase.controls.tipoFase.hasError('required') ||
                         formularioFase.controls.tipoFase.value ==0)">
-                        <i class="fa fa-times mr-2"></i>
-                        <small>Por favor, informe o tipo da fase.</small>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-12 col-md-4 form-group">
-                    <label for="codigoFase">Código da Fase</label>
-                    <input type="number" class="form-control" name="codigoFase" formControlName="codigoFase"
-                        placeholder="Digite o código da fase">
-                    <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.codigoFase.touched && formularioFase.controls.codigoFase.hasError('required')">
-                        <i class="fa fa-times mr-2"></i>
-                        <small>Por favor, informe o código da fase.</small>
-                    </div>
-                </div>
-
-                <div class="col-xs-12 col-12 col-md-4 form-group">
-                    <label for="codigoProjeto">Código do Projeto</label>
-                    <input type="text" class="form-control" name="codigoProjeto" formControlName="codigoProjeto" placeholder="Digite o código do projeto"
-                        disabled>
-                </div>
+                <i class="fa fa-times mr-2"></i>
+                <small>Por favor, informe o tipo da fase.</small>
             </div>
-
-            <div class="row" style="margin-top: 10px">
-                <div class="col-xs-12 col-12 col-md-4 form-group">
-                    <label for="qtdHorasDia">Horas por Dia</label>
-                    <input type="number" class="form-control" name="qtdHorasDia" formControlName="qtdHorasDia"
-                        placeholder="Digite as horas por dia" (keyup)="enterKeyUp($event)">
-                    <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.qtdHorasDia.touched && formularioFase.controls.qtdHorasDia.hasError('required')">
-                        <i class="fa fa-times mr-2"></i>
-                        <small>Por favor, informe a quantidade de horas por dia. Obs.: Máximo de 24 horas por dia.</small>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-12 col-md-4 form-group">
-                    <label for="dataInicio">Data Inicial</label>
-                    <input type="text" class="form-control" placeholder="dd/mm/aaaa" name="dataInicio" formControlName="dataInicio"
-                        bsDatepicker>
-                    <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
-                        <i class="fa fa-times mr-2"></i>
-                        <small>Por Favor, informe a data incial do periodo.</small>
-                    </div>
-                </div>
-                <div class="col-xs-12 col-12 col-md-4 form-group">
-                    <label for="dataFim">Data Final</label>
-                    <input type="text" class="form-control" placeholder="dd/mm/aaaa" name="dataFim" formControlName="dataFim"
-                        bsDatepicker>
-                    <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataFim.touched && formularioFase.controls.dataFim.hasError('required')">
-                        <i class="fa fa-times mr-2"></i>
-                        <small>Por Favor, informe a data final do periodo.</small>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row" style="margin-top: 10px">
-                <div class="col-xs-12 col-12 col-md-12 form-group">
-                    <label for="observacao">Observações</label>
-                    <textarea class="col-12" rows="4" style="resize: none" class="form-control" name="observacao"
-                        formControlName="observacao" placeholder="Observações"></textarea>
-                    <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.observacao.touched && formularioFase.controls.observacao.hasError('required')">
-                        <i class="fa fa-times mr-2"></i>
-                        <small>Por favor, informe as observações.</small>
-                    </div>
-                </div>
-            </div>
-        </form>
-        <div class="row align-items-center" style="margin-bottom: 10px">
-
-            <nav class="col d-flex justify-content-end">
-                <button type="button" class="btn everis mr-2" [disabled]="!formularioValido()" (click)="salvar()">Salvar</button>
-                <button type="button" class="btn cancelar" (click)="vaiParaFase()">Cancelar</button>
-            </nav>
         </div>
 
+
+
     </div>
 
+
+
+    <div class="row">
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+            <label for="qtdHorasDia">Horas por Dia</label>
+            <input type="number" class="form-control" name="qtdHorasDia" formControlName="qtdHorasDia" placeholder="Digite as horas por dia">
+            <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.qtdHorasDia.touched && formularioFase.controls.qtdHorasDia.hasError('required')">
+                <i class="fa fa-times mr-2"></i>
+                <small>Por favor, informe a quantidade de horas por dia. Obs.: Máximo de 24 horas por dia.</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+            <label for="dataInicio">Data Inicial</label>
+            <input type="text" class="form-control" placeholder="dd/mm/aaaa" name="dataInicio" formControlName="dataInicio"
+                bsDatepicker>
+            <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
+                <i class="fa fa-times mr-2"></i>
+                <small>Por Favor, informe a data incial do periodo.</small>
+            </div>
+        </div>
+        <div class="col-xs-12 col-12 col-md-4 form-group">
+            <label for="dataFim">Data Final</label>
+            <input type="text" class="form-control" placeholder="dd/mm/aaaa" name="dataFim" formControlName="dataFim"
+                bsDatepicker>
+            <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataFim.touched && formularioFase.controls.dataFim.hasError('required')">
+                <i class="fa fa-times mr-2"></i>
+                <small>Por Favor, informe a data final do periodo.</small>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 col-12 col-md-12 form-group">
+            <label for="observacao">Observações</label>
+            <textarea class="col-12" rows="4" style="resize: none" class="form-control" name="observacao"
+                formControlName="observacao" placeholder="Observações"></textarea>
+            <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.observacao.touched && formularioFase.controls.observacao.hasError('required')">
+                <i class="fa fa-times mr-2"></i>
+                <small>Por favor, informe as observações.</small>
+            </div>
+        </div>
+
+
+    </div>
+</form>
+
+<div class="row align-items-center">
+
+    <div class="col d-flex justify-content-end">
+        <button type="button" class="btn everis mr-2" [disabled]="!formularioValido()" (click)="salvar()">Salvar</button>
+        <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
+    </div>
 </div>
