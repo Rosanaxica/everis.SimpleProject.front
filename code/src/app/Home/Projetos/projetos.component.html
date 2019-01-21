@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="col-3 d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" [routerLink]="['novo-projeto']">Novo Projeto +</button>
+    <button type="button" class="btn everis" [routerLink]="['novo-projeto']">Novo Projeto +</button>
   </div>
 </div>
 
@@ -29,7 +29,7 @@
 </div>
 
 <div class="row no-gutters">
-  <hr class="mt-2 col-12" />
+  <hr class="mt-2 mb-2 col-12" />
   <div class="col-md-1 col-xs-1">&nbsp;</div>
   <div class="col-md-2 ml-2 col-xs-2 "><strong>Projeto</strong></div>
   <div class="col-md-2 col-xs-2"><strong>Andamento</strong></div>
@@ -102,11 +102,8 @@
     <hr _ngcontent-c2="" class="mt-2 col-11">
   </div>
 </div>
-<div class="row">
-  <div class="col">
-    <b>Total de Projetos</b>
-  </div>
-  <div class="col-3">
-    <b>{{ contar(projetos) }}</b>
+<div class="row mt-4">
+  <div class="col-12">
+    <b>Total de Projetos: {{ contar(projetos) }}</b>
   </div>
 </div>
