@@ -1,33 +1,41 @@
-import { Colaborador } from './colaborador.model';
-import { Pessoa } from './pessoa.model';
 import { ModeloGenerico } from './modelo_generico';
+import { Telefone } from './telefone.model';
+import { TipoTelefone } from './tipo_telefone.model';
+import { Pessoa } from './pessoa.model';
+import { Diretoria } from './diretoria.model';
+import { TipoPessoa } from './tipo_pessoa.model';
+import { Funcao } from './funcao.model';
+import { PoloAcesso } from './poloAcesso.model';
+import { AreaContratante } from './area_contratante.model';
+import { TipoServico } from './tipo_servico.model';
+
 
 export class PessoaColaboradorViewModel extends ModeloGenerico {
-    colaborador: Colaborador;
+
+
     pessoa: Pessoa;
+    diretoria: Diretoria;
+    tipoTelefone: TipoTelefone;
+    tipoPessoa: TipoPessoa;
+    funcao: Funcao;
+    poloAcesso: PoloAcesso;
+    areaContratante: AreaContratante;
+    tipoServico: TipoServico;
+    telefones: Telefone[];
+
+    constructor() {
+        super();
+        this.pessoa = new Pessoa();
+        this.diretoria = new Diretoria();
+        this.tipoTelefone = new TipoTelefone();
+        this.tipoPessoa = new TipoPessoa();
+        this.funcao = new Funcao();
+        this.poloAcesso = new PoloAcesso();
+        this.areaContratante = new AreaContratante();
+        this.tipoServico = new TipoServico();
+    }
 
     getKey() {
-        return 'pessoa/criarpessoacolaborador';
+        return null;
     }
-}
-
-export enum TipoPessoa {
-    Colaborador = 1,
-    Cliente = 2,
-    Terceiro = 3
-}
-export enum FuncaoColaborador {
-    SA = 1,
-    SN = 2,
-    STL = 3,
-    SPL = 4,
-    SK = 5,
-    SKL = 6,
-    Manager = 7
-}
-
-export enum PerfilColaborador {
-    Master = 1,
-    Lider = 2,
-    Colaborador = 3
 }

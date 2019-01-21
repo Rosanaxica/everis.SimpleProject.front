@@ -1,12 +1,11 @@
 import { ModeloGenerico } from '../_models/modelo_generico';
-import { environment } from 'src/environments/environment.prod';
 import { TipoModelo } from '../_models/interfaces/tipo.model';
 import { HttpService } from './http.service';
 
 import { Headers } from '@angular/http';
-// tslint:disable-next-line:import-blacklist
 import { Observable } from 'rxjs/Rx';
 import { ModeloRetorno } from '../_models/interfaces/modelo.retorno';
+import { environment } from '../../environments/environment';
 
 export class AbstractDataService {
   url: string;
@@ -23,7 +22,7 @@ export class AbstractDataService {
         return this.httpSvc.get(this.url, { headers: this.headers }).map(res => {
           return res.json();
         });
-      case 'gexportet':
+      case 'export':
         return this.httpSvc.get(this.url, { headers: this.headers }).map(res => {
           return res;
         });
@@ -95,15 +94,21 @@ export class AbstractDataService {
     return this.executaAcaoHttp('get');
   }
 
-  exportar<T extends ModeloGenerico>(modelo: TipoModelo<T>, tipoExportar: string, filtro?: any, urlAlternativa?: string): Observable<ModeloRetorno> {
-    this.url = `${this.montarUrlPorTipo(modelo, urlAlternativa)}/exportar`;
+  exportar<T extends ModeloGenerico>(modelo: TipoModelo<T>, tipoExportar: string, filtro?: any, urlAlternativa?: string): Observable<any> {
+    this.url = `${this.montarUrlPorTipo(modelo, urlAlternativa)}/exportar?tipoArquivo=${tipoExportar || 'csv'}`;
     if (filtro && filtro !== undefined && filtro != null && Object.keys(filtro).length > 0) {
       this.incluirFiltros(filtro);
-      this.url += `&tipoArquivo=${tipoExportar}`;
-    } else {
-      this.url += `?tipoArquivo=${tipoExportar}`;
     }
     return this.executaAcaoHttp('export');
+  }
+
+  downloadFile(result) {
+    let blob = new Blob([atob(result.data.fileContents)], { type: result.data.contentType });
+    let url = window.URL.createObjectURL(blob);
+    var anchor = document.createElement("a");
+    anchor.download = result.data.fileDownloadName;
+    anchor.href = url;
+    anchor.click();
   }
 
   criarLista<T extends ModeloGenerico>(modeloTipo: TipoModelo<T>, lista: Array<T>) {
@@ -118,6 +123,15 @@ export class AbstractDataService {
     return this.httpSvc.put(this.url, lista, { headers: this.headers }).map(res => {
       return res.json();
     });
+  }
+
+  muitiGet(urls: Array<string>): Promise<any[]> {
+    let resuktList = new Array<any>();
+    urls.forEach(f => {
+      resuktList.push(this.httpSvc.get(this.montarUrlGenerica(f)));
+    });
+
+    return Observable.forkJoin(resuktList).toPromise();
   }
 
   private montarUrl<T extends ModeloGenerico>(modelo: T, urlAlternativa?: string): string {

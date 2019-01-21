@@ -23,14 +23,13 @@ export class EmpresaComponent implements OnInit {
     this.arouter.paramMap.subscribe(res => {
       var sucesso = res.get("sucesso");
       if (sucesso !== null && sucesso !== undefined && sucesso) {
-        this.msgSucesso = 'Cadastro realizado com sucesso!';
-        // alert('Cadastro realizado com sucesso!');
+        alert('Cadastro realizado com sucesso!');
       }
     });
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/empresa/cadastro-empresa/${id}`]);
+    this.router.navigate([`/empresas/editar-empresa/${id}`]);
   }
 
   desativar(id: number) {
@@ -48,6 +47,19 @@ export class EmpresaComponent implements OnInit {
       }
     );
   }
+
+  exportar() {
+    this.filtroEmpresa.ativo = true;
+    this.svc.exportar(Empresa, "xls").toPromise().then(
+      s => {
+        let result = s.json();
+        if (result.sucesso) {
+          this.svc.downloadFile(result);
+        }
+      }
+    );
+  }
+  
 
   filtrar() {
     this.filtroEmpresa.ativo = true;

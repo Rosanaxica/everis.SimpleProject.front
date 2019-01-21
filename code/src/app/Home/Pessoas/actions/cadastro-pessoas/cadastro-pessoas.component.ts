@@ -5,9 +5,17 @@ import { Empresa } from 'src/app/_models/empresa.model';
 import { Colaborador } from 'src/app/_models/colaborador.model';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Router } from '@angular/router';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormGroup, FormBuilder, Validators, FormControl, FormArray } from '@angular/forms';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Ferramenta } from 'src/app/_models/ferramenta.model';
+import { AcessoFerramenta } from 'src/app/_models/acessoFerramenta';
+import { Sigla } from 'src/app/_models/sigla.model';
+import { AcessoSigla } from 'src/app/_models/acessoSigla.model';
+import { Funcao } from 'src/app/_models/funcao.model';
+import { AreaContratante } from 'src/app/_models/area_contratante.model';
+import { PoloAcesso } from 'src/app/_models/poloAcesso.model';
+import { TipoServico } from 'src/app/_models/tipo_servico.model';
+import { TipoTelefone } from 'src/app/_models/tipo_telefone.model';
 
 
 
@@ -18,55 +26,62 @@ import { Ferramenta } from 'src/app/_models/ferramenta.model';
 })
 export class CadastroPessoasComponent implements OnInit {
 
-  constructor(private svc: GenericService, private router: Router) {
+  constructor(private svc: GenericService, private router: Router, private fb: FormBuilder) {
   }
 
-  pessoa = new Pessoa();
-  colaborador = new Colaborador();
-  filtroFerramenta = new Ferramenta();
-  telefone = new Telefone();
-  empresaId: number;
-  telefones: Telefone[] = [];
-  empresas: Empresa[] = [];
-  msgSucesso: String;
-  msgErro: String;
+  formularioPessoa: FormGroup;
+  numberPattern = /^[0-9]*$/;
 
-  disponiveis: Ferramenta[] = [];
-  associados: Ferramenta[] = [];
-  paraRemover: Ferramenta[] = [];
-  paraAdicionar: Ferramenta[] = [];
+  tiposTelefone: TipoTelefone[] = [];
+  telefone = new Telefone();
+  telefones: Telefone[] = [];
+
 
   ngOnInit() {
+    this.criarForm();
 
+    this.svc.muitiGet([
+      // 'Empresa/ObterTodos',
+      // 'Funcao/ObterTodos',
+      // 'AreaContratante/ObterTodos',
+      // 'PoloAcesso/ObterTodos',
+      // 'TipoServico/ObterTodos',
+      'TipoTelefone/ObterTodos'
+    ]).then(data => {
+      // this.empresas = data[0].json().data as Empresa[];
+      // this.funcoes = data[1].json().data as Funcao[];
+      // this.areasContratantes = data[2].json().data as AreaContratante[];
+      // this.polosAcesso = data[3].json().data as PoloAcesso[];
+      // this.tipoServicos = data[4].json().data as TipoServico[];
+      this.tiposTelefone = data[0].json().data as TipoTelefone[];
+    });
+  }
 
-    if (this.pessoa.id == undefined && this.pessoa.colaboradorId == undefined) {
-      this.obterFerramentas();
-    } else {
-      this.obterFerramentasDisponiveis();
-    }
-    // executar a chamada abaixo no momento que finalizar o preenchimento do retorno da pessoa em edição
-    // this.obterFerramentasAssociadas();
-
-    this.svc.listar(Empresa).toPromise().then(data => {
-      this.empresas = data['data'];
-      console.log(this.empresas);
-    }
-    );
+  criarForm(pessoaColaborador?: PessoaColaboradorViewModel) {
+    pessoaColaborador = pessoaColaborador || new PessoaColaboradorViewModel();
+    // pessoaColaborador.pessoa = new Pessoa();
+    this.formularioPessoa = this.fb.group({
+      'nome': [pessoaColaborador.pessoa.nome, Validators.required],
+      'cpf': [pessoaColaborador.pessoa.cpf, [Validators.minLength(11), Validators.maxLength(11), Validators.pattern(this.numberPattern)]],
+      'rg': [pessoaColaborador.pessoa.rg],
+      'orgaoEmissor': [pessoaColaborador.pessoa.orgaoEmissor],
+      'uf': [pessoaColaborador.pessoa.uFRg],
+      'documento': [pessoaColaborador.pessoa.documento],
+      'tipoTelefone': [pessoaColaborador.tipoTelefone, Validators.required],
+    });
   }
 
   AddTelefone() {
-    this.pessoa.telefones = this.telefones;
+    const formObj = this.formularioPessoa.value;
+    this.telefone.tipoTelefone = formObj.tipoTelefone.id;
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
-  }
-  onKeydown() {
-    this.pessoa.telefones = this.telefones;
-    this.telefones.push(this.telefone);
-    // this.telefone = new Telefone();
+    // this.tipoTelefone = new TipoTelefone();
   }
 
-  SelecionarEmpresa(empresaId: number) {
-    this.empresaId = empresaId;
+  onKeydown() {
+    this.telefones.push(this.telefone);
+    // this.telefone = new Telefone();
   }
 
   isTelRequired(): boolean {
@@ -75,114 +90,4 @@ export class CadastroPessoasComponent implements OnInit {
     }
     return false;
   }
-
-  isTipoPessoaRequired(): boolean {
-    if (this.pessoa.tipo === undefined) {
-      return true;
-    }
-    return false;
-  }
-
-  isPerfilRequired(): boolean {
-    if (this.colaborador.perfil === undefined) {
-      return true;
-    }
-    return false;
-  }
-
-  RemoverTelefone(telefone: Telefone) {
-    this.telefones.splice(this.telefones.indexOf(telefone, 1));
-  }
-
-  Salvar(form: NgForm) {
-    this.msgErro = null;
-    this.msgSucesso = null;
-    // tslint:disable-next-line:triple-equals
-    if (this.pessoa.tipo == 1) {
-      const pessoaColaborador = new PessoaColaboradorViewModel();
-      pessoaColaborador.colaborador = this.colaborador;
-      pessoaColaborador.pessoa = this.pessoa;
-
-      this.svc.postViewModel(pessoaColaborador, 'pessoa/CriarPessoaColaborador')
-        .toPromise().then(
-          data => {
-            this.msgSucesso = 'Colaborador cadastrado com sucesso!';
-          },
-          error => {
-            this.msgErro = 'Erro ao salvar colaborador';
-          }
-        );
-    } else {
-      this.pessoa.empresaId = this.empresaId;
-      this.svc.salvar(this.pessoa, Pessoa)
-        .toPromise().then(
-          data => {
-            this.msgSucesso = 'Terceiro cadastrado com sucesso!';
-          },
-          error => {
-            this.msgErro = 'Erro ao salvar terceiro';
-          }
-        );
-    }
-
-    form.reset();
-    this.telefones = [];
-
-  }
-
-  Cancelar() {
-    this.router.navigate(['/template/pessoas']);
-  }
-
-  adicionarFerramenta() {
-    if (this.paraAdicionar.length == 0) {
-      alert('Selecione uma ferramenta para adicionar');
-      return;
-    } else {
-      this.paraAdicionar.forEach(a => {
-        let item = this.disponiveis.find(f => f.id == +a);
-        let itemIndex = this.disponiveis.indexOf(item);
-        this.associados.push(item);
-        this.disponiveis.splice(itemIndex, 1);
-      });
-      this.paraAdicionar = [];
-    }
-  }
-  removerFerramenta() {
-    if (this.paraRemover.length == 0) {
-      alert('Selecione uma ferramenta para remover');
-      return;
-    } else {
-      this.paraRemover.forEach(a => {
-        let item = this.associados.find(f => f.id == +a);
-        let itemIndex = this.associados.indexOf(item);
-        this.disponiveis.push(item);
-        this.associados.splice(itemIndex, 1);
-      });
-      this.paraRemover = [];
-    }
-  }
-
-  obterFerramentasDisponiveis() {
-
-  }
-
-  obterFerramentasAssociadas() {
-
-  }
-
-  obterFerramentas() {
-    this.svc.listar(Ferramenta, null, "ObterTodos").toPromise().then(
-      data => {
-        if (data.sucesso) {
-          if (data.data != null && data.data !== undefined) {
-            this.disponiveis = data.data;
-            console.log(data)
-            console.log(this.disponiveis);
-          }
-        }
-      }
-    );
-  }
-
 }

@@ -3,8 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Projeto } from 'src/app/_models/projeto.model';
+import { Status } from 'src/app/_models/status.model';
 import { Router } from '@angular/router';
 import { NovoProjetoComponent } from './actions/novo-projeto/novo-projeto.component';
+import { ProjetoPessoa } from 'src/app/_models/projetopessoa.model';
+import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-projetos',
@@ -13,35 +16,84 @@ import { NovoProjetoComponent } from './actions/novo-projeto/novo-projeto.compon
 })
 export class ProjetosComponent implements OnInit {
   title = 'Projetos';
+
   projetos: any;
   pessoas: any;
-  
-  constructor(private router: Router, private svc: GenericService) { }
+  status: Status[] = [];
+  statusSelecionados = [
+      {id: 1, descricao: 'Em Aprovação', checked: true},
+      {id: 2, descricao: 'Em Execução', checked: true},
+      {id: 3, descricao: 'Cancelado', checked: true},
+      {id: 4, descricao: 'Concluído', checked: true}
+  ];
+  filtroProjeto = new Projeto();
+  form: FormGroup;
+
+  constructor(private router: Router, private svc: GenericService, private fb: FormBuilder) {
+
+  }
 
   ngOnInit() {
-    this.svc.listar(Projeto)
-      .toPromise().then(
-        (result) => {
-          console.log(result);
-          this.projetos = result.data;
-        },
-        (error) => {
+    this.filtrar();
+  }
 
-        }
-      );
-    this.svc.listar(Pessoa)
-      .toPromise().then(
-        (result) => {
-          console.log(result);
-          this.pessoas = result['data'];
-        },
-        (error) => {
-        }
-      );
+  mudarStatus(id) {
+    this.statusSelecionados.find(x => x.id == id).checked = !(this.statusSelecionados.find(x => x.id == id).checked)
+  }
+
+  mostrarStatus(id) : boolean {
+    return this.statusSelecionados.find(x => x.id == id).checked
   }
 
   detalheProjeto(projeto: Projeto): void {
     this.router.navigate([`/template/projetos/novo-projeto/${projeto.id}`]);
   }
 
+  listarPessoas(projetoId: number) {
+    this.svc.listar(ProjetoPessoa, null, `PessoasProjeto/${projetoId}`).toPromise().then(
+      s => { console.log(s.data); },
+      e => { let err = e.json(); alert(`Erro ${err.mensagem}`); }
+    )
+  }
+  contar(lista: Array<any>): number {
+    let cont = 0;
+    lista.forEach(element => {
+     //if(this.mostrarStatus(this.statusSelecionados.find(x => x.id == element.status.id).id))
+      if(this.mostrarStatus(element.status.id))
+        cont++;
+    });
+    console.log("total elementos encontrados = " + cont);
+    return cont;
+  }
+
+  filtrar() {
+    this.filtroProjeto.ativo = true;
+
+    this.svc.listar(Projeto, this.filtroProjeto).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.projetos = s.data;
+          }
+        }
+      }
+    );
+    this.svc.listar(Pessoa)
+      .toPromise().then(
+        (result) => {
+          this.pessoas = result['data'];
+        },
+        (error) => {
+        }
+      );
+      this.svc.listar(Status).toPromise().then(
+        s => {
+          if (s.sucesso) {
+            if (s.data != null && s.data !== undefined) {
+              this.status = s.data;
+            }
+          }
+        }
+      );
+    }
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Projeto } from '../../../../../../_models/projeto.model';
 import { GenericService } from '../../../../../../_services/generic.service';
 import { Empresa } from '../../../../../../_models/empresa.model';
+import { Status } from '../../../../../../_models/status.model';
 
 
 @Component({
@@ -19,10 +20,7 @@ export class DadosPrincipaisComponent implements OnInit {
     private router: Router) { }
   dadosPrincipaisForm: FormGroup;
   empresas: Empresa[] = [];
-  // tecnologia: Tecnologia[] = [];
-  // sigla: Sigla[] = [];
-  // diretoria: Diretoria[] = [];
-  // superintendencia: Superintendencia[] = [];
+  status: Status[] = [];
 
   ngOnInit() {
     this.projeto = new Projeto();
@@ -49,7 +47,8 @@ export class DadosPrincipaisComponent implements OnInit {
         'qtdHorasServico3': [objProjeto.qtdHorasServico3],
         'escopoProjeto': [objProjeto.escopoProjeto, Validators.required],
         'foraEscopoProjeto': [objProjeto.foraEscopoProjeto, Validators.required],
-        'premissas': [objProjeto.premissas, Validators.required]
+        'premissas': [objProjeto.premissas, Validators.required],
+        'statusProjetoId': [objProjeto.status, Validators.required]
       }
     );
   }
@@ -62,12 +61,13 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.empresaId = values.empresaId;
     this.projeto.dataInicio = values.dataInicio;
     this.projeto.dataPrevista = values.dataPrevista;
-    this.projeto.qtdHorasServico1 = values.qtdHorasServico1 ? values.qtdHorasServico1.split(':')[0] : 0;
-    this.projeto.qtdHorasServico2 = values.qtdHorasServico2 ? values.qtdHorasServico2.split(':')[0] : 0;
-    this.projeto.qtdHorasServico3 = values.qtdHorasServico3 ? values.qtdHorasServico3.split(':')[0] : 0;
+    this.projeto.qtdHorasServico1 = values.qtdHorasServico1;
+    this.projeto.qtdHorasServico2 = values.qtdHorasServico2;
+    this.projeto.qtdHorasServico3 = values.qtdHorasServico3;
     this.projeto.escopoProjeto = values.escopoProjeto;
     this.projeto.foraEscopoProjeto = values.foraEscopoProjeto;
     this.projeto.premissas = values.premissas;
+    this.projeto.status = values.statusProjetoId;
   }
 
   private carregarDadosForm() {
@@ -82,25 +82,30 @@ export class DadosPrincipaisComponent implements OnInit {
     this.dadosPrincipaisForm.get("escopoProjeto").setValue(this.projeto.escopoProjeto);
     this.dadosPrincipaisForm.get("foraEscopoProjeto").setValue(this.projeto.foraEscopoProjeto);
     this.dadosPrincipaisForm.get("premissas").setValue(this.projeto.premissas);
+    this.dadosPrincipaisForm.get("statusProjetoId").setValue(this.projeto.status);
   }
 
   Adicionar() {
     this.obterDadosForm();
-    this.svc.salvar(this.projeto, Projeto)
-      .toPromise().then((data: any) => {
-        switch (data.codigo) {
-          case 200:
-            window.alert('Projeto adicionado com sucesso!');
-            this.getProjeto.emit("1");
-            break;
-          default:
-            window.alert('erro: ' + data.mensagem);
-            break;
-        }
-      },
-        error => {
-          alert('Erro ao tentar adicionar.');
-        });
+    if (this.projeto.id > 0) {
+      this.svc.salvar(this.projeto, Projeto)
+        .toPromise().then((data: any) => {
+          switch (data.codigo) {
+            case 200:
+              window.alert('Projeto adicionado com sucesso!');
+              this.getProjeto.emit(JSON.stringify(this.projeto));
+              break;
+            default:
+              window.alert('erro: ' + data.mensagem);
+              break;
+          }
+        },
+          error => {
+            alert('Erro ao tentar adicionar.');
+          });
+    } else {
+      this.getProjeto.emit(JSON.stringify(this.projeto));
+    }
   }
 
   cancelar() {
@@ -163,6 +168,15 @@ export class DadosPrincipaisComponent implements OnInit {
     //     }
     //   }
     // );
+    this.svc.listar(Status).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.status = s.data;
+          }
+        }
+      }
+    );
   }
 
 }
