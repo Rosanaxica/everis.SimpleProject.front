@@ -1,6 +1,12 @@
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+/* parte personalizada - material design*/
 .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {background-color: #9AAE04}
 .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {background-color: rgba(154,174,4, .6)}
+.custom-control-input:not(:disabled):active~.custom-control-label::before {background-color: rgba(154,174,4, .4); border-color: rgba(154,174,4, .6); color:  rgb(154,174,4); }
+.custom-control-input:focus~.custom-control-label::before {box-shadow: 0 0 0 0.2rem rgba(90,90,90,.15)}
+.custom-control-input:focus:not(:checked)~.custom-control-label::before {border-color: #ccc}
+.custom-control-input:checked~.custom-control-label::before {background-color: #9AAE04; border:1px  #9AAE04 solid; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(112,115,114, 0.6); outline: 0 none;}
 
 /*!
  parte personalizada
@@ -35,16 +41,12 @@
  .custom-checkbox, .custom-radio {line-height: 25px;}
  .everis-branco {color:rgb(255,255,255)}
 #mat-form-field-label-1{color:rgb(112,115,114);}
-.mat-form-field.mat-focused .mat-form-field-ripple{background-color:rgb(112,115,114);}
- 
+.mat-form-field.mat-focused .mat-form-field-ripple{background-color:rgb(112,115,114);} 
  .cursor-pointer {cursor: pointer}
  .click:hover, .click:focus {background: rgba(154, 174, 4, .3)}
  input[type='text'].no-shadow {box-shadow: none}
  .subtitulo {font-size: 16px; font-weight: bold}
- .custom-control-input:checked~.custom-control-label::before {background-color: #9AAE04; border:1px  #9AAE04 solid; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(112,115,114, 0.6); outline: 0 none;};
- .custom-control-input:focus~.custom-control-label::before {box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(112,115,114, 0.6); outline: 0 none;border-color: red!important};
  
-
  /*!
  parte padrão
  */

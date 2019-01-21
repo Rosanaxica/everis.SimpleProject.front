@@ -13,10 +13,10 @@
   <div class="col">
     <h1 class="titulo mb-0">Nova Pessoa</h1>
   </div>
-  <nav class="col d-flex justify-content-end">
+  <div class="col d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" [disabled]="!form.valid || telefones.length === 0" (click)="Salvar(form)">Salvar</button>
     <button type="button" class="btn cancelar" (click)="Cancelar()">Cancelar</button>
-  </nav>
+  </div>
   <hr class="mt-2" />
 </div>
 
@@ -332,10 +332,10 @@
       </fieldset> -->
       <!-- Fim Foto -->
 
-      <nav class="col d-flex justify-content-end mt-4">
+      <div class="col d-flex justify-content-end mt-4">
         <button type="button" class="btn everis mr-2" [disabled]="!form.valid || telefones.length === 0" (click)="Salvar(form)">Salvar</button>
         <button type="button" class="btn cancelar">Cancelar</button>
-      </nav>
+      </div>
     </div>
   </div>
 

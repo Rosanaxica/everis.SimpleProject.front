@@ -9,16 +9,16 @@
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>
   </div>
-  <nav class="col-3 d-flex justify-content-end">
+  <div class="col-3 d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" [routerLink]="['novo-projeto']">Novo Projeto +</button>
-  </nav>
+  </div>
 </div>
 
 <div class="border col-12 mt-3 mb-4">
   <div class="custom-control-inline col-2 mt-2">
-  <small><b>Status do projeto:</b></small>
+    <small><b>Status do projeto:</b></small>
   </div>
-  <div *ngFor="let st of status"  class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
+  <div *ngFor="let st of status" class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
     <input class="custom-control-input" value="{{st.id}}" id="{{st.id}}" type="checkbox" checked (change)="mudarStatus(st.id)">
     <label class="custom-control-label" for="{{st.id}}">
       <small>{{ st.descricao }}</small>
@@ -84,15 +84,15 @@
     </div>
 
     <!--.Status-->
-    <div class="col-md-2 col-xs-12" >
+    <div class="col-md-2 col-xs-12">
       <span class="badge p-2" [ngClass]="{'everis-amarelo': projeto.status.descricao == 'Aguardando Aprovação', 
                                           'everis': projeto.status.descricao == 'Em Desenvolvimento',
                                           'everis-azul': projeto.status.descricao == 'Concluído',
                                           'everis-azul': projeto.status.descricao == 'Entregue',
                                           'everis-laranja': projeto.status.descricao == 'Aguardando Abertura da SS',
                                           'danger': projeto.status.descricao == 'Cancelado',
-                                          'bg-gray': projeto.status.descricao == 'Proposta'}"
-        >{{ projeto.status.descricao }}</span>
+                                          'bg-gray': projeto.status.descricao == 'Proposta'}">{{
+        projeto.status.descricao }}</span>
       <small>
         <p>Inicio: {{ projeto.dataInicio | dateFormat }}</p>
       </small>
