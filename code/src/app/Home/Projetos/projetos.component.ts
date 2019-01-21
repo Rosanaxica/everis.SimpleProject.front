@@ -61,7 +61,6 @@ export class ProjetosComponent implements OnInit {
   contar(lista: Array<any>): number {
     let cont = 0;
     lista.forEach(element => {
-     //if(this.mostrarStatus(this.statusSelecionados.find(x => x.id == element.status.id).id))
       if(this.mostrarStatus(element.status.id))
         cont++;
     });
