@@ -14,27 +14,29 @@
   </div>
 </div>
 
-<div class="border col-12 mt-3 mb-4">
-  <div class="custom-control-inline col-2 mt-2">
+<div class="row border no-gutters mt-4 mb-4 p-4">
+  <div class="col-md-3 col-lg-2">
     <small><b>Status do projeto:</b></small>
   </div>
-  <div *ngFor="let st of status" class="custom-control custom-checkbox custom-control-inline col-2 mt-2">
-    <input class="custom-control-input" value="{{st.id}}" id="{{st.id}}" type="checkbox" checked (change)="mudarStatus(st.id)">
-    <label class="custom-control-label" for="{{st.id}}">
-      <small>{{ st.descricao }}</small>
-    </label>
+  <div class="col-md-9 col-lg-10">
+    <div *ngFor="let st of status" class="custom-control custom-checkbox custom-control-inline">
+      <input class="custom-control-input" value="{{st.id}}" id="{{st.id}}" type="checkbox" checked (change)="mudarStatus(st.id)">
+      <label class="custom-control-label" for="{{st.id}}">
+        <small>{{ st.descricao }}</small>
+      </label>
+    </div>
   </div>
 </div>
 
-<div class="row">
-  <hr class="mt-2 col-11" />
+<div class="row no-gutters">
+  <hr class="mt-2 col-12" />
   <div class="col-md-1 col-xs-1">&nbsp;</div>
   <div class="col-md-2 ml-2 col-xs-2 "><strong>Projeto</strong></div>
   <div class="col-md-2 col-xs-2"><strong>Andamento</strong></div>
   <div class="col-md-2 col-xs-2 "><strong>Equipes</strong></div>
   <div class="col-md-2 col-xs-2 "><strong>Código do projeto</strong></div>
   <div class="col-md-2 col-xs-2 "><strong>Status</strong></div>
-  <hr class="mt-2 col-11">
+  <hr class="mt-2 col-12">
 </div>
 
 <div *ngFor="let projeto of projetos" class="cursor-pointer">
