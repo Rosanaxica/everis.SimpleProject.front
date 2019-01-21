@@ -22,7 +22,7 @@ export class LoginService {
             .toPromise().then(
                 data => {
                     localStorage.setItem('token', data.token);
-                    this.route.navigate(['/template']);
+                    this.route.navigate(['/dashboard']);
                     return true;
                 },
                 error => {
