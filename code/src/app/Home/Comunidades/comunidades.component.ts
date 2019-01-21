@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Squad } from 'src/app/_models/squad.model';
+import { Comunidade } from 'src/app/_models/comunidade.model';
+
+// import 'rxjs/operator/map';
 
 @Component({
-  selector: 'app-squad',
-  templateUrl: './squad.component.html',
-  styleUrls: ['./squad.component.css']
+  selector: 'app-comunidades',
+  templateUrl: './comunidades.component.html',
+  styleUrls: ['./comunidades.component.css']
 })
-export class SquadComponent implements OnInit {
-
+export class ComunidadesComponent implements OnInit {
   constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
 
-  squads: Squad[] = [];
-  filtroSquad = new Squad();
-  msgSucesso: string;
+  comunidades: Comunidade[] = [];
+  filtroComunidade = new Comunidade();
+
 
   ngOnInit() {
     this.filtrar();
@@ -27,11 +28,11 @@ export class SquadComponent implements OnInit {
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/squad/cadastro-squad/${id}`]);
+    this.router.navigate([`/comunidades/editar-comunidade/${id}`]);
   }
 
   desativar(id: number) {
-    this.svc.desativar(Squad, id).toPromise().then(
+    this.svc.desativar(Comunidade, id).toPromise().then(
       s => {
         if (s.sucesso) {
           alert('Cadastro excluído com sucesso!');
@@ -46,17 +47,29 @@ export class SquadComponent implements OnInit {
     );
   }
 
+  exportar() {
+    this.filtroComunidade.ativo = true;
+    this.svc.exportar(Comunidade, "xls").toPromise().then(
+      s => {
+        let result = s.json();
+        if (result.sucesso) {
+          this.svc.downloadFile(result);
+        }
+      }
+    );
+  }
+  
+
   filtrar() {
-    this.filtroSquad.ativo = true;
-    this.svc.listar(Squad, this.filtroSquad).toPromise().then(
+    this.filtroComunidade.ativo = true;
+    this.svc.listar(Comunidade, this.filtroComunidade).toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
-            this.squads = s.data;
+            this.comunidades = s.data;
           }
         }
       }
     );
   }
-
 }
