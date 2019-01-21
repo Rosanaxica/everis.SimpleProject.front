@@ -30,6 +30,7 @@ export class Pessoa extends ModeloGenerico {
     constructor() {
         super();
         this.colaborador = new Colaborador();
+        this.tipo = new TipoPessoa();
     }
 
     getKey(): string {

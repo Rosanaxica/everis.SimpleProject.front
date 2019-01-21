@@ -30,7 +30,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'primeiro-acesso', component: PrimeiroAcessoComponent },
   { path: 'esqueci-senha', component: EsqueceuSenhaComponent },
-  
+
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'mapa-site', component: MapaSiteComponent, canActivate: [AuthGuard] },
   { path: 'modelos', component: ModelosComponent, canActivate: [AuthGuard] },
@@ -38,16 +38,17 @@ const appRoutes: Routes = [
   { path: 'meus-dados', component: MeusDadosComponent, canActivate: [AuthGuard] },
   { path: 'alterar-senha', component: AlterarSenhaComponent, canActivate: [AuthGuard] },
 
-  { path: 'empresas', component: EmpresaComponent, canActivate: [AuthGuard]},
+  { path: 'empresas', component: EmpresaComponent, canActivate: [AuthGuard] },
   { path: 'empresas/incluir-empresa', component: NovaEmpresaComponent, canActivate: [AuthGuard] },
   { path: 'empresas/editar-empresa/:id', component: NovaEmpresaComponent, canActivate: [AuthGuard] },
   { path: 'empresas:sucesso', component: EmpresaComponent, canActivate: [AuthGuard] },
 
-  { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard]},
-  
-  { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard]},
-  
-  { path: 'comunidades', component: ComunidadesComponent, canActivate: [AuthGuard]},
+  { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard] },
+
+  { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard] },
+  { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard] },
+
+  { path: 'comunidades', component: ComunidadesComponent, canActivate: [AuthGuard] },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 

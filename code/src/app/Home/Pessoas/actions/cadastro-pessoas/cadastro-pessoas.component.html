@@ -1,6 +1,29 @@
+{{pessoaColaborador | json}}
 <form [formGroup]="formularioPessoa">
   <div class="card">
     <div class="card-body">
+      <!-- Inicio Tipo Pessoa -->
+      <div class="row">
+        <div class="col mb-2">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input id="radColaborador" value="1" name="tipoPessoa" formControlName="tipoPessoa" type="radio" class="custom-control-input"
+              (click)="getTipoPessoa(1)">
+            <label class="custom-control-label" for="radColaborador">Colaborador</label>
+          </div>
+
+          <div class="custom-control custom-radio custom-control-inline">
+            <input id="radTerceiro" value="3" name="tipoPessoa" formControlName="tipoPessoa" type="radio" class="custom-control-input"
+              (click)="getTipoPessoa(3)">
+            <label class=" custom-control-label" for="radTerceiro">Terceiro</label>
+          </div>
+
+          <span class="spanAtention" *ngIf="formularioPessoa.controls.tipoPessoa.invalid">
+            <i class="fas fa-exclamation-triangle"></i>
+            Informe um tipo de pessoa
+          </span>
+        </div>
+      </div>
+      <!-- Fim Tipo Pessoa -->
       <!-- Inicio Nome -->
       <div class="row mb-2">
         <div class="col-md-12">
@@ -9,6 +32,40 @@
       </div>
       <!-- Fim Nome -->
 
+      <!-- Inicio Funcional -->
+      <div class="row mb-2">
+        <div class="col-md-2">
+          <input type="text" class="form-control" id="funcional" name="funcional" placeholder="*Funcional"
+            formControlName="funcional">
+        </div>
+        <!-- Fim Funcional -->
+        <!-- Inicio Diretoria -->
+        <div class="col-md-2">
+          <select class="form-control" id="diretoria" name="diretoria" formControlName="diretoria">
+            <option value="" disabled selected="selected">Diretoria</option>>
+            <option *ngFor="let i of diretorias" value="{{i.id}}">{{i.descricao}}</option>
+          </select>
+        </div>
+        <!-- Inicio Sexo -->
+        <div class="col mb-2 mt-2">
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="sexoMasc" value="Masculino" name="sexo" formControlName="sexo" class="custom-control-input">
+            <label class="custom-control-label" for="sexoMasc">Masculino</label>
+          </div>
+
+          <div class="custom-control custom-radio custom-control-inline">
+            <input type="radio" id="sexoFem" value="Feminino" name="sexo" formControlName="sexo" class="custom-control-input">
+            <label class="custom-control-label" for="sexoFem">Feminino</label>
+          </div>
+
+          <span class="spanAtention" *ngIf="formularioPessoa.controls.sexo.invalid">
+            <i class="fas fa-exclamation-triangle"></i>
+            Informe o sexo
+          </span>
+        </div>
+        <!-- Fim Sexo -->
+      </div>
+      <!-- Fim Diretoria -->
       <!-- Inicio CPF e  Documento-->
       <fieldset class="col-12 border pb-4">
         <legend class="col-form-legend col-4"><small>Documentos Pessoais</small></legend>
@@ -22,6 +79,8 @@
               placeholder="Outro Documento">
           </div>
         </div>
+
+        <!-- Inicio Dados RG-->
         <div class="row mb-2">
           <div class="col-md-2">
             <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg">
@@ -30,9 +89,10 @@
             <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor"
               formControlName="orgaoEmissor">
           </div>
+
           <div class="col-md-2">
             <select class="form-control" id="uf" name="uf" formControlName="uf">
-              <option value="0" disabled="true" selected="true">Selecione uma UF</option>
+              <option value="" disabled selected="selected">Selecione a UF</option>>
               <option value="AC">AC</option>
               <option value="AL">AL</option>
               <option value="AP">AP</option>
@@ -62,6 +122,7 @@
             </select>
           </div>
         </div>
+        <!-- Fim Dados RG-->
       </fieldset>
       <!-- Fim CPF e Documento -->
       <!-- Inicio Telefone -->
@@ -114,8 +175,239 @@
           </tbody>
         </table>
       </div> -->
+        <!-- Fim Telefone -->
+        <!-- Inicio E-mail -->
+        <div class="row mb-2">
+          <div class="col-md-12">
+            <input type="email" class="form-control" formControlName="email" name="email" placeholder="*E-mail">
+          </div>
+        </div>
+        <!-- Fim E-mail -->
+        <!-- Inicio E-mail Corp -->
+        <div *ngIf="pessoaColaborador.pessoa.tipoId == 1">
+          <div class="row mb-2">
+            <div class="col-md-12">
+              <input type="email" class="form-control" name="emailCorp" formControlName="emailCorp" placeholder="*E-mail Corporativo">
+            </div>
+          </div>
+        </div>
+        <!-- Fim E-mail Corp -->
       </fieldset>
-      <!-- Fim Telefone -->
+      <fieldset class="col-12 border pb-4" *ngIf="pessoaColaborador.pessoa.tipoId == 3">
+        <legend class="col-form-legend col-4"><small>Informações de Terceiros</small></legend>
+        <!-- Inicio Empresa -->
+        <div class="row mb-2">
+          <div class="col-md-2">
+            <label for="empresa">*Empresa</label>
+            <select class="form-control" name="empresa" formControlName="empresa">
+              <option *ngFor="let emp of empresas" value="emp.id">{{emp.nome}}</option>
+            </select>
+          </div>
+        </div>
+        <!-- Fim Empresa -->
+        <div class="row">
+          <div class="col mb-2 mt-2">
+            <div class="custom-control custom-checkbox custom-control-inline">
+              <input id="ckGestorTecnico" name="gestorTecnico" formControlName="gestorTecnico" type="checkbox" class="custom-control-input">
+              <label class="custom-control-label" for="ckGestorTecnico">Gestor Técnico?</label>
+            </div>
+          </div>
+        </div>
+      </fieldset>
+
+      <div *ngIf="pessoaColaborador.pessoa.tipoId == 1">
+        <fieldset class="col-12 border pb-4">
+          <legend class="col-form-legend col-4"><small>Dados do Colaborador</small></legend>
+          <div class="row mb-2">
+            <div class="col-md-2">
+              <input type="text" class="form-control" id="racf" name="racf" placeholder="RACF" formControlName="racf">
+            </div>
+            <div class="col-md-4">
+              <input type="text" class="form-control" id="nomeMaquina" name="nomeMaquina" placeholder="Nome da Máquina"
+                formControlName="nomeMaquina">
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-3">
+              <label for="empresa">*Tipo de Contrato</label>
+              <select class="form-control" name="tipoContrato" formControlName="tipoContrato">
+                <option value="Terceirizado">Terceirizado</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-xs-12 col-12 col-md-4 form-group">
+              <label for="dataNascimento">Data de Nascimento</label>
+              <input type="text" class="form-control" placeholder="Dia/Mês/Ano" name="dataNascimento" formControlName="dataNascimento"
+                bsDatepicker [(bsValue)]="dataNascimento" value="{{ dataNascimento | date:'dd/MM/yyyy' }}" autocomplete="off">
+              <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
+                <i class="fa fa-times mr-2"></i>
+                <small>Por Favor, informe a data incial do periodo.</small>
+              </div> -->
+            </div>
+            <div class="col-xs-12 col-12 col-md-4 form-group">
+              <label for="dataNascimento">Data de Admissão</label>
+              <input type="text" class="form-control" placeholder="Dia/Mês/Ano" name="dataAdmissao" formControlName="dataAdmissao"
+                bsDatepicker [(bsValue)]="dataAdmissao" value="{{ dataAdmissao | date:'dd/MM/yyyy' }}" autocomplete="off">
+              <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
+                  <i class="fa fa-times mr-2"></i>
+                  <small>Por Favor, informe a data incial do periodo.</small>
+                </div> -->
+            </div>
+            <div class="col-xs-12 col-12 col-md-4 form-group">
+              <label for="dataNascimento">Data de Desmissão</label>
+              <input type="text" class="form-control" placeholder="Dia/Mês/Ano" name="dataDemissao" formControlName="dataDemissao"
+                bsDatepicker [(bsValue)]="dataDemissao" value="{{ dataDemissao | date:'dd/MM/yyyy' }}" autocomplete="off">
+              <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
+                    <i class="fa fa-times mr-2"></i>
+                    <small>Por Favor, informe a data incial do periodo.</small>
+                  </div> -->
+            </div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-md-3">
+              <label for="empresa">*Função</label>
+              <select class="form-control" name="funcao" formControlName="funcao">
+                <option *ngFor="let i of funcoes" value="i.id">{{i.descricao}}</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="empresa">*Tipo de Serviço</label>
+              <select class="form-control" name="tipoServico" formControlName="tipoServico">
+                <option *ngFor="let i of tipoServicos" value="i.id">{{i.descricao}}</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="empresa">*Polo de Acesso</label>
+              <select class="form-control" name="poloAcesso" formControlName="poloAcesso">
+                <option *ngFor="let i of polosAcesso" value="i.id">{{i.descricao}}</option>
+              </select>
+            </div>
+            <div class="col-md-3">
+              <label for="empresa">*Área Contratante</label>
+              <select class="form-control" name="areaContratante" formControlName="areaContratante">
+                <option *ngFor="let i of areasContratantes" value="i.id">{{i.descricao}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row mb-2">
+            <div class="col-md-4">
+              <label for="empresa">*Gestor Técnico</label>
+              <select class="form-control" name="gestorResponsavel" formControlName="gestorResponsavel">
+                <option *ngFor="let i of gestores" value="i.id">{{i.nome}}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col mb-2">
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input id="ckClt" name="clt" formControlName="clt" type="checkbox" class="custom-control-input">
+                <label class="custom-control-label" for="ckClt">CLT?</label>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col mb-2">
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input id="ckScf" name="scf" formControlName="scf" type="checkbox" class="custom-control-input">
+                <label class="custom-control-label" for="ckScf">SCF?</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col mb-2">
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input id="ckOcupacaoFisica" name="ocupacaoFisica" formControlName="ocupacaoFisica" type="checkbox"
+                  class="custom-control-input">
+                <label class="custom-control-label" for="ckOcupacaoFisica">Ocupacao Física Polo Administrativos?</label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col mb-2">
+              <div class="custom-control custom-checkbox custom-control-inline">
+                <input id="ckExclusivoCliente" name="exclusivoCliente" formControlName="exclusivoCliente" type="checkbox"
+                  class="custom-control-input">
+                <label class="custom-control-label" for="ckExclusivoCliente">Exclusivo Cliente?</label>
+              </div>
+            </div>
+          </div>
+
+        </fieldset>
+
+        <fieldset class="col-12 border pb-4">
+          <legend class="col-form-legend col-4"><small>INFORMAÇÔES DE ACESSOS</small></legend>
+          <!-- Inicio Painel Ferramentas -->
+          <mat-expansion-panel class="mb-1">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Ferramentas
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-5 p-2">
+                <label>Ferramentas Associadas</label>
+                <select multiple formControlName="ferrAssociadas" class="form-control" name="ferrAssociadas">
+                  <option *ngFor="let i of ferramentasAssociadas" value="{{i.id}}">{{i.descricao}}</option>
+                </select>
+              </div>
+              <div class="col-2 mt-4 text-center">
+
+                <div class="mb-2">
+                  <button class="btn btn-success" (click)="adicionarFerramenta()">
+                    <<</button> </div> <div>
+                      <button class="btn btn-danger" (click)="removerFerramenta()">>></button>
+                </div>
+
+              </div>
+              <div class="col-5 p-2 border-1">
+                <label>Ferramentas Disponiveis</label>
+                <select multiple formControlName="ferrDisponiveis" class="form-control" name="ferrDisponiveis">
+                  <option *ngFor="let i of ferramentasDisponiveis" value="{{i.id}}">{{i.descricao}}</option>
+                </select>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <!-- Fim Painel Ferramentas -->
+
+          <!-- Inicio Painel Siglas -->
+          <mat-expansion-panel class="mb-1">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                Siglas
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div class="row">
+              <div class="col-5 p-2">
+                <label>Siglas Associadas</label>
+                <select multiple formControlName="sigAssociadas" class="form-control" name="sigAssociadas">
+                  <option *ngFor="let i of siglasAssociadas" value="{{i.id}}">{{i.descricao}}</option>
+                </select>
+              </div>
+              <div class="col-2 mt-4 text-center">
+
+                <div class="mb-2">
+                  <button class="btn btn-success" (click)="adicionarSigla()">
+                    <<</button> </div> <div>
+                      <button class="btn btn-danger" (click)="removerSigla()">>></button>
+                </div>
+
+              </div>
+              <div class="col-5 p-2 border-1">
+                <label>Siglas Disponiveis</label>
+                <select multiple formControlName="sigDisponiveis" class="form-control" name="sigDisponiveis">
+                  <option *ngFor="let i of siglasDisponiveis" value="{{i.id}}">{{i.descricao}}</option>
+                </select>
+              </div>
+            </div>
+          </mat-expansion-panel>
+          <!-- Fim Painel Siglas -->
+        </fieldset>
+      </div>
     </div>
   </div>
 </form>
