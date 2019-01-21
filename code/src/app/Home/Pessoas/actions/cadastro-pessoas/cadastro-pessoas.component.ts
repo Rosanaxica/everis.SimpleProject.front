@@ -68,12 +68,18 @@ export class CadastroPessoasComponent implements OnInit {
       'uf': [pessoaColaborador.pessoa.uFRg],
       'documento': [pessoaColaborador.pessoa.documento],
       'tipoTelefone': [pessoaColaborador.tipoTelefone, Validators.required],
+      'numeroTelefone': [this.telefone.numeroTelefone, [Validators.minLength(10), Validators.maxLength(15), Validators.pattern("[0-9]{10,15}")]],
     });
   }
 
   AddTelefone() {
     const formObj = this.formularioPessoa.value;
-    this.telefone.tipoTelefone = formObj.tipoTelefone.id;
+    var dadosTipo = formObj.tipoTelefone.toString().split('-');
+    this.telefone.tipoTelefone = new TipoTelefone();
+    this.telefone.tipoTelefone.id = dadosTipo[0];
+    this.telefone.tipoTelefone.descricao = dadosTipo[1];
+    this.telefone.tipoId = dadosTipo[0]
+    this.telefone.numeroTelefone = formObj.numeroTelefone;
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
     // this.tipoTelefone = new TipoTelefone();

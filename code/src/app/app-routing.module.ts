@@ -44,8 +44,11 @@ const appRoutes: Routes = [
   { path: 'empresas:sucesso', component: EmpresaComponent, canActivate: [AuthGuard] },
 
   { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard]},
   
   { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard]},
+  { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard]},
+  { path: 'cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard]},
   
   { path: 'comunidades', component: ComunidadesComponent, canActivate: [AuthGuard]},
 
