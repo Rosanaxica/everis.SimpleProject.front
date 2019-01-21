@@ -85,16 +85,11 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let pp of projetoPessoa">
+    <tr (change)="getAtribuicao(pp)" *ngFor="let pp of projetoPessoa">
       <td class="align-middle">{{ pp.pessoa.nome }}</td>
       <td>
-        <select id="select1" class="custom-select">
-          <option selected>Desenvolvedor</option>
-          <option value="Tester">Tester</option>
-          <option value="Gerente">Gerente</option>
-          <option value="Líder">Líder</option>
-          <option value="Analista responsável de TI - técnico">Analista responsável de TI - técnico</option>
-          <option value="Analista responsável Outsourcing">Analista responsável Outsourcing</option>
+        <select (change)="popAtribuicao($event.target.value)" class="form-control" id="atribuicaoId" name="atribuicaoId">
+          <option *ngFor="let atribuicao of atribuicoes" value="{{atribuicao.id}}">{{atribuicao.atribuicao}}</option>
         </select>
       </td>
       <td>
@@ -111,8 +106,8 @@
 </table>
 
 <div class="row align-items-center mt-2 mb-4">
-  <nav class="col d-flex justify-content-end">
+  <div class="col d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" (click)="salvar()">Salvar</button>
     <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
-  </nav>
+  </div>
 </div>

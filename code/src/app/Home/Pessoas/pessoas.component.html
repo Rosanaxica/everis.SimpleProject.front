@@ -8,10 +8,10 @@
       <button class="btn btn-outline-secondary" type="button"><i class="fa fa-search"></i></button>
     </div>
   </div>
-  <nav class="col-3 d-flex justify-content-end">
+  <div class="col-3 d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" [routerLink]="['cadastro-pessoas']">Nova Pessoa +</button>
 
-  </nav>
+  </div>
   <hr class="mt-2" />
 </div>
 <div class="row">
@@ -24,12 +24,12 @@
             <div *ngIf="pessoa.colaboradorId != null;else naoColaborador" class="col-md-12 text-right">
               <span *ngIf="pessoa.colaborador != undefined && pessoa.colaborador.disponivel;else naoDisponivel" class="badge everis text-right">Disponível</span>
               <ng-template #naoDisponivel>
-                <span class="badge everis text-right">Indisponível</span>
+                <span class="badge everis-laranja text-right">Indisponível</span>
               </ng-template>
             </div>
             <ng-template #naoColaborador>
               <div class="col-md-12 text-right">
-                <span class="badge everis text-right">Não é colaborador</span>
+                <span class="badge bg-gray text-right">{{pessoa.empresa}}</span>
               </div>
             </ng-template>
             <div class="row">

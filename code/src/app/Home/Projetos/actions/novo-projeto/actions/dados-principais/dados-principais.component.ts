@@ -87,21 +87,25 @@ export class DadosPrincipaisComponent implements OnInit {
 
   Adicionar() {
     this.obterDadosForm();
-    this.svc.salvar(this.projeto, Projeto)
-      .toPromise().then((data: any) => {
-        switch (data.codigo) {
-          case 200:
-            window.alert('Projeto adicionado com sucesso!');
-            this.getProjeto.emit(JSON.stringify(this.projeto));
-            break;
-          default:
-            window.alert('erro: ' + data.mensagem);
-            break;
-        }
-      },
-        error => {
-          alert('Erro ao tentar adicionar.');
-        });
+    if (this.projeto.id > 0) {
+      this.svc.salvar(this.projeto, Projeto)
+        .toPromise().then((data: any) => {
+          switch (data.codigo) {
+            case 200:
+              window.alert('Projeto adicionado com sucesso!');
+              this.getProjeto.emit(JSON.stringify(this.projeto));
+              break;
+            default:
+              window.alert('erro: ' + data.mensagem);
+              break;
+          }
+        },
+          error => {
+            alert('Erro ao tentar adicionar.');
+          });
+    } else {
+      this.getProjeto.emit(JSON.stringify(this.projeto));
+    }
   }
 
   cancelar() {
@@ -124,6 +128,46 @@ export class DadosPrincipaisComponent implements OnInit {
         }
       }
     );
+
+    // this.svc.listar(Tecnologia).toPromise().then(
+    //   s => {
+    //     if (s.sucesso) {
+    //       if (s.data != null && s.data !== undefined) {
+    //         this.tecnologia = s.data;
+    //       }
+    //     }
+    //   }
+    // );
+
+    // this.svc.listar(Sigla).toPromise().then(
+    //   s => {
+    //     if (s.sucesso) {
+    //       if (s.data != null && s.data !== undefined) {
+    //         this.sigla = s.data;
+    //       }
+    //     }
+    //   }
+    // );
+
+    // this.svc.listar(Diretoria).toPromise().then(
+    //   s => {
+    //     if (s.sucesso) {
+    //       if (s.data != null && s.data !== undefined) {
+    //         this.diretoria = s.data;
+    //       }
+    //     }
+    //   }
+    // );
+
+    // this.svc.listar(Superintendencia).toPromise().then(
+    //   s => {
+    //     if (s.sucesso) {
+    //       if (s.data != null && s.data !== undefined) {
+    //         this.superintendencia = s.data;
+    //       }
+    //     }
+    //   }
+    // );
     this.svc.listar(Status).toPromise().then(
       s => {
         if (s.sucesso) {
@@ -134,4 +178,5 @@ export class DadosPrincipaisComponent implements OnInit {
       }
     );
   }
+
 }

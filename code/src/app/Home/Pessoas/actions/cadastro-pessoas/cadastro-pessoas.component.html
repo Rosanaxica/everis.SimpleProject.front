@@ -1,120 +1,108 @@
-<div *ngIf="msgSucesso != null && msgSucesso != undefined">
-  <div class="alert alert-success" role="alert">
-    <i class="fa fa-check mr-1"></i> {{msgSucesso}}
-  </div>
-</div>
-<div *ngIf="msgErro != null && msgErro != undefined">
-  <div class="alert alert-danger" role="alert">
-    <i class="fa fa-times mr-2"> </i> {{msgErro}}
-  </div>
-</div>
-
-<div class="row align-items-center">
-  <div class="col">
-    <h1 class="titulo mb-0">Nova Pessoa</h1>
-  </div>
-  <nav class="col d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" [disabled]="!form.valid || telefones.length === 0" (click)="Salvar(form)">Salvar</button>
-    <button type="button" class="btn cancelar" (click)="Cancelar()">Cancelar</button>
-  </nav>
-  <hr class="mt-2" />
-</div>
-
-
-<form #form="ngForm" novalidate>
+<form [formGroup]="formularioPessoa">
   <div class="card">
     <div class="card-body">
-
-      <!-- Inicio Tipo Pessoa -->
-      <div class="row">
-        <div class="col mb-2">
-          <div class="custom-control custom-radio custom-control-inline">
-            <input id="radColaborador" value="1" name="meuradio" [(ngModel)]="pessoa.tipo" #ctrlTipoPessoa="ngModel"
-              type="radio" class="custom-control-input" [required]="isTipoPessoaRequired()">
-            <label class="custom-control-label" for="radColaborador">Colaborador</label>
-          </div>
-
-          <div class="custom-control custom-radio custom-control-inline">
-            <input id="radTerceiro" value="3" name="meuradio" [(ngModel)]="pessoa.tipo" #ctrlTipoPessoa="ngModel" type="radio"
-              class="custom-control-input" [required]="isTipoPessoaRequired()">
-            <label class="custom-control-label" for="radTerceiro">Terceiro</label>
-          </div>
-
-          <span class="spanAtention" *ngIf="ctrlTipoPessoa.invalid">
-            <i class="fas fa-exclamation-triangle"></i>
-            Informe um tipo de pessoa
-          </span>
-        </div>
-      </div>
-      <!-- Fim Tipo Pessoa -->
       <!-- Inicio Nome -->
       <div class="row mb-2">
         <div class="col-md-12">
-          <input type="text" class="form-control" name="nome" [(ngModel)]="pessoa.nome" #ctrlNome="ngModel" required
-            minlength="5" autocomplete="off" placeholder="*Nome" [class.is-valid]="ctrlNome.valid" [class.is-invalid]="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
+          <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="*Nome">
         </div>
-      </div>
-
-      <div class="alert alert-success" role="alert" *ngIf="ctrlNome.valid && (ctrlNome.dirty || ctrlNome.touched)">
-        <i class="fa fa-check mr-1"></i> OK
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf="ctrlNome.invalid && (ctrlNome.dirty || ctrlNome.touched)">
-        <i class="fa fa-times mr-2"> </i> Nome obrigatório. Mínimo de 5 letras
       </div>
       <!-- Fim Nome -->
-      <!-- Inicio CPF e  Documento-->
-      <div class="row mb-2">
-        <div class="col-md-2">
-          <input type="text" class="form-control" id="nome" name="cpf" placeholder="CPF" minlength="11" maxlength="11"
-            pattern="^[0-9]*$" [(ngModel)]="pessoa.cpf" #ctrlCpf="ngModel" [class.is-valid]="ctrlCpf.valid && pessoa.cpf != undefined && pessoa.cpf > 0 "
-            [class.is-invalid]="ctrlCpf.invalid">
-        </div>
 
-        <div class="col-md-5">
-          <input type="text" class="form-control" id="nome" name="documento" placeholder="Outro Documento" [(ngModel)]="pessoa.documento">
+      <!-- Inicio CPF e  Documento-->
+      <fieldset class="col-12 border pb-4">
+        <legend class="col-form-legend col-4"><small>Documentos Pessoais</small></legend>
+        <div class="row mb-2">
+          <div class="col-md-2">
+            <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" formControlName="cpf">
+          </div>
+
+          <div class="col-md-5">
+            <input type="text" class="form-control" id="docmento" name="documento" formControlName="documento"
+              placeholder="Outro Documento">
+          </div>
         </div>
-      </div>
+        <div class="row mb-2">
+          <div class="col-md-2">
+            <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg">
+          </div>
+          <div class="col-md-2">
+            <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor"
+              formControlName="orgaoEmissor">
+          </div>
+          <div class="col-md-2">
+            <select class="form-control" id="uf" name="uf" formControlName="uf">
+              <option value="0" disabled="true" selected="true">Selecione uma UF</option>
+              <option value="AC">AC</option>
+              <option value="AL">AL</option>
+              <option value="AP">AP</option>
+              <option value="AM">AM</option>
+              <option value="BA">BA</option>
+              <option value="CE">CE</option>
+              <option value="DF">DF</option>
+              <option value="ES">ES</option>
+              <option value="GO">GO</option>
+              <option value="MA">MT</option>
+              <option value="MS">MS</option>
+              <option value="MG">MG</option>
+              <option value="PA">PA</option>
+              <option value="PB">PB</option>
+              <option value="PR">PR</option>
+              <option value="PE">PE</option>
+              <option value="PI">PI</option>
+              <option value="RJ">RJ</option>
+              <option value="RN">RN</option>
+              <option value="RS">RS</option>
+              <option value="RO">RO</option>
+              <option value="RR">RR</option>
+              <option value="SC">SC</option>
+              <option value="SP">SP</option>
+              <option value="SE">SE</option>
+              <option value="TO">TO</option>
+            </select>
+          </div>
+        </div>
+      </fieldset>
       <!-- Fim CPF e Documento -->
       <!-- Inicio Telefone -->
-      <div class="row mb-2">
-        <div class="col-md-2">
-          <select class="form-control" id="tipoTelefone" [(ngModel)]="telefone.tipoTelefone" name="tipoTelefone">
-            <option value="1">Celular</option>
-            <option value="2">Fixo</option>
-            <option value="3">Ramal</option>
-          </select>
-        </div>
+      <fieldset class="col-12 border pb-4">
+        <legend class="col-form-legend col-4"><small>Contato</small></legend>
+        <div class="row mb-2">
+          <div class="col-md-2">
+            <select class="form-control" id="tipoTelefone" name="tipoTelefone" formControlName="tipoTelefone">
+              <option *ngFor="let i of tiposTelefone" value="{{i}}">{{i.descricao}}</option>
+            </select>
+          </div>
 
-        <div class="input-group col-md-4">
+          <!-- <div class="input-group col-md-4">
           <input input type="text" (keydown.enter)="AddTelefone()" class="form-control" [(ngModel)]="telefone.numeroTelefone"
             id="telefone" name="telefone" placeholder="*Telefone" pattern="[0-9]{10,15}" minLenth="10" maxlength="15"
-            #ctrlTelefone="ngModel" [class.is-valid]="ctrlTelefone.valid" [class.is-invalid]="ctrlTelefone.invalid && (ctrlTelefone.dirty || ctrlTelefone.touched)"
             autocomplete="off" [required]="isTelRequired()">
 
           <div class="input-group-append">
-            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || telefone.tipoTelefone == undefined || ctrlTelefone.invalid"><i
+            <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="telefone.numeroTelefone == undefined || tipoTelefone == undefined || ctrlTelefone.invalid"><i
                 class="fas fa-plus"></i>
             </button>
           </div>
 
+        </div> -->
         </div>
-      </div>
 
-      <div class="alert alert-success" role="alert" *ngIf="ctrlTelefone.valid && (ctrlTelefone.dirty || ctrlTelefone.touched) && telefone.tipoTelefone != undefined">
+        <!-- <div class="alert alert-success" role="alert" *ngIf="ctrlTelefone.valid && (ctrlTelefone.dirty || ctrlTelefone.touched) && telefone.tipoTelefone != undefined">
         <i class="fa fa-check mr-1"></i> OK
       </div>
       <div class="alert alert-danger" role="alert" *ngIf="ctrlTelefone.invalid && (ctrlTelefone.dirty ||
            ctrlTelefone.touched) && telefones.length < 1">
         <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um
         telefone. Informe apenas numeros
-      </div>
+      </div> -->
 
-      <div class="row col-md-5">
+        <!-- <div class="row col-md-5">
         <table class="table table-striped">
           <tbody>
             <tr *ngFor="let telefone of telefones">
               <td class="text-center">
-                <p>{{telefone.tipoTelefone}}</p>
+                <p>{{telefone.tipoTelefone.descricao}}</p>
               </td>
               <td class="text-center">
                 <p>{{telefone.numeroTelefone}}</p>
@@ -125,225 +113,9 @@
             </tr>
           </tbody>
         </table>
-      </div>
+      </div> -->
+      </fieldset>
       <!-- Fim Telefone -->
-      <!-- Inicio E-mail -->
-      <div class="row mb-2">
-        <div class="col-md-12">
-          <input type="email" class="form-control" [(ngModel)]="pessoa.email" #ctrlEmail="ngModel" name="email"
-            placeholder="*E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$" [class.is-valid]="ctrlEmail.valid"
-            [class.is-invalid]="ctrlEmail.invalid && (ctrlEmail.dirty || ctrlEmail.touched)" required>
-        </div>
-      </div>
-
-      <div class="alert alert-success" role="alert" *ngIf="ctrlEmail.valid && (ctrlEmail.dirty || ctrlEmail.touched)">
-        <i class="fa fa-check mr-1"></i> Ok
-      </div>
-
-      <div class="alert alert-danger" role="alert" *ngIf="ctrlEmail.invalid && (ctrlEmail.dirty || ctrlEmail.touched)">
-        <i class="fa fa-times mr-2"></i> E-mail não preenchido ou no formato inválido. Ex.: email@exemplo.com
-      </div>
-      <!-- Fim E-mail -->
-      <!-- Inicio Empresa -->
-      <div class="row mb-2" *ngIf="pessoa.tipo == 3">
-        <div class="col-md-2">
-          <label for="empresa">*Empresa</label>
-          <select class="form-control" (ngModel)="empresas" (ngModelChange)="SelecionarEmpresa($event)" name="empresa"
-            [required]="pessoa.tipo == 3">
-            <option *ngFor="let emp of empresas" [ngValue]="emp.id">{{emp.nome}}</option>
-          </select>
-        </div>
-      </div>
-      <!-- Fim Empresa -->
-
-
-      <div *ngIf="pessoa.tipo == 1">
-        <!-- Inicio E-mail Corp -->
-        <div class="row mb-2">
-          <div class="col-md-12">
-            <input type="email" class="form-control" [(ngModel)]="colaborador.emailCorporativo" name="emailCorp"
-              pattern=".+@everis.com" #crtlEmailCorp="ngModel" placeholder="*E-mail Corporativo" [class.is-valid]="crtlEmailCorp.valid"
-              [class.is-invalid]="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)" [required]="pessoa.tipo == 1">
-          </div>
-        </div>
-
-        <div class="alert alert-success" role="alert" *ngIf="crtlEmailCorp.valid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)">
-          <i class="fa fa-check mr-1"></i> Ok
-        </div>
-
-        <div class="alert alert-danger" role="alert" *ngIf="crtlEmailCorp.invalid && (crtlEmailCorp.dirty || crtlEmailCorp.touched)">
-          <i class="fa fa-times mr-2"></i> E-mail "everis" não preenchido ou no formato inválido. Ex.: corp@everis.com
-        </div>
-        <!-- Fim E-mail Corp -->
-        <!-- Inicio Funcional -->
-        <div class="row mb-2">
-          <div class="col-md-4">
-            <input type="text" class="form-control" [(ngModel)]="colaborador.Funcional" name="funcional" placeholder="*Funcional"
-              #ctrlFuncional="ngModel" [class.is-valid]="ctrlFuncional.valid" [class.is-invalid]="ctrlFuncional.invalid && (ctrlFuncional.dirty || ctrlFuncional.touched)"
-              pattern="^[0-9]*$" minlength="9" maxlength="9" [required]="pessoa.tipo == 1">
-          </div>
-
-          <!-- Inicio RACF -->
-          <div class="col-md-4">
-            <input type="text" class="form-control" [(ngModel)]="colaborador.racf" name="racf" placeholder="RACF">
-          </div>
-          <!-- Fim RACF -->
-        </div>
-
-        <div class="alert alert-success" role="alert" *ngIf="ctrlFuncional.valid && (ctrlFuncional.dirty || ctrlFuncional.touched)">
-          <i class="fa fa-check mr-1"></i> Ok
-        </div>
-
-        <div class="alert alert-danger" role="alert" *ngIf="ctrlFuncional.invalid && (ctrlFuncional.dirty || ctrlFuncional.touched)">
-          <i class="fa fa-times mr-2"></i> Informe a funcional com 9 digitos
-        </div>
-        <!-- Fim Funcional -->
-        <!-- Inicio Nome da Máquina -->
-        <div class="row mb-3">
-          <div class="col-md-12">
-            <input type="text" class="form-control" [(ngModel)]="colaborador.nomeMaquina" name="vdi" placeholder="Nome da Maquina VDI">
-          </div>
-        </div>
-        <!-- Fim Nome da Máquina -->
-        <!-- Inicio Nivel Função -->
-        <div class="row mb-4">
-          <div class="col-md-2">
-            <label for="nivelFuncional">*Nivel Funcional</label>
-            <select id="nivelFuncional" name="nivelFuncional" [(ngModel)]="colaborador.funcao" class="form-control"
-              #ctrlNivel="ngModel" [class.is-valid]="ctrlNivel.valid" [class.is-invalid]="ctrlNivel.invalid && (ctrlNivel.dirty || ctrlNivel.touched)"
-              required>
-              <option value="1">SA</option>
-              <option value="2">SN</option>
-              <option value="3">STL</option>
-              <option value="4">SPL</option>
-              <option value="5">SK</option>
-              <option value="6">SKL</option>
-              <option value="7">Manager</option>
-            </select>
-          </div>
-          <!-- Fim Nivel Função -->
-          <!-- Inicio Perfil Acesso -->
-          <!-- <div class="col-md-6">
-            <div class="row">
-              <label for="perfilAcesso">Perfil de Acesso</label>
-            </div>
-
-            <div class="row">
-              <div class="custom-control custom-radio custom-control-inline">
-                <input id="radMaster" value="1" #ctrlPerfil="ngModel" name="perfilMaster" [(ngModel)]="colaborador.PerfilColaborador"
-                  type="radio" class="custom-control-input" [required]="isPerfilRequired()">
-                <label class="custom-control-label" for="radMaster">Master</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input id="radLider" value="2" #ctrlPerfil="ngModel" name="perfilLeader" [(ngModel)]="colaborador.PerfilColaborador"
-                  type="radio" class="custom-control-input" [required]="isPerfilRequired()">
-                <label class="custom-control-label" for="radLider">Leader</label>
-              </div>
-              <div class="custom-control custom-radio custom-control-inline">
-                <input id="radColaboradorPerfil" value="3" #ctrlPerfil="ngModel" name="perfilColaborador" [(ngModel)]="colaborador.PerfilColaborador"
-                  type="radio" class="custom-control-input" [required]="isPerfilRequired()">
-                <label class="custom-control-label" for="radColaboradorPerfil">Colaborador</label>
-              </div>
-              <span class="spanAtention" *ngIf="ctrlPerfil.invalid">
-                <i class="fas fa-exclamation-triangle"></i>
-                Selecione um perfil
-              </span>
-            </div>
-          </div> -->
-        </div>
-
-        <fieldset class="col-12 border pb-4">
-          <legend class="col-form-legend col-4"><small>INFORMAÇÔES DE ACESSOS</small></legend>
-          <!-- Inicio Painel Ferramentas -->
-          <mat-expansion-panel class="mb-1">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Ferramentas
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="row">
-              <div class="col-5 p-2">
-                <label>Ferramentas Associadas</label>
-                <select multiple [(ngModel)]="paraRemoverFerramentas" class="form-control" name="associados">
-                  <option *ngFor="let i of ferramentasAssociadas" value="{{i.id}}">{{i.descricao}}</option>
-                </select>
-              </div>
-              <div class="col-2 mt-4 text-center">
-
-                <div class="mb-2">
-                  <button class="btn btn-success" (click)="adicionarFerramenta()">
-                    <<</button> </div> <div>
-                      <button class="btn btn-danger" (click)="removerFerramenta()">>></button>
-                </div>
-
-              </div>
-              <div class="col-5 p-2 border-1">
-                <label>Ferramentas Disponiveis</label>
-                <select multiple [(ngModel)]="btnAdicionarFerramentas" class="form-control" name="disponiveis">
-                  <option *ngFor="let i of ferramentasDisponiveis" value="{{i.id}}">{{i.descricao}}</option>
-                </select>
-              </div>
-            </div>
-          </mat-expansion-panel>
-          <!-- Fim Painel Ferramentas -->
-
-          <!-- Inicio Painel Siglas -->
-          <mat-expansion-panel class="mb-1">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Siglas
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="row">
-              <div class="col-5 p-2">
-                <label>Siglas Associadas</label>
-                <select multiple [(ngModel)]="btnRemoverSiglas" class="form-control" name="associados">
-                  <option *ngFor="let i of siglasAssociadas" value="{{i.id}}">{{i.descricao}}</option>
-                </select>
-              </div>
-              <div class="col-2 mt-4 text-center">
-
-                <div class="mb-2">
-                  <button class="btn btn-success" (click)="adicionarSigla()">
-                    <<</button> </div> <div>
-                      <button class="btn btn-danger" (click)="removerSigla()">>></button>
-                </div>
-
-              </div>
-              <div class="col-5 p-2 border-1">
-                <label>Siglas Disponiveis</label>
-                <select multiple [(ngModel)]="btnAdicionarSiglas" class="form-control" name="disponiveis">
-                  <option *ngFor="let i of siglasDisponiveis" value="{{i.id}}">{{i.descricao}}</option>
-                </select>
-              </div>
-            </div>
-          </mat-expansion-panel>
-          <!-- Fim Painel Siglas -->
-        </fieldset>
-
-      </div>
-      <!-- Fim Perfil Acesso -->
-      <!-- Inicio Foto -->
-      <!-- <fieldset class="border pb-4 mt-4">
-        <legend class="col-form-legend col-3">Coloque a foto da pessoa</legend>
-        <div class="row">
-
-          <div class="col-2">
-            <img src="../assets/semPerfil.png" alt="Imagem da pessoa cadastrada" class="img-thumbnail ml-3">
-          </div>
-          <div class="col-8">
-            <input type="file" id="arquivo" name="arquivo" class="everis" [(ngModel)]="pessoa.FotoPath" />
-          </div>
-        </div>
-      </fieldset> -->
-      <!-- Fim Foto -->
-
-      <nav class="col d-flex justify-content-end mt-4">
-        <button type="button" class="btn everis mr-2" [disabled]="!form.valid || telefones.length === 0" (click)="Salvar(form)">Salvar</button>
-        <button type="button" class="btn cancelar">Cancelar</button>
-      </nav>
     </div>
   </div>
-
 </form>
-<hr>
