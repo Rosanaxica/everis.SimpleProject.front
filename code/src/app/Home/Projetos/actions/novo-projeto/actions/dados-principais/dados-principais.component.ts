@@ -19,6 +19,10 @@ export class DadosPrincipaisComponent implements OnInit {
     private router: Router) { }
   dadosPrincipaisForm: FormGroup;
   empresas: Empresa[] = [];
+  // tecnologia: Tecnologia[] = [];
+  // sigla: Sigla[] = [];
+  // diretoria: Diretoria[] = [];
+  // superintendencia: Superintendencia[] = [];
 
   ngOnInit() {
     this.projeto = new Projeto();
@@ -119,5 +123,46 @@ export class DadosPrincipaisComponent implements OnInit {
         }
       }
     );
+
+    // this.svc.listar(Tecnologia).toPromise().then(
+    //   s => {
+    //     if (s.sucesso) {
+    //       if (s.data != null && s.data !== undefined) {
+    //         this.tecnologia = s.data;
+    //       }
+    //     }
+    //   }
+    // );
+
+    // this.svc.listar(Sigla).toPromise().then(
+    //   s => {
+    //     if (s.sucesso) {
+    //       if (s.data != null && s.data !== undefined) {
+    //         this.sigla = s.data;
+    //       }
+    //     }
+    //   }
+    // );
+
+    // this.svc.listar(Diretoria).toPromise().then(
+    //   s => {
+    //     if (s.sucesso) {
+    //       if (s.data != null && s.data !== undefined) {
+    //         this.diretoria = s.data;
+    //       }
+    //     }
+    //   }
+    // );
+
+    // this.svc.listar(Superintendencia).toPromise().then(
+    //   s => {
+    //     if (s.sucesso) {
+    //       if (s.data != null && s.data !== undefined) {
+    //         this.superintendencia = s.data;
+    //       }
+    //     }
+    //   }
+    // );
   }
+
 }
