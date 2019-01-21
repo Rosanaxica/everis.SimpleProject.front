@@ -1,84 +1,175 @@
 <form [formGroup]="dadosPrincipaisForm">
-  <div class="form-group mt-4 row">
-    <div class="col-md-6"> Nome do Projeto
-      <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
-        placeholder="Nome do Projeto" />
-    </div>
-    <div class="col-md-3">
-      <label for="label">Empresa</label>
-      <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
-        <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
-      </select>
-    </div>
-    <div class="col-md-6">
-      <label for="label">Status do Projeto</label>
-      <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
-        <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
-      </select>
-    </div>
-  </div>
+  <fieldset class="border mb-4">
+    <legend class="col-md-1 col-form-label"><b>Projeto</b></legend>
 
-  <div class="form-group row">
-    <div class="col-md-3">
-      <label for="label">Centro de Custo</label>
-
-      <select formControlName="centroCusto" class="form-control" id="centrocusto" name="centrocusto">
-        <option value="EXT-0000000000">EXT-0000000000</option>
-        <option value="EXT-0000000000">EXT-0000000000</option>
-        <option value="EXT-0000000000">EXT-0000000000</option>
-      </select>
-
-    </div>
-    <div class="col-md-3">
-      <label for="label">Empresa</label>
-      <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
-        <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
-      </select>
-    </div>
-    <div class="col-md-3">
-      <label for="data">Data Início</label>
-      <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio"
-        bsDatepicker />
-
-    </div>
-    <div class="col-md-3">
-      <label for="data">Data Prevista</label>
-      <input type="text" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista"
-        bsDatepicker />
-
-    </div>
-  </div>
-
-  <!-- <fieldset class="border mb-3">
-
-    <legend class="col-md-3">Quantidade de Horas</legend>
     <div class="form-group row">
-      <div class="col-md-3 m-0">
-        <div class="col-md-6">
-          <label>Serviço 1</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
-        </div>
-      </div>
-      <div class="col-md-3 m-0">
-        <div class="col-md-6">
-          <label for="data">Serviço 2</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" />
-        </div>
-      </div>
-      <div class="col-md-3 m-0">
-        <div class="col-md-6">
-          <label for="data">Serviço 3</label>
-        </div>
-        <div class="col-md-6">
-          <input type="text" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" />
-        </div>
+        <div class="col-md-3 ml-2">
+       <label for="label">Status do Projeto</label>
+       <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
+        <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
+       </select>
       </div>
     </div>
-  </fieldset> -->
+
+
+    <div class="form-group mt-4 row">
+
+      <div class="col-md-3 ml-2">
+        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto"
+          placeholder="Codigo do Projeto" />
+      </div>
+      <div class="col-md-8">
+        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
+          placeholder="Nome do Projeto" />
+      </div>
+
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-3 ml-2">
+        <label for="label">Status da Proposta</label>
+        <select formControlName="ext" class="form-control" id="ext" name="ext">
+          <option value="aceitaPrimeiroEnvio">Aceita Primeiro Envio</option>
+          <option value="aceitaSegundoEnvio">Aceita Segundo Envio</option>
+          <option value="cancelado">Cancelado</option>
+          <option value="concluido">Concluido</option>
+          <option value="demandaPerdida">Demanda Perdida</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label for="data">Data Entrega Proposta</label>
+        <input type="text" formControlName="dataProposta" class="form-control" id="dataProposta" name="dataProposta"
+          bsDatepicker />
+      </div>
+
+      <div class="col-md-3">
+        <label>Duração</label>
+        <input type="number" formControlName="duracao" class="form-control" id="duracao" name="duracao" />
+      </div>
+    </div>
+
+
+    <div class="form-group row">
+      <div class="col-md-3 ml-2">
+        <label for="data">Data Recebida</label>
+        <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio"
+          bsDatepicker />
+
+      </div>
+      <div class="col-md-3">
+        <label for="data">Data Início</label>
+        <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio"
+          bsDatepicker />
+
+      </div>
+      <div class="col-md-3">
+        <label for="data">Data Prevista</label>
+        <input type="text" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista"
+          bsDatepicker />
+
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="border mb-4">
+    <legend class="col-md-2 col-form-label"><b>Dados Internos</b></legend>
+    <div class="form-group row">
+      <div class="col-md-4 ml-2">
+        <label for="label">Tecnologia</label>
+        <select formControlName="tecnologiaid" class="form-control" id="tecnologiaid" name="ext">
+          <option *ngFor="let tecnologia of tecnologia" value="{{tecnologia.id}}">{{tecnologia.nome}}</option>        
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="label">EXT</label>
+
+        <select formControlName="ext" class="form-control" id="ext" name="ext">
+          <option value="EXT-0000000000">EXT-0000000000</option>
+          <option value="EXT-0000000000">EXT-0000000000</option>
+          <option value="EXT-0000000000">EXT-0000000000</option>
+        </select>
+      </div>
+
+      <div class="col-md-1">
+        <label for="label">Tamanho</label>
+
+        <select formControlName="tamanho" class="form-control" id="tamanho" name="ext">
+          <option value="P">P</option>
+          <option value="M">M</option>
+          <option value="G">G</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="label">Tipo de Demanda</label>
+
+        <select formControlName="=tipoDemanda" class="form-control" id="tipoDemanda" name="ext">
+          <option value="Commodities">Commodities</option>
+          <option value="Especialista">Especialista</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+
+  <fieldset class="border mb-4">
+    <legend class="col-md-2 col-form-label"><b>Dados do Cliente</b></legend>
+    <div class="form-group row">
+      <div class="col-md-3 ml-2">
+        <label for="label">Empresa</label>
+        <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
+          <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label for="label">Sigla</label>
+
+        <select formControlName="siglaid" class="form-control" id="siglaid" name="ext">
+          <option *ngFor="let sigla of sigla" value="{{sigla.id}}">{{sigla.descricao}}</option>
+
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label for="label">Diretoria</label>
+
+        <select formControlName="diretoriaid" class="form-control" id="ext" name="diretoriaid">
+          <option *ngFor="let diretoria of diretoria" value="{{diretoria.id}}">{{diretoria.nome}}</option>
+
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label for="label">Superintendência</label>
+
+        <select formControlName="superintendenciaid" class="form-control" id="ext" name="superintendenciaid">
+          <option *ngFor="let superintendencia of superintendencia" value="{{superintendencia.id}}">{{superintendencia.descricao}}</option>
+
+        </select>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset class="border mb-3">
+    <legend class="col-md-1 col-form-label"><b>Esforço</b></legend>
+    <div class="form-group row">
+      <div class="col-md-3 ml-3">
+        <label>Serviço 1</label>
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
+      </div>
+      <div class="col-md-3 ml-3">
+        <label for="data">Serviço 2</label>
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
+      </div>
+      <div class="col-md-3 ml-3">
+        <label for="data">Serviço 3</label>
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
+      </div>
+    </div>
+  </fieldset>
 
   <mat-expansion-panel class="mb-3">
     <mat-expansion-panel-header>
@@ -90,7 +181,6 @@
       <textarea formControlName="escopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto"></textarea>
     </div>
   </mat-expansion-panel>
-
 
   <mat-expansion-panel class="mb-3">
     <mat-expansion-panel-header>
