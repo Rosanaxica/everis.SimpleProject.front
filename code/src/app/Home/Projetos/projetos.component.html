@@ -4,10 +4,10 @@
   </div>
   <div class="input-group col">
     <input type="text" class="form-control no-shadow" placeholder="Buscar por código de projeto" aria-label="Digite o que você deseja buscar"
-      [(ngModel)] = "codigoProjeto"
-       (keydown.enter)="mostrarProjetosFiltrados(codigoProjeto)">
+      [(ngModel)]="codigoProjeto" (keydown.enter)="mostrarProjetosFiltrados(codigoProjeto)">
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" (click)="mostrarProjetosFiltrados(codigoProjeto)"><i class="fa fa-search"></i></button>
+      <button class="btn btn-outline-secondary" type="button" (click)="mostrarProjetosFiltrados(codigoProjeto)"><i
+          class="fa fa-search"></i></button>
     </div>
   </div>
   <div class="col-3 d-flex justify-content-end">
@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col-11">
           <div class="progress">
-            <div class="progress-bar everis" ></div>
+            <div class="progress-bar everis"></div>
           </div>
           <small>Estimativa de conclusão: {{ projeto.dataPrevista | dateFormat }}</small>
         </div>
@@ -82,7 +82,7 @@
         </div>
       </div>
     </div>
-  
+
     <!--.Status-->
     <div class="col-lg-2">
       <span class="badge p-1" [ngClass]="{'everis-amarelo': projeto.status.descricao == 'Aguardando Aprovação', 
@@ -91,7 +91,8 @@
                                           'everis-azul': projeto.status.descricao == 'Entregue',
                                           'everis-laranja': projeto.status.descricao == 'Aguardando Abertura da SS',
                                           'bg-danger text-white': projeto.status.descricao == 'Cancelado',
-                                          'bg-secondary': projeto.status.descricao == 'Proposta'}">{{ projeto.status.descricao }}</span>
+                                          'bg-gray': projeto.status.descricao == 'Proposta'}">{{
+        projeto.status.descricao }}</span>
       <small>
         <p>Inicio: {{ projeto.dataInicio | dateFormat }}</p>
       </small>
