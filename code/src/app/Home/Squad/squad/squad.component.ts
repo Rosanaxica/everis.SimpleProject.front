@@ -13,7 +13,7 @@ export class SquadComponent implements OnInit {
   constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
 
   squads: Squad[] = [];
-  filtroEmpresa = new Squad();
+  filtroSquad = new Squad();
   msgSucesso: string;
 
   ngOnInit() {
@@ -27,7 +27,7 @@ export class SquadComponent implements OnInit {
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/empresa/cadastro-empresa/${id}`]);
+    this.router.navigate([`/template/squad/cadastro-squad/${id}`]);
   }
 
   desativar(id: number) {
@@ -47,8 +47,8 @@ export class SquadComponent implements OnInit {
   }
 
   filtrar() {
-    this.filtroEmpresa.ativo = true;
-    this.svc.listar(Squad, this.filtroEmpresa).toPromise().then(
+    this.filtroSquad.ativo = true;
+    this.svc.listar(Squad, this.filtroSquad).toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
