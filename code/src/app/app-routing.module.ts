@@ -24,7 +24,8 @@ import { LoaderComponent } from './core/loader/loader.component';
 import { ComunidadesComponent } from './Home/Comunidades/comunidades.component';
 import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
 import { AuthGuard } from './shared/guard/auth.guard';
-import { CadastroComunidadeComponent } from './Home/Comunidades/actions/cadastro-comunidade/cadastro-comunidade.component';
+import { CadastroComunidadeComponent } from './Home/Comunidades/cadastro-comunidade/cadastro-comunidade.component';
+import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/squads/cadastro-squad/cadastro-squad.component';
 
 const appRoutes: Routes = [
 
@@ -55,6 +56,9 @@ const appRoutes: Routes = [
   { path: 'comunidades/incluir-comunidade', component: CadastroComunidadeComponent, canActivate: [AuthGuard] },
   { path: 'comunidades/editar-comunidade/:id', component: CadastroComunidadeComponent, canActivate: [AuthGuard] },
   { path: 'comunidades:sucesso', component: EmpresaComponent, canActivate: [AuthGuard] },
+
+  { path: 'squads/incluir-squad/:comunidadeid', component: CadastroSquadComponent, canActivate: [AuthGuard] },
+  { path: 'squads/editar-squad/:comunidadeid/:id', component: CadastroSquadComponent, canActivate: [AuthGuard] },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 
