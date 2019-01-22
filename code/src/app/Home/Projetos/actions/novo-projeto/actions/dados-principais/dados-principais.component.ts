@@ -119,7 +119,7 @@ export class DadosPrincipaisComponent implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate(['/template/projetos/']);
+    this.router.navigate(['/projetos/']);
   }
 
 
