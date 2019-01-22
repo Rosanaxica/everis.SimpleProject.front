@@ -22,6 +22,7 @@ export class LoginService {
             .toPromise().then(
                 data => {
                     localStorage.setItem('token', data.token);
+                    localStorage.setItem('email', obj.emailcorporativo);
                     this.route.navigate(['/template']);
                     return true;
                 },
