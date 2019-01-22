@@ -31,6 +31,7 @@ export class Pessoa extends ModeloGenerico {
         super();
         this.colaborador = new Colaborador();
         this.tipo = new TipoPessoa();
+        this.diretoria = new Diretoria();
     }
 
     getKey(): string {
