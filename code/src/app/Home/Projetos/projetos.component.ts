@@ -21,10 +21,13 @@ export class ProjetosComponent implements OnInit {
   pessoas: any;
   status: Status[] = [];
   statusSelecionados = [
-      {id: 1, descricao: 'Em Aprovação', checked: true},
-      {id: 2, descricao: 'Em Execução', checked: true},
-      {id: 3, descricao: 'Cancelado', checked: true},
-      {id: 4, descricao: 'Concluído', checked: true}
+      {id: 1, descricao: 'Em Desenvolvimento', checked: true},
+      {id: 2, descricao: 'Aguardando Aprovação', checked: true},
+      {id: 3, descricao: 'Concluído', checked: true},
+      {id: 4, descricao: 'Entregue', checked: true},
+      {id: 5, descricao: 'Aguardando Abertura da SS', checked: true},
+      {id: 6, descricao: 'Cancelado', checked: true},
+      {id: 7, descricao: 'Proposta', checked: true}
   ];
   filtroProjeto = new Projeto();
   form: FormGroup;
@@ -58,7 +61,6 @@ export class ProjetosComponent implements OnInit {
   contar(lista: Array<any>): number {
     let cont = 0;
     lista.forEach(element => {
-     //if(this.mostrarStatus(this.statusSelecionados.find(x => x.id == element.status.id).id))
       if(this.mostrarStatus(element.status.id))
         cont++;
     });

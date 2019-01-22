@@ -4,10 +4,10 @@
   <div class="col">
     <h1 class="titulo mb-0">Novo Projeto</h1>
   </div>
-  <nav class="col d-flex justify-content-end">
+  <div class="col d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" (click)="Adicionar()">Salvar</button>
     <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
-  </nav>
+  </div>
   <hr class="mt-2" />
 </div>
 <div class="row mt-2" *ngIf="id > 0">
@@ -16,16 +16,15 @@
     <div class="card card-colaborador cursor-pointer click" (click)="novaSolicitacaoMudanca()" routerLinkActive="active"
       role="button">
       <div class="card-body">
-        SM <span class="badge everis">{{ totalSolicitacaoMudancas }}</span>
+        Solicitação de Mudança <span class="badge everis">{{ totalSolicitacaoMudancas }}</span>
       </div>
     </div>
   </div>
 
   <div class="col-md-4">
-    <div class="card card-colaborador cursor-pointer click" (click)="vaiParaFase()" routerLinkActive="active"
-      role="button">
+    <div class="card card-colaborador cursor-pointer click" (click)="vaiParaFase()" routerLinkActive="active" role="button">
       <div class="card-body">
-        Esforço Projeto <span class="badge everis">456</span>
+        Fase <span class="badge everis">456</span>
       </div>
     </div>
   </div>
@@ -50,19 +49,21 @@
         </ng-template>
         <app-dados-principais (getProjeto)="selectTab($event)"></app-dados-principais>
       </tab>
-      
+
       <tab>
         <ng-template tabHeading>
           <span class="fonte-cancelar">Atribuição de Equipe</span>
         </ng-template>
         <app-atribuicao-equipe (getProjeto)="selectTab($event)"></app-atribuicao-equipe>
       </tab>
+      <!-- NÃO SERÁ IMPLEMENTADO NESSE MOMENTO
       <tab>
         <ng-template tabHeading>
           <span class="fonte-cancelar">Anexos</span>
         </ng-template>
         <app-anexos></app-anexos>
       </tab>
+      -->
     </tabset>
   </div>
 </div>

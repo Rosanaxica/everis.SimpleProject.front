@@ -1,0 +1,41 @@
+<form [formGroup]="formularioEmpresa">
+  <div *ngIf="msgErro != null && msgErro != undefined" class="mt-2">
+    <div class="alert alert-danger" role="alert">
+      <i class="fa fa-times mr-2"> </i> {{msgErro}}
+    </div>
+  </div>
+  <div class="container-fluid" id="cont">
+    <div class="row">
+      <div class="col">
+        <h1 class="titulo"> Nova Empresa</h1>
+      </div>
+      <hr class="mt-0" />
+    </div>
+    <!--Nome empresa-->
+    <div class="form-group">
+      <div class="row col-md-8 mb-2">
+        <input type="text" class="form-control" placeholder="*Nome da Empresa" name="nome" minlength="3" autocomplete="off"
+          formControlName="nome">
+      </div>
+    </div>
+    <!--Segmento Empresa-->
+    <div class="form-group">
+      <div class="row col-md-2">
+        <select formControlName="segmento" class="form-control" name="tipoEmpresa">
+          <!-- [disabled]="modeloEmpresa.id > 0" -->
+          <option disabled="active" value="segmento" name="segmento">Segmento</option>
+          <option value="0">Banking</option>
+          <option value="1">Telecom</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col d-flex justify-content-end">
+        <button class="btn everis mr-2" [disabled]="!formularioEmpresa.valid" (click)="salvar()">Salvar</button>
+        <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
+      </div>
+      <hr class="mt-2" />
+    </div>
+  </div>
+</form>

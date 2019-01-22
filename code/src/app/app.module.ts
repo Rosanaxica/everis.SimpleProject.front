@@ -23,8 +23,7 @@ import { DadosPrincipaisComponent } from './Home/Projetos/actions/novo-projeto/a
 import { AddTelephoneComponent } from './shared/add-telephone/add-telephone.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ModelosComponent } from './shared/modelos/modelos.component';
-import { TemplateComponent } from './template/template.component';
-import { EmpresaComponent } from './Home/Empresa/empresa.component';
+import { EmpresaComponent } from './Home/Empresas/empresa.component';
 
 import { HttpModule } from '@angular/http';
 import { BsDatepickerModule } from 'ngx-bootstrap';
@@ -34,12 +33,11 @@ import { MatButtonModule, MatCheckboxModule, MatAutocompleteModule, MatFormField
 import { FormsModule, ReactiveFormsModule } from '../../node_modules/@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { UploadComponent } from './shared/upload/upload.component';
-// import { InputComponent } from './shared/input/input.component';
 import { DateFormatPipe } from './shared/util/date-format-pipe';
 import { DateTimeFormatPipe } from './shared/util/datetime-format-pipe';
 
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
-import { NovaEmpresaComponent } from './Home/Empresa/nova-empresa/nova-empresa.component';
+import { NovaEmpresaComponent } from './Home/Empresas/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
 
 import { GenericService } from './_services/generic.service';
@@ -50,21 +48,17 @@ import { LoaderService } from './_services/loader.service';
 
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
-import * as more from 'highcharts/highcharts-more.src';
-import * as exporting from 'highcharts/modules/exporting.src';
-import * as exportData from 'highcharts/modules/export-data.src';
-import * as offlineExporting from 'highcharts/modules/offline-exporting.src';
   
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
-import { BreadcrumbComponent } from './template/breadcrumb/breadcrumb.component';
 import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
 import { AlterarSenhaComponent } from './Home/meus-dados/Alterar-senha/alterar-senha/alterar-senha.component';
 import { MeusDadosComponent } from './Home/meus-dados/meus-dados.component';
-import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
+import { ComunidadesComponent } from './Home/Comunidades/comunidades.component';
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
 import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
 import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
 import { SquadComponent } from './Home/Squad/squad/squad.component';
+import { CadastroComunidadeComponent } from './Home/Comunidades/actions/cadastro-comunidade/cadastro-comunidade.component';
 
 
 @NgModule({
@@ -86,11 +80,9 @@ import { SquadComponent } from './Home/Squad/squad/squad.component';
     DadosPrincipaisComponent,
     AddTelephoneComponent,
     ModelosComponent,
-    TemplateComponent,
     EmpresaComponent,
     AnexosComponent,
     UploadComponent,
-    // InputComponent,
     DateFormatPipe,
     DateTimeFormatPipe,
     SolicitacaoMudancaComponent,
@@ -99,10 +91,10 @@ import { SquadComponent } from './Home/Squad/squad/squad.component';
     NovaEmpresaComponent,
     LoaderComponent,
     GraficopizzaComponent,
-    BreadcrumbComponent,
     AlterarSenhaComponent,
     MeusDadosComponent,
     ComunidadesComponent,
+    CadastroComunidadeComponent,
     GraficolinhaComponent,
     SquadComponent
   ],
