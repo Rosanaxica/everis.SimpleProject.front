@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
     this.obterDadosForm();
     this.svc.login(this.colaborador).then(t => {
-      
+
       if (!t) {
         this.msgErro = 'Usuário ou senha inválidos!';
       }
@@ -39,20 +39,20 @@ export class LoginComponent implements OnInit {
   }
 
   vaiParaHome() {
-    this.router.navigate(['template']);
+    this.router.navigate(['dashboard']);
   }
 
   criarForm(itemColaborador?: Colaborador) {
-    itemColaborador = itemColaborador || { emailcorporativo: '', senha: '' } as Colaborador;
+    itemColaborador = itemColaborador || { emailCorporativo: '', senha: '' } as Colaborador;
     this.loginGroup = this.fb.group({
-      'user': [itemColaborador.emailcorporativo, Validators.required],
+      'user': [itemColaborador.emailCorporativo, Validators.required],
       'senha': [itemColaborador.senha, Validators.required]
     });
   }
 
   private obterDadosForm() {
     let objForm = this.loginGroup.value;
-    this.colaborador.emailcorporativo = objForm.user;
+    this.colaborador.emailCorporativo = objForm.user;
     this.colaborador.senha = objForm.senha;
   }
 }

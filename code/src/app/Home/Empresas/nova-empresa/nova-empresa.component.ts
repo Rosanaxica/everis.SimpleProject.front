@@ -54,7 +54,7 @@ export class NovaEmpresaComponent implements OnInit {
     this.obterDadosForm();
     this.svc.salvar(this.modeloEmpresa, Empresa).toPromise().then(
       data => {
-        this.router.navigate([`/template/empresa`, { sucesso: true }]);
+        this.router.navigate([`/empresas`, { sucesso: true }]);
 
       },
       error => {
@@ -64,7 +64,7 @@ export class NovaEmpresaComponent implements OnInit {
     this.formularioEmpresa.reset();
   }
   cancelar() {
-    this.router.navigate(['/template/empresa']);
+    this.router.navigate(['/empresas']);
   }
 
   criarForm(itemEmpresa?: Empresa) {

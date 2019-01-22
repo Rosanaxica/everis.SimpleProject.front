@@ -3,16 +3,16 @@
     <h1 class="titulo mb-0">Fases</h1>
   </div>
   <div class="input-group col">
-    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o Projeto ou Funcionario que você deseja buscar"
-      [(ngModel)]="filtroFases.codigoFase">
+    <input type="text" class="form-control no-shadow" placeholder="Digite o código da fase que você deseja buscar" aria-label="Digite o Código da Fase que você deseja buscar"
+      [(ngModel)]="filtroFases.codigoFase" (keyup.enter)="filtrar()">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>
   </div>
-  <nav class="col-3 d-flex justify-content-end">
+  <div class="col-3 d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" (click)="vaiParaNovaFase()">Nova Fase+</button>
 
-  </nav>
+  </div>
   <hr class="mt-2" />
 
   <!-- {{fases | json}} -->
@@ -29,13 +29,13 @@
       </tr>
     </thead>
     <tbody>
-      
+
       <tr *ngFor="let item of fases">
         <td class="align-middle">{{ item.codigoFase }}</td>
         <td class="align-middle">{{ item.pessoa.nome }}</td>
         <td class="align-middle">{{ item.qtdHorasDia }}</td>
-        <td class="align-middle">{{ item.dataInicio | date:'dd/MM/yyyy HH:mm:ss' }}</td>
-        <td class="align-middle">{{ item.dataFim | date:'dd/MM/yyyy HH:mm:ss' }}</td>
+        <td class="align-middle">{{ item.dataInicio | date:'dd/MM/yyyy' }}</td>
+        <td class="align-middle">{{ item.dataFim | date:'dd/MM/yyyy' }}</td>
         <td class="align-middle">{{ item.tipoFase.nome }}</td>
         <td class="text-center align-middle">
           <button class="btn everis" (click)="editar(item.id)"><i class="fas fa-pencil-alt"></i></button>

@@ -7,11 +7,11 @@
 </div>
 <div class="row align-items-center no-gutters">
   <div class="col-lg-6 col-md-12 col-xl-3">
-    <h1 class="titulo pl-0 mb-0">Empresas</h1>
+    <h1 class="titulo pl-0 mb-0">Squads</h1>
   </div>
   <div class="input-group col-lg-6  col-md-12 col-xl-5 mb-2">
     <input type="text" class="form-control" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
-      [(ngModel)]="filtroEmpresa.nome" (keydown.enter)="filtrar()">
+      [(ngModel)]="filtroSquad.nome" (keydown.enter)="filtrar()">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>
@@ -20,7 +20,7 @@
     <button type="button" class="btn everis mr-2" (click)="exportar()" >Exportar</button>
   </div>
   <div class="col-lg-12 col-md-12 col-xl-2 d-flex justify-content-start mb-2">
-    <button type="button" class="btn everis mr-2" [routerLink]="['cadastro-empresa']">Nova Empresa+</button>
+    <button type="button" class="btn everis mr-2" [routerLink]="['cadastro-squad']">Nova Squad+</button>
   </div>
   <hr class="mt-0" />
 </div>
@@ -28,17 +28,16 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Segmento</th>
       <th class="text-center">Ações</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let empresa of empresas">
-      <td class="align-middle">{{ empresa.nome }}</td>
-      <td class="align-middle">{{tipoSegmentoType[empresa.segmento]}}</td>
+    <tr *ngFor="let squad of squads">
+      <td class="align-middle">{{ squad.nome }}</td>
+      <td class="align-middle">{{tipoSegmentoType[squad.segmento]}}</td>
       <td class="text-center">
-        <button class="btn everis" (click)="editar(empresa.id)"><i class="fas fa-pencil-alt"></i></button>
-        <button class="btn everis-laranja text-white ml-1" (click)="desativar(empresa.id)"><i class="fas fa-trash-alt"></i></button>
+        <button class="btn everis" (click)="editar(squad.id)"><i class="fas fa-pencil-alt"></i></button>
+        <button class="btn everis-laranja text-white ml-1" (click)="desativar(squad.id)"><i class="fas fa-trash-alt"></i></button>
       </td>
     </tr>
   </tbody>
