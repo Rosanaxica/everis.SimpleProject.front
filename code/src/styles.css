@@ -7,7 +7,7 @@
 .custom-control-input:focus~.custom-control-label::before {box-shadow: 0 0 0 0.2rem rgba(90,90,90,.15)}
 .custom-control-input:focus:not(:checked)~.custom-control-label::before {border-color: #ccc}
 .custom-control-input:checked~.custom-control-label::before {background-color: #9AAE04; border:1px  #9AAE04 solid; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(185, 185, 185, 0.6); outline: 0 none;}
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {color: #9AAE04 }
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {color: #9AAE04; font-weight: bold}
 a.nav-link {color: #777}
 
 /*!
@@ -49,6 +49,8 @@ a.nav-link {color: #777}
  .click:hover, .click:focus {background: rgba(154, 174, 4, .3)}
  input[type='text'].no-shadow {box-shadow: none}
  .subtitulo {font-size: 16px; font-weight: bold}
+fieldset{padding: 15px}
+legend{width: auto; background: #fff; padding: 0 5px;color:rgb(112,115,114); font-weight: bold}
  
  /*!
  parte padrão
