@@ -48,7 +48,6 @@ const appRoutes: Routes = [
   
   { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard]},
   { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard]},
-  { path: 'cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard]},
   
   { path: 'comunidades', component: ComunidadesComponent, canActivate: [AuthGuard]},
 
