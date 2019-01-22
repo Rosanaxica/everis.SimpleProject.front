@@ -9,6 +9,7 @@ export class FaseModel extends ModeloGenerico {
         super();
         this.projeto = new Projeto();
         this.pessoa = new Pessoa();
+        this.tipoFase = new TipoFaseModel();
     }
 
     projetoId: number;
