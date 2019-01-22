@@ -77,7 +77,7 @@
     <div class="form-group row">
       <div class="col-md-4 ml-2">
         <label for="label">Tecnologia</label>
-        <select formControlName="tecnologiaid" class="form-control" id="tecnologiaid" name="ext">
+        <select formControlName="tecnologiaId" class="form-control" id="tecnologiaid" name="ext">
           <option *ngFor="let tecnologia of tecnologia" value="{{tecnologia.id}}">{{tecnologia.nome}}</option>        
         </select>
       </div>
@@ -105,7 +105,7 @@
       <div class="col-md-3">
         <label for="label">Tipo de Demanda</label>
 
-        <select formControlName="=tipoDemanda" class="form-control" id="tipoDemanda" name="ext">
+        <select formControlName="tipoDemanda" class="form-control" id="tipoDemanda" name="ext">
           <option value="Commodities">Commodities</option>
           <option value="Especialista">Especialista</option>
         </select>
@@ -127,7 +127,7 @@
       <div class="col-md-2">
         <label for="label">Sigla</label>
 
-        <select formControlName="siglaid" class="form-control" id="siglaid" name="ext">
+        <select formControlName="siglaId" class="form-control" id="siglaid" name="ext">
           <option *ngFor="let sigla of sigla" value="{{sigla.id}}">{{sigla.descricao}}</option>
 
         </select>
@@ -136,8 +136,8 @@
       <div class="col-md-2">
         <label for="label">Diretoria</label>
 
-        <select formControlName="diretoriaid" class="form-control" id="ext" name="diretoriaid">
-          <option *ngFor="let diretoria of diretoria" value="{{diretoria.id}}">{{diretoria.nome}}</option>
+        <select formControlName="diretoriaId" class="form-control" id="ext" name="diretoriaid">
+          <option *ngFor="let dir of diretoria" value="{{dir.id}}">{{dir.descricao}}</option>
 
         </select>
       </div>
@@ -145,7 +145,7 @@
       <div class="col-md-3">
         <label for="label">Superintendência</label>
 
-        <select formControlName="superintendenciaid" class="form-control" id="ext" name="superintendenciaid">
+        <select formControlName="superintendenciaId" class="form-control" id="ext" name="superintendenciaid">
           <option *ngFor="let superintendencia of superintendencia" value="{{superintendencia.id}}">{{superintendencia.descricao}}</option>
 
         </select>

@@ -1,6 +1,10 @@
 import { ModeloGenerico } from './modelo_generico';
 import { Status } from './status.model';
 import { Empresa } from './empresa.model';
+import { Tecnologia } from './tecnologia.model';
+import { Sigla } from './sigla.model';
+import { Diretoria } from './diretoria.model';
+import { Superintendencia } from './superintendencia.model';
 
 export class Projeto extends ModeloGenerico {
     nome: string;
@@ -16,16 +20,28 @@ export class Projeto extends ModeloGenerico {
     empresaId: number;
     empresa: Empresa;
     statusId: number;
+    duracao: number;
     status: Status;
     dataPrevista: Date;
+    dataProposta: Date;
     beneficioEntregue: string;
     beneficioResidual: string;
     problemasExecucao: string;
     riscos: string;
     licoesAprendidas: string;
-    centroCusto: string;
+    ext: string;
     projetosPessoas: any;
-
+    tecnologiaId: number;
+    tecnologia: Tecnologia;
+    tamanho: string;
+    tipoDemanda: string;
+    siglaId: number;
+    sigla: Sigla;
+    diretoriaId: number;
+    diretoria: Diretoria;
+    superintendenciaId: number;
+    superintendencia: Superintendencia;
+    
     getKey(): string {
         return 'Projeto'
     }
