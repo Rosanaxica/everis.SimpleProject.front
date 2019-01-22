@@ -82,6 +82,6 @@ export class NovoProjetoComponent implements OnInit {
   }
 
   vaiParaFase() {
-    this.router.navigate([`template/projetos/novo-projeto/fase/${this.id}`]);
+    this.router.navigate([`projetos/novo-projeto/fase/${this.id}`]);
   }
 }

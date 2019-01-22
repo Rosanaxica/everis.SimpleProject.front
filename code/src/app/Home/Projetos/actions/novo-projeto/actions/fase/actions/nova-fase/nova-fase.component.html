@@ -1,6 +1,31 @@
 <form [formGroup]="formularioFase">
 
 
+
+
+
+
+    <!-- TESTE -->
+    
+    <mat-form-field class="example-full-width">
+        <input type="text" placeholder="Assignee" aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+            {{option.nome}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <!-- TESTE -->
+
+
+
+
+
+
+
+
+
     <div class="row">
         <div class="col-sm-12">
             <h1 class="titulo"> Nova Fase</h1>

@@ -34,12 +34,33 @@ export class NovaFaseComponent implements OnInit {
 
   carregado = false;
 
+
+//TESTE
+  myControl = new FormControl();
+  options: Pessoa[] = [];
+  filteredOptions: Observable<Pessoa[]>;
+  //TESTE
+
+
+
   constructor(private svc: GenericService, private router: Router, 
     private route: ActivatedRoute, private fb: FormBuilder, private datepipe: DatePipe) { }
 
   ngOnInit() {
     this.carregaTiposFases();
     this.carregaColaboradores();
+
+
+//TESTE
+    this.filteredOptions = this.myControl.valueChanges
+      .pipe(
+        startWith<string | Pessoa>(''),
+        map(value => typeof value === 'string' ? value : value.nome),
+        map(nome => nome ? this._filter(nome) : this.options.slice())
+      );
+//TESTE
+
+
 
     this.route.paramMap.subscribe(res => {
       this.idProjeto = +res.get('id');
@@ -61,6 +82,33 @@ export class NovaFaseComponent implements OnInit {
       this.criarForm();
     });
   }
+
+
+
+
+
+
+  
+  //TESTE
+
+  displayFn(user?: Pessoa): string | undefined {
+    return user ? user.nome : undefined;
+  }
+
+  private _filter(name: string): Pessoa[] {
+    const filterValue = name.toLowerCase();
+
+    return this.options.filter(option => option.nome.toLowerCase().indexOf(filterValue) === 0);
+  }
+  //TESTE
+
+
+
+
+
+
+
+  
 
   obterModeloNovaFase() {
     this.svc.obter(this.modeloProjeto).toPromise().then(
@@ -174,7 +222,7 @@ export class NovaFaseComponent implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate([`template/projetos/novo-projeto/fase/${this.idProjeto}`]);
+    this.router.navigate([`projetos/novo-projeto/fase/${this.idProjeto}`]);
   }
 
   criarForm(itemFase?: FaseModel) {

@@ -46,7 +46,7 @@ export class ProjetosComponent implements OnInit {
   }
 
   detalheProjeto(projeto: Projeto): void {
-    this.router.navigate([`/template/projetos/novo-projeto/${projeto.id}`]);
+    this.router.navigate([`/projetos/novo-projeto/${projeto.id}`]);
   }
 
   listarPessoas(projetoId: number) {

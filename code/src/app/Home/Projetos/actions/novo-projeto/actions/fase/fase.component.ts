@@ -101,11 +101,11 @@ export class FaseComponent implements OnInit {
   }
 
   vaiParaNovaFase() {
-    this.router.navigate([`template/projetos/novo-projeto/fase/nova-fase/${this.id}`]);
+    this.router.navigate([`projetos/novo-projeto/fase/nova-fase/${this.id}`]);
   }
 
   editar(id: number) {
-    this.router.navigate([`/template/projetos/novo-projeto/fase/nova-fase/${this.id}/${id}`]);
+    this.router.navigate([`/projetos/novo-projeto/fase/nova-fase/${this.id}/${id}`]);
   }
 
   
