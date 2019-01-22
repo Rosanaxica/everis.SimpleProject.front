@@ -21,11 +21,12 @@ import { DashboardComponent } from './Home/Dashboard/dashboard/dashboard.compone
 import { MapaSiteComponent } from './Home/mapa-site/mapa-site.component';
 import { NovaEmpresaComponent } from './Home/Empresas/nova-empresa/nova-empresa.component';
 import { LoaderComponent } from './core/loader/loader.component';
-import { ComunidadesComponent } from './Home/Comunidades/comunidades/comunidades.component';
+import { ComunidadesComponent } from './Home/Comunidades/comunidades.component';
 import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
 import { AuthGuard } from './shared/guard/auth.guard';
 import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
 import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
+import { CadastroComunidadeComponent } from './Home/Comunidades/actions/cadastro-comunidade/cadastro-comunidade.component';
 
 const appRoutes: Routes = [
 
@@ -53,8 +54,12 @@ const appRoutes: Routes = [
   { path: 'projetos/novo-projeto/fase/nova-fase/:id/:id2', component: NovaFaseComponent, canActivate: [AuthGuard]},
   
   { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard]},
+  { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard]},
   
   { path: 'comunidades', component: ComunidadesComponent, canActivate: [AuthGuard]},
+  { path: 'comunidades/incluir-comunidade', component: CadastroComunidadeComponent, canActivate: [AuthGuard] },
+  { path: 'comunidades/editar-comunidade/:id', component: CadastroComunidadeComponent, canActivate: [AuthGuard] },
+  { path: 'comunidades:sucesso', component: EmpresaComponent, canActivate: [AuthGuard] },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 

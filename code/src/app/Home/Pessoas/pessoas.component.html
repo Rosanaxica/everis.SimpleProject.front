@@ -11,14 +11,29 @@
   <div class="col-3 d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" [routerLink]="['cadastro-pessoas']">Nova Pessoa +</button>
 
+  <!-- checkbox Filter de status de pessoa -->
+  <div  class="border col-12 mt-3 mb-4">
+    <div class="custom-control-inline col-4 mt-2">
+    <small><b>Status do Colaborador:</b></small>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline col-4">
+      <input id="{{statusSelecionados[0].id}}" value="{{statusSelecionados[0].id}}" type="checkbox" class="custom-control-input" (change)="mudarStatus(statusSelecionados[0].id)" checked>
+      <label class="custom-control-label" for="{{statusSelecionados[0].id}}"><small>Disponível</small></label>
+    </div>
+    <div class="custom-control custom-checkbox custom-control-inline col-3">
+      <input id="{{statusSelecionados[1].id}}" value="{{statusSelecionados[1].id}}" type="checkbox" class="custom-control-input" (change)="mudarStatus(statusSelecionados[1].id)" checked >
+      <label class="custom-control-label" for="{{statusSelecionados[1].id}}"><small>indisponível</small></label>
+    </div>
   </div>
+
   <hr class="mt-2" />
 </div>
 <div class="row">
 
   <div *ngFor="let pessoa of pessoas" class="col-md-4 mb-2">
     <div class="card card-colaborador border-everis">
-      <div class="row">
+      <div class="row" >
+          <!-- *ngIf="mostrarStatus(projeto.status.id)" -->
         <div class="card-body">
           <div class="col-md-12 m-0 p-0">
             <div *ngIf="pessoa.colaboradorId != null;else naoColaborador" class="col-md-12 text-right">

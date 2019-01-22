@@ -62,7 +62,7 @@ export class NovoProjetoComponent implements OnInit {
     }
   }
   cancelar() {
-    this.router.navigate(['/template/projetos']);
+    this.router.navigate(['/projetos']);
   }
   Adicionar() {
     this.formDados.Adicionar();

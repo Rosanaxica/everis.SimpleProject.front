@@ -30,6 +30,7 @@
         <div class="col-sm-12">
             <h1 class="titulo"> Nova Fase</h1>
         </div>
+<<<<<<< HEAD
     </div>
     <hr class="mt-0" />
 
@@ -42,6 +43,12 @@
             <input type="text" class="form-control" id="nomeProjeto" name="nomeProjeto" formControlName="nomeProjeto"
                 placeholder="Nome Projeto">
         </div>
+=======
+        <nav class="col d-flex justify-content-end">
+            <button type="button" class="btn everis mr-2" (click)="salvar()">Salvar</button>
+            <button type="button" class="btn cancelar" (click)="vaiParaFase()">Cancelar</button>
+        </nav>
+>>>>>>> 83fda31d72dbfe5b353a30853aef3b695e469eea
     </div>
 
     <div class="row">
@@ -114,6 +121,7 @@
         </div>
     </div>
 
+<<<<<<< HEAD
     <div class="row">
         <div class="col-xs-12 col-12 col-md-12 form-group">
             <label for="observacao">Observações</label>
@@ -123,6 +131,12 @@
                 <i class="fa fa-times mr-2"></i>
                 <small>Por favor, informe as observações.</small>
             </div>
+=======
+            <nav class="col d-flex justify-content-end">
+                <button type="button" class="btn everis mr-2" [disabled]="!formularioValido()" (click)="salvar()">Salvar</button>
+                <button type="button" class="btn cancelar" (click)="vaiParaFase()">Cancelar</button>
+            </nav>
+>>>>>>> 83fda31d72dbfe5b353a30853aef3b695e469eea
         </div>
 
 
