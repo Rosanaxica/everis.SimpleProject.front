@@ -133,7 +133,8 @@ export class CadastroPessoasComponent implements OnInit {
       'sigDisponiveis': [pessoaColaborador.siglasDisponiveis],
       'sigAssociadas': [pessoaColaborador.siglasAssociadas],
       'ferrDisponiveis': [pessoaColaborador.ferramentasDisponiveis],
-      'ferrAssociadas': [pessoaColaborador.ferramentasAssociadas]
+      'ferrAssociadas': [pessoaColaborador.ferramentasAssociadas],
+      'numeroTelefone': [this.telefone.numeroTelefone, [Validators.minLength(10), Validators.maxLength(15), Validators.pattern("[0-9]{10,15}")]]
     });
   }
 

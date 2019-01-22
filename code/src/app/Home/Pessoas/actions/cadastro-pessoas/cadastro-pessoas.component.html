@@ -77,7 +77,8 @@
           </div>
 
           <div class="col-md-5">
-            <input type="text" class="form-control" id="docmento" name="documento" formControlName="documento" placeholder="Outro Documento">
+            <input type="text" class="form-control" id="docmento" name="documento" formControlName="documento"
+              placeholder="Outro Documento">
           </div>
         </div>
 
@@ -87,7 +88,8 @@
             <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg">
           </div>
           <div class="col-md-2">
-            <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor" formControlName="orgaoEmissor">
+            <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor"
+              formControlName="orgaoEmissor">
           </div>
 
           <div class="col-md-2">
@@ -137,8 +139,8 @@
             </select>
           </div>
           <div class="input-group col-md-4">
-            <input input type="text" (keydown.enter)="AddTelefone()" class="form-control" formControlName="numeroTelefone" id="telefone"
-              name="numeroTelefone" placeholder="*Telefone" autocomplete="off" [required]="isTelRequired()">
+            <input input type="text" (keydown.enter)="AddTelefone()" class="form-control" formControlName="numeroTelefone"
+              id="telefone" name="numeroTelefone" placeholder="*Telefone" autocomplete="off" [required]="isTelRequired()">
 
             <div class="input-group-append">
               <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="formularioPessoa.controls['numeroTelefone'] == undefined || formularioPessoa.controls['tipoTelefone'] == undefined || formularioPessoa.controls['numeroTelefone'].invalid">
@@ -156,23 +158,23 @@
           <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um telefone. Informe apenas numeros
         </div>
 
-        <!-- <div class="row col-md-5">
-        <table class="table table-striped">
-          <tbody>
-            <tr *ngFor="let telefone of telefones">
-              <td class="text-center">
-                <p>{{telefone.tipoTelefone.descricao}}</p>
-              </td>
-              <td class="text-center">
-                <p>{{telefone.numeroTelefone}}</p>
-              </td>
-              <td class="colBtnDeletar">
-                <button (click)="RemoverTelefone(telefone)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
+        <div class="row col-md-5">
+          <table class="table table-striped">
+            <tbody>
+              <tr *ngFor="let telefone of telefones">
+                <td class="text-center">
+                  <p>{{telefone.tipoTelefone.descricao}}</p>
+                </td>
+                <td class="text-center">
+                  <p>{{telefone.numeroTelefone}}</p>
+                </td>
+                <td class="colBtnDeletar">
+                  <button (click)="RemoverTelefone(telefone)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
         <!-- Fim Telefone -->
         <!-- Inicio E-mail -->
         <div class="row mb-2">
@@ -406,6 +408,10 @@
           <!-- Fim Painel Siglas -->
         </fieldset>
       </div>
+      <nav class="col d-flex justify-content-end mt-4">
+        <button type="button" class="btn everis mr-2" [disabled]="!formularioPessoa.valid || telefones.length === 0">Salvar</button>
+        <button type="button" class="btn cancelar">Cancelar</button>
+      </nav>
     </div>
   </div>
 </form>
