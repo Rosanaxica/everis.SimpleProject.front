@@ -26,6 +26,8 @@ import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao
 import { AuthGuard } from './shared/guard/auth.guard';
 import { CadastroComunidadeComponent } from './Home/Comunidades/cadastro-comunidade/cadastro-comunidade.component';
 import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/squads/cadastro-squad/cadastro-squad.component';
+import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
+import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
 
 const appRoutes: Routes = [
 
@@ -47,10 +49,13 @@ const appRoutes: Routes = [
 
   { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard]},
   { path: 'projetos/novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto/fase/:id', component: FaseComponent, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto/fase/nova-fase/:id', component: NovaFaseComponent, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto/fase/nova-fase/:id/:id2', component: NovaFaseComponent, canActivate: [AuthGuard]},
   
   { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard]},
   { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard]},
-  { path: 'cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard]},
   
   { path: 'comunidades', component: ComunidadesComponent, canActivate: [AuthGuard]},
   { path: 'comunidades/incluir-comunidade', component: CadastroComunidadeComponent, canActivate: [AuthGuard] },
