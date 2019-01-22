@@ -1,0 +1,34 @@
+<form [formGroup]="formularioSquad">
+  <div *ngIf="msgErro != null && msgErro != undefined" class="mt-2">
+    <div class="alert alert-danger" role="alert">
+      <i class="fa fa-times mr-2"> </i> {{msgErro}}
+    </div>
+  </div>
+  <div class="container-fluid" id="cont">
+    <div class="row">
+      <div class="col">
+        <h1 class="titulo"> Nova Squad</h1>
+      </div>
+      <hr class="mt-0" />
+    </div>
+    <!--Nome squad-->
+
+    <div class="row">
+      <div class="form-group col-md-6 col-xs-12">
+        <input type="text" class="form-control" placeholder="*Nome da Squad" name="nome" minlength="3" autocomplete="off"
+          formControlName="nome">
+      </div>
+      <div class="form-group col-md-3 col-xs-12">
+        <input type="text" placeholder="*Data Início" name="datainicio" class="form-control" bsDatepicker
+        formControlName="datainicio">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col d-flex justify-content-end">
+        <button class="btn everis mr-2" [disabled]="!formularioSquad.valid" (click)="salvar()">Salvar</button>
+        <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
+      </div>
+      <hr class="mt-2" />
+    </div>
+  </div>
+</form>
