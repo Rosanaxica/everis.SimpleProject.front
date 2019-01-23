@@ -17,7 +17,7 @@ import { CodegenComponentFactoryResolver } from '@angular/core/src/linker/compon
 })
 export class ProjetosComponent implements OnInit {
   title = 'Projetos';
-
+  totalProjetos: number;
   projetos: any;
   pessoas: any;
   status: Status[] = [];
@@ -33,6 +33,7 @@ export class ProjetosComponent implements OnInit {
   filtroProjeto = new Projeto();
   codigoProjeto: string;
   projetosFiltrados: Array<Projeto>;
+  exibeMsg: boolean;
   form: FormGroup;
 
   constructor(private router: Router, private svc: GenericService, private fb: FormBuilder) { }
@@ -43,6 +44,7 @@ export class ProjetosComponent implements OnInit {
 
   mudarStatus(id) {
     this.statusSelecionados.find(x => x.id == id).checked = !(this.statusSelecionados.find(x => x.id == id).checked)
+    this.contar(this.projetosFiltrados);
   }
 
   mostrarStatus(id) : boolean {
@@ -50,12 +52,19 @@ export class ProjetosComponent implements OnInit {
   }
 
   mostrarProjetosFiltrados(codigo: string) {
-    if (this.projetos.filter(p => p.codigoProjeto == codigo) != '') {
-      this.projetosFiltrados = this.projetos.filter(p => p.codigoProjeto == codigo);
+    if(this.codigoProjeto == '' || this.codigoProjeto == null){
+      this.projetosFiltrados = this.projetos;
+      this.exibeMsg = false;
+    }
+    else if (this.projetos.filter(p => p.codigoProjeto == codigo) == '') {
+      this.exibeMsg = true;
+      console.log("Nenhum resultado encontrado.");
     }
     else {
-      this.projetosFiltrados = this.projetos;
+      this.projetosFiltrados = this.projetos.filter(p => p.codigoProjeto == codigo);
+      this.exibeMsg = false;
     }
+    this.contar(this.projetosFiltrados);
     console.log(this.projetosFiltrados);
   }
 
@@ -69,13 +78,13 @@ export class ProjetosComponent implements OnInit {
       e => { let err = e.json(); alert(`Erro ${err.mensagem}`); }
     )
   }
-  contar(lista: Array<Projeto>): number {
+  contar(lista: Array<Projeto>) {
     let cont = 0;
     lista.forEach(element => {
       if(this.mostrarStatus(element.status.id))
         cont++;
     });
-    return cont;
+    this.totalProjetos = cont;
   }
 
   filtrar() {
@@ -87,6 +96,7 @@ export class ProjetosComponent implements OnInit {
           if (s.data != null && s.data !== undefined) {
             this.projetos = s.data;
             this.projetosFiltrados = this.projetos;
+            this.contar(this.projetosFiltrados);
           }
         }
       }
