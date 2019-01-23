@@ -34,7 +34,7 @@ const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'primeiro-acesso', component: PrimeiroAcessoComponent },
   { path: 'esqueci-senha', component: EsqueceuSenhaComponent },
-  
+
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'mapa-site', component: MapaSiteComponent, canActivate: [AuthGuard] },
   { path: 'modelos', component: ModelosComponent, canActivate: [AuthGuard] },
@@ -42,28 +42,31 @@ const appRoutes: Routes = [
   { path: 'meus-dados', component: MeusDadosComponent, canActivate: [AuthGuard] },
   { path: 'alterar-senha', component: AlterarSenhaComponent, canActivate: [AuthGuard] },
 
-  { path: 'empresas', component: EmpresaComponent, canActivate: [AuthGuard]},
+  { path: 'empresas', component: EmpresaComponent, canActivate: [AuthGuard] },
   { path: 'empresas/incluir-empresa', component: NovaEmpresaComponent, canActivate: [AuthGuard] },
   { path: 'empresas/editar-empresa/:id', component: NovaEmpresaComponent, canActivate: [AuthGuard] },
   { path: 'empresas:sucesso', component: EmpresaComponent, canActivate: [AuthGuard] },
 
-  { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard]},
-  { path: 'projetos/novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard]},
-  { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent, canActivate: [AuthGuard]},
-  
-  { path: 'projetos/novo-projeto/solicitacao-mudanca/:id', component: SolicitacaoMudancaComponent, canActivate: [AuthGuard]},
-  { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard]},
-  { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard]},
+  { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard] },
+  { path: 'projetos/novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard] },
+  { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent, canActivate: [AuthGuard] },
+
+  { path: 'projetos/novo-projeto/solicitacao-mudanca/:id', component: SolicitacaoMudancaComponent, canActivate: [AuthGuard] },
+  { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard] },
+  { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard] },
 
 
-  { path: 'projetos/novo-projeto/fase/:id', component: FaseComponent, canActivate: [AuthGuard]},
-  { path: 'projetos/novo-projeto/fase/nova-fase/:id', component: NovaFaseComponent, canActivate: [AuthGuard]},
-  { path: 'projetos/novo-projeto/fase/nova-fase/:id/:id2', component: NovaFaseComponent, canActivate: [AuthGuard]},
-  
-  { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard]},
-  { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard]},
-  
-  { path: 'comunidades', component: ComunidadesComponent, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto/fase/:id', component: FaseComponent, canActivate: [AuthGuard] },
+  { path: 'projetos/novo-projeto/fase/nova-fase/:id', component: NovaFaseComponent, canActivate: [AuthGuard] },
+  { path: 'projetos/novo-projeto/fase/nova-fase/:id/:id2', component: NovaFaseComponent, canActivate: [AuthGuard] },
+
+  { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard] },
+  { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard] },
+  { path: 'pessoas/editar-pessoa/:id', component: CadastroPessoasComponent, canActivate: [AuthGuard] },
+  { path: 'pessoas:sucesso', component: PessoasComponent, canActivate: [AuthGuard] },
+
+
+  { path: 'comunidades', component: ComunidadesComponent, canActivate: [AuthGuard] },
   { path: 'comunidades/incluir-comunidade', component: CadastroComunidadeComponent, canActivate: [AuthGuard] },
   { path: 'comunidades/editar-comunidade/:id', component: CadastroComunidadeComponent, canActivate: [AuthGuard] },
   { path: 'comunidades:sucesso', component: EmpresaComponent, canActivate: [AuthGuard] },
