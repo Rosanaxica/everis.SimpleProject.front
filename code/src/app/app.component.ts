@@ -9,10 +9,12 @@ import { LoginService } from './_services/login.service';
 })
 export class AppComponent implements OnInit  {
   menuFechado: boolean;
+  nomeUsuario: string;
   constructor(private svc: LoginService) { }
 
   ngOnInit() {
     this.menuFechado = true;
+    this.nomeUsuario = localStorage.getItem("nome");
   }
 
   logout(){
