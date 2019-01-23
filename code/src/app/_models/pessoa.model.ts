@@ -26,11 +26,13 @@ export class Pessoa extends ModeloGenerico {
     fotoPath: string;
     funcional: number;
     gestorTecnico: boolean;
-
+    adicionado: boolean;
+    
     constructor() {
         super();
         this.colaborador = new Colaborador();
         this.tipo = new TipoPessoa();
+        this.diretoria = new Diretoria();
     }
 
     getKey(): string {

@@ -4,14 +4,13 @@ import { Comunidade } from './comunidade.model';
 
 export class Squad extends ModeloGenerico {
     nome: string;
-    dataInicio: Date;
-    isSquad: number;
-    gerenteResponsavel: string;
-    gerenteComunidade: string;
+    datainicio: Date;
+    gerenteresponsavel: string;
+    gerentecomunidade: string;
     pessoa: Pessoa;
-    pessoaId: number;
+    pessoaid: number;
     comunidade: Comunidade;
-    comunidadeId: number;
+    comunidadeid: number;
 
     getKey(): string {
       return 'squad';

@@ -23,7 +23,7 @@ export class DadosPrincipaisComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private svc: GenericService,
     private router: Router) { }
   dadosPrincipaisForm: FormGroup;
-  empresas: Empresa[] = [];
+  empresas: Empresa[] = [{ id: 0, nome: 'Selecione' } as Empresa];
   status: Status[] = [];
   sigla: Sigla[] = [];
   diretoria: Diretoria[] = [];
@@ -35,6 +35,7 @@ export class DadosPrincipaisComponent implements OnInit {
   ngOnInit() {
     this.projeto = new Projeto();
     this.filtrar();
+    
     this.gerarFormProjeto();
   }
   OpenView(projeto: Projeto) {
@@ -48,17 +49,28 @@ export class DadosPrincipaisComponent implements OnInit {
     this.dadosPrincipaisForm = this.formBuilder.group(
       {
         'nomeProjeto': [objProjeto.nome, Validators.required],
-        'centroCusto': [objProjeto.centroCusto, Validators.required],
+        'codProjeto': [objProjeto.codigoProjeto, Validators.required],
+        'ext': [objProjeto.ext, Validators.required],
         'empresaId': [objProjeto.empresaId, Validators.required],
         'dataInicio': [objProjeto.dataInicio, Validators.required],
+        'dataRecebida': [objProjeto.dataRecebida, Validators.required],
         'dataPrevista': [objProjeto.dataPrevista, Validators.required],
+        'dataProposta': [objProjeto.dataPrevista, Validators.required],
+        'duracao': [objProjeto.duracao, Validators.required],
+        'tecnologiaId': [objProjeto.tecnologiaId, Validators.required],
+        'siglaId': [objProjeto.siglaId, Validators.required],
+        'diretoriaId': [objProjeto.diretoriaId, Validators.required],
+        'superintendenciaId': [objProjeto.superintendenciaId, Validators.required],
         'qtdHorasServico1': [objProjeto.qtdHorasServico1],
         'qtdHorasServico2': [objProjeto.qtdHorasServico2],
         'qtdHorasServico3': [objProjeto.qtdHorasServico3],
         'escopoProjeto': [objProjeto.escopoProjeto, Validators.required],
         'foraEscopoProjeto': [objProjeto.foraEscopoProjeto, Validators.required],
         'premissas': [objProjeto.premissas, Validators.required],
-        'statusProjetoId': [objProjeto.status, Validators.required]
+        'tipoDemanda': [objProjeto.tipoDemanda, Validators.required],
+        'tamanho': [objProjeto.tamanho, Validators.required],
+        'statusProjetoId': [objProjeto.status, Validators.required],
+        'statusProposta': [objProjeto.statusPropostaId, Validators.required]
       }
     );
   }
@@ -67,7 +79,6 @@ export class DadosPrincipaisComponent implements OnInit {
   private obterDadosForm() {
     let values = this.dadosPrincipaisForm.value;
     this.projeto.nome = values.nomeProjeto;
-    this.projeto.centroCusto = values.centroCusto;
     this.projeto.empresaId = values.empresaId;
     this.projeto.dataInicio = values.dataInicio;
     this.projeto.dataPrevista = values.dataPrevista;
@@ -78,11 +89,22 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.foraEscopoProjeto = values.foraEscopoProjeto;
     this.projeto.premissas = values.premissas;
     this.projeto.status = values.statusProjetoId;
+    this.projeto.superintendenciaId = values.superintendenciaId;
+    this.projeto.diretoriaId = values.diretoriaId;
+    this.projeto.siglaId = values.siglaId;
+    this.projeto.tipoDemanda = values.tipoDemanda;
+    this.projeto.tamanho = values.tamanho;
+    this.projeto.tecnologiaId = values.tecnologiaId;
+    this.projeto.ext = values.ext;
+    this.projeto.dataProposta = values.dataProposta;
+    this.projeto.dataRecebida = values.dataRecebida;
+    this.projeto.duracao = values.duracao;
+    this.projeto.statusPropostaId = values.statusProposta;
+    this.projeto.codigoProjeto = values.codProjeto;
   }
 
   private carregarDadosForm() {
     this.dadosPrincipaisForm.get("nomeProjeto").setValue(this.projeto.nome);
-    this.dadosPrincipaisForm.get("centroCusto").setValue(this.projeto.centroCusto);
     this.dadosPrincipaisForm.get("empresaId").setValue(this.projeto.empresaId);
     this.dadosPrincipaisForm.get("dataInicio").setValue(this.projeto.dataInicio);
     this.dadosPrincipaisForm.get("dataPrevista").setValue(this.projeto.dataPrevista);
@@ -93,6 +115,18 @@ export class DadosPrincipaisComponent implements OnInit {
     this.dadosPrincipaisForm.get("foraEscopoProjeto").setValue(this.projeto.foraEscopoProjeto);
     this.dadosPrincipaisForm.get("premissas").setValue(this.projeto.premissas);
     this.dadosPrincipaisForm.get("statusProjetoId").setValue(this.projeto.status);
+    this.dadosPrincipaisForm.get("superintendenciaId").setValue(this.projeto.superintendenciaId);
+    this.dadosPrincipaisForm.get("diretoriaId").setValue(this.projeto.diretoriaId);
+    this.dadosPrincipaisForm.get("siglaId").setValue(this.projeto.siglaId);
+    this.dadosPrincipaisForm.get("tipoDemanda").setValue(this.projeto.tipoDemanda);
+    this.dadosPrincipaisForm.get("tamanho").setValue(this.projeto.tamanho);
+    this.dadosPrincipaisForm.get("tecnologiaId").setValue(this.projeto.tecnologiaId);
+    this.dadosPrincipaisForm.get("ext").setValue(this.projeto.ext);
+    this.dadosPrincipaisForm.get("dataProposta").setValue(this.projeto.dataProposta);
+    this.dadosPrincipaisForm.get("codProjeto").setValue(this.projeto.codigoProjeto);
+    this.dadosPrincipaisForm.get("statusProposta").setValue(this.projeto.statusPropostaId);
+    this.dadosPrincipaisForm.get("duracao").setValue(this.projeto.duracao);
+    this.dadosPrincipaisForm.get("dataRecebida").setValue(this.projeto.dataRecebida);
   }
 
   Adicionar() {
@@ -134,12 +168,13 @@ export class DadosPrincipaisComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.empresas = s.data;
+            this.empresas.unshift({ id: 0, nome: 'Selecione' } as Empresa);
           }
         }
       }
     );
 
-    this.svc.listar(Tecnologia).toPromise().then(
+    this.svc.listar(Tecnologia, null, "ObterTodos").toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
@@ -149,7 +184,19 @@ export class DadosPrincipaisComponent implements OnInit {
       }
     );
 
-    this.svc.listar(Sigla).toPromise().then(
+    this.svc.listar(Diretoria, null, "ObterTodos").toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.diretoria = s.data;
+            console.log(this.diretoria)
+            console.log("Data: " + s);
+          }
+        }
+      }
+    );
+
+    this.svc.listar(Sigla, null, "ObterTodos").toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
@@ -159,17 +206,11 @@ export class DadosPrincipaisComponent implements OnInit {
       }
     );
 
-    this.svc.listar(Diretoria).toPromise().then(
-      s => {
-        if (s.sucesso) {
-          if (s.data != null && s.data !== undefined) {
-            this.diretoria = s.data;
-          }
-        }
-      }
-    );
+    
 
-    this.svc.listar(Superintendencia).toPromise().then(
+    
+
+    this.svc.listar(Superintendencia, null, "ObterTodos").toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
@@ -178,7 +219,7 @@ export class DadosPrincipaisComponent implements OnInit {
         }
       }
     );
-    this.svc.listar(Status).toPromise().then(
+    this.svc.listar(Status, null, "ObterTodos").toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {

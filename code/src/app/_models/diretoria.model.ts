@@ -5,7 +5,7 @@ export class Diretoria extends ModeloGenerico {
     descricao: string;
 
     getKey(): string {
-        return "Diretoria";
+        return "DiretoriaContratante";
     }
 
 }

@@ -35,15 +35,16 @@ export class NovaFaseComponent implements OnInit {
   carregado = false;
 
 
-//TESTE
-  myControl = new FormControl();
-  options: Pessoa[] = [];
-  filteredOptions: Observable<Pessoa[]>;
+  //TESTE
+  // pessoa = new Pessoa();
+  // options: Pessoa[] = [];
+  // myControl = new FormControl();
+  // filteredOptions: Observable<Pessoa[]>;
   //TESTE
 
 
 
-  constructor(private svc: GenericService, private router: Router, 
+  constructor(private svc: GenericService, private router: Router,
     private route: ActivatedRoute, private fb: FormBuilder, private datepipe: DatePipe) { }
 
   ngOnInit() {
@@ -51,14 +52,15 @@ export class NovaFaseComponent implements OnInit {
     this.carregaColaboradores();
 
 
-//TESTE
-    this.filteredOptions = this.myControl.valueChanges
-      .pipe(
-        startWith<string | Pessoa>(''),
-        map(value => typeof value === 'string' ? value : value.nome),
-        map(nome => nome ? this._filter(nome) : this.options.slice())
-      );
-//TESTE
+    //TESTE
+    // this.listaPessoas();
+    // this.filteredOptions = this.myControl.valueChanges
+    //   .pipe(
+    //     startWith<string | Pessoa>(''),
+    //     map(value => typeof value === 'string' ? value : value.nome),
+    //     map(name => name ? this._filter(name) : this.options.slice())
+    //   );
+    //TESTE
 
 
 
@@ -88,18 +90,24 @@ export class NovaFaseComponent implements OnInit {
 
 
 
-  
+
   //TESTE
 
-  displayFn(user?: Pessoa): string | undefined {
-    return user ? user.nome : undefined;
-  }
+  // displayFn(pessoa?: Pessoa): string | undefined {
+  //   return pessoa ? pessoa.nome : undefined;
+  // }
 
-  private _filter(name: string): Pessoa[] {
-    const filterValue = name.toLowerCase();
+  // private _filter(pessoa: string): Pessoa[] {
+  //   const filterValue = pessoa.toLowerCase();
 
-    return this.options.filter(option => option.nome.toLowerCase().indexOf(filterValue) === 0);
-  }
+  //   return this.options.filter(option => option.nome.toLowerCase().indexOf(filterValue) === 0);
+  // }
+
+  // listaPessoas() {
+  //   this.svc.listar(Pessoa).toPromise().then(pessoas => {
+  //     this.options = pessoas['data'];
+  //   });
+  // }
   //TESTE
 
 
@@ -108,7 +116,7 @@ export class NovaFaseComponent implements OnInit {
 
 
 
-  
+
 
   obterModeloNovaFase() {
     this.svc.obter(this.modeloProjeto).toPromise().then(
@@ -142,7 +150,7 @@ export class NovaFaseComponent implements OnInit {
                 }
               }
             );
-            
+
             this.criarForm(this.modeloFase);
           }
         }
@@ -195,7 +203,7 @@ export class NovaFaseComponent implements OnInit {
     this.modeloFase.qtdHorasDia = formObj.qtdHorasDia;
     this.modeloFase.dataInicio = formObj.dataInicio;
     this.modeloFase.dataFim = formObj.dataFim;
-    this.modeloFase.projetoId =  this.idProjeto;
+    this.modeloFase.projetoId = this.idProjeto;
     this.modeloFase.observacao = formObj.observacao;
     this.modeloFase.codigoFase = formObj.codigoFase;
     this.modeloFase.projeto.nome = formObj.nomeProjeto;
@@ -230,12 +238,12 @@ export class NovaFaseComponent implements OnInit {
 
     let dataInicio: any;
 
-    if(this.modeloFase.dataInicio == null) {
+    if (this.modeloFase.dataInicio == null) {
       dataInicio = this.datepipe.transform(this.modeloFase.dataInicio, 'dd/MM/yyyy');
     } else {
       dataInicio = this.modeloFase.dataInicio;
     }
-    
+
 
     this.formularioFase = this.fb.group({
       'qtdHorasDia': [{ value: this.modeloFase.qtdHorasDia, disabled: false }, Validators.required],
