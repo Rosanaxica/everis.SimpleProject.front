@@ -9,8 +9,6 @@ export class Pessoa extends ModeloGenerico {
 
     diretoriaId: number;
     diretoria: Diretoria;
-    colaboradorId: number;
-    colaborador: Colaborador;
     empresaId: number;
     empresa: Empresa;
     tipoId: number;
@@ -30,7 +28,6 @@ export class Pessoa extends ModeloGenerico {
     
     constructor() {
         super();
-        this.colaborador = new Colaborador();
         this.tipo = new TipoPessoa();
         this.diretoria = new Diretoria();
     }

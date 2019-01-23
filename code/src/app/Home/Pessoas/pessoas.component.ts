@@ -1,4 +1,3 @@
-import { element } from 'protractor';
 import { Colaborador } from './../../_models/colaborador.model';
 import { Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
@@ -16,20 +15,24 @@ export class PessoasComponent implements OnInit {
   constructor(private svc: GenericService, private router: Router) { }
 
   colaboradores: Colaborador[] = [];
-  pessoas: Pessoa[] = [];
+  pessoas: Pessoa[]
   colaborador = new Colaborador();
   statusSelecionados = [
     { id: 1, descricao: 'Disponível', checked: true },
     { id: 2, descricao: 'Indisponível', checked: true },
   ];
+  ColaboradorDisponivel: Colaborador[] = [];
+  ColaboradorIndisponivel: Colaborador[] = [];
+  nomePessoa: string;
+  pessoasFiltradas: Pessoa[] = [];
+  pessoaModel = { nome: '' } as Pessoa;
+
 
   ngOnInit() {
-    this.ListarColaboradoresDasPessoasListadas();
-    this.ListarPessoas()
-    // console.log(this.statusSelecionados)
+    this.filtrar();
+
   }
 
-  // Quando listar, verificar primeiramente o status selecionado para depois listar
   filtroStatus(status) {
     return status;
   }
@@ -40,7 +43,26 @@ export class PessoasComponent implements OnInit {
         x.checked = !(x.checked)
       }
     });
-    console.log(this.statusSelecionados)
+  }
+
+  ListarColaboradorPeloStatusSelecionado() {
+    this.statusSelecionados.map(status => status.checked === true);
+    if (this.statusSelecionados[0].checked) {
+      this.colaboradores.forEach(element => {
+        if (element != undefined && element.disponivel == true) {
+          this.ColaboradorDisponivel.push(element)
+
+        }
+      });
+    }
+    if (this.statusSelecionados[1].checked) {
+      this.colaboradores.forEach(element => {
+        if (element != undefined && element.disponivel == false) {
+          this.ColaboradorIndisponivel.push(element)
+
+        }
+      })
+    }
   }
 
   mostrarStatus(id): boolean {
@@ -50,46 +72,19 @@ export class PessoasComponent implements OnInit {
   editar(id: number) {
     this.router.navigate([`/pessoas/editar-pessoa/${id}`]);
   }
-
-  // listarPessoasQuePossuemColaborador() {
-  //   this.svc.listar(Pessoa).toPromise().then(pessoas => {
-  //     this.pessoas = pessoas['data'];
-  //     this.pessoas.forEach(element => {
-  //       this.svc.obter(this.colaborador, `${element.colaboradorId}`).toPromise().then(colaborador => {
-  //         this.colaborador = colaborador['data'];
-  //         element.colaborador = this.colaborador;
-  //       });
-  //     });
-  //   },
-  //     (error) => {
-  //     });
-  //   this.svc.listar(Colaborador).toPromise().then(
-  //     s => {
-  //       console.log("oi, eu sou o Gohan")
-  //       if (s.sucesso) {
-  //         console.log(s)
-  //         if (s.data != null && s.data !== undefined) {
-  //           this.statusSelecionados = s.data;
-  //           console.log("oi, eu sou o goku")
-  //         }
-  //       }
-  //     }
-  //   );
-  // }
-
   ListarPessoas() {
     this.svc.listar(Pessoa).toPromise().then(pessoas => {
       this.pessoas = pessoas['data'];
-      this.ListarColaboradoresDasPessoasListadas()
     })
   }
 
-  ListarColaboradoresDasPessoasListadas() {
-    this.pessoas.forEach(element => {
-      this.svc.obter(this.colaborador, `${element.colaboradorId}`).toPromise().then(colaborador => {
-        this.colaborador = colaborador['data'];
-        element.colaborador = this.colaborador;
+
+  filtrar() {
+    this.svc.listar(Pessoa, this.pessoaModel).toPromise().then(s => {
+      this.pessoas = s.data;
+      this.pessoasFiltradas = s.data;
+    },
+      (error) => {
       });
-    });
   }
 }

@@ -3,6 +3,7 @@ import { Funcao } from './funcao.model';
 import { PoloAcesso } from './poloAcesso.model';
 import { AreaContratante } from './area_contratante.model';
 import { TipoServico } from './tipo_servico.model';
+import { Pessoa } from './pessoa.model';
 
 
 export class Colaborador extends ModeloGenerico {
@@ -30,6 +31,8 @@ export class Colaborador extends ModeloGenerico {
     exclusivoCliente: boolean;
     tipoContratacao: string;
     gestorTecnicoCliente: string;
+    pessoaId: number;
+    pessoa: Pessoa;
 
     constructor() {
         super();
@@ -37,6 +40,7 @@ export class Colaborador extends ModeloGenerico {
         this.areaContratante = new AreaContratante();
         this.poloAcesso = new PoloAcesso();
         this.tipoServico = new TipoServico();
+        this.pessoa = new Pessoa();
     }
 
     getKey(): string {
