@@ -10,13 +10,14 @@
   </div>
   <div class="col-3 d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" [routerLink]="['cadastro-pessoas']">Nova Pessoa +</button>
+  </div>
 
   <!-- checkbox Filter de status de pessoa -->
   <div  class="border col-12 mt-3 mb-4">
     <div class="custom-control-inline col-4 mt-2">
     <small><b>Status do Colaborador:</b></small>
     </div>
-    <div class="custom-control custom-checkbox custom-control-inline col-4">
+    <div class="custom-control custom-checkbox custom-control-inline col-4 mt-3 mb-3">
       <input id="{{statusSelecionados[0].id}}" value="{{statusSelecionados[0].id}}" type="checkbox" class="custom-control-input" (change)="mudarStatus(statusSelecionados[0].id)" checked>
       <label class="custom-control-label" for="{{statusSelecionados[0].id}}"><small>Disponível</small></label>
     </div>
@@ -39,7 +40,7 @@
             <div *ngIf="pessoa.colaboradorId != null;else naoColaborador" class="col-md-12 text-right">
               <span *ngIf="pessoa.colaborador != undefined && pessoa.colaborador.disponivel;else naoDisponivel" class="badge everis text-right">Disponível</span>
               <ng-template #naoDisponivel>
-                <span class="badge everis-laranja text-right">Indisponível</span>
+                <span class="badge bg-dark text-white text-right">Indisponível</span>
               </ng-template>
             </div>
             <ng-template #naoColaborador>
