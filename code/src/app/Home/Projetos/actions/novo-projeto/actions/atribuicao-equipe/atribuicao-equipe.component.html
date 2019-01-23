@@ -61,7 +61,7 @@
   <thead>
     <tr>
       <th>Nome</th>
-      <th>Empresa</th>
+      <!-- <th>Empresa</th> -->
       <th class="text-center">Ações</th>
     </tr>
   </thead>
@@ -70,7 +70,8 @@
       <td class="align-middle">{{ pessoa.nome }}</td>
       <!-- <td class="align-middle">{{buscaEmpresa(pessoa.empresaId)}}</td> -->
       <td class="text-center">
-        <button class="btn everis" (click)="Adicionar(pessoa)">Adicionar</button>
+        <button *ngIf="!pessoa.adicionado" class="btn everis" (click)="Adicionar(pessoa)">Adicionar</button>
+        <button *ngIf="pessoa.adicionado" class="btn everis-azul">Adicionado</button>
       </td>
     </tr>
   </tbody>
@@ -99,7 +100,7 @@
         </div>
       </td>
       <td class="text-center">
-        <button class="btn btn-outline-secondary far fa-trash-alt" type="button"></button>
+        <button (click)="RemoverPessoa(pp)" class="btn btn-outline-secondary far fa-trash-alt" type="button"></button>
       </td>
     </tr>
   </tbody>

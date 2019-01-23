@@ -18,6 +18,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
   @Output() getProjeto = new EventEmitter<string>();
   nomeProjeto: string;
   filtroPessoa = new Pessoa();
+  filtroProjetoPessoa = new ProjetoPessoa();
   projetoPessoa: ProjetoPessoa[] = [];
   pessoas: Pessoa[] = [];
   projeto = new Projeto();
@@ -31,6 +32,17 @@ export class AtribuicaoEquipeComponent implements OnInit {
   OpenView(projeto: Projeto) {
     this.nomeProjeto = projeto.nome;
     this.projeto = projeto;
+    this.filtroProjetoPessoa.projetoId = projeto.id;
+    this.filtroProjetoPessoa.ativo = true;
+    this.svc.listar(ProjetoPessoa, this.filtroProjetoPessoa).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.projetoPessoa = s.data;
+          }
+        }
+      }
+    );
   }
   cancelar() {
     this.router.navigate(['/template/projetos']);
@@ -57,6 +69,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.pessoas = s.data;
+            this.verificaAdicionados();
           }
         }
       }
@@ -67,6 +80,12 @@ export class AtribuicaoEquipeComponent implements OnInit {
     projPessoa.pessoaId = pessoa.id;
     projPessoa.pessoa = pessoa;
     this.projetoPessoa.push(projPessoa);
+    this.verificaAdicionados();
+  }
+  RemoverPessoa(projetoPessoa: ProjetoPessoa) {
+    let index: number = this.projetoPessoa.indexOf(projetoPessoa);
+    this.projetoPessoa.splice(index, 1);
+    this.verificaAdicionados();
   }
   getAtribuicoes() {
     this.svc.listar(ProjetoPessoaAtribuicao, null, "ObterTodos").toPromise().then(
@@ -100,23 +119,19 @@ export class AtribuicaoEquipeComponent implements OnInit {
         return;
       }
     }
-    this.projetoPessoa.forEach(projPessoa => {
-      projPessoa.pessoa = null;
-      projPessoa.projetoId = this.projeto.id;
-      this.svc.salvar(projPessoa, ProjetoPessoa)
-        .toPromise().then((data: any) => {
-          switch (data.codigo) {
-            case 200:
-              break;
-            default:
-              window.alert('erro: ' + data.mensagem);
-              break;
+    let listaProjetoPessoaBanco: ProjetoPessoa[] = [];
+    this.svc.listar(ProjetoPessoa, this.filtroProjetoPessoa).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            listaProjetoPessoaBanco = s.data;
           }
-        },
-          error => {
-            alert('Erro ao tentar adicionar.');
-          });
-    });
+        }
+        this.SincronizaBD(listaProjetoPessoaBanco);
+        this.salvarProjetoPessoa(listaProjetoPessoaBanco);
+      }
+    );
+
   }
   salvarProjeto(): boolean {
     this.svc.salvar(this.projeto, Projeto)
@@ -145,5 +160,73 @@ export class AtribuicaoEquipeComponent implements OnInit {
     });
     return retorno;
   }
+  verificaAdicionados() {
+    this.pessoas.forEach(p => {
+      p.adicionado = false;
+      this.projetoPessoa.forEach(projPessoa => {
+        if (projPessoa.pessoaId == p.id) {
+          p.adicionado = true;
+        }
+      });
+    });
+  }
+  SincronizaBD(listaProjetoPessoaBanco: ProjetoPessoa[]) {
+    let encontrado: boolean = false;
+    let pPessoa: ProjetoPessoa = new ProjetoPessoa();
 
+    //Verifica o que tem no banco comparando com a lista da tela. Se estiver na lista do banco
+    // e não estiver na lista da tela, deve inativar o registro no banco
+    listaProjetoPessoaBanco.forEach(p => {
+      this.projetoPessoa.forEach(projPessoa => {
+        if (projPessoa.id == p.id) {
+          encontrado = true;
+          pPessoa = projPessoa;
+        }
+      });
+      if (!encontrado) {
+        p.ativo = false;
+      } else {
+        p = pPessoa;
+        encontrado = false;
+      }
+    });
+    // Se não estiver na lista do banco e estiver na lista da tela, deve adicionar o registro no banco
+    this.projetoPessoa.forEach(projPessoa => {
+      if (listaProjetoPessoaBanco.length > 0) {
+        listaProjetoPessoaBanco.forEach(p => {
+          if (projPessoa.id == p.id) {
+            encontrado = true;
+          } else {
+            pPessoa = projPessoa;
+          }
+        });
+      } else {
+        pPessoa = projPessoa;
+      }
+      if (!encontrado) {
+        listaProjetoPessoaBanco.push(pPessoa)
+      } else {
+        encontrado = false;
+      }
+    });
+  }
+  salvarProjetoPessoa(listaProjetoPessoaBanco: ProjetoPessoa[]) {
+    listaProjetoPessoaBanco.forEach(projPessoa => {
+      projPessoa.pessoa = null;
+      projPessoa.projetoId = this.projeto.id;
+      this.svc.salvar(projPessoa, ProjetoPessoa)
+        .toPromise().then((data: any) => {
+          switch (data.codigo) {
+            case 200:
+              break;
+            default:
+              window.alert('erro: ' + data.mensagem);
+              break;
+          }
+        },
+          error => {
+            alert('Erro ao tentar adicionar.');
+          });
+    });
+  }
 }
