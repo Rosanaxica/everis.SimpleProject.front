@@ -31,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.msgErro = 'Usuário ou senha inválidos!';
       }
     });
+    
 
   }
 
