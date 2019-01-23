@@ -60,7 +60,6 @@ export class NovaSolicitacaoMudanca implements OnInit {
         }
       }
     );
-    console.log(this.solicitacaoMudanca);
   }
 
   obterModeloEditarSolicitacaoMudanca() {
@@ -101,7 +100,7 @@ export class NovaSolicitacaoMudanca implements OnInit {
     this.obterDadosForm();
     this.svc.salvar(this.solicitacaoMudanca, SolicitacaoMudanca).toPromise().then(
       data => {
-        this.router.navigate([`template/projetos/novo-projeto/solicitacao-mudanca/${this.idProjeto}`, { sucesso: true }]);
+        this.router.navigate([`projetos/novo-projeto/solicitacao-mudanca/${this.idProjeto}`, { sucesso: true }]);
       },
       error => {
         this.msgErro = 'Erro ao salvar';
@@ -112,7 +111,7 @@ export class NovaSolicitacaoMudanca implements OnInit {
   criarForm(itemSolicitacaoMudanca?: SolicitacaoMudanca) {
     itemSolicitacaoMudanca = itemSolicitacaoMudanca || new SolicitacaoMudanca();
     this.formularioSolicitacaoMudanca = this.fb.group({
-      'nomeProjeto': [{ value: itemSolicitacaoMudanca.projeto ? itemSolicitacaoMudanca.projeto.nome : '', disabled: true }, Validators.required],
+      'nomeprojeto': [{ value: itemSolicitacaoMudanca.projeto ? itemSolicitacaoMudanca.projeto.nome : '', disabled: true }, Validators.required],
       'qtdhorasservico1': [itemSolicitacaoMudanca.qtdHorasServico1, Validators.required],
       'qtdhorasservico2': [itemSolicitacaoMudanca.qtdHorasServico2, Validators.required],
       'qtdhorasservico3': [itemSolicitacaoMudanca.qtdHorasServico3, Validators.required],

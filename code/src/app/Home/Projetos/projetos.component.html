@@ -14,7 +14,6 @@
     <button type="button" class="btn everis" [routerLink]="['novo-projeto']">Novo Projeto +</button>
   </div>
 </div>
-
 <div class="row border no-gutters mt-4 mb-4 p-4">
   <div class="col-md-3 col-lg-2">
     <small><b>Status do projeto:</b></small>
@@ -38,7 +37,11 @@
   <div class="col-lg-2"><strong>Status</strong></div>
   <hr class="mt-2 col-12">
 </div>
-
+<div *ngIf="exibeMsg">
+  <h2>
+      Não foi encontrado nenhum projeto que contenha esse código.
+  </h2>
+</div>
 <div *ngFor="let projeto of projetosFiltrados" class="cursor-pointer">
   <div class="row no-gutters" (click)="detalheProjeto(projeto)" *ngIf="mostrarStatus(projeto.status.id)">
     <!--Badge de notificações-->
@@ -102,6 +105,6 @@
 </div>
 <div class="row mt-4 no-gutters">
   <div class="col-12 text-right">
-    <b>Total de Projetos: {{ contProjetos }}</b>
+    <b>Total de Projetos: {{ totalProjetos }}</b>
   </div>
 </div>
