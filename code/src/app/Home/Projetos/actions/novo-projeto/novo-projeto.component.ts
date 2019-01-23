@@ -7,6 +7,7 @@ import { AnexosComponent } from './actions/anexos/anexos.component';
 import { Projeto } from '../../../../_models/projeto.model';
 import { GenericService } from '../../../../_services/generic.service';
 import { SolicitacaoMudanca } from '../../../../_models/solicitacao_mudanca.model';
+import { FaseModel } from 'src/app/_models/fase.model';
 
 
 @Component({
@@ -28,8 +29,10 @@ export class NovoProjetoComponent implements OnInit {
   filtroProjeto = new Projeto();
   projeto: Projeto;
   solicitacaoMudancas: Array<SolicitacaoMudanca>;
+  fases: Array<FaseModel>;
   filtroSolicitacaoMudanca = new SolicitacaoMudanca();
   totalSolicitacaoMudancas: number;
+  totalFases: number;
 
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
@@ -43,6 +46,13 @@ export class NovoProjetoComponent implements OnInit {
         (result) => {
           this.solicitacaoMudancas = result.data;
           this.totalSolicitacaoMudancas = this.solicitacaoMudancas.length;
+        }
+      );
+    this.svc.listar(FaseModel, this.filtroSolicitacaoMudanca)
+      .toPromise().then(
+        (result) => {
+          this.fases = result.data;
+          this.totalFases = this.fases.length;
         }
       );
 

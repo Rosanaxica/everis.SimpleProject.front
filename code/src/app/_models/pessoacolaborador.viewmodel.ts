@@ -30,6 +30,6 @@ export class PessoaColaboradorViewModel extends ModeloGenerico {
     }
 
     getKey() {
-        return null;
+        return "Pessoa";
     }
 }

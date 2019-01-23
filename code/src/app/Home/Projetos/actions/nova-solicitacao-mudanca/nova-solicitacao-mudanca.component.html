@@ -20,55 +20,46 @@
     </div>
   </div>
   <hr class="mt-2">
-  <div class="border">
-    <div class="container-fluid">
-      <div class="row" >
-        <div class="col">
-          <div class="form-group">
-            <input type="text" class="form-control" id="input" placeholder="Nome Projeto" name="nomeProjeto"
-              formControlName="nomeProjeto">
-          </div>
-
-
-          <fieldset class="border mb-3">
-
-            <legend class="col-md-3">Quantidade de Horas</legend>
-            <div class="form-group row">
-              <div class="col-md-3 ml-3">
-                <label>Serviço 1</label>
-                <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
-              </div>
-              <div class="col-md-3 ml-3">
-                <label for="data">Serviço 2</label>
-                <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
-              </div>
-              <div class="col-md-3 ml-3">
-                <label for="data">Serviço 3</label>
-                <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
-              </div>
-            </div>
-          </fieldset>
-
-        </div>
+  <div class="row">
+    <div class="col">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Nome Projeto" name="nomeprojeto" formControlName="nomeprojeto">
       </div>
-
-      <div class="row">
-        <div class="col-12">
-          <div class="form-group">
-            <label for="nova-solicitacaoMudanca_text_area">Descrição</label>
-            <textarea class="form-control mb-4" name="descricao" id="nova-solicitacaoMudanca_text_area" rows="3"
-              formControlName="descricao"></textarea>
+      <fieldset class="border mb-3">
+        <legend>Quantidade de Horas</legend>
+        <div class="form-group row">
+          <div class="col-md-3 ml-3">
+            <label>Serviço 1</label>
+            <input type="number" formControlName="qtdhorasservico1" class="form-control" name="qtdhorasservico1" />
+          </div>
+          <div class="col-md-3 ml-3">
+            <label for="data">Serviço 2</label>
+            <input type="number" formControlName="qtdhorasservico2" class="form-control" name="qtdhorasservico2" />
+          </div>
+          <div class="col-md-3 ml-3">
+            <label for="data">Serviço 3</label>
+            <input type="number" formControlName="qtdhorasservico3" class="form-control" name="qtdhorasservico3" />
           </div>
         </div>
-      </div>
-
-      <div class="row align-items-center mb-4">
-        <div class="col d-flex justify-content-end">
-          <button type="button" class="btn everis mr-2" [disabled]="!formularioSolicitacaoMudanca.valid" (click)="salvar()">Salvar</button>
-          <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
-        </div>
-      </div>
-
+      </fieldset>
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-12">
+      <div class="form-group">
+        <label for="nova-solicitacaoMudanca_text_area">Descrição</label>
+        <textarea class="form-control mb-4" name="descricao" id="nova-solicitacaoMudanca_text_area" rows="3"
+          formControlName="descricao"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <div class="row align-items-center mb-4">
+    <div class="col d-flex justify-content-end">
+      <button type="button" class="btn everis mr-2" [disabled]="!formularioSolicitacaoMudanca.valid" (click)="salvar()">Salvar</button>
+      <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
+    </div>
+  </div>
+
 </form>
