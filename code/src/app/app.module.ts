@@ -50,7 +50,7 @@ import { LoaderService } from './_services/loader.service';
 
 import { PessoasComponent } from './Home/Pessoas/pessoas.component';
 import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
-  
+
 import { GraficopizzaComponent } from './Home/Dashboard/graficopizza/graficopizza.component';
 import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
 import { AlterarSenhaComponent } from './Home/meus-dados/Alterar-senha/alterar-senha/alterar-senha.component';
@@ -98,13 +98,9 @@ import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/s
     MeusDadosComponent,
     ComunidadesComponent,
     CadastroComunidadeComponent,
-<<<<<<< HEAD
-    GraficolinhaComponent
-=======
     GraficolinhaComponent,
     SquadsComponent,
     CadastroSquadComponent
->>>>>>> 78089ef704a7dace4f0302fa5d62d7c09da47984
   ],
   imports: [
     HttpClientModule,
