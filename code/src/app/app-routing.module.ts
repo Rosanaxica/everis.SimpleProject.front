@@ -50,6 +50,12 @@ const appRoutes: Routes = [
   { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard]},
   { path: 'projetos/novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard]},
   { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent, canActivate: [AuthGuard]},
+  
+  { path: 'projetos/novo-projeto/solicitacao-mudanca/:id', component: SolicitacaoMudancaComponent, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard]},
+
+
   { path: 'projetos/novo-projeto/fase/:id', component: FaseComponent, canActivate: [AuthGuard]},
   { path: 'projetos/novo-projeto/fase/nova-fase/:id', component: NovaFaseComponent, canActivate: [AuthGuard]},
   { path: 'projetos/novo-projeto/fase/nova-fase/:id/:id2', component: NovaFaseComponent, canActivate: [AuthGuard]},
