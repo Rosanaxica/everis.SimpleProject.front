@@ -34,34 +34,12 @@ export class NovaFaseComponent implements OnInit {
 
   carregado = false;
 
-
-  //TESTE
-  // pessoa = new Pessoa();
-  // options: Pessoa[] = [];
-  // myControl = new FormControl();
-  // filteredOptions: Observable<Pessoa[]>;
-  //TESTE
-
-
-
   constructor(private svc: GenericService, private router: Router,
     private route: ActivatedRoute, private fb: FormBuilder, private datepipe: DatePipe) { }
 
   ngOnInit() {
     this.carregaTiposFases();
     this.carregaColaboradores();
-
-
-    //TESTE
-    // this.listaPessoas();
-    // this.filteredOptions = this.myControl.valueChanges
-    //   .pipe(
-    //     startWith<string | Pessoa>(''),
-    //     map(value => typeof value === 'string' ? value : value.nome),
-    //     map(name => name ? this._filter(name) : this.options.slice())
-    //   );
-    //TESTE
-
 
 
     this.route.paramMap.subscribe(res => {
@@ -84,39 +62,6 @@ export class NovaFaseComponent implements OnInit {
       this.criarForm();
     });
   }
-
-
-
-
-
-
-
-  //TESTE
-
-  // displayFn(pessoa?: Pessoa): string | undefined {
-  //   return pessoa ? pessoa.nome : undefined;
-  // }
-
-  // private _filter(pessoa: string): Pessoa[] {
-  //   const filterValue = pessoa.toLowerCase();
-
-  //   return this.options.filter(option => option.nome.toLowerCase().indexOf(filterValue) === 0);
-  // }
-
-  // listaPessoas() {
-  //   this.svc.listar(Pessoa).toPromise().then(pessoas => {
-  //     this.options = pessoas['data'];
-  //   });
-  // }
-  //TESTE
-
-
-
-
-
-
-
-
 
   obterModeloNovaFase() {
     this.svc.obter(this.modeloProjeto).toPromise().then(
@@ -219,7 +164,7 @@ export class NovaFaseComponent implements OnInit {
     this.obterDadosForm();
     this.svc.salvar(this.modeloFase, FaseModel).toPromise().then(
       data => {
-        this.router.navigate([`template/projetos/novo-projeto/fase/${this.idProjeto}`, { sucesso: true }]);
+        this.router.navigate([`projetos/novo-projeto/${this.idProjeto}`, { sucesso: true }]);
 
       },
       error => {
@@ -230,7 +175,7 @@ export class NovaFaseComponent implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate([`projetos/novo-projeto/fase/${this.idProjeto}`]);
+    this.router.navigate([`projetos/novo-projeto/${this.idProjeto}`]);
   }
 
   criarForm(itemFase?: FaseModel) {

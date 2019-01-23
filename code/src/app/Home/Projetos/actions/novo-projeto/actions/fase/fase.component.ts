@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Projeto } from 'src/app/_models/projeto.model';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -15,7 +15,7 @@ import { TipoFaseModel } from 'src/app/_models/tipo_fase.model';
 export class FaseComponent implements OnInit {
   constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
 
-  id: number;
+  @Input() projetoId :number = 0;
   res: number = 0;
   msgSucesso: string;
 
@@ -29,55 +29,24 @@ export class FaseComponent implements OnInit {
   filtroFases = new FaseModel();
 
   ngOnInit() {
-    this.arouter.paramMap.subscribe(res => {
-      this.id = +res.get('id');
+    this.arouter.paramMap.subscribe(res => {     
       var sucesso = res.get("sucesso");
       if (sucesso !== null && sucesso !== undefined && sucesso) {
-        this.msgSucesso = 'Cadastro realizado com sucesso!';
+        alert('Cadastro realizado com sucesso!');
       }
     });
     this.filtrar();
   }
 
   filtrar() {
-    this.filtroFases.projetoId = this.id;
+    this.filtroFases.projetoId = this.projetoId;
     this.filtroFases.ativo = true;
     this.svc.listar(FaseModel, this.filtroFases).toPromise().then(
-      f => {
-        if (f.sucesso) {
-          if (f.data != null && f.data !== undefined) {
-            this.fases = f.data;
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.fases = s.data;
 
-            this.fases.forEach( fase => {
-              this.pessoa.id = fase.pessoaId;
-              this.svc.obter(this.pessoa).toPromise().then(
-                pessoa => {
-                  fase.pessoa = pessoa.data;
-                }
-              );
-            });
-
-            this.fases.forEach( fase => {
-              this.tipoFase.id = fase.tipoFaseId;
-              this.svc.obter(this.tipoFase).toPromise().then(
-                tipoFase => {
-                  fase.tipoFase = tipoFase.data;
-                }
-              );
-            });
-
-            this.fases.forEach( fase => {
-              this.projeto.id = fase.projetoId;
-              this.svc.obter(this.projeto).toPromise().then(
-                projeto => {
-                  fase.projeto = projeto.data;
-                }
-              );
-            });
-
-            this.pessoa = new Pessoa();
-            this.tipoFase = new TipoFaseModel();
-            this.projeto = new Projeto();
           }
         }
       }
@@ -101,11 +70,11 @@ export class FaseComponent implements OnInit {
   }
 
   vaiParaNovaFase() {
-    this.router.navigate([`projetos/novo-projeto/fase/nova-fase/${this.id}`]);
+    this.router.navigate([`projetos/novo-projeto/fase/nova-fase/${this.projetoId}`]);
   }
 
   editar(id: number) {
-    this.router.navigate([`/projetos/novo-projeto/fase/nova-fase/${this.id}/${id}`]);
+    this.router.navigate([`/projetos/novo-projeto/fase/nova-fase/${this.projetoId}/${id}`]);
   }
 
   
