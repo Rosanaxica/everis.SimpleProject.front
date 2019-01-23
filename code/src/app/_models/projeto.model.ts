@@ -1,5 +1,6 @@
 import { ModeloGenerico } from './modelo_generico';
 import { Status } from './status.model';
+import { Empresa } from './empresa.model';
 
 export class Projeto extends ModeloGenerico {
     nome: string;
@@ -13,7 +14,7 @@ export class Projeto extends ModeloGenerico {
     foraEscopoProjeto: string;
     premissas: string;
     empresaId: number;
-    empresa: string;
+    empresa: Empresa;
     statusId: number;
     status: Status;
     dataPrevista: Date;

@@ -4,8 +4,8 @@
       <i class="fa fa-times mr-2"> </i> {{msgErro}}
     </div>
   </div>
-  <div class="container-fluid" id="cont">
-    <div class="row">
+  <div id="cont">
+    <div class="row no-gutters">
       <div class="col">
         <h1 class="titulo"> Nova Empresa</h1>
       </div>
@@ -30,12 +30,12 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row no-gutters">
+      <hr class="mt-2" />
       <div class="col d-flex justify-content-end">
         <button class="btn everis mr-2" [disabled]="!formularioEmpresa.valid" (click)="salvar()">Salvar</button>
         <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
       </div>
-      <hr class="mt-2" />
     </div>
   </div>
 </form>
