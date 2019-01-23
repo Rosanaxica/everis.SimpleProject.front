@@ -14,13 +14,7 @@ export class ColaboradorService {
     DadosColaborador(email: string){
         return this.svc.postViewModel(email, 'Colaborador/ListarDadosColaborador')
             .toPromise().then(
-                data => {
-                    localStorage.setItem('token', data.token);
-                    return true;
-                },
-                error => {
-                    return false;
-                }
+                data => { data }
             );
     }
 

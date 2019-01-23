@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { filter } from 'rxjs-compat/operator/filter';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-pessoas',
@@ -12,7 +13,7 @@ import { filter } from 'rxjs-compat/operator/filter';
 })
 export class PessoasComponent implements OnInit {
 
-  constructor(private svc: GenericService) { }
+  constructor(private svc: GenericService, private router: Router) { }
 
   colaboradores: Colaborador[] = [];
   pessoas: Pessoa[] = [];
@@ -46,6 +47,9 @@ export class PessoasComponent implements OnInit {
     return this.statusSelecionados.find(x => x.id == id).checked
   }
 
+  editar(id: number) {
+    this.router.navigate([`/pessoas/editar-pessoa/${id}`]);
+  }
 
   // listarPessoasQuePossuemColaborador() {
   //   this.svc.listar(Pessoa).toPromise().then(pessoas => {
