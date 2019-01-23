@@ -37,10 +37,6 @@ export class SolicitacaoMudancaComponent implements OnInit {
     this.filtrar();
   }
 
-  editar(id: number) {
-    this.router.navigate([`/template/projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/${this.id}/${id}`]);
-  }
-
   desativar(id: number) {
     this.svc.desativar(SolicitacaoMudanca, id).toPromise().then(
       s => {
@@ -57,8 +53,12 @@ export class SolicitacaoMudancaComponent implements OnInit {
     );
   }
 
-  novaSolicitacaoMudanca() {
-    this.router.navigate([`template/projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/${this.id}`]);
+  vaiParaNovaSolicitacaoMudanca() {
+    this.router.navigate([`projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/${this.id}`]);
+  }
+
+  editar(id: number) {
+    this.router.navigate([`/projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/${this.id}/${id}`]);
   }
 
   filtrar() {

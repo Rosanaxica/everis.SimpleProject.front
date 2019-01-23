@@ -121,7 +121,7 @@ export class NovaSolicitacaoMudanca implements OnInit {
   }
 
   cancelar() {
-    this.router.navigate([`template/projetos/novo-projeto/solicitacao-mudanca/${this.idProjeto}`]);
+    this.router.navigate([`projetos/novo-projeto/solicitacao-mudanca/${this.idProjeto}`]);
   }
 
 }
