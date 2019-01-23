@@ -34,7 +34,7 @@ a.nav-link {color: #777}
   hr{background-color:rgb(112,115,114);border: 1px solid #eee; width: 100%;}
  .everis-laranja{background-color: rgb(215,103,52)}
  .everis-roxo{background-color: rgb(100,50,105)}
- .everis-azul{background-color: rgb(103,133,193) }
+ .everis-azul{background-color: rgb(103,133,193); color: #ffffff; }
  .everis-amarelo{background-color:rgb(221,179,34)}
  .links:hover,.links:focus{color: #d9d9d9;text-decoration: none; }
  .form-control:focus { border-color: rgba(204, 204, 204, 0.8); box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(112,115,114, 0.6); outline: 0 none;}

@@ -24,9 +24,10 @@ import { LoaderComponent } from './core/loader/loader.component';
 import { ComunidadesComponent } from './Home/Comunidades/comunidades.component';
 import { SolicitacaoMudancaComponent } from './Home/Projetos/actions/solicitacao-mudanca/solicitacao-mudanca.component';
 import { AuthGuard } from './shared/guard/auth.guard';
-import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
+import { CadastroComunidadeComponent } from './Home/Comunidades/cadastro-comunidade/cadastro-comunidade.component';
+import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/squads/cadastro-squad/cadastro-squad.component';
 import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
-import { CadastroComunidadeComponent } from './Home/Comunidades/actions/cadastro-comunidade/cadastro-comunidade.component';
+import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
 
 const appRoutes: Routes = [
 
@@ -49,6 +50,12 @@ const appRoutes: Routes = [
   { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard]},
   { path: 'projetos/novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard]},
   { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent, canActivate: [AuthGuard]},
+  
+  { path: 'projetos/novo-projeto/solicitacao-mudanca/:id', component: SolicitacaoMudancaComponent, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard]},
+  { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard]},
+
+
   { path: 'projetos/novo-projeto/fase/:id', component: FaseComponent, canActivate: [AuthGuard]},
   { path: 'projetos/novo-projeto/fase/nova-fase/:id', component: NovaFaseComponent, canActivate: [AuthGuard]},
   { path: 'projetos/novo-projeto/fase/nova-fase/:id/:id2', component: NovaFaseComponent, canActivate: [AuthGuard]},
@@ -60,6 +67,9 @@ const appRoutes: Routes = [
   { path: 'comunidades/incluir-comunidade', component: CadastroComunidadeComponent, canActivate: [AuthGuard] },
   { path: 'comunidades/editar-comunidade/:id', component: CadastroComunidadeComponent, canActivate: [AuthGuard] },
   { path: 'comunidades:sucesso', component: EmpresaComponent, canActivate: [AuthGuard] },
+
+  { path: 'squads/incluir-squad/:comunidadeid', component: CadastroSquadComponent, canActivate: [AuthGuard] },
+  { path: 'squads/editar-squad/:comunidadeid/:id', component: CadastroSquadComponent, canActivate: [AuthGuard] },
 
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
 

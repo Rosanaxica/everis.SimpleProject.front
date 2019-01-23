@@ -95,6 +95,7 @@ export class ProjetosComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.projetos = s.data;
+            this.contar(this.projetos);
             this.projetosFiltrados = this.projetos;
             this.contar(this.projetosFiltrados);
           }
