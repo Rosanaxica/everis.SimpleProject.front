@@ -42,7 +42,8 @@ export class Projeto extends ModeloGenerico {
     diretoria: Diretoria;
     superintendenciaId: number;
     superintendencia: Superintendencia;
-    statusPropostaId: number;
+    statusProposta: string;
+    tarifa: string;
     
     getKey(): string {
         return 'Projeto'

@@ -130,7 +130,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
       .toPromise().then((data: any) => {
         switch (data.codigo) {
           case 200:
-            this.projeto = data.Data;
+            this.projeto = data.data;
             this.comparaListaXBanco();
             break;
           default:
