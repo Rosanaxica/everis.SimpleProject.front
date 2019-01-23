@@ -1,0 +1,29 @@
+
+<div class="row align-items-center no-gutters">
+ 
+  <div class="col d-flex justify-content-start">
+    <b>Squads</b> 
+  </div>
+  <div class="col d-flex justify-content-end mb-2">
+    <button type="button" class="btn everis" (click)="nova()">Nova Squad+</button>
+  </div>
+</div>
+<table class="mt-2 table table-striped">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Data Início</th>
+      <th class="text-center">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let squad of squads">
+      <td class="align-middle">{{ squad.nome }}</td>
+      <td class="align-middle">{{ squad.datainicio }}</td>
+      <td class="text-center">
+        <button class="btn everis" (click)="editar(squad.id)"><i class="fas fa-pencil-alt"></i></button>
+        <button class="btn everis-laranja text-white ml-1" (click)="desativar(squad.id)"><i class="fas fa-trash-alt"></i></button>
+      </td>
+    </tr>
+  </tbody>
+</table>

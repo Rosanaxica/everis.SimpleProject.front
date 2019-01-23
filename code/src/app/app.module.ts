@@ -59,8 +59,9 @@ import { ComunidadesComponent } from './Home/Comunidades/comunidades.component';
 import { GraficolinhaComponent } from './Home/Dashboard/graficolinha/graficolinha.component';
 import { FaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/fase.component';
 import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/fase/actions/nova-fase/nova-fase.component';
-import { SquadComponent } from './Home/Squad/squad/squad.component';
-import { CadastroComunidadeComponent } from './Home/Comunidades/actions/cadastro-comunidade/cadastro-comunidade.component';
+import { CadastroComunidadeComponent } from './Home/Comunidades/cadastro-comunidade/cadastro-comunidade.component';
+import { SquadsComponent } from './Home/Comunidades/cadastro-comunidade/squads/squads.component';
+import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/squads/cadastro-squad/cadastro-squad.component';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { CadastroComunidadeComponent } from './Home/Comunidades/actions/cadastro
     ComunidadesComponent,
     CadastroComunidadeComponent,
     GraficolinhaComponent,
-    SquadComponent
+    SquadsComponent,
+    CadastroSquadComponent
   ],
   imports: [
     HttpClientModule,

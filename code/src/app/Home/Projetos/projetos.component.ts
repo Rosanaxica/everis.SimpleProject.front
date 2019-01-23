@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { NovoProjetoComponent } from './actions/novo-projeto/novo-projeto.component';
 import { ProjetoPessoa } from 'src/app/_models/projetopessoa.model';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
+import { CodegenComponentFactoryResolver } from '@angular/core/src/linker/component_factory_resolver';
 
 @Component({
   selector: 'app-projetos',
@@ -21,20 +22,20 @@ export class ProjetosComponent implements OnInit {
   pessoas: any;
   status: Status[] = [];
   statusSelecionados = [
-      {id: 1, descricao: 'Em Desenvolvimento', checked: true},
-      {id: 2, descricao: 'Aguardando Aprovação', checked: true},
-      {id: 3, descricao: 'Concluído', checked: true},
-      {id: 4, descricao: 'Entregue', checked: true},
-      {id: 5, descricao: 'Aguardando Abertura da SS', checked: true},
-      {id: 6, descricao: 'Cancelado', checked: true},
-      {id: 7, descricao: 'Proposta', checked: true}
-  ];
+    {id: 1, descricao: 'Em Desenvolvimento', checked: true},
+    {id: 2, descricao: 'Aguardando Aprovação', checked: true},
+    {id: 3, descricao: 'Concluído', checked: true},
+    {id: 4, descricao: 'Entregue', checked: true},
+    {id: 5, descricao: 'Aguardando Abertura da SS', checked: true},
+    {id: 6, descricao: 'Cancelado', checked: true},
+    {id: 7, descricao: 'Proposta', checked: true}
+  ];;
   filtroProjeto = new Projeto();
+  codigoProjeto: string;
+  projetosFiltrados: Array<Projeto>;
   form: FormGroup;
 
-  constructor(private router: Router, private svc: GenericService, private fb: FormBuilder) {
-
-  }
+  constructor(private router: Router, private svc: GenericService, private fb: FormBuilder) { }
 
   ngOnInit() {
     this.filtrar();
@@ -48,6 +49,16 @@ export class ProjetosComponent implements OnInit {
     return this.statusSelecionados.find(x => x.id == id).checked
   }
 
+  mostrarProjetosFiltrados(codigo: string) {
+    if (this.projetos.filter(p => p.codigoProjeto == codigo) != '') {
+      this.projetosFiltrados = this.projetos.filter(p => p.codigoProjeto == codigo);
+    }
+    else {
+      this.projetosFiltrados = this.projetos;
+    }
+    console.log(this.projetosFiltrados);
+  }
+
   detalheProjeto(projeto: Projeto): void {
     this.router.navigate([`/projetos/novo-projeto/${projeto.id}`]);
   }
@@ -58,13 +69,12 @@ export class ProjetosComponent implements OnInit {
       e => { let err = e.json(); alert(`Erro ${err.mensagem}`); }
     )
   }
-  contar(lista: Array<any>): number {
+  contar(lista: Array<Projeto>): number {
     let cont = 0;
     lista.forEach(element => {
       if(this.mostrarStatus(element.status.id))
         cont++;
     });
-    console.log("total elementos encontrados = " + cont);
     return cont;
   }
 
@@ -76,6 +86,7 @@ export class ProjetosComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.projetos = s.data;
+            this.projetosFiltrados = this.projetos;
           }
         }
       }
