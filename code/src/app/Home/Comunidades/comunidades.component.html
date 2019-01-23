@@ -1,16 +1,16 @@
-
 <div class="row align-items-center no-gutters">
   <div class="col-lg-3">
     <h1 class="titulo pl-0 mb-0">Comunidades</h1>
   </div>
   <div class="input-group col-lg-5 mb-2">
-    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar" [(ngModel)]="filtroComunidade.nome" (keydown.enter)="filtrar()">
+    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
+      [(ngModel)]="filtroComunidade.nome" (keydown.enter)="filtrar()">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>
   </div>
   <div class="col d-flex justify-content-end mb-2">
-    <button type="button" class="btn everis mr-2" (click)="exportar()">Exportar</button>
+    <button type="button" class="btn everis-azul text-white mr-2" (click)="exportar()"><i class="fas fa-file-export"></i>Exportar</button>
     <button type="button" class="btn everis" [routerLink]="['/comunidades/incluir-comunidade']">Nova Comunidade+</button>
   </div>
   <hr class="mt-0" />

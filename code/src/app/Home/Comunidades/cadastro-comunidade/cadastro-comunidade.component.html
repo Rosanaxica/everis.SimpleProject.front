@@ -4,29 +4,29 @@
       <i class="fa fa-times mr-2"> </i> {{msgErro}}
     </div>
   </div>
-  <div class="container-fluid" id="cont">
-    <div class="row">
+  <div id="cont">
+    <div class="row no-gutters">
       <div class="col">
         <h1 class="titulo"> Nova Comunidade</h1>
       </div>
       <hr class="mt-0" />
     </div>
     <!--Nome comunidade-->
-    <div class="form-group  mb-4" >
+    <div class="form-group  mb-4">
       <div class="row col-md-8 mb-2">
-        <input type="text" class="form-control" placeholder="*Nome da Comunidade" name="nome" minlength="3" autocomplete="off"
-          formControlName="nome">
+        <input type="text" class="form-control" placeholder="*Nome da Comunidade" name="nome" minlength="3"
+          autocomplete="off" formControlName="nome">
       </div>
     </div>
 
     <app-squads comunidadeId="{{modeloComunidade.id}}" *ngIf="modeloComunidade.id != null && modeloComunidade.id > 0"></app-squads>
 
-    <div class="row">
+    <div class="row no-gutters">
+      <hr class="mt-2" />
       <div class="col d-flex justify-content-end">
         <button class="btn everis mr-2" [disabled]="!formularioComunidade.valid" (click)="salvar()">Salvar</button>
         <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
       </div>
-      <hr class="mt-2" />
     </div>
   </div>
 </form>
