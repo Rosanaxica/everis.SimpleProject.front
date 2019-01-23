@@ -14,6 +14,7 @@ export class Projeto extends ModeloGenerico {
     qtdHorasServico3: number;
     dataInicio: Date;
     dataEntrega: Date;
+    dataRecebida: Date;
     escopoProjeto: string;
     foraEscopoProjeto: string;
     premissas: string;
@@ -41,6 +42,7 @@ export class Projeto extends ModeloGenerico {
     diretoria: Diretoria;
     superintendenciaId: number;
     superintendencia: Superintendencia;
+    statusPropostaId: number;
     
     getKey(): string {
         return 'Projeto'

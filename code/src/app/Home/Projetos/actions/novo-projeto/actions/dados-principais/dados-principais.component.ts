@@ -53,6 +53,7 @@ export class DadosPrincipaisComponent implements OnInit {
         'ext': [objProjeto.ext, Validators.required],
         'empresaId': [objProjeto.empresaId, Validators.required],
         'dataInicio': [objProjeto.dataInicio, Validators.required],
+        'dataRecebida': [objProjeto.dataRecebida, Validators.required],
         'dataPrevista': [objProjeto.dataPrevista, Validators.required],
         'dataProposta': [objProjeto.dataPrevista, Validators.required],
         'duracao': [objProjeto.duracao, Validators.required],
@@ -68,7 +69,8 @@ export class DadosPrincipaisComponent implements OnInit {
         'premissas': [objProjeto.premissas, Validators.required],
         'tipoDemanda': [objProjeto.tipoDemanda, Validators.required],
         'tamanho': [objProjeto.tamanho, Validators.required],
-        'statusProjetoId': [objProjeto.status, Validators.required]
+        'statusProjetoId': [objProjeto.status, Validators.required],
+        'statusProposta': [objProjeto.statusPropostaId, Validators.required]
       }
     );
   }
@@ -87,6 +89,18 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.foraEscopoProjeto = values.foraEscopoProjeto;
     this.projeto.premissas = values.premissas;
     this.projeto.status = values.statusProjetoId;
+    this.projeto.superintendenciaId = values.superintendenciaId;
+    this.projeto.diretoriaId = values.diretoriaId;
+    this.projeto.siglaId = values.siglaId;
+    this.projeto.tipoDemanda = values.tipoDemanda;
+    this.projeto.tamanho = values.tamanho;
+    this.projeto.tecnologiaId = values.tecnologiaId;
+    this.projeto.ext = values.ext;
+    this.projeto.dataProposta = values.dataProposta;
+    this.projeto.dataRecebida = values.dataRecebida;
+    this.projeto.duracao = values.duracao;
+    this.projeto.statusPropostaId = values.statusProposta;
+    this.projeto.codigoProjeto = values.codProjeto;
   }
 
   private carregarDadosForm() {
@@ -101,6 +115,18 @@ export class DadosPrincipaisComponent implements OnInit {
     this.dadosPrincipaisForm.get("foraEscopoProjeto").setValue(this.projeto.foraEscopoProjeto);
     this.dadosPrincipaisForm.get("premissas").setValue(this.projeto.premissas);
     this.dadosPrincipaisForm.get("statusProjetoId").setValue(this.projeto.status);
+    this.dadosPrincipaisForm.get("superintendenciaId").setValue(this.projeto.superintendenciaId);
+    this.dadosPrincipaisForm.get("diretoriaId").setValue(this.projeto.diretoriaId);
+    this.dadosPrincipaisForm.get("siglaId").setValue(this.projeto.siglaId);
+    this.dadosPrincipaisForm.get("tipoDemanda").setValue(this.projeto.tipoDemanda);
+    this.dadosPrincipaisForm.get("tamanho").setValue(this.projeto.tamanho);
+    this.dadosPrincipaisForm.get("tecnologiaId").setValue(this.projeto.tecnologiaId);
+    this.dadosPrincipaisForm.get("ext").setValue(this.projeto.ext);
+    this.dadosPrincipaisForm.get("dataProposta").setValue(this.projeto.dataProposta);
+    this.dadosPrincipaisForm.get("codProjeto").setValue(this.projeto.codigoProjeto);
+    this.dadosPrincipaisForm.get("statusProposta").setValue(this.projeto.statusPropostaId);
+    this.dadosPrincipaisForm.get("duracao").setValue(this.projeto.duracao);
+    this.dadosPrincipaisForm.get("dataRecebida").setValue(this.projeto.dataRecebida);
   }
 
   Adicionar() {

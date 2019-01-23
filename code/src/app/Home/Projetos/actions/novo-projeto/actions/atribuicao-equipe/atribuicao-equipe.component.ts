@@ -24,6 +24,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
   projeto = new Projeto();
   atribuicoes: ProjetoPessoaAtribuicao[] = [];
   idAtribuicao: number;
+  responsavel: boolean;
 
   ngOnInit() {
     this.getAtribuicoes();
@@ -102,23 +103,46 @@ export class AtribuicaoEquipeComponent implements OnInit {
     this.projetoPessoa.forEach(projPessoa => {
       if (projPessoa.pessoaId == pp.pessoaId) {
         projPessoa.atribuicaoId = this.idAtribuicao;
+        projPessoa.responsavel = this.responsavel;
       }
     });
   }
   popAtribuicao(idAtribuicao: number) {
     this.idAtribuicao = idAtribuicao;
   }
+  popResponsavel(responsavel: boolean) {
+    this.responsavel = responsavel;
+  }
   salvar() {
     //this.getProjeto.emit("2");
-    if (this.projeto.id == 0) {
+    if (this.projeto.id == undefined) {
       if (this.informadoResponsavel()) {
-        if (!this.salvarProjeto()) {
-          return;
-        }
+        this.salvarProjeto();
       } else {
         return;
       }
+    } else {
+      this.comparaListaXBanco();
     }
+  }
+  salvarProjeto() {
+    this.svc.salvar(this.projeto, Projeto)
+      .toPromise().then((data: any) => {
+        switch (data.codigo) {
+          case 200:
+            this.projeto = data.Data;
+            this.comparaListaXBanco();
+            break;
+          default:
+            window.alert('erro: ' + data.mensagem);
+            break;
+        }
+      },
+        error => {
+          alert('Erro ao tentar adicionar.');
+        });
+  }
+  comparaListaXBanco() {
     let listaProjetoPessoaBanco: ProjetoPessoa[] = [];
     this.svc.listar(ProjetoPessoa, this.filtroProjetoPessoa).toPromise().then(
       s => {
@@ -131,25 +155,6 @@ export class AtribuicaoEquipeComponent implements OnInit {
         this.salvarProjetoPessoa(listaProjetoPessoaBanco);
       }
     );
-
-  }
-  salvarProjeto(): boolean {
-    this.svc.salvar(this.projeto, Projeto)
-      .toPromise().then((data: any) => {
-        switch (data.codigo) {
-          case 200:
-            this.projeto = data.Data;
-            return true;
-            break;
-          default:
-            window.alert('erro: ' + data.mensagem);
-            break;
-        }
-      },
-        error => {
-          alert('Erro ao tentar adicionar.');
-        });
-    return false;
   }
   informadoResponsavel(): boolean {
     let retorno: boolean = false;
