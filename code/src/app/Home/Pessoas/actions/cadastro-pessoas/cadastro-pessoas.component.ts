@@ -37,15 +37,15 @@ export class CadastroPessoasComponent implements OnInit {
   pessoaColaborador = new PessoaColaboradorViewModel();
   gestores: Pessoa[] = [];
 
-  tiposTelefone: TipoTelefone[] = [];
+  tiposTelefone: TipoTelefone[] = [{ id: 0, descricao: 'Selecione' } as TipoTelefone];
   telefone = new Telefone();
   telefones: Telefone[] = [];
 
-  empresas: Empresa[] = [];
+  empresas: Empresa[] = [{ id: 0, nome: 'Selecione' } as Empresa];
   funcoes: Funcao[] = [];
   areasContratantes: AreaContratante[] = [];
   polosAcesso: PoloAcesso[] = [];
-  tipoServicos: TipoServico[] = [];
+  tipoServicos: TipoServico[] = [{ id: 0, descricao: 'Selecione' } as TipoServico];
   diretorias: Diretoria[] = [];
 
   acessoSigla = new AcessoSigla();
@@ -86,11 +86,14 @@ export class CadastroPessoasComponent implements OnInit {
       'Pessoa/ObterGestoresTecnicos'
     ]).then(data => {
       this.empresas = data[0].json().data as Empresa[];
+      this.empresas.unshift( { id: 0, nome: 'Selecione' } as Empresa);
       this.funcoes = data[1].json().data as Funcao[];
       this.areasContratantes = data[2].json().data as AreaContratante[];
       this.polosAcesso = data[3].json().data as PoloAcesso[];
       this.tipoServicos = data[4].json().data as TipoServico[];
+      this.tipoServicos.unshift( { id: 0, descricao: 'Selecione' } as TipoServico);
       this.tiposTelefone = data[5].json().data as TipoTelefone[];
+      this.tiposTelefone.unshift( { id: 0, descricao: 'Selecione' } as TipoTelefone);
       this.diretorias = data[6].json().data as TipoTelefone[];
       this.gestores = data[7].json().data as Pessoa[];
     });
