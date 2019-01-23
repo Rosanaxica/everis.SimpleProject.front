@@ -98,9 +98,13 @@ import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/s
     MeusDadosComponent,
     ComunidadesComponent,
     CadastroComunidadeComponent,
+<<<<<<< HEAD
+    GraficolinhaComponent
+=======
     GraficolinhaComponent,
     SquadsComponent,
     CadastroSquadComponent
+>>>>>>> 78089ef704a7dace4f0302fa5d62d7c09da47984
   ],
   imports: [
     HttpClientModule,

@@ -9,21 +9,24 @@ import { Router } from '@angular/router';
 import { routerNgProbeToken } from '@angular/router/src/router_module';
 import { GenericService } from './generic.service';
 import { ModeloRetorno } from '../_models/interfaces/modelo.retorno';
+import { LoaderService } from './loader.service';
 
 @Injectable({
     providedIn: 'root'
 })
 
 export class LoginService {
-    constructor(private svc: GenericService, private http: HttpClient, private route: Router) { }
+    constructor(private svc: GenericService, private http: HttpClient, private route: Router, private loaderService: LoaderService) { }
 
     login(obj: Colaborador): Promise<boolean> {
         return this.svc.postViewModel(obj, 'Login/Login')
             .toPromise().then(
                 data => {
+                    this.loaderService.show();
                     localStorage.setItem('token', data.token);
-                    localStorage.setItem('email', obj.emailCorporativo);
-                    this.route.navigate(['/dashboard']);
+                    localStorage.setItem('nome', data.nome);
+                    localStorage.setItem('id', data.id);
+                    this.route.navigate(['/dashboard']).then(() => window.location.reload());
                     return true;
                 },
                 error => {
@@ -34,6 +37,8 @@ export class LoginService {
 
     logout() {
         localStorage.removeItem('token');
+        localStorage.removeItem('nome');
+        localStorage.removeItem('id');
         this.route.navigateByUrl('/login');
     }
 
