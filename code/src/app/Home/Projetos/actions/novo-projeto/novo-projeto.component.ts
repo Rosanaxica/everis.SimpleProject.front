@@ -69,8 +69,8 @@ export class NovoProjetoComponent implements OnInit {
   }
   selectTab(dados: any) {
     // if (tabId == 1) {
-      let projeto: Projeto = JSON.parse(dados);
-      this.formAtribuicaoEquipe.OpenView(projeto);
+    let projeto: Projeto = JSON.parse(dados);
+    this.formAtribuicaoEquipe.OpenView(projeto);
     // } else if (tabId == 2) {
     //   this.formAnexo.OpenView("teste")
     // }
@@ -83,5 +83,9 @@ export class NovoProjetoComponent implements OnInit {
 
   vaiParaFase() {
     this.router.navigate([`projetos/novo-projeto/fase/${this.id}`]);
+  }
+
+  vaiParaSolicitacaoMudanca() {
+    this.router.navigate([`projetos/novo-projeto/solicitacao-mudanca/${this.id}`]);
   }
 }

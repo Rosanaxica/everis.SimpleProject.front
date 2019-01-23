@@ -6,17 +6,18 @@
 
 
     <!-- TESTE -->
-    
-    <mat-form-field class="example-full-width">
-        <input type="text" placeholder="Assignee" aria-label="Assignee" matInput [formControl]="myControl" [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option.nome}}
-          </mat-option>
-        </mat-autocomplete>
-      </mat-form-field>
 
-      <!-- TESTE -->
+    <!-- <mat-form-field class="col-12">
+        <input type="text" class="form-control" placeholder="Digite o colaborador" aria-label="Digite o que você deseja buscar"
+            matInput [formControl]="myControl" [matAutocomplete]="auto" name="colaborador" formControlName="colaborador">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                {{option.nome}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field> -->
+
+    <!-- TESTE -->
 
 
 

@@ -7,7 +7,7 @@ import { TipoServico } from './tipo_servico.model';
 
 export class Colaborador extends ModeloGenerico {
 
-    funcaoId: number;;
+    funcaoId: number;
     funcao: Funcao;
     poloAcessoId: number;
     poloAcesso: PoloAcesso;
@@ -30,6 +30,14 @@ export class Colaborador extends ModeloGenerico {
     exclusivoCliente: boolean;
     tipoContratacao: string;
     gestorTecnicoCliente: string;
+
+    constructor() {
+        super();
+        this.funcao = new Funcao();
+        this.areaContratante = new AreaContratante();
+        this.poloAcesso = new PoloAcesso();
+        this.tipoServico = new TipoServico();
+    }
 
     getKey(): string {
         return "Colaborador";
