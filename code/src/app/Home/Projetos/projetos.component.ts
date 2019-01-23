@@ -57,6 +57,7 @@ export class ProjetosComponent implements OnInit {
       this.exibeMsg = false;
     }
     else if (this.projetos.filter(p => p.codigoProjeto == codigo) == '') {
+      this.projetosFiltrados = [];
       this.exibeMsg = true;
       console.log("Nenhum resultado encontrado.");
     }
