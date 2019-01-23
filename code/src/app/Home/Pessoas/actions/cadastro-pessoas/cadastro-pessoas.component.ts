@@ -27,7 +27,7 @@ import { Diretoria } from 'src/app/_models/diretoria.model';
 })
 export class CadastroPessoasComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private svc: GenericService, private router: Router, private fb: FormBuilder) {
+  constructor(private arouter: ActivatedRoute, private svc: GenericService, private router: Router, private fb: FormBuilder) {
   }
 
   id: number;
@@ -39,6 +39,8 @@ export class CadastroPessoasComponent implements OnInit {
 
   tiposTelefone: TipoTelefone[] = [{ id: 0, descricao: 'Selecione' } as TipoTelefone];
   telefone = new Telefone();
+  filtroTelefone = new Telefone();
+  filtroPessoa = new Pessoa();
   telefones: Telefone[] = [];
 
   empresas: Empresa[] = [{ id: 0, nome: 'Selecione' } as Empresa];
@@ -61,16 +63,20 @@ export class CadastroPessoasComponent implements OnInit {
   btnAdicionarFerramentas: Ferramenta[] = [];
 
   ngOnInit() {
-
-    if (this.id != null && this.id !== undefined && this.id > 0) {
-      this.pessoaColaborador.pessoa.id = this.id;
-      //this.obterModelo();
-      this.obterFerramentasDisponiveis();
-    } else {
-      this.obterFerramentas();
-      this.obterSiglas()
-      this.criarForm();
-    }
+    this.criarForm();
+    this.arouter.paramMap.subscribe(res => {
+      this.id = +res.get('id');
+      if (this.id != null && this.id !== undefined && this.id > 0) {
+        this.pessoaColaborador.pessoa.id = this.id;
+        this.filtroTelefone.pessoaId = this.id;
+        this.filtroPessoa.id = this.id;
+        this.obterModelo();
+      } else {
+        this.obterFerramentas();
+        this.obterSiglas()
+        this.criarForm();
+      }
+    });
 
     // executar a chamada abaixo no momento que finalizar o preenchimento do retorno da pessoa em edição
     // this.obterFerramentasAssociadas();
@@ -86,14 +92,14 @@ export class CadastroPessoasComponent implements OnInit {
       'Pessoa/ObterGestoresTecnicos'
     ]).then(data => {
       this.empresas = data[0].json().data as Empresa[];
-      this.empresas.unshift( { id: 0, nome: 'Selecione' } as Empresa);
+      this.empresas.unshift({ id: 0, nome: 'Selecione' } as Empresa);
       this.funcoes = data[1].json().data as Funcao[];
       this.areasContratantes = data[2].json().data as AreaContratante[];
       this.polosAcesso = data[3].json().data as PoloAcesso[];
       this.tipoServicos = data[4].json().data as TipoServico[];
-      this.tipoServicos.unshift( { id: 0, descricao: 'Selecione' } as TipoServico);
+      this.tipoServicos.unshift({ id: 0, descricao: 'Selecione' } as TipoServico);
       this.tiposTelefone = data[5].json().data as TipoTelefone[];
-      this.tiposTelefone.unshift( { id: 0, descricao: 'Selecione' } as TipoTelefone);
+      this.tiposTelefone.unshift({ id: 0, descricao: 'Selecione' } as TipoTelefone);
       this.diretorias = data[6].json().data as TipoTelefone[];
       this.gestores = data[7].json().data as Pessoa[];
     });
@@ -259,12 +265,106 @@ export class CadastroPessoasComponent implements OnInit {
     });
   }
 
+  obterModelo() {
+
+    let pessoaColaborador = new PessoaColaboradorViewModel();
+
+    this.svc.obter(this.filtroPessoa).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            let pessoa = s.data as Pessoa;
+            pessoaColaborador.pessoa = pessoa;
+
+            this.svc.listar(Colaborador, null, `ListarFerramentasDisponiveis/${pessoaColaborador.pessoa.colaboradorId}`).toPromise().then(
+              s => {
+                if (s.sucesso) {
+                  if (s.data != null && s.data !== undefined) {
+                    let ferramentasDisponiveis = s.data as Ferramenta[];
+                    pessoaColaborador.ferramentasDisponiveis = new Array<Ferramenta>();
+                    pessoaColaborador.ferramentasDisponiveis = ferramentasDisponiveis;
+                    this.ferramentasDisponiveis = ferramentasDisponiveis;
+                  }
+                }
+              }
+            );
+
+            this.svc.listar(Colaborador, null, `ListarFerramentasAssociadas/${pessoaColaborador.pessoa.colaboradorId}`).toPromise().then(
+              s => {
+                if (s.sucesso) {
+                  if (s.data != null && s.data !== undefined) {
+                    let ferramentasAssociadas = s.data as Ferramenta[];
+                    pessoaColaborador.ferramentasAssociadas = ferramentasAssociadas;
+                    this.ferramentasAssociadas = ferramentasAssociadas;
+                  }
+                }
+              }
+            );
+
+
+            this.svc.listar(Colaborador, null, `ListarSiglasDisponiveis/${pessoaColaborador.pessoa.colaboradorId}`).toPromise().then(
+              s => {
+                if (s.sucesso) {
+                  if (s.data != null && s.data !== undefined) {
+                    let siglasDisponiveis = s.data as Sigla[];
+                    pessoaColaborador.siglasDisponiveis = siglasDisponiveis;
+                    this.siglasDisponiveis = siglasDisponiveis;
+                  }
+                }
+              }
+            );
+
+            this.svc.listar(Colaborador, null, `ListarSiglasAssociadas/${pessoaColaborador.pessoa.colaboradorId}`).toPromise().then(
+              s => {
+                if (s.sucesso) {
+                  if (s.data != null && s.data !== undefined) {
+                    let siglasAssociadas = s.data as Sigla[];
+                    pessoaColaborador.siglasAssociadas = siglasAssociadas;
+                    this.siglasAssociadas = siglasAssociadas;
+                  }
+                }
+              }
+            );
+
+            this.svc.listar(Telefone, this.filtroTelefone).toPromise().then(
+              s => {
+                if (s.sucesso) {
+                  if (s.data != null && s.data !== undefined) {
+                    this.telefones = s.data as Telefone[];
+                    // pessoaColaborador.telefones = telefones;
+                    // this.telefones = telefones;
+                    // debugger;
+                  }
+                }
+              }
+            );
+            this.criarForm(pessoaColaborador);
+          }
+        }
+      }
+
+    );
+
+
+
+
+
+
+
+
+  }
 
   criarForm(pessoaColaborador?: PessoaColaboradorViewModel) {
     pessoaColaborador = pessoaColaborador || new PessoaColaboradorViewModel();
+
+    let tipo = '1';
+
+    if (pessoaColaborador.pessoa.id > 0) {
+      tipo = String(pessoaColaborador.pessoa.tipoId);
+    }
     // pessoaColaborador.pessoa = new Pessoa();
     this.formularioPessoa = this.fb.group({
-      'tipoPessoa': ['1'],
+      'tipoPessoa': [tipo],
       'nome': [pessoaColaborador.pessoa.nome, Validators.required],
       'diretoria': [pessoaColaborador.pessoa.diretoriaId, Validators.required],
       'funcional': [pessoaColaborador.pessoa.funcional, Validators.required],
@@ -369,7 +469,6 @@ export class CadastroPessoasComponent implements OnInit {
     const empresaControl = this.formularioPessoa.get('empresa');
 
     if (valorSelecionado === '1') {
-      emailCorpControl.setValidators(Validators.required);
       tipoContratoControl.setValidators(Validators.required);
       dataNascimentoControl.setValidators(Validators.required);
       dataAdmissaoControl.setValidators(Validators.required);
@@ -392,9 +491,7 @@ export class CadastroPessoasComponent implements OnInit {
       poloAcessoControl.clearValidators();
       areaContratanteControl.clearValidators();
       gestorResponsavelControl.clearValidators();
-      empresaControl.setValidators(Validators.required);
     }
-    emailCorpControl.updateValueAndValidity();
     tipoContratoControl.updateValueAndValidity();
     dataNascimentoControl.updateValueAndValidity();
     dataAdmissaoControl.updateValueAndValidity();
@@ -418,22 +515,38 @@ export class CadastroPessoasComponent implements OnInit {
       this.pessoaColaborador.pessoa.colaborador = null
     }
 
-    this.svc.postViewModel(this.pessoaColaborador, 'pessoa/CriarPessoaColaborador')
-      .toPromise().then(
-        data => {
-          this.router.navigate([`pessoas`]);
-          // this.msgSucesso = 'Colaborador cadastrado com sucesso!';
-        },
-        error => {
-          alert(error.data);
-        }
-      );
+    if (this.pessoaColaborador.pessoa.id > 0) {
+      this.svc.salvar(this.pessoaColaborador.pessoa)
+        .toPromise().then(
+          data => {
+            this.router.navigate([`pessoas`]);
+            // this.msgSucesso = 'Colaborador cadastrado com sucesso!';
+          },
+          error => {
+            alert(error.data);
+          }
+        );
+    } else {
+      this.svc.postViewModel(this.pessoaColaborador, 'pessoa/CriarPessoaColaborador')
+        .toPromise().then(
+          data => {
+            this.router.navigate([`pessoas`]);
+            // this.msgSucesso = 'Colaborador cadastrado com sucesso!';
+          },
+          error => {
+            alert(error.data);
+          }
+        );
+
+    }
 
     this.formularioPessoa.reset();
     this.telefones = [];
     this.ferramentasAssociadas = [];
     this.ferramentasDisponiveis = [];
   }
+
+
 
 
 
