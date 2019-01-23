@@ -10,6 +10,7 @@ import { AreaContratante } from './area_contratante.model';
 import { TipoServico } from './tipo_servico.model';
 import { Sigla } from './sigla.model';
 import { Ferramenta } from './ferramenta.model';
+import { Colaborador } from './colaborador.model';
 
 
 export class PessoaColaboradorViewModel extends ModeloGenerico {
@@ -23,10 +24,15 @@ export class PessoaColaboradorViewModel extends ModeloGenerico {
     ferramentasDisponiveis: Ferramenta[];
     ferramentasAssociadas: Ferramenta[];
 
+    
+  colaboradorId: number;
+  colaborador: Colaborador;
+
     constructor() {
         super();
         this.pessoa = new Pessoa();
         this.tipoTelefone = new TipoTelefone();
+        this.colaborador =new Colaborador();
     }
 
     getKey() {

@@ -276,7 +276,7 @@ export class CadastroPessoasComponent implements OnInit {
             let pessoa = s.data as Pessoa;
             pessoaColaborador.pessoa = pessoa;
 
-            this.svc.listar(Colaborador, null, `ListarFerramentasDisponiveis/${pessoaColaborador.pessoa.colaboradorId}`).toPromise().then(
+            this.svc.listar(Colaborador, null, `ListarFerramentasDisponiveis/${pessoaColaborador.colaboradorId}`).toPromise().then(
               s => {
                 if (s.sucesso) {
                   if (s.data != null && s.data !== undefined) {
@@ -289,7 +289,7 @@ export class CadastroPessoasComponent implements OnInit {
               }
             );
 
-            this.svc.listar(Colaborador, null, `ListarFerramentasAssociadas/${pessoaColaborador.pessoa.colaboradorId}`).toPromise().then(
+            this.svc.listar(Colaborador, null, `ListarFerramentasAssociadas/${pessoaColaborador.colaboradorId}`).toPromise().then(
               s => {
                 if (s.sucesso) {
                   if (s.data != null && s.data !== undefined) {
@@ -302,7 +302,7 @@ export class CadastroPessoasComponent implements OnInit {
             );
 
 
-            this.svc.listar(Colaborador, null, `ListarSiglasDisponiveis/${pessoaColaborador.pessoa.colaboradorId}`).toPromise().then(
+            this.svc.listar(Colaborador, null, `ListarSiglasDisponiveis/${pessoaColaborador.colaboradorId}`).toPromise().then(
               s => {
                 if (s.sucesso) {
                   if (s.data != null && s.data !== undefined) {
@@ -314,7 +314,7 @@ export class CadastroPessoasComponent implements OnInit {
               }
             );
 
-            this.svc.listar(Colaborador, null, `ListarSiglasAssociadas/${pessoaColaborador.pessoa.colaboradorId}`).toPromise().then(
+            this.svc.listar(Colaborador, null, `ListarSiglasAssociadas/${pessoaColaborador.colaboradorId}`).toPromise().then(
               s => {
                 if (s.sucesso) {
                   if (s.data != null && s.data !== undefined) {
@@ -342,16 +342,7 @@ export class CadastroPessoasComponent implements OnInit {
           }
         }
       }
-
     );
-
-
-
-
-
-
-
-
   }
 
   criarForm(pessoaColaborador?: PessoaColaboradorViewModel) {
@@ -378,22 +369,22 @@ export class CadastroPessoasComponent implements OnInit {
       'documento': [pessoaColaborador.pessoa.documento],
       'tipoTelefone': [pessoaColaborador.tipoTelefone, Validators.required],
       'email': [pessoaColaborador.pessoa.email, Validators.required],
-      'emailCorp': [pessoaColaborador.pessoa.colaborador.emailCorporativo],
-      'dataNascimento': [pessoaColaborador.pessoa.colaborador.dataNascimento],
-      'dataAdmissao': [pessoaColaborador.pessoa.colaborador.dataAdmissao],
-      'dataDemissao': [pessoaColaborador.pessoa.colaborador.dataDemissao],
-      'funcao': [pessoaColaborador.pessoa.colaborador.funcaoId],
-      'tipoServico': [pessoaColaborador.pessoa.colaborador.tipoServicoId],
-      'poloAcesso': [pessoaColaborador.pessoa.colaborador.poloAcessoId],
-      'areaContratante': [pessoaColaborador.pessoa.colaborador.areaContratanteId],
-      'tipoContrato': [pessoaColaborador.pessoa.colaborador.tipoContratacao],
-      'racf': [pessoaColaborador.pessoa.colaborador.racf],
-      'nomeMaquina': [pessoaColaborador.pessoa.colaborador.nomeMaquina],
-      'gestorResponsavel': [pessoaColaborador.pessoa.colaborador.gestorTecnicoCliente],
-      'clt': [pessoaColaborador.pessoa.colaborador.clt],
-      'scf': [pessoaColaborador.pessoa.colaborador.scf],
-      'ocupacaoFisica': [pessoaColaborador.pessoa.colaborador.ocupacaoFisicaPoloAdm],
-      'exclusivoCliente': [pessoaColaborador.pessoa.colaborador.exclusivoCliente],
+      'emailCorp': [pessoaColaborador.colaborador.emailCorporativo],
+      'dataNascimento': [pessoaColaborador.colaborador.dataNascimento],
+      'dataAdmissao': [pessoaColaborador.colaborador.dataAdmissao],
+      'dataDemissao': [pessoaColaborador.colaborador.dataDemissao],
+      'funcao': [pessoaColaborador.colaborador.funcaoId],
+      'tipoServico': [pessoaColaborador.colaborador.tipoServicoId],
+      'poloAcesso': [pessoaColaborador.colaborador.poloAcessoId],
+      'areaContratante': [pessoaColaborador.colaborador.areaContratanteId],
+      'tipoContrato': [pessoaColaborador.colaborador.tipoContratacao],
+      'racf': [pessoaColaborador.colaborador.racf],
+      'nomeMaquina': [pessoaColaborador.colaborador.nomeMaquina],
+      'gestorResponsavel': [pessoaColaborador.colaborador.gestorTecnicoCliente],
+      'clt': [pessoaColaborador.colaborador.clt],
+      'scf': [pessoaColaborador.colaborador.scf],
+      'ocupacaoFisica': [pessoaColaborador.colaborador.ocupacaoFisicaPoloAdm],
+      'exclusivoCliente': [pessoaColaborador.colaborador.exclusivoCliente],
       'sigDisponiveis': [pessoaColaborador.siglasDisponiveis],
       'sigAssociadas': [pessoaColaborador.siglasAssociadas],
       'ferrDisponiveis': [pessoaColaborador.ferramentasDisponiveis],
@@ -421,22 +412,22 @@ export class CadastroPessoasComponent implements OnInit {
 
     if (formObj.tipoPessoa == 1) {
 
-      this.pessoaColaborador.pessoa.colaborador.emailCorporativo = formObj.emailCorp;
-      this.pessoaColaborador.pessoa.colaborador.racf = formObj.racf;
-      this.pessoaColaborador.pessoa.colaborador.nomeMaquina = formObj.nomeMaquina;
-      this.pessoaColaborador.pessoa.colaborador.tipoContratacao = formObj.tipoContrato;
-      this.pessoaColaborador.pessoa.colaborador.dataNascimento = formObj.dataNascimento;
-      this.pessoaColaborador.pessoa.colaborador.dataAdmissao = formObj.dataAdmissao;
-      this.pessoaColaborador.pessoa.colaborador.dataDemissao = formObj.dataDemissao;
-      this.pessoaColaborador.pessoa.colaborador.funcaoId = +formObj.funcao;
-      this.pessoaColaborador.pessoa.colaborador.tipoServicoId = +formObj.tipoServico;
-      this.pessoaColaborador.pessoa.colaborador.poloAcessoId = +formObj.poloAcesso;
-      this.pessoaColaborador.pessoa.colaborador.areaContratanteId = formObj.areaContratante;
-      this.pessoaColaborador.pessoa.colaborador.gestorTecnicoCliente = formObj.gestorResponsavel;
-      this.pessoaColaborador.pessoa.colaborador.clt = formObj.clt;
-      this.pessoaColaborador.pessoa.colaborador.scf = formObj.scf;
-      this.pessoaColaborador.pessoa.colaborador.ocupacaoFisicaPoloAdm = formObj.ocupacaoFisica;
-      this.pessoaColaborador.pessoa.colaborador.exclusivoCliente = formObj.exclusivoCliente;
+      this.pessoaColaborador.colaborador.emailCorporativo = formObj.emailCorp;
+      this.pessoaColaborador.colaborador.racf = formObj.racf;
+      this.pessoaColaborador.colaborador.nomeMaquina = formObj.nomeMaquina;
+      this.pessoaColaborador.colaborador.tipoContratacao = formObj.tipoContrato;
+      this.pessoaColaborador.colaborador.dataNascimento = formObj.dataNascimento;
+      this.pessoaColaborador.colaborador.dataAdmissao = formObj.dataAdmissao;
+      this.pessoaColaborador.colaborador.dataDemissao = formObj.dataDemissao;
+      this.pessoaColaborador.colaborador.funcaoId = +formObj.funcao;
+      this.pessoaColaborador.colaborador.tipoServicoId = +formObj.tipoServico;
+      this.pessoaColaborador.colaborador.poloAcessoId = +formObj.poloAcesso;
+      this.pessoaColaborador.colaborador.areaContratanteId = formObj.areaContratante;
+      this.pessoaColaborador.colaborador.gestorTecnicoCliente = formObj.gestorResponsavel;
+      this.pessoaColaborador.colaborador.clt = formObj.clt;
+      this.pessoaColaborador.colaborador.scf = formObj.scf;
+      this.pessoaColaborador.colaborador.ocupacaoFisicaPoloAdm = formObj.ocupacaoFisica;
+      this.pessoaColaborador.colaborador.exclusivoCliente = formObj.exclusivoCliente;
       this.pessoaColaborador.ferramentasAssociadas = this.ferramentasAssociadas;
       this.pessoaColaborador.siglasAssociadas = this.siglasAssociadas;
       this.pessoaColaborador.pessoa.empresa = null;
@@ -445,10 +436,10 @@ export class CadastroPessoasComponent implements OnInit {
       this.pessoaColaborador.pessoa.gestorTecnico = formObj.gestorTecnico;
     }
 
-    this.pessoaColaborador.pessoa.colaborador.poloAcesso = null;
-    this.pessoaColaborador.pessoa.colaborador.tipoServico = null;
-    this.pessoaColaborador.pessoa.colaborador.areaContratante = null;
-    this.pessoaColaborador.pessoa.colaborador.funcao = null;
+    this.pessoaColaborador.colaborador.poloAcesso = null;
+    this.pessoaColaborador.colaborador.tipoServico = null;
+    this.pessoaColaborador.colaborador.areaContratante = null;
+    this.pessoaColaborador.colaborador.funcao = null;
     this.pessoaColaborador.pessoa.diretoria = null;
     this.pessoaColaborador.pessoa.tipo = null;
     console.log("Dados obtidos do form: " + JSON.stringify(this.pessoaColaborador))
@@ -506,13 +497,13 @@ export class CadastroPessoasComponent implements OnInit {
   Salvar() {
     this.obterDadosForm();
 
-    if (this.pessoaColaborador.pessoa.id == undefined && this.pessoaColaborador.pessoa.colaborador.id == undefined) {
+    if (this.pessoaColaborador.pessoa.id == undefined && this.pessoaColaborador.colaborador.id == undefined) {
       this.atribuirAcessoFerramenta();
       this.atribuirAcessoSigla();
     }
 
     if (this.pessoaColaborador.pessoa.tipoId == 3) {
-      this.pessoaColaborador.pessoa.colaborador = null
+      this.pessoaColaborador.colaborador = null
     }
 
     if (this.pessoaColaborador.pessoa.id > 0) {
@@ -531,7 +522,6 @@ export class CadastroPessoasComponent implements OnInit {
         .toPromise().then(
           data => {
             this.router.navigate([`pessoas`]);
-            // this.msgSucesso = 'Colaborador cadastrado com sucesso!';
           },
           error => {
             alert(error.data);
