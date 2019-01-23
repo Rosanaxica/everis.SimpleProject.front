@@ -37,11 +37,11 @@
   <div class="col-lg-2"><strong>Status</strong></div>
   <hr class="mt-2 col-12">
 </div>
-<!-- <div *ngIf="exibeMsg">
-  <h1>
-      Não foi encontrado nenhum projeto que contenha o código {{ codigoProjeto }}.
-  </h1>
-</div> -->
+<div *ngIf="exibeMsg">
+  <h2>
+      Não foi encontrado nenhum projeto que contenha esse código.
+  </h2>
+</div>
 <div *ngFor="let projeto of projetosFiltrados" class="cursor-pointer">
   <div class="row no-gutters" (click)="detalheProjeto(projeto)" *ngIf="mostrarStatus(projeto.status.id)">
     <!--Badge de notificações-->
