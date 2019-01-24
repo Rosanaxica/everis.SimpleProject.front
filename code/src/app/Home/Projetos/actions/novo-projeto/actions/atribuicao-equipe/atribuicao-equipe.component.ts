@@ -183,7 +183,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
     // e não estiver na lista da tela, deve inativar o registro no banco
     listaProjetoPessoaBanco.forEach(p => {
       this.projetoPessoa.forEach(projPessoa => {
-        if (projPessoa.id == p.id) {
+        if (projPessoa.pessoaId == p.pessoaId) {
           encontrado = true;
           pPessoa = projPessoa;
         }
@@ -199,7 +199,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
     this.projetoPessoa.forEach(projPessoa => {
       if (listaProjetoPessoaBanco.length > 0) {
         listaProjetoPessoaBanco.forEach(p => {
-          if (projPessoa.id == p.id) {
+          if (projPessoa.pessoaId == p.pessoaId) {
             encontrado = true;
           } else {
             pPessoa = projPessoa;
@@ -216,7 +216,9 @@ export class AtribuicaoEquipeComponent implements OnInit {
     });
   }
   salvarProjetoPessoa(listaProjetoPessoaBanco: ProjetoPessoa[]) {
+    let pessoa: Pessoa = new Pessoa();
     listaProjetoPessoaBanco.forEach(projPessoa => {
+      pessoa = projPessoa.pessoa;
       projPessoa.pessoa = null;
       projPessoa.projetoId = this.projeto.id;
       this.svc.salvar(projPessoa, ProjetoPessoa)
@@ -232,6 +234,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
           error => {
             alert('Erro ao tentar adicionar.');
           });
+          projPessoa.pessoa = pessoa;
     });
   }
 }

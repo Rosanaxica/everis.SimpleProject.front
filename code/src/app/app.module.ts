@@ -62,9 +62,7 @@ import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/
 import { CadastroComunidadeComponent } from './Home/Comunidades/cadastro-comunidade/cadastro-comunidade.component';
 import { SquadsComponent } from './Home/Comunidades/cadastro-comunidade/squads/squads.component';
 import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/squads/cadastro-squad/cadastro-squad.component';
-import { NgbModule, NgbDatepickerI18n, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
-import { I18n, CustomDatepickerI18n } from './core/NgbDatepickerI18n';
-import { NgbDatePTParserFormatter } from './core/NgbDatePTParserFormatter';
+
 
 @NgModule({
   declarations: [
@@ -126,8 +124,7 @@ import { NgbDatePTParserFormatter } from './core/NgbDatePTParserFormatter';
     FormsModule,
     BsDatepickerModule.forRoot(),
     ChartModule,
-    MatTooltipModule,
-    NgbModule
+    MatTooltipModule
 
   ],
   providers: [
@@ -135,8 +132,7 @@ import { NgbDatePTParserFormatter } from './core/NgbDatePTParserFormatter';
     HttpService,
     LoaderService,
     DatePipe,
-    [I18n, { provide: NgbDatepickerI18n, useClass: CustomDatepickerI18n }],
-    [{ provide: NgbDateParserFormatter, useClass: NgbDatePTParserFormatter }]
+    DateFormatPipe
     // {provide: HIGHCHARTS_MODULES,useFactory: () => [more, exportData, exporting, offlineExporting]}
   ],
   bootstrap: [AppComponent]

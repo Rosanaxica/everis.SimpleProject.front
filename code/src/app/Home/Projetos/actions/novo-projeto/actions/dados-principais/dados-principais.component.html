@@ -15,12 +15,12 @@
     <div class="form-group mt-4 row">
 
       <div class="col-md-3">
-        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto"
-          placeholder="Codigo do Projeto" />
+        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto" placeholder="Codigo do Projeto"
+        />
       </div>
       <div class="col-md-8">
-        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
-          placeholder="Nome do Projeto" />
+        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto"
+        />
       </div>
 
     </div>
@@ -39,8 +39,7 @@
 
       <div class="col-md-2">
         <label for="data">Data Entrega Proposta</label>
-        <input type="text" formControlName="dataProposta" class="form-control" id="dataProposta" name="dataProposta"
-          bsDatepicker />
+        <input type="date" formControlName="dataProposta" class="form-control" id="dataProposta" name="dataProposta" />
       </div>
 
       <div class="col-md-3">
@@ -58,20 +57,17 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label for="data">Data Recebida</label>
-        <input type="text" formControlName="dataRecebida" class="form-control" id="dataRecebida" name="dataRecebida"
-          bsDatepicker />
+        <input type="date" formControlName="dataRecebida" class="form-control" id="dataRecebida" name="dataRecebida" />
 
       </div>
       <div class="col-md-3">
         <label for="data">Data Início</label>
-        <input type="text" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio"
-          bsDatepicker />
+        <input type="date" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio" />
 
       </div>
       <div class="col-md-3">
         <label for="data">Data Prevista</label>
-        <input type="text" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista"
-          bsDatepicker />
+        <input type="date" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista" />
 
       </div>
     </div>
@@ -83,7 +79,7 @@
       <div class="col-md-4">
         <label for="label">Tecnologia</label>
         <select formControlName="tecnologiaId" class="form-control" id="tecnologiaid" name="ext">
-          <option *ngFor="let tecnologia of tecnologia" value="{{tecnologia.id}}">{{tecnologia.nome}}</option>        
+          <option *ngFor="let tecnologia of tecnologia" value="{{tecnologia.id}}">{{tecnologia.nome}}</option>
         </select>
       </div>
 
@@ -163,15 +159,18 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label>Serviço 1</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
+        />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 2</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
+        />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 3</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
+        />
       </div>
     </div>
   </fieldset>
@@ -193,8 +192,7 @@
         Fora do Escopo do Projeto
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"
-      rows="5"></textarea>
+    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto" rows="5"></textarea>
   </mat-expansion-panel>
 
   <mat-expansion-panel class="mb-3 border">
@@ -207,6 +205,17 @@
     <textarea formControlName="premissas" class="form-control" id="premissas" name="premissas" rows="5"></textarea>
 
   </mat-expansion-panel>
+  <mat-expansion-panel class="mb-3 border" *ngIf="projeto.id > 0">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Fases
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-fase projetoId="{{projeto.id}}"></app-fase>
+
+  </mat-expansion-panel>
+
 
   <div class="row align-items-center mt-2 mb-4">
     <div class="col d-flex justify-content-end">
