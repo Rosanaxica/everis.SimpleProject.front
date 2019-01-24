@@ -131,7 +131,8 @@ import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/s
     GenericService,
     HttpService,
     LoaderService,
-    DatePipe
+    DatePipe,
+    DateFormatPipe
     // {provide: HIGHCHARTS_MODULES,useFactory: () => [more, exportData, exporting, offlineExporting]}
   ],
   bootstrap: [AppComponent]

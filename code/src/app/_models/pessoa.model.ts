@@ -20,12 +20,12 @@ export class Pessoa extends ModeloGenerico {
     cpf?: number;
     rg?: string;
     orgaoEmissor?: string;
-    uFRg?: string;
+    UFRg?: string;
     fotoPath: string;
     funcional: number;
     gestorTecnico: boolean;
     adicionado: boolean;
-    
+
     constructor() {
         super();
         this.tipo = new TipoPessoa();
