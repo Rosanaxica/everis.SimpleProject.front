@@ -31,6 +31,11 @@ export class NovaEmpresaComponent implements OnInit {
     });
   }
 
+  removeEspaco(){
+    // this.modeloEmpresa.nome.trim();
+    console.log (this.modeloEmpresa)
+  }
+
   obterModelo() {
     this.svc.obter(this.modeloEmpresa).toPromise().then(
       s => {
