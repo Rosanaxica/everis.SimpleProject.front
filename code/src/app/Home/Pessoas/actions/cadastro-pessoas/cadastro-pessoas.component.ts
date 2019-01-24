@@ -17,6 +17,7 @@ import { PoloAcesso } from 'src/app/_models/poloAcesso.model';
 import { TipoServico } from 'src/app/_models/tipo_servico.model';
 import { TipoTelefone } from 'src/app/_models/tipo_telefone.model';
 import { Diretoria } from 'src/app/_models/diretoria.model';
+import { DateFormatPipe } from 'src/app/shared/util/date-format-pipe';
 
 
 
@@ -27,7 +28,7 @@ import { Diretoria } from 'src/app/_models/diretoria.model';
 })
 export class CadastroPessoasComponent implements OnInit {
 
-  constructor(private arouter: ActivatedRoute, private svc: GenericService, private router: Router, private fb: FormBuilder) {
+  constructor(private arouter: ActivatedRoute, private svc: GenericService, private router: Router, private fb: FormBuilder, private formateDate: DateFormatPipe) {
   }
 
   colaboradorId: number;
@@ -62,6 +63,12 @@ export class CadastroPessoasComponent implements OnInit {
   ferramentasAssociadas: Ferramenta[] = [];
   btnRemoverFerramentas: Ferramenta[] = [];
   btnAdicionarFerramentas: Ferramenta[] = [];
+
+  // listaUf: any = [
+  //   { id: "SP", text: "SP" },
+  //   { id: "RS", text: "RS" }
+  // ];
+  // listaUf: [{ id: "1", value: "SP" }, { id: "2", value: "RS" }];
 
   ngOnInit() {
     this.criarForm();
@@ -126,7 +133,7 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
   RemoverTelefone(telefone: Telefone) {
-    this.telefones.splice(this.telefones.indexOf(telefone, 1));
+    this.telefones.splice(this.telefones.indexOf(telefone), 1)
   }
 
   onKeydown() {
@@ -319,6 +326,7 @@ export class CadastroPessoasComponent implements OnInit {
     if (pessoaColaborador.pessoa.id > 0) {
       tipo = String(pessoaColaborador.pessoa.tipoId);
     }
+    debugger;
     // pessoaColaborador.pessoa = new Pessoa();
     this.formularioPessoa = this.fb.group({
       'tipoPessoa': [tipo],
@@ -329,7 +337,7 @@ export class CadastroPessoasComponent implements OnInit {
       'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : ''],
       'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : ''],
       'orgaoEmissor': [pessoaColaborador.pessoa.orgaoEmissor],
-      'uf': [pessoaColaborador.pessoa.UFRg],
+      'uf': [pessoaColaborador.pessoa.ufRg],
       'empresa': [pessoaColaborador.pessoa.empresaId],
       'gestorTecnico': [pessoaColaborador.pessoa.gestorTecnico],
       'documento': [pessoaColaborador.pessoa.documento],
@@ -371,7 +379,7 @@ export class CadastroPessoasComponent implements OnInit {
     this.pessoaColaborador.pessoa.documento = formObj.documento;
     this.pessoaColaborador.pessoa.rg = formObj.rg;
     this.pessoaColaborador.pessoa.orgaoEmissor = formObj.orgaoEmissor;
-    this.pessoaColaborador.pessoa.UFRg = formObj.uf;
+    this.pessoaColaborador.pessoa.ufRg = formObj.uf;
     this.pessoaColaborador.telefones = this.telefones;
     this.pessoaColaborador.pessoa.email = formObj.email;
 
@@ -381,9 +389,9 @@ export class CadastroPessoasComponent implements OnInit {
       this.pessoaColaborador.colaborador.racf = formObj.racf;
       this.pessoaColaborador.colaborador.nomeMaquina = formObj.nomeMaquina;
       this.pessoaColaborador.colaborador.tipoContratacao = formObj.tipoContrato;
-      this.pessoaColaborador.colaborador.dataNascimento = formObj.dataNascimento;
-      this.pessoaColaborador.colaborador.dataAdmissao = formObj.dataAdmissao;
-      this.pessoaColaborador.colaborador.dataDemissao = formObj.dataDemissao;
+      this.pessoaColaborador.colaborador.dataNascimento = this.formateDate.transform(formObj.dataNascimento);
+      this.pessoaColaborador.colaborador.dataAdmissao = this.formateDate.transform(formObj.dataAdmissao);
+      this.pessoaColaborador.colaborador.dataDemissao = this.formateDate.transform(formObj.dataDemissao);
       this.pessoaColaborador.colaborador.funcaoId = +formObj.funcao;
       this.pessoaColaborador.colaborador.tipoServicoId = +formObj.tipoServico;
       this.pessoaColaborador.colaborador.poloAcessoId = +formObj.poloAcesso;

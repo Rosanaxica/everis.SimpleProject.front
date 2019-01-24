@@ -20,7 +20,7 @@ export class Pessoa extends ModeloGenerico {
     cpf?: number;
     rg?: string;
     orgaoEmissor?: string;
-    UFRg?: string;
+    ufRg?: string;
     fotoPath: string;
     funcional: number;
     gestorTecnico: boolean;
