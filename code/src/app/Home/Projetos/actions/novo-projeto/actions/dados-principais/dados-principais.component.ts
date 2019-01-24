@@ -9,6 +9,7 @@ import { Sigla } from 'src/app/_models/sigla.model';
 import { Diretoria } from 'src/app/_models/diretoria.model';
 import { Tecnologia } from 'src/app/_models/tecnologia.model';
 import { Superintendencia } from 'src/app/_models/superintendencia.model';
+import { DateFormatPipe } from '../../../../../../shared/util/date-format-pipe';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class DadosPrincipaisComponent implements OnInit {
   @Output() getProjeto = new EventEmitter<string>();
 
   constructor(private formBuilder: FormBuilder, private svc: GenericService,
-    private router: Router) { }
+    private router: Router, private formatDate: DateFormatPipe) { }
   dadosPrincipaisForm: FormGroup;
   empresas: Empresa[] = [{ id: 0, nome: 'Selecione' } as Empresa];
   status: Status[] = [];
@@ -108,8 +109,8 @@ export class DadosPrincipaisComponent implements OnInit {
   private carregarDadosForm() {
     this.dadosPrincipaisForm.get("nomeProjeto").setValue(this.projeto.nome);
     this.dadosPrincipaisForm.get("empresaId").setValue(this.projeto.empresaId);
-    this.dadosPrincipaisForm.get("dataInicio").setValue(this.projeto.dataInicio);
-    this.dadosPrincipaisForm.get("dataPrevista").setValue(this.projeto.dataPrevista);
+    this.dadosPrincipaisForm.get("dataInicio").setValue(this.formatDate.transform(this.projeto.dataInicio));
+    this.dadosPrincipaisForm.get("dataPrevista").setValue(this.formatDate.transform(this.projeto.dataPrevista));
     this.dadosPrincipaisForm.get("qtdHorasServico1").setValue(this.projeto.qtdHorasServico1);
     this.dadosPrincipaisForm.get("qtdHorasServico2").setValue(this.projeto.qtdHorasServico2);
     this.dadosPrincipaisForm.get("qtdHorasServico3").setValue(this.projeto.qtdHorasServico3);
@@ -124,11 +125,11 @@ export class DadosPrincipaisComponent implements OnInit {
     this.dadosPrincipaisForm.get("tamanho").setValue(this.projeto.tamanho);
     this.dadosPrincipaisForm.get("tecnologiaId").setValue(this.projeto.tecnologiaId);
     this.dadosPrincipaisForm.get("ext").setValue(this.projeto.ext);
-    this.dadosPrincipaisForm.get("dataProposta").setValue(this.projeto.dataProposta);
+    this.dadosPrincipaisForm.get("dataProposta").setValue(this.formatDate.transform(this.projeto.dataProposta));
     this.dadosPrincipaisForm.get("codProjeto").setValue(this.projeto.codigoProjeto);
     this.dadosPrincipaisForm.get("statusProposta").setValue(this.projeto.statusProposta);
     this.dadosPrincipaisForm.get("duracao").setValue(this.projeto.duracao);
-    this.dadosPrincipaisForm.get("dataRecebida").setValue(this.projeto.dataRecebida);
+    this.dadosPrincipaisForm.get("dataRecebida").setValue(this.formatDate.transform(this.projeto.dataRecebida));
     this.dadosPrincipaisForm.get("tarifa").setValue(this.projeto.tarifa);
   }
 
