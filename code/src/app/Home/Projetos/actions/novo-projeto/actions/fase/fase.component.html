@@ -1,7 +1,7 @@
 <div class="row align-items-center">
-  <!-- <div class="col-3">
-    <h1 class="titulo mb-0">Fases</h1>
-  </div> -->
+  <div class="col-3">
+    <h1 class="titulo mb-0">Fases ({{projeto.nome}})</h1>
+  </div>
   <div class="input-group col">
     <input type="text" class="form-control no-shadow" placeholder="Digite o código da fase que você deseja buscar" aria-label="Digite o Código da Fase que você deseja buscar"
       [(ngModel)]="filtroFases.codigoFase" (keyup.enter)="filtrar()">

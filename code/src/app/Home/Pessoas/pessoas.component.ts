@@ -2,8 +2,7 @@ import { Colaborador } from './../../_models/colaborador.model';
 import { Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Pessoa } from 'src/app/_models/pessoa.model';
-import { filter } from 'rxjs-compat/operator/filter';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pessoas',
@@ -12,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class PessoasComponent implements OnInit {
 
-  constructor(private svc: GenericService, private router: Router) { }
+  constructor(private arouter: ActivatedRoute, private svc: GenericService, private router: Router) { }
 
   colaboradores: Colaborador[] = [];
   pessoas: Pessoa[]
@@ -26,10 +25,22 @@ export class PessoasComponent implements OnInit {
   nomePessoa: string;
   pessoasFiltradas: Pessoa[] = [];
   pessoaModel = { nome: '' } as Pessoa;
-
+  msgSucesso: string;
+  msgErro: string;
 
   ngOnInit() {
     this.filtrar();
+    this.arouter.paramMap.subscribe(res => {
+      var sucesso = res.get("sucesso");
+      var erro = res.get("erro");
+      if (sucesso !== null && sucesso !== undefined && sucesso) {
+        this.msgSucesso = "Solicitação realizada com com sucesso"
+      }
+
+      if (erro !== null && erro !== undefined && erro) {
+        this.msgErro = "Ocorreu um erro ao processar a sua solicitação"
+      }
+    });
 
   }
 

@@ -56,14 +56,15 @@ const appRoutes: Routes = [
   { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id/:id2', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard] },
 
 
-  { path: 'projetos/novo-projeto/fase/:id', component: FaseComponent, canActivate: [AuthGuard] },
-  { path: 'projetos/novo-projeto/fase/nova-fase/:id', component: NovaFaseComponent, canActivate: [AuthGuard] },
-  { path: 'projetos/novo-projeto/fase/nova-fase/:id/:id2', component: NovaFaseComponent, canActivate: [AuthGuard] },
+  { path: 'projetos/novo-projeto/fase/:idProjeto', component: FaseComponent, canActivate: [AuthGuard] },
+  { path: 'projetos/novo-projeto/fase/nova-fase/:idProjeto', component: NovaFaseComponent, canActivate: [AuthGuard] },
+  { path: 'projetos/novo-projeto/fase/nova-fase/:idProjeto/:idFase', component: NovaFaseComponent, canActivate: [AuthGuard] },
 
   { path: 'pessoas', component: PessoasComponent, canActivate: [AuthGuard] },
   { path: 'pessoas/cadastro-pessoas', component: CadastroPessoasComponent, canActivate: [AuthGuard] },
   { path: 'pessoas/editar-pessoa/:id', component: CadastroPessoasComponent, canActivate: [AuthGuard] },
   { path: 'pessoas:sucesso', component: PessoasComponent, canActivate: [AuthGuard] },
+  { path: 'pessoas:erro', component: PessoasComponent, canActivate: [AuthGuard] },
 
 
   { path: 'comunidades', component: ComunidadesComponent, canActivate: [AuthGuard] },
