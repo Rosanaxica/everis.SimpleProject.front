@@ -14,16 +14,18 @@
     <!--Nome empresa-->
     <div class="form-group">
       <div class="row col-md-8 mb-2">
-        <input type="text" class="form-control" placeholder="*Nome da Empresa" name="nome" minlength="3" maxlength="50" autocomplete="off"
+        <label for="nome" class="ml-1">Nome da Empresa</label>
+        <input type="text" class="form-control" [(ngModel)]="nome2" (blur)="nome2 = nome2.trim();"  placeholder="*Nome da Empresa" name="nome" minlength="3" maxlength="50" autocomplete="off"
           formControlName="nome">
       </div>
     </div>
     <!--Segmento Empresa-->
     <div class="form-group">
       <div class="row col-md-2">
+        <label for="tipoEmpresa" class="ml-1">Segmento</label>
         <select formControlName="segmento" class="form-control" name="tipoEmpresa">
           <!-- [disabled]="modeloEmpresa.id > 0" -->
-          <option disabled="active" value="segmento" name="segmento">Segmento</option>
+          <!-- <option disabled selected value="2" name="segmento">Segmento</option> -->
           <option value="0">Banking</option>
           <option value="1">Telecom</option>
         </select>
