@@ -10,6 +10,7 @@ import { map } from 'rxjs/internal/operators/map';
 import { TipoFaseModel } from 'src/app/_models/tipo_fase.model';
 import { Projeto } from 'src/app/_models/projeto.model';
 import { DatePipe } from '@angular/common';
+import { DateFormatPipe } from 'src/app/shared/util/date-format-pipe';
 
 @Component({
   selector: 'app-nova-fase',
@@ -24,53 +25,62 @@ export class NovaFaseComponent implements OnInit {
   idFase: number;
   formularioFase: FormGroup;
   modeloFase: FaseModel = new FaseModel();
-  modeloProjeto = new Projeto();
+  projeto: Projeto = new Projeto();
 
-  tipoFase: Array<TipoFaseModel>;
   tipoFaseLista = new Array<TipoFaseModel>({ id: 0, nome: 'Selecione' } as TipoFaseModel);
-
-  colaborador: Array<Pessoa>;
   colaboradorLista = new Array<Pessoa>({ id: 0, nome: 'Selecione' } as Pessoa);
 
-  carregado = false;
 
   constructor(private svc: GenericService, private router: Router,
-    private route: ActivatedRoute, private fb: FormBuilder, private datepipe: DatePipe) { }
+    private route: ActivatedRoute, private fb: FormBuilder, private formatDate: DateFormatPipe) { }
 
   ngOnInit() {
-    this.carregaTiposFases();
-    this.carregaColaboradores();
+    //Essa estrutura foi feita dessa forma para que cada requisição espere a finalização da requisição anterior
+    //Consulta TipoFase
+    this.svc.listar(TipoFaseModel, null, 'ObterTodos').toPromise().then(
+      data => {
+        this.tipoFaseLista = data.data;
+        this.tipoFaseLista.unshift({ id: 0, nome: 'Selecione' } as TipoFaseModel);
+
+        // Consulta Pessoas
+        this.svc.listar(Pessoa, null, 'ObterTodos').toPromise().then(
+          data => {
+            this.colaboradorLista = data.data;
+            this.colaboradorLista.unshift({ id: 0, nome: 'Selecione' } as Pessoa);
 
 
+          },
+          err => {
+            alert("Erro ao carregar colaboradores.");
+          });
+
+      },
+      err => {
+        alert("Erro ao carregar os tipos de fases.");
+      },
+      );
+
+    //Consulta Fase e projeto
     this.route.paramMap.subscribe(res => {
-      this.idProjeto = +res.get('id');
-      this.idFase = +res.get('id2');
-      this.modeloFase.projetoId = this.idProjeto;
-
-      if (this.idProjeto !== null && this.idProjeto !== undefined && this.idProjeto > 0) {
-        this.modeloProjeto.id = this.idProjeto;
-        this.obterModeloNovaFase();
-      }
+      this.idProjeto = +res.get('idProjeto');
+      this.obterProjeto();
+      this.idFase = +res.get('idFase');
 
       if (this.idFase !== null && this.idFase !== undefined && this.idFase > 0) {
-        this.modeloProjeto.id = this.idProjeto;
         this.modeloFase.id = this.idFase;
         this.obterModeloEditarFase();
       }
-
-
       this.criarForm();
     });
-  }
 
-  obterModeloNovaFase() {
-    this.svc.obter(this.modeloProjeto).toPromise().then(
+  }
+  obterProjeto() {
+    this.projeto.id = this.idProjeto;
+    this.svc.obter(this.projeto, null).toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
-            let modeloProjeto = s.data as Projeto;
-            this.modeloFase.projeto = modeloProjeto;
-            this.criarForm(this.modeloFase);
+            this.projeto = s.data;
           }
         }
       }
@@ -85,17 +95,6 @@ export class NovaFaseComponent implements OnInit {
             let modelFase = c.data as FaseModel;
             this.modeloFase = modelFase;
 
-            this.svc.obter(this.modeloProjeto).toPromise().then(
-              p => {
-                if (p.sucesso) {
-                  if (p.data != null && p.data !== undefined) {
-                    let modelFase = p.data as Projeto;
-                    this.modeloFase.projeto = modelFase;
-                  }
-                }
-              }
-            );
-
             this.criarForm(this.modeloFase);
           }
         }
@@ -103,109 +102,56 @@ export class NovaFaseComponent implements OnInit {
     );
   }
 
-  obterModelo() {
-
-    this.svc.obter(this.modeloFase).toPromise().then(
-      dados => {
-        if (dados.sucesso) {
-          this.modeloFase = dados.data as FaseModel;
-          this.criarForm(this.modeloFase);
-        }
-      },
-      err => {
-        alert("Deu erro");
-      });
-  }
-
-
-  carregaTiposFases() {
-    this.svc.listar(TipoFaseModel, null, 'ObterTodos').toPromise().then(
-      data => {
-        this.tipoFaseLista = data.data;
-        this.tipoFaseLista.unshift({ id: 0, nome: 'Selecione' } as TipoFaseModel);
-        this.carregado = true;
-      },
-      err => {
-        alert("Erro ao carregar os tipos de fases.");
-      });
-  }
-
-  carregaColaboradores() {
-    this.svc.listar(Pessoa, null, 'ObterTodos').toPromise().then(
-      data => {
-        this.colaboradorLista = data.data;
-        this.colaboradorLista.unshift({ id: 0, nome: 'Selecione' } as Pessoa);
-        this.carregado = true;
-      },
-      err => {
-        alert("Erro ao carregar colaboradores.");
-      });
-  }
-
-  private obterDadosForm() {
-    console.log(this.modeloFase);
-    let formObj = this.formularioFase.value;
-    this.modeloFase.qtdHorasDia = formObj.qtdHorasDia;
-    this.modeloFase.dataInicio = formObj.dataInicio;
-    this.modeloFase.dataFim = formObj.dataFim;
-    this.modeloFase.projetoId = this.idProjeto;
-    this.modeloFase.observacao = formObj.observacao;
-    this.modeloFase.codigoFase = formObj.codigoFase;
-    this.modeloFase.projeto.nome = formObj.nomeProjeto;
-    this.modeloFase.pessoaId = +formObj.colaborador;
-    this.modeloFase.pessoa = null;
-    this.modeloFase.projeto = null;
-    this.modeloFase.tipoFase = null;
-    this.modeloFase.pessoaId = +formObj.colaborador
-    this.modeloFase.tipoFaseId = +formObj.tipoFase;
-  }
-
   salvar() {
     this.obterDadosForm();
-    this.svc.salvar(this.modeloFase, FaseModel).toPromise().then(
-      data => {
-        this.router.navigate([`projetos/novo-projeto/${this.idProjeto}`, { sucesso: true }]);
+    
+    if(this.modeloFase.dataInicio > this.modeloFase.dataFim) {
+      alert("Data Fim deve ser maior que Data Início!")
+    }
+    else {
+      this.svc.salvar(this.modeloFase, FaseModel).toPromise().then(
+        data => {
+          this.router.navigate([`projetos/novo-projeto/fase/${this.idProjeto}`, { sucesso: true }]);
+  
+        },
+        error => {
+          this.msgErro = 'Erro ao salvar';
+        }
+      );
+    }
 
-      },
-      error => {
-        this.msgErro = 'Erro ao salvar';
-      }
-    );
-    // this.formularioFase.reset();
   }
 
   cancelar() {
-    this.router.navigate([`projetos/novo-projeto/${this.idProjeto}`]);
+    this.router.navigate([`projetos/novo-projeto/fase/${this.idProjeto}`]);
   }
 
   criarForm(itemFase?: FaseModel) {
     itemFase = itemFase || new FaseModel;
 
-    let dataInicio: any;
-
-    if (this.modeloFase.dataInicio == null) {
-      dataInicio = this.datepipe.transform(this.modeloFase.dataInicio, 'dd/MM/yyyy');
-    } else {
-      dataInicio = this.modeloFase.dataInicio;
-    }
-
-
     this.formularioFase = this.fb.group({
       'qtdHorasDia': [{ value: this.modeloFase.qtdHorasDia, disabled: false }, Validators.required],
-      'dataInicio': [{ value: dataInicio, disabled: false }, Validators.required],
-      'dataFim': [{ value: this.modeloFase.dataFim, disabled: false }, Validators.required],
+      'dataInicio': [{ value: this.formatDate.transform( this.modeloFase.dataInicio), disabled: false }, Validators.required],
+      'dataFim': [{ value: this.formatDate.transform( this.modeloFase.dataFim), disabled: false }, Validators.required],
       'tipoFase': [{ value: this.modeloFase.tipoFaseId, disabled: false }, Validators.required],
       'observacao': [{ value: this.modeloFase.observacao, disabled: false }, Validators.required],
       'codigoFase': [{ value: this.modeloFase.codigoFase, disabled: false }, Validators.required],
-      'codigoProjeto': [{ value: this.modeloFase.projeto.codigoProjeto, disabled: true }, Validators.required],
-      'nomeProjeto': [{ value: this.modeloFase.projeto.nome, disabled: true }, Validators.required],
       'colaborador': [{ value: this.modeloFase.pessoaId, disabled: false }, Validators.required],
     });
   }
-
-  formularioValido() {
-    const resultado = this.formularioFase.valid;
-    return resultado;
+  private obterDadosForm() {
+    let formObj = this.formularioFase.value;
+    this.modeloFase.qtdHorasDia = formObj.qtdHorasDia;
+    this.modeloFase.dataInicio = formObj.dataInicio;
+    this.modeloFase.dataFim = formObj.dataFim;
+    this.modeloFase.observacao = formObj.observacao;
+    this.modeloFase.codigoFase = formObj.codigoFase;
+    this.modeloFase.projetoId = this.idProjeto;
+    this.modeloFase.projeto = null;
+    this.modeloFase.pessoa = null;
+    this.modeloFase.pessoaId = +formObj.colaborador
+    this.modeloFase.tipoFase = null;
+    this.modeloFase.tipoFaseId = +formObj.tipoFase;
   }
 
 }
