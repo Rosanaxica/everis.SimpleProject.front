@@ -104,16 +104,22 @@ export class NovaFaseComponent implements OnInit {
 
   salvar() {
     this.obterDadosForm();
-    debugger;
-    this.svc.salvar(this.modeloFase, FaseModel).toPromise().then(
-      data => {
-        this.router.navigate([`projetos/novo-projeto/fase/${this.idProjeto}`, { sucesso: true }]);
+    
+    if(this.modeloFase.dataInicio > this.modeloFase.dataFim) {
+      alert("Data Fim deve ser maior que Data Início!")
+    }
+    else {
+      this.svc.salvar(this.modeloFase, FaseModel).toPromise().then(
+        data => {
+          this.router.navigate([`projetos/novo-projeto/fase/${this.idProjeto}`, { sucesso: true }]);
+  
+        },
+        error => {
+          this.msgErro = 'Erro ao salvar';
+        }
+      );
+    }
 
-      },
-      error => {
-        this.msgErro = 'Erro ao salvar';
-      }
-    );
   }
 
   cancelar() {
@@ -125,8 +131,8 @@ export class NovaFaseComponent implements OnInit {
 
     this.formularioFase = this.fb.group({
       'qtdHorasDia': [{ value: this.modeloFase.qtdHorasDia, disabled: false }, Validators.required],
-      'dataInicio': [{ value: this.modeloFase.dataInicio, disabled: false }, Validators.required],
-      'dataFim': [{ value: this.modeloFase.dataFim, disabled: false }, Validators.required],
+      'dataInicio': [{ value: this.formatDate.transform( this.modeloFase.dataInicio), disabled: false }, Validators.required],
+      'dataFim': [{ value: this.formatDate.transform( this.modeloFase.dataFim), disabled: false }, Validators.required],
       'tipoFase': [{ value: this.modeloFase.tipoFaseId, disabled: false }, Validators.required],
       'observacao': [{ value: this.modeloFase.observacao, disabled: false }, Validators.required],
       'codigoFase': [{ value: this.modeloFase.codigoFase, disabled: false }, Validators.required],
