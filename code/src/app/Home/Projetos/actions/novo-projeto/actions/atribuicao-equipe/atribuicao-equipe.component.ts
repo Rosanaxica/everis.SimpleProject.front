@@ -216,7 +216,9 @@ export class AtribuicaoEquipeComponent implements OnInit {
     });
   }
   salvarProjetoPessoa(listaProjetoPessoaBanco: ProjetoPessoa[]) {
+    let pessoa: Pessoa = new Pessoa();
     listaProjetoPessoaBanco.forEach(projPessoa => {
+      pessoa = projPessoa.pessoa;
       projPessoa.pessoa = null;
       projPessoa.projetoId = this.projeto.id;
       this.svc.salvar(projPessoa, ProjetoPessoa)
@@ -232,6 +234,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
           error => {
             alert('Erro ao tentar adicionar.');
           });
+          projPessoa.pessoa = pessoa;
     });
   }
 }
