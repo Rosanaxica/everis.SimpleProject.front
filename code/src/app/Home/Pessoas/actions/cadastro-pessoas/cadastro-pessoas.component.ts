@@ -332,10 +332,10 @@ export class CadastroPessoasComponent implements OnInit {
       'tipoPessoa': [tipo],
       'nome': [pessoaColaborador.pessoa.nome, Validators.required],
       'diretoria': [pessoaColaborador.pessoa.diretoriaId, Validators.required],
-      'funcional': [pessoaColaborador.pessoa.funcional, Validators.required],
+      'funcional': [pessoaColaborador.pessoa.funcional, [Validators.required, Validators.pattern(this.numberPattern)]],
       'sexo': [pessoaColaborador.pessoa.sexo, Validators.required],
-      'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : ''],
-      'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : ''],
+      'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : '', [Validators.pattern(this.numberPattern)]],
+      'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : '', [Validators.pattern(this.numberPattern)]],
       'orgaoEmissor': [pessoaColaborador.pessoa.orgaoEmissor],
       'uf': [pessoaColaborador.pessoa.ufRg],
       'empresa': [pessoaColaborador.pessoa.empresaId],
@@ -344,9 +344,9 @@ export class CadastroPessoasComponent implements OnInit {
       'tipoTelefone': [pessoaColaborador.tipoTelefone],
       'email': [pessoaColaborador.pessoa.email, Validators.required],
       'emailCorp': [pessoaColaborador.colaborador.emailCorporativo],
-      'dataNascimento': [pessoaColaborador.colaborador.dataNascimento],
-      'dataAdmissao': [pessoaColaborador.colaborador.dataAdmissao],
-      'dataDemissao': [pessoaColaborador.colaborador.dataDemissao],
+      'dataNascimento': [this.formateDate.transform(pessoaColaborador.colaborador.dataNascimento)],
+      'dataAdmissao': [this.formateDate.transform(pessoaColaborador.colaborador.dataAdmissao)],
+      'dataDemissao': [this.formateDate.transform(pessoaColaborador.colaborador.dataDemissao)],
       'funcao': [pessoaColaborador.colaborador.funcaoId],
       'tipoServico': [pessoaColaborador.colaborador.tipoServicoId],
       'poloAcesso': [pessoaColaborador.colaborador.poloAcessoId],
@@ -389,9 +389,9 @@ export class CadastroPessoasComponent implements OnInit {
       this.pessoaColaborador.colaborador.racf = formObj.racf;
       this.pessoaColaborador.colaborador.nomeMaquina = formObj.nomeMaquina;
       this.pessoaColaborador.colaborador.tipoContratacao = formObj.tipoContrato;
-      this.pessoaColaborador.colaborador.dataNascimento = this.formateDate.transform(formObj.dataNascimento);
-      this.pessoaColaborador.colaborador.dataAdmissao = this.formateDate.transform(formObj.dataAdmissao);
-      this.pessoaColaborador.colaborador.dataDemissao = this.formateDate.transform(formObj.dataDemissao);
+      this.pessoaColaborador.colaborador.dataNascimento = formObj.dataNascimento;
+      this.pessoaColaborador.colaborador.dataAdmissao = formObj.dataAdmissao;
+      this.pessoaColaborador.colaborador.dataDemissao = formObj.dataDemissao;
       this.pessoaColaborador.colaborador.funcaoId = +formObj.funcao;
       this.pessoaColaborador.colaborador.tipoServicoId = +formObj.tipoServico;
       this.pessoaColaborador.colaborador.poloAcessoId = +formObj.poloAcesso;
