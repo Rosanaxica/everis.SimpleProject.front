@@ -141,52 +141,45 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
   isTelRequired(): boolean {
-    if (this.telefones != null && this.telefones != undefined && this.telefones.length > 0) {
-      return false;
+    if (this.telefones.length === 0) {
+      return true;
     }
-    return true;
+    return false;
   }
 
 
-  adicionarFerramenta() {
-    this.btnAdicionarFerramentas = this.formularioPessoa.controls['ferrDisponiveis'].value;
-    if (this.btnAdicionarFerramentas.length == 0) {
-      alert('Selecione uma ferramenta para adicionar');
-      return;
-    } else {
-      this.btnAdicionarFerramentas.forEach(a => {
-        let item = this.ferramentasDisponiveis.find(f => f.id == +a);
-        let itemIndex = this.ferramentasDisponiveis.indexOf(item);
-        this.ferramentasAssociadas.push(item);
-        this.ferramentasDisponiveis.splice(itemIndex, 1);
-      });
-      this.btnAdicionarFerramentas = [];
-    }
-  }
+  // adicionarFerramenta() {
+  //   this.btnAdicionarFerramentas = this.formularioPessoa.controls['ferrDisponiveis'].value;
+  //   if (this.btnAdicionarFerramentas.length == 0) {
+  //     alert('Selecione uma ferramenta para adicionar');
+  //     return;
+  //   } else {
+  //     this.btnAdicionarFerramentas.forEach(a => {
+  //       let item = this.ferramentasDisponiveis.find(f => f.id == +a);
+  //       let itemIndex = this.ferramentasDisponiveis.indexOf(item);
+  //       this.ferramentasAssociadas.push(item);
+  //       this.ferramentasDisponiveis.splice(itemIndex, 1);
+  //     });
+  //     this.btnAdicionarFerramentas = [];
+  //   }
+  // }
 
-  removerFerramenta() {
-    this.btnRemoverFerramentas = this.formularioPessoa.controls['ferrAssociadas'].value;
-    if (this.btnRemoverFerramentas.length == 0) {
-      alert('Selecione uma ferramenta para remover');
-      return;
-    } else {
-      this.btnRemoverFerramentas.forEach(a => {
-        let item = this.ferramentasAssociadas.find(f => f.id == +a);
-        let itemIndex = this.ferramentasAssociadas.indexOf(item);
-        this.ferramentasDisponiveis.push(item);
-        this.ferramentasAssociadas.splice(itemIndex, 1);
-      });
-      this.btnRemoverFerramentas = [];
-    }
-  }
+  // removerFerramenta() {
+  //   this.btnRemoverFerramentas = this.formularioPessoa.controls['ferrAssociadas'].value;
+  //   if (this.btnRemoverFerramentas.length == 0) {
+  //     alert('Selecione uma ferramenta para remover');
+  //     return;
+  //   } else {
+  //     this.btnRemoverFerramentas.forEach(a => {
+  //       let item = this.ferramentasAssociadas.find(f => f.id == +a);
+  //       let itemIndex = this.ferramentasAssociadas.indexOf(item);
+  //       this.ferramentasDisponiveis.push(item);
+  //       this.ferramentasAssociadas.splice(itemIndex, 1);
+  //     });
+  //     this.btnRemoverFerramentas = [];
+  //   }
+  // }
 
-  obterFerramentasDisponiveis() {
-
-  }
-
-  obterFerramentasAssociadas() {
-
-  }
 
   obterFerramentas() {
     this.svc.listar(Ferramenta, null, "ObterTodos").toPromise().then(
@@ -326,7 +319,6 @@ export class CadastroPessoasComponent implements OnInit {
     if (pessoaColaborador.pessoa.id > 0) {
       tipo = String(pessoaColaborador.pessoa.tipoId);
     }
-    debugger;
     // pessoaColaborador.pessoa = new Pessoa();
     this.formularioPessoa = this.fb.group({
       'tipoPessoa': [tipo],
@@ -334,8 +326,8 @@ export class CadastroPessoasComponent implements OnInit {
       'diretoria': [pessoaColaborador.pessoa.diretoriaId, Validators.required],
       'funcional': [pessoaColaborador.pessoa.funcional, [Validators.required, Validators.pattern(this.numberPattern)]],
       'sexo': [pessoaColaborador.pessoa.sexo, Validators.required],
-      'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : '', [Validators.pattern(this.numberPattern)]],
-      'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : '', [Validators.pattern(this.numberPattern)]],
+      'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : undefined, [Validators.pattern(this.numberPattern)]],
+      'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : undefined, [Validators.pattern(this.numberPattern)]],
       'orgaoEmissor': [pessoaColaborador.pessoa.orgaoEmissor],
       'uf': [pessoaColaborador.pessoa.ufRg],
       'empresa': [pessoaColaborador.pessoa.empresaId],
@@ -452,6 +444,7 @@ export class CadastroPessoasComponent implements OnInit {
       tipoServicoControl.clearValidators();
       poloAcessoControl.clearValidators();
       areaContratanteControl.clearValidators();
+      empresaControl.setValidators(Validators.required);
     }
     tipoContratoControl.updateValueAndValidity();
     dataNascimentoControl.updateValueAndValidity();
@@ -524,6 +517,10 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefones = [];
     this.ferramentasAssociadas = [];
     this.ferramentasDisponiveis = [];
+  }
+
+  cancelar() {
+    this.router.navigate(['/pessoas']);
   }
 }
 
