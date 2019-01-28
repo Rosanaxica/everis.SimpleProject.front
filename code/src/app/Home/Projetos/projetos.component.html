@@ -92,20 +92,12 @@
 
     <!--.Status-->
     <div class="col-lg-2">
-<<<<<<< HEAD
-      <span class="badge p-1" [ngClass]="{'everis-amarelo': projeto.status.descricao == 'Aguardando aprovação', 
-=======
       <span class="badge p-1 text-white" [ngClass]="{'everis-amarelo': projeto.status.descricao == 'Aguardando aprovação', 
->>>>>>> dfa0ceb898a5a8808d3a38aa05b68476b87da728
                                           'everis': projeto.status.descricao == 'Em desenvolvimento',
                                           'everis-roxo': projeto.status.descricao == 'Concluído',
                                           'everis-azul': projeto.status.descricao == 'Entregue',
                                           'everis-laranja': projeto.status.descricao == 'Aguardando abertura',
-<<<<<<< HEAD
-                                          'bg-danger text-white': projeto.status.descricao == 'Cancelado',
-=======
                                           'bg-danger': projeto.status.descricao == 'Cancelado',
->>>>>>> dfa0ceb898a5a8808d3a38aa05b68476b87da728
                                           'bg-gray': projeto.status.descricao == 'Proposta'}">{{
         projeto.status.descricao }}</span>
       <small>
