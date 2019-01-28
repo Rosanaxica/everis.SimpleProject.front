@@ -5,11 +5,11 @@ import { Projeto } from '../../../../../../_models/projeto.model';
 import { GenericService } from '../../../../../../_services/generic.service';
 import { Empresa } from '../../../../../../_models/empresa.model';
 import { Status } from '../../../../../../_models/status.model';
-import { Sigla } from 'src/app/_models/sigla.model';
-import { Diretoria } from 'src/app/_models/diretoria.model';
-import { Tecnologia } from 'src/app/_models/tecnologia.model';
-import { Superintendencia } from 'src/app/_models/superintendencia.model';
 import { DateFormatPipe } from '../../../../../../shared/util/date-format-pipe';
+import { Tecnologia } from '../../../../../../_models/tecnologia.model';
+import { Sigla } from '../../../../../../_models/sigla.model';
+import { Superintendencia } from '../../../../../../_models/superintendencia.model';
+import { Diretoria } from '../../../../../../_models/diretoria.model';
 
 
 @Component({
@@ -25,11 +25,11 @@ export class DadosPrincipaisComponent implements OnInit {
     private router: Router, private formatDate: DateFormatPipe) { }
   dadosPrincipaisForm: FormGroup;
   empresas: Empresa[] = [{ id: 0, nome: 'Selecione' } as Empresa];
-  status: Status[] = [];
-  sigla: Sigla[] = [];
-  diretoria: Diretoria[] = [];
-  superintendencia: Superintendencia[] = [];
-  tecnologia: Tecnologia[] = [];
+  status: Status[] = [{ id: 0, descricao: 'Selecione' } as Status];
+  sigla: Sigla[] = [{ id: 0, descricao: 'Selecione' } as Sigla];
+  diretoria: Diretoria[] = [{ id: 0, descricao: 'Selecione' } as Diretoria];
+  superintendencia: Superintendencia[] = [{ id: 0, descricao: 'Selecione' } as Superintendencia];
+  tecnologia: Tecnologia[] = [{ id: 0, nome: 'Selecione' } as Tecnologia];
 
   
 
@@ -183,6 +183,7 @@ export class DadosPrincipaisComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.tecnologia = s.data;
+            this.tecnologia.unshift({ id: 0, nome: 'Selecione' } as Tecnologia);
           }
         }
       }
@@ -193,8 +194,7 @@ export class DadosPrincipaisComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.diretoria = s.data;
-            console.log(this.diretoria)
-            console.log("Data: " + s);
+            this.diretoria.unshift({ id: 0, descricao: 'Selecione' } as Diretoria);
           }
         }
       }
@@ -205,6 +205,7 @@ export class DadosPrincipaisComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.sigla = s.data;
+            this.sigla.unshift({ id: 0, descricao: 'Selecione' } as Sigla);
           }
         }
       }
@@ -219,6 +220,7 @@ export class DadosPrincipaisComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.superintendencia = s.data;
+            this.superintendencia.unshift({ id: 0, descricao: 'Selecione' } as Superintendencia);
           }
         }
       }
@@ -228,6 +230,7 @@ export class DadosPrincipaisComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.status = s.data;
+            this.status.unshift({ id: 0, descricao: 'Selecione' } as Status);
           }
         }
       }
