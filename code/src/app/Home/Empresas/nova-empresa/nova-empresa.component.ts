@@ -19,6 +19,7 @@ export class NovaEmpresaComponent implements OnInit {
   id: number;
   formularioEmpresa: FormGroup;
   modeloEmpresa: Empresa = new Empresa();
+  nomeEmpresa: string;
 
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
@@ -36,6 +37,10 @@ export class NovaEmpresaComponent implements OnInit {
     console.log (this.modeloEmpresa)
   }
 
+  modoEdicao(){
+    return this.modeloEmpresa !== null && this.modeloEmpresa !== undefined && this.modeloEmpresa.id > 0; 
+  }
+
   obterModelo() {
     this.svc.obter(this.modeloEmpresa).toPromise().then(
       s => {
@@ -43,6 +48,7 @@ export class NovaEmpresaComponent implements OnInit {
           if (s.data != null && s.data !== undefined) {
             let empresaModel = s.data as Empresa;
             this.criarForm(empresaModel);
+            this.nomeEmpresa = empresaModel.nome
           }
         }
       }
@@ -51,7 +57,7 @@ export class NovaEmpresaComponent implements OnInit {
 
   private obterDadosForm() {
     let objForm = this.formularioEmpresa.value;
-    this.modeloEmpresa.nome = objForm.nome;
+    this.modeloEmpresa.nome = this.modoEdicao()? this.modeloEmpresa.nome: objForm.nome;
     this.modeloEmpresa.segmento = objForm.segmento;
   }
 
@@ -75,7 +81,7 @@ export class NovaEmpresaComponent implements OnInit {
   criarForm(itemEmpresa?: Empresa) {
     itemEmpresa = itemEmpresa || { nome: '', segmento: 0 } as Empresa;
     this.formularioEmpresa = this.fb.group({
-      'nome': [itemEmpresa.nome, Validators.required],
+      'nome': [{value: itemEmpresa.nome, disabled:this.modoEdicao()}, Validators.required],
       'segmento': [itemEmpresa.segmento, Validators.required]
     });
   }
