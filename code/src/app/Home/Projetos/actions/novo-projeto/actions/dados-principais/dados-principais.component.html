@@ -15,16 +15,18 @@
     <div class="form-group mt-4 row">
 
       <div class="col-md-3">
-        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto" placeholder="Codigo do Projeto *"
-        maxlengt="10"/>
+        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto"
+          placeholder="Codigo do Projeto *" maxlengt="10" />
+        <span class="spanAtention text-danger" *ngIf="dadosPrincipaisForm.controls.codProjeto.invalid">
+          <small>
+            <i class="fas fa-exclamation-triangle"></i>
+            Informe o Código do Projeto
+          </small>
+        </span>
       </div>
-      <span class="spanAtention" *ngIf="dadosPrincipaisForm.controls.codProjeto.invalid">
-        <i class="fas fa-exclamation-triangle"></i>
-        Informe o Código do Projeto
-      </span>
       <div class="col-md-8">
-        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto *"
-        maxlengt="200"/>
+        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
+          placeholder="Nome do Projeto *" maxlengt="200" />
       </div>
 
     </div>
@@ -42,12 +44,13 @@
       </div>
       <div class="col-md-3">
         <label>Duração</label>
-        <input type="number" formControlName="duracao" min="0" class="form-control" id="duracao" name="duracao" maxlengt="10" />
+        <input type="number" formControlName="duracao" min="0" class="form-control" id="duracao" name="duracao"
+          maxlengt="10" />
       </div>
 
       <div class="col-md-3">
         <label>Tarifa</label>
-        <input type="money" formControlName="tarifa" class="form-control" id="tarifa" name="tarifa" maxlengt="30"/>
+        <input type="money" formControlName="tarifa" class="form-control" id="tarifa" name="tarifa" maxlengt="30" />
       </div>
     </div>
 
@@ -87,7 +90,7 @@
         </select>
       </div>
 
-      <div class="col-md-1">
+      <div class="col-md-2">
         <label for="label">Tamanho *</label>
 
         <select formControlName="tamanho" class="form-control" id="tamanho" name="tamanho">
@@ -153,15 +156,18 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label>Serviço 1</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" maxlengt="10" />
+        <input type="number" formControlName="qtdHorasServico1" min="0" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
+          maxlengt="10" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 2</label>
-        <input type="number" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2" maxlengt="10"/>
+        <input type="number" formControlName="qtdHorasServico2" min="0" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2"
+          maxlengt="10" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 3</label>
-        <input type="number" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3" maxlengt="10"/>
+        <input type="number" formControlName="qtdHorasServico3" min="0" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3"
+          maxlengt="10" />
       </div>
     </div>
   </fieldset>
@@ -173,7 +179,8 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="form-group ">
-      <textarea formControlName="escopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto" rows="5" maxlengt="500"></textarea>
+      <textarea formControlName="escopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto" rows="5"
+        maxlengt="500"></textarea>
     </div>
   </mat-expansion-panel>
 
@@ -184,7 +191,7 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"
-    maxlengt="500" rows="5"></textarea>
+      maxlengt="500" rows="5"></textarea>
   </mat-expansion-panel>
 
   <mat-expansion-panel class="mb-3 border">
