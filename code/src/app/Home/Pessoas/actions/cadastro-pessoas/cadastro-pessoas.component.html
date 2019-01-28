@@ -5,12 +5,14 @@
       <div class="row" *ngIf="!(id > 0)">
         <div class="col mb-2">
           <div class="custom-control custom-radio custom-control-inline">
-            <input id="radColaborador" value="1" name="tipoPessoa" formControlName="tipoPessoa" type="radio" class="custom-control-input">
+            <input id="radColaborador" value="1" name="tipoPessoa" formControlName="tipoPessoa" type="radio" class="custom-control-input"
+              (change)="preferenciaTipoPessoa()">
             <label class="custom-control-label" for="radColaborador">Colaborador</label>
           </div>
 
           <div class="custom-control custom-radio custom-control-inline">
-            <input id="radTerceiro" value="3" name="tipoPessoa" formControlName="tipoPessoa" type="radio" class="custom-control-input">
+            <input id="radTerceiro" value="3" name="tipoPessoa" formControlName="tipoPessoa" type="radio" class="custom-control-input"
+              (change)="preferenciaTipoPessoa()">
             <label class=" custom-control-label" for="radTerceiro">Terceiro</label>
           </div>
 
@@ -44,7 +46,7 @@
         <!-- Inicio Diretoria -->
         <div class="col-md-3">
           <select class="form-control" id="diretoria" name="diretoria" formControlName="diretoria">
-            <option [ngValue]="null" disabled>*Selecione a Diretoria</option>>
+            <option [ngValue]="null" disabled>*Selecione a Diretoria</option>
             <option *ngFor="let i of diretorias" value="{{i.id}}">{{i.descricao}}</option>
           </select>
           <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.diretoria.touched && (formularioPessoa.controls.diretoria.hasError('required') ||
@@ -97,10 +99,15 @@
           </div>
           <div class="col-md-2">
             <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor"
-              formControlName="orgaoEmissor" maxlength="5">
+              formControlName="orgaoEmissor" maxlength="5" pattern="/^[a-zA-Z]+$/">
+            <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.orgaoEmissor.touched || formularioPessoa.controls.orgaoEmissor.dirty) && formularioPessoa.controls.orgaoEmissor.invalid)">
+              <i class="fa fa-times mr-2"></i>
+              <small>Informe apenas letras</small>
+            </div>
           </div>
 
-          <div class="col-md-2">
+          <div class="
+              col-md-2">
             <select class="form-control" name="uf" formControlName="uf">
               <option disabled='true'>Selecione a UF</option>
               <option value="AC">AC</option>
@@ -144,14 +151,14 @@
           <div class="col-md-2">
             <select class="form-control" id="tipoTelefone" name="tipoTelefone" formControlName="tipoTelefone"
               [required]="isTelRequired()">
-              <option selected disabled>Tipo Telefone</option>
+              <option [ngValue]="null" disabled>*Tipo Telefone</option>
               <option *ngFor="let i of tiposTelefone" value="{{i.id}}-{{i.descricao}}">{{i.descricao}}</option>
             </select>
           </div>
           <div class="input-group col-md-4">
             <input input type="text" (keydown.enter)="AddTelefone()" class="form-control" formControlName="numeroTelefone"
               id="telefone" name="numeroTelefone" placeholder="*Telefone" autocomplete="off" [required]="isTelRequired()"
-              maxlength="13">
+              maxlength="15">
 
             <div class="input-group-append">
               <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="formularioPessoa.controls['numeroTelefone'] == undefined || formularioPessoa.controls['tipoTelefone'] == undefined || formularioPessoa.controls['numeroTelefone'].invalid">
@@ -161,13 +168,15 @@
           </div>
         </div>
 
-        <div class="alert alert-success" role="alert" *ngIf="formularioPessoa.controls['numeroTelefone'].valid && (formularioPessoa.controls['numeroTelefone'].dirty || formularioPessoa.controls['numeroTelefone'].touched) && formularioPessoa.controls['tipoTelefone'] != undefined">
+        <div class="alert alert-success" role="alert" *ngIf="formularioPessoa.controls['numeroTelefone'].valid && (formularioPessoa.controls['numeroTelefone'].dirty || formularioPessoa.controls['numeroTelefone'].touched) && formularioPessoa.controls['tipoTelefone'] != undefined && telefones.length > 0">
           <i class="fa fa-check mr-1"></i> OK
         </div>
         <div class="alert alert-danger" role="alert" *ngIf="formularioPessoa.controls['numeroTelefone'].invalid && (formularioPessoa.controls['numeroTelefone'].dirty ||
-        formularioPessoa.controls['numeroTelefone'].touched)">
-          <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um telefone. Informe apenas numeros
+        formularioPessoa.controls['numeroTelefone'].touched) && telefones.length < 1">
+          <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um
+          telefone. Informe apenas numeros
         </div>
+
 
         <div class="row col-md-5">
           <table class="table table-striped">
@@ -220,6 +229,7 @@
           <div class="col-md-2">
             <label for="empresa">*Empresa</label>
             <select class="form-control" name="empresa" formControlName="empresa">
+              <option [ngValue]="null" disabled>Selecione</option>
               <option *ngFor="let emp of empresas" value="{{emp.id}}">{{emp.nome}}</option>
             </select>
             <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.empresa.touched && (formularioPessoa.controls.empresa.hasError('required') ||
@@ -257,6 +267,7 @@
             <div class="col-md-3">
               <label for="empresa">*Tipo de Contrato</label>
               <select class="form-control" name="tipoContrato" formControlName="tipoContrato">
+                <option [ngValue]="null" disabled>Selecione</option>
                 <option value="Terceirizado">Terceirizado</option>
               </select>
               <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.tipoContrato.touched && (formularioPessoa.controls.tipoContrato.hasError('required') ||
@@ -297,6 +308,7 @@
             <div class="col-md-3">
               <label for="empresa">*Função</label>
               <select class="form-control" name="funcao" formControlName="funcao">
+                <option [ngValue]="null" disabled>Selecione</option>
                 <option *ngFor="let i of funcoes" value="{{i.id}}">{{i.descricao}}</option>
               </select>
               <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.funcao.touched && (formularioPessoa.controls.funcao.hasError('required') ||
@@ -308,6 +320,7 @@
             <div class="col-md-3">
               <label for="empresa">*Tipo de Serviço</label>
               <select class="form-control" name="tipoServico" formControlName="tipoServico">
+                <option [ngValue]="null" disabled>Selecione</option>
                 <option *ngFor="let i of tipoServicos" value="{{i.id}}">{{i.descricao}}</option>
               </select>
               <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.tipoServico.touched && (formularioPessoa.controls.tipoServico.hasError('required') ||
@@ -319,6 +332,7 @@
             <div class="col-md-3">
               <label for="empresa">*Polo de Acesso</label>
               <select class="form-control" name="poloAcesso" formControlName="poloAcesso">
+                <option [ngValue]="null" disabled>Selecione</option>
                 <option *ngFor="let i of polosAcesso" value="{{i.id}}">{{i.descricao}}</option>
               </select>
               <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.poloAcesso.touched && (formularioPessoa.controls.poloAcesso.hasError('required') ||
@@ -330,6 +344,7 @@
             <div class="col-md-3">
               <label for="empresa">*Área Contratante</label>
               <select class="form-control" name="areaContratante" formControlName="areaContratante">
+                <option [ngValue]="null" disabled>Selecione</option>
                 <option *ngFor="let i of areasContratantes" value="{{i.id}}">{{i.descricao}}</option>
               </select>
               <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.areaContratante.touched && (formularioPessoa.controls.areaContratante.hasError('required') ||
@@ -344,6 +359,7 @@
             <div class="col-md-4">
               <label for="empresa">Gestor Técnico</label>
               <select class="form-control" name="gestorResponsavel" formControlName="gestorResponsavel">
+                <option [ngValue]="null" disabled>Selecione</option>
                 <option *ngFor="let i of gestores" value="{{i.nome}}">{{i.nome}}</option>
               </select>
             </div>

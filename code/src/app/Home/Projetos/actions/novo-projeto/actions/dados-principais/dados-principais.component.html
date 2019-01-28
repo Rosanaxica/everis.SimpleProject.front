@@ -38,7 +38,7 @@
       </div>
       <div class="col-md-3">
         <label>Duração</label>
-        <input type="number" formControlName="duracao" class="form-control" id="duracao" name="duracao" />
+        <input type="number" formControlName="duracao" min="0" class="form-control" id="duracao" name="duracao" />
       </div>
 
       <div class="col-md-3">
@@ -149,18 +149,15 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label>Serviço 1</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 2</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 3</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
     </div>
   </fieldset>
@@ -182,7 +179,8 @@
         Fora do Escopo do Projeto
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto" rows="5"></textarea>
+    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"
+      rows="5"></textarea>
   </mat-expansion-panel>
 
   <mat-expansion-panel class="mb-3 border">

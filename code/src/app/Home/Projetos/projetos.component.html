@@ -40,9 +40,10 @@
   <hr class="mt-2 col-12">
 </div>
 
-<div class="text-light text-center bg-gray" *ngIf="exibeMsg">
-  <h2>Não foi encontrado nenhum projeto que contenha o código " {{ codigoProjeto }} ".</h2>
-  <h3>Por favor, realize uma nova busca.</h3>
+<div class="text-black-50 text-center" *ngIf="exibeMsg">
+  Não foi encontrado nenhum projeto que contenha o código <strong>"{{ codigoProjeto }}"</strong>.
+  Por favor, realize uma nova busca.
+  <hr class="mt-3 mb-2" />
 </div>
 
 <div *ngFor="let projeto of projetosFiltrados" class="cursor-pointer">
@@ -91,12 +92,12 @@
 
     <!--.Status-->
     <div class="col-lg-2">
-      <span class="badge p-1" [ngClass]="{'everis-amarelo': projeto.status.descricao == 'Aguardando Aprovação', 
-                                          'everis': projeto.status.descricao == 'Em Desenvolvimento',
+      <span class="badge p-1 text-white" [ngClass]="{'everis-amarelo': projeto.status.descricao == 'Aguardando aprovação', 
+                                          'everis': projeto.status.descricao == 'Em desenvolvimento',
                                           'everis-roxo': projeto.status.descricao == 'Concluído',
                                           'everis-azul': projeto.status.descricao == 'Entregue',
-                                          'everis-laranja': projeto.status.descricao == 'Aguardando Abertura da SS',
-                                          'bg-danger text-white': projeto.status.descricao == 'Cancelado',
+                                          'everis-laranja': projeto.status.descricao == 'Aguardando abertura',
+                                          'bg-danger': projeto.status.descricao == 'Cancelado',
                                           'bg-gray': projeto.status.descricao == 'Proposta'}">{{
         projeto.status.descricao }}</span>
       <small>

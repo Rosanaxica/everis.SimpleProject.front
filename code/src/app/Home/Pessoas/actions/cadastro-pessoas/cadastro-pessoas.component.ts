@@ -109,11 +109,7 @@ export class CadastroPessoasComponent implements OnInit {
       this.gestores = data[7].json().data as Pessoa[];
     });
 
-    this.formularioPessoa.get('tipoPessoa').valueChanges.subscribe(
-      (data: string) => {
-        this.preferenciaTipoPessoa(data);
-      }
-    )
+
   }
 
   getTipoPessoa(id: number) {
@@ -357,6 +353,8 @@ export class CadastroPessoasComponent implements OnInit {
       'ferrAssociadas': [pessoaColaborador.ferramentasAssociadas],
       'numeroTelefone': [this.telefone.numeroTelefone, [Validators.minLength(10), Validators.maxLength(15), Validators.pattern("[0-9]{10,15}")]]
     });
+
+    this.preferenciaTipoPessoa();
   }
 
   private obterDadosForm() {
@@ -411,7 +409,7 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
 
-  preferenciaTipoPessoa(valorSelecionado: string) {
+  preferenciaTipoPessoa() {
     const emailCorpControl = this.formularioPessoa.get('emailCorp');
     const tipoContratoControl = this.formularioPessoa.get('tipoContrato');
     const dataNascimentoControl = this.formularioPessoa.get('dataNascimento');
@@ -423,7 +421,9 @@ export class CadastroPessoasComponent implements OnInit {
     const empresaControl = this.formularioPessoa.get('empresa');
     const emailCorp = this.formularioPessoa.get('emailCorp');
 
-    if (valorSelecionado === '1') {
+    let valorSelecionado = this.formularioPessoa.get('tipoPessoa').value;
+
+    if (valorSelecionado == '1') {
       tipoContratoControl.setValidators(Validators.required);
       dataNascimentoControl.setValidators(Validators.required);
       dataAdmissaoControl.setValidators(Validators.required);
@@ -446,14 +446,26 @@ export class CadastroPessoasComponent implements OnInit {
       areaContratanteControl.clearValidators();
       empresaControl.setValidators(Validators.required);
     }
+    console.log('Form item', emailCorpControl);
+
+    tipoContratoControl.markAsUntouched();
     tipoContratoControl.updateValueAndValidity();
+    dataNascimentoControl.markAsUntouched();
     dataNascimentoControl.updateValueAndValidity();
+    dataAdmissaoControl.markAsUntouched();
     dataAdmissaoControl.updateValueAndValidity();
+    funcaoControl.markAsUntouched();
     funcaoControl.updateValueAndValidity();
+    tipoServicoControl.markAsUntouched();
     tipoServicoControl.updateValueAndValidity();
+    poloAcessoControl.markAsUntouched();
     poloAcessoControl.updateValueAndValidity();
+    areaContratanteControl.markAsUntouched();
     areaContratanteControl.updateValueAndValidity();
+    empresaControl.markAsUntouched();
     empresaControl.updateValueAndValidity();
+
+    emailCorp.markAsUntouched();
     emailCorp.updateValueAndValidity();
   }
 
@@ -462,32 +474,10 @@ export class CadastroPessoasComponent implements OnInit {
 
     if (this.pessoaColaborador.pessoa.id > 0) {
 
-      // if (this.pessoaColaborador.pessoa.tipoId == 3) {
 
-      //   this.svc.salvar(this.pessoaColaborador.pessoa)
-      //     .toPromise().then(
-      //       data => {
-      //         this.router.navigate([`pessoas`]);
-      //         // this.msgSucesso = 'Colaborador cadastrado com sucesso!';
-      //       },
-      //       error => {
-      //         alert(error.data);
-      //       }
-      //     );
-      // } else {
-      //   this.svc.salvar(this.pessoaColaborador.colaborador)
-      //     .toPromise().then(
-      //       data => {
-      //         this.router.navigate([`pessoas`]);
-      //         // this.msgSucesso = 'Colaborador cadastrado com sucesso!';
-      //       },
-      //       error => {
-      //         alert(error.data);
-      //       }
-      //     );
-      // }
       if (this.pessoaColaborador.pessoa.tipoId == 1) {
         this.pessoaColaborador.colaborador.id = this.colaboradorId;
+
       }
 
       this.svc.putViewModel(this.pessoaColaborador, 'pessoa/AtualizarPessoaColaborador')
@@ -501,6 +491,9 @@ export class CadastroPessoasComponent implements OnInit {
         );
 
     } else {
+      if (this.pessoaColaborador.colaborador.dataDemissao == undefined || this.pessoaColaborador.colaborador.dataDemissao == null) {
+        this.pessoaColaborador.colaborador.dataDemissao = null;
+      }
       this.svc.postViewModel(this.pessoaColaborador, 'pessoa/CriarPessoaColaborador')
         .toPromise().then(
           data => {
