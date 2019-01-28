@@ -1,12 +1,8 @@
-<!-- {{formularioPessoa.value | json}}
-{{formularioPessoa.valid | json}}
-{{formularioPessoa.controls.tipoPessoa.value | json}} -->
-{{telefones | json}}
 <form [formGroup]="formularioPessoa">
   <div class="card">
     <div class="card-body">
       <!-- Inicio Tipo Pessoa -->
-      <div class="row">
+      <div class="row" *ngIf="!(id > 0)">
         <div class="col mb-2">
           <div class="custom-control custom-radio custom-control-inline">
             <input id="radColaborador" value="1" name="tipoPessoa" formControlName="tipoPessoa" type="radio" class="custom-control-input">
@@ -24,7 +20,7 @@
       <!-- Inicio Nome -->
       <div class="row mb-2">
         <div class="col-md-12">
-          <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="*Nome">
+          <input type="text" class="form-control" name="nome" formControlName="nome" placeholder="*Nome" maxlength="100">
           <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.nome.touched && formularioPessoa.controls.nome.hasError('required')">
             <i class="fa fa-times mr-2"></i>
             <small>Por favor, informe o nome.</small>
@@ -46,9 +42,9 @@
 
         <!-- Fim Funcional -->
         <!-- Inicio Diretoria -->
-        <div class="col-md-2">
+        <div class="col-md-3">
           <select class="form-control" id="diretoria" name="diretoria" formControlName="diretoria">
-            <option value="0" disabled selected="selected">Diretoria</option>>
+            <option [ngValue]="null" disabled>*Selecione a Diretoria</option>>
             <option *ngFor="let i of diretorias" value="{{i.id}}">{{i.descricao}}</option>
           </select>
           <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.diretoria.touched && (formularioPessoa.controls.diretoria.hasError('required') ||
@@ -97,16 +93,16 @@
         <!-- Inicio Dados RG-->
         <div class="row mb-2">
           <div class="col-md-2">
-            <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg">
+            <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg" maxlength="9">
           </div>
           <div class="col-md-2">
             <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor"
-              formControlName="orgaoEmissor">
+              formControlName="orgaoEmissor" maxlength="5">
           </div>
 
           <div class="col-md-2">
-            <select class="form-control" id="uf" name="uf" formControlName="uf">
-              <option selected disabled>Selecione a UF</option>
+            <select class="form-control" name="uf" formControlName="uf">
+              <option disabled='true'>Selecione a UF</option>
               <option value="AC">AC</option>
               <option value="AL">AL</option>
               <option value="AP">AP</option>
@@ -146,13 +142,16 @@
         </legend>
         <div class="row mb-2">
           <div class="col-md-2">
-            <select class="form-control" id="tipoTelefone" name="tipoTelefone" formControlName="tipoTelefone">
+            <select class="form-control" id="tipoTelefone" name="tipoTelefone" formControlName="tipoTelefone"
+              [required]="isTelRequired()">
+              <option selected disabled>Tipo Telefone</option>
               <option *ngFor="let i of tiposTelefone" value="{{i.id}}-{{i.descricao}}">{{i.descricao}}</option>
             </select>
           </div>
           <div class="input-group col-md-4">
             <input input type="text" (keydown.enter)="AddTelefone()" class="form-control" formControlName="numeroTelefone"
-              id="telefone" name="numeroTelefone" placeholder="*Telefone" autocomplete="off" [required]="isTelRequired()">
+              id="telefone" name="numeroTelefone" placeholder="*Telefone" autocomplete="off" [required]="isTelRequired()"
+              maxlength="13">
 
             <div class="input-group-append">
               <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="formularioPessoa.controls['numeroTelefone'] == undefined || formularioPessoa.controls['tipoTelefone'] == undefined || formularioPessoa.controls['numeroTelefone'].invalid">
@@ -175,10 +174,10 @@
             <tbody>
               <tr *ngFor="let telefone of telefones">
                 <td class="text-center">
-                  <p>{{telefone.tipoTelefone.descricao}}</p>
+                  <p>{{telefone.tipo.descricao }}</p>
                 </td>
                 <td class="text-center">
-                  <p>{{telefone.numeroTelefone}}</p>
+                  <p>{{telefone.numeroTelefone }}</p>
                 </td>
                 <td class="colBtnDeletar">
                   <button (click)="RemoverTelefone(telefone)" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
@@ -191,10 +190,10 @@
         <!-- Inicio E-mail -->
         <div class="row mb-2">
           <div class="col-md-12">
-            <input type="email" class="form-control" formControlName="email" name="email" placeholder="*E-mail">
-            <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.email.touched && formularioPessoa.controls.email.hasError('required')">
+            <input type="email" class="form-control" formControlName="email" name="email" placeholder="*E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$">
+            <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.email.touched || formularioPessoa.controls.email.dirty) && formularioPessoa.controls.email.invalid)">
               <i class="fa fa-times mr-2"></i>
-              <small>Por favor, informe o e-mail.</small>
+              <small>E-mail não preenchido ou no formato inválido. Ex.: email@exemplo.com</small>
             </div>
           </div>
         </div>
@@ -203,10 +202,11 @@
         <div *ngIf="formularioPessoa.controls.tipoPessoa.value == 1">
           <div class="row mb-2">
             <div class="col-md-12">
-              <input type="email" class="form-control" name="emailCorp" formControlName="emailCorp" placeholder="*E-mail Corporativo">
-              <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.emailCorp.touched && formularioPessoa.controls.emailCorp.hasError('required')">
+              <input type="email" class="form-control" name="emailCorp" formControlName="emailCorp" placeholder="*E-mail Corporativo"
+                pattern=".+@everis.com">
+              <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.emailCorp.touched || formularioPessoa.controls.emailCorp.dirty) && formularioPessoa.controls.emailCorp.invalid)">
                 <i class="fa fa-times mr-2"></i>
-                <small>Por favor, informe o e-mail Corporativo.</small>
+                <small>E-mail "everis" não preenchido ou no formato inválido. Ex.: corp@everis.com</small>
               </div>
             </div>
           </div>
@@ -245,11 +245,12 @@
           <legend class="col-form-legend col-4"><small>Dados do Colaborador</small></legend>
           <div class="row mb-2">
             <div class="col-md-2">
-              <input type="text" class="form-control" id="racf" name="racf" placeholder="RACF" formControlName="racf">
+              <input type="text" class="form-control" id="racf" name="racf" placeholder="RACF" formControlName="racf"
+                maxlength="7">
             </div>
             <div class="col-md-4">
               <input type="text" class="form-control" id="nomeMaquina" name="nomeMaquina" placeholder="Nome da Máquina"
-                formControlName="nomeMaquina">
+                formControlName="nomeMaquina" maxlength="50">
             </div>
           </div>
           <div class="row mb-2">
@@ -268,8 +269,8 @@
           <div class="row mb-2">
             <div class="col-xs-12 col-12 col-md-4 form-group">
               <label for="dataNascimento">*Data de Nascimento</label>
-              <input type="text" class="form-control" placeholder="Dia/Mês/Ano" name="dataNascimento" formControlName="dataNascimento"
-                bsDatepicker autocomplete="off">
+
+              <input type="date" class="form-control" placeholder="dd/mm/aaaa" name="dataNascimento" formControlName="dataNascimento">
               <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
                 <i class="fa fa-times mr-2"></i>
                 <small>Por Favor, informe a data incial do periodo.</small>
@@ -277,8 +278,7 @@
             </div>
             <div class="col-xs-12 col-12 col-md-4 form-group">
               <label for="dataNascimento">*Data de Admissão</label>
-              <input type="text" class="form-control" placeholder="Dia/Mês/Ano" name="dataAdmissao" formControlName="dataAdmissao"
-                bsDatepicker autocomplete="off">
+              <input type="date" class="form-control" placeholder="Dia/Mês/Ano" name="dataAdmissao" formControlName="dataAdmissao">
               <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
                   <i class="fa fa-times mr-2"></i>
                   <small>Por Favor, informe a data incial do periodo.</small>
@@ -286,8 +286,7 @@
             </div>
             <div class="col-xs-12 col-12 col-md-4 form-group">
               <label for="dataNascimento">Data de Demissão</label>
-              <input type="text" class="form-control" placeholder="Dia/Mês/Ano" name="dataDemissao" formControlName="dataDemissao"
-                bsDatepicker autocomplete="off">
+              <input type="date" class="form-control" placeholder="Dia/Mês/Ano" name="dataDemissao" formControlName="dataDemissao">
               <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
                     <i class="fa fa-times mr-2"></i>
                     <small>Por Favor, informe a data incial do periodo.</small>
@@ -343,15 +342,10 @@
 
           <div class="row mb-2">
             <div class="col-md-4">
-              <label for="empresa">*Gestor Técnico</label>
+              <label for="empresa">Gestor Técnico</label>
               <select class="form-control" name="gestorResponsavel" formControlName="gestorResponsavel">
-                <option *ngFor="let i of gestores" value="{{i.id}}">{{i.nome}}</option>
+                <option *ngFor="let i of gestores" value="{{i.nome}}">{{i.nome}}</option>
               </select>
-              <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.gestorResponsavel.touched && (formularioPessoa.controls.gestorResponsavel.hasError('required') ||
-          formularioPessoa.controls.gestorResponsavel.value ==0)">
-                <i class="fa fa-times mr-2"></i>
-                <small>Por favor, informe o gestor técnico.</small>
-              </div>
             </div>
           </div>
 
@@ -394,79 +388,79 @@
 
         </fieldset>
 
-        <fieldset class="col-12 border pb-4">
-          <legend class="col-form-legend col-4"><small>INFORMAÇÔES DE ACESSOS</small></legend>
-          <!-- Inicio Painel Ferramentas -->
-          <mat-expansion-panel class="mb-1">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Ferramentas
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="row">
-              <div class="col-5 p-2">
-                <label>Ferramentas Associadas</label>
-                <select multiple formControlName="ferrAssociadas" class="form-control" name="ferrAssociadas">
-                  <option *ngFor="let i of ferramentasAssociadas" value="{{i.id}}">{{i.descricao}}</option>
-                </select>
-              </div>
-              <div class="col-2 mt-4 text-center">
+        <!--        <fieldset class="col-12 border pb-4"> -->
+        <!--          <legend class="col-form-legend col-4"><small>INFORMAÇÔES DE ACESSOS</small></legend> -->
+        <!-- Inicio Painel Ferramentas -->
+        <!--          <mat-expansion-panel class="mb-1"> -->
+        <!--            <mat-expansion-panel-header> -->
+        <!--              <mat-panel-title> -->
+        <!--                Ferramentas -->
+        <!--              </mat-panel-title> -->
+        <!--            </mat-expansion-panel-header> -->
+        <!--            <div class="row"> -->
+        <!--              <div class="col-5 p-2"> -->
+        <!--                <label>Ferramentas Associadas</label> -->
+        <!--                <select multiple formControlName="ferrAssociadas" class="form-control" name="ferrAssociadas"> -->
+        <!--                  <option *ngFor="let i of ferramentasAssociadas" value="{{i.id}}">{{i.descricao}}</option> -->
+        <!--                </select> -->
+        <!--              </div> -->
+        <!--              <div class="col-2 mt-4 text-center"> -->
 
-                <div class="mb-2">
-                  <button class="btn btn-success" (click)="adicionarFerramenta()">
-                    <<</button> </div> <div>
-                      <button class="btn btn-danger" (click)="removerFerramenta()">>></button>
-                </div>
+        <!--                <div class="mb-2"> -->
+        <!--                  <button class="btn btn-success" (click)="adicionarFerramenta()"> -->
+        <!--                    <<</button> </div> <div> -->
+        <!--                      <button class="btn btn-danger" (click)="removerFerramenta()">>></button> -->
+        <!--                </div> -->
 
-              </div>
-              <div class="col-5 p-2 border-1">
-                <label>Ferramentas Disponiveis</label>
-                <select multiple formControlName="ferrDisponiveis" class="form-control" name="ferrDisponiveis">
-                  <option *ngFor="let i of ferramentasDisponiveis" value="{{i.id}}">{{i.descricao}}</option>
-                </select>
-              </div>
-            </div>
-          </mat-expansion-panel>
-          <!-- Fim Painel Ferramentas -->
+        <!--              </div> -->
+        <!--              <div class="col-5 p-2 border-1"> -->
+        <!--                <label>Ferramentas Disponiveis</label> -->
+        <!--                <select multiple formControlName="ferrDisponiveis" class="form-control" name="ferrDisponiveis"> -->
+        <!--                  <option *ngFor="let i of ferramentasDisponiveis" value="{{i.id}}">{{i.descricao}}</option> -->
+        <!--                </select> -->
+        <!--              </div> -->
+        <!--            </div> -->
+        <!--          </mat-expansion-panel> -->
+        <!-- Fim Painel Ferramentas -->
 
-          <!-- Inicio Painel Siglas -->
-          <mat-expansion-panel class="mb-1">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Siglas
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <div class="row">
-              <div class="col-5 p-2">
-                <label>Siglas Associadas</label>
-                <select multiple formControlName="sigAssociadas" class="form-control" name="sigAssociadas">
-                  <option *ngFor="let i of siglasAssociadas" value="{{i.id}}">{{i.descricao}}</option>
-                </select>
-              </div>
-              <div class="col-2 mt-4 text-center">
+        <!-- Inicio Painel Siglas -->
+        <!--          <mat-expansion-panel class="mb-1"> -->
+        <!--            <mat-expansion-panel-header> -->
+        <!--              <mat-panel-title> -->
+        <!--                Siglas -->
+        <!--              </mat-panel-title> -->
+        <!--            </mat-expansion-panel-header> -->
+        <!--            <div class="row"> -->
+        <!--              <div class="col-5 p-2"> -->
+        <!--                <label>Siglas Associadas</label> -->
+        <!--                <select multiple formControlName="sigAssociadas" class="form-control" name="sigAssociadas"> -->
+        <!--                  <option *ngFor="let i of siglasAssociadas" value="{{i.id}}">{{i.descricao}}</option> -->
+        <!--                </select> -->
+        <!--              </div> -->
+        <!--              <div class="col-2 mt-4 text-center"> -->
 
-                <div class="mb-2">
-                  <button class="btn btn-success" (click)="adicionarSigla()">
-                    <<</button> </div> <div>
-                      <button class="btn btn-danger" (click)="removerSigla()">>></button>
-                </div>
+        <!--                <div class="mb-2"> -->
+        <!--                  <button class="btn btn-success" (click)="adicionarSigla()"> -->
+        <!--                    <<</button> </div> <div> -->
+        <!--                      <button class="btn btn-danger" (click)="removerSigla()">>></button> -->
+        <!--                </div> -->
 
-              </div>
-              <div class="col-5 p-2 border-1">
-                <label>Siglas Disponiveis</label>
-                <select multiple formControlName="sigDisponiveis" class="form-control" name="sigDisponiveis">
-                  <option *ngFor="let i of siglasDisponiveis" value="{{i.id}}">{{i.descricao}}</option>
-                </select>
-              </div>
-            </div>
-          </mat-expansion-panel>
-          <!-- Fim Painel Siglas -->
-        </fieldset>
+        <!--              </div> -->
+        <!--              <div class="col-5 p-2 border-1"> -->
+        <!--                <label>Siglas Disponiveis</label> -->
+        <!--                <select multiple formControlName="sigDisponiveis" class="form-control" name="sigDisponiveis"> -->
+        <!--                  <option *ngFor="let i of siglasDisponiveis" value="{{i.id}}">{{i.descricao}}</option> -->
+        <!--                </select> -->
+        <!--              </div> -->
+        <!--            </div> -->
+        <!--          </mat-expansion-panel> -->
+        <!--           Fim Painel Siglas -->
+        <!--        </fieldset> -->
       </div>
       <nav class="col d-flex justify-content-end mt-4">
         <button type="button" class="btn everis mr-2" [disabled]="!formularioPessoa.valid || telefones.length === 0"
           (click)="Salvar()">Salvar</button>
-        <button type="button" class="btn cancelar">Cancelar</button>
+        <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
       </nav>
     </div>
   </div>

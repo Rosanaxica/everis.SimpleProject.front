@@ -6,7 +6,7 @@ export class Telefone extends ModeloGenerico {
 
     numeroTelefone: string;
     tipoId: number;
-    tipoTelefone: TipoTelefone;
+    tipo: TipoTelefone;
     pessoaId: number;
     pessoa: Pessoa;
 

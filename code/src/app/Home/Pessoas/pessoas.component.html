@@ -1,10 +1,26 @@
+<div class="row">
+  <div *ngIf="msgSucesso != null && msgSucesso != undefined" class="col-12">
+    <div class="alert alert-success" role="alert">
+      <i class="fa fa-check mr-1"></i> {{msgSucesso}}
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div *ngIf="msgErro != null && msgErro != undefined" class="col-12">
+    <div class="alert alert-danger" role="alert">
+      <i class="fa fa-check mr-1"></i> {{msgErro}}
+    </div>
+  </div>
+</div>
+
 <div class="row align-items-center">
   <div class="col-3">
     <h1 class="titulo mb-0">Pessoas</h1>
   </div>
   <div class="input-group col">
     <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
-    [(ngModel)]="pessoaModel.nome" (keydown.enter)="filtrar()">
+      [(ngModel)]="pessoaModel.nome" (keydown.enter)="filtrar()">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>

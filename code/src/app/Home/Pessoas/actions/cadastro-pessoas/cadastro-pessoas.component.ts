@@ -17,6 +17,7 @@ import { PoloAcesso } from 'src/app/_models/poloAcesso.model';
 import { TipoServico } from 'src/app/_models/tipo_servico.model';
 import { TipoTelefone } from 'src/app/_models/tipo_telefone.model';
 import { Diretoria } from 'src/app/_models/diretoria.model';
+import { DateFormatPipe } from 'src/app/shared/util/date-format-pipe';
 
 
 
@@ -27,9 +28,10 @@ import { Diretoria } from 'src/app/_models/diretoria.model';
 })
 export class CadastroPessoasComponent implements OnInit {
 
-  constructor(private arouter: ActivatedRoute, private svc: GenericService, private router: Router, private fb: FormBuilder) {
+  constructor(private arouter: ActivatedRoute, private svc: GenericService, private router: Router, private fb: FormBuilder, private formateDate: DateFormatPipe) {
   }
 
+  colaboradorId: number;
   id: number;
   formularioPessoa: FormGroup;
   numberPattern = /^[0-9]*$/;
@@ -37,17 +39,17 @@ export class CadastroPessoasComponent implements OnInit {
   pessoaColaborador = new PessoaColaboradorViewModel();
   gestores: Pessoa[] = [];
 
-  tiposTelefone: TipoTelefone[] = [{ id: 0, descricao: 'Selecione' } as TipoTelefone];
+  tiposTelefone: TipoTelefone[] = [];
   telefone = new Telefone();
   filtroTelefone = new Telefone();
   filtroPessoa = new Pessoa();
   telefones: Telefone[] = [];
 
-  empresas: Empresa[] = [{ id: 0, nome: 'Selecione' } as Empresa];
+  empresas: Empresa[] = [];
   funcoes: Funcao[] = [];
   areasContratantes: AreaContratante[] = [];
   polosAcesso: PoloAcesso[] = [];
-  tipoServicos: TipoServico[] = [{ id: 0, descricao: 'Selecione' } as TipoServico];
+  tipoServicos: TipoServico[] = [];
   diretorias: Diretoria[] = [];
 
   acessoSigla = new AcessoSigla();
@@ -61,6 +63,12 @@ export class CadastroPessoasComponent implements OnInit {
   ferramentasAssociadas: Ferramenta[] = [];
   btnRemoverFerramentas: Ferramenta[] = [];
   btnAdicionarFerramentas: Ferramenta[] = [];
+
+  // listaUf: any = [
+  //   { id: "SP", text: "SP" },
+  //   { id: "RS", text: "RS" }
+  // ];
+  // listaUf: [{ id: "1", value: "SP" }, { id: "2", value: "RS" }];
 
   ngOnInit() {
     this.criarForm();
@@ -92,14 +100,11 @@ export class CadastroPessoasComponent implements OnInit {
       'Pessoa/ObterGestoresTecnicos'
     ]).then(data => {
       this.empresas = data[0].json().data as Empresa[];
-      this.empresas.unshift({ id: 0, nome: 'Selecione' } as Empresa);
       this.funcoes = data[1].json().data as Funcao[];
       this.areasContratantes = data[2].json().data as AreaContratante[];
       this.polosAcesso = data[3].json().data as PoloAcesso[];
       this.tipoServicos = data[4].json().data as TipoServico[];
-      this.tipoServicos.unshift({ id: 0, descricao: 'Selecione' } as TipoServico);
       this.tiposTelefone = data[5].json().data as TipoTelefone[];
-      this.tiposTelefone.unshift({ id: 0, descricao: 'Selecione' } as TipoTelefone);
       this.diretorias = data[6].json().data as TipoTelefone[];
       this.gestores = data[7].json().data as Pessoa[];
     });
@@ -118,23 +123,21 @@ export class CadastroPessoasComponent implements OnInit {
   AddTelefone() {
     const formObj = this.formularioPessoa.value;
     var dadosTipo = formObj.tipoTelefone.toString().split('-');
-    this.telefone.tipoTelefone = new TipoTelefone();
-    this.telefone.tipoTelefone.id = dadosTipo[0];
-    this.telefone.tipoTelefone.descricao = dadosTipo[1];
+    this.telefone.tipo = new TipoTelefone();
+    this.telefone.tipo.id = dadosTipo[0];
+    this.telefone.tipo.descricao = dadosTipo[1];
     this.telefone.tipoId = dadosTipo[0]
     this.telefone.numeroTelefone = formObj.numeroTelefone;
     this.telefones.push(this.telefone);
     this.telefone = new Telefone();
-    // this.tipoTelefone = new TipoTelefone();
   }
 
   RemoverTelefone(telefone: Telefone) {
-    this.telefones.splice(this.telefones.indexOf(telefone, 1));
+    this.telefones.splice(this.telefones.indexOf(telefone), 1)
   }
 
   onKeydown() {
     this.telefones.push(this.telefone);
-    // this.telefone = new Telefone();
   }
 
   isTelRequired(): boolean {
@@ -145,45 +148,38 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
 
-  adicionarFerramenta() {
-    this.btnAdicionarFerramentas = this.formularioPessoa.controls['ferrDisponiveis'].value;
-    if (this.btnAdicionarFerramentas.length == 0) {
-      alert('Selecione uma ferramenta para adicionar');
-      return;
-    } else {
-      this.btnAdicionarFerramentas.forEach(a => {
-        let item = this.ferramentasDisponiveis.find(f => f.id == +a);
-        let itemIndex = this.ferramentasDisponiveis.indexOf(item);
-        this.ferramentasAssociadas.push(item);
-        this.ferramentasDisponiveis.splice(itemIndex, 1);
-      });
-      this.btnAdicionarFerramentas = [];
-    }
-  }
+  // adicionarFerramenta() {
+  //   this.btnAdicionarFerramentas = this.formularioPessoa.controls['ferrDisponiveis'].value;
+  //   if (this.btnAdicionarFerramentas.length == 0) {
+  //     alert('Selecione uma ferramenta para adicionar');
+  //     return;
+  //   } else {
+  //     this.btnAdicionarFerramentas.forEach(a => {
+  //       let item = this.ferramentasDisponiveis.find(f => f.id == +a);
+  //       let itemIndex = this.ferramentasDisponiveis.indexOf(item);
+  //       this.ferramentasAssociadas.push(item);
+  //       this.ferramentasDisponiveis.splice(itemIndex, 1);
+  //     });
+  //     this.btnAdicionarFerramentas = [];
+  //   }
+  // }
 
-  removerFerramenta() {
-    this.btnRemoverFerramentas = this.formularioPessoa.controls['ferrAssociadas'].value;
-    if (this.btnRemoverFerramentas.length == 0) {
-      alert('Selecione uma ferramenta para remover');
-      return;
-    } else {
-      this.btnRemoverFerramentas.forEach(a => {
-        let item = this.ferramentasAssociadas.find(f => f.id == +a);
-        let itemIndex = this.ferramentasAssociadas.indexOf(item);
-        this.ferramentasDisponiveis.push(item);
-        this.ferramentasAssociadas.splice(itemIndex, 1);
-      });
-      this.btnRemoverFerramentas = [];
-    }
-  }
+  // removerFerramenta() {
+  //   this.btnRemoverFerramentas = this.formularioPessoa.controls['ferrAssociadas'].value;
+  //   if (this.btnRemoverFerramentas.length == 0) {
+  //     alert('Selecione uma ferramenta para remover');
+  //     return;
+  //   } else {
+  //     this.btnRemoverFerramentas.forEach(a => {
+  //       let item = this.ferramentasAssociadas.find(f => f.id == +a);
+  //       let itemIndex = this.ferramentasAssociadas.indexOf(item);
+  //       this.ferramentasDisponiveis.push(item);
+  //       this.ferramentasAssociadas.splice(itemIndex, 1);
+  //     });
+  //     this.btnRemoverFerramentas = [];
+  //   }
+  // }
 
-  obterFerramentasDisponiveis() {
-
-  }
-
-  obterFerramentasAssociadas() {
-
-  }
 
   obterFerramentas() {
     this.svc.listar(Ferramenta, null, "ObterTodos").toPromise().then(
@@ -269,13 +265,21 @@ export class CadastroPessoasComponent implements OnInit {
 
     let pessoaColaborador = new PessoaColaboradorViewModel();
 
-    this.svc.obter(this.filtroPessoa).toPromise().then(
+    this.svc.obter(this.filtroPessoa, `ObterPessoaColaborador/${this.filtroPessoa.id}`).toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
-            let pessoa = s.data as Pessoa;
-            pessoaColaborador.pessoa = pessoa;
+            pessoaColaborador = s.data as PessoaColaboradorViewModel;
+            this.telefones = pessoaColaborador.telefones || new Array<Telefone>();
+            this.ferramentasAssociadas = pessoaColaborador.ferramentasAssociadas || new Array<Ferramenta>();
+            this.siglasAssociadas = pessoaColaborador.siglasAssociadas || new Array<Sigla>();
 
+            if (pessoaColaborador.colaborador != null && pessoaColaborador != undefined) {
+              pessoaColaborador.colaboradorId = pessoaColaborador.colaborador.id;
+              this.colaboradorId = pessoaColaborador.colaborador.id;
+            } else {
+              pessoaColaborador.colaboradorId = 0;
+            }
             this.svc.listar(Colaborador, null, `ListarFerramentasDisponiveis/${pessoaColaborador.colaboradorId}`).toPromise().then(
               s => {
                 if (s.sucesso) {
@@ -289,19 +293,6 @@ export class CadastroPessoasComponent implements OnInit {
               }
             );
 
-            this.svc.listar(Colaborador, null, `ListarFerramentasAssociadas/${pessoaColaborador.colaboradorId}`).toPromise().then(
-              s => {
-                if (s.sucesso) {
-                  if (s.data != null && s.data !== undefined) {
-                    let ferramentasAssociadas = s.data as Ferramenta[];
-                    pessoaColaborador.ferramentasAssociadas = ferramentasAssociadas;
-                    this.ferramentasAssociadas = ferramentasAssociadas;
-                  }
-                }
-              }
-            );
-
-
             this.svc.listar(Colaborador, null, `ListarSiglasDisponiveis/${pessoaColaborador.colaboradorId}`).toPromise().then(
               s => {
                 if (s.sucesso) {
@@ -309,31 +300,6 @@ export class CadastroPessoasComponent implements OnInit {
                     let siglasDisponiveis = s.data as Sigla[];
                     pessoaColaborador.siglasDisponiveis = siglasDisponiveis;
                     this.siglasDisponiveis = siglasDisponiveis;
-                  }
-                }
-              }
-            );
-
-            this.svc.listar(Colaborador, null, `ListarSiglasAssociadas/${pessoaColaborador.colaboradorId}`).toPromise().then(
-              s => {
-                if (s.sucesso) {
-                  if (s.data != null && s.data !== undefined) {
-                    let siglasAssociadas = s.data as Sigla[];
-                    pessoaColaborador.siglasAssociadas = siglasAssociadas;
-                    this.siglasAssociadas = siglasAssociadas;
-                  }
-                }
-              }
-            );
-
-            this.svc.listar(Telefone, this.filtroTelefone).toPromise().then(
-              s => {
-                if (s.sucesso) {
-                  if (s.data != null && s.data !== undefined) {
-                    this.telefones = s.data as Telefone[];
-                    // pessoaColaborador.telefones = telefones;
-                    // this.telefones = telefones;
-                    // debugger;
                   }
                 }
               }
@@ -347,7 +313,7 @@ export class CadastroPessoasComponent implements OnInit {
 
   criarForm(pessoaColaborador?: PessoaColaboradorViewModel) {
     pessoaColaborador = pessoaColaborador || new PessoaColaboradorViewModel();
-
+    pessoaColaborador.colaborador = pessoaColaborador.colaborador || new Colaborador();
     let tipo = '1';
 
     if (pessoaColaborador.pessoa.id > 0) {
@@ -358,21 +324,21 @@ export class CadastroPessoasComponent implements OnInit {
       'tipoPessoa': [tipo],
       'nome': [pessoaColaborador.pessoa.nome, Validators.required],
       'diretoria': [pessoaColaborador.pessoa.diretoriaId, Validators.required],
-      'funcional': [pessoaColaborador.pessoa.funcional, Validators.required],
+      'funcional': [pessoaColaborador.pessoa.funcional, [Validators.required, Validators.pattern(this.numberPattern)]],
       'sexo': [pessoaColaborador.pessoa.sexo, Validators.required],
-      'cpf': [pessoaColaborador.pessoa.cpf],
-      'rg': [pessoaColaborador.pessoa.rg],
+      'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : undefined, [Validators.pattern(this.numberPattern)]],
+      'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : undefined, [Validators.pattern(this.numberPattern)]],
       'orgaoEmissor': [pessoaColaborador.pessoa.orgaoEmissor],
-      'uf': [pessoaColaborador.pessoa.uFRg],
+      'uf': [pessoaColaborador.pessoa.ufRg],
       'empresa': [pessoaColaborador.pessoa.empresaId],
       'gestorTecnico': [pessoaColaborador.pessoa.gestorTecnico],
       'documento': [pessoaColaborador.pessoa.documento],
-      'tipoTelefone': [pessoaColaborador.tipoTelefone, Validators.required],
+      'tipoTelefone': [pessoaColaborador.tipoTelefone],
       'email': [pessoaColaborador.pessoa.email, Validators.required],
       'emailCorp': [pessoaColaborador.colaborador.emailCorporativo],
-      'dataNascimento': [pessoaColaborador.colaborador.dataNascimento],
-      'dataAdmissao': [pessoaColaborador.colaborador.dataAdmissao],
-      'dataDemissao': [pessoaColaborador.colaborador.dataDemissao],
+      'dataNascimento': [this.formateDate.transform(pessoaColaborador.colaborador.dataNascimento)],
+      'dataAdmissao': [this.formateDate.transform(pessoaColaborador.colaborador.dataAdmissao)],
+      'dataDemissao': [this.formateDate.transform(pessoaColaborador.colaborador.dataDemissao)],
       'funcao': [pessoaColaborador.colaborador.funcaoId],
       'tipoServico': [pessoaColaborador.colaborador.tipoServicoId],
       'poloAcesso': [pessoaColaborador.colaborador.poloAcessoId],
@@ -394,7 +360,6 @@ export class CadastroPessoasComponent implements OnInit {
   }
 
   private obterDadosForm() {
-    console.log("Dados antes de obter form: " + JSON.stringify(this.pessoaColaborador));
     let formObj = this.formularioPessoa.value;
 
     this.pessoaColaborador.pessoa.tipoId = +formObj.tipoPessoa;
@@ -406,7 +371,7 @@ export class CadastroPessoasComponent implements OnInit {
     this.pessoaColaborador.pessoa.documento = formObj.documento;
     this.pessoaColaborador.pessoa.rg = formObj.rg;
     this.pessoaColaborador.pessoa.orgaoEmissor = formObj.orgaoEmissor;
-    this.pessoaColaborador.pessoa.uFRg = formObj.uf;
+    this.pessoaColaborador.pessoa.ufRg = formObj.uf;
     this.pessoaColaborador.telefones = this.telefones;
     this.pessoaColaborador.pessoa.email = formObj.email;
 
@@ -442,7 +407,6 @@ export class CadastroPessoasComponent implements OnInit {
     this.pessoaColaborador.colaborador.funcao = null;
     this.pessoaColaborador.pessoa.diretoria = null;
     this.pessoaColaborador.pessoa.tipo = null;
-    console.log("Dados obtidos do form: " + JSON.stringify(this.pessoaColaborador))
 
   }
 
@@ -456,8 +420,8 @@ export class CadastroPessoasComponent implements OnInit {
     const tipoServicoControl = this.formularioPessoa.get('tipoServico');
     const poloAcessoControl = this.formularioPessoa.get('poloAcesso');
     const areaContratanteControl = this.formularioPessoa.get('areaContratante');
-    const gestorResponsavelControl = this.formularioPessoa.get('gestorResponsavel');
     const empresaControl = this.formularioPessoa.get('empresa');
+    const emailCorp = this.formularioPessoa.get('emailCorp');
 
     if (valorSelecionado === '1') {
       tipoContratoControl.setValidators(Validators.required);
@@ -467,8 +431,7 @@ export class CadastroPessoasComponent implements OnInit {
       tipoServicoControl.setValidators(Validators.required);
       poloAcessoControl.setValidators(Validators.required);
       areaContratanteControl.setValidators(Validators.required);
-      gestorResponsavelControl.setValidators(Validators.required);
-
+      emailCorp.setValidators(Validators.required);
       empresaControl.clearValidators();
 
     } else {
@@ -481,7 +444,7 @@ export class CadastroPessoasComponent implements OnInit {
       tipoServicoControl.clearValidators();
       poloAcessoControl.clearValidators();
       areaContratanteControl.clearValidators();
-      gestorResponsavelControl.clearValidators();
+      empresaControl.setValidators(Validators.required);
     }
     tipoContratoControl.updateValueAndValidity();
     dataNascimentoControl.updateValueAndValidity();
@@ -490,41 +453,61 @@ export class CadastroPessoasComponent implements OnInit {
     tipoServicoControl.updateValueAndValidity();
     poloAcessoControl.updateValueAndValidity();
     areaContratanteControl.updateValueAndValidity();
-    gestorResponsavelControl.updateValueAndValidity();
     empresaControl.updateValueAndValidity();
+    emailCorp.updateValueAndValidity();
   }
 
   Salvar() {
     this.obterDadosForm();
 
-    if (this.pessoaColaborador.pessoa.id == undefined && this.pessoaColaborador.colaborador.id == undefined) {
-      this.atribuirAcessoFerramenta();
-      this.atribuirAcessoSigla();
-    }
-
-    if (this.pessoaColaborador.pessoa.tipoId == 3) {
-      this.pessoaColaborador.colaborador = null
-    }
-
     if (this.pessoaColaborador.pessoa.id > 0) {
-      this.svc.salvar(this.pessoaColaborador.pessoa)
+
+      // if (this.pessoaColaborador.pessoa.tipoId == 3) {
+
+      //   this.svc.salvar(this.pessoaColaborador.pessoa)
+      //     .toPromise().then(
+      //       data => {
+      //         this.router.navigate([`pessoas`]);
+      //         // this.msgSucesso = 'Colaborador cadastrado com sucesso!';
+      //       },
+      //       error => {
+      //         alert(error.data);
+      //       }
+      //     );
+      // } else {
+      //   this.svc.salvar(this.pessoaColaborador.colaborador)
+      //     .toPromise().then(
+      //       data => {
+      //         this.router.navigate([`pessoas`]);
+      //         // this.msgSucesso = 'Colaborador cadastrado com sucesso!';
+      //       },
+      //       error => {
+      //         alert(error.data);
+      //       }
+      //     );
+      // }
+      if (this.pessoaColaborador.pessoa.tipoId == 1) {
+        this.pessoaColaborador.colaborador.id = this.colaboradorId;
+      }
+
+      this.svc.putViewModel(this.pessoaColaborador, 'pessoa/AtualizarPessoaColaborador')
         .toPromise().then(
           data => {
-            this.router.navigate([`pessoas`]);
-            // this.msgSucesso = 'Colaborador cadastrado com sucesso!';
+            this.router.navigate([`pessoas`, { sucesso: true }]);
           },
           error => {
-            alert(error.data);
+            this.router.navigate([`pessoas`, { erro: true }]);
           }
         );
+
     } else {
       this.svc.postViewModel(this.pessoaColaborador, 'pessoa/CriarPessoaColaborador')
         .toPromise().then(
           data => {
-            this.router.navigate([`pessoas`]);
+            this.router.navigate([`pessoas`, { sucesso: true }]);
           },
           error => {
-            alert(error.data);
+            this.router.navigate([`pessoas`, { erro: true }]);
           }
         );
 
@@ -536,11 +519,9 @@ export class CadastroPessoasComponent implements OnInit {
     this.ferramentasDisponiveis = [];
   }
 
-
-
-
-
-
+  cancelar() {
+    this.router.navigate(['/pessoas']);
+  }
 }
 
 

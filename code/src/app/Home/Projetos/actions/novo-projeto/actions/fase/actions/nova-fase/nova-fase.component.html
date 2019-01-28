@@ -10,11 +10,11 @@
     <div class="row">
         <div class="col-md-2">
             <label for="codigoProjeto">Código do Projeto</label>
-            <input type="text" class="form-control" name="codigoProjeto" formControlName="codigoProjeto" placeholder="Digite o código do projeto"></div>
+            <input type="text" class="form-control" placeholder="Digite o código do projeto" value="{{projeto.codigoProjeto}}" disabled>
+        </div>
         <div class="col-md-8">
             <label for="codigoProjeto">Nome do Projeto</label>
-            <input type="text" class="form-control" id="nomeProjeto" name="nomeProjeto" formControlName="nomeProjeto"
-                placeholder="Nome Projeto">
+            <input type="text" class="form-control" placeholder="Nome Projeto" value="{{projeto.nome}}" disabled>
         </div>
     </div>
 
@@ -58,7 +58,6 @@
     </div>
 
 
-
     <div class="row">
         <div class="col-xs-12 col-12 col-md-4 form-group">
             <label for="qtdHorasDia">Horas por Dia</label>
@@ -70,8 +69,7 @@
         </div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
             <label for="dataInicio">Data Inicial</label>
-            <input type="text" class="form-control" placeholder="dd/mm/aaaa" name="dataInicio" formControlName="dataInicio"
-                bsDatepicker>
+            <input type="date" class="form-control" placeholder="dd/mm/aaaa" name="dataInicio" formControlName="dataInicio">
             <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
                 <i class="fa fa-times mr-2"></i>
                 <small>Por Favor, informe a data incial do periodo.</small>
@@ -79,8 +77,7 @@
         </div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
             <label for="dataFim">Data Final</label>
-            <input type="text" class="form-control" placeholder="dd/mm/aaaa" name="dataFim" formControlName="dataFim"
-                bsDatepicker>
+            <input type="date" class="form-control" placeholder="dd/mm/aaaa" name="dataFim" formControlName="dataFim">
             <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataFim.touched && formularioFase.controls.dataFim.hasError('required')">
                 <i class="fa fa-times mr-2"></i>
                 <small>Por Favor, informe a data final do periodo.</small>
@@ -100,13 +97,13 @@
         </div>
 
 
-    </div>
+    </div> 
 </form>
 
 <div class="row align-items-center">
 
     <div class="col d-flex justify-content-end">
-        <button type="button" class="btn everis mr-2" [disabled]="!formularioValido()" (click)="salvar()">Salvar</button>
+       <button type="button" class="btn everis mr-2"  (click)="salvar()">Salvar</button> <!-- [disabled]="!formularioValido()" -->
         <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
     </div>
 </div>
