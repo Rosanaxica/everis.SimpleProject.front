@@ -15,12 +15,12 @@
     <div class="form-group mt-4 row">
 
       <div class="col-md-3">
-        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto" placeholder="Codigo do Projeto"
-        />
+        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto"
+          placeholder="Codigo do Projeto" />
       </div>
-      <div class="col-md-8">
-        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto"
-        />
+      <div class="col-md-9">
+        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
+          placeholder="Nome do Projeto" />
       </div>
 
     </div>
@@ -37,7 +37,7 @@
         </select>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-3">
         <label for="data">Data Entrega Proposta</label>
         <input type="date" formControlName="dataProposta" class="form-control" id="dataProposta" name="dataProposta" />
       </div>
@@ -159,18 +159,15 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label>Serviço 1</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 2</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 3</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
     </div>
   </fieldset>
@@ -192,7 +189,8 @@
         Fora do Escopo do Projeto
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto" rows="5"></textarea>
+    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"
+      rows="5"></textarea>
   </mat-expansion-panel>
 
   <mat-expansion-panel class="mb-3 border">
@@ -205,7 +203,7 @@
     <textarea formControlName="premissas" class="form-control" id="premissas" name="premissas" rows="5"></textarea>
 
   </mat-expansion-panel>
- 
+
   <div class="row align-items-center mt-2 mb-4">
     <div class="col d-flex justify-content-end">
       <button type="button" class="btn everis mr-2" (click)="Adicionar()" [disabled]="!formEstaValido()">Salvar</button>
