@@ -18,6 +18,10 @@
         <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto" placeholder="Codigo do Projeto *"
         />
       </div>
+      <span class="spanAtention" *ngIf="dadosPrincipaisForm.controls.codProjeto.invalid">
+        <i class="fas fa-exclamation-triangle"></i>
+        Informe o Código do Projeto
+      </span>
       <div class="col-md-8">
         <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto *"
         />
