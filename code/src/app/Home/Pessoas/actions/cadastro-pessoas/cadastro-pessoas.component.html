@@ -96,10 +96,14 @@
         <div class="row mb-2">
           <div class="col-md-2">
             <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg" maxlength="9">
+            <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.rg.touched || formularioPessoa.controls.rg.dirty) && formularioPessoa.controls.rg.invalid)">
+              <i class="fa fa-times mr-2"></i>
+              <small>Insira 9 dígitos</small>
+            </div>
           </div>
           <div class="col-md-2">
             <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor"
-              formControlName="orgaoEmissor" maxlength="5" pattern="/^[a-zA-Z]+$/">
+              formControlName="orgaoEmissor" maxlength="5">
             <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.orgaoEmissor.touched || formularioPessoa.controls.orgaoEmissor.dirty) && formularioPessoa.controls.orgaoEmissor.invalid)">
               <i class="fa fa-times mr-2"></i>
               <small>Informe apenas letras</small>

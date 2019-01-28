@@ -31,12 +31,12 @@ export class DadosPrincipaisComponent implements OnInit {
   superintendencia: Superintendencia[] = [{ id: 0, descricao: 'Selecione' } as Superintendencia];
   tecnologia: Tecnologia[] = [{ id: 0, nome: 'Selecione' } as Tecnologia];
 
-  
+
 
   ngOnInit() {
     this.projeto = new Projeto();
     this.filtrar();
-    
+
     this.gerarFormProjeto();
   }
   OpenView(projeto: Projeto) {
@@ -49,29 +49,29 @@ export class DadosPrincipaisComponent implements OnInit {
 
     this.dadosPrincipaisForm = this.formBuilder.group(
       {
-        'nomeProjeto': [objProjeto.nome, Validators.required],
-        'codProjeto': [objProjeto.codigoProjeto, Validators.required],
+        'nomeProjeto': [objProjeto.nome, Validators.required, Validators.maxLength(200)],
+        'codProjeto': [objProjeto.codigoProjeto, Validators.required, Validators.maxLength(10)],
         'ext': [objProjeto.ext],
         'empresaId': [objProjeto.empresaId, Validators.required],
         'dataInicio': [objProjeto.dataInicio],
         'dataRecebida': [objProjeto.dataRecebida, Validators.required],
         'dataProposta': [objProjeto.dataProposta, Validators.required],
-        'duracao': [objProjeto.duracao],
+        'duracao': [objProjeto.duracao, Validators.maxLength(10)],
+        'qtdHorasServico1': [objProjeto.qtdHorasServico1, Validators.maxLength(10)],
+        'qtdHorasServico2': [objProjeto.qtdHorasServico2, Validators.maxLength(10)],
+        'qtdHorasServico3': [objProjeto.qtdHorasServico3, Validators.maxLength(10)],
         'tecnologiaId': [objProjeto.tecnologiaId, Validators.required],
         'siglaId': [objProjeto.siglaId, Validators.required],
         'diretoriaId': [objProjeto.diretoriaId, Validators.required],
         'superintendenciaId': [objProjeto.superintendenciaId, Validators.required],
-        'qtdHorasServico1': [objProjeto.qtdHorasServico1],
-        'qtdHorasServico2': [objProjeto.qtdHorasServico2],
-        'qtdHorasServico3': [objProjeto.qtdHorasServico3],
-        'escopoProjeto': [objProjeto.escopoProjeto],
-        'foraEscopoProjeto': [objProjeto.foraEscopoProjeto],
-        'premissas': [objProjeto.premissas],
+        'escopoProjeto': [objProjeto.escopoProjeto, Validators.maxLength(500)],
+        'foraEscopoProjeto': [objProjeto.foraEscopoProjeto, Validators.maxLength(500)],
+        'premissas': [objProjeto.premissas, Validators.maxLength(500)],
         'tipoDemanda': [objProjeto.tipoDemanda, Validators.required],
         'tamanho': [objProjeto.tamanho, Validators.required],
         'statusProjetoId': [objProjeto.statusId, Validators.required],
         'statusProposta': [objProjeto.statusProposta],
-        'tarifa': [objProjeto.tarifa]
+        'tarifa': [objProjeto.tarifa, Validators.maxLength(30)]
       }
     );
   }
@@ -208,9 +208,9 @@ export class DadosPrincipaisComponent implements OnInit {
       }
     );
 
-    
 
-    
+
+
 
     this.svc.listar(Superintendencia, null, "ObterTodos").toPromise().then(
       s => {
