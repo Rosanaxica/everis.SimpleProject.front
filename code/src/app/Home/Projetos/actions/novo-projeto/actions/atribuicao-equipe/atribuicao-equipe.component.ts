@@ -46,7 +46,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
     );
   }
   cancelar() {
-    this.router.navigate(['/template/projetos']);
+    this.router.navigate(['/projetos']);
   }
   buscaEmpresa(idEmpresa: number): string {
     let empresaModel: Empresa;
@@ -94,6 +94,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.atribuicoes = s.data;
+            this.atribuicoes.unshift({ id: 0, atribuicao: 'Selecione' } as ProjetoPessoaAtribuicao);
           }
         }
       }
@@ -119,6 +120,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
       if (this.informadoResponsavel()) {
         this.salvarProjeto();
       } else {
+        window.alert('Erro: Não foi informado responsável pelo projeto.');
         return;
       }
     } else {

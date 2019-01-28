@@ -4,7 +4,7 @@
 
     <div class="form-group row">
       <div class="col-md-3">
-        <label for="label">Status do Projeto</label>
+        <label for="label">Status do Projeto *</label>
         <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
           <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
         </select>
@@ -15,12 +15,12 @@
     <div class="form-group mt-4 row">
 
       <div class="col-md-3">
-        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto" placeholder="Codigo do Projeto"
-        />
+        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto"
+          placeholder="Codigo do Projeto" />
       </div>
-      <div class="col-md-8">
-        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto"
-        />
+      <div class="col-md-9">
+        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
+          placeholder="Nome do Projeto" />
       </div>
 
     </div>
@@ -28,7 +28,7 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label for="label">Status da Proposta</label>
-        <select formControlName="statusProposta" class="form-control" id="ext" name="ext">
+        <select formControlName="statusProposta" class="form-control" id="statusProposta" name="statusProposta">
           <option value="aceitaPrimeiroEnvio">Aceita Primeiro Envio</option>
           <option value="aceitaSegundoEnvio">Aceita Segundo Envio</option>
           <option value="cancelado">Cancelado</option>
@@ -37,14 +37,14 @@
         </select>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-3">
         <label for="data">Data Entrega Proposta</label>
         <input type="date" formControlName="dataProposta" class="form-control" id="dataProposta" name="dataProposta" />
       </div>
 
       <div class="col-md-3">
         <label>Duração</label>
-        <input type="number" formControlName="duracao" class="form-control" id="duracao" name="duracao" />
+        <input type="number" formControlName="duracao" min="0" class="form-control" id="duracao" name="duracao" />
       </div>
 
       <div class="col-md-3">
@@ -78,7 +78,7 @@
     <div class="form-group row">
       <div class="col-md-4">
         <label for="label">Tecnologia</label>
-        <select formControlName="tecnologiaId" class="form-control" id="tecnologiaid" name="ext">
+        <select formControlName="tecnologiaId" class="form-control" id="tecnologiaid" name="tecnologiaid">
           <option *ngFor="let tecnologia of tecnologia" value="{{tecnologia.id}}">{{tecnologia.nome}}</option>
         </select>
       </div>
@@ -96,7 +96,7 @@
       <div class="col-md-1">
         <label for="label">Tamanho</label>
 
-        <select formControlName="tamanho" class="form-control" id="tamanho" name="ext">
+        <select formControlName="tamanho" class="form-control" id="tamanho" name="tamanho">
           <option value="P">P</option>
           <option value="M">M</option>
           <option value="G">G</option>
@@ -106,7 +106,7 @@
       <div class="col-md-3">
         <label for="label">Tipo de Demanda</label>
 
-        <select formControlName="tipoDemanda" class="form-control" id="tipoDemanda" name="ext">
+        <select formControlName="tipoDemanda" class="form-control" id="tipoDemanda" name="tipoDemanda">
           <option value="Commodities">Commodities</option>
           <option value="Especialista">Especialista</option>
         </select>
@@ -128,7 +128,7 @@
       <div class="col-md-2">
         <label for="label">Sigla</label>
 
-        <select formControlName="siglaId" class="form-control" id="siglaid" name="ext">
+        <select formControlName="siglaId" class="form-control" id="siglaid" name="siglaId">
           <option *ngFor="let sigla of sigla" value="{{sigla.id}}">{{sigla.descricao}}</option>
 
         </select>
@@ -137,7 +137,7 @@
       <div class="col-md-2">
         <label for="label">Diretoria</label>
 
-        <select formControlName="diretoriaId" class="form-control" id="ext" name="diretoriaid">
+        <select formControlName="diretoriaId" class="form-control" id="diretoriaId" name="diretoriaid">
           <option *ngFor="let dir of diretoria" value="{{dir.id}}">{{dir.descricao}}</option>
 
         </select>
@@ -146,7 +146,7 @@
       <div class="col-md-3">
         <label for="label">Superintendência</label>
 
-        <select formControlName="superintendenciaId" class="form-control" id="ext" name="superintendenciaid">
+        <select formControlName="superintendenciaId" class="form-control" id="superintendenciaId" name="superintendenciaid">
           <option *ngFor="let superintendencia of superintendencia" value="{{superintendencia.id}}">{{superintendencia.descricao}}</option>
 
         </select>
@@ -159,18 +159,15 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label>Serviço 1</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 2</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 3</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-        />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1" />
       </div>
     </div>
   </fieldset>
@@ -192,7 +189,8 @@
         Fora do Escopo do Projeto
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto" rows="5"></textarea>
+    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"
+      rows="5"></textarea>
   </mat-expansion-panel>
 
   <mat-expansion-panel class="mb-3 border">
@@ -205,7 +203,7 @@
     <textarea formControlName="premissas" class="form-control" id="premissas" name="premissas" rows="5"></textarea>
 
   </mat-expansion-panel>
- 
+
   <div class="row align-items-center mt-2 mb-4">
     <div class="col d-flex justify-content-end">
       <button type="button" class="btn everis mr-2" (click)="Adicionar()" [disabled]="!formEstaValido()">Salvar</button>
