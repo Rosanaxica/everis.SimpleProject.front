@@ -137,7 +137,7 @@ export class DadosPrincipaisComponent implements OnInit {
         .toPromise().then((data: any) => {
           switch (data.codigo) {
             case 200:
-              window.alert('Projeto adicionado com sucesso!');
+              window.alert('Projeto salvo com sucesso!');
               this.getProjeto.emit(JSON.stringify(this.projeto));
               break;
             default:
