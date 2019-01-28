@@ -64,12 +64,6 @@ export class CadastroPessoasComponent implements OnInit {
   btnRemoverFerramentas: Ferramenta[] = [];
   btnAdicionarFerramentas: Ferramenta[] = [];
 
-  // listaUf: any = [
-  //   { id: "SP", text: "SP" },
-  //   { id: "RS", text: "RS" }
-  // ];
-  // listaUf: [{ id: "1", value: "SP" }, { id: "2", value: "RS" }];
-
   ngOnInit() {
     this.criarForm();
     this.arouter.paramMap.subscribe(res => {
@@ -85,9 +79,6 @@ export class CadastroPessoasComponent implements OnInit {
         this.criarForm();
       }
     });
-
-    // executar a chamada abaixo no momento que finalizar o preenchimento do retorno da pessoa em edição
-    // this.obterFerramentasAssociadas();
 
     this.svc.muitiGet([
       'Empresa/ObterTodos',
@@ -323,8 +314,8 @@ export class CadastroPessoasComponent implements OnInit {
       'funcional': [pessoaColaborador.pessoa.funcional, [Validators.required, Validators.pattern(this.numberPattern)]],
       'sexo': [pessoaColaborador.pessoa.sexo, Validators.required],
       'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : undefined, [Validators.pattern(this.numberPattern)]],
-      'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : undefined, [Validators.pattern(this.numberPattern)]],
-      'orgaoEmissor': [pessoaColaborador.pessoa.orgaoEmissor],
+      'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : undefined, [Validators.minLength(9), Validators.maxLength(9)]],
+      'orgaoEmissor': [pessoaColaborador.pessoa.orgaoEmissor, [Validators.maxLength(5)]],
       'uf': [pessoaColaborador.pessoa.ufRg],
       'empresa': [pessoaColaborador.pessoa.empresaId],
       'gestorTecnico': [pessoaColaborador.pessoa.gestorTecnico],
@@ -446,7 +437,6 @@ export class CadastroPessoasComponent implements OnInit {
       areaContratanteControl.clearValidators();
       empresaControl.setValidators(Validators.required);
     }
-    console.log('Form item', emailCorpControl);
 
     tipoContratoControl.markAsUntouched();
     tipoContratoControl.updateValueAndValidity();
