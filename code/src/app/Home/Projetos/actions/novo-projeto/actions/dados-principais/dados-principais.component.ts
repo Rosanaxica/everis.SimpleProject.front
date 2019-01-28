@@ -49,30 +49,30 @@ export class DadosPrincipaisComponent implements OnInit {
 
     this.dadosPrincipaisForm = this.formBuilder.group(
       {
-        'nomeProjeto': [objProjeto.nome, Validators.required],
-        'codProjeto': [objProjeto.codigoProjeto, Validators.required],
+        'nomeProjeto': [objProjeto.nome, Validators.required, Validators.maxLength(200)],
+        'codProjeto': [objProjeto.codigoProjeto, Validators.required, Validators.maxLength(10)],
         'ext': [objProjeto.ext, Validators.required],
         'empresaId': [objProjeto.empresaId, Validators.required],
         'dataInicio': [objProjeto.dataInicio, Validators.required],
         'dataRecebida': [objProjeto.dataRecebida, Validators.required],
         'dataPrevista': [objProjeto.dataPrevista, Validators.required],
         'dataProposta': [objProjeto.dataPrevista, Validators.required],
-        'duracao': [objProjeto.duracao, Validators.required],
+        'duracao': [objProjeto.duracao, Validators.required, Validators.maxLength(10)],
         'tecnologiaId': [objProjeto.tecnologiaId, Validators.required],
         'siglaId': [objProjeto.siglaId, Validators.required],
         'diretoriaId': [objProjeto.diretoriaId, Validators.required],
         'superintendenciaId': [objProjeto.superintendenciaId, Validators.required],
-        'qtdHorasServico1': [objProjeto.qtdHorasServico1],
-        'qtdHorasServico2': [objProjeto.qtdHorasServico2],
-        'qtdHorasServico3': [objProjeto.qtdHorasServico3],
-        'escopoProjeto': [objProjeto.escopoProjeto, Validators.required],
-        'foraEscopoProjeto': [objProjeto.foraEscopoProjeto, Validators.required],
-        'premissas': [objProjeto.premissas, Validators.required],
+        'qtdHorasServico1': [objProjeto.qtdHorasServico1, Validators.maxLength(10)],
+        'qtdHorasServico2': [objProjeto.qtdHorasServico2, Validators.maxLength(10)],
+        'qtdHorasServico3': [objProjeto.qtdHorasServico3, Validators.maxLength(10)],
+        'escopoProjeto': [objProjeto.escopoProjeto, Validators.required, Validators.maxLength(500)],
+        'foraEscopoProjeto': [objProjeto.foraEscopoProjeto, Validators.required, Validators.maxLength(500)],
+        'premissas': [objProjeto.premissas, Validators.required, Validators.maxLength(500)],
         'tipoDemanda': [objProjeto.tipoDemanda, Validators.required],
         'tamanho': [objProjeto.tamanho, Validators.required],
         'statusProjetoId': [objProjeto.statusId, Validators.required],
         'statusProposta': [objProjeto.statusProposta, Validators.required],
-        'tarifa': [objProjeto.tarifa, Validators.required]
+        'tarifa': [objProjeto.tarifa, Validators.required, Validators.maxLength(30)]
       }
     );
   }
