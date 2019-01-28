@@ -15,11 +15,11 @@
     <div class="form-group mt-4 row">
 
       <div class="col-md-3">
-        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto" placeholder="Codigo do Projeto"
+        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto" placeholder="Codigo do Projeto *"
         />
       </div>
       <div class="col-md-8">
-        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto"
+        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto *"
         />
       </div>
 
@@ -36,12 +36,6 @@
           <option value="demandaPerdida">Demanda Perdida</option>
         </select>
       </div>
-
-      <div class="col-md-2">
-        <label for="data">Data Entrega Proposta</label>
-        <input type="date" formControlName="dataProposta" class="form-control" id="dataProposta" name="dataProposta" />
-      </div>
-
       <div class="col-md-3">
         <label>Duração</label>
         <input type="number" formControlName="duracao" class="form-control" id="duracao" name="duracao" />
@@ -49,26 +43,22 @@
 
       <div class="col-md-3">
         <label>Tarifa</label>
-        <input type="text" formControlName="tarifa" class="form-control" id="tarifa" name="tarifa" />
+        <input type="money" formControlName="tarifa" class="form-control" id="tarifa" name="tarifa" />
       </div>
     </div>
 
-
     <div class="form-group row">
       <div class="col-md-3">
-        <label for="data">Data Recebida</label>
+        <label for="data">Data Recebida *</label>
         <input type="date" formControlName="dataRecebida" class="form-control" id="dataRecebida" name="dataRecebida" />
-
       </div>
       <div class="col-md-3">
         <label for="data">Data Início</label>
         <input type="date" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio" />
-
       </div>
       <div class="col-md-3">
-        <label for="data">Data Prevista</label>
-        <input type="date" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista" />
-
+        <label for="data">Data Entrega Proposta *</label>
+        <input type="date" formControlName="dataProposta" class="form-control" id="dataProposta" name="dataProposta" />
       </div>
     </div>
   </fieldset>
@@ -77,7 +67,7 @@
     <legend class="col-form-label">Dados Internos</legend>
     <div class="form-group row">
       <div class="col-md-4">
-        <label for="label">Tecnologia</label>
+        <label for="label">Tecnologia *</label>
         <select formControlName="tecnologiaId" class="form-control" id="tecnologiaid" name="tecnologiaid">
           <option *ngFor="let tecnologia of tecnologia" value="{{tecnologia.id}}">{{tecnologia.nome}}</option>
         </select>
@@ -94,7 +84,7 @@
       </div>
 
       <div class="col-md-1">
-        <label for="label">Tamanho</label>
+        <label for="label">Tamanho *</label>
 
         <select formControlName="tamanho" class="form-control" id="tamanho" name="tamanho">
           <option value="P">P</option>
@@ -104,7 +94,7 @@
       </div>
 
       <div class="col-md-3">
-        <label for="label">Tipo de Demanda</label>
+        <label for="label">Tipo de Demanda *</label>
 
         <select formControlName="tipoDemanda" class="form-control" id="tipoDemanda" name="tipoDemanda">
           <option value="Commodities">Commodities</option>
@@ -119,14 +109,14 @@
     <legend class="col-form-label">Dados do Cliente</legend>
     <div class="form-group row">
       <div class="col-md-3">
-        <label for="label">Empresa</label>
+        <label for="label">Empresa *</label>
         <select formControlName="empresaId" class="form-control" id="empresaId" name="empresaId">
           <option *ngFor="let empresa of empresas" value="{{empresa.id}}">{{empresa.nome}}</option>
         </select>
       </div>
 
       <div class="col-md-2">
-        <label for="label">Sigla</label>
+        <label for="label">Sigla *</label>
 
         <select formControlName="siglaId" class="form-control" id="siglaid" name="siglaId">
           <option *ngFor="let sigla of sigla" value="{{sigla.id}}">{{sigla.descricao}}</option>
@@ -135,7 +125,7 @@
       </div>
 
       <div class="col-md-2">
-        <label for="label">Diretoria</label>
+        <label for="label">Diretoria *</label>
 
         <select formControlName="diretoriaId" class="form-control" id="diretoriaId" name="diretoriaid">
           <option *ngFor="let dir of diretoria" value="{{dir.id}}">{{dir.descricao}}</option>
@@ -144,7 +134,7 @@
       </div>
 
       <div class="col-md-3">
-        <label for="label">Superintendência</label>
+        <label for="label">Superintendência *</label>
 
         <select formControlName="superintendenciaId" class="form-control" id="superintendenciaId" name="superintendenciaid">
           <option *ngFor="let superintendencia of superintendencia" value="{{superintendencia.id}}">{{superintendencia.descricao}}</option>
@@ -205,7 +195,7 @@
     <textarea formControlName="premissas" class="form-control" id="premissas" name="premissas" rows="5"></textarea>
 
   </mat-expansion-panel>
- 
+
   <div class="row align-items-center mt-2 mb-4">
     <div class="col d-flex justify-content-end">
       <button type="button" class="btn everis mr-2" (click)="Adicionar()" [disabled]="!formEstaValido()">Salvar</button>
