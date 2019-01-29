@@ -19,7 +19,7 @@
 
       <div class="col-md-3">
         <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto" placeholder="Codigo do Projeto *"
-          maxlength="10" />
+        maxlength="10" />
         <div class="alert alert-danger mt-2" *ngIf="dadosPrincipaisForm.controls.codProjeto.touched && dadosPrincipaisForm.controls.codProjeto.hasError('required')">
           <i class="fa fa-times mr-2"></i>
           <small>Por favor, informe o Código do Projeto.</small>
@@ -90,7 +90,7 @@
         </select>
       </div>
 
-      <div class="col-md-1">
+      <div class="col-md-2">
         <label for="label">Tamanho *</label>
 
         <select formControlName="tamanho" class="form-control" id="tamanho" name="tamanho">

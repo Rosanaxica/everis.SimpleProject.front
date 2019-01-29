@@ -49,29 +49,29 @@ export class DadosPrincipaisComponent implements OnInit {
 
     this.dadosPrincipaisForm = this.formBuilder.group(
       {
-        'nomeProjeto': [objProjeto.nome, Validators.required, Validators.maxLength(200)],
-        'codProjeto': [objProjeto.codigoProjeto, Validators.required, Validators.maxLength(10)],
+        'nomeProjeto': [objProjeto.nome, Validators.required],
+        'codProjeto': [objProjeto.codigoProjeto, Validators.required],
         'ext': [objProjeto.ext],
         'empresaId': [objProjeto.empresaId, Validators.required],
         'dataInicio': [objProjeto.dataInicio],
         'dataRecebida': [objProjeto.dataRecebida, Validators.required],
         'dataProposta': [objProjeto.dataProposta, Validators.required],
-        'duracao': [objProjeto.duracao, Validators.maxLength(10)],
-        'qtdHorasServico1': [objProjeto.qtdHorasServico1, Validators.maxLength(10)],
-        'qtdHorasServico2': [objProjeto.qtdHorasServico2, Validators.maxLength(10)],
-        'qtdHorasServico3': [objProjeto.qtdHorasServico3, Validators.maxLength(10)],
+        'duracao': [objProjeto.duracao],
+        'qtdHorasServico1': [objProjeto.qtdHorasServico1],
+        'qtdHorasServico2': [objProjeto.qtdHorasServico2],
+        'qtdHorasServico3': [objProjeto.qtdHorasServico3],
         'tecnologiaId': [objProjeto.tecnologiaId, Validators.required],
         'siglaId': [objProjeto.siglaId, Validators.required],
         'diretoriaId': [objProjeto.diretoriaId, Validators.required],
         'superintendenciaId': [objProjeto.superintendenciaId, Validators.required],
-        'escopoProjeto': [objProjeto.escopoProjeto, Validators.maxLength(500)],
-        'foraEscopoProjeto': [objProjeto.foraEscopoProjeto, Validators.maxLength(500)],
-        'premissas': [objProjeto.premissas, Validators.maxLength(500)],
+        'escopoProjeto': [objProjeto.escopoProjeto],
+        'foraEscopoProjeto': [objProjeto.foraEscopoProjeto],
+        'premissas': [objProjeto.premissas],
         'tipoDemanda': [objProjeto.tipoDemanda, Validators.required],
         'tamanho': [objProjeto.tamanho, Validators.required],
         'statusProjetoId': [objProjeto.statusId, Validators.required],
         'statusProposta': [objProjeto.statusProposta],
-        'tarifa': [objProjeto.tarifa, Validators.maxLength(30)]
+        'tarifa': [objProjeto.tarifa]
       }
     );
   }
