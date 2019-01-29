@@ -35,6 +35,7 @@ export class CadastroPessoasComponent implements OnInit {
   id: number;
   formularioPessoa: FormGroup;
   numberPattern = /^[0-9]*$/;
+  nomePessoa: string;
 
   pessoaColaborador = new PessoaColaboradorViewModel();
   gestores: Pessoa[] = [];
@@ -504,6 +505,10 @@ export class CadastroPessoasComponent implements OnInit {
     this.telefones = [];
     this.ferramentasAssociadas = [];
     this.ferramentasDisponiveis = [];
+  }
+
+  modoEdicao() {
+    return this.pessoaColaborador.pessoa !== null && this.pessoaColaborador.pessoa !== undefined && this.pessoaColaborador.pessoa.id > 0;
   }
 
   cancelar() {

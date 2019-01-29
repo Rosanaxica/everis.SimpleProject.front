@@ -1,7 +1,7 @@
 <form [formGroup]="formularioPessoa">
   <div class="row no-gutters">
-    <div class="col">
-      <h1 class="titulo">Nova Pessoa</h1>
+    <div class="col d-flex align-items-end">
+      <h1 class="titulo ">{{(modoEdicao()?'Editar':'Criar')}} Pessoa {{nomePessoa}}</h1>
     </div>
     <div class="col text-right mb-2">
       <button type="button" class="btn everis mr-2" [disabled]="!formularioPessoa.valid || telefones.length === 0 || formularioPessoa.controls.sexo.invalid"
@@ -101,7 +101,7 @@
     </div>
 
     <!-- Inicio Dados RG-->
-    <div class="row mb-2">
+    <div class="row mb-2 mt-4">
       <div class="col-md-2">
         <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg" maxlength="9">
         <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.rg.touched || formularioPessoa.controls.rg.dirty) && formularioPessoa.controls.rg.invalid)">
@@ -169,8 +169,9 @@
       <div class="col-md-4">
         <label for="numeroTelefone">*Telefone</label>
         <div class="input-group">
-          <input input type="text" (keydown.enter)="AddTelefone()" [(ngModel)]="telefone2" (blur)="telefone2 = telefone2.trim();" class="form-control no-shadow" formControlName="numeroTelefone"
-            id="telefone" name="numeroTelefone" autocomplete="off" [required]="isTelRequired()" maxlength="15">
+          <input input type="text" (keydown.enter)="AddTelefone()" [(ngModel)]="telefone2" (blur)="telefone2 = telefone2.trim();"
+            class="form-control no-shadow" formControlName="numeroTelefone" id="telefone" name="numeroTelefone"
+            autocomplete="off" [required]="isTelRequired()" maxlength="15">
           <div class="input-group-append">
             <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="formularioPessoa.controls['numeroTelefone'] == undefined || formularioPessoa.controls['tipoTelefone'] == undefined || formularioPessoa.controls['numeroTelefone'].invalid">
               <i class="fas fa-plus"></i>
@@ -302,7 +303,7 @@
           </div>
         </div>
       </div>
-      <div class="row mb-2">
+      <div class="row">
         <div class="col-xs-12 col-12 col-md-4 form-group">
           <label for="dataNascimento">*Data de Nascimento</label>
 
