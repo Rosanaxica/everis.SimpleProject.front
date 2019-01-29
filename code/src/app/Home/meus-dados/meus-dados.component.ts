@@ -38,7 +38,6 @@ export class MeusDadosComponent implements OnInit {
       //     );
       //   });
       // });
-      // console.log(this.pessoas);
     });
   }
 

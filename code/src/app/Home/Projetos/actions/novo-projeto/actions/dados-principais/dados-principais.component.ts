@@ -158,7 +158,6 @@ export class DadosPrincipaisComponent implements OnInit {
   }
 
   verifcaData() {
-    console.log(this.projeto.dataInicio, "data de inicio", this.projeto.dataProposta, "data prevista")
     if (this.projeto.dataInicio > this.projeto.dataProposta) {
       alert("Data Fim deve ser maior que Data Prevista!")
     }
