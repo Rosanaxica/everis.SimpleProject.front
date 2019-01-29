@@ -50,6 +50,8 @@ const appRoutes: Routes = [
   { path: 'projetos', component: ProjetosComponent, canActivate: [AuthGuard] },
   { path: 'projetos/novo-projeto', component: NovoProjetoComponent, canActivate: [AuthGuard] },
   { path: 'projetos/novo-projeto/:id', component: NovoProjetoComponent, canActivate: [AuthGuard] },
+  { path: 'projetos:sucesso', component: PessoasComponent, canActivate: [AuthGuard] },
+
 
   { path: 'projetos/novo-projeto/solicitacao-mudanca/:id', component: SolicitacaoMudancaComponent, canActivate: [AuthGuard] },
   { path: 'projetos/novo-projeto/solicitacao-mudanca/nova-solicitacao-mudanca/:id', component: NovaSolicitacaoMudanca, canActivate: [AuthGuard] },

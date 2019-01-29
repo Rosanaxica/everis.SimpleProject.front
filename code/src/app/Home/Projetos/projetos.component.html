@@ -1,3 +1,10 @@
+<div class="row">
+  <div *ngIf="msgSucesso != null && msgSucesso != undefined" class="col-12">
+    <div class="alert alert-success" role="alert">
+      <i class="fa fa-check mr-1"></i> {{msgSucesso}}
+    </div>
+  </div>
+</div>
 <div class="row align-items-center">
   <div class="col-3">
     <h1 class="titulo mb-0">Projeto</h1>
@@ -68,7 +75,7 @@
           <div class="progress">
             <div class="progress-bar everis"></div>
           </div>
-          <small>Estimativa de conclusão: {{ projeto.dataPrevista | dateFormat }}</small>
+          <small>Estimativa de conclusão: {{ projeto.dataProposta | dateFormat }}</small>
         </div>
       </div>
     </div>

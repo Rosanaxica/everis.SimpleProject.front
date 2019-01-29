@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Projeto } from '../../../../../../_models/projeto.model';
 import { ProjetoPessoa } from '../../../../../../_models/projetopessoa.model';
 import { Pessoa } from '../../../../../../_models/pessoa.model';
@@ -14,7 +14,7 @@ import { ProjetoPessoaAtribuicao } from '../../../../../../_models/projetopessoa
 })
 export class AtribuicaoEquipeComponent implements OnInit {
 
-  constructor(private svc: GenericService, private router: Router) { }
+  constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
   @Output() getProjeto = new EventEmitter<string>();
   nomeProjeto: string;
   filtroPessoa = new Pessoa();
@@ -25,8 +25,14 @@ export class AtribuicaoEquipeComponent implements OnInit {
   atribuicoes: ProjetoPessoaAtribuicao[] = [];
   idAtribuicao: number;
   responsavel: boolean;
+  id: number;
+
 
   ngOnInit() {
+    this.id = 0;
+    this.arouter.paramMap.subscribe(res => {
+      this.id = +res.get('id');
+    });
     this.getAtribuicoes();
   }
 
@@ -89,12 +95,14 @@ export class AtribuicaoEquipeComponent implements OnInit {
     this.verificaAdicionados();
   }
   getAtribuicoes() {
+
     this.svc.listar(ProjetoPessoaAtribuicao, null, "ObterTodos").toPromise().then(
       s => {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.atribuicoes = s.data;
             this.atribuicoes.unshift({ id: 0, atribuicao: 'Selecione' } as ProjetoPessoaAtribuicao);
+
           }
         }
       }
@@ -108,26 +116,62 @@ export class AtribuicaoEquipeComponent implements OnInit {
       }
     });
   }
-  popAtribuicao(idAtribuicao: number) {
+  popAtribuicao(idAtribuicao: number, idPessoa: number) {
+    debugger;
     this.idAtribuicao = idAtribuicao;
+    let projetoPessoa = this.projetoPessoa.find(x => x.pessoaId == idPessoa);
+    this.projetoPessoa.forEach(pp => {
+      if (pp.pessoa.id == idPessoa) {
+        projetoPessoa.atribuicaoId = idAtribuicao;
+        projetoPessoa = projetoPessoa;
+      }
+    });
   }
   popResponsavel(responsavel: boolean) {
     this.responsavel = responsavel;
   }
   salvar() {
+
     //this.getProjeto.emit("2");
     if (this.projeto.id == undefined) {
-      if (this.informadoResponsavel()) {
+      if (this.informadoResponsavel() && this.informadaFuncao() == 0 && this.projetoPessoa.length > 0) {
         this.salvarProjeto();
+        this.router.navigate(['/projetos', { sucesso: true }]);
       } else {
-        window.alert('Erro: Não foi informado responsável pelo projeto.');
+        if (!this.informadoResponsavel()) {
+          window.alert('Erro: Não foi informado responsável pelo projeto');
+        }
+        if (this.informadaFuncao() > 0) {
+          window.alert('Erro: Favor informar a função para todas as pessoas associadas ao projeto ');
+        }
+
+        if (this.projetoPessoa.length < 1) {
+          window.alert('Erro: Favor adicionar ao menos uma pessoa na equipe ');
+        }
         return;
       }
     } else {
-      this.comparaListaXBanco();
+      if (this.informadoResponsavel() && this.informadaFuncao() == 0 && this.projetoPessoa.length > 0) {
+        this.comparaListaXBanco();
+        this.router.navigate(['/projetos', { sucesso: true }]);
+      } else {
+        if (!this.informadoResponsavel()) {
+          window.alert('Erro: Não foi informado responsável pelo projeto');
+        }
+        if (this.informadaFuncao() > 0) {
+          window.alert('Erro: Favor informar a função para todas as pessoas associadas ao projeto ');
+        }
+
+        if (this.projetoPessoa.length < 1) {
+          window.alert('Erro: Favor adicionar ao menos uma pessoa na equipe ');
+        }
+        return;
+      }
+
     }
   }
   salvarProjeto() {
+
     this.svc.salvar(this.projeto, Projeto)
       .toPromise().then((data: any) => {
         switch (data.codigo) {
@@ -143,6 +187,8 @@ export class AtribuicaoEquipeComponent implements OnInit {
         error => {
           alert('Erro ao tentar adicionar.');
         });
+
+
   }
   comparaListaXBanco() {
     let listaProjetoPessoaBanco: ProjetoPessoa[] = [];
@@ -167,6 +213,20 @@ export class AtribuicaoEquipeComponent implements OnInit {
     });
     return retorno;
   }
+
+  informadaFuncao(): number {
+
+    let retorno: number = 0;
+
+    this.projetoPessoa.forEach(projetoPessoa => {
+      if (projetoPessoa.atribuicaoId == null || projetoPessoa.atribuicaoId == undefined || projetoPessoa.atribuicaoId == 0) {
+        retorno = retorno + 1;
+      }
+    });
+
+    return retorno;
+  }
+
   verificaAdicionados() {
     this.pessoas.forEach(p => {
       p.adicionado = false;
@@ -198,11 +258,13 @@ export class AtribuicaoEquipeComponent implements OnInit {
       }
     });
     // Se não estiver na lista do banco e estiver na lista da tela, deve adicionar o registro no banco
+
     this.projetoPessoa.forEach(projPessoa => {
       if (listaProjetoPessoaBanco.length > 0) {
         listaProjetoPessoaBanco.forEach(p => {
           if (projPessoa.pessoaId == p.pessoaId) {
             encontrado = true;
+            p.atribuicaoId = projPessoa.atribuicaoId;
           } else {
             pPessoa = projPessoa;
           }
@@ -223,6 +285,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
       pessoa = projPessoa.pessoa;
       projPessoa.pessoa = null;
       projPessoa.projetoId = this.projeto.id;
+
       this.svc.salvar(projPessoa, ProjetoPessoa)
         .toPromise().then((data: any) => {
           switch (data.codigo) {
@@ -236,7 +299,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
           error => {
             alert('Erro ao tentar adicionar.');
           });
-          projPessoa.pessoa = pessoa;
+      projPessoa.pessoa = pessoa;
     });
   }
 }
