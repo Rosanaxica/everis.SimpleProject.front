@@ -207,11 +207,6 @@ export class DadosPrincipaisComponent implements OnInit {
         }
       }
     );
-
-
-
-
-
     this.svc.listar(Superintendencia, null, "ObterTodos").toPromise().then(
       s => {
         if (s.sucesso) {
