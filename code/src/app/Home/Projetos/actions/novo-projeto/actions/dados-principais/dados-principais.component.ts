@@ -139,7 +139,6 @@ export class DadosPrincipaisComponent implements OnInit {
     if (this.projeto.id > 0) {
       this.svc.salvar(this.projeto, Projeto)
         .toPromise().then((data: any) => {
-<<<<<<< HEAD
             switch (data.codigo) {
               case 200:
                 window.alert('Projeto adicionado com sucesso!');
@@ -149,17 +148,6 @@ export class DadosPrincipaisComponent implements OnInit {
                 window.alert('erro: ' + data.mensagem);
                 break;
             }
-=======
-          switch (data.codigo) {
-            case 200:
-              window.alert('Projeto salvo com sucesso!');
-              this.getProjeto.emit(JSON.stringify(this.projeto));
-              break;
-            default:
-              window.alert('erro: ' + data.mensagem);
-              break;
-          }
->>>>>>> 0aa1d77fd8eb3944e9ad5dd00fa7e3c0786a5056
         },
           error => {
             alert('Erro ao tentar adicionar.');
@@ -170,8 +158,8 @@ export class DadosPrincipaisComponent implements OnInit {
   }
 
   verifcaData() {
-    console.log(this.projeto.dataInicio, "data de inicio", this.projeto.dataPrevista, "data prevista")
-    if (this.projeto.dataInicio > this.projeto.dataPrevista) {
+    console.log(this.projeto.dataInicio, "data de inicio", this.projeto.dataProposta, "data prevista")
+    if (this.projeto.dataInicio > this.projeto.dataProposta) {
       alert("Data Fim deve ser maior que Data Prevista!")
     }
   }
@@ -230,14 +218,6 @@ export class DadosPrincipaisComponent implements OnInit {
         }
       }
     );
-<<<<<<< HEAD
-
-
-
-
-
-=======
->>>>>>> 0aa1d77fd8eb3944e9ad5dd00fa7e3c0786a5056
     this.svc.listar(Superintendencia, null, "ObterTodos").toPromise().then(
       s => {
         if (s.sucesso) {
