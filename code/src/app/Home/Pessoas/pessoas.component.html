@@ -49,7 +49,7 @@
 <div class="row">
 
   <div *ngFor="let item of listaPessoaColaborador" class="col-md-4 mb-2">
-    <div class="card card-colaborador border-everis">
+    <div class="card card-colaborador border-everis cursor-pointer">
       <div class="row" (click)="editar(item.pessoa.id)">
         <div class="card-body">
           <div class="col-md-12 m-0 p-0">
@@ -58,8 +58,8 @@
               <span *ngIf="!item.colaborador.disponivel" class="badge bg-dark text-white text-right">Indisponível</span>
             </div>
             <div *ngIf="!item.colaborador" class="col-md-12 text-right">
-                <span class="badge bg-dark text-white text-right">{{item.pessoa.tipo.descricao}}-{{item.pessoa.empresa.nome}}</span>
-              </div>
+              <span class="badge bg-dark text-white text-right">{{item.pessoa.tipo.descricao}}-{{item.pessoa.empresa.nome}}</span>
+            </div>
 
             <div class="row">
               <div class="col-md-3 d-flex align-items-center justify-content-center">
