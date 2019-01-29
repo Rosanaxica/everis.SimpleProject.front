@@ -1,10 +1,10 @@
 <form [formGroup]="formularioPessoa">
   <div class="row no-gutters">
-    <div class="col">
-      <h1 class="titulo">Nova Pessoa</h1>
+    <div class="col d-flex align-items-end">
+      <h1 class="titulo ">{{(modoEdicao()?'Editar':'Criar')}} Pessoa {{nomePessoa}}</h1>
     </div>
     <div class="col text-right mb-2">
-      <button type="button" class="btn everis mr-2" [disabled]="!formularioPessoa.valid || telefones.length === 0"
+      <button type="button" class="btn everis mr-2" [disabled]="!formularioPessoa.valid || telefones.length === 0 || formularioPessoa.controls.sexo.invalid"
         (click)="Salvar()">Salvar</button>
       <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
     </div>
@@ -50,10 +50,7 @@
           <input type="radio" id="sexoFem" value="Feminino" name="sexo" formControlName="sexo" class="custom-control-input">
           <label class="custom-control-label" for="sexoFem">Feminino</label>
         </div>
-        <span class="spanAtention" *ngIf="formularioPessoa.controls.sexo.invalid">
-          <i class="fas fa-exclamation-triangle"></i>
-          Informe o sexo
-        </span>
+
       </div>
       <!-- Fim Sexo -->
     </div>
@@ -63,7 +60,7 @@
     <div class="row mb-2">
       <div class="col-md-2">
         <label for="funcional">*Funcional</label>
-        <input type="text" class="form-control" id="funcional" name="funcional" formControlName="funcional" maxlength="9">
+        <input type="text" maxlength="9" class="form-control" id="funcional" name="funcional" formControlName="funcional">
         <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.funcional.touched && formularioPessoa.controls.funcional.hasError('required')">
           <i class="fa fa-times mr-2"></i>
           <small>Por favor, informe a funcional.</small>
@@ -104,7 +101,7 @@
     </div>
 
     <!-- Inicio Dados RG-->
-    <div class="row mb-2">
+    <div class="row mb-2 mt-4">
       <div class="col-md-2">
         <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg" maxlength="9">
         <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.rg.touched || formularioPessoa.controls.rg.dirty) && formularioPessoa.controls.rg.invalid)">
@@ -172,8 +169,9 @@
       <div class="col-md-4">
         <label for="numeroTelefone">*Telefone</label>
         <div class="input-group">
-          <input input type="text" (keydown.enter)="AddTelefone()" class="form-control no-shadow" formControlName="numeroTelefone"
-            id="telefone" name="numeroTelefone" autocomplete="off" [required]="isTelRequired()" maxlength="15">
+          <input input type="text" (keydown.enter)="AddTelefone()" [(ngModel)]="telefone2" (blur)="telefone2 = telefone2.trim();"
+            class="form-control no-shadow" formControlName="numeroTelefone" id="telefone" name="numeroTelefone"
+            autocomplete="off" [required]="isTelRequired()" maxlength="15">
           <div class="input-group-append">
             <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="formularioPessoa.controls['numeroTelefone'] == undefined || formularioPessoa.controls['tipoTelefone'] == undefined || formularioPessoa.controls['numeroTelefone'].invalid">
               <i class="fas fa-plus"></i>
@@ -189,7 +187,7 @@
       <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um telefone. Informe apenas números.
     </div>
 
-    <div class="row no-gutters mt-4 mb-4 mr-4">
+    <div class="row no-gutters mb-4 mr-4 mt-4" *ngIf="telefones.length > 0">
       <div class="col-6">
         <table class="table table-bordered table-striped table-sm mb-0">
           <colgroup>
@@ -231,7 +229,7 @@
 
     <!-- Fim Telefone -->
     <!-- Inicio E-mail -->
-    <div class="row mb-2">
+    <div class="row mb-2 mt-4">
       <div class="col-md-6">
         <input type="email" class="form-control" formControlName="email" name="email" placeholder="*E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$">
         <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.email.touched || formularioPessoa.controls.email.dirty) && formularioPessoa.controls.email.invalid)">
@@ -305,7 +303,7 @@
           </div>
         </div>
       </div>
-      <div class="row mb-2">
+      <div class="row">
         <div class="col-xs-12 col-12 col-md-4 form-group">
           <label for="dataNascimento">*Data de Nascimento</label>
 
@@ -505,8 +503,9 @@
     <!--           Fim Painel Siglas -->
     <!--        </fieldset> -->
   </div>
+
   <div class="col d-flex justify-content-end mt-4">
-    <button type="button" class="btn everis mr-2" [disabled]="!formularioPessoa.valid || telefones.length === 0"
+    <button type="button" class="btn everis mr-2" [disabled]="!formularioPessoa.valid || telefones.length === 0 || formularioPessoa.controls.sexo.invalid"
       (click)="Salvar()">Salvar</button>
     <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
   </div>
