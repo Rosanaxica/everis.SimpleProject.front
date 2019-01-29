@@ -27,7 +27,7 @@ export class NovoProjetoComponent implements OnInit {
 
   id: number;
   filtroProjeto = new Projeto();
-  projeto: Projeto;
+  projeto = new Projeto();
   solicitacaoMudancas: Array<SolicitacaoMudanca>;
   fases: Array<FaseModel>;
   filtroSolicitacaoMudanca = new SolicitacaoMudanca();
@@ -71,6 +71,11 @@ export class NovoProjetoComponent implements OnInit {
         );
     }
   }
+
+  modoEdicao() {
+    return this.projeto !== null && this.projeto !== undefined && this.projeto.id > 0;
+  }
+
   cancelar() {
     this.router.navigate(['/projetos']);
   }

@@ -11,7 +11,7 @@
   </div>
   <div class="input-group col">
     <input type="text" class="form-control no-shadow" placeholder="Buscar por código de projeto" aria-label="Digite o que você deseja buscar"
-      [(ngModel)]="codigoProjeto" (keydown.enter)="mostrarProjetosFiltrados(codigoProjeto)">
+      [(ngModel)]="codigoProjeto" (keyup)="mostrarProjetosFiltrados(codigoProjeto)" maxlength="50">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="mostrarProjetosFiltrados(codigoProjeto)"><i
           class="fa fa-search"></i></button>

@@ -169,7 +169,7 @@
       <div class="col-md-4">
         <label for="numeroTelefone">*Telefone</label>
         <div class="input-group">
-          <input input type="text" (keydown.enter)="AddTelefone()" class="form-control no-shadow" formControlName="numeroTelefone"
+          <input input type="text" (keydown.enter)="AddTelefone()" [(ngModel)]="telefone2" (blur)="telefone2 = telefone2.trim();" class="form-control no-shadow" formControlName="numeroTelefone"
             id="telefone" name="numeroTelefone" autocomplete="off" [required]="isTelRequired()" maxlength="15">
           <div class="input-group-append">
             <button (click)="AddTelefone()" class="btn btn-outline-secondary" type="button" [disabled]="formularioPessoa.controls['numeroTelefone'] == undefined || formularioPessoa.controls['tipoTelefone'] == undefined || formularioPessoa.controls['numeroTelefone'].invalid">
