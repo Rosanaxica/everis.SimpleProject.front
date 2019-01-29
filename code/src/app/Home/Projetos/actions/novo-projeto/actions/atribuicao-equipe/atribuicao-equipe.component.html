@@ -54,14 +54,58 @@
   </div>
 </div> -->
 <div class="row">
-  <div class="input-group col-lg-8 col-md-12 ml-0 mt-3">
-    <input type="text" class="form-control ml-0 no-shadow" [(ngModel)]="filtroPessoa.nome"  maxlength="200" placeholder="Digite o que você deseja buscar"
-      aria-label="Digite o que você deseja buscar">
-    <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" (click)="filtrar()">
-        <i class="fa fa-search"></i>
-      </button>
-    </div>
+  <div class="col">
+    <table class="mt-4 table table-striped border">
+      <thead>
+        <tr>
+          <th colspan="2">Nome</th>
+          <!-- <th>Empresa</th> -->
+          <!-- <th class="text-center">Ações</th> -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let pessoa of pessoas">
+          <td class="align-middle">{{ pessoa.nome }}</td>
+          <!-- <td class="align-middle">{{buscaEmpresa(pessoa.empresaId)}}</td> -->
+          <td class="text-center">
+            <button *ngIf="!pessoa.adicionado" class="btn everis" (click)="Adicionar(pessoa)">Adicionar</button>
+            <button *ngIf="pessoa.adicionado" class="btn everis-azul btn-disabled">Adicionado</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col">
+    <table class="mt-4 table table-striped border">
+      <thead>
+        <tr>
+          <th class="text-center" scope="col">Nome</th>
+          <th class="text-center" scope="col">Função</th>
+          <th class="text-center" scope="col">Responsável</th>
+          <th class="text-center" scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr (change)="getAtribuicao(pp)" *ngFor="let pp of projetoPessoa">
+          <td class="align-middle">{{ pp.pessoa.nome }}</td>
+          <td>
+            <select (change)="popAtribuicao($event.target.value)" class="form-control" id="atribuicaoId" name="atribuicaoId">
+              <option *ngFor="let atribuicao of atribuicoes" value="{{atribuicao.id}}">{{atribuicao.atribuicao}}</option>
+            </select>
+          </td>
+          <td class="align-middle">
+            <div class="custom-control custom-checkbox text-center">
+              <input (change)="popResponsavel($event.target.checked)" [id]="pp.pessoaId" [name]="pp.pessoaId" [(ngModel)]="pp.responsavel"
+                type="checkbox" class="custom-control-input">
+              <label class="custom-control-label" [for]="pp.pessoaId"></label>
+            </div>
+          </td>
+          <td class="text-center align-middle">
+            <button (click)="RemoverPessoa(pp)" class="btn everis-laranja text-white far fa-trash-alt" type="button"></button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <div class="row align-items-center mt-2 mb-4">

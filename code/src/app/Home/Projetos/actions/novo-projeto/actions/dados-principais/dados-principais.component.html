@@ -9,14 +9,21 @@
           <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
         </select>
       </div>
+      <!-- <div class="alert alert-danger mt-2" *ngIf="!validStatus">
+        <i class="fa fa-times mr-2"></i>
+        <small>Por favor, informe o status do Projeto.</small>
+      </div> -->
     </div>
-
 
     <div class="form-group mt-4 row">
 
       <div class="col-md-3">
         <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto"
           placeholder="Codigo do Projeto *" maxlength="10" />
+        <div class="alert alert-danger mt-2" *ngIf="dadosPrincipaisForm.controls.codProjeto.touched && dadosPrincipaisForm.controls.codProjeto.hasError('required')">
+          <i class="fa fa-times mr-2"></i>
+          <small>Por favor, informe o Código do Projeto.</small>
+        </div>
       </div>
       <div class="col-md-8">
         <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
@@ -65,8 +72,9 @@
         <input type="date" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio" />
       </div>
       <div class="col-md-3">
+
         <label for="data">Data Entrega Proposta *</label>
-        <input type="date" formControlName="dataProposta" class="form-control" id="dataProposta" name="dataProposta" />
+        <input type="date" formControlName="dataProposta"  (blur)="obterDadosForm()" class="form-control" id="dataProposta" name="dataProposta" />
       </div>
     </div>
   </fieldset>
@@ -91,7 +99,7 @@
         </select>
       </div>
 
-      <div class="col-md-1">
+      <div class="col-md-2">
         <label for="label">Tamanho *</label>
 
         <select formControlName="tamanho" class="form-control" id="tamanho" name="tamanho">

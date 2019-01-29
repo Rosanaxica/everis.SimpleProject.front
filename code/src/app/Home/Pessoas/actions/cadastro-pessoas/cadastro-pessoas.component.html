@@ -84,6 +84,10 @@
           <div class="col-md-2">
             <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" formControlName="cpf"
               maxlength="11">
+            <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.cpf.touched || formularioPessoa.controls.cpf.dirty) && formularioPessoa.controls.cpf.invalid)">
+              <i class="fa fa-times mr-2"></i>
+              <small>Informe apenas números, com 11 dígitos</small>
+            </div>
           </div>
 
           <div class="col-md-5">
@@ -103,7 +107,7 @@
           </div>
           <div class="col-md-2">
             <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor"
-              formControlName="orgaoEmissor" maxlength="5">
+              formControlName="orgaoEmissor" maxlength="5" [attr.disabled]="formularioPessoa.controls['rg'].dirty == false || formularioPessoa.controls['rg'].invalid == true || formularioPessoa.controls['rg'].value.length == 0 ? true : null">
             <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.orgaoEmissor.touched || formularioPessoa.controls.orgaoEmissor.dirty) && formularioPessoa.controls.orgaoEmissor.invalid)">
               <i class="fa fa-times mr-2"></i>
               <small>Informe apenas letras</small>
@@ -112,8 +116,8 @@
 
           <div class="
               col-md-2">
-            <select class="form-control" name="uf" formControlName="uf">
-              <option disabled='true'>Selecione a UF</option>
+            <select class="form-control" name="uf" formControlName="uf" [attr.disabled]="formularioPessoa.controls['rg'].dirty == false || formularioPessoa.controls['rg'].invalid == true || formularioPessoa.controls['rg'].value.length == 0 ? true : null">
+              <option [ngValue]="null" disabled>Selecione a UF</option>
               <option value="AC">AC</option>
               <option value="AL">AL</option>
               <option value="AP">AP</option>
@@ -172,11 +176,9 @@
           </div>
         </div>
 
-        <div class="alert alert-success" role="alert" *ngIf="formularioPessoa.controls['numeroTelefone'].valid && (formularioPessoa.controls['numeroTelefone'].dirty || formularioPessoa.controls['numeroTelefone'].touched) && formularioPessoa.controls['tipoTelefone'] != undefined && telefones.length > 0">
-          <i class="fa fa-check mr-1"></i> OK
-        </div>
         <div class="alert alert-danger" role="alert" *ngIf="formularioPessoa.controls['numeroTelefone'].invalid && (formularioPessoa.controls['numeroTelefone'].dirty ||
-        formularioPessoa.controls['numeroTelefone'].touched) && telefones.length < 1">
+        formularioPessoa.controls['numeroTelefone'].touched) || (telefones.length < 1 && (formularioPessoa.controls['numeroTelefone'].dirty ||
+        formularioPessoa.controls['numeroTelefone'].touched))">
           <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um
           telefone. Informe apenas numeros
         </div>

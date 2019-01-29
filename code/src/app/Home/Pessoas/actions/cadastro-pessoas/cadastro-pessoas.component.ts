@@ -66,6 +66,8 @@ export class CadastroPessoasComponent implements OnInit {
 
   ngOnInit() {
     this.criarForm();
+
+
     this.arouter.paramMap.subscribe(res => {
       this.id = +res.get('id');
       if (this.id != null && this.id !== undefined && this.id > 0) {
@@ -106,6 +108,8 @@ export class CadastroPessoasComponent implements OnInit {
   getTipoPessoa(id: number) {
     this.pessoaColaborador.pessoa.tipoId = id;
   }
+
+
 
   AddTelefone() {
     const formObj = this.formularioPessoa.value;
@@ -313,7 +317,7 @@ export class CadastroPessoasComponent implements OnInit {
       'diretoria': [pessoaColaborador.pessoa.diretoriaId, Validators.required],
       'funcional': [pessoaColaborador.pessoa.funcional, [Validators.required, Validators.pattern(this.numberPattern)]],
       'sexo': [pessoaColaborador.pessoa.sexo, Validators.required],
-      'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : undefined, [Validators.pattern(this.numberPattern)]],
+      'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : undefined, [Validators.pattern(this.numberPattern), Validators.minLength(11), Validators.maxLength(11)]],
       'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : undefined, [Validators.minLength(9), Validators.maxLength(9)]],
       'orgaoEmissor': [pessoaColaborador.pessoa.orgaoEmissor, [Validators.maxLength(5)]],
       'uf': [pessoaColaborador.pessoa.ufRg],

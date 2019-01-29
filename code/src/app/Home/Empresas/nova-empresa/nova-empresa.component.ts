@@ -57,7 +57,7 @@ export class NovaEmpresaComponent implements OnInit {
 
   private obterDadosForm() {
     let objForm = this.formularioEmpresa.value;
-    this.modeloEmpresa.nome = this.modoEdicao()? this.modeloEmpresa.nome: objForm.nome;
+    this.modeloEmpresa.nome = objForm.nome;
     this.modeloEmpresa.segmento = objForm.segmento;
   }
 
@@ -81,7 +81,7 @@ export class NovaEmpresaComponent implements OnInit {
   criarForm(itemEmpresa?: Empresa) {
     itemEmpresa = itemEmpresa || { nome: '', segmento: 0 } as Empresa;
     this.formularioEmpresa = this.fb.group({
-      'nome': [{value: itemEmpresa.nome, disabled:this.modoEdicao()}, Validators.required],
+      'nome': [itemEmpresa.nome, Validators.required],
       'segmento': [itemEmpresa.segmento, Validators.required]
     });
   }
