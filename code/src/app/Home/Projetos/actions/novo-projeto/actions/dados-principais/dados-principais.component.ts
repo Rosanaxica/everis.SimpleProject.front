@@ -102,7 +102,9 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.statusProposta = values.statusProposta;
     this.projeto.codigoProjeto = values.codProjeto;
     this.projeto.tarifa = values.tarifa;
-  }
+    this.verifcaData();
+  };
+
 
   private carregarDadosForm() {
     this.dadosPrincipaisForm.get("nomeProjeto").setValue(this.projeto.nome);
@@ -130,11 +132,24 @@ export class DadosPrincipaisComponent implements OnInit {
     this.dadosPrincipaisForm.get("tarifa").setValue(this.projeto.tarifa);
   }
 
+
+
   Adicionar() {
     this.obterDadosForm();
     if (this.projeto.id > 0) {
       this.svc.salvar(this.projeto, Projeto)
         .toPromise().then((data: any) => {
+<<<<<<< HEAD
+            switch (data.codigo) {
+              case 200:
+                window.alert('Projeto adicionado com sucesso!');
+                this.getProjeto.emit(JSON.stringify(this.projeto));
+                break;
+              default:
+                window.alert('erro: ' + data.mensagem);
+                break;
+            }
+=======
           switch (data.codigo) {
             case 200:
               window.alert('Projeto salvo com sucesso!');
@@ -144,12 +159,20 @@ export class DadosPrincipaisComponent implements OnInit {
               window.alert('erro: ' + data.mensagem);
               break;
           }
+>>>>>>> 0aa1d77fd8eb3944e9ad5dd00fa7e3c0786a5056
         },
           error => {
             alert('Erro ao tentar adicionar.');
           });
     } else {
       this.getProjeto.emit(JSON.stringify(this.projeto));
+    }
+  }
+
+  verifcaData() {
+    console.log(this.projeto.dataInicio, "data de inicio", this.projeto.dataPrevista, "data prevista")
+    if (this.projeto.dataInicio > this.projeto.dataPrevista) {
+      alert("Data Fim deve ser maior que Data Prevista!")
     }
   }
 
@@ -207,6 +230,14 @@ export class DadosPrincipaisComponent implements OnInit {
         }
       }
     );
+<<<<<<< HEAD
+
+
+
+
+
+=======
+>>>>>>> 0aa1d77fd8eb3944e9ad5dd00fa7e3c0786a5056
     this.svc.listar(Superintendencia, null, "ObterTodos").toPromise().then(
       s => {
         if (s.sucesso) {
