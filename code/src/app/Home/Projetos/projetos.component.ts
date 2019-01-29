@@ -52,21 +52,19 @@ export class ProjetosComponent implements OnInit {
   }
 
   mostrarProjetosFiltrados(codigo: string) {
-    if(this.codigoProjeto == '' || this.codigoProjeto == null){
+    if(this.codigoProjeto == '' || this.codigoProjeto == null || this.codigoProjeto == undefined){
       this.projetosFiltrados = this.projetos;
       this.exibeMsg = false;
     }
     else if (this.projetos.filter(p => p.codigoProjeto == codigo) == '') {
       this.projetosFiltrados = [];
       this.exibeMsg = true;
-      console.log("Nenhum resultado encontrado.");
     }
     else {
       this.projetosFiltrados = this.projetos.filter(p => p.codigoProjeto == codigo);
       this.exibeMsg = false;
     }
     this.contar(this.projetosFiltrados);
-    console.log(this.projetosFiltrados);
   }
 
   detalheProjeto(projeto: Projeto): void {
