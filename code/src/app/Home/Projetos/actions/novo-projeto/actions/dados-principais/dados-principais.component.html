@@ -18,16 +18,16 @@
     <div class="form-group mt-4 row">
 
       <div class="col-md-3">
-        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto" placeholder="Codigo do Projeto *"
-        maxlength="10" />
+        <input type="text" formControlName="codProjeto" class="form-control" id="codProjeto" name="codProjeto"
+          placeholder="Codigo do Projeto *" maxlength="10" />
         <div class="alert alert-danger mt-2" *ngIf="dadosPrincipaisForm.controls.codProjeto.touched && dadosPrincipaisForm.controls.codProjeto.hasError('required')">
           <i class="fa fa-times mr-2"></i>
           <small>Por favor, informe o Código do Projeto.</small>
         </div>
       </div>
       <div class="col-md-8">
-        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto" placeholder="Nome do Projeto *"
-          maxlength="200" />
+        <input type="text" formControlName="nomeProjeto" class="form-control" id="nomeProjeto" name="nomeProjeto"
+          placeholder="Nome do Projeto *" maxlength="200" />
       </div>
 
     </div>
@@ -45,7 +45,8 @@
       </div>
       <div class="col-md-3">
         <label>Duração</label>
-        <input type="number" formControlName="duracao" min="0" class="form-control" id="duracao" name="duracao" maxlength="10" />
+        <input type="number" formControlName="duracao" min="0" class="form-control" id="duracao" name="duracao"
+          maxlength="10" />
       </div>
 
       <div class="col-md-3">
@@ -156,17 +157,17 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label>Serviço 1</label>
-        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
+        <input type="number" formControlName="qtdHorasServico1" min="0" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
           maxlength="10" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 2</label>
-        <input type="number" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2"
+        <input type="number" formControlName="qtdHorasServico2" min="0" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2"
           maxlength="10" />
       </div>
       <div class="col-md-3">
         <label for="data">Serviço 3</label>
-        <input type="number" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3"
+        <input type="number" formControlName="qtdHorasServico3" min="0" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3"
           maxlength="10" />
       </div>
     </div>
@@ -179,7 +180,8 @@
       </mat-panel-title>
     </mat-expansion-panel-header>
     <div class="form-group ">
-      <textarea formControlName="escopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto" rows="5" maxlength="500"></textarea>
+      <textarea formControlName="escopoProjeto" class="form-control" id="escopoprojeto" name="escopoprojeto" rows="5"
+        maxlength="500"></textarea>
     </div>
   </mat-expansion-panel>
 
@@ -189,8 +191,8 @@
         Fora do Escopo do Projeto
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto" maxlength="500"
-      rows="5"></textarea>
+    <textarea formControlName="foraEscopoProjeto" class="form-control" id="foraescopoprojeto" name="foraescopoprojeto"
+      maxlength="500" rows="5"></textarea>
   </mat-expansion-panel>
 
   <mat-expansion-panel class="mb-3 border">
