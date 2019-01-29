@@ -51,28 +51,27 @@ export class DadosPrincipaisComponent implements OnInit {
       {
         'nomeProjeto': [objProjeto.nome, Validators.required],
         'codProjeto': [objProjeto.codigoProjeto, Validators.required],
-        'ext': [objProjeto.ext, Validators.required],
+        'ext': [objProjeto.ext],
         'empresaId': [objProjeto.empresaId, Validators.required],
-        'dataInicio': [objProjeto.dataInicio, Validators.required],
+        'dataInicio': [objProjeto.dataInicio],
         'dataRecebida': [objProjeto.dataRecebida, Validators.required],
-        'dataPrevista': [objProjeto.dataPrevista, Validators.required],
-        'dataProposta': [objProjeto.dataPrevista, Validators.required],
-        'duracao': [objProjeto.duracao, Validators.required],
+        'dataProposta': [objProjeto.dataProposta, Validators.required],
+        'duracao': [objProjeto.duracao],
+        'qtdHorasServico1': [objProjeto.qtdHorasServico1],
+        'qtdHorasServico2': [objProjeto.qtdHorasServico2],
+        'qtdHorasServico3': [objProjeto.qtdHorasServico3],
         'tecnologiaId': [objProjeto.tecnologiaId, Validators.required],
         'siglaId': [objProjeto.siglaId, Validators.required],
         'diretoriaId': [objProjeto.diretoriaId, Validators.required],
         'superintendenciaId': [objProjeto.superintendenciaId, Validators.required],
-        'qtdHorasServico1': [objProjeto.qtdHorasServico1],
-        'qtdHorasServico2': [objProjeto.qtdHorasServico2],
-        'qtdHorasServico3': [objProjeto.qtdHorasServico3],
-        'escopoProjeto': [objProjeto.escopoProjeto, Validators.required],
-        'foraEscopoProjeto': [objProjeto.foraEscopoProjeto, Validators.required],
-        'premissas': [objProjeto.premissas, Validators.required],
+        'escopoProjeto': [objProjeto.escopoProjeto],
+        'foraEscopoProjeto': [objProjeto.foraEscopoProjeto],
+        'premissas': [objProjeto.premissas],
         'tipoDemanda': [objProjeto.tipoDemanda, Validators.required],
         'tamanho': [objProjeto.tamanho, Validators.required],
         'statusProjetoId': [objProjeto.statusId, Validators.required],
-        'statusProposta': [objProjeto.statusProposta, Validators.required],
-        'tarifa': [objProjeto.tarifa, Validators.required]
+        'statusProposta': [objProjeto.statusProposta],
+        'tarifa': [objProjeto.tarifa]
       }
     );
   }
@@ -83,7 +82,6 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.nome = values.nomeProjeto;
     this.projeto.empresaId = values.empresaId;
     this.projeto.dataInicio = values.dataInicio;
-    this.projeto.dataPrevista = values.dataPrevista;
     this.projeto.qtdHorasServico1 = values.qtdHorasServico1;
     this.projeto.qtdHorasServico2 = values.qtdHorasServico2;
     this.projeto.qtdHorasServico3 = values.qtdHorasServico3;
@@ -112,7 +110,6 @@ export class DadosPrincipaisComponent implements OnInit {
     this.dadosPrincipaisForm.get("nomeProjeto").setValue(this.projeto.nome);
     this.dadosPrincipaisForm.get("empresaId").setValue(this.projeto.empresaId);
     this.dadosPrincipaisForm.get("dataInicio").setValue(this.formatDate.transform(this.projeto.dataInicio));
-    this.dadosPrincipaisForm.get("dataPrevista").setValue(this.formatDate.transform(this.projeto.dataPrevista));
     this.dadosPrincipaisForm.get("qtdHorasServico1").setValue(this.projeto.qtdHorasServico1);
     this.dadosPrincipaisForm.get("qtdHorasServico2").setValue(this.projeto.qtdHorasServico2);
     this.dadosPrincipaisForm.get("qtdHorasServico3").setValue(this.projeto.qtdHorasServico3);
@@ -142,6 +139,7 @@ export class DadosPrincipaisComponent implements OnInit {
     if (this.projeto.id > 0) {
       this.svc.salvar(this.projeto, Projeto)
         .toPromise().then((data: any) => {
+<<<<<<< HEAD
             switch (data.codigo) {
               case 200:
                 window.alert('Projeto adicionado com sucesso!');
@@ -151,6 +149,17 @@ export class DadosPrincipaisComponent implements OnInit {
                 window.alert('erro: ' + data.mensagem);
                 break;
             }
+=======
+          switch (data.codigo) {
+            case 200:
+              window.alert('Projeto salvo com sucesso!');
+              this.getProjeto.emit(JSON.stringify(this.projeto));
+              break;
+            default:
+              window.alert('erro: ' + data.mensagem);
+              break;
+          }
+>>>>>>> 0aa1d77fd8eb3944e9ad5dd00fa7e3c0786a5056
         },
           error => {
             alert('Erro ao tentar adicionar.');
@@ -221,11 +230,14 @@ export class DadosPrincipaisComponent implements OnInit {
         }
       }
     );
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> 0aa1d77fd8eb3944e9ad5dd00fa7e3c0786a5056
     this.svc.listar(Superintendencia, null, "ObterTodos").toPromise().then(
       s => {
         if (s.sucesso) {

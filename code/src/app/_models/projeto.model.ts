@@ -23,7 +23,6 @@ export class Projeto extends ModeloGenerico {
     statusId: number;
     duracao: number;
     status: Status;
-    dataPrevista: Date;
     dataProposta: Date;
     beneficioEntregue: string;
     beneficioResidual: string;
@@ -44,7 +43,7 @@ export class Projeto extends ModeloGenerico {
     superintendencia: Superintendencia;
     statusProposta: string;
     tarifa: string;
-    
+
     getKey(): string {
         return 'Projeto'
     }

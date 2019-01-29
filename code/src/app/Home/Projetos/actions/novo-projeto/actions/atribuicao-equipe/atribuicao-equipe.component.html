@@ -17,7 +17,7 @@
     </div>
   </div>
 </div>
-<div class="row">
+<!-- <div class="row">
   <div class="col-lg-6 col-md-12">
     <fieldset class="border pb-4">
       <legend class="col-form-legend">Tipo de pessoa</legend>
@@ -52,7 +52,7 @@
       </div>
     </fieldset>
   </div>
-</div>
+</div> -->
 <div class="row">
   <div class="col">
     <table class="mt-4 table table-striped border">
@@ -95,8 +95,8 @@
           </td>
           <td class="align-middle">
             <div class="custom-control custom-checkbox text-center">
-              <input (change)="popResponsavel($event.target.checked)" [id]="pp.pessoaId" [name]="pp.pessoaId"
-                [(ngModel)]="pp.responsavel" type="checkbox" class="custom-control-input">
+              <input (change)="popResponsavel($event.target.checked)" [id]="pp.pessoaId" [name]="pp.pessoaId" [(ngModel)]="pp.responsavel"
+                type="checkbox" class="custom-control-input">
               <label class="custom-control-label" [for]="pp.pessoaId"></label>
             </div>
           </td>
