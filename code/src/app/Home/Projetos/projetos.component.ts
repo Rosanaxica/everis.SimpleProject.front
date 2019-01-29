@@ -4,7 +4,7 @@ import { GenericService } from 'src/app/_services/generic.service';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Projeto } from 'src/app/_models/projeto.model';
 import { Status } from 'src/app/_models/status.model';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NovoProjetoComponent } from './actions/novo-projeto/novo-projeto.component';
 import { ProjetoPessoa } from 'src/app/_models/projetopessoa.model';
 import { FormBuilder, FormGroup, FormControl, FormArray } from '@angular/forms';
@@ -22,23 +22,31 @@ export class ProjetosComponent implements OnInit {
   pessoas: any;
   status: Status[] = [];
   statusSelecionados = [
-    {id: 1, descricao: 'Em desenvolvimento', checked: true},
-    {id: 2, descricao: 'Aguardando aprovação', checked: true},
-    {id: 3, descricao: 'Concluído', checked: true},
-    {id: 4, descricao: 'Entregue', checked: true},
-    {id: 5, descricao: 'Aguardando abertura', checked: true},
-    {id: 6, descricao: 'Cancelado', checked: true},
-    {id: 7, descricao: 'Proposta', checked: true}
+    { id: 1, descricao: 'Em desenvolvimento', checked: true },
+    { id: 2, descricao: 'Aguardando aprovação', checked: true },
+    { id: 3, descricao: 'Concluído', checked: true },
+    { id: 4, descricao: 'Entregue', checked: true },
+    { id: 5, descricao: 'Aguardando abertura', checked: true },
+    { id: 6, descricao: 'Cancelado', checked: true },
+    { id: 7, descricao: 'Proposta', checked: true }
   ];;
   filtroProjeto = new Projeto();
   codigoProjeto: string;
   projetosFiltrados: Array<Projeto>;
   exibeMsg: boolean;
   form: FormGroup;
+  msgSucesso: string;
 
-  constructor(private router: Router, private svc: GenericService, private fb: FormBuilder) { }
+  constructor(private router: Router, private svc: GenericService, private fb: FormBuilder, private arouter: ActivatedRoute) { }
 
   ngOnInit() {
+    this.arouter.paramMap.subscribe(res => {
+      var sucesso = res.get("sucesso");
+
+      if (sucesso !== null && sucesso !== undefined && sucesso) {
+        this.msgSucesso = "Solicitação realizada com com sucesso"
+      }
+    });
     this.filtrar();
   }
 
@@ -47,12 +55,12 @@ export class ProjetosComponent implements OnInit {
     this.contar(this.projetosFiltrados);
   }
 
-  mostrarStatus(id) : boolean {
+  mostrarStatus(id): boolean {
     return this.statusSelecionados.find(x => x.id == id).checked
   }
 
   mostrarProjetosFiltrados(codigo: string) {
-    if(this.codigoProjeto == '' || this.codigoProjeto == null){
+    if (this.codigoProjeto == '' || this.codigoProjeto == null) {
       this.projetosFiltrados = this.projetos;
       this.exibeMsg = false;
     }
@@ -80,7 +88,7 @@ export class ProjetosComponent implements OnInit {
   contar(lista: Array<Projeto>) {
     let cont = 0;
     lista.forEach(element => {
-      if(this.mostrarStatus(element.status.id))
+      if (this.mostrarStatus(element.status.id))
         cont++;
     });
     this.totalProjetos = cont;
@@ -109,14 +117,14 @@ export class ProjetosComponent implements OnInit {
         (error) => {
         }
       );
-      this.svc.listar(Status).toPromise().then(
-        s => {
-          if (s.sucesso) {
-            if (s.data != null && s.data !== undefined) {
-              this.status = s.data;
-            }
+    this.svc.listar(Status).toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.status = s.data;
           }
         }
-      );
-    }
+      }
+    );
+  }
 }
