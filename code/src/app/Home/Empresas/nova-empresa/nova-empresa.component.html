@@ -7,7 +7,7 @@
   <div id="cont">
     <div class="row no-gutters">
       <div class="col">
-        <h1 class="titulo"> {{(modoEdicao()?'Editar':'Criar')}} Empresa: {{nomeEmpresa}}</h1>
+        <h1 class="titulo"> {{(modoEdicao()?'Editar':'Criar')}} Empresa {{nomeEmpresa}}</h1>
       </div>
       <hr class="mt-0" />
     </div>
@@ -17,9 +17,9 @@
         <label for="nome" class="ml-1">Nome da Empresa</label>
         <input type="text" class="form-control" [(ngModel)]="nome2" (blur)="nome2 = nome2.trim();" placeholder="*Nome da Empresa"
           name="nome" minlength="3" maxlength="50" autocomplete="off" formControlName="nome">
-        <div class="alert alert-danger mt-2" *ngIf="formularioEmpresa.controls.nome.touched && formularioEmpresa.controls.nome.hasError('required')" >
-            <i class="fa fa-times mr-2"></i>
-            <small>Por favor, informe o nomme da empresa.</small>
+        <div class="alert alert-danger mt-2" *ngIf="formularioEmpresa.controls.nome.touched && formularioEmpresa.controls.nome.hasError('required')">
+          <i class="fa fa-times mr-2"></i>
+          <small>Por favor, informe o nomme da empresa.</small>
         </div>
       </div>
     </div>
