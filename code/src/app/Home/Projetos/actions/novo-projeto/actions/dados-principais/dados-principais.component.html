@@ -45,13 +45,20 @@
       </div>
       <div class="col-md-3">
         <label>Duração</label>
-        <input type="number" formControlName="duracao" min="0" class="form-control" id="duracao" name="duracao"
-          maxlength="10" />
+        <input type="number" formControlName="duracao" class="form-control" id="duracao" name="duracao" min="1" max="99999" 
+          (keydown)="setMaxValue('duracao')"/>
+        <div *ngIf="dadosPrincipaisForm.controls.duracao.touched && dadosPrincipaisForm.controls.duracao.errors">
+          <small *ngIf="dadosPrincipaisForm.controls.duracao.errors.required">*Informar a duração</small>
+        </div>
       </div>
 
       <div class="col-md-3">
         <label>Tarifa</label>
-        <input type="text" formControlName="tarifa" class="form-control" id="tarifa" name="tarifa" maxlength="30" />
+        <input type="number" formControlName="tarifa" class="form-control" id="tarifa" name="tarifa" min="1" max="999999999" 
+        (keydown)="setMaxValue('tarifa')" />
+        <div *ngIf="dadosPrincipaisForm.controls.tarifa.touched && dadosPrincipaisForm.controls.tarifa.errors">
+          <small *ngIf="dadosPrincipaisForm.controls.tarifa.errors.required">*Informar valor</small>
+        </div>
       </div>
     </div>
 
@@ -158,18 +165,34 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label>Serviço 1</label>
-        <input type="number" formControlName="qtdHorasServico1" min="0" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
-          maxlength="10" />
+        <input type="number" formControlName="qtdHorasServico1" class="form-control" id="qtdhorasservico1" name="qtdhorasservico1"
+        min="1" max="9999999999" 
+         (keydown)="setMaxValue('qtdHorasServico1')" />
+          <div *ngIf="dadosPrincipaisForm.controls.qtdHorasServico1.touched && dadosPrincipaisForm.controls.qtdHorasServico1.errors">
+           <small *ngIf="dadosPrincipaisForm.controls.qtdHorasServico1.errors.required">*Informar quantidade de horas</small>
+          </div>
       </div>
+
       <div class="col-md-3">
-        <label for="data">Serviço 2</label>
-        <input type="number" formControlName="qtdHorasServico2" min="0" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2"
-          maxlength="10" />
+        <label>Serviço 2</label>
+        <input type="number" formControlName="qtdHorasServico2" class="form-control" id="qtdhorasservico2" name="qtdhorasservico2"
+        min="1" max="9999999999" 
+         (keydown)="setMaxValue('qtdHorasServico2')" />
+          <div *ngIf="dadosPrincipaisForm.controls.qtdHorasServico2.touched && dadosPrincipaisForm.controls.qtdHorasServico2.errors">
+           <small *ngIf="dadosPrincipaisForm.controls.qtdHorasServico2.errors.required">*Informar quantidade de horas</small>
+          </div>
       </div>
+
+
+
       <div class="col-md-3">
-        <label for="data">Serviço 3</label>
-        <input type="number" formControlName="qtdHorasServico3" min="0" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3"
-          maxlength="10" />
+        <label>Serviço 3</label>
+        <input type="number" formControlName="qtdHorasServico3" class="form-control" id="qtdhorasservico3" name="qtdhorasservico3"
+        min="1" max="9999999999" 
+         (keydown)="setMaxValue('qtdHorasServico3')" />
+          <div *ngIf="dadosPrincipaisForm.controls.qtdHorasServico3.touched && dadosPrincipaisForm.controls.qtdHorasServico3.errors">
+           <small *ngIf="dadosPrincipaisForm.controls.qtdHorasServico3.errors.required">*Informar quantidade de horas</small>
+          </div>
       </div>
     </div>
   </fieldset>
