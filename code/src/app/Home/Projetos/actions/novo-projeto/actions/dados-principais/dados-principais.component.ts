@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '../../../../../../../../node_modules/@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '../../../../../../../../node_modules/@angular/forms';
 import { Router } from '@angular/router';
 import { Projeto } from '../../../../../../_models/projeto.model';
 import { GenericService } from '../../../../../../_services/generic.service';
@@ -46,7 +46,6 @@ export class DadosPrincipaisComponent implements OnInit {
   gerarFormProjeto(objProjeto?: Projeto) {
 
     objProjeto = objProjeto || new Projeto();
-
     this.dadosPrincipaisForm = this.formBuilder.group(
       {
         'nomeProjeto': [objProjeto.nome, Validators.required],
@@ -56,10 +55,22 @@ export class DadosPrincipaisComponent implements OnInit {
         'dataInicio': [objProjeto.dataInicio],
         'dataRecebida': [objProjeto.dataRecebida, Validators.required],
         'dataProposta': [objProjeto.dataProposta, Validators.required],
-        'duracao': [objProjeto.duracao],
-        'qtdHorasServico1': [objProjeto.qtdHorasServico1],
-        'qtdHorasServico2': [objProjeto.qtdHorasServico2],
-        'qtdHorasServico3': [objProjeto.qtdHorasServico3],
+        'duracao': new FormControl(objProjeto.duracao, {
+          validators: Validators.compose([Validators.max(99999), Validators.min(1), Validators.required]),
+          updateOn: "change"
+        }),
+        'qtdHorasServico1': new FormControl (objProjeto.qtdHorasServico1,{
+          validators: Validators.compose([Validators.max(9999999999), Validators.min(1), Validators.required]),
+          updateOn: "change"
+        }),
+        'qtdHorasServico2': new FormControl (objProjeto.qtdHorasServico2,{
+          validators: Validators.compose([Validators.max(9999999999), Validators.min(1), Validators.required]),
+          updateOn: "change"
+        }),
+        'qtdHorasServico3': new FormControl (objProjeto.qtdHorasServico3,{
+          validators: Validators.compose([Validators.max(9999999999), Validators.min(1), Validators.required]),
+          updateOn: "change"
+        }),
         'tecnologiaId': [objProjeto.tecnologiaId, Validators.required],
         'siglaId': [objProjeto.siglaId, Validators.required],
         'diretoriaId': [objProjeto.diretoriaId, Validators.required],
@@ -71,9 +82,24 @@ export class DadosPrincipaisComponent implements OnInit {
         'tamanho': [objProjeto.tamanho, Validators.required],
         'statusProjetoId': [objProjeto.statusId, Validators.required],
         'statusProposta': [objProjeto.statusProposta],
-        'tarifa': [objProjeto.tarifa]
+        'tarifa': new FormControl (objProjeto.tarifa, {
+          validators: Validators.compose([Validators.max(999999999), Validators.min(1), Validators.required]),
+          updateOn: "change"})
       }
     );
+  }
+
+  private setMaxValue(itemFormControlName) {
+    let item = this.dadosPrincipaisForm.get(itemFormControlName);
+    if (item.errors && item.errors.max) {
+      item.setValue(item.errors.max.max);
+      item.updateValueAndValidity();
+    }
+    if (item.errors && item.errors.min) {
+      item.setValue(item.errors.min.min);
+      item.updateValueAndValidity();
+    }
+    return;
   }
 
 
@@ -102,7 +128,9 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.statusProposta = values.statusProposta;
     this.projeto.codigoProjeto = values.codProjeto;
     this.projeto.tarifa = values.tarifa;
-  }
+    this.verifcaData();
+  };
+
 
   private carregarDadosForm() {
     this.dadosPrincipaisForm.get("nomeProjeto").setValue(this.projeto.nome);
@@ -130,26 +158,34 @@ export class DadosPrincipaisComponent implements OnInit {
     this.dadosPrincipaisForm.get("tarifa").setValue(this.projeto.tarifa);
   }
 
+
+
   Adicionar() {
     this.obterDadosForm();
     if (this.projeto.id > 0) {
       this.svc.salvar(this.projeto, Projeto)
         .toPromise().then((data: any) => {
-          switch (data.codigo) {
-            case 200:
-              window.alert('Projeto salvo com sucesso!');
-              this.getProjeto.emit(JSON.stringify(this.projeto));
-              break;
-            default:
-              window.alert('erro: ' + data.mensagem);
-              break;
-          }
+            switch (data.codigo) {
+              case 200:
+                window.alert('Projeto adicionado com sucesso!');
+                this.getProjeto.emit(JSON.stringify(this.projeto));
+                break;
+              default:
+                window.alert('erro: ' + data.mensagem);
+                break;
+            }
         },
           error => {
             alert('Erro ao tentar adicionar.');
           });
     } else {
       this.getProjeto.emit(JSON.stringify(this.projeto));
+    }
+  }
+
+  verifcaData() {
+    if (this.projeto.dataInicio > this.projeto.dataProposta) {
+      alert("Data Fim deve ser maior que Data Prevista!")
     }
   }
 
