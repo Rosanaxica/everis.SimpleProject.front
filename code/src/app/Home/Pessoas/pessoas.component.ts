@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PessoaColaboradorViewModel } from 'src/app/_models/pessoacolaborador.viewmodel';
 
 @Component({
   selector: 'app-pessoas',
@@ -13,7 +14,7 @@ export class PessoasComponent implements OnInit {
 
   constructor(private arouter: ActivatedRoute, private svc: GenericService, private router: Router) { }
 
-  colaboradores: Colaborador[] = [];
+  colaboradores: Colaborador[]
   pessoas: Pessoa[]
   colaborador = new Colaborador();
   statusSelecionados = [
@@ -24,9 +25,12 @@ export class PessoasComponent implements OnInit {
   ColaboradorIndisponivel: Colaborador[] = [];
   nomePessoa: string;
   pessoasFiltradas: Pessoa[] = [];
+  colaboradoresFiltrados = [];
   pessoaModel = { nome: '' } as Pessoa;
   msgSucesso: string;
   msgErro: string;
+
+  listaPessoaColaborador = new Array<PessoaColaboradorViewModel>();
 
   ngOnInit() {
     this.filtrar();
@@ -40,6 +44,13 @@ export class PessoasComponent implements OnInit {
       if (erro !== null && erro !== undefined && erro) {
         this.msgErro = "Ocorreu um erro ao processar a sua solicitação"
       }
+      this.svc.listar(Colaborador, null, 'ObterTodos').toPromise().then(c => {
+        this.colaboradores = c.data
+        this.colaboradores.forEach(element => {
+          this.colaboradoresFiltrados.push(element)
+        })
+      })
+
     });
 
   }
@@ -91,9 +102,8 @@ export class PessoasComponent implements OnInit {
 
 
   filtrar() {
-    this.svc.listar(Pessoa, this.pessoaModel).toPromise().then(s => {
-      this.pessoas = s.data;
-      this.pessoasFiltradas = s.data;
+    this.svc.listar(Pessoa, this.pessoaModel, "FiltrarPessoaColaborador").toPromise().then(s => {
+      this.listaPessoaColaborador = s.data as Array<PessoaColaboradorViewModel>;
     },
       (error) => {
       });

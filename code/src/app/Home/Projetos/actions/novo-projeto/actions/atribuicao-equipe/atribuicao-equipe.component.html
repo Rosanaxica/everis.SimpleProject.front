@@ -1,3 +1,4 @@
+{{projetoPessoa | json}}
 <div class="row mt-4">
   <div class="col-12">
     <div class="form-group">
@@ -89,14 +90,16 @@
         <tr (change)="getAtribuicao(pp)" *ngFor="let pp of projetoPessoa">
           <td class="align-middle">{{ pp.pessoa.nome }}</td>
           <td>
-            <select (change)="popAtribuicao($event.target.value)" class="form-control" id="atribuicaoId" name="atribuicaoId">
-              <option *ngFor="let atribuicao of atribuicoes" value="{{atribuicao.id}}">{{atribuicao.atribuicao}}</option>
+            <select (change)="popAtribuicao($event.target.value, pp.pessoa.id)" class="form-control" id="atribuicaoId"
+              name="atribuicaoId" required>
+              <option *ngFor="let atribuicao of atribuicoes" value="{{atribuicao.id}}" [ngValue]="atribuicao"
+                [selected]="atribuicao.id == pp.atribuicao?.id">{{atribuicao.atribuicao}}</option>
             </select>
           </td>
           <td class="align-middle">
             <div class="custom-control custom-checkbox text-center">
-              <input (change)="popResponsavel($event.target.checked)" [id]="pp.pessoaId" [name]="pp.pessoaId" [(ngModel)]="pp.responsavel"
-                type="checkbox" class="custom-control-input">
+              <input (change)="popResponsavel($event.target.checked)" [id]="pp.pessoaId" [name]="pp.pessoaId"
+                [(ngModel)]="pp.responsavel" type="checkbox" class="custom-control-input">
               <label class="custom-control-label" [for]="pp.pessoaId"></label>
             </div>
           </td>
