@@ -60,11 +60,7 @@ export class ProjetosComponent implements OnInit {
   }
 
   mostrarProjetosFiltrados(codigo: string) {
-<<<<<<< HEAD
-    if(this.codigoProjeto == '' || this.codigoProjeto == null || this.codigoProjeto == undefined){
-=======
     if (this.codigoProjeto == '' || this.codigoProjeto == null) {
->>>>>>> 2822ee82327161d573f73b5af08a3d59fce60f1d
       this.projetosFiltrados = this.projetos;
       this.exibeMsg = false;
     }
