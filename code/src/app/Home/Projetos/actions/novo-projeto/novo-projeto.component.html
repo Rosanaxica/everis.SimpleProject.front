@@ -4,10 +4,6 @@
   <div class="col">
     <h1 class="titulo mb-0">{{(modoEdicao() ? 'Editar' : 'Criar')}} Projeto {{projeto.codigoProjeto}}</h1>
   </div>
-  <div class="col d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" (click)="Adicionar()">Salvar</button>
-    <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
-  </div>
   <hr class="mt-2">
 </div>
 <div class="row mt-2" *ngIf="id > 0">
