@@ -67,7 +67,7 @@
       </div>
       <div class="col-md-3">
         <label for="data">Data Prevista</label>
-        <input type="date" formControlName="dataPrevista" class="form-control" id="dataPrevista" name="dataprevista" />
+        <input type="date" formControlName="dataPrevista" (blur)="obterDadosForm()" class="form-control" id="dataPrevista" name="dataprevista" />
 
       </div>
     </div>
