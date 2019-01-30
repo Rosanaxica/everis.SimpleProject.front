@@ -5,9 +5,14 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label for="label">Status do Projeto *</label>
-        <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
-          <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
+        <select formControlName="statusProjetoId" *ngIf="projeto.id > 0; else novoProjeto" class="form-control" id="statusProjetoId" name="statusProjetoId">
+          <option *ngFor="let status of status"  value="{{status.id}}">{{status.descricao}}</option>
         </select>
+        <ng-template #novoProjeto>
+          <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
+            <option value="7" selected >Proposta</option>
+          </select>
+        </ng-template>
       </div>
       <!-- <div class="alert alert-danger mt-2" *ngIf="!validStatus">
         <i class="fa fa-times mr-2"></i>

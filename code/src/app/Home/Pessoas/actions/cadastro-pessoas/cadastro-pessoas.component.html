@@ -3,11 +3,6 @@
     <div class="col d-flex align-items-end">
       <h1 class="titulo ">{{(modoEdicao()?'Editar':'Criar')}} Pessoa {{nomePessoa}}</h1>
     </div>
-    <div class="col text-right mb-2">
-      <button type="button" class="btn everis mr-2" [disabled]="!formularioPessoa.valid || telefones.length === 0 || formularioPessoa.controls.sexo.invalid"
-        (click)="Salvar()">Salvar</button>
-      <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
-    </div>
     <hr class="mt-0 mb-4" />
   </div>
   <!-- Inicio Tipo Pessoa -->
@@ -504,9 +499,9 @@
     <!--        </fieldset> -->
   </div>
 
-  <div class="col d-flex justify-content-end mt-4">
+  <div class="col d-flex justify-content-end mt-4 no-gutters">
     <button type="button" class="btn everis mr-2" [disabled]="!formularioPessoa.valid || telefones.length === 0 || formularioPessoa.controls.sexo.invalid"
       (click)="Salvar()">Salvar</button>
-    <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
+    <button type="button" class="btn cancelar mr-0" (click)="cancelar()">Cancelar</button>
   </div>
 </form>

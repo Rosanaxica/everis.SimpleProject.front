@@ -3,7 +3,7 @@
     <h1 class="titulo pl-0 mb-0">Comunidades</h1>
   </div>
   <div class="input-group col-lg-5 mb-2">
-    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
+    <input type="text" class="form-control no-shadow" maxlength="200" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
       [(ngModel)]="filtroComunidade.nome" (keydown.enter)="filtrar()">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>

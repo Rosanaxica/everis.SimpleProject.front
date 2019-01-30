@@ -1,17 +1,16 @@
-<div class="row align-items-center">
+<div class="row align-items-center no-gutters">
   <div class="col-3">
-    <h1 class="titulo mb-0">Fases ({{projeto.nome}})</h1>
+    <h1 class="titulo mb-0">Fases ({{projeto.codigoProjeto}})</h1>
   </div>
   <div class="input-group col">
-    <input type="text" class="form-control no-shadow" placeholder="Digite o código da fase que você deseja buscar" aria-label="Digite o Código da Fase que você deseja buscar"
-      [(ngModel)]="filtroFases.codigoFase" (keyup.enter)="filtrar()">
+    <input type="text" class="form-control no-shadow" placeholder="Digite o código da fase que você deseja buscar"
+      aria-label="Digite o Código da Fase que você deseja buscar" [(ngModel)]="filtroFases.codigoFase" (keyup.enter)="filtrar()">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>
   </div>
   <div class="col-3 d-flex justify-content-end">
     <button type="button" class="btn everis mr-2" (click)="vaiParaNovaFase()">Nova Fase+</button>
-
   </div>
   <hr class="mt-2" />
 

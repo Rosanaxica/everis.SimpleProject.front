@@ -4,18 +4,19 @@
   <div class="col">
     <h1 class="titulo mb-0">{{(modoEdicao() ? 'Editar' : 'Criar')}} Projeto {{projeto.codigoProjeto}}</h1>
   </div>
-  <div class="col d-flex justify-content-end">
-    <button type="button" class="btn everis mr-2" (click)="Adicionar()">Salvar</button>
-    <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
-  </div>
   <hr class="mt-2">
 </div>
 <div class="row mt-2" *ngIf="id > 0">
   <div class="col-md-4">
-    <div class="card card-colaborador cursor-pointer click" (click)="vaiParaSolicitacaoMudanca()" routerLinkActive="active"
+    <!--<div class="card card-colaborador cursor-pointer click" (click)="vaiParaSolicitacaoMudanca()" routerLinkActive="active"
       role="button">
       <div class="card-body">
         Solicitação de Mudança <span class="badge everis">{{ totalSolicitacaoMudancas }}</span>
+      </div>
+    </div>-->
+    <div class="card card-colaborador">
+      <div class="card-body bg-light">
+        Solicitação de Mudança
       </div>
     </div>
   </div>
@@ -29,9 +30,9 @@
   </div>
 
   <div class="col-md-4">
-    <div class="card card-colaborador cursor-pointer click" [routerLink]="['fase']" routerLinkActive="active">
+    <div class="card card-colaborador">
       <div class="card-body">
-        Status : <div class="badge everis"> Em Andamento</div>
+        Status <div class="badge everis">Em Andamento</div>
       </div>
     </div>
   </div>
