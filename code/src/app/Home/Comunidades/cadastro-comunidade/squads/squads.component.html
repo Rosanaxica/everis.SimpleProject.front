@@ -19,7 +19,7 @@
   <tbody>
     <tr *ngFor="let squad of squads">
       <td class="align-middle">{{ squad.nome }}</td>
-      <td class="align-middle">{{ squad.datainicio }}</td>
+      <td class="align-middle"> {{ squad.dataInicio | dateFormat }}</td>
       <td class="text-center">
         <button class="btn everis" (click)="editar(squad.id)"><i class="fas fa-pencil-alt"></i></button>
         <button class="btn everis-laranja text-white ml-1" (click)="desativar(squad.id)"><i class="fas fa-trash-alt"></i></button>
