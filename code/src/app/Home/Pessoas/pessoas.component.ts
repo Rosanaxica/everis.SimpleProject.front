@@ -94,12 +94,12 @@ export class PessoasComponent implements OnInit {
   editar(id: number) {
     this.router.navigate([`/pessoas/editar-pessoa/${id}`]);
   }
+
   ListarPessoas() {
     this.svc.listar(Pessoa).toPromise().then(pessoas => {
       this.pessoas = pessoas['data'];
     })
   }
-
 
   filtrar() {
     this.svc.listar(Pessoa, this.pessoaModel, "FiltrarPessoaColaborador").toPromise().then(s => {

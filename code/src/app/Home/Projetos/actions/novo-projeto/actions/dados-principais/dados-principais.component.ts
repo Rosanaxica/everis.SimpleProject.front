@@ -59,16 +59,16 @@ export class DadosPrincipaisComponent implements OnInit {
           validators: Validators.compose([Validators.max(99999), Validators.min(1), Validators.required]),
           updateOn: "change"
         }),
-        'qtdHorasServico1': new FormControl (objProjeto.qtdHorasServico1,{
-          validators: Validators.compose([Validators.max(9999999999), Validators.min(1), Validators.required]),
+        'qtdHorasServico1': new FormControl(objProjeto.qtdHorasServico1, {
+          validators: Validators.compose([Validators.max(9999999999), Validators.min(0)]),
           updateOn: "change"
         }),
-        'qtdHorasServico2': new FormControl (objProjeto.qtdHorasServico2,{
-          validators: Validators.compose([Validators.max(9999999999), Validators.min(1), Validators.required]),
+        'qtdHorasServico2': new FormControl(objProjeto.qtdHorasServico2, {
+          validators: Validators.compose([Validators.max(9999999999), Validators.min(0)]),
           updateOn: "change"
         }),
-        'qtdHorasServico3': new FormControl (objProjeto.qtdHorasServico3,{
-          validators: Validators.compose([Validators.max(9999999999), Validators.min(1), Validators.required]),
+        'qtdHorasServico3': new FormControl(objProjeto.qtdHorasServico3, {
+          validators: Validators.compose([Validators.max(9999999999), Validators.min(0)]),
           updateOn: "change"
         }),
         'tecnologiaId': [objProjeto.tecnologiaId, Validators.required],
@@ -82,9 +82,10 @@ export class DadosPrincipaisComponent implements OnInit {
         'tamanho': [objProjeto.tamanho, Validators.required],
         'statusProjetoId': [objProjeto.statusId, Validators.required],
         'statusProposta': [objProjeto.statusProposta],
-        'tarifa': new FormControl (objProjeto.tarifa, {
+        'tarifa': new FormControl(objProjeto.tarifa, {
           validators: Validators.compose([Validators.max(999999999), Validators.min(1), Validators.required]),
-          updateOn: "change"})
+          updateOn: "change"
+        })
       }
     );
   }
@@ -165,15 +166,14 @@ export class DadosPrincipaisComponent implements OnInit {
     if (this.projeto.id > 0) {
       this.svc.salvar(this.projeto, Projeto)
         .toPromise().then((data: any) => {
-            switch (data.codigo) {
-              case 200:
-                window.alert('Projeto adicionado com sucesso!');
-                this.getProjeto.emit(JSON.stringify(this.projeto));
-                break;
-              default:
-                window.alert('erro: ' + data.mensagem);
-                break;
-            }
+          switch (data.codigo) {
+            case 200:
+              this.getProjeto.emit(JSON.stringify(this.projeto));
+              break;
+            default:
+              window.alert('erro: ' + data.mensagem);
+              break;
+          }
         },
           error => {
             alert('Erro ao tentar adicionar.');
