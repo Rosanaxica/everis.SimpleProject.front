@@ -4,7 +4,6 @@ import { GenericService } from 'src/app/_services/generic.service';
 import { Pessoa } from 'src/app/_models/pessoa.model';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PessoaColaboradorViewModel } from 'src/app/_models/pessoacolaborador.viewmodel';
-import { OrderByPipe } from 'src/app/_custom-pipes/sort-pipe';
 
 @Component({
   selector: 'app-pessoas',
