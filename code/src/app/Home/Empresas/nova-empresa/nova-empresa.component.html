@@ -14,8 +14,8 @@
     <!--Nome empresa-->
     <div class="form-group">
       <div class="row col-md-8 mb-2">
-        <label for="nome" class="ml-1">Nome da Empresa</label>
-        <input type="text" class="form-control" [(ngModel)]="nome2" (blur)="nome2 = nome2.trim();" placeholder="*Nome da Empresa"
+        <label for="nome" class="ml-1">Nome da Empresa <abbr title="campo obrigatório" class="text-danger no-text-decoration">*</abbr></label>
+        <input type="text" class="form-control" [(ngModel)]="nome2" (blur)="nome2 = nome2.trim();" placeholder="Digite o nome da Empresa"
           name="nome" minlength="3" maxlength="50" autocomplete="off" formControlName="nome">
         <div class="alert alert-danger mt-2" *ngIf="formularioEmpresa.controls.nome.touched && formularioEmpresa.controls.nome.hasError('required')">
           <i class="fa fa-times mr-2"></i>
