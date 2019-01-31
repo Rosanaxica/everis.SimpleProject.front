@@ -8,10 +8,15 @@
 </div>
 <div class="row mt-2" *ngIf="id > 0">
   <div class="col-md-4">
-    <div class="card card-colaborador cursor-pointer click" (click)="vaiParaSolicitacaoMudanca()" routerLinkActive="active"
+    <!--<div class="card card-colaborador cursor-pointer click" (click)="vaiParaSolicitacaoMudanca()" routerLinkActive="active"
       role="button">
       <div class="card-body">
         Solicitação de Mudança <span class="badge everis">{{ totalSolicitacaoMudancas }}</span>
+      </div>
+    </div>-->
+    <div class="card card-colaborador">
+      <div class="card-body bg-light">
+        Solicitação de Mudança
       </div>
     </div>
   </div>
@@ -25,9 +30,15 @@
   </div>
 
   <div class="col-md-4">
-    <div class="card card-colaborador cursor-pointer click" [routerLink]="['fase']" routerLinkActive="active">
+    <div class="card card-colaborador">
       <div class="card-body">
-        Status : <div class="badge everis"> Em Andamento</div>
+        Status <div class="badge p-1 text-white" [ngClass]="{'everis-amarelo': statusAtual.descricao == 'Aguardando aprovação', 
+        'everis': statusAtual.descricao == 'Em desenvolvimento',
+        'everis-roxo': statusAtual.descricao == 'Concluído',
+        'everis-azul': statusAtual.descricao == 'Entregue',
+        'everis-laranja': statusAtual.descricao == 'Aguardando abertura',
+        'bg-danger': statusAtual.descricao == 'Cancelado',
+        'bg-gray': statusAtual.descricao == 'Proposta'}" >{{statusAtual.descricao}}</div>
       </div>
     </div>
   </div>

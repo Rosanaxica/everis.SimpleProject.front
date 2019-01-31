@@ -1,3 +1,5 @@
+<!-- {{dadosPrincipaisForm.value | json}} -->
+
 <form [formGroup]="dadosPrincipaisForm">
   <fieldset class="border mb-4">
     <legend class="col-form-label">Projeto</legend>
@@ -5,9 +7,14 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label for="label">Status do Projeto *</label>
-        <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
-          <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
+        <select formControlName="statusProjetoId" *ngIf="projeto.id > 0; else novoProjeto" class="form-control" id="statusProjetoId" name="statusProjetoId">
+          <option *ngFor="let status of status"  value="{{status.id}}">{{status.descricao}}</option>
         </select>
+        <ng-template #novoProjeto>
+          <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
+            <option value="7" selected >Proposta</option>
+          </select>
+        </ng-template>
       </div>
       <!-- <div class="alert alert-danger mt-2" *ngIf="!validStatus">
         <i class="fa fa-times mr-2"></i>
@@ -65,16 +72,19 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label for="data">Data Recebida *</label>
-        <input type="date" formControlName="dataRecebida" class="form-control" id="dataRecebida" name="dataRecebida" />
+        <input type="date" formControlName="dataRecebida" class="form-control" id="dataRecebida" name="dataRecebida" (change)="validaDataRecebida()"/>
       </div>
       <div class="col-md-3">
         <label for="data">Data Início</label>
-        <input type="date" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio" />
+        <input type="date" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio" (change)="validaDataInicio()"/>
       </div>
       <div class="col-md-3">
-
-        <label for="data">Data Entrega Proposta *</label>
-        <input type="date" formControlName="dataProposta"  (blur)="obterDadosForm()" class="form-control" id="dataProposta" name="dataProposta" />
+        <label for="data">Data Entrega Proposta</label>
+        <input type="date" formControlName="dataProposta"  (blur)="obterDadosForm()" class="form-control" id="dataProposta" name="dataProposta" (change)="validaDataProposta()"/>
+      </div>
+      <div class="col-md-3">
+          <label for="data">Data Final</label>
+          <input type="date" formControlName="dataFinal" class="form-control" id="dataFinal" name="dataFinal" (change)="validaDataFinal()"/>
       </div>
     </div>
   </fieldset>
@@ -249,7 +259,7 @@
 
   <div class="row align-items-center mt-2 mb-4">
     <div class="col d-flex justify-content-end">
-      <button type="button" class="btn everis mr-2" (click)="Adicionar()">Salvar</button>
+      <button type="button" class="btn everis mr-2" (click)="Adicionar()" [disabled]="!formEstaValido()">Salvar</button>
       <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
     </div>
   </div>

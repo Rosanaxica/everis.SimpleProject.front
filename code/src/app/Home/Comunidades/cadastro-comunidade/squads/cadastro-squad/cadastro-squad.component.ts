@@ -4,6 +4,7 @@ import { Validators } from '@angular/forms';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Squad } from 'src/app/_models/squad.model';
 import { GenericService } from 'src/app/_services/generic.service';
+import { DateFormatPipe } from 'src/app/shared/util/date-format-pipe';
 
 @Component({
   selector: 'app-cadastro-squad',
@@ -12,7 +13,7 @@ import { GenericService } from 'src/app/_services/generic.service';
 })
 export class CadastroSquadComponent implements OnInit {
 
-  constructor(private svc: GenericService, private arouter: ActivatedRoute, private router: Router, private fb: FormBuilder) { }
+  constructor(private svc: GenericService, private arouter: ActivatedRoute, private router: Router, private fb: FormBuilder, private formatDate: DateFormatPipe) { }
 
   msgErro: String;
 
@@ -53,7 +54,7 @@ export class CadastroSquadComponent implements OnInit {
   private obterDadosForm() {
     let objForm = this.formularioSquad.value;
     this.modeloSquad.nome = objForm.nome;
-    this.modeloSquad.datainicio = objForm.datainicio;
+    this.modeloSquad.dataInicio = objForm.datainicio;
     this.modeloSquad.comunidadeid = this.comunidadeid;
   }
 
@@ -75,10 +76,10 @@ export class CadastroSquadComponent implements OnInit {
   }
 
   criarForm(itemSquad?: Squad) {
-    itemSquad = itemSquad || { nome: '' , datainicio: new Date()} as Squad;
+    itemSquad = itemSquad || { nome: '' , dataInicio: new Date()} as Squad;
     this.formularioSquad = this.fb.group({
       'nome': [itemSquad.nome, Validators.required],
-      'datainicio': [itemSquad.datainicio, Validators.required]
+      'datainicio': [this.formatDate.transform( itemSquad.dataInicio), Validators.required]
     });
   }
 }

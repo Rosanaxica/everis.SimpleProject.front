@@ -62,6 +62,7 @@ import { NovaFaseComponent } from './Home/Projetos/actions/novo-projeto/actions/
 import { CadastroComunidadeComponent } from './Home/Comunidades/cadastro-comunidade/cadastro-comunidade.component';
 import { SquadsComponent } from './Home/Comunidades/cadastro-comunidade/squads/squads.component';
 import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/squads/cadastro-squad/cadastro-squad.component';
+import { AtribuicaoEquipeSquadComponent } from './Home/Comunidades/cadastro-comunidade/squads/cadastro-squad/atribuicao-equipe-squad/atribuicao-equipe-squad.component';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/s
     CadastroComunidadeComponent,
     GraficolinhaComponent,
     SquadsComponent,
-    CadastroSquadComponent
+    CadastroSquadComponent,
+    AtribuicaoEquipeSquadComponent
   ],
   imports: [
     HttpClientModule,

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { GenericService } from 'src/app/_services/generic.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Squad } from 'src/app/_models/squad.model';
+import { DateFormatPipe } from 'src/app/shared/util/date-format-pipe';
 
 // import 'rxjs/operator/map';
 
@@ -11,7 +12,7 @@ import { Squad } from 'src/app/_models/squad.model';
   styleUrls: ['./squads.component.css']
 })
 export class SquadsComponent implements OnInit {
-  constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
+  constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute, private formatDate: DateFormatPipe) { }
 
   squads: Squad[] = [];
   filtroSquad = new Squad();

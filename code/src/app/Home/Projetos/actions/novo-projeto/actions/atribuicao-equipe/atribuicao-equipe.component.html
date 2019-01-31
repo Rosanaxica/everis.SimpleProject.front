@@ -38,7 +38,7 @@
 
 <div class="row mb-3">
   <div class="input-group col-lg-6 col-md-12 ml-0 mt-3">
-    <input type="text" class="form-control ml-0 no-shadow" [(ngModel)]="filtroPessoa.nome" placeholder="Digite o que você deseja buscar"
+    <input type="text" class="form-control ml-0 no-shadow" [(ngModel)]="filtroPessoa.nome" placeholder="Digite o que você deseja buscar" maxlength="100"
       aria-label="Digite o que você deseja buscar">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()">

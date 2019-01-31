@@ -4,7 +4,7 @@ import { Comunidade } from './comunidade.model';
 
 export class Squad extends ModeloGenerico {
     nome: string;
-    datainicio: Date;
+    dataInicio: Date;
     gerenteresponsavel: string;
     gerentecomunidade: string;
     pessoa: Pessoa;

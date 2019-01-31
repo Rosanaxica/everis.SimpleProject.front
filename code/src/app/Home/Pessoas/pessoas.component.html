@@ -14,13 +14,13 @@
   </div>
 </div>
 
-<div class="row align-items-center">
+<div class="row align-items-center no-gutters">
   <div class="col-3">
     <h1 class="titulo mb-0">Pessoas</h1>
   </div>
   <div class="input-group col">
-    <input type="text" class="form-control no-shadow" placeholder="Digite o que você deseja buscar" aria-label="Digite o que você deseja buscar"
-      [(ngModel)]="pessoaModel.nome" (keydown.enter)="filtrar()">
+    <input type="text" class="form-control no-shadow" maxlength="100" placeholder="Digite o que você deseja buscar"
+      aria-label="Digite o que você deseja buscar" [(ngModel)]="pessoaModel.nome" (keydown.enter)="filtrar()">
     <div class="input-group-append">
       <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
     </div>
@@ -28,14 +28,15 @@
   <div class="col-3 d-flex justify-content-end">
     <button type="button" class="btn everis mr-0" [routerLink]="['cadastro-pessoas']">Nova Pessoa +</button>
   </div>
+  <hr class="mt-2">
 </div>
 
 <!-- checkbox Filter de status de pessoa -->
-<div class="row no-gutters border mt-4 mb-4 p-3">
-  <div class="col-md-3 col-lg-2">
+<div class="row no-gutters  mt-3 mb-4 p-3">
+  <!-- <div class="col-md-3 col-lg-2">
     <small><b>Status do Colaborador:</b></small>
-  </div>
-  <div class="custom-control custom-checkbox custom-control-inline">
+  </div> -->
+  <!-- <div class="custom-control custom-checkbox custom-control-inline">
     <input id="{{statusSelecionados[0].id}}" value="{{statusSelecionados[0].id}}" type="checkbox" class="custom-control-input"
       (change)="mudarStatus(statusSelecionados[0].id)" checked>
     <label class="custom-control-label" for="{{statusSelecionados[0].id}}"><small>Disponível</small></label>
@@ -44,7 +45,7 @@
     <input id="{{statusSelecionados[1].id}}" value="{{statusSelecionados[1].id}}" type="checkbox" class="custom-control-input"
       (change)="mudarStatus(statusSelecionados[1].id)" checked>
     <label class="custom-control-label" for="{{statusSelecionados[1].id}}"><small>indisponível</small></label>
-  </div>
+  </div> -->
 </div>
 <div class="row">
 
