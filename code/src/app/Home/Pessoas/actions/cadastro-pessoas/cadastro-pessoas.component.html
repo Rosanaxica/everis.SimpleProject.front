@@ -302,7 +302,8 @@
         <div class="col-xs-12 col-12 col-md-4 form-group">
           <label for="dataNascimento">*Data de Nascimento</label>
 
-          <input type="date" class="form-control" placeholder="dd/mm/aaaa" name="dataNascimento" formControlName="dataNascimento">
+          <input type="date" class="form-control" placeholder="dd/mm/aaaa" name="dataNascimento" formControlName="dataNascimento"
+            (change)="validaDataNascimento()">
           <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
                 <i class="fa fa-times mr-2"></i>
                 <small>Por Favor, informe a data incial do periodo.</small>
@@ -310,7 +311,8 @@
         </div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
           <label for="dataNascimento">*Data de Admissão</label>
-          <input type="date" class="form-control" placeholder="Dia/Mês/Ano" name="dataAdmissao" formControlName="dataAdmissao">
+          <input type="date" class="form-control" placeholder="Dia/Mês/Ano" name="dataAdmissao" formControlName="dataAdmissao"
+            (change)="validaDataAdmissao()">
           <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
                   <i class="fa fa-times mr-2"></i>
                   <small>Por Favor, informe a data incial do periodo.</small>
@@ -318,7 +320,8 @@
         </div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
           <label for="dataNascimento">Data de Demissão</label>
-          <input type="date" class="form-control" placeholder="Dia/Mês/Ano" name="dataDemissao" formControlName="dataDemissao">
+          <input type="date" class="form-control" placeholder="Dia/Mês/Ano" name="dataDemissao" formControlName="dataDemissao"
+            (change)="validaDataDemissao()">
           <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
                     <i class="fa fa-times mr-2"></i>
                     <small>Por Favor, informe a data incial do periodo.</small>

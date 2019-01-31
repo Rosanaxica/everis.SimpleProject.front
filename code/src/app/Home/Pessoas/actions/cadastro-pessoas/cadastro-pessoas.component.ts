@@ -464,6 +464,69 @@ export class CadastroPessoasComponent implements OnInit {
     emailCorp.updateValueAndValidity();
   }
 
+  validaDataNascimento() {
+    var dataAdmissao = this.formularioPessoa.get('dataAdmissao');
+    var dataNascimento = this.formularioPessoa.get('dataNascimento');
+    var dataDemissao = this.formularioPessoa.get('dataDemissao');
+
+    if (dataNascimento.value > dataAdmissao.value) {
+      window.alert("A data de nascimento deve ser menor que a data de admissão");
+      dataNascimento.setErrors({ 'incorrect': true });
+      dataNascimento.reset();
+      return;
+    }
+
+    if (dataNascimento.value > dataDemissao.value) {
+      window.alert("A data de nascimento deve ser menor que a data de demissão");
+      dataNascimento.setErrors({ 'incorrect': true });
+      dataNascimento.reset();
+      return;
+    }
+  }
+
+  validaDataAdmissao() {
+    var dataAdmissao = this.formularioPessoa.get('dataAdmissao');
+    var dataNascimento = this.formularioPessoa.get('dataNascimento');
+
+    if (dataAdmissao.value < dataNascimento.value) {
+      window.alert("A data de admissão deve ser maior que a data de nascimento");
+      dataAdmissao.setErrors({ 'incorrect': true });
+      dataAdmissao.reset();
+      return;
+    }
+  }
+
+
+  validaDataDemissao() {
+    var dataAdmissao = this.formularioPessoa.get('dataAdmissao');
+    var dataNascimento = this.formularioPessoa.get('dataNascimento');
+    var dataDemissao = this.formularioPessoa.get('dataDemissao');
+
+
+    if (dataAdmissao.value == '' || dataAdmissao.value == undefined || dataAdmissao.value == null) {
+      window.alert("Favor informar a data de admissão");
+      dataDemissao.setErrors({ 'incorrect': true });
+      dataDemissao.reset();
+      return;
+    }
+
+    if (dataDemissao.value < dataAdmissao.value) {
+      window.alert("A data de demissão deve ser maior que a data de admissão");
+      dataDemissao.setErrors({ 'incorrect': true });
+      dataDemissao.reset();
+      return;
+    }
+
+    if (dataDemissao.value < dataNascimento.value) {
+      window.alert("A data de demissão deve ser maior que a data de nascimento");
+      dataDemissao.setErrors({ 'incorrect': true });
+      dataDemissao.reset();
+      return;
+    }
+  }
+
+
+
   Salvar() {
     this.obterDadosForm();
 
