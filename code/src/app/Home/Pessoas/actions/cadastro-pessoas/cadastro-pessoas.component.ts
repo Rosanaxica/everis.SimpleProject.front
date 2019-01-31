@@ -316,7 +316,7 @@ export class CadastroPessoasComponent implements OnInit {
       'tipoPessoa': [tipo],
       'nome': [pessoaColaborador.pessoa.nome, Validators.required],
       'diretoria': [pessoaColaborador.pessoa.diretoriaId, Validators.required],
-      'funcional': [pessoaColaborador.pessoa.funcional, [Validators.required, Validators.pattern(this.numberPattern)]],
+      'funcional': [pessoaColaborador.pessoa.funcional, [Validators.required, Validators.pattern(this.numberPattern), Validators.minLength(9), Validators.maxLength(9)]],
       'sexo': [pessoaColaborador.pessoa.sexo, Validators.required],
       'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : undefined, [Validators.pattern(this.numberPattern), Validators.minLength(11), Validators.maxLength(11)]],
       'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : undefined, [Validators.minLength(9), Validators.maxLength(9)]],
