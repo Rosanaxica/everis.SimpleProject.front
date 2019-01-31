@@ -13,7 +13,8 @@ export class Projeto extends ModeloGenerico {
     qtdHorasServico2: number;
     qtdHorasServico3: number;
     dataInicio: Date;
-    dataEntrega: Date;
+    // dataEntrega: Date;
+    dataFinal: Date;
     dataRecebida: Date;
     escopoProjeto: string;
     foraEscopoProjeto: string;
