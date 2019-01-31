@@ -52,10 +52,10 @@ export class DadosPrincipaisComponent implements OnInit {
         'codProjeto': [objProjeto.codigoProjeto, Validators.required],
         'ext': [objProjeto.ext],
         'empresaId': [objProjeto.empresaId, Validators.required],
-        'dataInicio': [objProjeto.dataInicio, Validators.required],
+        'dataInicio': [objProjeto.dataInicio],
         'dataRecebida': [objProjeto.dataRecebida, Validators.required],
-        'dataProposta': [objProjeto.dataProposta, Validators.required],
-        'dataFinal': [objProjeto.dataFinal, Validators.required],
+        'dataProposta': [objProjeto.dataProposta],
+        'dataFinal': [objProjeto.dataFinal],
         'duracao': new FormControl(objProjeto.duracao, {
           validators: Validators.compose([Validators.max(99999), Validators.min(1), Validators.required]),
           updateOn: "change"
@@ -165,91 +165,11 @@ export class DadosPrincipaisComponent implements OnInit {
 
   validaDataRecebida() {
     var dataRecebida = this.dadosPrincipaisForm.get('dataRecebida');
-    var dataInicio = this.dadosPrincipaisForm.get('dataInicio');
-    var dataProposta = this.dadosPrincipaisForm.get('dataProposta');
-    var dataFinal = this.dadosPrincipaisForm.get('dataFinal');
-
+    
     if (dataRecebida.value == null || dataRecebida.value == undefined || dataRecebida.value == '') {
       window.alert("Favor informar uma data de recebida");
       dataRecebida.setErrors({ 'incorrect': true });
       dataRecebida.reset();
-      return;
-    }
-
-    if (dataRecebida.value > dataInicio.value) {
-      window.alert("Favor informar uma data recebida anterior a data de início");
-      dataRecebida.setErrors({ 'incorrect': true });
-      dataRecebida.reset();
-      return;
-    }
-
-    if (dataRecebida.value > dataProposta.value) {
-      window.alert("Favor informar uma data recebida anterior a data de proposta");
-      dataRecebida.setErrors({ 'incorrect': true });
-      dataRecebida.reset();
-      return;
-    }
-
-    if (dataRecebida.value > dataFinal.value) {
-      window.alert("Favor informar uma data recebida anterior a data final");
-      dataRecebida.setErrors({ 'incorrect': true });
-      dataRecebida.reset();
-      return;
-    }
-  }
-
-  validaDataInicio() {
-    var dataRecebida = this.dadosPrincipaisForm.get('dataRecebida');
-    var dataInicio = this.dadosPrincipaisForm.get('dataInicio');
-    var dataProposta = this.dadosPrincipaisForm.get('dataProposta');
-    var dataFinal = this.dadosPrincipaisForm.get('dataFinal');
-
-    if (dataInicio.value < dataRecebida.value) {
-      window.alert("Favor informar uma data início posterior a data de recebida");
-      dataInicio.setErrors({ 'incorrect': true });
-      dataInicio.reset();
-      return;
-    }
-
-    if (dataInicio.value > dataProposta.value) {
-      window.alert("Favor informar uma data início anterior a data de proposta");
-      dataProposta.setErrors({ 'incorrect': true });
-      dataInicio.reset();      
-      return;
-    }
-
-    if (dataInicio.value > dataFinal.value) {
-      window.alert("Favor informar uma data de início anterior a data final");
-      dataFinal.setErrors({ 'incorrect': true });
-      dataInicio.reset();      
-      return;
-    }
-  }
-
-  validaDataProposta() {
-    var dataRecebida = this.dadosPrincipaisForm.get('dataRecebida');
-    var dataInicio = this.dadosPrincipaisForm.get('dataInicio');
-    var dataProposta = this.dadosPrincipaisForm.get('dataProposta');
-    var dataFinal = this.dadosPrincipaisForm.get('dataFinal');
-
-    if (dataProposta.value < dataRecebida.value) {
-      window.alert("Favor informar uma data proposta posterior a data recebida");
-      dataProposta.setErrors({ 'incorrect': true });
-      dataProposta.reset();
-      return;
-    }
-
-    if (dataProposta.value < dataInicio.value) {
-      window.alert("Favor informar uma data proposta posterior a data de início");
-      dataProposta.setErrors({ 'incorrect': true });
-      dataProposta.reset();
-      return;
-    }
-
-    if (dataProposta.value > dataFinal.value) {
-      window.alert("Favor informar uma data proposta anterior a data final");
-      dataProposta.setErrors({ 'incorrect': true });
-      dataProposta.reset();
       return;
     }
   }
@@ -260,23 +180,38 @@ export class DadosPrincipaisComponent implements OnInit {
     var dataProposta = this.dadosPrincipaisForm.get('dataProposta');
     var dataFinal = this.dadosPrincipaisForm.get('dataFinal');
 
+    if (dataRecebida.value == null || dataRecebida.value == undefined || dataRecebida.value == '') {
+      window.alert("Favor informar uma data de início");
+      dataFinal.reset();
+      return;
+    }
+
+    if (dataInicio.value == null || dataInicio.value == undefined || dataInicio.value == '') {
+      window.alert("Favor informar uma data de início");
+      dataFinal.reset();
+      return;
+    }
+
+    if (dataProposta.value == null || dataProposta.value == undefined || dataProposta.value == '') {
+      window.alert("Favor informar uma data proposta");
+      dataFinal.reset();
+      return;
+    }
+
     if (dataFinal.value < dataRecebida.value) {
       window.alert("Favor informar uma data final posterior a data recebida");
-      dataFinal.setErrors({ 'incorrect': true });
       dataFinal.reset();
       return;
     }
 
     if (dataFinal.value < dataInicio.value) {
       window.alert("Favor informar uma data final posterior a data de início");
-      dataFinal.setErrors({ 'incorrect': true });
       dataFinal.reset();
       return;
     }
 
     if (dataFinal.value < dataProposta.value) {
       window.alert("Favor informar uma data final posterior a data de proposta");
-      dataFinal.setErrors({ 'incorrect': true });
       dataFinal.reset();
       return;
     }
