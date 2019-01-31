@@ -6,6 +6,8 @@ import { Pessoa } from '../../../../../../_models/pessoa.model';
 import { Empresa } from '../../../../../../_models/empresa.model';
 import { GenericService } from '../../../../../../_services/generic.service';
 import { ProjetoPessoaAtribuicao } from '../../../../../../_models/projetopessoaatribuicao.model.';
+import { ProjetoSquad } from 'src/app/_models/projeto-squad.model';
+import { Squad } from 'src/app/_models/squad.model';
 
 @Component({
   selector: 'app-atribuicao-equipe',
@@ -22,10 +24,15 @@ export class AtribuicaoEquipeComponent implements OnInit {
   projetoPessoa: ProjetoPessoa[] = [];
   pessoas: Pessoa[] = [];
   projeto = new Projeto();
+  filtroProjetoSquad = new ProjetoSquad();
+  projetoSquad = new ProjetoSquad();
+  squads: Squad[] = [];
   atribuicoes: ProjetoPessoaAtribuicao[] = [];
   idAtribuicao: number;
   responsavel: boolean;
   id: number;
+  squad: boolean;
+  squadId: number;
 
 
   ngOnInit() {
@@ -34,9 +41,24 @@ export class AtribuicaoEquipeComponent implements OnInit {
       this.id = +res.get('id');
     });
     this.getAtribuicoes();
+    this.getSquads();
   }
 
   OpenView(projeto: Projeto) {
+
+    this.filtroProjetoSquad.projetoId = projeto.id > 0 ? projeto.id : 0;
+    this.svc.listar(ProjetoSquad, this.filtroProjetoSquad, "ObterProjetoSquad").toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.projetoSquad = s.data;
+          }
+        } else {
+          this.projetoSquad = new ProjetoSquad();
+        }
+      }
+    );
+
     this.nomeProjeto = projeto.nome;
     this.projeto = projeto;
     this.filtroProjetoPessoa.projetoId = projeto.id;
@@ -50,6 +72,8 @@ export class AtribuicaoEquipeComponent implements OnInit {
         }
       }
     );
+
+    // this.svc.listar()
   }
   cancelar() {
     this.router.navigate(['/projetos']);
@@ -94,6 +118,19 @@ export class AtribuicaoEquipeComponent implements OnInit {
     this.projetoPessoa.splice(index, 1);
     this.verificaAdicionados();
   }
+
+  getSquads() {
+    this.svc.listar(Squad, null, "ObterTodos").toPromise().then(
+      s => {
+        if (s.sucesso) {
+          if (s.data != null && s.data !== undefined) {
+            this.squads = s.data;
+          }
+        }
+      }
+    );
+  }
+
   getAtribuicoes() {
 
     this.svc.listar(ProjetoPessoaAtribuicao, null, "ObterTodos").toPromise().then(
@@ -117,6 +154,10 @@ export class AtribuicaoEquipeComponent implements OnInit {
     });
   }
   popAtribuicao(idAtribuicao: number, idPessoa: number) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 066968c2b05cbb86e4a38318e11083aeba2f742e
     this.idAtribuicao = idAtribuicao;
     let projetoPessoa = this.projetoPessoa.find(x => x.pessoaId == idPessoa);
     this.projetoPessoa.forEach(pp => {
@@ -134,6 +175,10 @@ export class AtribuicaoEquipeComponent implements OnInit {
     //this.getProjeto.emit("2");
     if (this.projeto.id == undefined) {
       if (this.informadoResponsavel() && this.informadaFuncao() == 0 && this.projetoPessoa.length > 0) {
+        if (this.squad == true && (this.squadId == undefined || this.squadId == null || this.squadId < 0)) {
+          window.alert('Erro: Por favor, selecione um squad');
+          return;
+        }
         this.salvarProjeto();
         this.router.navigate(['/projetos', { sucesso: true }]);
       } else {
@@ -151,6 +196,7 @@ export class AtribuicaoEquipeComponent implements OnInit {
       }
     } else {
       if (this.informadoResponsavel() && this.informadaFuncao() == 0 && this.projetoPessoa.length > 0) {
+
         this.comparaListaXBanco();
         this.router.navigate(['/projetos', { sucesso: true }]);
       } else {
@@ -164,6 +210,8 @@ export class AtribuicaoEquipeComponent implements OnInit {
         if (this.projetoPessoa.length < 1) {
           window.alert('Erro: Favor adicionar ao menos uma pessoa na equipe ');
         }
+
+
         return;
       }
 
@@ -177,6 +225,22 @@ export class AtribuicaoEquipeComponent implements OnInit {
           case 200:
             this.projeto = data.data;
             this.comparaListaXBanco();
+            if (this.squad == true) {
+              this.projetoSquad.projetoId = this.projeto.id;
+              this.projetoSquad.squadId = this.squadId;
+              this.svc.salvar(this.projetoSquad, ProjetoSquad).toPromise().then(
+                s => {
+                  if (s.sucesso) {
+                    if (s.data != null && s.data !== undefined) {
+                      this.projetoSquad = s.data;
+                    }
+                  }
+                },
+                error => {
+                  alert('Erro ao tentar relacionar o squad ao projeto.');
+                }
+              );
+            }
             break;
           default:
             window.alert('erro: ' + data.mensagem);
@@ -184,8 +248,11 @@ export class AtribuicaoEquipeComponent implements OnInit {
         }
       },
         error => {
-          alert('Erro ao tentar adicionar.');
+          alert('Erro ao tentar adicionar o projeto.');
         });
+
+
+
 
 
   }

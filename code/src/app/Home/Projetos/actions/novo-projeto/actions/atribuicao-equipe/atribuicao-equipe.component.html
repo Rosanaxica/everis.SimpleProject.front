@@ -1,7 +1,37 @@
 <div class="row mt-4">
   <div class="col-12">
     <div class="form-group">
+      <label>Nome do Projeto:</label>
       <input type="text" value="{{nomeProjeto}}" class="form-control" id="input" placeholder="Nome Projeto" disabled>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="projetoSquad.id != undefined && projetoSquad.id != null && projetoSquad.id > 0">
+  <div class="col-12">
+    <div class="form-group">
+      <label>Squad:</label>
+      <input type="text" value="{{projetoSquad.squad.nome}}" class="form-control" id="nomeSquad" disabled>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="id == undefined || id == null || id == 0">
+  <div class="row">
+    <div class="col mb-2">
+      <div class="custom-control custom-checkbox custom-control-inline">
+        <input id="ckScf" name="scf" [(ngModel)]="squad" type="checkbox" class="custom-control-input">
+        <label class="custom-control-label" for="ckScf">Atribuir um Suad ao projeto?</label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4 mb-3" *ngIf="squad == true">
+      <label for=" label">*Squad</label>
+      <select [(ngModel)]="squadId" class="form-control" id="squadId" name="squadId">
+        <option [ngValue]="null" disabled>Selecione</option>
+        <option *ngFor="let squad of squads" value="{{squad.id}}">{{squad.nome}}</option>
+      </select>
     </div>
   </div>
 </div>

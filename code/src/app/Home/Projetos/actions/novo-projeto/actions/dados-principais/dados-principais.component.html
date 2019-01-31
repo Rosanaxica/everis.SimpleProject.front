@@ -41,7 +41,7 @@
 
     <div class="form-group row">
       <div class="col-md-3">
-        <label for="label">Status da Proposta</label>
+        <label for="label">Status da Proposta *</label>
         <select formControlName="statusProposta" class="form-control" id="statusProposta" name="statusProposta">
           <option value="aceitaPrimeiroEnvio">Aceita Primeiro Envio</option>
           <option value="aceitaSegundoEnvio">Aceita Segundo Envio</option>
@@ -51,7 +51,7 @@
         </select>
       </div>
       <div class="col-md-3">
-        <label>Duração</label>
+        <label>Duração *</label>
         <input type="number" formControlName="duracao" class="form-control" id="duracao" name="duracao" min="1" max="99999" 
           (keydown)="setMaxValue('duracao')"/>
         <div *ngIf="dadosPrincipaisForm.controls.duracao.touched && dadosPrincipaisForm.controls.duracao.errors">
@@ -60,7 +60,7 @@
       </div>
 
       <div class="col-md-3">
-        <label>Tarifa</label>
+        <label>Tarifa *</label>
         <input type="number" formControlName="tarifa" class="form-control" id="tarifa" name="tarifa" min="1" max="999999999" 
         (keydown)="setMaxValue('tarifa')" />
         <div *ngIf="dadosPrincipaisForm.controls.tarifa.touched && dadosPrincipaisForm.controls.tarifa.errors">
@@ -76,11 +76,11 @@
       </div>
       <div class="col-md-3">
         <label for="data">Data Início</label>
-        <input type="date" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio" (change)="validaDataInicio()"/>
+        <input type="date" formControlName="dataInicio" class="form-control" id="dataInicio" name="dataInicio"/>
       </div>
       <div class="col-md-3">
         <label for="data">Data Entrega Proposta</label>
-        <input type="date" formControlName="dataProposta"  (blur)="obterDadosForm()" class="form-control" id="dataProposta" name="dataProposta" (change)="validaDataProposta()"/>
+        <input type="date" formControlName="dataProposta"  (blur)="obterDadosForm()" class="form-control" id="dataProposta" name="dataProposta"/>
       </div>
       <div class="col-md-3">
           <label for="data">Data Final</label>
@@ -100,7 +100,7 @@
       </div>
 
       <div class="col-md-3">
-        <label for="label">EXT</label>
+        <label for="label">EXT *</label>
 
         <select formControlName="ext" class="form-control" id="ext" name="ext">
             <option value="EXT-011198-00079">EXT-011198-00079</option>

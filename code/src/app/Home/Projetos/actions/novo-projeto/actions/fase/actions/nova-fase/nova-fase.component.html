@@ -102,9 +102,8 @@
 </form>
 
 <div class="row align-items-center">
-
     <div class="col d-flex justify-content-end">
-        <button type="button" class="btn everis mr-2" (click)="salvar()">Salvar</button>
+        <button type="button" class="btn everis mr-2" (click)="salvar()" [disabled]="!formularioEstaValido()">Salvar</button>
         <!-- [disabled]="!formularioValido()" -->
         <button type="button" class="btn cancelar" (click)="cancelar()">Cancelar</button>
     </div>

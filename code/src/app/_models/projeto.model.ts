@@ -5,6 +5,7 @@ import { Tecnologia } from './tecnologia.model';
 import { Sigla } from './sigla.model';
 import { Diretoria } from './diretoria.model';
 import { Superintendencia } from './superintendencia.model';
+import { ProjetoPessoa } from './projetopessoa.model';
 
 export class Projeto extends ModeloGenerico {
     nome: string;
@@ -44,6 +45,7 @@ export class Projeto extends ModeloGenerico {
     superintendencia: Superintendencia;
     statusProposta: string;
     tarifa: string;
+    projetoPessoas: ProjetoPessoa[];
 
     getKey(): string {
         return 'Projeto'

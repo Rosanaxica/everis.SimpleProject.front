@@ -56,15 +56,15 @@
       <div class="col-md-2">
         <label for="funcional">*Funcional</label>
         <input type="text" maxlength="9" class="form-control" id="funcional" name="funcional" formControlName="funcional">
-        <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.funcional.touched && formularioPessoa.controls.funcional.hasError('required')">
+        <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.funcional.invalid && (formularioPessoa.controls.funcional.touched || formularioPessoa.controls.funcional.dirty)">
           <i class="fa fa-times mr-2"></i>
-          <small>Por favor, informe a funcional.</small>
+          <small>Por favor, informe a funcional com 9 dígitos numéricos.</small>
         </div>
       </div>
       <!-- Fim Funcional -->
       <!-- Inicio Diretoria -->
       <div class="col-md-3">
-        <label for="funcional">*Diretoria</label>
+        <label for="diretoria">*Diretoria</label>
         <select class="form-control" id="diretoria" name="diretoria" formControlName="diretoria">
           <option [ngValue]="null" disabled>Selecione</option>
           <option *ngFor="let i of diretorias" value="{{i.id}}">{{i.descricao}}</option>
