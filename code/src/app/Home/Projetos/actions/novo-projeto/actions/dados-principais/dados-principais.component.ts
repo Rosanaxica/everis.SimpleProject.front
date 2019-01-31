@@ -129,7 +129,7 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.statusProposta = values.statusProposta;
     this.projeto.codigoProjeto = values.codProjeto;
     this.projeto.tarifa = values.tarifa;
-    this.verifcaData();
+    // this.verifcaData();
   };
 
 
@@ -183,11 +183,11 @@ export class DadosPrincipaisComponent implements OnInit {
     }
   }
 
-  verifcaData() {
-    if (this.projeto.dataInicio > this.projeto.dataProposta) {
-      alert("Data Fim deve ser maior que Data Prevista!")
-    }
-  }
+  // verifcaData() {
+  //   if (this.projeto.dataInicio > this.projeto.dataProposta) {
+  //     alert("Data Fim deve ser maior que Data Prevista!")
+  //   }
+  // }
 
   cancelar() {
     this.router.navigate(['/projetos/']);

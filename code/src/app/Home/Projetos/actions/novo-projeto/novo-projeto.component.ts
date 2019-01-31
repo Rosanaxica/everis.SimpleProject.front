@@ -8,6 +8,7 @@ import { Projeto } from '../../../../_models/projeto.model';
 import { GenericService } from '../../../../_services/generic.service';
 import { SolicitacaoMudanca } from '../../../../_models/solicitacao_mudanca.model';
 import { FaseModel } from 'src/app/_models/fase.model';
+import { Status } from 'src/app/_models/status.model';
 
 
 @Component({
@@ -27,7 +28,10 @@ export class NovoProjetoComponent implements OnInit {
 
   id: number;
   filtroProjeto = new Projeto();
+  filtroStatus = new Status();
+  statusAtual: number;
   projeto = new Projeto();
+  status = new Status();
   solicitacaoMudancas: Array<SolicitacaoMudanca>;
   fases: Array<FaseModel>;
   filtroSolicitacaoMudanca = new SolicitacaoMudanca();
@@ -38,6 +42,8 @@ export class NovoProjetoComponent implements OnInit {
     this.arouter.paramMap.subscribe(res => {
       this.id = +res.get('id');
     });
+
+    this.pegarStatus()
 
     this.filtroSolicitacaoMudanca.projetoId = this.id;
     this.filtroSolicitacaoMudanca.ativo = true;
@@ -65,6 +71,7 @@ export class NovoProjetoComponent implements OnInit {
             this.projeto = result.data;
             this.formDados.OpenView(this.projeto);
             this.formAtribuicaoEquipe.OpenView(this.projeto);
+            // console.log(this.projeto.statusId)
           },
           (error) => {
           }
@@ -98,6 +105,19 @@ export class NovoProjetoComponent implements OnInit {
 
   vaiParaFase() {
     this.router.navigate([`projetos/novo-projeto/fase/${this.id}`]);
+  }
+
+  pegarStatus() {
+    this.svc.listar(Status, this.filtroStatus)
+      .toPromise().then(
+        (result) => {
+          this.status = result.data;
+          this.statusAtual = this.status[(this.projeto.statusId - 1)]
+          console.log(this.statusAtual)
+        },
+        (error) => {
+        }
+      );
   }
 
   vaiParaSolicitacaoMudanca() {
