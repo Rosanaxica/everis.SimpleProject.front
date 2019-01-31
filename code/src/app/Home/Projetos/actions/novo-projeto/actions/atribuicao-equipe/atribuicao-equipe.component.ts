@@ -154,7 +154,6 @@ export class AtribuicaoEquipeComponent implements OnInit {
     });
   }
   popAtribuicao(idAtribuicao: number, idPessoa: number) {
-
     this.idAtribuicao = idAtribuicao;
     let projetoPessoa = this.projetoPessoa.find(x => x.pessoaId == idPessoa);
     this.projetoPessoa.forEach(pp => {

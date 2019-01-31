@@ -316,7 +316,7 @@ export class CadastroPessoasComponent implements OnInit {
       'tipoPessoa': [tipo],
       'nome': [pessoaColaborador.pessoa.nome, Validators.required],
       'diretoria': [pessoaColaborador.pessoa.diretoriaId, Validators.required],
-      'funcional': [pessoaColaborador.pessoa.funcional, [Validators.required, Validators.pattern(this.numberPattern)]],
+      'funcional': [pessoaColaborador.pessoa.funcional, [Validators.required, Validators.pattern(this.numberPattern), Validators.minLength(9), Validators.maxLength(9)]],
       'sexo': [pessoaColaborador.pessoa.sexo, Validators.required],
       'cpf': [pessoaColaborador.pessoa.cpf != null && pessoaColaborador.pessoa.cpf != undefined && pessoaColaborador.pessoa.cpf > 0 ? pessoaColaborador.pessoa.cpf : undefined, [Validators.pattern(this.numberPattern), Validators.minLength(11), Validators.maxLength(11)]],
       'rg': [pessoaColaborador.pessoa.rg != null && pessoaColaborador.pessoa.rg != undefined && pessoaColaborador.pessoa.rg != '' ? pessoaColaborador.pessoa.rg : undefined, [Validators.minLength(9), Validators.maxLength(9)]],
@@ -463,6 +463,83 @@ export class CadastroPessoasComponent implements OnInit {
     emailCorp.markAsUntouched();
     emailCorp.updateValueAndValidity();
   }
+
+  validaDataNascimento() {
+    var dataAdmissao = this.formularioPessoa.get('dataAdmissao');
+    var dataNascimento = this.formularioPessoa.get('dataNascimento');
+    var dataDemissao = this.formularioPessoa.get('dataDemissao');
+
+    if (dataNascimento.value == '' || dataNascimento.value == undefined || dataNascimento.value == null) {
+      dataNascimento.reset();
+      return;
+    }
+
+    if (dataNascimento.value > dataAdmissao.value) {
+      window.alert("A data de nascimento deve ser menor que a data de admissão");
+      dataNascimento.setErrors({ 'incorrect': true });
+      dataNascimento.reset();
+      return;
+    }
+
+    if (dataNascimento.value > dataDemissao.value) {
+      window.alert("A data de nascimento deve ser menor que a data de demissão");
+      dataNascimento.setErrors({ 'incorrect': true });
+      dataNascimento.reset();
+      return;
+    }
+  }
+
+  validaDataAdmissao() {
+    var dataAdmissao = this.formularioPessoa.get('dataAdmissao');
+    var dataNascimento = this.formularioPessoa.get('dataNascimento');
+
+    if (dataAdmissao.value < dataNascimento.value) {
+      window.alert("A data de admissão deve ser maior que a data de nascimento");
+      dataAdmissao.setErrors({ 'incorrect': true });
+      dataAdmissao.reset();
+      return;
+    }
+
+    if (dataAdmissao.value == '' || dataAdmissao.value == undefined || dataAdmissao.value == null) {
+      dataAdmissao.reset();
+      return;
+    }
+  }
+
+
+  validaDataDemissao() {
+    var dataAdmissao = this.formularioPessoa.get('dataAdmissao');
+    var dataNascimento = this.formularioPessoa.get('dataNascimento');
+    var dataDemissao = this.formularioPessoa.get('dataDemissao');
+
+    if (dataDemissao.value == '' || dataDemissao.value == undefined || dataDemissao.value == null) {
+      dataDemissao.reset();
+      return;
+    }
+
+    if (dataAdmissao.value == '' || dataAdmissao.value == undefined || dataAdmissao.value == null) {
+      window.alert("Favor informar a data de admissão");
+      dataDemissao.setErrors({ 'incorrect': true });
+      dataDemissao.reset();
+      return;
+    }
+
+    if (dataDemissao.value < dataAdmissao.value) {
+      window.alert("A data de demissão deve ser maior que a data de admissão");
+      dataDemissao.setErrors({ 'incorrect': true });
+      dataDemissao.reset();
+      return;
+    }
+
+    if (dataDemissao.value < dataNascimento.value) {
+      window.alert("A data de demissão deve ser maior que a data de nascimento");
+      dataDemissao.setErrors({ 'incorrect': true });
+      dataDemissao.reset();
+      return;
+    }
+  }
+
+
 
   Salvar() {
     this.obterDadosForm();
