@@ -43,8 +43,6 @@ export class NovoProjetoComponent implements OnInit {
       this.id = +res.get('id');
     });
 
-    this.pegarStatus()
-
     this.filtroSolicitacaoMudanca.projetoId = this.id;
     this.filtroSolicitacaoMudanca.ativo = true;
     this.svc.listar(SolicitacaoMudanca, this.filtroSolicitacaoMudanca)
@@ -71,6 +69,7 @@ export class NovoProjetoComponent implements OnInit {
             this.projeto = result.data;
             this.formDados.OpenView(this.projeto);
             this.formAtribuicaoEquipe.OpenView(this.projeto);
+            this.pegarStatus();
             // console.log(this.projeto.statusId)
           },
           (error) => {
@@ -110,12 +109,17 @@ export class NovoProjetoComponent implements OnInit {
   pegarStatus() {
     this.svc.listar(Status, this.filtroStatus)
       .toPromise().then(
-        (result) => {
-          this.status = result.data;
-          this.statusAtual = this.status[(this.projeto.statusId - 1)]
-          console.log(this.statusAtual)
+        result => {
+          if (result.sucesso) {
+            if (result.data != null && result.data !== undefined) {
+              this.status = result.data;
+              this.statusAtual = this.status[(this.projeto.statusId - 1)]
+              console.log(this.statusAtual)
+            }
+          }
         },
         (error) => {
+
         }
       );
   }
