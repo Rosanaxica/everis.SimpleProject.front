@@ -469,6 +469,11 @@ export class CadastroPessoasComponent implements OnInit {
     var dataNascimento = this.formularioPessoa.get('dataNascimento');
     var dataDemissao = this.formularioPessoa.get('dataDemissao');
 
+    if (dataNascimento.value == '' || dataNascimento.value == undefined || dataNascimento.value == null) {
+      dataNascimento.reset();
+      return;
+    }
+
     if (dataNascimento.value > dataAdmissao.value) {
       window.alert("A data de nascimento deve ser menor que a data de admissão");
       dataNascimento.setErrors({ 'incorrect': true });
@@ -494,6 +499,11 @@ export class CadastroPessoasComponent implements OnInit {
       dataAdmissao.reset();
       return;
     }
+
+    if (dataAdmissao.value == '' || dataAdmissao.value == undefined || dataAdmissao.value == null) {
+      dataAdmissao.reset();
+      return;
+    }
   }
 
 
@@ -502,6 +512,10 @@ export class CadastroPessoasComponent implements OnInit {
     var dataNascimento = this.formularioPessoa.get('dataNascimento');
     var dataDemissao = this.formularioPessoa.get('dataDemissao');
 
+    if (dataDemissao.value == '' || dataDemissao.value == undefined || dataDemissao.value == null) {
+      dataDemissao.reset();
+      return;
+    }
 
     if (dataAdmissao.value == '' || dataAdmissao.value == undefined || dataAdmissao.value == null) {
       window.alert("Favor informar a data de admissão");
