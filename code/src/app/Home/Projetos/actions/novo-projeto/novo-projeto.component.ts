@@ -41,10 +41,6 @@ export class NovoProjetoComponent implements OnInit {
       this.id = +res.get('id');
      
     });
-
-    
-    
-
     this.filtroSolicitacaoMudanca.projetoId = this.id;
     this.filtroSolicitacaoMudanca.ativo = true;
     this.svc.listar(SolicitacaoMudanca, this.filtroSolicitacaoMudanca)
@@ -116,6 +112,7 @@ export class NovoProjetoComponent implements OnInit {
           this.statusAtual = result.data;
         },
         (error) => {
+
         }
       );
   }
