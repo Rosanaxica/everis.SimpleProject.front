@@ -1,6 +1,6 @@
 <div class="row align-items-center no-gutters">
-  <div class="col-4">
-    <h1 class="titulo mb-0">Fases do Projeto {{projeto.codigoProjeto}}</h1>
+  <div class="col-3">
+    <h1 class="titulo mb-0">Fases ({{projeto.codigoProjeto}})</h1>
   </div>
   <div class="input-group col">
     <input type="text" class="form-control no-shadow" placeholder="Digite o código da fase que você deseja buscar"
@@ -10,12 +10,12 @@
     </div>
   </div>
   <div class="col-3 d-flex justify-content-end">
-    <button type="button" class="btn everis mr-0" (click)="vaiParaNovaFase()">Nova Fase+</button>
+    <button type="button" class="btn everis mr-2" (click)="vaiParaNovaFase()">Nova Fase+</button>
   </div>
   <hr class="mt-2" />
 
   <!-- {{fases | json}} -->
-  <table class="table table-striped mt-4">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Código da Fase</th>
