@@ -65,7 +65,7 @@ export class ProjetosComponent implements OnInit {
     this.contar(this.projetosFiltrados);
   }
 
-  Persitencia(){
+  Persitencia() {
     this.filtrar()
   }
 
@@ -202,5 +202,23 @@ export class ProjetosComponent implements OnInit {
         }
       );
     });
+  }
+
+  sliceMembroEquipe(nome: string): string {
+
+    let retorno: string;
+    let letraPrimeiroNome: string;
+    letraPrimeiroNome = nome.substring(0, 1);
+    let letraSegundoNome: string;
+    let splitNome: string[] = nome.split(' ');
+
+    if (nome.includes(' ')) {
+      letraSegundoNome = splitNome[1].substring(0, 1);
+      retorno = letraPrimeiroNome + letraSegundoNome;
+    } else {
+      retorno = letraPrimeiroNome
+    }
+
+    return retorno;
   }
 }
