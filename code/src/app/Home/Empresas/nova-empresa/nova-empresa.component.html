@@ -17,9 +17,9 @@
         <label for="nome" class="ml-1">Nome da Empresa <span>*</span></label>
         <input type="text" class="form-control" [(ngModel)]="nome2" (blur)="nome2 = nome2.trim();" placeholder="Digite o nome da Empresa"
           name="nome" minlength="3" maxlength="50" autocomplete="off" formControlName="nome">
-        <div class="alert alert-danger mt-2" *ngIf="formularioEmpresa.controls.nome.touched && formularioEmpresa.controls.nome.hasError('required')">
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="formularioEmpresa.controls.nome.touched && formularioEmpresa.controls.nome.hasError('required')">
           <i class="fa fa-times mr-2"></i>
-          <small>Por favor, informe o nomme da empresa.</small>
+          <small>Por favor, informe o nome da empresa.</small>
         </div>
       </div>
     </div>

@@ -61,9 +61,10 @@
             <input appLimitTo  maxLength="24" type="number" class="form-control" name="qtdHorasDia" formControlName="qtdHorasDia"
                 placeholder="Digite as horas por dia">
 
-            <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.qtdHorasDia.touched && formularioFase.controls.qtdHorasDia.hasError('required')">
-                <i class="fa fa-times mr-2"></i>
-                <small>Por favor, informe a quantidade de horas por dia. Obs.: Máximo de 24 horas por dia.</small>
+            <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.qtdHorasDia.invalid && (formularioFase.controls.qtdHorasDia.touched || formularioFase.controls.qtdHorasDia.dirty)">
+                <small *ngIf="formularioFase.controls.qtdHorasDia.invalid"><i class="fa fa-times mr-2"></i>Por
+                    favor, informe a quantidade de horas por dia. Obs.: Máximo de 24 horas por dia.</small>
+               
             </div>
         </div>
         <div class="col-xs-12 col-12 col-md-4 form-group">

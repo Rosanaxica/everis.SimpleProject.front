@@ -11,6 +11,7 @@ import { TipoFaseModel } from 'src/app/_models/tipo_fase.model';
 import { Projeto } from 'src/app/_models/projeto.model';
 import { DatePipe } from '@angular/common';
 import { DateFormatPipe } from 'src/app/shared/util/date-format-pipe';
+import { strictEqual } from 'assert';
 
 @Component({
   selector: 'app-nova-fase',
@@ -79,6 +80,19 @@ export class NovaFaseComponent implements OnInit {
     return this.modeloFase !== null && this.modeloFase !== undefined && this.modeloFase.id > 0;
   }
 
+  private setMaxValue(itemFormControlName) {
+    let item = this.formularioFase.get(itemFormControlName);
+    if(item.errors && item.errors.max) {
+      item.setValue(item.errors.max.max);
+      item.updateValueAndValidity();
+    }
+    if(item.errors && item.errors.min) {
+      item.setValue(item.errors.min.min);
+      item.updateValueAndValidity();
+    }
+    return;
+  }
+
   obterProjeto() {
     this.projeto.id = this.idProjeto;
     this.svc.obter(this.projeto, null).toPromise().then(
@@ -140,7 +154,10 @@ export class NovaFaseComponent implements OnInit {
     itemFase = itemFase || new FaseModel;
 
     this.formularioFase = this.fb.group({
-      'qtdHorasDia': [{ value: this.modeloFase.qtdHorasDia, disabled: false }, Validators.required],
+      'qtdHorasDia': new FormControl(this.modeloFase.qtdHorasDia, {
+        validators: Validators.compose([Validators.max(24), Validators.min(1), Validators.required]),
+        updateOn: "change"
+      }),
       'dataInicio': [{ value: this.formatDate.transform(this.modeloFase.dataInicio), disabled: false }, Validators.required],
       'dataFim': [{ value: this.formatDate.transform(this.modeloFase.dataFim), disabled: false }, Validators.required],
       'tipoFase': [{ value: this.modeloFase.tipoFaseId, disabled: false }, Validators.required],
@@ -162,6 +179,30 @@ export class NovaFaseComponent implements OnInit {
     this.modeloFase.pessoaId = +formObj.colaborador
     this.modeloFase.tipoFase = null;
     this.modeloFase.tipoFaseId = +formObj.tipoFase;
+  }
+
+  validaQtdHorasDia() {
+    let qtdHorasDia = this.formularioFase.get('qtdHorasDia');
+    
+    if(qtdHorasDia.value > 24){
+      qtdHorasDia.setValue(24);
+    }
+
+    if(qtdHorasDia.value == null){
+      qtdHorasDia.reset();
+    }
+  }
+
+  limpaString(){
+    let qtdHorasDia = this.formularioFase.get('qtdHorasDia');
+
+    if(qtdHorasDia.value == null || qtdHorasDia.value == undefined){
+      qtdHorasDia.reset();
+    }
+
+    if(qtdHorasDia.value <= 0){
+      qtdHorasDia.reset();
+    }
   }
 
 }

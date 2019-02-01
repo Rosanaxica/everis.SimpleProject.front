@@ -37,7 +37,7 @@ export class FaseComponent implements OnInit {
 
       var sucesso = res.get("sucesso");
       if (sucesso !== null && sucesso !== undefined && sucesso) {
-        alert('Cadastro realizado com sucesso!');
+        alert('Ação realizada com sucesso!');
       }
     });
 
