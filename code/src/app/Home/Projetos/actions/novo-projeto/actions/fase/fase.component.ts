@@ -15,7 +15,7 @@ import { TipoFaseModel } from 'src/app/_models/tipo_fase.model';
 export class FaseComponent implements OnInit {
   constructor(private svc: GenericService, private router: Router, private arouter: ActivatedRoute) { }
 
-  projetoId :number = 0;
+  projetoId: number = 0;
   msgSucesso: string;
 
   fases: FaseModel[] = [];
@@ -26,21 +26,21 @@ export class FaseComponent implements OnInit {
 
   ngOnInit() {
 
-    this.arouter.paramMap.subscribe(res => {  
+    this.arouter.paramMap.subscribe(res => {
       this.projetoId = +res.get('idProjeto');
       this.obterProjeto();
-      
+
       var sucesso = res.get("sucesso");
       if (sucesso !== null && sucesso !== undefined && sucesso) {
         alert('Cadastro realizado com sucesso!');
       }
     });
-   
+
     this.filtrar();
   }
 
   obterProjeto() {
-   this.projeto.id = this.projetoId; 
+    this.projeto.id = this.projetoId;
     this.svc.obter(this.projeto, null).toPromise().then(
       s => {
         if (s.sucesso) {
@@ -92,8 +92,9 @@ export class FaseComponent implements OnInit {
     this.router.navigate([`/projetos/novo-projeto/fase/nova-fase/${this.projetoId}/${id}`]);
   }
 
-  vaiParaProjeto() {
-    this.router.navigate([`/projetos/novo-projeto/${this.projetoId}`]);
+  voltaParaEdicaoProjeto() {
+    this.router.navigate([`projetos/novo-projeto/${this.projetoId}`]);
   }
-  
+
+
 }

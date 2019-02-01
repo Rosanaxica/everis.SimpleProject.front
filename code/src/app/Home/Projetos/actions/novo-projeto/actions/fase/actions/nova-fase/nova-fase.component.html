@@ -21,7 +21,7 @@
 
     <div class="row">
         <div class="form-group col-sm-12 mt-3">
-            <label for="slColaborador">Nome do Colaborador<abbr title="Campo obrigatório" class="text-danger no-text-decoration">*</abbr></label>
+            <label for="slColaborador">Nome do Colaborador<span>*</span></label>
             <select name="slColaborador" class="form-control" name="colaborador" formControlName="colaborador">
                 <option *ngFor='let op of colaboradorLista' value="{{op.id}}">{{op.nome}}</option>
             </select>
@@ -35,7 +35,7 @@
 
     <div class="row">
         <div class="col-xs-12 col-12 col-md-4 form-group">
-            <label for="codigoFase">Código da Fase<abbr title="Campo obrigatório" class="text-danger no-text-decoration">*</abbr></label>
+            <label for="codigoFase">Código da Fase<span>*</span></label>
             <input type="number" class="form-control" name="codigoFase" formControlName="codigoFase" placeholder="Digite o código da fase">
             <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.codigoFase.touched && formularioFase.controls.codigoFase.hasError('required')">
                 <i class="fa fa-times mr-2"></i>
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
-            <label for="slTipoFase">Tipo da Fase<abbr title="Campo obrigatório" class="text-danger no-text-decoration">*</abbr></label>
+            <label for="slTipoFase">Tipo da Fase<span>*</span></label>
             <select name="slTipoFase" class="form-control" name="tipoFase" formControlName="tipoFase">
                 <option *ngFor='let op of tipoFaseLista' value="{{op.id}}">{{op.nome}}</option>
             </select>
@@ -57,7 +57,7 @@
 
     <div class="row">
         <div class="col-xs-12 col-12 col-md-4 form-group">
-            <label for="qtdHorasDia">Horas por Dia<abbr title="Campo obrigatório" class="text-danger no-text-decoration">*</abbr></label>
+            <label for="qtdHorasDia">Horas por Dia<span>*</span></label>
             <input type="number" class="form-control" min="1" max="24" name="qtdHorasDia" formControlName="qtdHorasDia"
                 placeholder="Digite as horas por dia">
 
@@ -67,7 +67,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
-            <label for="dataInicio">Data Inicial<abbr title="Campo obrigatório" class="text-danger no-text-decoration">*</abbr></label>
+            <label for="dataInicio">Data Inicial<span>*</span></label>
             <input type="date" class="form-control" placeholder="dd/mm/aaaa" name="dataInicio" formControlName="dataInicio">
             <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
                 <i class="fa fa-times mr-2"></i>
@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
-            <label for="dataFim">Data Final<abbr title="Campo obrigatório" class="text-danger no-text-decoration">*</abbr></label>
+            <label for="dataFim">Data Final<span>*</span></label>
             <input type="date" class="form-control" placeholder="dd/mm/aaaa" name="dataFim" formControlName="dataFim">
             <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataFim.touched && formularioFase.controls.dataFim.hasError('required')">
                 <i class="fa fa-times mr-2"></i>

@@ -6,10 +6,10 @@
     <hr class="mt-0 mb-4" />
   </div>
   <!-- Inicio Tipo Pessoa -->
-  <fieldset class="row border no-gutters mb-4" *ngIf="!(id > 0)">
-    <legend>Escolha o tipo de pessoa que deseja cadastrar</legend>
+  <div class="row no-gutters" *ngIf="!(id > 0)">
     <div class="col mb-2 pl-2">
-      <div class="custom-control custom-radio custom-control-inline">
+      <label for="tipoPessoa">Tipo de pessoa:</label>
+      <div class="custom-control custom-radio custom-control-inline ml-2">
         <input id="radColaborador" value="1" name="tipoPessoa" formControlName="tipoPessoa" type="radio" class="custom-control-input"
           (change)="preferenciaTipoPessoa()">
         <label class="custom-control-label cursor-pointer" for="radColaborador">Colaborador</label>
@@ -17,17 +17,17 @@
       <div class="custom-control custom-radio custom-control-inline">
         <input id="radTerceiro" value="3" name="tipoPessoa" formControlName="tipoPessoa" type="radio" class="custom-control-input"
           (change)="preferenciaTipoPessoa()">
-        <label class=" custom-control-label cursor-pointer" for="radTerceiro">Terceiro</label>
+        <label class=" custom-control-label cursor-pointer" for="radTerceiro">Cliente</label>
       </div>
     </div>
-  </fieldset>
+  </div>
   <!-- Fim Tipo Pessoa -->
-  <fieldset class="border mb-4">
+  <fieldset class="border mb-3">
     <legend>Dados Pessoais</legend>
     <!-- Inicio Nome -->
     <div class="row mb-2">
       <div class="col-md-7">
-        <label for="nome">*Nome</label>
+        <label for="nome">Nome <span>*</span></label>
         <input type="text" class="form-control" name="nome" formControlName="nome" maxlength="100">
         <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.nome.touched && formularioPessoa.controls.nome.hasError('required')">
           <i class="fa fa-times mr-2"></i>
@@ -36,7 +36,7 @@
       </div>
       <!-- Inicio Sexo -->
       <div class="col mb-2 mt-2">
-        <label for="sexo" class="row no-gutters">*Sexo</label>
+        <label for="sexo" class="row no-gutters">Sexo <span>*</span></label>
         <div class="custom-control custom-radio custom-control-inline">
           <input type="radio" id="sexoMasc" value="Masculino" name="sexo" formControlName="sexo" class="custom-control-input">
           <label class="custom-control-label" for="sexoMasc">Masculino</label>
@@ -54,7 +54,7 @@
     <!-- Inicio Funcional -->
     <div class="row mb-2">
       <div class="col-md-2">
-        <label for="funcional">*Funcional</label>
+        <label for="funcional">Funcional <span>*</span></label>
         <input type="text" maxlength="9" class="form-control" id="funcional" name="funcional" formControlName="funcional">
         <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.funcional.invalid && (formularioPessoa.controls.funcional.touched || formularioPessoa.controls.funcional.dirty)">
           <i class="fa fa-times mr-2"></i>
@@ -64,7 +64,7 @@
       <!-- Fim Funcional -->
       <!-- Inicio Diretoria -->
       <div class="col-md-3">
-        <label for="diretoria">*Diretoria</label>
+        <label for="diretoria">Diretoria <span>*</span></label>
         <select class="form-control" id="diretoria" name="diretoria" formControlName="diretoria">
           <option [ngValue]="null" disabled>Selecione</option>
           <option *ngFor="let i of diretorias" value="{{i.id}}">{{i.descricao}}</option>
@@ -80,7 +80,7 @@
   </fieldset>
 
   <!-- Inicio CPF e  Documento-->
-  <fieldset class="border mb-4">
+  <fieldset class="border mb-3">
     <legend>Documentos</legend>
     <div class="row mb-2">
       <div class="col-md-2">
@@ -96,7 +96,7 @@
     </div>
 
     <!-- Inicio Dados RG-->
-    <div class="row mb-2 mt-4">
+    <div class="row mb-2 mt-3">
       <div class="col-md-2">
         <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg" maxlength="9">
         <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.rg.touched || formularioPessoa.controls.rg.dirty) && formularioPessoa.controls.rg.invalid)">
@@ -149,20 +149,20 @@
   </fieldset>
   <!-- Fim CPF e Documento -->
   <!-- Inicio Telefone -->
-  <fieldset class="border mb-4">
+  <fieldset class="border mb-3">
     <legend>
       Contato
     </legend>
     <div class="row mb-2">
       <div class="col-md-2">
-        <label for="tipoTelefone">*Tipo de Telefone</label>
+        <label for="tipoTelefone">Tipo de Telefone <span>*</span></label>
         <select class="form-control" id="tipoTelefone" name="tipoTelefone" formControlName="tipoTelefone" [required]="isTelRequired()">
           <option [ngValue]="null" disabled>Selecione</option>
           <option *ngFor="let i of tiposTelefone" value="{{i.id}}-{{i.descricao}}">{{i.descricao}}</option>
         </select>
       </div>
       <div class="col-md-4">
-        <label for="numeroTelefone">*Telefone</label>
+        <label for="numeroTelefone">Telefone <span>*</span></label>
         <div class="input-group">
           <input input type="text" (keydown.enter)="AddTelefone()" [(ngModel)]="telefone2" (blur)="telefone2 = telefone2.trim();"
             class="form-control no-shadow" formControlName="numeroTelefone" id="telefone" name="numeroTelefone"
@@ -246,11 +246,11 @@
     <!-- Fim E-mail Corp -->
   </fieldset>
   <fieldset class="border pb-4" *ngIf="formularioPessoa.controls.tipoPessoa.value == 3">
-    <legend>Informações de Terceiros</legend>
+    <legend>Informações profissionais</legend>
     <!-- Inicio Empresa -->
     <div class="row mb-2">
       <div class="col-md-6">
-        <label for="empresa">*Empresa</label>
+        <label for="empresa">Empresa <span>*</span></label>
         <select class="form-control" name="empresa" formControlName="empresa">
           <option [ngValue]="null" disabled>Selecione</option>
           <option *ngFor="let emp of empresas" value="{{emp.id}}">{{emp.nome}}</option>
@@ -263,7 +263,7 @@
       </div>
       <!-- Fim Empresa -->
       <div class="col mb-2 d-flex align-items-end">
-        <div class="custom-control custom-checkbox custom-control-inline mt-5">
+        <div class="custom-control custom-checkbox custom-control-inline mt-3">
           <input id="ckGestorTecnico" name="gestorTecnico" formControlName="gestorTecnico" type="checkbox" class="custom-control-input">
           <label class="custom-control-label cursor-pointer" for="ckGestorTecnico">Gestor Técnico?</label>
         </div>
@@ -286,7 +286,7 @@
       </div>
       <div class="row mb-2">
         <div class="col-md-4">
-          <label for="empresa">*Tipo de Contrato</label>
+          <label for="empresa">Tipo de Contrato <span>*</span></label>
           <select class="form-control" name="tipoContrato" formControlName="tipoContrato">
             <option [ngValue]="null" disabled>Selecione</option>
             <option value="Terceirizado">Terceirizado</option>
@@ -300,7 +300,7 @@
       </div>
       <div class="row">
         <div class="col-xs-12 col-12 col-md-4 form-group">
-          <label for="dataNascimento">*Data de Nascimento</label>
+          <label for="dataNascimento">Data de Nascimento <span>*</span></label>
 
           <input type="date" class="form-control" placeholder="dd/mm/aaaa" name="dataNascimento" formControlName="dataNascimento"
             (change)="validaDataNascimento()">
@@ -310,7 +310,7 @@
               </div> -->
         </div>
         <div class="col-xs-12 col-12 col-md-4 form-group">
-          <label for="dataNascimento">*Data de Admissão</label>
+          <label for="dataNascimento">Data de Admissão <span>*</span></label>
           <input type="date" class="form-control" placeholder="Dia/Mês/Ano" name="dataAdmissao" formControlName="dataAdmissao"
             (change)="validaDataAdmissao()">
           <!-- <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.dataInicio.touched && formularioFase.controls.dataInicio.hasError('required')">
@@ -330,7 +330,7 @@
       </div>
       <div class="row mb-2">
         <div class="col-md-3">
-          <label for="empresa">*Função</label>
+          <label for="empresa">Função <span>*</span></label>
           <select class="form-control" name="funcao" formControlName="funcao">
             <option [ngValue]="null" disabled>Selecione</option>
             <option *ngFor="let i of funcoes" value="{{i.id}}">{{i.descricao}}</option>
@@ -342,7 +342,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <label for="empresa">*Tipo de Serviço</label>
+          <label for="empresa">Tipo de Serviço <span>*</span></label>
           <select class="form-control" name="tipoServico" formControlName="tipoServico">
             <option [ngValue]="null" disabled>Selecione</option>
             <option *ngFor="let i of tipoServicos" value="{{i.id}}">{{i.descricao}}</option>
@@ -354,7 +354,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <label for="empresa">*Polo de Acesso</label>
+          <label for="empresa">Polo de Acesso <span>*</span></label>
           <select class="form-control" name="poloAcesso" formControlName="poloAcesso">
             <option [ngValue]="null" disabled>Selecione</option>
             <option *ngFor="let i of polosAcesso" value="{{i.id}}">{{i.descricao}}</option>
@@ -366,7 +366,7 @@
           </div>
         </div>
         <div class="col-md-3">
-          <label for="empresa">*Área Contratante</label>
+          <label for="empresa">Área Contratante <span>*</span></label>
           <select class="form-control" name="areaContratante" formControlName="areaContratante">
             <option [ngValue]="null" disabled>Selecione</option>
             <option *ngFor="let i of areasContratantes" value="{{i.id}}">{{i.descricao}}</option>
@@ -389,11 +389,6 @@
         </div>
       </div>
 
-      <div class="row mt-3 mb-2">
-        <div class="col">
-          Tipo de Vínculo
-        </div>
-      </div>
       <div class="row">
         <div class="col mb-2">
           <div class="custom-control custom-checkbox custom-control-inline">

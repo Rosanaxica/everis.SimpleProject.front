@@ -85,3 +85,5 @@
     font-size: 14px;
     border-radius: 0;
 }
+
+.icon-user-small {width: 32px; height: 32px; color: #9AAE04; border: 1px solid #9AAE04; text-transform: uppercase}
