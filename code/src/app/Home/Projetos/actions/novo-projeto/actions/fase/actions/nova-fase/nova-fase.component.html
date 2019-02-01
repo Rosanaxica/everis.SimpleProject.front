@@ -58,7 +58,7 @@
     <div class="row">
         <div class="col-xs-12 col-12 col-md-4 form-group">
             <label for="qtdHorasDia">Horas por Dia<span>*</span></label>
-            <input appLimitTo  maxLength="24" type="number" class="form-control" name="qtdHorasDia" formControlName="qtdHorasDia"
+            <input appLimitTo  maxLength="24" min="1" type="number" class="form-control" name="qtdHorasDia" formControlName="qtdHorasDia"
                 placeholder="Digite as horas por dia">
 
             <div class="alert alert-danger mt-2" *ngIf="formularioFase.controls.qtdHorasDia.invalid && (formularioFase.controls.qtdHorasDia.touched || formularioFase.controls.qtdHorasDia.dirty)">
