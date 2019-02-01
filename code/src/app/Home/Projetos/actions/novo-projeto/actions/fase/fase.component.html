@@ -3,10 +3,10 @@
     <h1 class="titulo mb-0">Fases do Projeto {{projeto.codigoProjeto}}</h1>
   </div>
   <div class="input-group col">
-    <input type="text" class="form-control no-shadow" placeholder="Digite o código da fase que você deseja buscar"
-      aria-label="Digite o Código da Fase que você deseja buscar" [(ngModel)]="filtroFases.codigoFase" (keyup.enter)="filtrar()">
+    <input type="number" class="form-control no-shadow" placeholder="Digite o código da fase que você deseja buscar"
+      aria-label="Digite o Código da Fase que você deseja buscar" [(ngModel)]="codigoFase"  (keydown.Enter)="mostrarFasesFiltrados()"> 
     <div class="input-group-append">
-      <button class="btn btn-outline-secondary" type="button" (click)="filtrar()"><i class="fa fa-search"></i></button>
+      <button class="btn btn-outline-secondary" type="button" (click)="mostrarFasesFiltrados()"><i class="fa fa-search"></i></button>
     </div>
   </div>
   <div class="col-3 d-flex justify-content-end">
@@ -28,8 +28,14 @@
       </tr>
     </thead>
     <tbody>
-
-      <tr *ngFor="let item of fases">
+      <tr class="text-black-50 text-center" *ngIf="exibeMsg">
+        <th colspan="7"> 
+          Não foi encontrado nenhuma fase que contenha o código <strong>"{{ codigoPesquisado }}"</strong>.
+          Por favor, realize uma nova busca.
+        </th>
+      </tr>
+       
+      <tr *ngFor="let item of fasesFiltradas">
         <td class="align-middle">{{ item.codigoFase }}</td>
         <td class="align-middle">{{ item.pessoa.nome }}</td>
         <td class="align-middle">{{ item.qtdHorasDia }}</td>
