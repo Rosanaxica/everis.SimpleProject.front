@@ -82,7 +82,7 @@ export class DadosPrincipaisComponent implements OnInit {
         'tipoDemanda': [objProjeto.tipoDemanda, Validators.required],
         'tamanho': [objProjeto.tamanho, Validators.required],
         'statusProjetoId': [objProjeto.statusId, Validators.required],
-        'statusProposta': [objProjeto.statusProposta],
+        'statusProposta': [objProjeto.statusProposta, Validators.required],
         'tarifa': new FormControl(objProjeto.tarifa, {
           validators: Validators.compose([Validators.max(999999999), Validators.min(1), Validators.required]),
           updateOn: "change"
@@ -165,7 +165,7 @@ export class DadosPrincipaisComponent implements OnInit {
 
   validaDataRecebida() {
     var dataRecebida = this.dadosPrincipaisForm.get('dataRecebida');
-    
+
     if (dataRecebida.value == null || dataRecebida.value == undefined || dataRecebida.value == '') {
       window.alert("Favor informar uma data de recebida");
       dataRecebida.setErrors({ 'incorrect': true });

@@ -29,7 +29,7 @@
       <div class="col-md-7">
         <label for="nome">Nome <span>*</span></label>
         <input type="text" class="form-control" name="nome" formControlName="nome" maxlength="100">
-        <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.nome.touched && formularioPessoa.controls.nome.hasError('required')">
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="formularioPessoa.controls.nome.touched && formularioPessoa.controls.nome.hasError('required')">
           <i class="fa fa-times mr-2"></i>
           <small>Por favor, informe o nome.</small>
         </div>
@@ -56,7 +56,7 @@
       <div class="col-md-2">
         <label for="funcional">Funcional <span>*</span></label>
         <input type="text" maxlength="9" class="form-control" id="funcional" name="funcional" formControlName="funcional">
-        <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.funcional.invalid && (formularioPessoa.controls.funcional.touched || formularioPessoa.controls.funcional.dirty)">
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="formularioPessoa.controls.funcional.invalid && (formularioPessoa.controls.funcional.touched || formularioPessoa.controls.funcional.dirty)">
           <i class="fa fa-times mr-2"></i>
           <small>Por favor, informe a funcional com 9 dígitos numéricos.</small>
         </div>
@@ -69,7 +69,7 @@
           <option [ngValue]="null" disabled>Selecione</option>
           <option *ngFor="let i of diretorias" value="{{i.id}}">{{i.descricao}}</option>
         </select>
-        <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.diretoria.touched && (formularioPessoa.controls.diretoria.hasError('required') ||
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="formularioPessoa.controls.diretoria.touched && (formularioPessoa.controls.diretoria.hasError('required') ||
               formularioPessoa.controls.diretoria.value ==0)">
           <i class="fa fa-times mr-2"></i>
           <small>Por favor, informe a diretoria.</small>
@@ -85,7 +85,7 @@
     <div class="row mb-2">
       <div class="col-md-2">
         <input type="text" class="form-control" id="cpf" name="cpf" placeholder="CPF" formControlName="cpf" maxlength="11">
-        <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.cpf.touched || formularioPessoa.controls.cpf.dirty) && formularioPessoa.controls.cpf.invalid)">
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="((formularioPessoa.controls.cpf.touched || formularioPessoa.controls.cpf.dirty) && formularioPessoa.controls.cpf.invalid)">
           <i class="fa fa-times mr-2"></i>
           <small>Informe apenas números, com 11 dígitos</small>
         </div>
@@ -99,7 +99,7 @@
     <div class="row mb-2 mt-3">
       <div class="col-md-2">
         <input type="text" class="form-control" id="rg" name="rg" placeholder="RG" formControlName="rg" maxlength="9">
-        <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.rg.touched || formularioPessoa.controls.rg.dirty) && formularioPessoa.controls.rg.invalid)">
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="((formularioPessoa.controls.rg.touched || formularioPessoa.controls.rg.dirty) && formularioPessoa.controls.rg.invalid)">
           <i class="fa fa-times mr-2"></i>
           <small>Insira 9 dígitos</small>
         </div>
@@ -107,7 +107,7 @@
       <div class="col-md-2">
         <input type="text" class="form-control" id="orgaoEmissor" name="orgaoEmissor" placeholder="Orgão Emissor"
           formControlName="orgaoEmissor" maxlength="5" [attr.disabled]="formularioPessoa.controls['rg'].dirty == false || formularioPessoa.controls['rg'].invalid == true || formularioPessoa.controls['rg'].value.length == 0 ? true : null">
-        <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.orgaoEmissor.touched || formularioPessoa.controls.orgaoEmissor.dirty) && formularioPessoa.controls.orgaoEmissor.invalid)">
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="((formularioPessoa.controls.orgaoEmissor.touched || formularioPessoa.controls.orgaoEmissor.dirty) && formularioPessoa.controls.orgaoEmissor.invalid)">
           <i class="fa fa-times mr-2"></i>
           <small>Informe apenas letras</small>
         </div>
@@ -173,13 +173,12 @@
             </button>
           </div>
         </div>
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" role="alert" *ngIf="formularioPessoa.controls['numeroTelefone'].invalid && (formularioPessoa.controls['numeroTelefone'].dirty ||
+                formularioPessoa.controls['numeroTelefone'].touched) || (telefones.length < 1 && (formularioPessoa.controls['numeroTelefone'].dirty ||
+                formularioPessoa.controls['numeroTelefone'].touched))">
+          <i class="fa fa-times mr-2"> </i><small>É necessário cadastrar ao menos um telefone. Informe apenas números.</small>
+        </div>
       </div>
-    </div>
-
-    <div class="alert alert-danger" role="alert" *ngIf="formularioPessoa.controls['numeroTelefone'].invalid && (formularioPessoa.controls['numeroTelefone'].dirty ||
-        formularioPessoa.controls['numeroTelefone'].touched) || (telefones.length < 1 && (formularioPessoa.controls['numeroTelefone'].dirty ||
-        formularioPessoa.controls['numeroTelefone'].touched))">
-      <i class="fa fa-times mr-2"> </i> É necessário cadastrar ao menos um telefone. Informe apenas números.
     </div>
 
     <div class="row no-gutters mb-4 mr-4 mt-4" *ngIf="telefones.length > 0">
@@ -227,7 +226,7 @@
     <div class="row mb-2 mt-4">
       <div class="col-md-6">
         <input type="email" class="form-control" formControlName="email" name="email" placeholder="*E-mail" pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$">
-        <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.email.touched || formularioPessoa.controls.email.dirty) && formularioPessoa.controls.email.invalid)">
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="((formularioPessoa.controls.email.touched || formularioPessoa.controls.email.dirty) && formularioPessoa.controls.email.invalid)">
           <i class="fa fa-times mr-2"></i>
           <small>E-mail não preenchido ou no formato inválido. Ex.: email@exemplo.com</small>
         </div>
@@ -237,7 +236,7 @@
       <div *ngIf="formularioPessoa.controls.tipoPessoa.value == 1" class="col-md-6">
         <input type="email" class="form-control" name="emailCorp" formControlName="emailCorp" placeholder="*E-mail Corporativo"
           pattern=".+@everis.com">
-        <div class="alert alert-danger mt-2" *ngIf="((formularioPessoa.controls.emailCorp.touched || formularioPessoa.controls.emailCorp.dirty) && formularioPessoa.controls.emailCorp.invalid)">
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="((formularioPessoa.controls.emailCorp.touched || formularioPessoa.controls.emailCorp.dirty) && formularioPessoa.controls.emailCorp.invalid)">
           <i class="fa fa-times mr-2"></i>
           <small>E-mail "everis" não preenchido ou no formato inválido. Ex.: corp@everis.com</small>
         </div>
@@ -255,7 +254,7 @@
           <option [ngValue]="null" disabled>Selecione</option>
           <option *ngFor="let emp of empresas" value="{{emp.id}}">{{emp.nome}}</option>
         </select>
-        <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.empresa.touched && (formularioPessoa.controls.empresa.hasError('required') ||
+        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="formularioPessoa.controls.empresa.touched && (formularioPessoa.controls.empresa.hasError('required') ||
           formularioPessoa.controls.empresa.value ==0)">
           <i class="fa fa-times mr-2"></i>
           <small>Por favor, informe a empresa.</small>
@@ -291,7 +290,7 @@
             <option [ngValue]="null" disabled>Selecione</option>
             <option value="Terceirizado">Terceirizado</option>
           </select>
-          <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.tipoContrato.touched && (formularioPessoa.controls.tipoContrato.hasError('required') ||
+          <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="formularioPessoa.controls.tipoContrato.touched && (formularioPessoa.controls.tipoContrato.hasError('required') ||
           formularioPessoa.controls.tipoContrato.value==0)">
             <i class="fa fa-times mr-2"></i>
             <small>Por favor, informe o tipo de contrato.</small>
@@ -335,7 +334,7 @@
             <option [ngValue]="null" disabled>Selecione</option>
             <option *ngFor="let i of funcoes" value="{{i.id}}">{{i.descricao}}</option>
           </select>
-          <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.funcao.touched && (formularioPessoa.controls.funcao.hasError('required') ||
+          <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="formularioPessoa.controls.funcao.touched && (formularioPessoa.controls.funcao.hasError('required') ||
           formularioPessoa.controls.funcao.value ==0)">
             <i class="fa fa-times mr-2"></i>
             <small>Por favor, informe a função.</small>
@@ -347,7 +346,7 @@
             <option [ngValue]="null" disabled>Selecione</option>
             <option *ngFor="let i of tipoServicos" value="{{i.id}}">{{i.descricao}}</option>
           </select>
-          <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.tipoServico.touched && (formularioPessoa.controls.tipoServico.hasError('required') ||
+          <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="formularioPessoa.controls.tipoServico.touched && (formularioPessoa.controls.tipoServico.hasError('required') ||
           formularioPessoa.controls.tipoServico.value==0)">
             <i class="fa fa-times mr-2"></i>
             <small>Por favor, informe o tipo de serviço.</small>
@@ -359,7 +358,7 @@
             <option [ngValue]="null" disabled>Selecione</option>
             <option *ngFor="let i of polosAcesso" value="{{i.id}}">{{i.descricao}}</option>
           </select>
-          <div class="alert alert-danger mt-2" *ngIf="formularioPessoa.controls.poloAcesso.touched && (formularioPessoa.controls.poloAcesso.hasError('required') ||
+          <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="formularioPessoa.controls.poloAcesso.touched && (formularioPessoa.controls.poloAcesso.hasError('required') ||
           formularioPessoa.controls.poloAcesso.value ==0)">
             <i class="fa fa-times mr-2"></i>
             <small>Por favor, informe o polo de acesso.</small>
