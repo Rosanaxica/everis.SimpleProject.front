@@ -92,5 +92,8 @@ export class FaseComponent implements OnInit {
     this.router.navigate([`/projetos/novo-projeto/fase/nova-fase/${this.projetoId}/${id}`]);
   }
 
+  vaiParaProjeto() {
+    this.router.navigate([`/projetos/novo-projeto/${this.projetoId}`]);
+  }
   
 }
