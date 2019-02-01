@@ -47,6 +47,8 @@ export class ProjetosComponent implements OnInit {
   constructor(private router: Router, private svc: GenericService, private fb: FormBuilder, private arouter: ActivatedRoute) { }
 
   ngOnInit() {
+    this.filtrar();
+    this.Persitencia();
     this.arouter.paramMap.subscribe(res => {
       var sucesso = res.get("sucesso");
 
@@ -54,7 +56,6 @@ export class ProjetosComponent implements OnInit {
         this.msgSucesso = "Solicitação realizada com com sucesso"
       }
     });
-    this.filtrar();
 
 
   }
@@ -62,6 +63,10 @@ export class ProjetosComponent implements OnInit {
   mudarStatus(id) {
     this.statusSelecionados.find(x => x.id == id).checked = !(this.statusSelecionados.find(x => x.id == id).checked)
     this.contar(this.projetosFiltrados);
+  }
+
+  Persitencia(){
+    this.filtrar()
   }
 
   mostrarStatus(id): boolean {

@@ -19,10 +19,15 @@ export class FaseComponent implements OnInit {
   msgSucesso: string;
 
   fases: FaseModel[] = [];
+  fasesFiltradas: FaseModel[] = [];
 
   tipoFase = new TipoFaseModel();
   filtroFases = new FaseModel();
   projeto = new Projeto();
+  exibeMsg: boolean;
+  codigoFase: string;
+  codigoPesquisado: string;
+  
 
   ngOnInit() {
 
@@ -38,7 +43,28 @@ export class FaseComponent implements OnInit {
 
     this.filtrar();
   }
+  mostrarFasesFiltrados() {
+ 
+    this.codigoPesquisado = this.codigoFase;
 
+    if (this.codigoFase == '' || this.codigoFase == null) {
+      this.fasesFiltradas = this.fases;
+      this.exibeMsg = false;
+    }
+    else{
+      this.fasesFiltradas = this.fases.filter(p => p.codigoFase == Number.parseInt(this.codigoFase))
+     
+      if (this.fasesFiltradas.length == 0) {
+        this.fasesFiltradas = [];
+        this.exibeMsg = true;
+      }
+      else{
+        this.exibeMsg = false;
+      }
+    }
+
+    // this.contar(this.projetosFiltrados);
+  }
   obterProjeto() {
     this.projeto.id = this.projetoId;
     this.svc.obter(this.projeto, null).toPromise().then(
@@ -61,7 +87,7 @@ export class FaseComponent implements OnInit {
         if (s.sucesso) {
           if (s.data != null && s.data !== undefined) {
             this.fases = s.data;
-
+            this.fasesFiltradas = s.data;
           }
         }
       }
