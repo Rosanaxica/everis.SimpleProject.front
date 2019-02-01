@@ -28,10 +28,8 @@ export class NovoProjetoComponent implements OnInit {
 
   id: number;
   filtroProjeto = new Projeto();
-  filtroStatus = new Status();
-  statusAtual: number;
+  statusAtual = new Status();
   projeto = new Projeto();
-  status = new Status();
   solicitacaoMudancas: Array<SolicitacaoMudanca>;
   fases: Array<FaseModel>;
   filtroSolicitacaoMudanca = new SolicitacaoMudanca();
@@ -41,8 +39,8 @@ export class NovoProjetoComponent implements OnInit {
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
       this.id = +res.get('id');
+     
     });
-
     this.filtroSolicitacaoMudanca.projetoId = this.id;
     this.filtroSolicitacaoMudanca.ativo = true;
     this.svc.listar(SolicitacaoMudanca, this.filtroSolicitacaoMudanca)
@@ -69,8 +67,9 @@ export class NovoProjetoComponent implements OnInit {
             this.projeto = result.data;
             this.formDados.OpenView(this.projeto);
             this.formAtribuicaoEquipe.OpenView(this.projeto);
+
+            this.statusAtual.id = this.projeto.statusId;
             this.pegarStatus();
-            // console.log(this.projeto.statusId)
           },
           (error) => {
           }
@@ -107,16 +106,10 @@ export class NovoProjetoComponent implements OnInit {
   }
 
   pegarStatus() {
-    this.svc.listar(Status, this.filtroStatus)
+    this.svc.obter(this.statusAtual)
       .toPromise().then(
-        result => {
-          if (result.sucesso) {
-            if (result.data != null && result.data !== undefined) {
-              this.status = result.data;
-              this.statusAtual = this.status[(this.projeto.statusId - 1)]
-              console.log(this.statusAtual)
-            }
-          }
+        (result) => {
+          this.statusAtual = result.data;
         },
         (error) => {
 
