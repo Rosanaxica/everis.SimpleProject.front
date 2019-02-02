@@ -65,11 +65,6 @@ export class ProjetosComponent implements OnInit {
     this.contar(this.projetosFiltrados);
   }
 
-  Persitencia() {
-    waits(3000)
-    {this.filtrar()}
-  };
-
   mostrarStatus(id): boolean {
     return this.statusSelecionados.find(x => x.id == id).checked
   }
