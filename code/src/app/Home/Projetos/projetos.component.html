@@ -73,7 +73,7 @@
           <div class="progress">
             <div class="progress-bar everis"></div>
           </div>
-          <small>Estimativa de conclusão: {{ projeto.dataProposta | dateFormat }}</small>
+          <small>Estimativa de conclusão: {{ projeto.dataProposta | date:'dd/MM/yyyy' }}</small>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@
     <div class="col-lg-4 d-flex">
       <div *ngFor="let projetoPessoa of projeto.projetoPessoas" [matTooltip]="projetoPessoa.pessoa.nome"
         [matTooltipPosition]="'right'" class="mr-1 mb-1 bg-light rounded-circle icon-user-small align-items-center justify-content-center d-flex">
-        {{ projetoPessoa.pessoa.nome | slice:0:1}}
+        <span>{{sliceMembroEquipe(projetoPessoa.pessoa.nome)}}</span>
       </div>
     </div>
 
@@ -110,7 +110,7 @@
                                           'bg-gray': projeto.status.descricao == 'Proposta'}">{{
         projeto.status.descricao }}</span>
       <small>
-        <p>Inicio: {{ projeto.dataInicio | dateFormat }}</p>
+        <p>Inicio: {{ projeto.dataInicio | date:'dd/MM/yyyy' }}</p>
       </small>
     </div>
     <hr class="mt-2 col-12">

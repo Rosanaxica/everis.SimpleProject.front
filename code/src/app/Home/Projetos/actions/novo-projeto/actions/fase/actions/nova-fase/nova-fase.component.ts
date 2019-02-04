@@ -4,14 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FaseModel } from 'src/app/_models/fase.model';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Pessoa } from 'src/app/_models/pessoa.model';
-import { Observable } from 'rxjs';
-import { startWith } from 'rxjs/internal/operators/startWith';
-import { map } from 'rxjs/internal/operators/map';
 import { TipoFaseModel } from 'src/app/_models/tipo_fase.model';
 import { Projeto } from 'src/app/_models/projeto.model';
-import { DatePipe } from '@angular/common';
 import { DateFormatPipe } from 'src/app/shared/util/date-format-pipe';
-import { strictEqual } from 'assert';
 
 @Component({
   selector: 'app-nova-fase',
@@ -181,28 +176,5 @@ export class NovaFaseComponent implements OnInit {
     this.modeloFase.tipoFaseId = +formObj.tipoFase;
   }
 
-  validaQtdHorasDia() {
-    let qtdHorasDia = this.formularioFase.get('qtdHorasDia');
-    
-    if(qtdHorasDia.value > 24){
-      qtdHorasDia.setValue(24);
-    }
-
-    if(qtdHorasDia.value == null){
-      qtdHorasDia.reset();
-    }
-  }
-
-  limpaString(){
-    let qtdHorasDia = this.formularioFase.get('qtdHorasDia');
-
-    if(qtdHorasDia.value == null || qtdHorasDia.value == undefined){
-      qtdHorasDia.reset();
-    }
-
-    if(qtdHorasDia.value <= 0){
-      qtdHorasDia.reset();
-    }
-  }
 
 }

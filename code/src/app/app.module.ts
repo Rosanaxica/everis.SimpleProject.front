@@ -63,6 +63,7 @@ import { CadastroComunidadeComponent } from './Home/Comunidades/cadastro-comunid
 import { SquadsComponent } from './Home/Comunidades/cadastro-comunidade/squads/squads.component';
 import { CadastroSquadComponent } from './Home/Comunidades/cadastro-comunidade/squads/cadastro-squad/cadastro-squad.component';
 import { AtribuicaoEquipeSquadComponent } from './Home/Comunidades/cadastro-comunidade/squads/cadastro-squad/atribuicao-equipe-squad/atribuicao-equipe-squad.component';
+import { LimitToDirective } from './shared/util/limit-to.directive';
 
 
 @NgModule({
@@ -102,7 +103,8 @@ import { AtribuicaoEquipeSquadComponent } from './Home/Comunidades/cadastro-comu
     GraficolinhaComponent,
     SquadsComponent,
     CadastroSquadComponent,
-    AtribuicaoEquipeSquadComponent
+    AtribuicaoEquipeSquadComponent,
+    LimitToDirective
   ],
   imports: [
     HttpClientModule,
