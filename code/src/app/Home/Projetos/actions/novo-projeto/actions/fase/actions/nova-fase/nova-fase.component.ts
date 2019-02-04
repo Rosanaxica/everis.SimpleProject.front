@@ -176,5 +176,33 @@ export class NovaFaseComponent implements OnInit {
     this.modeloFase.tipoFaseId = +formObj.tipoFase;
   }
 
+<<<<<<< HEAD
+  validaQtdHorasDia() {
+    let qtdHorasDia = this.formularioFase.get('qtdHorasDia');
+    
+    if(qtdHorasDia.value > 24){
+      qtdHorasDia.setValue(24);
+    }
+   
+    if(qtdHorasDia.value == null){
+      qtdHorasDia.reset();
+    }
+  }
+
+  limpaString(){
+    let qtdHorasDia = this.formularioFase.get('qtdHorasDia');
+
+    if(qtdHorasDia.value == null || qtdHorasDia.value == undefined){
+      qtdHorasDia.reset();
+    }
+
+    if(qtdHorasDia.value <= 0){
+      qtdHorasDia.reset();
+    }
+
+    
+  }
+=======
+>>>>>>> 7c8083b7d5a8d86df0e67d1257f051d42ef66bf9
 
 }

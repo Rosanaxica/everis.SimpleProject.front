@@ -1,4 +1,7 @@
+<<<<<<< HEAD
+=======
 <!-- para alteração de projetos-->
+>>>>>>> 7c8083b7d5a8d86df0e67d1257f051d42ef66bf9
 <div class="row align-items-center no-gutters">
   <div class="col">
     <h1 class="titulo mb-0">{{(modoEdicao() ? 'Editar' : 'Criar')}} Projeto {{projeto.codigoProjeto}}</h1>
@@ -7,12 +10,6 @@
 </div>
 <div class="row mt-2" *ngIf="id > 0">
   <div class="col-md-4">
-    <!--<div class="card card-colaborador cursor-pointer click" (click)="vaiParaSolicitacaoMudanca()" routerLinkActive="active"
-      role="button">
-      <div class="card-body">
-        Solicitação de Mudança <span class="badge everis">{{ totalSolicitacaoMudancas }}</span>
-      </div>
-    </div>-->
     <div class="card card-colaborador">
       <div class="card-body bg-light">
         Solicitação de Mudança
@@ -60,14 +57,6 @@
         </ng-template>
         <app-atribuicao-equipe (getProjeto)="selectTab($event)"></app-atribuicao-equipe>
       </tab>
-      <!-- NÃO SERÁ IMPLEMENTADO NESSE MOMENTO
-      <tab>
-        <ng-template tabHeading>
-          <span class="fonte-cancelar">Anexos</span>
-        </ng-template>
-        <app-anexos></app-anexos>
-      </tab>
-      -->
     </tabset>
   </div>
 </div>

@@ -73,7 +73,6 @@ export class AtribuicaoEquipeComponent implements OnInit {
       }
     );
 
-    // this.svc.listar()
   }
   cancelar() {
     this.router.navigate(['/projetos']);
@@ -168,7 +167,6 @@ export class AtribuicaoEquipeComponent implements OnInit {
   }
   salvar() {
 
-    //this.getProjeto.emit("2");
     if (this.projeto.id == undefined) {
       if (this.informadoResponsavel() && this.informadaFuncao() == 0 && this.projetoPessoa.length > 0) {
         if (this.squad == true && (this.squadId == undefined || this.squadId == null || this.squadId < 0)) {
