@@ -187,7 +187,7 @@ export class NovaFaseComponent implements OnInit {
     if(qtdHorasDia.value > 24){
       qtdHorasDia.setValue(24);
     }
-
+   
     if(qtdHorasDia.value == null){
       qtdHorasDia.reset();
     }
@@ -203,6 +203,8 @@ export class NovaFaseComponent implements OnInit {
     if(qtdHorasDia.value <= 0){
       qtdHorasDia.reset();
     }
+
+    
   }
 
 }

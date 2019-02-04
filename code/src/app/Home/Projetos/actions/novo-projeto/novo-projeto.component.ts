@@ -88,12 +88,8 @@ export class NovoProjetoComponent implements OnInit {
     this.formDados.Adicionar();
   }
   selectTab(dados: any) {
-    // if (tabId == 1) {
     let projeto: Projeto = JSON.parse(dados);
     this.formAtribuicaoEquipe.OpenView(projeto);
-    // } else if (tabId == 2) {
-    //   this.formAnexo.OpenView("teste")
-    // }
     this.alterarTabs.tabs[1].active = true;
   }
 

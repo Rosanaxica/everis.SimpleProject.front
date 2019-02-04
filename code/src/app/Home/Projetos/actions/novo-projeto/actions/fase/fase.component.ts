@@ -63,7 +63,6 @@ export class FaseComponent implements OnInit {
       }
     }
 
-    // this.contar(this.projetosFiltrados);
   }
   obterProjeto() {
     this.projeto.id = this.projetoId;

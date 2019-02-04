@@ -131,7 +131,6 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.codigoProjeto = values.codProjeto;
     this.projeto.tarifa = values.tarifa;
     this.projeto.dataFinal = values.dataFinal;
-    // this.verifcaData();
   };
 
 
@@ -238,12 +237,6 @@ export class DadosPrincipaisComponent implements OnInit {
       this.getProjeto.emit(JSON.stringify(this.projeto));
     }
   }
-
-  // verifcaData() {
-  //   if (this.projeto.dataInicio > this.projeto.dataProposta) {
-  //     alert("Data Fim deve ser maior que Data Prevista!");
-  //   }
-  // }
 
   cancelar() {
     this.router.navigate(['/projetos/']);
