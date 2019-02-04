@@ -37,11 +37,10 @@ export class AlterarSenhaComponent implements OnInit {
     this.novaSenha = this.novaSenha;
     this.confirmaNovaSenha = this.confirmaNovaSenha;
       if (this.novaSenha !== this.confirmaNovaSenha) {
-        console.log('senha não confere');
+        window.alert("Senha não confere");
       } else {
-        console.log('deu certo, a senha antiga é', this.colaborador.senha);
         this.colaborador.senha = this.novaSenha;
-        console.log("a nova senha agora é:", this.colaborador.senha);
+        window.alert("Senha atualizada com sucesso!");
       }
   }
 }

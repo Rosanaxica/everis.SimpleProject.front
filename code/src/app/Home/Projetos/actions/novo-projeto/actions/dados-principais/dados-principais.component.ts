@@ -91,7 +91,7 @@ export class DadosPrincipaisComponent implements OnInit {
     );
   }
 
-  private setMaxValue(itemFormControlName) {
+   setMaxValue(itemFormControlName) {
     let item = this.dadosPrincipaisForm.get(itemFormControlName);
     if (item.errors && item.errors.max) {
       item.setValue(item.errors.max.max);
@@ -105,7 +105,7 @@ export class DadosPrincipaisComponent implements OnInit {
   }
 
 
-  private obterDadosForm() {
+   obterDadosForm() {
     let values = this.dadosPrincipaisForm.value;
     this.projeto.nome = values.nomeProjeto;
     this.projeto.empresaId = values.empresaId;
@@ -131,11 +131,10 @@ export class DadosPrincipaisComponent implements OnInit {
     this.projeto.codigoProjeto = values.codProjeto;
     this.projeto.tarifa = values.tarifa;
     this.projeto.dataFinal = values.dataFinal;
-    // this.verifcaData();
   };
 
 
-  private carregarDadosForm() {
+   carregarDadosForm() {
     this.dadosPrincipaisForm.get("nomeProjeto").setValue(this.projeto.nome);
     this.dadosPrincipaisForm.get("empresaId").setValue(this.projeto.empresaId);
     this.dadosPrincipaisForm.get("dataInicio").setValue(this.formatDate.transform(this.projeto.dataInicio));
@@ -238,12 +237,6 @@ export class DadosPrincipaisComponent implements OnInit {
       this.getProjeto.emit(JSON.stringify(this.projeto));
     }
   }
-
-  // verifcaData() {
-  //   if (this.projeto.dataInicio > this.projeto.dataProposta) {
-  //     alert("Data Fim deve ser maior que Data Prevista!");
-  //   }
-  // }
 
   cancelar() {
     this.router.navigate(['/projetos/']);

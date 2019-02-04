@@ -49,7 +49,7 @@ export class UploadComponent implements OnInit {
           delete this.httpEmitter;
         }
       },
-        error => console.log('Error Uploading', error)
+        error => window.alert("Error Uploading" + error)
       );
   }
 

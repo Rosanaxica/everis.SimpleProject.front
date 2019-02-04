@@ -20,6 +20,7 @@ export class NovaEmpresaComponent implements OnInit {
   formularioEmpresa: FormGroup;
   modeloEmpresa: Empresa = new Empresa();
   nomeEmpresa: string;
+  nome2 = '';
 
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {

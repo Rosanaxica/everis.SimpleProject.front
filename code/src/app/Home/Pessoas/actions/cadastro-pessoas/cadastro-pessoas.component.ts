@@ -31,6 +31,7 @@ export class CadastroPessoasComponent implements OnInit {
   constructor(private arouter: ActivatedRoute, private svc: GenericService, private router: Router, private fb: FormBuilder, private formateDate: DateFormatPipe) {
   }
 
+  telefone2 = '';
   colaboradorId: number;
   id: number;
   formularioPessoa: FormGroup;
