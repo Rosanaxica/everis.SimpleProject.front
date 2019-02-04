@@ -39,7 +39,7 @@ export class NovoProjetoComponent implements OnInit {
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
       this.id = +res.get('id');
-     
+
     });
     this.filtroSolicitacaoMudanca.projetoId = this.id;
     this.filtroSolicitacaoMudanca.ativo = true;

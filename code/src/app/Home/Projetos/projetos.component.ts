@@ -47,8 +47,8 @@ export class ProjetosComponent implements OnInit {
   constructor(private router: Router, private svc: GenericService, private fb: FormBuilder, private arouter: ActivatedRoute) { }
 
   ngOnInit() {
-    this.filtrar();
-    this.Persitencia();
+    setTimeout(() =>  this.filtrar(), 1000);
+    
     this.arouter.paramMap.subscribe(res => {
       var sucesso = res.get("sucesso");
 
@@ -63,10 +63,6 @@ export class ProjetosComponent implements OnInit {
   mudarStatus(id) {
     this.statusSelecionados.find(x => x.id == id).checked = !(this.statusSelecionados.find(x => x.id == id).checked)
     this.contar(this.projetosFiltrados);
-  }
-
-  Persitencia(){
-    this.filtrar()
   }
 
   mostrarStatus(id): boolean {
@@ -202,5 +198,23 @@ export class ProjetosComponent implements OnInit {
         }
       );
     });
+  }
+
+  sliceMembroEquipe(nome: string): string {
+
+    let retorno: string;
+    let letraPrimeiroNome: string;
+    letraPrimeiroNome = nome.substring(0, 1);
+    let letraSegundoNome: string;
+    let splitNome: string[] = nome.split(' ');
+
+    if (nome.includes(' ')) {
+      letraSegundoNome = splitNome[1].substring(0, 1);
+      retorno = letraPrimeiroNome + letraSegundoNome;
+    } else {
+      retorno = letraPrimeiroNome
+    }
+
+    return retorno;
   }
 }

@@ -19,6 +19,7 @@ export class CadastroComunidadeComponent implements OnInit {
   id: number;
   formularioComunidade: FormGroup;
   modeloComunidade: Comunidade = new Comunidade();
+  nomeComunidade: string;
 
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
@@ -62,8 +63,13 @@ export class CadastroComunidadeComponent implements OnInit {
     );
     this.formularioComunidade.reset();
   }
+
   cancelar() {
     this.router.navigate(['/comunidades']);
+  }
+
+  modoEdicao() {
+    return this.modeloComunidade !== null && this.modeloComunidade !== undefined && this.modeloComunidade.id > 0;
   }
 
   criarForm(itemComunidade?: Comunidade) {

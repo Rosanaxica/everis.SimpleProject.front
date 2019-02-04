@@ -20,7 +20,8 @@ export class CadastroSquadComponent implements OnInit {
   id: number;
   formularioSquad: FormGroup;
   modeloSquad: Squad = new Squad();
-  comunidadeid :number;
+  comunidadeid: number;
+  nomeSquad: string;
 
   ngOnInit() {
     this.arouter.paramMap.subscribe(res => {
@@ -30,12 +31,16 @@ export class CadastroSquadComponent implements OnInit {
         this.obterModelo();
       }
       this.criarForm();
-      
+
       this.comunidadeid = +res.get('comunidadeid');
       if (this.comunidadeid !== null && this.comunidadeid !== undefined && this.comunidadeid > 0) {
         this.modeloSquad.comunidadeid = this.comunidadeid;
       }
     });
+  }
+
+  modoEdicao() {
+    return this.modeloSquad !== null && this.modeloSquad !== undefined && this.modeloSquad.id > 0;
   }
 
   obterModelo() {
@@ -72,14 +77,14 @@ export class CadastroSquadComponent implements OnInit {
     this.formularioSquad.reset();
   }
   cancelar() {
-    this.router.navigate(['/squads']);
+    this.router.navigate([`/comunidades/editar-comunidade/${this.comunidadeid}`]);
   }
 
   criarForm(itemSquad?: Squad) {
-    itemSquad = itemSquad || { nome: '' , dataInicio: new Date()} as Squad;
+    itemSquad = itemSquad || { nome: '', dataInicio: new Date() } as Squad;
     this.formularioSquad = this.fb.group({
       'nome': [itemSquad.nome, Validators.required],
-      'datainicio': [this.formatDate.transform( itemSquad.dataInicio), Validators.required]
+      'datainicio': [this.formatDate.transform(itemSquad.dataInicio), Validators.required]
     });
   }
 }
