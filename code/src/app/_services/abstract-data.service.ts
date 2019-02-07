@@ -125,7 +125,7 @@ export class AbstractDataService {
     });
   }
 
-  muitiGet(urls: Array<string>): Promise<any[]> {
+  multiGet(urls: Array<string>): Promise<any[]> {
     let resuktList = new Array<any>();
     urls.forEach(f => {
       resuktList.push(this.httpSvc.get(this.montarUrlGenerica(f)));

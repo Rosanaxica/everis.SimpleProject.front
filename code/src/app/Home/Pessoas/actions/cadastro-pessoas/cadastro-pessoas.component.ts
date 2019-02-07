@@ -66,6 +66,8 @@ export class CadastroPessoasComponent implements OnInit {
   btnRemoverFerramentas: Ferramenta[] = [];
   btnAdicionarFerramentas: Ferramenta[] = [];
 
+  
+
   ngOnInit() {
     this.criarForm();
 
@@ -84,7 +86,7 @@ export class CadastroPessoasComponent implements OnInit {
       }
     });
 
-    this.svc.muitiGet([
+    this.svc.multiGet([
       'Empresa/ObterTodos',
       'Funcao/ObterTodos',
       'AreaContratante/ObterTodos',

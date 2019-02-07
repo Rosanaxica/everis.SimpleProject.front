@@ -47,17 +47,7 @@ export class ProjetosComponent implements OnInit {
   constructor(private router: Router, private svc: GenericService, private fb: FormBuilder, private arouter: ActivatedRoute) { }
 
   ngOnInit() {
-    setTimeout(() =>  this.filtrar(), 1000);
-    
-    this.arouter.paramMap.subscribe(res => {
-      var sucesso = res.get("sucesso");
-
-      if (sucesso !== null && sucesso !== undefined && sucesso) {
-        this.msgSucesso = "Solicitação realizada com com sucesso"
-      }
-    });
-
-
+    this.filtrar();
   }
 
   mudarStatus(id) {

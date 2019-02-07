@@ -8,7 +8,7 @@
         <div class="card-body ">
           <img src="../assets/logo_90.png">
           <div class="form-group mt-2">
-            <input formControlName="user" type="text" class="form-control mb-2" name="user" id="usuario" placeholder="Usuário">
+            <input formControlName="user" type="text" class="form-control mb-2" name="user" id="usuario" placeholder="Usuário" (keydown.enter)="login()">
             <input formControlName="senha" type="password" class="form-control mb-2" name="senha" id="senha"
               (keydown.enter)="login()" placeholder="Senha">
 
@@ -27,8 +27,8 @@
           <!--.input-->
         </div>
         <div class="row mb-4">
-          <div class="col-md-6 "><a href="/esqueci-senha" class="links">Esqueci a Senha</a></div>
-          <div class="col-md-6 "><a href="/primeiro-acesso " class="links ">Primeiro Acesso</a></div>
+          <div class="col-md-6 "><a href="/#/esqueci-senha" class="links">Esqueci a Senha</a></div>
+          <div class="col-md-6 "><a href="/#/primeiro-acesso " class="links ">Primeiro Acesso</a></div>
         </div>
       </div>
     </div>

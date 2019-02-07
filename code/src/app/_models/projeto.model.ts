@@ -6,6 +6,7 @@ import { Sigla } from './sigla.model';
 import { Diretoria } from './diretoria.model';
 import { Superintendencia } from './superintendencia.model';
 import { ProjetoPessoa } from './projetopessoa.model';
+import { Exts } from './exts';
 
 export class Projeto extends ModeloGenerico {
     nome: string;
@@ -31,7 +32,8 @@ export class Projeto extends ModeloGenerico {
     problemasExecucao: string;
     riscos: string;
     licoesAprendidas: string;
-    ext: string;
+    extId: number;
+    ext: Exts;
     projetosPessoas: any;
     tecnologiaId: number;
     tecnologia: Tecnologia;

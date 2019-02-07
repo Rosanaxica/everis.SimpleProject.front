@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand navbar-dark bg-gray static-top" *ngIf="isLoggedIn()">
 
-    <a class="navbar-brand mr-1" href="index.html"><img src="../assets/logo_32.png" width="32"> </a>
+    <a class="navbar-brand mr-1" [routerLink]="['']" routerLinkActive="active"><img src="../assets/logo_32.png" width="32"> </a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#" (click)=" ToggleMenu()">
         <i class="fa fa-bars"></i>
@@ -45,7 +45,7 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav bg-gray-light" [ngClass]="{ 'toggled': menuFechado, '': !menuFechado}" *ngIf="isLoggedIn()">
         <li class="nav-item active">
-            <a class="nav-link" [routerLink]="['novo-projeto']" routerLinkActive="active">
+            <a class="nav-link" [routerLink]="['projetos/novo-projeto']" routerLinkActive="active">
                 <button class="btn everis">Adicionar projeto</button>
             </a>
         </li>

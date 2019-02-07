@@ -5,15 +5,9 @@
     <div class="form-group row">
       <div class="col-md-3">
         <label for="label">Status do Projeto *</label>
-        <select formControlName="statusProjetoId" *ngIf="projeto.id > 0; else novoProjeto" class="form-control" id="statusProjetoId"
-          name="statusProjetoId">
+        <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
           <option *ngFor="let status of status" value="{{status.id}}">{{status.descricao}}</option>
         </select>
-        <ng-template #novoProjeto>
-          <select formControlName="statusProjetoId" class="form-control" id="statusProjetoId" name="statusProjetoId">
-            <option value="7" selected>Proposta</option>
-          </select>
-        </ng-template>
         <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="(dadosPrincipaisForm.controls.statusProjetoId.touched || dadosPrincipaisForm.controls.statusProjetoId.dirty) && dadosPrincipaisForm.controls.statusProjetoId.invalid">
           <i class="fa fa-times mr-2"></i>
           <small>Por favor, informe o Status do Projeto.</small>
@@ -103,44 +97,39 @@
   <fieldset class="border mb-4">
     <legend class="col-form-label">Dados Internos</legend>
     <div class="form-group row">
-      <div class="col-md-4">
-        <label for="label">Tecnologia *</label>
-        <select formControlName="tecnologiaId" class="form-control" id="tecnologiaid" name="tecnologiaid">
-          <option *ngFor="let tecnologia of tecnologia" value="{{tecnologia.id}}">{{tecnologia.nome}}</option>
+      <div class="col-5 p-2">
+        <label>Tecnologias do Projeto *</label>
+        <select multiple class="form-control" name="tecAssociadas" [(ngModel)]="tecnologiaToRemove" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let i of tecnologiaAssociadas" value="{{i.id}}">{{i.nome}}</option>
         </select>
-        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="(dadosPrincipaisForm.controls.tecnologiaId.touched || dadosPrincipaisForm.controls.tecnologiaId.dirty) && dadosPrincipaisForm.controls.tecnologiaId.invalid">
-          <i class="fa fa-times mr-2"></i>
-          <small>Por favor, informe a Tecnologia</small>
+      </div>
+      <div class="col-2 mt-4 text-center">
+        <div class="mt-2">
+          <button class="btn btn-success" (click)="adicionarTecnologia()">
+            <<</button> </div> <div>
+              <button class="btn btn-danger" (click)="removerTecnologia()">>></button>
         </div>
       </div>
-
-      <div class="col-md-3">
+      <div class="col-5 p-2">
+        <label>Tecnologias Disponíveis</label>
+        <select multiple class="form-control" name="tecDisponiveis" [(ngModel)]="tecnologiaToAdd" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let i of tecnologiaDisponiveis" value="{{i.id}}">{{i.nome}}</option>
+        </select>
+      </div>
+      <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="tecnologiaAssociadas.length==0">
+        <i class="fa fa-times mr-2"></i>
+        <small>Por favor, associar ao menos uma Tecnologia ao projeto</small>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-md-6">
         <label for="label">EXT</label>
         <select formControlName="ext" class="form-control" id="ext" name="ext">
-          <option value="EXT-011198-00079">EXT-011198-00079</option>
-          <option value="EXT-011198-00083">EXT-011198-00083</option>
-          <option value="EXT-011198-00100">EXT-011198-00100</option>
-          <option value="EXT-011198-00101">EXT-011198-00101</option>
-          <option value="EXT-011198-00104">EXT-011198-00104</option>
-          <option value="EXT-011198-00105">EXT-011198-00105</option>
-          <option value="EXT-011198-00107">EXT-011198-00107</option>
-          <option value="EXT-011198-00108">EXT-011198-00108</option>
-          <option value="EXT-011198-00110">EXT-011198-00110</option>
-          <option value="EXT-011198-00112">EXT-011198-00112</option>
-          <option value="EXT-011198-00113">EXT-011198-00113</option>
-          <option value="EXT-011198-00114">EXT-011198-00114</option>
-          <option value="EXT-011198-00117">EXT-011198-00117</option>
-          <option value="EXT-011198-00118">EXT-011198-00118</option>
-          <option value="EXT-011198-00119">EXT-011198-00119</option>
-          <option value="EXT-011198-00120">EXT-011198-00120</option>
-          <option value="EXT-011198-00121">EXT-011198-00121</option>
-          <option value="EXT-011198-00122">EXT-011198-00122</option>
-          <option value="EXT-011198-00123">EXT-011198-00123</option>
-          <option value="EXT-011198-00124">EXT-011198-00124</option>
+          <option *ngFor="let e of exts" value="{{e.id}}">{{e.nome}}</option>
         </select>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-md-6">
         <label for="label">Tamanho *</label>
         <select formControlName="tamanho" class="form-control" id="tamanho" name="tamanho">
           <option value="P">P</option>
@@ -152,17 +141,32 @@
           <small>Por favor, informe o Tamanho do Projeto</small>
         </div>
       </div>
+    </div>
 
-      <div class="col-md-3">
-        <label for="label">Tipo de Demanda *</label>
-        <select formControlName="tipoDemanda" class="form-control" id="tipoDemanda" name="tipoDemanda">
-          <option value="Commodities">Commodities</option>
-          <option value="Especialista">Especialista</option>
+    <div class="form-group row">
+      <div class="col-5 p-2">
+        <label>Tipos de Demanda do Projeto *</label>
+        <select multiple class="form-control" name="tipoDemAssociadas" [(ngModel)]="tipoDemandaToRemove"
+          [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let i of tipoDemandaAssociadas" value="{{i.id}}">{{i.nome}}</option>
         </select>
-        <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="(dadosPrincipaisForm.controls.tipoDemanda.touched || dadosPrincipaisForm.controls.tipoDemanda.dirty) && dadosPrincipaisForm.controls.tipoDemanda.invalid">
-          <i class="fa fa-times mr-2"></i>
-          <small>Por favor, informe o Tipo de Demanda</small>
+      </div>
+      <div class="col-2 mt-4 text-center">
+        <div class="mt-2">
+          <button class="btn btn-success" (click)="adicionarTipoDemanda()">
+            <<</button> </div> <div>
+              <button class="btn btn-danger" (click)="removerTipoDemanda()">>></button>
         </div>
+      </div>
+      <div class="col-5 p-2">
+        <label>Tipos de Demanda Disponíveis</label>
+        <select multiple class="form-control" name="tipoDemDisponiveis" [(ngModel)]="tipoDemandaToAdd" [ngModelOptions]="{standalone: true}">
+          <option *ngFor="let i of tipoDemandaDisponiveis" value="{{i.id}}">{{i.nome}}</option>
+        </select>
+      </div>
+      <div class="alert alert-danger m-0 mt-2 p-1 pl-2 pr-2 w-100" *ngIf="tipoDemandaAssociadas.length==0">
+        <i class="fa fa-times mr-2"></i>
+        <small>Por favor, associar ao menos um Tipo de Demanda ao projeto</small>
       </div>
     </div>
   </fieldset>
